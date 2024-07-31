@@ -1,0 +1,2449 @@
+{
+  "Engine": {
+    "Description": "Reference for the Engine section of the Unreal Engine Project Settings.",
+    "Categories": {
+      "AISystem": "AI System section reference.",
+      "Animation": "Animation Settings section reference.",
+      "AnimationModifiers": "Animation Modifiers section reference.",
+      "Audio": "Audio section reference.",
+      "ChaosSolver": "Chaos Solver section reference.",
+      "Collision": "Collision section reference.",
+      "Console": "Console section reference.",
+      "ControlRig": "Control Rig section reference.",
+      "Cooker": "Cooker section reference.",
+      "CrowdManager": "Crowd Manager section.",
+      "DataDrivenCVars": "Data-Driven CVars section reference.",
+      "DebugCameraController": "Debug Camera Controller section reference.",
+      "GameplayDebugger": "Gameplay Debugger section reference.",
+      "GarbageCollection": "Garbage Collection section reference.",
+      "GeneralEngineSettings": "General Engine Settings section.",
+      "HierarchicalLOD": "Hierarchical LOD Settings section.",
+      "Input": "Input Settings section.",
+      "Interchange": "Interchange Settings section.",
+      "Landscape": "Landscape Settings section.",
+      "LevelSequence": "Level Sequence Settings section.",
+      "NavigationMesh": "Navigation Mesh section reference.",
+      "Network": "Network Settings section.",
+      "Physics": "Physics Settings section.",
+      "Rendering": "Rendering section reference.",
+      "RenderingOverrides": "Rendering Overrides section reference.",
+      "Slate": "Slate Settings section reference.",
+      "Streaming": "Streaming Settings section reference.",
+      "TextureEncoding": "Texture Encoding section reference.",
+      "Tutorials": "Tutorials Settings section reference.",
+      "UserInterface": "User Interface Settings section reference.",
+      "WorldPartition": "World Partition Settings section reference."
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help your peers.",
+    "LearningLibrary": "Write or read tutorials from others."
+  }
+}
+{
+  "AISystem": {
+    "Description": "Reference for the AI System section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "PerceptionSystemClass": {
+        "Description": "Class for spawning the perception system.",
+        "Options": ["None", "AIPerceptionSystem"]
+      },
+      "AIHotSpotManagerClass": {
+        "Description": "Class for spawning the hot spot manager.",
+        "Options": ["None", "AIHotSpotManager"]
+      },
+      "EnvQueryManagerClass": {
+        "Description": "Class for spawning the env query manager.",
+        "Options": ["None", "EnvQueryManager"]
+      },
+      "EnableDebuggerPlugin": {
+        "Description": "Load GameplayDebuggerPlugin on startup."
+      },
+      "ForgetStaleActors": {
+        "Description": "Forget actors when their stimulus expires."
+      },
+      "AISystemClass": {
+        "Description": "List of specific AI system classes."
+      },
+      "AISystemModule": {
+        "Description": "Module name to spawn the AI system."
+      }
+    }
+  },
+  "Movement": {
+    "Description": "Movement settings for AI.",
+    "Sections": {
+      "AcceptanceRadius": {
+        "Description": "Default AI movement's acceptance radius."
+      },
+      "PathfollowingRegularPathPointAcceptanceRadius": {
+        "Description": "Radius for path point acceptance."
+      },
+      "PathfollowingNavLinkAcceptanceRadius": {
+        "Description": "Radius for navigation link acceptance."
+      },
+      "FinishMoveOnGoalOverlap": {
+        "Description": "Count goal overlap as move finish."
+      },
+      "AcceptPartialPaths": {
+        "Description": "Accept partial paths by default."
+      },
+      "AllowStrafing": {
+        "Description": "Allow strafing by default."
+      }
+    }
+  },
+  "GameplayTasks": {
+    "Description": "Settings for gameplay tasks.",
+    "Sections": {
+      "EnableBTAITasksDeprecated": {
+        "Description": "Deprecated setting for enabling gameplay tasks."
+      }
+    }
+  },
+  "EnvironmentQuerySystem": {
+    "Description": "EQS settings.",
+    "Sections": {
+      "AllowControllersAsEQSQuerier": {
+        "Description": "Enable controllers as EQS queriers."
+      }
+    }
+  },
+  "Blackboard": {
+    "Description": "Blackboard settings.",
+    "Sections": {
+      "AddBlackboardSelfKey": {
+        "Description": "Automatically add SelfActor key."
+      }
+    }
+  },
+  "BehaviorTree": {
+    "Description": "Behavior tree settings.",
+    "Sections": {
+      "ClearBBEntryOnBTEQSFail": {
+        "Description": "Clear Blackboard entry on EQS query fail."
+      }
+    }
+  },
+  "PerceptionSystem": {
+    "Description": "Perception system settings.",
+    "Sections": {
+      "DefaultSightCollisionChannel": {
+        "Description": "Default collision channel for sight checks.",
+        "Options": ["WorldStatic", "WorldDynamic", "Pawn", "Visibility", "Camera", "PhysicsBody", "Vehicle", "Destructible"]
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Animation": {
+    "Description": "Reference for the Animation Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Compression": {
+        "Description": "Compression settings for animations.",
+        "CompressCommandletVersion": {
+          "Description": "Version for recompress commandlet. Increase to trigger full recompression."
+        },
+        "KeyEndEffectorsMatchNameArray": {
+          "Description": "Bone names for higher precision."
+        },
+        "ForceRecompression": {
+          "Description": "Forcibly recompress all animations. Disable before project check-in to avoid performance issues."
+        }
+      },
+      "Performance": {
+        "Description": "Performance settings for animations.",
+        "EnablePerformanceLog": {
+          "Description": "Log performance info during recompression."
+        },
+        "StripAnimationDataOnDedicatedServer": {
+          "Description": "Strip animation data from server-cooked data."
+        },
+        "TickAnimationOnSkeletalMeshInit": {
+          "Description": "Enable Animation-Tick on Skeletal Mesh init (Zero-Ticking). Disabled by default."
+        }
+      },
+      "CustomAttributes": {
+        "Description": "Custom attributes settings.",
+        "BoneTimecodeCustomAttributeNameSettings": {
+          "Description": "Names for bone custom attributes representing timecode and subframe."
+        },
+        "BoneCustomAttributesNames": {
+          "Description": "Custom attributes to import directly on corresponding bones."
+        },
+        "BoneNamesWithCustomAttributes": {
+          "Description": "Bone names for direct custom attribute import."
+        },
+        "AttributeBlendModes": {
+          "Description": "Custom Attribute-specific blend types.",
+          "Options": ["Override", "Blend"]
+        },
+        "DefaultAttributeBlendMode": {
+          "Description": "Default custom attribute blend type."
+        },
+        "TransformAttributeNames": {
+          "Description": "Names for importing FBX node transform curves as attributes."
+        }
+      },
+      "Mirroring": {
+        "Description": "Settings for mirroring.",
+        "MirrorFindReplaceExpressions": {
+          "Description": "Find and Replace Expressions used for mirroring."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "AnimationModifiers": {
+    "Description": "Reference for the Animation Modifiers section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Modifiers": {
+        "Description": "Settings for animation modifiers.",
+        "DefaultAnimationModifiers": {
+          "Description": "Set of modifiers added on new animation sequence import."
+        },
+        "ApplyAnimationModifiersOnImport": {
+          "Description": "Apply animation modifiers post import or reimport."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Audio": {
+    "Description": "Reference for the Audio section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Dialogue": {
+        "Description": "Settings for dialogue.",
+        "DialogueFilenameFormat": {
+          "Description": "Format string for dialogue filenames, must be unique.",
+          "FormatMarkers": [
+            "{DialogueGuid}",
+            "{DialogueHash}",
+            "{DialogueName}",
+            "{ContextId}",
+            "{ContextIndex}"
+          ]
+        }
+      },
+      "Audio": {
+        "Description": "General audio settings.",
+        "DefaultSoundClass": {
+          "Description": "SoundClass for new sounds."
+        },
+        "DefaultMediaSoundClass": {
+          "Description": "SoundClass for media player assets."
+        },
+        "DefaultSoundConcurrency": {
+          "Description": "SoundConcurrency for new sounds."
+        },
+        "DefaultBaseSoundMix": {
+          "Description": "Base SoundMix when none specified."
+        },
+        "VOIPSoundClass": {
+          "Description": "Sound class for VOIP."
+        },
+        "VOIPSampleRate": {
+          "Description": "Sample rate for VOIP.",
+          "Options": ["Low 16000 Hz", "Normal 24000 Hz"]
+        },
+        "MaximumConcurrentStreams": {
+          "Description": "Max streaming sounds played at once."
+        },
+        "GlobalMinPitchScale": {
+          "Description": "Clamp for minimum pitch scale."
+        },
+        "GlobalMaxPitchScale": {
+          "Description": "Clamp for maximum pitch scale."
+        }
+      },
+      "Mix": {
+        "Description": "Mix settings.",
+        "MasterSubmix": {
+          "Description": "Default submix routing to audio hardware."
+        },
+        "ReverbSubmix": {
+          "Description": "Submix for sounds using reverb."
+        },
+        "DefaultAudioBuses": {
+          "Description": "AudioBuses initialized with the AudioEngine."
+        },
+        "BaseDefaultSubmix": {
+          "Description": "Default submix for Submix Send."
+        },
+        "EQSubmixLegacy": {
+          "Description": "Submix for legacy EQ system."
+        }
+      },
+      "Quality": {
+        "Description": "Quality settings for audio.",
+        "QualityLevels": {
+          "Description": "Audio quality levels."
+        },
+        "AllowPlayWhenSilent": {
+          "Description": "Allows sounds to play at 0 volume."
+        },
+        "DisableMasterEQ": {
+          "Description": "Disables master EQ effect."
+        },
+        "AllowCenterChannel3DPanning": {
+          "Description": "Include center channel in surround sound spatialization."
+        },
+        "NumStoppingSources": {
+          "Description": "Max sources for 'stopping' sounds."
+        },
+        "PanningMethod": {
+          "Description": "Method for non-binaural panning.",
+          "Options": ["Linear", "Equal Power"]
+        },
+        "MonoChannelUpmixMethod": {
+          "Description": "Upmixing method for mono sources.",
+          "Options": ["Linear", "Equal Power", "Full Volume"]
+        }
+      },
+      "Debug": {
+        "Description": "Debug settings.",
+        "DebugSounds": {
+          "Description": "Sounds packaged in non-shipping builds for debugging."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "ChaosSolver": {
+    "Description": "Reference for the Chaos Solver section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "GameInstance": {
+        "Description": "Settings for game instance.",
+        "DefaultChaosSolverActorClass": {
+          "Description": "Class for auto-creating default Chaos Solver Actor."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Collision": {
+    "Description": "Reference for the Collision section of the Unreal Engine Project Settings.",
+    "Details": "Up to 18 custom channels including object and trace channels.",
+    "Sections": {
+      "ObjectChannels": {
+        "Description": "List of object types for the project. Deleting an object type reverts it to WorldStatic."
+      },
+      "TraceChannels": {
+        "Description": "List of trace channels for the project. Deleting a trace channel leads to undefined behavior."
+      },
+      "Preset": {
+        "Description": "Modify project profiles. Changes can affect collision behavior, use caution."
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Console": {
+    "Description": "Reference for the Console section of the Unreal Engine Project Settings. Not for game console support.",
+    "Sections": {
+      "General": {
+        "Description": "General console input settings.",
+        "MaxScrollbackSize": {
+          "Description": "History size of previously input commands."
+        }
+      },
+      "AutoComplete": {
+        "Description": "Settings for auto-complete functionality.",
+        "ManualAutoCompleteList": {
+          "Description": "Manual list of auto-complete commands in BaseInput.ini."
+        },
+        "AutoCompleteMapPaths": {
+          "Description": "Relative paths to search for map names for auto-complete."
+        },
+        "OrderTopToBottom": {
+          "Description": "Order of console commands, top-to-bottom or bottom-to-top."
+        },
+        "DisplayHelpInAutoComplete": {
+          "Description": "Show help text in auto-complete if no description is available."
+        }
+      },
+      "Colors": {
+        "Description": "Console color settings.",
+        "BackgroundOpacityPercentage": {
+          "Description": "Transparency of the console background."
+        },
+        "InputColor": {
+          "Description": "Color for text input."
+        },
+        "HistoryColor": {
+          "Description": "Color for command history."
+        },
+        "AutoCompleteCommandColor": {
+          "Description": "Color for executable commands in auto-complete."
+        },
+        "AutoCompleteCVarColor": {
+          "Description": "Color for mutable CVars in auto-complete."
+        },
+        "AutoCompleteFadedColor": {
+          "Description": "Color for command descriptions and read-only CVars."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "ControlRig": {
+    "Description": "Reference for the Control Rig section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Shapes": {
+        "Description": "Settings for Control Rig shapes.",
+        "DefaultShapeLibrary": {
+          "Description": "Default shape library to be used."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Cooker": {
+    "Description": "Reference for the Cooker section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Cooker": {
+        "Description": "Cooker settings.",
+        "EnableCookOnTheSide": {
+          "Description": "Enable network cooking in the editor background. Required for Launch On with network access."
+        },
+        "EnableBuildDDCInBackground": {
+          "Description": "Generate DDC data in the background for Launch On platform to speed up the action."
+        },
+        "IterativeCookingForLaunchOn": {
+          "Description": "Enable -iterate flag for Launch On builds."
+        },
+        "IterativeCookingForFileCookContent": {
+          "Description": "Enable -iterate flag for File > Cook Content action."
+        },
+        "CookOnTheFlyForLaunchOn": {
+          "Description": "Enable -cookonthefly flag for Launch On."
+        },
+        "CookProgressDisplayMode": {
+          "Description": "Controls cooker log output.",
+          "Options": [
+            "Nothing",
+            "Remaining Packages",
+            "Package Names",
+            "Names and Remaining Packages",
+            "Instigators",
+            "Instigators and Count",
+            "Instigators and Names",
+            "Instigators and Names, and Count"
+          ]
+        },
+        "IgnoreIniSettingsOutOfDateForIteration": {
+          "Description": "Iterative cooking ignores .ini changes."
+        },
+        "IgnoreScriptPackagesOutOfDateForIteration": {
+          "Description": "Iterative cooking ignores script package changes."
+        },
+        "CompileBlueprintsInDevelopmentMode": {
+          "Description": "Compile Blueprints in development mode when cooking."
+        },
+        "GenerateOptimizedBlueprintComponentData": {
+          "Description": "Generate optimized component data for faster Blueprint construction at runtime.",
+          "Options": [
+            "Disabled",
+            "Enabled Blueprints Only",
+            "All Blueprints"
+          ]
+        },
+        "ClassesExcludedOnDedicatedServer": {
+          "Description": "List of class names to exclude for dedicated server cooking."
+        },
+        "ModulesExcludedOnDedicatedServer": {
+          "Description": "List of module names to exclude for dedicated server cooking."
+        },
+        "ClassesExcludedOnDedicatedClient": {
+          "Description": "List of class names to exclude for dedicated client cooking."
+        },
+        "ModulesExcludedOnDedicatedClient": {
+          "Description": "List of module names to exclude for dedicated client cooking."
+        },
+        "RValuesThatNeedToBeVersioned": {
+          "Description": "List of r. console variables needing versioning."
+        }
+      },
+      "Textures": {
+        "Description": "Texture settings.",
+        "ASTCCompressionQualityVsSpeed": {
+          "Description": "ASTC compression quality vs speed (0-3, 0 is faster)."
+        },
+        "ASTCCompressionQualityVsSize": {
+          "Description": "ASTC compression quality vs size (0-4, 0 is smallest)."
+        },
+        "ASTCTextureCompressor": {
+          "Description": "ASTC texture compressor to use.",
+          "Options": [
+            "Intel ISPC",
+            "ARM"
+          ]
+        },
+        "ASTCHDRProfile": {
+          "Description": "Allow ASTC HDR profile with ARM encoder. Supported on some devices."
+        }
+      },
+      "Editor": {
+        "Description": "Editor settings.",
+        "AllowCookedContentInTheEditor": {
+          "Description": "Allow the editor to open cooked Assets (limited support)."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "CrowdManager": {
+    "Description": "Crowd Manager section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Config": {
+        "Description": "Crowd manager configuration settings.",
+        "AvoidanceConfig": {
+          "Description": "Obstacle avoidance parameters."
+        },
+        "SamplingPatterns": {
+          "Description": "Obstacle avoidance parameters."
+        },
+        "MaxAgents": {
+          "Description": "Max number of agents supported."
+        },
+        "MaxAgentRadius": {
+          "Description": "Max radius of an agent in the crowd."
+        },
+        "MaxAvoidedAgents": {
+          "Description": "Max number of neighbor agents for avoidance."
+        },
+        "MaxAvoidedWalls": {
+          "Description": "Max number of wall segments for avoidance."
+        },
+        "NavMeshCheckInterval": {
+          "Description": "Frequency of position checks after moving off NavMesh."
+        },
+        "PathOptimizationInterval": {
+          "Description": "Frequency of path optimization attempts."
+        },
+        "SeparationDirClamp": {
+          "Description": "Clamp separation force when neighbor is behind the agent.",
+          "Range": "-1 to 1"
+        },
+        "PathOffsetRadiusMultiplier": {
+          "Description": "Radius multiplier for offsetting paths around corners."
+        },
+        "ResolveCollisions": {
+          "Description": "Resolve collisions between agents in simulation."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "DataDrivenCVars": {
+    "Description": "Reference for the Data-Driven CVars section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "DataDrivenCVar": {
+        "Description": "Define custom variables set through the console.",
+        "CVarsArray": {
+          "Description": "Section to define your own variables."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "DebugCameraController": {
+    "Description": "Reference for the Debug Camera Controller section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "General": {
+        "Description": "General settings for the Debug Camera Controller.",
+        "CycleViewModes": {
+          "Description": "Cycle between different camera view modes."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "GameplayDebugger": {
+    "Description": "Reference for the Gameplay Debugger section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Input": {
+        "Description": "Activation keys, shortcuts for categories and category rows."
+      },
+      "Display": {
+        "Description": "Settings for debug canvas padding and text shadow."
+      },
+      "AddOns": {
+        "Description": "Settings for game add-ons: AI, BehaviorTree, EQs, NavMesh, Perception, NavGrid, GameHUD, Spectator."
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "GarbageCollection": {
+    "Description": "Reference for the Garbage Collection section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "General": {
+        "Description": "General settings for garbage collection.",
+        "TimeBetweenPurgingPendingKillObjects": {
+          "Description": "Time in seconds between purging pending kill objects."
+        },
+        "FlushStreamingOnGC": {
+          "Description": "Flush streaming each time garbage collection is triggered."
+        },
+        "NumberOfRetriesBeforeForcingGC": {
+          "Description": "Max retries before forcing GC. 0 means GC is never forced."
+        }
+      },
+      "Optimization": {
+        "Description": "Optimization settings for garbage collection.",
+        "AllowParallelGC": {
+          "Description": "Enable multiple threads for garbage collection."
+        },
+        "IncrementalBeginDestroyEnabled": {
+          "Description": "Destroy objects incrementally each frame."
+        },
+        "MultithreadedDestructionEnabled": {
+          "Description": "Free objects' memory on a worker thread."
+        },
+        "CreateGarbageCollectorUObjectClusters": {
+          "Description": "Create clusters of objects for better GC performance."
+        },
+        "AssetClusteringEnabled": {
+          "Description": "Allow Asset files to create Actor clusters for GC."
+        },
+        "ActorClusteringEnabled": {
+          "Description": "Allow Levels to create Actor clusters for GC."
+        },
+        "BlueprintClusteringEnabled": {
+          "Description": "Allow Blueprint classes to create GC clusters."
+        },
+        "UseDisregardForGCOnDedicatedServers": {
+          "Description": "Disable DisregardForGC optimization for dedicated servers."
+        },
+        "PendingKillEnabled": {
+          "Description": "Automatically null and destroy objects marked as PendingKill."
+        },
+        "MinimumGCClusterSize": {
+          "Description": "Minimum size of GC cluster."
+        },
+        "MaximumObjectCountNotConsideredByGC": {
+          "Description": "Max object count not considered by GC in cooked builds."
+        },
+        "SizeOfPermanentObjectPool": {
+          "Description": "Size of Permanent Object Pool in bytes for cooked builds."
+        },
+        "MaximumNumberOfUObjectsInCookedGame": {
+          "Description": "Max number of UObjects in the cooked game."
+        },
+        "MaximumNumberOfUObjectsInEditorGame": {
+          "Description": "Max number of objects in the editor game."
+        }
+      },
+      "Debug": {
+        "Description": "Debug settings for garbage collection.",
+        "VerifyFGCObjectNames": {
+          "Description": "Verify all FGCObject-derived classes define GetReferencerName() function."
+        },
+        "VerifyUObjectsAreNotFGCObjects": {
+          "Description": "Warn if a UObject-derived class also derives from FGCObject."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "GeneralEngineSettings": {
+    "Description": "General Engine Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Fonts": {
+        "Description": "Settings for engine fonts.",
+        "TinyFont": {
+          "Description": "Font for the smallest engine text."
+        },
+        "SmallFont": {
+          "Description": "Font for small engine text, used for most debug displays."
+        },
+        "MediumFont": {
+          "Description": "Font for medium engine text."
+        },
+        "LargeFont": {
+          "Description": "Font for large engine text."
+        },
+        "SubtitleFont": {
+          "Description": "Font used by the default Subtitle Manager."
+        },
+        "AdditionalFontNames": {
+          "Description": "Additional fonts loaded at startup, available via GetAdditionalFont() function."
+        }
+      },
+      "DefaultClasses": {
+        "Description": "Settings for default classes used by the engine.",
+        "ConsoleClass": {
+          "Description": "Class for the game console summoned with ~."
+        },
+        "GameViewportClientClassName": {
+          "Description": "Class for game viewport client, can override game-specific input and display behavior."
+        },
+        "LocalPlayerClass": {
+          "Description": "Class for local players, can store game-specific info."
+        },
+        "WorldSettingsClass": {
+          "Description": "Class for WorldSettings, can store game-specific info on map/world."
+        },
+        "LevelScriptActorClass": {
+          "Description": "Class for Level Script Actor, allows game-specific behavior in per-map Blueprint scripting.",
+          "Options": [
+            "FunctionalTestLevelScript",
+            "LevelScriptActor",
+            "ThirdPersonMap_C"
+          ]
+        },
+        "PhysicsCollisionHandlerClass": {
+          "Description": "Default class for handling physics collisions, can override game-specific behavior."
+        },
+        "GameUserSettingsClass": {
+          "Description": "Class for GameUserSettings, supports game-specific options for graphics, sound, and gameplay."
+        },
+        "DefaultBlueprintBaseClass": {
+          "Description": "Base class for new Blueprints created in the editor."
+        },
+        "GameSingletonClass": {
+          "Description": "Class for a global object spawned at startup to handle game-specific data."
+        },
+        "AssetManagerClass": {
+          "Description": "Class for the global AssetManager."
+        }
+      },
+      "DefaultMaterials": {
+        "Description": "Settings for default materials.",
+        "PreviewShadowsIndicatorMaterial": {
+          "Description": "Path of the material rendering a message about preview shadows."
+        },
+        "DestructiblePhysicsMaterial": {
+          "Description": "Path of the PhysicalMaterial to use if none is defined."
+        }
+      },
+      "Settings": {
+        "Description": "General engine settings.",
+        "NearClipPlane": {
+          "Description": "Distance of the camera's near clipping plane."
+        }
+      },
+      "Subtitles": {
+        "Description": "Settings for subtitles.",
+        "SubtitlesEnabled": {
+          "Description": "Toggle subtitle display for localized sounds."
+        },
+        "SubtitlesForcedOff": {
+          "Description": "Flag for forcibly disabling subtitles."
+        }
+      },
+      "Blueprints": {
+        "Description": "Settings for Blueprints.",
+        "MaximumLoopIterationCount": {
+          "Description": "Maximum loop iteration count to warn about script execution runaway."
+        },
+        "CanBlueprintsTickByDefault": {
+          "Description": "Control whether Blueprint subclasses of Actors or Components can tick by default."
+        }
+      },
+      "AnimBlueprints": {
+        "Description": "Settings for Anim Blueprints.",
+        "OptimizeAnimBlueprintMemberVariableAccess": {
+          "Description": "Use optimized path for anim blueprint nodes accessing member variables directly."
+        },
+        "AllowMultiThreadedAnimationUpdate": {
+          "Description": "Allow anim blueprint graph updates on non-game threads."
+        }
+      },
+      "Framerate": {
+        "Description": "Settings for framerate.",
+        "SmoothFrameRate": {
+          "Description": "Enable framerate smoothing."
+        },
+        "UseFixedFrameRate": {
+          "Description": "Use a fixed framerate."
+        },
+        "FixedFrameRate": {
+          "Description": "Fixed framerate to use."
+        },
+        "SmoothedFrameRateRange": {
+          "Description": "Range of framerates for smoothing."
+        },
+        "MinDesiredFrameRate": {
+          "Description": "Minimum desired frame rate, below which visual detail may be lowered."
+        },
+        "CustomTimeStep": {
+          "Description": "Override for how the Engine processes Framerate / Timestep."
+        }
+      },
+      "Timecode": {
+        "Description": "Settings for timecode.",
+        "TimecodeProvider": {
+          "Description": "TimecodeProvider at engine start."
+        },
+        "GenerateDefaultTimecode": {
+          "Description": "Generate default timecode from the computer clock when no timecode provider is set."
+        },
+        "GenerateDefaultTimecodeFrameRate": {
+          "Description": "Frame rate for default timecode generation.",
+          "Options": [
+            "12 fps (animation)",
+            "15 fps",
+            "24 fps (film)",
+            "25 fps (PAL/25)",
+            "30 fps",
+            "48 fps",
+            "50 fps (PAL/50)",
+            "60 fps",
+            "100 fps",
+            "120 fps",
+            "23.976 fps (NTSC/24)",
+            "29.97 fps (NTSC/30)",
+            "59.94 fps (NTSC/60)",
+            "Custom"
+          ]
+        },
+        "GenerateDefaultTimecodeFrameDelay": {
+          "Description": "Number of frames to subtract from generated default timecode."
+        }
+      },
+      "Screenshots": {
+        "Description": "Settings for screenshots.",
+        "GameScreenshotSaveDirectory": {
+          "Description": "Directory for saving new screenshots."
+        }
+      },
+      "LevelStreaming": {
+        "Description": "Settings for level streaming.",
+        "StreamingDistanceFactor": {
+          "Description": "Fudge factor for tweaking distance-based mip level determination."
+        }
+      },
+      "PerQualityLevelProperty": {
+        "Description": "Settings for per-quality level properties.",
+        "UseStaticMeshMinLODPerQualityLevels": {
+          "Description": "Use Static Mesh minimum LOD per quality levels."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "GeneralEngineSettings": {
+    "Description": "General Engine Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Fonts": {
+        "Description": "Settings for engine fonts.",
+        "TinyFont": {
+          "Description": "Font for the smallest engine text."
+        },
+        "SmallFont": {
+          "Description": "Font for small engine text, used for most debug displays."
+        },
+        "MediumFont": {
+          "Description": "Font for medium engine text."
+        },
+        "LargeFont": {
+          "Description": "Font for large engine text."
+        },
+        "SubtitleFont": {
+          "Description": "Font used by the default Subtitle Manager."
+        },
+        "AdditionalFontNames": {
+          "Description": "Additional fonts loaded at startup, available via GetAdditionalFont() function."
+        }
+      },
+      "DefaultClasses": {
+        "Description": "Settings for default classes used by the engine.",
+        "ConsoleClass": {
+          "Description": "Class for the game console summoned with ~."
+        },
+        "GameViewportClientClassName": {
+          "Description": "Class for game viewport client, can override game-specific input and display behavior."
+        },
+        "LocalPlayerClass": {
+          "Description": "Class for local players, can store game-specific info."
+        },
+        "WorldSettingsClass": {
+          "Description": "Class for WorldSettings, can store game-specific info on map/world."
+        },
+        "LevelScriptActorClass": {
+          "Description": "Class for Level Script Actor, allows game-specific behavior in per-map Blueprint scripting.",
+          "Options": [
+            "FunctionalTestLevelScript",
+            "LevelScriptActor",
+            "ThirdPersonMap_C"
+          ]
+        },
+        "PhysicsCollisionHandlerClass": {
+          "Description": "Default class for handling physics collisions, can override game-specific behavior."
+        },
+        "GameUserSettingsClass": {
+          "Description": "Class for GameUserSettings, supports game-specific options for graphics, sound, and gameplay."
+        },
+        "DefaultBlueprintBaseClass": {
+          "Description": "Base class for new Blueprints created in the editor."
+        },
+        "GameSingletonClass": {
+          "Description": "Class for a global object spawned at startup to handle game-specific data."
+        },
+        "AssetManagerClass": {
+          "Description": "Class for the global AssetManager."
+        }
+      },
+      "DefaultMaterials": {
+        "Description": "Settings for default materials.",
+        "PreviewShadowsIndicatorMaterial": {
+          "Description": "Path of the material rendering a message about preview shadows."
+        },
+        "DestructiblePhysicsMaterial": {
+          "Description": "Path of the PhysicalMaterial to use if none is defined."
+        }
+      },
+      "Settings": {
+        "Description": "General engine settings.",
+        "NearClipPlane": {
+          "Description": "Distance of the camera's near clipping plane."
+        }
+      },
+      "Subtitles": {
+        "Description": "Settings for subtitles.",
+        "SubtitlesEnabled": {
+          "Description": "Toggle subtitle display for localized sounds."
+        },
+        "SubtitlesForcedOff": {
+          "Description": "Flag for forcibly disabling subtitles."
+        }
+      },
+      "Blueprints": {
+        "Description": "Settings for Blueprints.",
+        "MaximumLoopIterationCount": {
+          "Description": "Maximum loop iteration count to warn about script execution runaway."
+        },
+        "CanBlueprintsTickByDefault": {
+          "Description": "Control whether Blueprint subclasses of Actors or Components can tick by default."
+        }
+      },
+      "AnimBlueprints": {
+        "Description": "Settings for Anim Blueprints.",
+        "OptimizeAnimBlueprintMemberVariableAccess": {
+          "Description": "Use optimized path for anim blueprint nodes accessing member variables directly."
+        },
+        "AllowMultiThreadedAnimationUpdate": {
+          "Description": "Allow anim blueprint graph updates on non-game threads."
+        }
+      },
+      "Framerate": {
+        "Description": "Settings for framerate.",
+        "SmoothFrameRate": {
+          "Description": "Enable framerate smoothing."
+        },
+        "UseFixedFrameRate": {
+          "Description": "Use a fixed framerate."
+        },
+        "FixedFrameRate": {
+          "Description": "Fixed framerate to use."
+        },
+        "SmoothedFrameRateRange": {
+          "Description": "Range of framerates for smoothing."
+        },
+        "MinDesiredFrameRate": {
+          "Description": "Minimum desired frame rate, below which visual detail may be lowered."
+        },
+        "CustomTimeStep": {
+          "Description": "Override for how the Engine processes Framerate / Timestep."
+        }
+      },
+      "Timecode": {
+        "Description": "Settings for timecode.",
+        "TimecodeProvider": {
+          "Description": "TimecodeProvider at engine start."
+        },
+        "GenerateDefaultTimecode": {
+          "Description": "Generate default timecode from the computer clock when no timecode provider is set."
+        },
+        "GenerateDefaultTimecodeFrameRate": {
+          "Description": "Frame rate for default timecode generation.",
+          "Options": [
+            "12 fps (animation)",
+            "15 fps",
+            "24 fps (film)",
+            "25 fps (PAL/25)",
+            "30 fps",
+            "48 fps",
+            "50 fps (PAL/50)",
+            "60 fps",
+            "100 fps",
+            "120 fps",
+            "23.976 fps (NTSC/24)",
+            "29.97 fps (NTSC/30)",
+            "59.94 fps (NTSC/60)",
+            "Custom"
+          ]
+        },
+        "GenerateDefaultTimecodeFrameDelay": {
+          "Description": "Number of frames to subtract from generated default timecode."
+        }
+      },
+      "Screenshots": {
+        "Description": "Settings for screenshots.",
+        "GameScreenshotSaveDirectory": {
+          "Description": "Directory for saving new screenshots."
+        }
+      },
+      "LevelStreaming": {
+        "Description": "Settings for level streaming.",
+        "StreamingDistanceFactor": {
+          "Description": "Fudge factor for tweaking distance-based mip level determination."
+        }
+      },
+      "PerQualityLevelProperty": {
+        "Description": "Settings for per-quality level properties.",
+        "UseStaticMeshMinLODPerQualityLevels": {
+          "Description": "Use Static Mesh minimum LOD per quality levels."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "HierarchicalLOD": {
+    "Description": "Hierarchical LOD Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "HLODSystem": {
+        "Description": "Settings for Hierarchical LOD system.",
+        "ForceSettingsInAllMaps": {
+          "Description": "Use project-wide HLOD settings across all Levels."
+        },
+        "SaveLODActorsToHLODPackages": {
+          "Description": "Save LOD Actor descriptions in HLOD packages."
+        },
+        "DefaultSetup": {
+          "Description": "HLOD setup configuration used by default when Force Settings in All Maps is enabled.",
+          "Options": "Any HierarchicalLODSetup class in the project."
+        },
+        "BaseMaterial": {
+          "Description": "Base material for creating a Constant Material Instance as the Proxy Material."
+        },
+        "DirectoriesContainingMapsUsedForBuildingHLODDataThroughTheCommandlet": {
+          "Description": "Directories containing maps for building HLOD data through the Commandlet."
+        },
+        "MapUAssetsUsedForBuildingHLODDataThroughTheResavePackagesCommandlet": {
+          "Description": "Map UAssets for building HLOD data through the ResavePackages Commandlet."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Input": {
+    "Description": "Input Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Bindings": {
+        "Description": "Mappings for input behavior and keys.",
+        "SpeechMappings": {
+          "Description": "List of Speech Mappings."
+        },
+        "ActionMappings": {
+          "Description": "List of Action Mappings for key presses and releases."
+        },
+        "AxisMappings": {
+          "Description": "List of Axis Mappings for continuous range inputs."
+        },
+        "AxisConfig": {
+          "Description": "List of Axis Properties."
+        },
+        "AltEnterTogglesFullscreen": {
+          "Description": "Enable Alt + Enter to toggle fullscreen at runtime."
+        },
+        "F11TogglesFullscreen": {
+          "Description": "Enable F11 to toggle fullscreen at runtime."
+        }
+      },
+      "ViewportProperties": {
+        "Description": "Settings for viewport properties.",
+        "CaptureMouseOnLaunch": {
+          "Description": "Controls mouse capture on application launch."
+        },
+        "DefaultViewportMouseCaptureMode": {
+          "Description": "Default mouse capture mode for the game viewport.",
+          "Options": [
+            "No Capture",
+            "Capture Permanently",
+            "Capture Permanently Including Initial Mouse Down",
+            "Capture During Mouse Down",
+            "Capture During Right Mouse Down"
+          ]
+        },
+        "DefaultViewportMouseLockMode": {
+          "Description": "Default mouse lock state when viewport acquires capture.",
+          "Options": [
+            "Do Not Lock",
+            "Lock on Capture",
+            "Lock Always",
+            "Lock in Fullscreen"
+          ]
+        }
+      },
+      "Input": {
+        "Description": "General input settings.",
+        "EnableLegacyInputScales": {
+          "Description": "Enable legacy input scales on the player controller."
+        }
+      },
+      "Mobile": {
+        "Description": "Mobile input settings.",
+        "AlwaysShowTouchInterface": {
+          "Description": "Show touch input interface at all times or only on touch screens."
+        },
+        "ShowConsoleOnFourFingerTap": {
+          "Description": "Show console on 4-finger tap on mobile platforms."
+        },
+        "EnableGestureRecognizer": {
+          "Description": "Use gesture recognition system to convert touches into gestures."
+        },
+        "DefaultTouchInterface": {
+          "Description": "Default on-screen touch input interface for the game."
+        }
+      },
+      "VirtualKeyboard": {
+        "Description": "Settings for virtual keyboard on mobile.",
+        "UseAutocorrect": {
+          "Description": "Enable autocorrect on virtual keyboards."
+        },
+        "ExcludedAutocorrectOS": {
+          "Description": "Disable autocorrect for specified operating systems."
+        },
+        "ExcludedAutocorrectCultures": {
+          "Description": "Disable autocorrect for specified cultures."
+        },
+        "ExcludedAutocorrectDeviceModels": {
+          "Description": "Disable autocorrect for specified device models."
+        }
+      },
+      "DefaultClasses": {
+        "Description": "Default classes for input.",
+        "DefaultPlayerInputClass": {
+          "Description": "Default class for player input object."
+        },
+        "DefaultInputComponentClass": {
+          "Description": "Default class for Pawn input components."
+        }
+      },
+      "Console": {
+        "Description": "Settings for console input.",
+        "ConsoleKeys": {
+          "Description": "Keyboard shortcuts to open the console."
+        }
+      },
+      "MouseProperties": {
+        "Description": "Settings for mouse properties.",
+        "UseMouseForTouch": {
+          "Description": "Allow mouse to be used for touch."
+        },
+        "EnableMouseSmoothing": {
+          "Description": "Enable mouse smoothing control."
+        },
+        "EnableFOVScaling": {
+          "Description": "Scale mouse input axes from player controller's input to Player Camera Manager's field of view."
+        },
+        "FOVScale": {
+          "Description": "Scaling value to multiply the field of view by."
+        },
+        "DoubleClickTime": {
+          "Description": "Time interval for a key press to be considered a double click."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Interchange": {
+    "Description": "Interchange Settings section of the Unreal Engine Project Settings. A new import system for Assets.",
+    "Sections": {
+      "Interchange": {
+        "Description": "Settings for the Interchange import system.",
+        "PipelineStacks": {
+          "Description": "Available pipeline stacks for importing with Interchange. Pipelines execute in order from top to bottom.",
+          "Instructions": "Reorder pipelines by dragging the grip on the left."
+        },
+        "DefaultPipelineStack": {
+          "Description": "Default pipeline stack for importing Assets."
+        },
+        "PipelineConfigurationDialogClass": {
+          "Description": "Class for pipeline configuration dialog.",
+          "Options": [
+            "None",
+            "InterchangePipelineConfigurationBase",
+            "InterchangePipelineConfigurationGeneric"
+          ]
+        },
+        "ShowPipelineStacksConfigurationDialog": {
+          "Description": "Show configuration dialog when choosing a pipeline to import or re-import. If disabled, use DefaultPipelineStack."
+        }
+      },
+      "InterchangeExperimental": {
+        "Description": "Experimental settings for Interchange.",
+        "UseInterchangeWhenImportingIntoLevel": {
+          "Description": "Use Interchange when importing Assets into the Level."
+        },
+        "DefaultScenePipelineStack": {
+          "Description": "Default pipeline stack for importing scenes."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Landscape": {
+    "Description": "Landscape Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Layers": {
+        "Description": "Settings for landscape layers.",
+        "MaxNumberOfLayers": {
+          "Description": "Maximum editing layers that can be added to a Landscape."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "LevelSequence": {
+    "Description": "Level Sequence Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Timeline": {
+        "Description": "Settings for the timeline in level sequences.",
+        "DefaultLockEngineToDisplayRate": {
+          "Description": "0: Playback locked to frames, 1: Unlocked playback with sub-frame interpolation."
+        },
+        "DefaultDisplayRate": {
+          "Description": "Default display frame rate for new level sequences; defines frame-locked rate.",
+          "Examples": ["30 fps", "120/1 (120 fps)", "30000/1001 (29.97)", "0.01s (10ms)"]
+        },
+        "DefaultTickResolution": {
+          "Description": "Default tick resolution for new level sequences.",
+          "Examples": ["30 fps", "120/1 (120 fps)", "30000/1001 (29.97)", "0.01s (10ms)"]
+        },
+        "DefaultClockSource": {
+          "Description": "Default clock source for new level sequences.",
+          "Options": ["Tick", "Platform", "Audio", "Relative Timecode", "Timecode", "Play Every Frame", "Custom"]
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "NavigationMesh": {
+    "Description": "Reference for the Navigation Mesh section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Display": {
+        "Description": "Settings for displaying the NavMesh.",
+        "DrawTriangleEdges": {
+          "Description": "Draw edges of every NavMesh triangle."
+        },
+        "DrawPolyEdges": {
+          "Description": "Draw edges of every poly."
+        },
+        "DrawFilledPolys": {
+          "Description": "Skip filling drawn NavMesh polygons if disabled."
+        },
+        "DrawNavMeshEdges": {
+          "Description": "Draw border edges."
+        },
+        "DrawTileBounds": {
+          "Description": "Draw the tile boundaries."
+        },
+        "DrawPathCollidingGeometry": {
+          "Description": "Draw input geometry for NavMesh generator."
+        },
+        "DrawTileLabels": {
+          "Description": "Draw the labels of the tiles."
+        },
+        "DrawPolygonIndices": {
+          "Description": "Draw labels for poly and tile indices."
+        },
+        "DrawPolygonCosts": {
+          "Description": "Draw labels for default and fixed costs of polys."
+        },
+        "DrawPolygonFlags": {
+          "Description": "Draw labels for poly and area flags."
+        },
+        "DrawLabelsOnPathNodes": {
+          "Description": "Draw labels on path nodes."
+        },
+        "DrawNavLinks": {
+          "Description": "Draw navigation links."
+        },
+        "DrawFailedNavLinks": {
+          "Description": "Draw failed navigation links."
+        },
+        "DrawClusters": {
+          "Description": "Draw NavMesh clusters and cluster links."
+        },
+        "DrawOctree": {
+          "Description": "Draw edges of every NavMesh triangle."
+        },
+        "DrawOctreeDetails": {
+          "Description": "Draw octree details."
+        },
+        "DrawMarkedForbiddenPolys": {
+          "Description": "Draw marked forbidden polys."
+        },
+        "DrawOffset": {
+          "Description": "Vertical offset for NavMesh debug representation."
+        }
+      },
+      "TileGenerationDebug": {
+        "Description": "Settings for tile generation debugging.",
+        "TileGenerationDebugEnabled": {
+          "Description": "Keep internal debug data for tile generation."
+        },
+        "TileCoordinate": {
+          "Description": "Keep internal data for the selected tile."
+        },
+        "HeightfieldSolidFromRasterization": {
+          "Description": "Heightfield solid from rasterization."
+        },
+        "HeightfieldSolidPostRadiusFiltering": {
+          "Description": "Heightfield solid post radius filtering."
+        },
+        "HeightfieldSolidPostHeightFiltering": {
+          "Description": "Height solid post height filtering."
+        },
+        "CompactHeightfield": {
+          "Description": "Compact heightfield."
+        },
+        "CompactHeightfieldEroded": {
+          "Description": "Compact heightfield eroded."
+        },
+        "CompactHeightfieldRegions": {
+          "Description": "Compact heightfield regions."
+        },
+        "CompactHeightfieldDistances": {
+          "Description": "Compact heightfield distances."
+        },
+        "TileCacheLayerAreas": {
+          "Description": "Tile cache layer areas."
+        },
+        "TileCacheLayerRegions": {
+          "Description": "Tile cache layer regions."
+        },
+        "TileCacheContours": {
+          "Description": "Tile cache contours."
+        },
+        "TileCachePolyMesh": {
+          "Description": "Tile cache poly mesh."
+        },
+        "TileCacheDetailMesh": {
+          "Description": "Tile cache detail mesh."
+        }
+      },
+      "Generation": {
+        "Description": "Settings for NavMesh generation.",
+        "FixedTilePoolSize": {
+          "Description": "Allocate a fixed size pool for tiles."
+        },
+        "TilePoolSize": {
+          "Description": "Max number of tiles NavMesh can hold."
+        },
+        "TileSizeUU": {
+          "Description": "Size of a single navigation tile in Unreal Units."
+        },
+        "CellSize": {
+          "Description": "Horizontal size of a voxelization cell."
+        },
+        "CellHeight": {
+          "Description": "Vertical size of a voxelization cell."
+        },
+        "AgentRadius": {
+          "Description": "Radius of the smallest agent to traverse this NavMesh."
+        },
+        "AgentHeight": {
+          "Description": "Height of the tallest agent for pathfinding."
+        },
+        "AgentMaxSlope": {
+          "Description": "Maximum slope angle the agent can move on."
+        },
+        "AgentMaxStepHeight": {
+          "Description": "Largest vertical step the agent can perform."
+        },
+        "MinRegionArea": {
+          "Description": "Minimum dimension of an area; smaller areas are discarded."
+        },
+        "MergeRegionSize": {
+          "Description": "Size limit of regions to be merged with bigger regions."
+        },
+        "MaxSimplificationError": {
+          "Description": "How much navigable shapes can be simplified."
+        },
+        "SortNavigationAreasByCost": {
+          "Description": "Sort Navigation Areas by cost before application to NavMesh."
+        },
+        "IsWorldPartitioned": {
+          "Description": "Defines whether NavMesh uses world partitioning in a partitioned map."
+        },
+        "MaxSimultaneousTileGenerationJobsCount": {
+          "Description": "Max number of asynchronous tile generators running simultaneously."
+        },
+        "TileNumberHardLimit": {
+          "Description": "Absolute hard limit to the number of NavMesh tiles."
+        },
+        "PolyRefTileBits": {
+          "Description": "Poly ref tile bits."
+        },
+        "PolyRefNavPolyBits": {
+          "Description": "Poly ref nav poly bits."
+        },
+        "PolyRefSaltBits": {
+          "Description": "Poly ref salt bits."
+        },
+        "NavMeshOriginOffset": {
+          "Description": "Offset for starting NavMesh tiles."
+        },
+        "RegionPartitioning": {
+          "Description": "Method for creating NavMesh polys.",
+          "Options": ["Monotone", "Watershed", "Chunky Monotone"]
+        },
+        "LayerPartitioning": {
+          "Description": "Method for creating tile layers.",
+          "Options": ["Monotone", "Watershed", "Chunky Monotone"]
+        },
+        "RegionChunkSplits": {
+          "Description": "Chunks used to divide the current region with Chunky Monotone."
+        },
+        "LayerChunkSplits": {
+          "Description": "Chunks used to divide the current layer with Chunky Monotone."
+        },
+        "PerformVoxelFiltering": {
+          "Description": "Apply voxel filtering for better fitting navigation bounds."
+        },
+        "MarkLowHeightAreas": {
+          "Description": "Mark areas with insufficient height above."
+        },
+        "UseExtraTopCellWhenMarkingAreas": {
+          "Description": "Expand top of area nav modifier's bounds by one cell height."
+        },
+        "FilterLowSpanSequences": {
+          "Description": "Allow only a single low height span under a valid one."
+        },
+        "FilterLowSpanFromTileCache": {
+          "Description": "Store only low height spans with corresponding area modifier in tile cache."
+        },
+        "DoFullyAsyncNavDataGathering": {
+          "Description": "NavMesh data gathering on background threads only."
+        }
+      },
+      "Query": {
+        "Description": "Settings for NavMesh queries.",
+        "HeuristicScale": {
+          "Description": "Euclidean distance heuristic scale for pathfinding."
+        },
+        "VerticalDeviationFromGroundCompensation": {
+          "Description": "Compensate for error between NavMesh polys and walkable geometry."
+        }
+      },
+      "Runtime": {
+        "Description": "Runtime settings for NavMesh.",
+        "ForceRebuildOnLoad": {
+          "Description": "Skip first update after successful load by default."
+        },
+        "AutoDestroyWhenNoNavigation": {
+          "Description": "Destroy instance if no navigation system is in the world."
+        },
+        "RuntimeGeneration": {
+          "Description": "Navigation Data runtime generation options.",
+          "Options": ["Static", "Dynamic Modifiers Only", "Dynamic"]
+        },
+        "ObservedPathsTickInterval": {
+          "Description": "Interval for processing observed paths."
+        },
+        "CanBeMainNavData": {
+          "Description": "Navigation Data can act as default in navigation system queries."
+        },
+        "CanSpawnOnRebuild": {
+          "Description": "Spawn Navigation Data during rebuild if the Actor doesn't exist."
+        }
+      },
+      "Tick": {
+        "Description": "Settings for Actor ticking.",
+        "AllowTickBeforeBeginPlay": {
+          "Description": "Allow Actor to tick before receiving the BeginPlay event."
+        }
+      },
+      "Collision": {
+        "Description": "Settings for collision.",
+        "GenerateOverlapEventsDuringLevelStreaming": {
+          "Description": "Generate overlap events during level streaming."
+        },
+        "UpdateOverlapsMethodDuringLevelStreaming": {
+          "Description": "Condition for calling UpdateOverlaps() during level streaming.",
+          "Options": ["Use Config Default", "Always Update", "Only Update Movable", "Never Update"]
+        },
+        "DefaultUpdateOverlapsMethodDuringLevelStreaming": {
+          "Description": "Default value from config file for UpdateOverlapsMethodDuringLevelStreaming."
+        },
+        "RelevantForLevelBounds": {
+          "Description": "Include actor's component bounds in the level's bounding box."
+        }
+      },
+      "HLOD": {
+        "Description": "Settings for Hierarchical LOD.",
+        "IncludeActorInHLOD": {
+          "Description": "Consider this Actor during HLOD generation."
+   },
+    "HLODLayer": {
+      "Description": "UHLODLayer in which this Actor should be included."
+    }
+  },
+  "WorldPartition": {
+    "Description": "Settings for world partitioning.",
+    "RuntimeGrid": {
+      "Description": "Partition grid for placing the actor."
+    },
+    "IsSpatiallyLoaded": {
+      "Description": "Actor loaded when in range of any streaming sources."
+    }
+  },
+  "Cooking": {
+    "Description": "Settings for cooking.",
+    "IsEditorOnlyActor": {
+      "Description": "Defines whether this actor is editor only."
+    },
+    "GenerateOptimizedBlueprintComponentData": {
+      "Description": "Cook additional data to speed up spawn events at runtime."
+    }
+  },
+  "DataLayers": {
+    "Description": "Settings for Data Layers.",
+    "DataLayers": {
+      "Description": "DataLayers the actor belongs to."
+    }
+  }
+}
+       },
+        "HLODLayer": {
+          "Description": "UHLODLayer in which this Actor should be included."
+        }
+      },
+      "WorldPartition": {
+        "Description": "Settings for world partitioning.",
+        "RuntimeGrid": {
+          "Description": "Partition grid for placing the actor."
+        },
+        "IsSpatiallyLoaded": {
+          "Description": "Actor loaded when in range of any streaming sources."
+        }
+      },
+      "Cooking": {
+        "Description": "Settings for cooking.",
+        "IsEditorOnlyActor": {
+          "Description": "Defines whether this actor is editor only."
+        },
+        "GenerateOptimizedBlueprintComponentData": {
+          "Description": "Cook additional data to speed up spawn events at runtime."
+        }
+      },
+      "DataLayers": {
+        "Description": "Settings for Data Layers.",
+        "DataLayers": {
+          "Description": "DataLayers the actor belongs to."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+},
+{
+  "Network": {
+    "Description": "Network Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Libcurl": {
+        "Description": "Settings for libcurl.",
+        "VerifyPeer": {
+          "Description": "Enable to authenticate peer's certificate, disable for self-signed certificates."
+        }
+      },
+      "World": {
+        "Description": "Settings for multiplayer world origin rebasing.",
+        "EnableMultiplayerWorldOriginRebasing": {
+          "Description": "Enable origin rebasing in multiplayer games, allowing different local world origins for servers and clients."
+        }
+      },
+      "Replication": {
+        "Description": "Settings for replication.",
+        "MaxArraySize": {
+          "Description": "Maximum size for replicated dynamic arrays (elements).",
+          "Range": "1 to 65535"
+        },
+        "MaxArrayMemory": {
+          "Description": "Maximum size for replicated dynamic arrays (bytes).",
+          "Range": "1 to 65535"
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+},
+{
+  "Physics": {
+    "Description": "Physics Settings section of the Unreal Engine Project Settings.",
+    "Sections": {
+      "Replication": {
+        "Description": "Error collection data for replicating simulated physics (rigid bodies).",
+        "PingExtrapolation": {
+          "Description": "Value between 0 and 1 for velocity and ping-based correction."
+        },
+        "PingLimit": {
+          "Description": "Clamp value for extrapolation ping."
+        },
+        "ErrorPerLinearDifference": {
+          "Description": "Error per centimeter."
+        },
+        "ErrorPerAngularDifference": {
+          "Description": "Error per degree."
+        },
+        "MaxRestoredStateError": {
+          "Description": "Maximum allowable error for a resolved state."
+        },
+        "MaxLinearHardSnapDistance": {
+          "Description": "Max linear distance for extrapolating rigid body position before hard snapping."
+        },
+        "PositionLerp": {
+          "Description": "Amount to directly lerp to the correct position."
+        },
+        "AngleLerp": {
+          "Description": "Amount to directly lerp to the correct angle."
+        },
+        "LinearVelocityCoefficient": {
+          "Description": "Coefficient k in dx/dt = k (x_target(t) - x(t)) for velocity update."
+        },
+        "AngularVelocityCoefficient": {
+          "Description": "Angular analog to LinearVelocityCoefficient."
+        },
+        "ErrorAccumulationSeconds": {
+          "Description": "Seconds to remain in unresolvable state before hard snapping."
+        },
+        "ErrorAccumulationDistanceSq": {
+          "Description": "Minimum distance to move towards a resolved state."
+        },
+        "ErrorAccumulationSimilarity": {
+          "Description": "Threshold for error similarity to accumulate towards hard snap."
+        }
+      },
+      "Simulation": {
+        "Description": "Settings for physics simulation.",
+        "DefaultDegreesOfFreedom": {
+          "Description": "Constrain objects in the world.",
+          "Options": ["Full 3D", "YZ Plane", "XZ Plane", "XY Plane"]
+        },
+        "DisableCCD": {
+          "Description": "Ignore Continuous Collision Detection for optimization."
+        },
+        "SimulateAnimPhysicsAfterReset": {
+          "Description": "Simulate anim physics nodes in the tick after reset."
+        },
+        "Enable2DPhysics": {
+          "Description": "Enable 2D physics (Box2d)."
+        },
+        "BounceThresholdVelocity": {
+          "Description": "Minimum velocity for an object to bounce."
+        },
+        "FrictionCombineMode": {
+          "Description": "How friction is computed for multiple materials.",
+          "Options": ["Average", "Min", "Multiply", "Max"]
+        },
+        "RestitutionCombineMode": {
+          "Description": "How restitution is computed for multiple materials.",
+          "Options": ["Average", "Min", "Multiply", "Max"]
+        },
+        "MaxAngularVelocity": {
+          "Description": "Maximum angular velocity for a simulated object."
+        },
+        "MaxDepenetrationVelocity": {
+          "Description": "Maximum velocity for correcting object penetration."
+        },
+        "ContactOffsetMultiplier": {
+          "Description": "Multiplier for generating contact points based on bounding volume."
+        },
+        "MinContactOffset": {
+          "Description": "Minimum contact offset."
+        },
+        "MaxContactOffset": {
+          "Description": "Maximum contact offset."
+        },
+        "SimulateSkeletalMeshOnDedicatedServer": {
+          "Description": "Simulate physics for this component on a dedicated server."
+        },
+        "DefaultShapeComplexity": {
+          "Description": "Default physics shape complexity.",
+          "Options": ["Project Default", "Simple And Complex", "Use Simple Collision As Complex", "Use Complex Collision As Simple"]
+        },
+        "EnableShapeSharing": {
+          "Description": "Enable shape sharing between sync and async scenes for static rigid actors."
+        },
+        "EnablePCM": {
+          "Description": "Enable persistent contact manifolds for more accurate contact points."
+        },
+        "EnableStabilization": {
+          "Description": "Enable stabilization of contacts for slow-moving bodies."
+        },
+        "WarnMissingLocks": {
+          "Description": "Warn when physics locks are used incorrectly."
+        }
+      },
+      "Optimization": {
+        "Description": "Optimization settings for physics.",
+        "SuppressFaceRemapTable": {
+          "Description": "Disable internal PhysX face to Unreal Engine face mapping for memory optimization."
+        },
+        "SupportUVFromHitResults": {
+          "Description": "Store extra information to derive UV from a line trace hit result."
+        },
+        "DisableActiveActors": {
+          "Description": "PhysX will not update Unreal Engine with moved bodies during simulation."
+        },
+        "DisableKinematicStaticPairs": {
+          "Description": "Disable generating KS pairs for faster contact generation."
+        },
+        "DisableKinematicKinematicPairs": {
+          "Description": "Disable generating KK pairs for faster contact generation."
+        }
+      },
+      "Framerate": {
+        "Description": "Settings for physics simulation framerate.",
+        "AnimPhysicsMinDeltaTime": {
+          "Description": "Minimum delta time for anim dynamics and rigidbody nodes simulation."
+        },
+        "MinPhysicsDeltaTime": {
+          "Description": "Minimum delta time for physics simulation."
+        },
+        "MaxPhysicsDeltaTime": {
+          "Description": "Maximum time step for physics simulation."
+        },
+        "Substepping": {
+          "Description": "Enable substep physics simulation."
+        },
+        "SubsteppingAsync": {
+          "Description": "Enable substep async physics simulation."
+        },
+        "TickPhysicsAsync": {
+          "Description": "Tick physics simulation on an async thread."
+        },
+        "AsyncFixedTimeStepSize": {
+          "Description": "Time step size for async simulation."
+        },
+        "MaxSubstepDeltaTime": {
+          "Description": "Maximum delta time for individual simulation substep."
+        },
+        "MaxSubsteps": {
+          "Description": "Maximum number of substeps for physics simulation."
+        },
+        "SyncSceneSmoothingFactor": {
+          "Description": "Physics delta time smoothing factor for sync scene."
+        },
+        "InitialAverageFrameRate": {
+          "Description": "Physics delta time initial average."
+        }
+      },
+      "ChaosPhysics": {
+        "Description": "Settings for Chaos Physics.",
+        "MinDeltaVelocityForHitEvents": {
+          "Description": "Minimum velocity delta for Chaos to send a hit event."
+        },
+        "DefaultThreadingModel": {
+          "Description": "Default threading model for module initialization.",
+          "Options": ["Task Graph", "Single Thread"]
+        },
+        "DedicatedThreadTickMode": {
+          "Description": "Framerate/timestep ticking mode for dedicated thread.",
+          "Options": ["Fixed", "Variable", "Variable Capped", "Variable Capped with Target"]
+        },
+        "DedicatedThreadBufferMode": {
+          "Description": "Buffering mode for dedicated thread.",
+          "Options": ["Double", "Triple"]
+        },
+        "Iterations": {
+          "Description": "Number of iterations for constraint solver step."
+        },
+        "CollisionsPairIterations": {
+          "Description": "Number of solve steps for each constraint during solver iterations."
+        },
+        "PushOutIterations": {
+          "Description": "Number of iterations for constraint fixup step."
+        },
+        "CollisionPushOutPairIterations": {
+          "Description": "Number of pushout steps for each constraint during pushout iterations."
+        },
+        "CollisionMarginFraction": {
+          "Description": "Collision margin as a fraction of size for boxes and convex shapes."
+        },
+        "CollisionMarginMax": {
+          "Description": "Upper limit on the collision margin."
+        },
+        "CollisionCullDistance": {
+          "Description": "Minimum distance for calculating nearest features during collision detection."
+        },
+        "CollisionMaxPushOutVelocity": {
+          "Description": "Max speed for extracting inter-penetrating bodies."
+        },
+        "JointPairIterations": {
+          "Description": "Number of iterations for each constraint during constraint solver step."
+        },
+        "JointPushOutPairIterations": {
+          "Description": "Number of iterations for constraint fixup step for each joint."
+        },
+        "ClusterConnectionFactor": {
+          "Description": "Cluster connection factor."
+        },
+        "ClusterUnionConnectionType": {
+          "Description": "Cluster union connection type.",
+          "Options": ["Point Implicit", "Delaunay Triangulation", "Minimal Spanning Subset Delaunay Triangulation", "Point Implicit Augmented with Minimal Delaunay", "None"]
+        },
+        "GenerateCollisionData": {
+          "Description": "Generate collision data."
+        },
+        "CollisionFilterEnabled": {
+          "Description": "Enable the collision filter."
+        },
+        "MinMassThreshold": {
+          "Description": "Minimum mass threshold for results."
+        },
+        "MinSpeedThreshold": {
+          "Description": "Minimum velocity threshold for results."
+        },
+        "MinImpulseThreshold": {
+          "Description": "Minimum impulse threshold for results."
+        },
+        "GenerateBreakData": {
+          "Description": "Generate break data."
+        },
+        "BreakingFilterEnabled": {
+          "Description": "Enable the breaking filter."
+        },
+        "MinVolumeThreshold": {
+          "Description": "Minimum volume threshold for results."
+        },
+        "GenerateTrailingData": {
+          "Description": "Generate trailing data."
+        },
+        "TrailingFilterEnabled": {
+          "Description": "Enable the trailing filter."
+        },
+        "GenerateContactGraph": {
+          "Description": "Generate the contact graph."
+        }
+      },
+      "Constants": {
+        "Description": "Settings for physics constants.",
+        "DefaultGravityZ": {
+          "Description": "Default gravity."
+        },
+        "DefaultTerminalVelocity": {
+          "Description": "Default terminal velocity for Physics Volumes."
+        },
+        "DefaultFluidFriction": {
+          "Description": "Default fluid friction for Physics Volumes."
+        },
+        "SimulateScratchMemorySize": {
+          "Description": "Memory reserved for PhysX simulate(), rounded to next 16K boundary."
+        },
+        "RagdollAggregateThreshold": {
+          "Description": "Threshold for adding ragdoll bodies to an aggregate."
+        },
+        "TriangleMeshTriangleMinAreaThreshold": {
+          "Description": "Minimum area for triangles in physics collision data."
+        }
+      },
+      "PhysicalSurface": {
+        "Description": "Settings for physical surfaces.",
+        "PhysicalSurface": {
+          "Description": "Up to 62 custom physical surface types for your project."
+        }
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "ProjectSettings": {
+    "Rendering": {
+      "Description": "Reference for the Rendering section of Unreal Engine Project Settings.",
+      "Sections": {
+        "Mobile": {
+          "Description": "Mobile rendering settings.",
+          "Fields": [
+            "Disable Vertex Fogging in Mobile Shaders",
+            "Maximum Number of CSM Cascades to Render",
+            "Mobile Anti-Aliasing Method",
+            "Mobile Float Precision Mode",
+            "Allow Dithered LOD Transition",
+            "Enable Virtual Texture Support on Mobile",
+            "Mobile Reflection Capture Compression",
+            "Support Movable Light CSM Shader Culling",
+            "Mobile Ambient Occlusion",
+            "Planar Reflection Mode",
+            "Supports Desktop Gen4 TAA on Mobile"
+          ]
+        },
+        "Materials": {
+          "Description": "Material settings.",
+          "Fields": [
+            "Game Discards Unused Material Quality Levels",
+            "Shader Compression Format",
+            "Clear Coat Enable Second Normal",
+            "Enable Rough Diffuse Material",
+            "Enable Energy Conservation on Material"
+          ]
+        },
+        "Culling": {
+          "Description": "Culling settings.",
+          "Fields": [
+            "Occlusion Culling",
+            "Min Screen Radius for Lights",
+            "Min Screen Radius for Early Z Pass",
+            "Min Screen Radius for Cascaded Shadow Maps",
+            "Warn About No Precomputed Visibility"
+          ]
+        },
+        "Textures": {
+          "Description": "Texture settings.",
+          "Fields": [
+            "Texture Streaming",
+            "Use DXT5 Normal Maps"
+          ]
+        },
+        "VirtualTextures": {
+          "Description": "Virtual texture settings.",
+          "Fields": [
+            "Enable Virtual Texture Support",
+            "Enable Virtual Texture on Texture Import",
+            "Enable Virtual Texture Lightmaps",
+            "Enable Virtual Texture Anisotropic Filtering",
+            "Tile Size",
+            "Tile Border Size",
+            "Feedback Resolution Factor"
+          ]
+        },
+        "WorkingColorSpace": {
+          "Description": "Color space settings.",
+          "Fields": [
+            "Working Color Space",
+            "Red Chromaticity Coordinate",
+            "Green Chromaticity Coordinate",
+            "Blue Chromaticity Coordinate",
+            "White Chromaticity Coordinate"
+          ]
+        },
+        "GlobalIllumination": {
+          "Description": "Global illumination settings.",
+          "Fields": [
+            "Dynamic Global Illumination Method"
+          ]
+        },
+        "Reflections": {
+          "Description": "Reflection settings.",
+          "Fields": [
+            "Reflection Method",
+            "Reflection Capture Resolution",
+            "Reduce Lightmap Mixing on Smooth Surfaces",
+            "Support Global Clip Plane for Planar Reflections"
+          ]
+        },
+        "Lumen": {
+          "Description": "Lumen settings.",
+          "Fields": [
+            "Use Hardware Ray Tracing When Available",
+            "Ray Lighting Mode",
+            "Software Ray Tracing Mode"
+          ]
+        },
+        "Shadows": {
+          "Description": "Shadow settings.",
+          "Fields": [
+            "Shadow Map Method"
+          ]
+        },
+        "HardwareRayTracing": {
+          "Description": "Hardware ray tracing settings.",
+          "Fields": [
+            "Support Hardware Ray Tracing",
+            "Ray Traced Shadows",
+            "Ray Traced Skylight",
+            "Texture LOD",
+            "Path Tracing"
+          ]
+        },
+        "SoftwareRayTracing": {
+          "Description": "Software ray tracing settings.",
+          "Fields": [
+            "Generate Mesh Distance Fields",
+            "Distance Field Voxel Density"
+          ]
+        },
+        "MiscLighting": {
+          "Description": "Miscellaneous lighting settings.",
+          "Fields": [
+            "Allow Static Lighting",
+            "Use Normal Maps for Static Lighting",
+            "DBuffer Decals"
+          ]
+        },
+        "ForwardRenderer": {
+          "Description": "Forward renderer settings.",
+          "Fields": [
+            "Forward Shading",
+            "Vertex Fogging for Opaque"
+          ]
+        },
+        "Translucency": {
+          "Description": "Translucency settings.",
+          "Fields": [
+            "Separate Translucency",
+            "Translucent Sort Policy",
+            "Translucent Sort Axis"
+          ]
+        },
+        "VR": {
+          "Description": "VR settings.",
+          "Fields": [
+            "HMD Fixed Foveation Level",
+            "Dynamic Fixed Foveation",
+            "Instanced Stereo",
+            "Mobile HDR",
+            "Mobile Multi-View",
+            "Round-Robin Occlusion Queries"
+          ]
+        },
+        "PostProcessing": {
+          "Description": "Post-processing settings.",
+          "Fields": [
+            "Custom Depth-Stencil Pass",
+            "Custom Depth with TemporalAA Jitter",
+            "Enable Alpha Channel Support in Post-Processing"
+          ]
+        },
+        "DefaultSettings": {
+          "Description": "Default post-processing settings.",
+          "Fields": [
+            "Bloom",
+            "Ambient Occlusion",
+            "Ambient Occlusion Static Fraction",
+            "Auto-Exposure",
+            "Auto-Exposure Method",
+            "Auto-Exposure Bias",
+            "Motion Blur",
+            "Lens Flares",
+            "Temporal Upsampling",
+            "Anti-Aliasing Method",
+            "MSAA Sample Count",
+            "Light Units",
+            "Frame Buffer Pixel Format"
+          ]
+        },
+        "Optimizations": {
+          "Description": "Optimization settings.",
+          "Fields": [
+            "Render Unbuilt Preview Shadows in Game",
+            "Use Stencil for LOD Dither Fading",
+            "Early Z Pass",
+            "Mask Material Only in Early Z Pass",
+            "Enable CSM Caching",
+            "Clear Scene",
+            "Velocity Pass",
+            "Output Velocities Due to Vertex Deformation",
+            "Selective GBuffer Render Targets Output",
+            "Enable Particle Cutouts by Default",
+            "GPU Particle Simulation Texture Size - X",
+            "GPU Particle Simulation Texture Size - Y",
+            "GBuffer Format",
+            "Use GPU for Computing Morph Targets",
+            "Support Compute Skin Cache",
+            "Default Skin Cache Behavior",
+            "Maximum Memory for Compute Skin Cache Per World",
+            "Support Depth-Only Index Buffers",
+            "Support Reversed Index Buffers"
+          ]
+        },
+        "Debugging": {
+          "Description": "Debugging settings.",
+          "Fields": [
+            "Enable Vendor-Specific GPU Crash Analysis Tools"
+          ]
+        },
+        "Experimental": {
+          "Description": "Experimental features.",
+          "Fields": [
+            "Omni-Directional Stereo Capture",
+            "Mesh Streaming"
+          ]
+        },
+        "Editor": {
+          "Description": "Editor-specific settings.",
+          "Fields": [
+            "Wireframe Cull Threshold"
+          ]
+        },
+        "ShaderPermutationReduction": {
+          "Description": "Shader permutation reduction settings.",
+          "Fields": [
+            "Support Stationary Skylight",
+            "Support Low-Quality Lightmap Shader Permutations",
+            "Support PointLight WholeSceneShadows",
+            "Support Sky Atmosphere",
+            "Support Sky Atmosphere Affecting Height Fog",
+            "Support Cloud Shadow on Forward Lit Translucent"
+          ]
+        },
+        "MobileShaderPermutationReduction": {
+          "Description": "Mobile shader permutation reduction settings.",
+          "Fields": [
+            "Support Combined Static and CSM Shadowing",
+            "Support CSM on Levels with Force No Precomputed Lighting Enabled",
+            "Support Pre-Baked Distance Field Shadow Maps",
+            "Support Movable Directional Lights",
+            "Max Movable Spotlights / Point Lights",
+            "Support Movable Spotlights",
+            "Support Movable SpotlightShadows"
+          ]
+        },
+        "Skinning": {
+          "Description": "Skinning settings.",
+          "Fields": [
+            "Support 16-bit Bone Index",
+            "Limit GPU Skinning to 2-Bones Influence",
+            "Use Unlimited Bone Influences",
+            "Unlimited Bone Influences Threshold",
+            "Maximum Bones Per Sections"
+          ]
+        },
+        "PostProcessCalibrationMaterials": {
+          "Description": "Post-process calibration materials settings.",
+          "Fields": [
+            "Visualize Calibration Color Material Path",
+            "Visualize Calibration Custom Material Path",
+            "Visualize Calibration Grayscale Material Path"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "RenderingOverrides": {
+      "Description": "Reference for the Rendering Overrides section of Unreal Engine Project Settings.",
+      "Sections": {
+        "ShaderPermutationReduction": {
+          "Description": "Shader permutation reduction settings.",
+          "Fields": [
+            "Force All Shader Permutation Support"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "SlateSettings": {
+      "Description": "Reference for the Slate Settings section of Unreal Engine Project Settings.",
+      "Sections": {
+        "ConstraintCanvas": {
+          "Description": "Settings for SConstraintCanvas rendering.",
+          "Fields": [
+            "Explicit Canvas Child ZOrder"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "Streaming": {
+      "Description": "Reference for the Streaming Settings section in Unreal Engine Project Settings.",
+      "Sections": {
+        "PackageStreaming": {
+          "Description": "Settings for package streaming.",
+          "Fields": [
+            "Async Loading Thread Enabled",
+            "Warn If Time Limit Has Been Exceeded",
+            "Time Limit Exceeded Warning Multiplier",
+            "Minimum Time Limit For Time Limit Exceeded Warning",
+            "Minimum Bulk Data Size For Async Loading"
+          ]
+        },
+        "LevelStreaming": {
+          "Description": "Settings for level streaming.",
+          "Fields": [
+            "Use Background Level Streaming",
+            "Async Loading Use Full Time Limit",
+            "Async Loading Time Limit",
+            "Priority Async Loading Extra Time",
+            "Actor Initialization Update Time Limit",
+            "Priority Actor Initialization Update Extra Time",
+            "Components Registration Granularity",
+            "Added Primitive Granularity",
+            "Component Unregister Update Time Limit",
+            "Components Unregistration Granularity"
+          ]
+        },
+        "General": {
+          "Description": "General streaming settings.",
+          "Fields": [
+            "Flush Streaming when Exiting the Application"
+          ]
+        },
+        "DeprecatedSettings": {
+          "Description": "Deprecated settings.",
+          "Fields": [
+            "Use Event-Driven Loader"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "TextureEncoding": {
+      "Description": "Reference for the Texture Encoding section of Unreal Engine Project Settings.",
+      "Sections": {
+        "EncodeSpeedSettings": {
+          "Description": "Settings for texture encoding speed.",
+          "Fields": [
+            "Final Uses RDO",
+            "Final RDO Lambda",
+            "Final Effort Level",
+            "Final Universal Tiling",
+            "Fast Uses RDO",
+            "Fast RDO Lambda",
+            "Fast Effort Level",
+            "Fast Universal Tiling"
+          ]
+        },
+        "EncodeSpeeds": {
+          "Description": "Settings for encoding speeds.",
+          "Fields": [
+            "Cook Uses Speed",
+            "Editor Uses Speed"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "Tutorials": {
+      "Description": "Reference for the Tutorials Settings section of Unreal Engine Project Settings.",
+      "Sections": {
+        "Tutorials": {
+          "Description": "Settings for tutorials.",
+          "Fields": [
+            "Categories",
+            "Startup Tutorial"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "UserInterface": {
+      "Description": "Reference for the User Interface Settings section of Unreal Engine Project Settings.",
+      "Sections": {
+        "Focus": {
+          "Description": "Settings for rendering focus on widgets.",
+          "Fields": [
+            "Render Focus Rule"
+          ]
+        },
+        "HardwareCursors": {
+          "Description": "Settings for hardware cursors.",
+          "Fields": [
+            "Hardware Cursors"
+          ]
+        },
+        "SoftwareCursors": {
+          "Description": "Settings for software cursors.",
+          "Fields": [
+            "Software Cursors"
+          ]
+        },
+        "DPIScaling": {
+          "Description": "Settings for DPI scaling.",
+          "Fields": [
+            "Application Scale",
+            "DPI Scale Rule",
+            "Custom Scaling Rule Class",
+            "DPI Curve",
+            "DPI Curve (External Curve)",
+            "Allow High DPI in Game Mode",
+            "Design Screen Size"
+          ]
+        },
+        "Widgets": {
+          "Description": "Settings for widgets.",
+          "Fields": [
+            "Load Widgets on Dedicated Server"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "WorldPartition": {
+      "Description": "Reference for the World Partition Settings section of Unreal Engine Project Settings.",
+      "Sections": {
+        "MapConversion": {
+          "Description": "Settings for map conversion to World Partition.",
+          "Fields": [
+            "Commandlet Class"
+          ]
+        },
+        "Foliage": {
+          "Description": "Settings for instance foliage actors.",
+          "Fields": [
+            "Instanced Foliage Grid Size"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}

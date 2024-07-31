@@ -1,0 +1,104 @@
+{
+  "Components": {
+    "Description": "Describes common types of Components in Unreal Engine and where to learn more about them.",
+    "Definition": "A Component adds functionality to an Actor. Components must be attached to an Actor.",
+    "Examples": [
+      {"Component": "Spot Light", "Function": "Makes Actor emit light like a spot light"},
+      {"Component": "Rotating Movement", "Function": "Makes Actor spin"},
+      {"Component": "Audio", "Function": "Allows Actor to play sounds"}
+    ],
+    "Details": {
+      "Comparison": "Unlike Actors, Components can't exist alone.",
+      "Assembly": "Adding Components forms the complete Actor, like wheels and body parts make up a car."
+    },
+    "Usage": {
+      "Placement": "Actors can be placed in a Level without script. Components can be controlled via Blueprint or C++.",
+      "Example": "A car Actor can exist without a driver script but can have individual Components controlled separately."
+    },
+    "ComponentInstancing": {
+      "Definition": "Components created within an Actor are instanced, each Actor instance gets unique Component instances.",
+      "Visualization": "A Car class uses Wheel Components. New Car instances get unique Wheel Components to avoid shared behavior.",
+      "Simplification": "Instancing simplifies adding unique sub-objects to Actors."
+    },
+    "Resources": {
+      "Forums": "Ask questions and help peers in Developer Forums.",
+      "Learning": "Write or read tutorials in the Learning Library."
+    }
+  }
+}
+{
+  "InstancedStaticMeshComponent": {
+    "Description": "Learn to optimize a project through instancing with the instanced static mesh component.",
+    "Importance": "ISMs help optimize performance by grouping identical meshes into one actor.",
+    "SampleProject": "Valley of the Ancient uses ISMs to populate large-scale assemblies.",
+    "PrerequisiteKnowledge": [
+      "Unreal Engine Terminology",
+      "Assets",
+      "Static Mesh Actor"
+    ],
+    "Definition": "ISM is a component containing identical static meshes, improving performance by reducing draw calls.",
+    "Performance": {
+      "Technique": "Combining draw calls of identical static mesh components.",
+      "Example": "A primitive uses roughly 10x more memory than a basic instance."
+    },
+    "StatsComparison": {
+      "StaticMeshComponent": "Single static mesh with its own properties.",
+      "InstancedStaticMeshComponent": "Multiple instances sharing properties, more efficient for repeated meshes."
+    },
+    "DetailsPanel": {
+      "Features": [
+        "Static mesh asset applied to a component",
+        "Number of instances with add/delete/duplicate options",
+        "Material used by instances",
+        "Custom data per instance",
+        "Levels of Details (LODs)",
+        "Instance culling distance"
+      ]
+    },
+    "Differences": {
+      "StaticMeshComponent": "Single mesh with unique properties.",
+      "InstancedStaticMeshComponent": "Multiple instances sharing properties, efficient rendering."
+    },
+    "HierarchicalISM": {
+      "Differences": [
+        "HISMs are better for static instances; ISMs for dynamic instances.",
+        "HISMs use static hierarchy; ISMs use GPU culling."
+      ],
+      "Usage": "ISM is preferred for projects using Nanite."
+    },
+    "InstancingSystems": {
+      "Systems": [
+        {"Name": "Dynamic Instancing", "Description": "Combines identical mesh draws."},
+        {"Name": "Nanite", "Description": "Virtualized geometry system for high polycounts."},
+        {"Name": "Procedural Content Generation", "Description": "Framework for procedural spawning."},
+        {"Name": "Niagara", "Description": "System for creating visual effects with instanced particles."}
+      ]
+    },
+    "WorkingWithISMs": {
+      "Purpose": "Increase project performance.",
+      "Prefabrication": "Group identical meshes for efficient level design."
+    },
+    "CustomData": {
+      "Types": [
+        "Custom Primitive Data: Additional float data per primitive.",
+        "Per Instance Custom Data: Additional float data per instance."
+      ]
+    },
+    "CreatingEditingISMs": {
+      "Tools": [
+        {"Name": "Instance Selection", "Methods": ["Console command", "Details panel", "ISM Editor"]},
+        {"Name": "Blueprints", "Steps": ["Open Blueprint actor", "Add ISM component", "Set static mesh asset", "Add instance"]},
+        {"Name": "Merge Actors", "Steps": ["Select actors", "Menu bar > Actor > Merge Actors", "Batch method settings"]},
+        {"Name": "Harvest Instances Tool", "Description": "Batch static mesh actors to create ISM/HISM components."},
+        {"Name": "Foliage Mode", "Description": "Place static mesh and actor foliage efficiently."},
+        {"Name": "Packed Level Actor", "Steps": ["Select actors", "Right-click > Level > Create Packed Level Actor", "Choose pivot type", "Save Blueprint"]},
+        {"Name": "Pattern Tool", "Description": "Create mesh patterns and output as ISM."},
+        {"Name": "ISM Editor", "Description": "Select and transform ISM component instances."}
+      ]
+    },
+    "Resources": {
+      "Forums": "Ask questions and help peers in Developer Forums.",
+      "Learning": "Write or read tutorials in the Learning Library."
+    }
+  }
+}

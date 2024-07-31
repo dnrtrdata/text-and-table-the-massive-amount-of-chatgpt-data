@@ -1,0 +1,480 @@
+{
+  "InterchangeFramework": {
+    "Description": "Unreal Engine's import/export framework. It's file format agnostic, asynchronous, customizable, and usable at runtime.",
+    "Features": [
+      "Extensible code base",
+      "Customizable pipeline stack",
+      "Editable import pipeline via Blueprint or Python"
+    ]
+  },
+  "ImportingAssetsUsingInterchange": {
+    "Overview": "Overview of Interchange Framework for customizing the import process."
+  },
+  "InterchangeDevelopmentGuides": {
+    "Guides": "Best practices and reference guides for importing content."
+  },
+  "Topics": [
+    "import",
+    "working with content",
+    "export",
+    "data pipeline",
+    "interchange"
+  ],
+  "Resources": [
+    {
+      "Type": "Forums",
+      "Description": "Ask questions and help peers"
+    },
+    {
+      "Type": "Library",
+      "Description": "Write/read tutorials"
+    }
+  ]
+},
+{
+  "InterchangeFramework": {
+    "Description": "Unreal Engine's import/export framework. It's file format agnostic, asynchronous, customizable, and usable at runtime.",
+    "Features": [
+      "Extensible code base",
+      "Customizable pipeline stack",
+      "Editable import pipeline via Blueprint or Python"
+    ]
+  },
+  "ImportingAssetsUsingInterchange": {
+    "Overview": "Overview of Interchange Framework for customizing the import process.",
+    "InterchangeImportInterface": "Extensible code base with customizable pipeline stack.",
+    "ImportantConceptsAndTerms": {
+      "Pipeline": "Operations processing imported data with customizable options.",
+      "PipelineStack": "Ordered list of pipelines for specific file formats, located in Project Settings > Interchange.",
+      "Factory": "Operation generating asset from imported data."
+    },
+    "EnablePlugins": "Interchange Editor and Interchange Framework plugins must be enabled in Project Settings."
+  },
+  "ImportProcess": {
+    "Steps": [
+      "Begin import process using Content Drawer, Content Browser, or File > Import Into Level.",
+      "Select pipeline stack from drop down menu in Interchange Pipeline Configuration window.",
+      "Configure settings and press Import.",
+      "Engine checks file format and uses appropriate pipeline stack."
+    ],
+    "IfUnsupported": "Uses legacy framework if file format not supported by Interchange."
+  },
+  "ReimportingAssets": {
+    "Overview": "Retains pipeline stack and options used during initial import."
+  },
+  "ImportUsingBlueprint": {
+    "Overview": "Example of importing files at runtime using Interchange in Blueprint.",
+    "Steps": [
+      "Create Actor Blueprint Class in Content Browser.",
+      "Add Function and connect nodes to create import process.",
+      "Make function available at runtime and use Blueprint in level."
+    ]
+  },
+  "UsingInterchangeInCookedApplication": {
+    "Overview": "Add Interchange folder to Additional Asset Directories to Cook in Project Settings."
+  },
+  "ImportUsingPython": {
+    "Overview": "Python script to import assets using Interchange.",
+    "ExampleScript": "Script checks file format and assigns correct pipeline for import."
+  },
+  "EditPipelineStack": {
+    "Overview": "Select and customize pipeline stack for asset data processing.",
+    "DefaultPipelines": [
+      "Default Assets Pipeline",
+      "Default Material Pipeline",
+      "Default Texture Pipeline",
+      "Default Scene Assets Pipeline",
+      "Default Scene Level Pipeline",
+      "Default Graph Inspector Pipeline"
+    ]
+  },
+  "EditExistingPipeline": {
+    "Steps": [
+      "Locate default pipelines in Content Drawer and edit as needed.",
+      "Save and close window."
+    ]
+  },
+  "CreateCustomPipeline": {
+    "UsingBlueprints": {
+      "Overview": "Steps to create custom Interchange Pipeline using Blueprints.",
+      "Steps": [
+        "Select InterchangePipelineBase as Parent Class.",
+        "Create Blueprint Class and open Blueprint Editor.",
+        "Override functions to add custom behavior."
+      ]
+    },
+    "UsingC++": {
+      "Overview": "Steps to create custom Interchange Pipeline using C++.",
+      "Steps": [
+        "Create header file with InterchangePipelineBase and relevant methods.",
+        "Create source file with logic for translated or factory nodes."
+      ]
+    },
+    "UsingPython": {
+      "Overview": "Steps to create custom Interchange Pipeline using Python.",
+      "ExampleScript": "Script for creating basic asset import pipeline."
+    }
+  },
+  "Topics": [
+    "import",
+    "working with content",
+    "export",
+    "data pipeline",
+    "interchange"
+  ],
+  "Resources": [
+    {
+      "Type": "Forums",
+      "Description": "Ask questions and help peers"
+    },
+    {
+      "Type": "Library",
+      "Description": "Write/read tutorials"
+    }
+  ]
+},
+{
+  "InterchangeDevelopmentGuides": {
+    "Overview": "Best practices and reference guides for importing content using Interchange.",
+    "Description": "Flexible import framework with customizable pipelines for various file types. Includes development guides and file-specific references.",
+    "References": {
+      "InterchangeImportReference": "Guide on interface and options for importing content.",
+      "InterchangeMaterialXReference": "Guide for working with MaterialX format in Interchange."
+    }
+  },
+  "Topics": [
+    "import",
+    "working with content",
+    "export",
+    "data pipeline",
+    "interchange"
+  ],
+  "Resources": [
+    {
+      "Type": "Forums",
+      "Description": "Ask questions and help peers"
+    },
+    {
+      "Type": "Library",
+      "Description": "Write/read tutorials"
+    }
+  ]
+}
+{
+  "InterchangeImportReference": {
+    "Overview": "Guide outlining the interface and options for importing content using Interchange.",
+    "PipelineConfigurationWindow": {
+      "Description": "Opens when you import a supported file type into Unreal Engine.",
+      "Options": {
+        "FileFormat": "Depends on the imported file format.",
+        "PipelineStack": "Depends on the selected pipeline stack."
+      }
+    },
+    "CommonOptions": {
+      "UseSourceNameForAsset": "Names the imported asset similar to the source name if set to true, Asset Name is blank, and there is only one source and one asset.",
+      "AssetName": "Names the imported asset using this string if there is only one source and one asset.",
+      "OffsetTranslation": "Applies translation offset to meshes and animations in X, Y, Z directions.",
+      "OffsetRotation": "Applies rotation offset to meshes and animations in X (Roll), Y (Pitch), Z (Yaw) directions.",
+      "OffsetUniformScale": "Applies a uniform scale offset to meshes and animations."
+    },
+    "CommonMeshesOptions": {
+      "ForceAllMeshAsType": "Converts imported meshes to the specified type. Options: None, Static Mesh, Skeletal Mesh.",
+      "ImportLods": "Imports any LODs found in the source. Requires Bake Meshes option to be true.",
+      "VertexColorImportOption": "Specifies how vertex colors are handled. Options: Replace, Ignore, Override.",
+      "VertexOverrideColor": "Defines the vertex color used when set to Override.",
+      "Build": {
+        "RecomputeNormals": "Ignores and recomputes normals.",
+        "RecomputeTangents": "Ignores and recomputes tangents.",
+        "UseMikkTSpace": "Recomputes tangents using MikkTSpace standard.",
+        "ComputeWeightedNormals": "Uses surface area and corner angle ratio to compute normals.",
+        "UseHighPrecisionTangentBasis": "Stores tangents with 16 bit or 8 bit precision.",
+        "UseFullPrecisionUVs": "Stores UVs with floating point precision.",
+        "UseBackwardsCompatibleF16TruncUVs": "Uses backwards-compatible F16 conversion for legacy meshes.",
+        "RemoveDegenerates": "Removes degenerate triangles."
+      }
+    },
+    "CommonSkeletalMeshesAndAnimationOptions": {
+      "ImportOnlyAnimations": "Imports only animations with a valid defined skeleton.",
+      "Skeleton": "Defines the skeleton for imported animations or creates a new one.",
+      "ImportMeshesInBoneHierarchy": "Imports meshes nested in bone hierarchies.",
+      "UseT0AsRefPose": "Uses frame 0 as the reference pose."
+    },
+    "StaticMeshesOptions": {
+      "ConvertStaticsWithMorphTargetsToSkeletals": "Converts static meshes using morph targets to skeletal meshes.",
+      "ImportStaticMeshes": "Imports static mesh assets found in the source.",
+      "CombineStaticMeshes": "Combines imported static meshes into a single static mesh.",
+      "LodGroups": "Defines LOD Group for imported static meshes. Options: Deco, Foliage, High Detail, Large Prop, Level Architecture, None, Small Prop, Vista.",
+      "Collision": {
+        "ImportCollision": "Imports custom collision or creates one if not present.",
+        "ImportCollisionAccordingToMeshName": "Imports meshes with specific prefixes as collision meshes. Prefixes: UBX_, UCP_, USP_, UCX_.",
+        "OneConvexHullPerUCX": "Imports convex collision as a single hull or multiple hulls."
+      },
+      "Build": {
+        "BuildNanite": "Toggles Nanite rendering at runtime.",
+        "BuildReverseIndexBuffer": "Builds reverse index buffer.",
+        "GenerateLightmapUVs": "Generates lightmap UVs.",
+        "TwoSidedDistanceFieldGeneration": "Generates distance field treating every triangle as front face.",
+        "EnablePhysicalMaterialMask": "Toggles physical material mask.",
+        "MinLightmapResolution": "Defines default texture resolution for baked light and shadow texture.",
+        "SourceLightmapIndex": "Defines source UV channel for generating lightmaps.",
+        "DestinationLightmapIndex": "Defines UV channel index for storing generated lightmap.",
+        "BuildScale": "Defines local scale applied when building meshes.",
+        "DistanceFieldResolutionScale": "Defines scale value for distance fields volume textures.",
+        "DistanceFieldReplacementMesh": "Defines static mesh for calculating ambient occlusion and shadowing.",
+        "MaxLumenMeshCards": "Defines max number of Lumen mesh cards."
+      }
+    },
+    "SkeletalMeshesOptions": {
+      "ImportSkeletalMeshes": "Imports skeletal mesh assets found in the source.",
+      "ImportContentType": {
+        "GeometryAndSkinningWeights": "Imports all skeletal mesh content.",
+        "GeometryOnly": "Imports only the geometry.",
+        "SkinningWeightsOnly": "Imports only the skin weights."
+      },
+      "CombineSkeletalMeshes": "Combines imported skeletal meshes into a single mesh.",
+      "ImportMorphTargets": "Imports morph targets.",
+      "UpdateSkeletonReferencePose": "Updates the skeleton's reference pose.",
+      "CreatePhysicsAsset": "Creates a new physics asset if none exists.",
+      "PhysicsAsset": "Defines the physics asset if Create Physics Asset is false.",
+      "Build": {
+        "UseHighPrecisionSkinWeights": "Uses 16 bit precision for skin weights.",
+        "ThresholdPosition": "Defines distance threshold for vertex position equality.",
+        "ThresholdTangentNormal": "Defines distance threshold for normals, tangents, or binormals equality.",
+        "ThresholdUV": "Defines distance threshold for UV equality.",
+        "MorphThresholdPosition": "Defines distance threshold for morph target vertex position equality.",
+        "BoneInfluenceLimit": "Defines max bone influences per vertex. Uses Project Settings value if set to 0."
+      }
+    },
+    "AnimationsOptions": {
+      "ImportAnimations": "Imports animations found in the source.",
+      "ImportBoneTracks": "Imports bone transform tracks.",
+      "AnimationLength": {
+        "SourceTimeline": "Imports frames based on source timeline.",
+        "AnimationTime": "Imports frames containing animation.",
+        "SetRange": "Imports frames defined by Frame Import Range."
+      },
+      "FrameImportRange": "Defines frame range for Set Range option.",
+      "Use30HzToBakeBoneAnimation": "Samples animation curves at 30 frames per second.",
+      "CustomBoneAnimationSampleRate": "Samples FBX animation data at specified rate. Finds best rate if set to 0.",
+      "SnapToClosestFrameBoundary": "Snaps animation to closest frame boundary.",
+      "ImportAttributesAsCurvesOrAnimationAttribute": "Imports node attributes as animation curves or attributes.",
+      "AddCurveMetadataToSkeleton": "Adds curve metadata to skeleton automatically.",
+      "SetMaterialCurveType": "Sets material curve type for all custom attributes.",
+      "MaterialCurveSuffixes": "Sets material curve type for custom attributes with specified suffixes.",
+      "RemoveRedundantKeys": "Removes redundant keys from custom animation attributes.",
+      "DoNotImportCurvesWithOnly0Values": "Skips importing curves with 0 values.",
+      "DeleteExistingAnimationAttributes": "Deletes previous animation attributes on reimport.",
+      "DeleteExistingAnimationCurves": "Deletes previous animation curves on reimport.",
+      "DeleteExistingMorphTargetCurves": "Deletes previous morph target curves on reimport."
+    },
+    "MaterialsOptions": {
+      "ImportMaterials": "Imports material assets found in the source.",
+      "MaterialImport": {
+        "ImportAsMaterial": "Imports material assets as separate materials.",
+        "ImportAsMaterialInstance": "Imports material assets as material instances."
+      },
+      "ParentMaterial": "Defines parent material for material instances. Automatically chosen if set to None."
+    },
+    "TexturesOptions": {
+      "ImportTextures": "Imports texture assets found in the source.",
+      "DetectNormalMapTexture": "Checks if imported texture is a normal map and adjusts settings accordingly.",
+      "FlipNormalMapGreenChannel": "Inverts green channel on normal maps.",
+      "ImportUDIMs": "Detects and imports UDIM patterns as needed.",
+      "FileExtensionsToImportAsLongLatCubemap": "Defines file types to import as Long Lat cubemaps.",
+      "Advanced": {
+        "PreferCompressedSourceData": "Uses compressed source data when possible for smaller file sizes.",
+        "AllowNonPowerOfTwo": "Defines whether non-power of two textures are imported."
+      }
+    },
+    "ImportUsingImportIntoLevel": {
+      "Overview": "Imports assets using File > Import Into Level option. Works with FBX, glTF, GLB, MaterialX formats.",
+      "Options": {
+        "Common": [
+          "Offset Translation",
+          "Offset Rotation",
+          "Offset Uniform Scale"
+        ],
+        "CommonMeshes": [
+          "Import Lods",
+          "Vertex Color Import Option",
+          "Vertex Color Override"
+        ],
+        "Build": [
+          "Recompute Tangents",
+          "Use MikkTSpace",
+          "Compute Weighted Normals",
+          "Use High Precision Tangent Basis",
+          "Use Full Precision UVs",
+          "Use Backwards Compatible F16Trunc UVs",
+          "Remove Degenerates"
+        ],
+        "CommonSkeletalMeshesAndAnimation": [
+          "Import Meshes in Bone Hierarchy",
+          "Use T0As Ref Pose"
+        ],
+        "StaticMeshes": [
+          "Convert Static Meshes with Morph Targets to Skeletals",
+          "Import Static Meshes",
+          "Lod Group"
+        ],
+        "Collision": [
+          "Import Collision",
+          "Import Collision According to Mesh Name",
+          "One Convex Hull Per UCX"
+        ],
+        "BuildAdvanced": [
+          "Build Nanite",
+          "Build Reverse Index Buffer",
+          "Generate Lightmap UVs",
+          "Two-Sided Distance Field Generation",
+          "Enable Physical Material Mask",
+          "Min Lightmap Resolution",
+          "Source Lightmap Index",
+          "Destination Lightmap Index",
+          "Build Scale",
+          "Distance Field Resolution Scale",
+          "Distance Field Replacement Mesh",
+          "Max Lumen Mesh Cards"
+        ],
+        "SkeletalMeshes": [
+          "Import Skeletal Meshes",
+          "Import Content Type",
+          "Import Morph Targets",
+          "Update Skeleton Reference Pose",
+          "Create Physics Asset"
+        ],
+        "BuildSkeletalMeshes": [
+          "Use High Precision Skin Weights",
+          "Threshold Position",
+          "Threshold Tangent Normal",
+          "Threshold UV",
+          "Morph Threshold Position",
+          "Bone Influence Limit"
+        ],
+        "Animations": [
+          "Import Animations",
+          "Import Bone Tracks",
+          "Animation Length",
+          "Frame Import Range",
+          "Use 30Hz to Bake Bone Animation",
+          "Custom Bone Animation Sample Rate",
+          "Snap to Closest Frame Boundary",
+          "Import Attributes as Curves or Animation Attributes",
+          "Add Curve Metadata to Skeleton",
+          "Set Material Curve Type",
+          "Material Curve Suffixes",
+          "Remove Redundant",
+          "Do not import curves with only 0 values",
+          "Delete Existing Animation Attributes",
+          "Delete Existing Animation Curves",
+          "Delete Existing Morph Target Curves"
+        ],
+        "Materials": [
+          "Parent Material"
+        ],
+        "Textures": [
+          "Import Textures",
+          "Detect Normal Map Texture",
+          "Flip Normal Map Green Channel",
+          "Import UDIMs",
+          "File Extensions to Import as Long Lat Cubemap"
+        ],
+        "AdvancedTextures": [
+          "Prefer Compressed Source Data",
+          "Allow Non Power of Two"
+        ]
+      }
+    }
+  },
+  "Topics": [
+    "import",
+    "working with content",
+    "export",
+    "data pipeline",
+    "interchange"
+  ],
+  "Resources": [
+    {
+      "Type": "Forums",
+      "Description": "Ask questions and help peers"
+    },
+    {
+      "Type": "Library",
+      "Description": "Write/read tutorials"
+    }
+  ]
+}
+{
+  "InterchangeMaterialXReference": {
+    "Overview": "Guide for working with MaterialX format in the Interchange Framework.",
+    "Description": "MaterialX is an open-source interchange method developed by Industrial Light & Magic. It describes patterns, textures, shader networks, and their geometric assignments. UE supports MaterialX using the Standard Surface Shading model by Autodesk.",
+    "Features": {
+      "SubstrateMaterialFramework": "Supports importing opaque and translucent materials using MaterialX Standard Surface specification.",
+      "USDWorkflows": "Supported as part of USD workflows using USD Preview Surface shading model."
+    },
+    "ImportMaterialXFile": {
+      "Methods": [
+        "Standard import methods",
+        "File > Import Into Level"
+      ],
+      "Process": "Imports image data and creates appropriate number of materials automatically."
+    },
+    "EditMaterialXImportSettings": {
+      "Methods": [
+        "Unreal Engine's Project Settings editor",
+        "Interchange Pipeline Configuration window"
+      ],
+      "Location": "Project Settings > Interchange MaterialX"
+    },
+    "MaterialXProjectSettings": {
+      "Options": [
+        {
+          "StandardSurface": "Defines the material function for Autodesk's Standard Surface shader."
+        },
+        {
+          "StandardSurfaceTransmission": "Defines the material function for Standard Surface translucency."
+        },
+        {
+          "SurfaceUnlit": "Defines the material function for unlit surfaces."
+        },
+        {
+          "USDPreviewSurface": "Defines the material function for USD surface shader."
+        }
+      ],
+      "MaterialFunctions": [
+        "MX_StandardSurface",
+        "MX_TransmissionSurface",
+        "MX_SurfaceUnlit",
+        "MX_USDPreviewSurface"
+      ],
+      "Directory": "Engine/Plugins/InterchangeFrameworkContent/Functions"
+    },
+    "CustomizingMaterialFunctions": {
+      "Steps": [
+        "Create a copy of the material function to edit.",
+        "Move the new function to your project's Content folder.",
+        "Make changes and save.",
+        "Select the new function in Project Settings > Interchange MaterialX."
+      ]
+    }
+  },
+  "Topics": [
+    "import",
+    "working with content",
+    "export",
+    "experimental",
+    "interchange",
+    "materialx"
+  ],
+  "Resources": [
+    {
+      "Type": "Forums",
+      "Description": "Ask questions and help peers"
+    },
+    {
+      "Type": "Library",
+      "Description": "Write/read tutorials"
+    }
+  ]
+}
+

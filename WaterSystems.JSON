@@ -1,0 +1,925 @@
+{
+    "WaterSystem": {
+        "Description": "Features, tools, and information about the water rendering and meshing system.",
+        "Features": [
+            {
+                "Title": "Overview",
+                "Content": "Create rivers, lakes, and oceans interacting with Landscape terrains using a spline-based workflow. Unifies shading and mesh rendering, supports physics interactions and fluid simulation."
+            },
+            {
+                "Title": "EnablingPlugin",
+                "Content": "Enable the Water system plugin via Edit > Plugins. Search for 'Water plugin' and check to enable. Restart the editor for changes to take effect."
+            },
+            {
+                "Title": "DefaultContent",
+                "Content": "Includes default materials and content found in the Content Browser under 'Water Content'. Enable 'Show Engine Content' and 'Show Plugin Content' if the folder is not visible."
+            }
+        ],
+        "Components": [
+            {
+                "Title": "WaterBodyActors",
+                "Content": "Various water bodies available for building worlds with the water system."
+            },
+            {
+                "Title": "WaterBuoyancyComponent",
+                "Content": "Setup and use the Buoyancy Component to make objects float on water surfaces."
+            },
+            {
+                "Title": "SingleLayerWaterShadingModel",
+                "Content": "Overview of the Single Layer Water Material shading model for rendering water surfaces."
+            },
+            {
+                "Title": "WaterDebuggingScalability",
+                "Content": "Methods for debugging and scaling water to fit project needs."
+            }
+        ],
+        "Resources": [
+            {
+                "Title": "DeveloperForums",
+                "Content": "Ask questions and help peers."
+            },
+            {
+                "Title": "LearningLibrary",
+                "Content": "Write or read tutorials from others."
+            }
+        ]
+    }
+}
+{
+    "WaterBodyActors": {
+        "Overview": {
+            "Purpose": "Define location and shape of water surfaces, manage water transitions.",
+            "Components": "Water Mesh Actor, water mesh tiles, water bodies."
+        },
+        "Types": [
+            {
+                "Type": "Oceans, Lakes, Rivers",
+                "Definition": "Defined using splines, store data about type and shape."
+            },
+            {
+                "Type": "Custom",
+                "Definition": "Defined with Static Mesh, uses spline for data queries."
+            },
+            {
+                "Type": "Island",
+                "Definition": "Raises landscape terrain within spline area."
+            },
+            {
+                "Type": "Exclusion Volume",
+                "Definition": "Creates underwater zones where gameplay is unaffected."
+            }
+        ],
+        "Usage": {
+            "Steps": [
+                "Select Water Body Actor from Place Actors panel.",
+                "Drag and drop into the level.",
+                "Water bodies work with Landscape Terrain to carve out terrain."
+            ],
+            "Requirements": "Enable Edit Layers in Landscape Mode."
+        },
+        "OceanWaterBody": {
+            "Definition": "Closed loop spline forming shoreline, extends to far distance.",
+            "Properties": [
+                "Extent Size limits reach.",
+                "Far Distance Mesh fills gap to horizon."
+            ],
+            "Settings": {
+                "AdjustExtent": "WaterZone Actor > Rendering > FarDistance > Far Distance Mesh Extent.",
+                "Consistency": "Match Water_FarMesh material with other water bodies."
+            }
+        },
+        "LakeWaterBody": {
+            "Definition": "Closed loop spline, same height for all points.",
+            "Purpose": "Forms lake, carves landscape beneath."
+        },
+        "RiverWaterBody": {
+            "Definition": "Open spline, varying heights for points.",
+            "Purpose": "Carves landscape, drives motion with velocity."
+        },
+        "CustomWaterBody": {
+            "Definition": "Uses Static Mesh, flexible customization.",
+            "Purpose": "Creates custom water surfaces like pools."
+        },
+        "IslandWaterBody": {
+            "Definition": "Creates islands, affects landscape terrain.",
+            "Purpose": "Ensures land is above water."
+        },
+        "Properties": {
+            "Core": [
+                "Selected Points: Location, rotation, type.",
+                "Water Category: Velocity, audio intensity."
+            ],
+            "SplineSpecific": [
+                "Rivers: Depth, river width, velocity.",
+                "Oceans/Lakes: Depth, river width."
+            ]
+        },
+        "TerrainInteraction": {
+            "CurveSettings": [
+                "Use Curve Channel: Toggle carved surface effect.",
+                "Elevation Curve Asset: Defines depth profile."
+            ],
+            "WaterHeightmapSettings": [
+                "Blend Mode: Affects height map (Alpha Blend, Min, Max, Adaptive).",
+                "Invert Shape: Flips carved shape."
+            ]
+        },
+        "Effects": {
+            "Blurring": "Reduces artifacts during distance field generation.",
+            "CurlNoise": "Adds procedural distortion to spline.",
+            "Displacement": "Adds additional detail using texture.",
+            "SmoothBlending": "Blends water body edges with terrain.",
+            "Terracing": "Applies steps to terrain affected by water body."
+        },
+        "Rendering": {
+            "WaterMaterial": "Defines surface appearance.",
+            "UnderwaterPostProcess": "Defines underwater look.",
+            "WaterLODMaterial": "Used for non-tessellated LOD rendering."
+        },
+        "Transitions": {
+            "RiverToLake": "Seamless blending using transition materials.",
+            "RiverToOcean": "Seamless blending using transition materials."
+        },
+        "ExclusionVolumes": {
+            "Purpose": "Creates underwater zones unaffected by water.",
+            "Properties": [
+                "Exclude All Overlapping Water Bodies: Toggles exclusion of all water bodies.",
+                "Water Bodies to Exclude: Specifies which water bodies to exclude."
+            ]
+        }
+    }
+}
+{
+    "WaterBodyActors": {
+        "Overview": {
+            "Purpose": "Define location and shape of water surfaces, manage water transitions.",
+            "Components": "Water Mesh Actor, water mesh tiles, water bodies."
+        },
+        "Types": [
+            {
+                "Type": "Oceans, Lakes, Rivers",
+                "Definition": "Defined using splines, store data about type and shape."
+            },
+            {
+                "Type": "Custom",
+                "Definition": "Defined with Static Mesh, uses spline for data queries."
+            },
+            {
+                "Type": "Island",
+                "Definition": "Raises landscape terrain within spline area."
+            },
+            {
+                "Type": "Exclusion Volume",
+                "Definition": "Creates underwater zones where gameplay is unaffected."
+            }
+        ],
+        "Usage": {
+            "Steps": [
+                "Select Water Body Actor from Place Actors panel.",
+                "Drag and drop into the level.",
+                "Water bodies work with Landscape Terrain to carve out terrain."
+            ],
+            "Requirements": "Enable Edit Layers in Landscape Mode."
+        },
+        "OceanWaterBody": {
+            "Definition": "Closed loop spline forming shoreline, extends to far distance.",
+            "Properties": [
+                "Extent Size limits reach.",
+                "Far Distance Mesh fills gap to horizon."
+            ],
+            "Settings": {
+                "AdjustExtent": "WaterZone Actor > Rendering > FarDistance > Far Distance Mesh Extent.",
+                "Consistency": "Match Water_FarMesh material with other water bodies."
+            }
+        },
+        "LakeWaterBody": {
+            "Definition": "Closed loop spline, same height for all points.",
+            "Purpose": "Forms lake, carves landscape beneath."
+        },
+        "RiverWaterBody": {
+            "Definition": "Open spline, varying heights for points.",
+            "Purpose": "Carves landscape, drives motion with velocity."
+        },
+        "CustomWaterBody": {
+            "Definition": "Uses Static Mesh, flexible customization.",
+            "Purpose": "Creates custom water surfaces like pools."
+        },
+        "IslandWaterBody": {
+            "Definition": "Creates islands, affects landscape terrain.",
+            "Purpose": "Ensures land is above water."
+        },
+        "Properties": {
+            "Core": [
+                "Selected Points: Location, rotation, type.",
+                "Water Category: Velocity, audio intensity."
+            ],
+            "SplineSpecific": [
+                "Rivers: Depth, river width, velocity.",
+                "Oceans/Lakes: Depth, river width."
+            ]
+        },
+        "TerrainInteraction": {
+            "CurveSettings": [
+                "Use Curve Channel: Toggle carved surface effect.",
+                "Elevation Curve Asset: Defines depth profile."
+            ],
+            "WaterHeightmapSettings": [
+                "Blend Mode: Affects height map (Alpha Blend, Min, Max, Adaptive).",
+                "Invert Shape: Flips carved shape."
+            ]
+        },
+        "Effects": {
+            "Blurring": "Reduces artifacts during distance field generation.",
+            "CurlNoise": "Adds procedural distortion to spline.",
+            "Displacement": "Adds additional detail using texture.",
+            "SmoothBlending": "Blends water body edges with terrain.",
+            "Terracing": "Applies steps to terrain affected by water body."
+        },
+        "Rendering": {
+            "WaterMaterial": "Defines surface appearance.",
+            "UnderwaterPostProcess": "Defines underwater look.",
+            "WaterLODMaterial": "Used for non-tessellated LOD rendering."
+        },
+        "Transitions": {
+            "RiverToLake": "Seamless blending using transition materials.",
+            "RiverToOcean": "Seamless blending using transition materials."
+        },
+        "ExclusionVolumes": {
+            "Purpose": "Creates underwater zones unaffected by water.",
+            "Properties": [
+                "Exclude All Overlapping Water Bodies: Toggles exclusion of all water bodies.",
+                "Water Bodies to Exclude: Specifies which water bodies to exclude."
+            ]
+        }
+    }
+}
+{
+    "WaterBuoyancyComponent": {
+        "Overview": {
+            "Purpose": "Set up and use Buoyancy Component to make objects float on water.",
+            "Components": "Blueprint Buoyancy Component, spheres (pontoons).",
+            "Example": {
+                "Path": "Engine > Plugins > Water Content > Blueprints",
+                "BlueprintName": "BP_BuoyancyExample"
+            }
+        },
+        "Setup": {
+            "Steps": [
+                {
+                    "Step": "Create a new Blueprint Class, pick Actor class.",
+                    "Details": "Name it 'BuoyancyExampleBP'."
+                },
+                {
+                    "Step": "Add a Static Mesh Component.",
+                    "Details": "Assign a mesh, enable Simulate Physics, set Mass (kg)."
+                },
+                {
+                    "Step": "Add a Buoyancy Component.",
+                    "Details": "Add Pontoons in Buoyancy Data, set Relative Location."
+                },
+                {
+                    "Step": "Make Static Mesh Root Component.",
+                    "Details": "Drag StaticMesh component onto DefaultSceneRoot."
+                },
+                {
+                    "Step": "Place Blueprint in level above water surface.",
+                    "Details": "Press Play or Simulate to see floating effect."
+                }
+            ]
+        },
+        "Properties": {
+            "Pontoons": [
+                {
+                    "Property": "Center Socket",
+                    "Description": "Socket to center pontoon on."
+                },
+                {
+                    "Property": "Relative Location",
+                    "Description": "Pontoon location relative to parent Actor."
+                },
+                {
+                    "Property": "Radius",
+                    "Description": "Radial size of pontoon."
+                },
+                {
+                    "Property": "FXEnabled",
+                    "Description": "Candidate for visual/audio effects."
+                },
+                {
+                    "Property": "Center Pontoons on COM",
+                    "Description": "Centers pontoons around center of mass."
+                },
+                {
+                    "Property": "Buoyancy Coefficient",
+                    "Description": "Increases buoyant force."
+                },
+                {
+                    "Property": "Buoyancy Damp",
+                    "Description": "Scales damping based on Z velocity."
+                },
+                {
+                    "Property": "Buoyancy Damp 2",
+                    "Description": "Second order damping factor."
+                },
+                {
+                    "Property": "Buoyancy Ramp Min Velocity",
+                    "Description": "Minimum velocity to start ramping buoyancy."
+                },
+                {
+                    "Property": "Buoyancy Ramp Max Velocity",
+                    "Description": "Maximum velocity for buoyancy ramp."
+                },
+                {
+                    "Property": "Buoyancy Ramp Max",
+                    "Description": "Maximum buoyancy ramp value."
+                },
+                {
+                    "Property": "Max Buoyant Force",
+                    "Description": "Maximum buoyant force in Up direction."
+                },
+                {
+                    "Property": "Water Shore Push Factor",
+                    "Description": "Nudges objects toward shore."
+                },
+                {
+                    "Property": "Water Velocity Strength",
+                    "Description": "Applies force in River Water Bodies."
+                },
+                {
+                    "Property": "Max Water Force",
+                    "Description": "Maximum push force in rivers."
+                },
+                {
+                    "Property": "Apply Drag Forces in Water",
+                    "Description": "Applies drag forces to objects."
+                },
+                {
+                    "Property": "Drag Coefficient",
+                    "Description": "Coefficient for linear drag."
+                },
+                {
+                    "Property": "Drag Coefficient 2",
+                    "Description": "Coefficient for drag based on speed squared."
+                },
+                {
+                    "Property": "Angular Drag Coefficient",
+                    "Description": "Coefficient for angular drag."
+                },
+                {
+                    "Property": "Max Drag Speed",
+                    "Description": "Maximum speed for drag force."
+                },
+                {
+                    "Property": "Apply River Forces",
+                    "Description": "Applies river forces like downstream push."
+                },
+                {
+                    "Property": "River Pontoon Index",
+                    "Description": "Pontoons for calculating river forces."
+                },
+                {
+                    "Property": "River Traversal Path Width",
+                    "Description": "Path width for river traversal."
+                },
+                {
+                    "Property": "Max Shore Push Force",
+                    "Description": "Maximum shore push force."
+                },
+                {
+                    "Property": "Always Allow Lateral Push",
+                    "Description": "Allows lateral push regardless of speed."
+                },
+                {
+                    "Property": "Allow Current when Moving Fast Upstream",
+                    "Description": "Applies current when moving fast upstream."
+                },
+                {
+                    "Property": "Apply Downstream Angular Rotation",
+                    "Description": "Applies torque to align object downstream."
+                },
+                {
+                    "Property": "Downstream Axis of Rotation",
+                    "Description": "Axis for downstream rotation alignment."
+                },
+                {
+                    "Property": "Downstream Rotation Strength",
+                    "Description": "Strength of downstream rotation."
+                },
+                {
+                    "Property": "Downstream Rotation Stiffness",
+                    "Description": "Stiffness of spring for downstream alignment."
+                },
+                {
+                    "Property": "Downstream Rotation Angular Damping",
+                    "Description": "Damping of spring for downstream alignment."
+                },
+                {
+                    "Property": "Downstream Max Acceleration",
+                    "Description": "Max torque for downstream rotation."
+                }
+            ]
+        },
+        "Debugging": {
+            "Command": "r.Water.DebugBuoyancy 1",
+            "Description": "Draws pontoons and interaction grid with water surface."
+        }
+    }
+}
+{
+    "WaterDebuggingAndScalabilityOptions": {
+        "Overview": {
+            "Purpose": "Debug and scale water to fit project needs.",
+            "Components": "Console commands, stat displays, scalability settings."
+        },
+        "WaterLevelStats": {
+            "StatWater": {
+                "Command": "stat water",
+                "Description": "Displays CPU statistics about water-related functions.",
+                "Stats": [
+                    {
+                        "Name": "IsUnderwater Test",
+                        "Description": "Tests for activating underwater post process."
+                    },
+                    {
+                        "Name": "WaterBody_ComputeWaterInfo",
+                        "Description": "Computes water-related information."
+                    },
+                    {
+                        "Name": "WaterBody_ComputeWaterDepth",
+                        "Description": "Computes water depth data."
+                    },
+                    {
+                        "Name": "WaterBody_ComputeWaveHeight",
+                        "Description": "Computes water height data."
+                    },
+                    {
+                        "Name": "WaterBody_ComputeLandscapeDepth",
+                        "Description": "Computes landscape depth data."
+                    }
+                ]
+            },
+            "StatWaterMesh": {
+                "Command": "stat watermesh",
+                "Description": "Displays information about Water Meshing and Surface Rendering.",
+                "Stats": [
+                    {
+                        "Name": "Vertices Drawn",
+                        "Description": "Number of vertices drawn for all Water Bodies."
+                    },
+                    {
+                        "Name": "Tiles Drawn",
+                        "Description": "Total number of visible tiles."
+                    },
+                    {
+                        "Name": "Draw Calls",
+                        "Description": "Total number of draw calls for water."
+                    },
+                    {
+                        "Name": "Number of Drawn Materials",
+                        "Description": "Number of different water materials drawn."
+                    }
+                ]
+            }
+        },
+        "DebuggingConsoleCommands": [
+            {
+                "Command": "r.Water.WaterMesh.ShowTileGenerationGeometry",
+                "Description": "Displays geometry used for intersecting water grid.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.ForceRebuildMeshPerFrame",
+                "Description": "Forces rebuild of water tile mesh every frame.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.Enabled",
+                "Description": "Sets whether water mesh should be rendered.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.ShowWireframeAtBaseHeight",
+                "Description": "Shows water tile mesh with no displacement in wireframe.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.EnableRendering",
+                "Description": "Turns off all water rendering.",
+                "Default": "1"
+            },
+            {
+                "Command": "r.Water.WaterMesh.ShowLODLevels",
+                "Description": "Shows LOD levels as concentric rings.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.ShowTileBounds",
+                "Description": "Shows tile bounds of water mesh tiles.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.TileBoundsColor",
+                "Description": "Sets colors of water mesh tile bounds.",
+                "Default": "1"
+            },
+            {
+                "Command": "r.Water.WaterMesh.ShowWireframe",
+                "Description": "Forces wireframe rendering for water.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.VisualizeActiveUnderwaterPostProcess",
+                "Description": "Shows active underwater post process.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.OverrideWavesTime",
+                "Description": "Forces time used for waves.",
+                "Default": "-1"
+            },
+            {
+                "Command": "r.Water.FreezeWaves",
+                "Description": "Freezes time for waves.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.OceanFallbackDepth",
+                "Description": "Depth for ocean when no terrain is found.",
+                "Default": "3000"
+            },
+            {
+                "Command": "r.Water.DebugBuoyancy",
+                "Description": "Enables debug drawing for water interactions.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterInfo.ForceUpdateWaterInfoNextFrames",
+                "Description": "Force water info texture to regenerate.",
+                "Default": "0"
+            }
+        ],
+        "ScalabilityConsoleCommands": [
+            {
+                "Command": "r.Water.WaterMesh.LODCountBias",
+                "Description": "Adds value to LOD Count of each Water Mesh Component.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.TessFactorBias",
+                "Description": "Adds value to tessellation factor of Water Mesh Component.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.LODMorphEnabled",
+                "Description": "Uses smooth LOD morphing for transitions.",
+                "Default": "1"
+            },
+            {
+                "Command": "r.Water.WaterMesh.LODScaleBias",
+                "Description": "Adds value to LOD Scale of Water Mesh Component.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterMesh.PreAllocStagingInstanceMemory",
+                "Description": "Pre-allocates staging instance data memory.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.UseSplineKeyOptimization",
+                "Description": "Caches spline input keys for Water Bodies.",
+                "Default": "1"
+            },
+            {
+                "Command": "r.Water.EnableUnderwaterPostProcess",
+                "Description": "Enables underwater post process.",
+                "Default": "1"
+            },
+            {
+                "Command": "r.Water.EnableShallowWaterSimulation",
+                "Description": "Enables shallow water fluid simulation.",
+                "Default": "1"
+            },
+            {
+                "Command": "r.Water.ShallowWaterMaxDynamicForces",
+                "Description": "Max dynamic forces for water fluid sim.",
+                "Default": "6"
+            },
+            {
+                "Command": "r.Water.ShallowWaterMaxImpulseForces",
+                "Description": "Max impulse forces for water fluid sim.",
+                "Default": "3"
+            },
+            {
+                "Command": "r.Water.ShallowWaterRenderTargetSize",
+                "Description": "Size for shallow water fluid sim render target.",
+                "Default": "1024"
+            },
+            {
+                "Command": "r.RayTracing.Geometry.Water",
+                "Description": "Includes water in ray tracing effects.",
+                "Default": "0"
+            },
+            {
+                "Command": "r.Water.WaterSplineResampleMaxDistance",
+                "Description": "Max distance between sample segments and spline.",
+                "Default": "50"
+            }
+        ],
+        "TileBoundsColors": {
+            "Command": "r.Water.WaterMesh.ShowTileBounds 1",
+            "Description": "Displays tile bounds of water mesh tiles.",
+            "Colors": [
+                {
+                    "Type": "River",
+                    "Color": "Red"
+                },
+                {
+                    "Type": "Lake",
+                    "Color": "Green"
+                },
+                {
+                    "Type": "Ocean",
+                    "Color": "Blue"
+                },
+                {
+                    "Type": "River to Lake Transition",
+                    "Color": "Yellow"
+                },
+                {
+                    "Type": "River to Ocean Transition",
+                    "Color": "Purple"
+                }
+            ]
+        },
+        "VisualizingUnderwaterPostProcessing": {
+            "Command": "r.Water.VisualizeActiveUnderwaterPostProcess",
+            "Description": "Displays information about underwater post process.",
+            "Settings": [
+                {
+                    "Level": 1,
+                    "Description": "Basic debug information."
+                },
+                {
+                    "Level": 2,
+                    "Description": "Additional information about Water Data Query."
+                }
+            ]
+        }
+    }
+}
+{
+    "WaterMeshingSystemAndSurfaceRendering": {
+        "Overview": {
+            "Purpose": "Defines water behavior, interaction with objects, and visual rendering.",
+            "Components": "Water surface mesh, water surface material."
+        },
+        "WaterSurfaceMesh": {
+            "Description": "Spline-based meshing system defining water areas.",
+            "WaterZone": "Sets properties for all Water Body Actors in the Level.",
+            "Function": "Efficiently renders surface mesh visible within camera view."
+        },
+        "WaterZone": {
+            "Control": "Determines quality and detail of water surface mesh.",
+            "Impact": "Performance varies with tessellation and extent settings."
+        },
+        "WaterMeshLevelOfDetailAndTessellation": {
+            "LODScaling": {
+                "Description": "Quadtree traversal to generate optimized tile set.",
+                "Function": "Morphs tiles for seamless LOD transitions.",
+                "Properties": [
+                    {
+                        "Property": "LODScale",
+                        "Description": "Sets distance for LOD transitions."
+                    },
+                    {
+                        "Property": "TessellationFactor",
+                        "Description": "Controls mesh detail for water tiles."
+                    }
+                ],
+                "Balance": "High detail up close, lower quality far away, performance cost."
+            }
+        },
+        "WaterMeshTileSizeExtentsAndFarDistance": {
+            "TileSize": "Size of individual water mesh tiles.",
+            "Extents": "Number of tiles from center to edge.",
+            "FarDistance": "Fills space between farthest tile and horizon with low-vertex mesh.",
+            "Properties": [
+                {
+                    "Property": "TileSize",
+                    "Description": "Scales all tiles in the Level."
+                },
+                {
+                    "Property": "ExtentInTiles",
+                    "Description": "Defines number of tiles in water mesh."
+                },
+                {
+                    "Property": "FarDistanceMeshExtent",
+                    "Description": "Sets extent of simplified mesh."
+                }
+            ]
+        },
+        "WaterMaterialsAndUnderwaterPostProcessing": {
+            "Materials": {
+                "Description": "Different materials for rendering water surfaces and transitions.",
+                "Types": [
+                    {
+                        "Type": "Base Material",
+                        "Description": "Uses switches and parameters specific to Water Body types."
+                    },
+                    {
+                        "Type": "Material Instances",
+                        "Description": "Overrides parameters for specific Water Body types."
+                    }
+                ]
+            },
+            "RiverWaterBodyMaterialTransitions": {
+                "Function": "Seamlessly blends rivers with lakes and oceans.",
+                "Properties": "Transitional materials match colors for consistency."
+            },
+            "UnderwaterPostProcessing": {
+                "Function": "Handles transition from above to below water surface.",
+                "Activation": "Automatic when camera is submerged.",
+                "Optimization": "Active only near water surface."
+            }
+        },
+        "SingleLayerWaterMaterialShadingModel": {
+            "Description": "Cost-effective translucency using single depth layer.",
+            "Support": "Light scattering, absorption, reflection, refraction, shadowing."
+        },
+        "CreatingYourOwnWaterMaterial": {
+            "Considerations": [
+                "Supports any shading model.",
+                "Enable Usage Flag for Used with Water.",
+                "SingleLayerWater shading model provides lower cost translucency."
+            ]
+        }
+    }
+}
+{
+    "SimulatingWavesUsingTheWaterWavesAsset": {
+        "Overview": {
+            "Purpose": "Use GPU-driven wave data to simulate surface waves on Water Body Actors.",
+            "Components": "Water Waves Asset, wave simulation model."
+        },
+        "CreatingAWaterWavesAsset": {
+            "Description": "Water Bodies use a wave simulation model with a Water Waves Asset assignment slot.",
+            "Default": "Supplied with Gerstner wave simulation model.",
+            "Steps": [
+                {
+                    "Step": "Create Water Waves Asset",
+                    "Details": "Use Content Browser > Add/Import > Water > Water Waves."
+                },
+                {
+                    "Step": "Assign Water Waves Asset",
+                    "Details": "Select Water Body > Water Waves Asset assignment slot."
+                }
+            ]
+        },
+        "EditingTheWaterWavesAsset": {
+            "Description": "Select wave simulation model and configure parameters.",
+            "Example": "Gerstner Water Waves model.",
+            "WavesSource": "Specifies wave simulation model for generating waves.",
+            "Configuration": "Parameters exposed through Waves Source control wave simulation."
+        },
+        "GerstnerWaterWavesProperties": {
+            "Parameters": [
+                {
+                    "Property": "Num Waves",
+                    "Description": "Number of waves to be summed up."
+                },
+                {
+                    "Property": "Seed",
+                    "Description": "Deterministic starting point for generating random value."
+                },
+                {
+                    "Property": "Randomness",
+                    "Description": "Adds randomness to interpolation between min and max values."
+                },
+                {
+                    "Property": "Min Wavelength",
+                    "Description": "Low-end of wavelength range between waves."
+                },
+                {
+                    "Property": "Max Wavelength",
+                    "Description": "High-end of wavelength range between waves."
+                },
+                {
+                    "Property": "Wavelength Falloff",
+                    "Description": "Determines distance between wave crests."
+                },
+                {
+                    "Property": "Min Amplitude",
+                    "Description": "Low-end of generated waves' amplitude."
+                },
+                {
+                    "Property": "Max Amplitude",
+                    "Description": "High-end of generated waves' amplitude."
+                },
+                {
+                    "Property": "Amplitude Falloff",
+                    "Description": "Determines height of generated waves."
+                },
+                {
+                    "Property": "Dominant Wind Angle",
+                    "Description": "Primary direction of wind."
+                },
+                {
+                    "Property": "Dominant Angular Spread",
+                    "Description": "Random wind direction within specified angle."
+                },
+                {
+                    "Property": "Small Wave Steepness",
+                    "Description": "Steepness of smaller waves."
+                },
+                {
+                    "Property": "Large Wave Steepness",
+                    "Description": "Steepness of larger waves."
+                },
+                {
+                    "Property": "Steepness Falloff",
+                    "Description": "Determines height range of wave crests."
+                }
+            ],
+            "Usage": "Macro details for wave patterns, micro details via water material normal maps."
+        },
+        "SettingWaveParameters": {
+            "DefaultCategory": [
+                {
+                    "Parameter": "Num Waves",
+                    "Description": "Specifies number of waves; fewer waves are more performant."
+                },
+                {
+                    "Parameter": "Seed",
+                    "Description": "Creates deterministic starting point for random value."
+                },
+                {
+                    "Parameter": "Randomness",
+                    "Description": "Reduces repeating patterns in wave simulation."
+                }
+            ],
+            "Wavelength": [
+                {
+                    "Parameter": "Min Wavelength",
+                    "Description": "Minimum distance between waves."
+                },
+                {
+                    "Parameter": "Max Wavelength",
+                    "Description": "Maximum distance between waves."
+                }
+            ],
+            "Amplitude": [
+                {
+                    "Parameter": "Min Amplitude",
+                    "Description": "Minimum height displacement between waves."
+                },
+                {
+                    "Parameter": "Max Amplitude",
+                    "Description": "Maximum height displacement between waves."
+                }
+            ],
+            "DirectionAndAngularSpread": [
+                {
+                    "Parameter": "Dominant Wind Angle",
+                    "Description": "Wind direction pushing waves."
+                },
+                {
+                    "Parameter": "Dominant Angular Spread",
+                    "Description": "Secondary angle for wave direction."
+                }
+            ],
+            "Steepness": [
+                {
+                    "Parameter": "Small Wave Steepness",
+                    "Description": "Softens or sharpens small wave crests."
+                },
+                {
+                    "Parameter": "Large Wave Steepness",
+                    "Description": "Softens or sharpens large wave crests."
+                }
+            ]
+        },
+        "AddingYourOwnWaveSimulationModelAndWaveGenerator": {
+            "Description": "Supports additional wave simulation models via Water Wave Asset.",
+            "Methods": [
+                {
+                    "Method": "C++",
+                    "Details": "Create new type deriving from UGerstnerWaterWaveGeneratorBase."
+                },
+                {
+                    "Method": "Blueprint",
+                    "Details": "Parent Class inherits from GerstnerWaterWaveGeneratorBase class."
+                }
+            ],
+            "BlueprintSteps": [
+                {
+                    "Step": "Override Generate Gerstner Waves function",
+                    "Details": "Use Make GerstnerWave and Make GerstnerWaveOctave nodes."
+                },
+                {
+                    "Step": "Assign in Water Waves Asset",
+                    "Details": "Gerstner Wave Generator dropdown lists inherited classes."
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,81 @@
+{
+  "MathematicalFoundations": {
+    "Description": "Learn about the mathematical foundations of Unreal Engine structures and operations.",
+    "Details": {
+      "Overview": "Unreal Engine objects are based on mathematical structures, configurable via mathematical operations.",
+      "Purpose": "Provides an overview of useful mathematical structures and their connections to Unreal Engine objects and operations."
+    },
+    "UnitsOfMeasurement": {
+      "Description": "Measure quantities of interest."
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "UnitsOfMeasurement": {
+    "Description": "Measure quantities of interest.",
+    "DefaultUnits": {
+      "Distance/Length": "Centimeters (cm)",
+      "Mass": "Kilograms (kg)",
+      "Time": ["Minutes (min)", "Seconds (s)"],
+      "Angles": "Degrees (deg)",
+      "Speed/Velocity": "Meters per Second (m/s)",
+      "Temperature": "Celsius (C)",
+      "Force": "Newtons (N)",
+      "Torque": "Newton Meters (N·m)"
+    },
+    "ChangeDefaultUnits": {
+      "Steps": [
+        "Select Edit > Project Settings...",
+        "Navigate to Editor > Appearance.",
+        "Expand Units > Advanced.",
+        "Select new unit from dropdown next to quantity."
+      ]
+    },
+    "AvailableUnits": {
+      "DistanceAndLength": {
+        "SI": ["Micrometers (µm)", "Millimeters (mm)", "Centimeters (cm)", "Meters (m)", "Kilometers (km)"],
+        "Imperial": ["Inches (in)", "Feet (ft)", "Yards (yd)", "Miles (mi)", "Lightyear (ly)"]
+      },
+      "VelocityAndSpeed": {
+        "SI": ["Centimeters Per Second (cm/s)", "Meters Per Second (m/s)", "Kilometers Per Second (km/s)"],
+        "Imperial": ["Miles Per Hour (mph)"]
+      },
+      "Acceleration": ["Centimeters Per Second Squared (cm/s²)", "Meters Per Second Squared (m/s²)"],
+      "Angles": ["Degrees (° , deg)", "Radians (rad)"],
+      "AngularVelocity": ["Degrees Per Second (deg/s)", "Radians Per Second (rad/s)"],
+      "Temperature": ["Celsius (C)", "Kelvin (K)", "Fahrenheit (F)"],
+      "Mass": {
+        "SI": ["Micrograms (µg)", "Milligrams (mg)", "Grams (g)", "Kilograms (kg)", "Metric Tons (t, Mg)"],
+        "Imperial": ["Ounces (oz)", "Pounds (lb)", "Stones (st)"]
+      },
+      "Density": {
+        "SI": ["Grams Per Cubic Centimeter (g/cm³)", "Grams Per Cubic Meter (g/m³)", "Kilograms Per Cubic Centimeter (kg/cm³)", "Kilograms Per Cubic Meter (kg/m³)"]
+      },
+      "Force": {
+        "SI": ["Newtons (N)", "Kilograms Force (kgf)", "Kilogram Centimeters Per Second Squared (kg·cm/s²)"],
+        "Imperial": ["Pounds Force (lbf)"]
+      },
+      "Torque": ["Newton Meters (N·m)", "Kilogram Centimeters Squared Per Second Squared (kg·cm²/s²)"],
+      "Momentum": ["Newton Seconds (N·s)"],
+      "Frequency": ["Hertz (Hz)", "Kilohertz (kHz)", "Megahertz (MHz)", "Gigahertz (GHz)", "Revolutions Per Minute (rpm)"],
+      "PixelDensity": ["Pixels Per Inch (PPI)"],
+      "DigitalInformation": ["Byte (B)", "Kilobyte (kB)", "Megabyte (MB)", "Gigabyte (GB)", "Terabyte (TB)"],
+      "LuminousFlux": ["Lumens (lm)"],
+      "LuminousIntensity": ["Candela (cd)"],
+      "Illuminance": ["Lux (lx)"],
+      "Luminance": ["Candela Per Meter² (cd/m²)"],
+      "Time": ["Nanoseconds (ns)", "Microseconds (µs)", "Milliseconds (ms)", "Seconds (s)", "Minutes (min)", "Hours (hr)", "Days (d)", "Months (mo)", "Years (yr)"],
+      "Pressure": ["Pascals (Pa)", "Kilo Pascals (kPa)", "Mega Pascals (MPa)", "Giga Pascals (GPa)"],
+      "OtherUnits": ["Exposure Value (EV)", "Percentage (%)", "Multiplier", "Unspecified"]
+    },
+    "MoreInformation": ["The International System of Units"],
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}

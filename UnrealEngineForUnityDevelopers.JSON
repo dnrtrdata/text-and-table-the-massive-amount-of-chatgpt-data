@@ -1,0 +1,219 @@
+{
+  "Title": "Unreal Engine for Unity Developers",
+  "Overview": "Guide for Unity users to start with Unreal Engine 5.",
+  "Sections": [
+    {
+      "Name": "Unreal Editor",
+      "Description": "Customizable UI with tabs, color-coded functions.",
+      "Comparison": "Unity's Inspector vs Unreal's Details panel.",
+      "Tools": "Refer to Tools and Editors page for more."
+    },
+    {
+      "Name": "Editing Assets",
+      "Description": "Details panel for properties. Dockable editor windows.",
+      "Tools": "Level and Material Editor. Use Content Browser for imports."
+    },
+    {
+      "Name": "Quick Glossary",
+      "Terms": [
+        {
+          "UnityTerm": "GameObject",
+          "UnrealTerm": "Actor"
+        },
+        {
+          "UnityTerm": "Prefab",
+          "UnrealTerm": "Blueprint Class"
+        },
+        {
+          "UnityTerm": "MonoBehaviour",
+          "UnrealTerm": "Component Class"
+        }
+      ]
+    },
+    {
+      "Name": "Projects and Files",
+      "Description": "Unreal projects use .uproject files. Content and Config folders.",
+      "Assets": "Stored in Content folder. C++ in Source folder."
+    },
+    {
+      "Name": "Scene Storage",
+      "Description": "Unity's Scene file vs Unreal's Map file."
+    },
+    {
+      "Name": "Project Settings",
+      "Description": "Access through Edit > Project Settings. Similar to Unity's project settings.",
+      "Subsections": [
+        {
+          "UnityTerm": "Player Settings",
+          "UnrealTerm": "Platform Settings"
+        }
+      ]
+    },
+    {
+      "Name": "Source Files",
+      "Description": "C++ files in Source folder. Blueprint files in Content folder.",
+      "Editing": "Open C++ files in Visual Studio or Xcode."
+    },
+    {
+      "Name": "Actors vs GameObjects",
+      "Description": "Actors in Unreal are similar to GameObjects in Unity.",
+      "Components": "Add components to Actors in Unreal."
+    },
+    {
+      "Name": "Blueprint Classes",
+      "Description": "Similar to Unity prefabs. Add scripts to Actors.",
+      "Tools": "Use Blueprint for visual scripting or C++ for advanced tasks."
+    },
+    {
+      "Name": "Transform Components",
+      "Description": "Unreal's Root Component vs Unity's Transform Component."
+    },
+    {
+      "Name": "Compound Objects",
+      "Description": "Hierarchy of components in Unreal vs Unity."
+    },
+    {
+      "Name": "Gameplay Framework",
+      "Description": "Built-in classes for multiplayer and other features."
+    },
+    {
+      "Name": "Writing Code",
+      "Subsections": [
+        {
+          "Title": "C++ Programming",
+          "Description": "Use Visual Studio or Xcode. Manual project file refresh required."
+        },
+        {
+          "Title": "Event Functions",
+          "Description": "Unreal's BeginPlay, Tick vs Unity's Start, Update."
+        }
+      ]
+    },
+    {
+      "Name": "Common Patterns",
+      "Subsections": [
+        {
+          "Title": "Instantiating Objects",
+          "Description": "Unreal's NewObject, SpawnActor vs Unity's Instantiate."
+        },
+        {
+          "Title": "Destroying Objects",
+          "Description": "MyActor->Destroy() vs Destroy(MyGameObject)."
+        },
+        {
+          "Title": "Input Events",
+          "Description": "SetupInputComponent in Unreal vs Update in Unity."
+        }
+      ]
+    },
+    {
+      "Name": "Physics",
+      "Description": "PrimitiveComponent in Unreal vs RigidBody in Unity."
+    },
+    {
+      "Name": "FAQ",
+      "Questions": [
+        {
+          "Question": "How to load the last project automatically?",
+          "Answer": "Enable Always Load Last Project on Startup."
+        },
+        {
+          "Question": "How to set input bindings?",
+          "Answer": "Configure in Project Settings > Input."
+        },
+        {
+          "Question": "How to change the starting scene?",
+          "Answer": "Edit > Project Settings > General > Loading & Saving."
+        },
+        {
+          "Question": "How to run the game?",
+          "Answer": "Use Play button, Platforms button for different platforms."
+        }
+      ]
+    }
+  ],
+  "Resources": [
+    "Unreal Engine on YouTube",
+    "Forums",
+    "Community Resources"
+  ]
+}
+{
+  "Title": "Coding in UE: Blueprint vs. C++",
+  "Overview": "Learn the differences between Blueprint and C++ and how to combine them in your project.",
+  "Sections": [
+    {
+      "Name": "Programming vs. Scripting",
+      "Description": "C++ defines systems, Blueprint defines behaviors.",
+      "Examples": [
+        {
+          "Type": "Programming",
+          "Description": "Defines vehicle system base functionality."
+        },
+        {
+          "Type": "Scripting",
+          "Description": "Defines specific vehicle types like cars or boats."
+        }
+      ]
+    },
+    {
+      "Name": "Comparing Blueprint and C++",
+      "BlueprintStrengths": [
+        "Easier behavior definition",
+        "Faster prototyping",
+        "Accessible to non-programmers",
+        "Easier API and asset reference",
+        "Safe memory model"
+      ],
+      "CPlusPlusStrengths": [
+        "Easier system creation",
+        "Better runtime performance",
+        "Access to low-level functionality",
+        "Extensibility with external systems",
+        "Greater control",
+        "Better collaboration",
+        "Better scalability",
+        "Powerful debugging tools"
+      ]
+    },
+    {
+      "Name": "Performance Concerns",
+      "Description": "C++ is more performant due to direct machine code execution, while Blueprint has overhead from bytecode execution.",
+      "Contexts": [
+        "Core infrastructure",
+        "Tight loops with heavy I/O",
+        "Large data set processing",
+        "Tick-dependent classes with many instances",
+        "Multi-threading scenarios"
+      ],
+      "Tips": "Use timers or delegates in Blueprint to improve performance."
+    },
+    {
+      "Name": "Combining Blueprint and C++",
+      "Description": "Best approach is to use C++ as the foundation and build Blueprint classes on top.",
+      "Methods": [
+        "Extend C++ class with Blueprint class using Metadata Specifiers.",
+        "Expose static functions via UBlueprintFunctionLibrary.",
+        "Use BlueprintImplementableEvent for pure virtual functions in Blueprint.",
+        "Use BlueprintNativeEvent for optional virtual functions in Blueprint.",
+        "Access Blueprint-created UserWidget with UPROPERTY(meta=(BindWidget))."
+      ]
+    },
+    {
+      "Name": "Converting Blueprint to C++",
+      "Steps": [
+        "Use Blueprint Header View to generate C++ header file.",
+        "Manually convert function implementations to matching .cpp file.",
+        "Update references to use new C++ class.",
+        "Consider using Core Redirects for automatic reference remapping."
+      ]
+    }
+  ],
+  "Resources": [
+    "C++ and Blueprint: Detailed example on creating Blueprint-extendable C++ class.",
+    "Exposing C++ to Blueprints: Tips for writing Blueprint-friendly API.",
+    "Exposing Gameplay Elements to Blueprints: Technical guide for gameplay programmers.",
+    "Blueprint Function Library: Learn to use UBlueprintFunctionLibrary.",
+    "Lyra Sample Game: Examples of combining Blueprint and C++."
+  ]
+}

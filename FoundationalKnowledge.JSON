@@ -1,0 +1,741 @@
+{
+  "Foundational Knowledge": {
+    "Description": "Learn essential Unreal Engine 5 concepts and its learning ecosystem.",
+    "Unreal Engine 5": "A real-time 3D engine for creating games, visualizations, and immersive experiences.",
+    "Preparation": "Familiarize yourself with fundamental tools and concepts before developing.",
+    "Sections": [
+      {
+        "Title": "Unreal Editor Interface",
+        "Description": "Key elements of the Unreal Editor interface."
+      },
+      {
+        "Title": "Unreal Engine Terminology",
+        "Description": "Commonly used terms in Unreal Engine."
+      },
+      {
+        "Title": "Tools and Editors",
+        "Description": "Overview of different Editors in Unreal Engine 5."
+      },
+      {
+        "Title": "Coordinate System and Spaces",
+        "Description": "Introduction to coordinate system and spaces."
+      },
+      {
+        "Title": "Onboarding Guide for Games Licensees",
+        "Description": "Getting started steps for games licensees."
+      },
+      {
+        "Title": "Onboarding Guide for Non-Games Licensees",
+        "Description": "Getting started steps for non-games licensees."
+      },
+      {
+        "Title": "Directory Structure",
+        "Description": "Overview of engine and game project directories."
+      },
+      {
+        "Title": "Mathematical Foundations",
+        "Description": "Mathematical foundations of Unreal Engine structures and operations."
+      }
+    ]
+  }
+}
+{
+  "Unreal Editor Interface": {
+    "Description": "Overview of the key elements of the Unreal Editor interface.",
+    "Elements": [
+      {
+        "Number": 1,
+        "Name": "Menu Bar",
+        "Description": "Access editor-specific commands and functionality."
+      },
+      {
+        "Number": 2,
+        "Name": "Main Toolbar",
+        "Description": "Shortcuts for common tools, editors, and Play mode."
+      },
+      {
+        "Number": 3,
+        "Name": "Level Viewport",
+        "Description": "Displays contents of your Level, such as Cameras and Actors."
+      },
+      {
+        "Number": 4,
+        "Name": "Content Drawer",
+        "Description": "Opens Content Drawer to access all project Assets."
+      },
+      {
+        "Number": 5,
+        "Name": "Bottom Toolbar",
+        "Description": "Shortcuts to Command Console, Output Log, and Derived Data."
+      },
+      {
+        "Number": 6,
+        "Name": "Outliner",
+        "Description": "Hierarchical tree view of all content in your Level."
+      },
+      {
+        "Number": 7,
+        "Name": "Details Panel",
+        "Description": "Displays properties for selected Actor in the Level."
+      }
+    ],
+    "Details": {
+      "Menu Bar": {
+        "Description": "Located at the top of the editor window, contains File, Window, and Help menus."
+      },
+      "Main Toolbar": {
+        "Sections": [
+          {
+            "Name": "Save Button",
+            "Description": "Saves the currently open Level."
+          },
+          {
+            "Name": "Mode Selection",
+            "Description": "Shortcuts for editing modes: Select, Landscape, Foliage, Mesh Painting, Fracture, Brush."
+          },
+          {
+            "Name": "Content Shortcuts",
+            "Shortcuts": [
+              {
+                "Name": "Create",
+                "Description": "Quickly add common Assets to your Level."
+              },
+              {
+                "Name": "Blueprints",
+                "Description": "Create and access Blueprints."
+              },
+              {
+                "Name": "Cinematics",
+                "Description": "Create Level Sequence or Master Sequence."
+              }
+            ]
+          },
+          {
+            "Name": "Play Mode Controls",
+            "Description": "Buttons to Play, Skip, Stop, and Eject game in the Editor."
+          },
+          {
+            "Name": "Platforms Menu",
+            "Description": "Configure and deploy project to various platforms."
+          },
+          {
+            "Name": "Settings",
+            "Description": "Editor, Level Editor Viewport, and game settings."
+          }
+        ]
+      },
+      "Level Viewport": {
+        "Description": "Displays the open Level's contents.",
+        "Views": [
+          {
+            "Name": "Perspective",
+            "Description": "3D view to navigate the viewport."
+          },
+          {
+            "Name": "Orthographic",
+            "Description": "2D view from one of the main axes (X, Y, Z)."
+          }
+        ]
+      },
+      "Content Drawer and Content Browser": {
+        "Description": "File explorer for project Assets, Blueprints, and files.",
+        "Content Drawer": {
+          "Description": "Opens minimized Content Browser. Can be docked."
+        }
+      },
+      "Bottom Toolbar": {
+        "Sections": [
+          {
+            "Number": 1,
+            "Name": "Output Log",
+            "Description": "Debugging tool displaying application information."
+          },
+          {
+            "Number": 2,
+            "Name": "Command Console",
+            "Description": "Command line interface for specific editor behaviors."
+          },
+          {
+            "Number": 3,
+            "Name": "Derived Data",
+            "Description": "Provides Derived Data functionality."
+          },
+          {
+            "Number": 4,
+            "Name": "Source Control Status",
+            "Description": "Displays source control status."
+          }
+        ]
+      },
+      "Outliner": {
+        "Description": "Hierarchical view of all Level content.",
+        "Functions": [
+          "Hide/reveal Actors",
+          "Access Actor context menu",
+          "Manage content folders"
+        ]
+      },
+      "Details Panel": {
+        "Description": "Shows settings and properties of selected Actor."
+      }
+    }
+  }
+}
+{
+  "Unreal Engine Terminology": {
+    "Description": "Commonly used terms when working with Unreal Engine.",
+    "Terms": [
+      {
+        "Name": "Project",
+        "Description": "Holds all game contents; contains folders like Blueprints and Materials. Each project has a .uproject file."
+      },
+      {
+        "Name": "Blueprint",
+        "Description": "Node-based visual scripting system for gameplay elements."
+      },
+      {
+        "Name": "Object",
+        "Description": "Basic class in Unreal Engine; base class is UObject."
+      },
+      {
+        "Name": "Class",
+        "Description": "Defines behaviors and properties of an Actor or Object; hierarchical."
+      },
+      {
+        "Name": "Actor",
+        "Description": "Object placed in a level, supporting 3D transformations; base class is AActor."
+      },
+      {
+        "Name": "Casting",
+        "Description": "Action to treat an Actor as a different class; enables access to class-specific functionality."
+      },
+      {
+        "Name": "Component",
+        "Description": "Adds functionality to an Actor, e.g., lighting, movement."
+      },
+      {
+        "Name": "Pawn",
+        "Description": "Subclass of Actor; serves as in-game avatar, controllable by player or AI."
+      },
+      {
+        "Name": "Character",
+        "Description": "Subclass of Pawn; intended as player character with additional movement code."
+      },
+      {
+        "Name": "Player Controller",
+        "Description": "Translates player input to game interactions; key for multiplayer games."
+      },
+      {
+        "Name": "AI Controller",
+        "Description": "Possesses a Pawn for NPCs in a game."
+      },
+      {
+        "Name": "Player State",
+        "Description": "State of a game participant, containing info like name, health, and score."
+      },
+      {
+        "Name": "Game Mode",
+        "Description": "Sets game rules, player joining, and win conditions."
+      },
+      {
+        "Name": "Game State",
+        "Description": "Holds information replicated to every client, e.g., game score."
+      },
+      {
+        "Name": "Brush",
+        "Description": "Actor describing 3D shape; used for level geometry."
+      },
+      {
+        "Name": "Volume",
+        "Description": "Bounded 3D spaces with specific effects, e.g., blocking, damage."
+      },
+      {
+        "Name": "Level",
+        "Description": "Gameplay area; saved as .umap files."
+      },
+      {
+        "Name": "World",
+        "Description": "Container for all Levels, managing level streaming and dynamic Actor spawning."
+      }
+    ]
+  }
+}
+{
+  "Tools and Editors": {
+    "Description": "Overview of different types of editors in Unreal Engine 5.",
+    "Definitions": {
+      "Tool": "Used to perform specific tasks, e.g., placing Actors.",
+      "Editor": "Collection of tools for complex tasks, e.g., Level Editor.",
+      "System": "Large collection of features working together, e.g., Blueprint system."
+    },
+    "Notes": "Some tools and editors are built-in, others are optional plugins.",
+    "Editors": [
+      {
+        "Name": "Level Editor",
+        "Description": "Primary editor for constructing gameplay levels.",
+        "Usage": "Add Actors, Geometry, Blueprints, etc."
+      },
+      {
+        "Name": "Static Mesh Editor",
+        "Description": "Preview and set properties of Static Meshes.",
+        "Features": "Collision, UV mapping, LODs."
+      },
+      {
+        "Name": "Material Editor",
+        "Description": "Create and edit Materials.",
+        "Example": "Apply a dirt Material to floors."
+      },
+      {
+        "Name": "Blueprint Editor",
+        "Description": "Modify Blueprints to create gameplay elements without C++.",
+        "Example": "Control Actors, script events."
+      },
+      {
+        "Name": "Physics Asset Editor",
+        "Description": "Create Physics Assets for Skeletal Meshes.",
+        "Features": "Deformations, collisions, ragdoll setups."
+      },
+      {
+        "Name": "Behavior Tree Editor",
+        "Description": "Script AI behaviors using a node-based system.",
+        "Usage": "Create behaviors for NPCs, vehicles."
+      },
+      {
+        "Name": "Niagara Editor",
+        "Description": "Create particle effects with modular emitters.",
+        "Features": "Save emitters for future use."
+      },
+      {
+        "Name": "UMG UI Editor",
+        "Description": "Create UI elements like HUDs and menus.",
+        "Tool": "Visual UI authoring tool."
+      },
+      {
+        "Name": "Font Editor",
+        "Description": "Add, organize, and preview Font Assets.",
+        "Features": "Font parameters, hinting policies."
+      },
+      {
+        "Name": "Sequencer Editor",
+        "Description": "Create in-game cinematics with a multi-track editor.",
+        "Features": "Add animations, transformations, audio."
+      },
+      {
+        "Name": "Animation Editor",
+        "Description": "Edit Skeleton Assets, Skeletal Meshes, and Animation Blueprints.",
+        "Usage": "Work with various animation assets."
+      },
+      {
+        "Name": "Control Rig Editor",
+        "Description": "Rig and animate characters directly in-engine.",
+        "Features": "Custom controls, animate in Sequencer."
+      },
+      {
+        "Name": "Sound Cue Editor",
+        "Description": "Define audio playback behavior with Sound Cues.",
+        "Usage": "Combine and mix sound assets."
+      },
+      {
+        "Name": "Media Editor",
+        "Description": "Define media files or URLs for playback.",
+        "Features": "Auto-play, play rate, looping."
+      },
+      {
+        "Name": "nDisplay 3D Config Editor",
+        "Description": "Render scenes on multiple synchronized display devices.",
+        "Usage": "Visualize content across display devices."
+      },
+      {
+        "Name": "DMX Library Editor",
+        "Description": "Customize devices and commands for live-events.",
+        "Usage": "Control lighting, lasers, smoke machines."
+      }
+    ]
+  }
+}
+{
+  "Onboarding Guide for Games Licensees": {
+    "Description": "Steps to get started with Unreal Engine.",
+    "Hardware and Software Requirements": {
+      "Windows": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Quad-core Intel or AMD, 2.5 GHz or faster",
+        "RAM": "8 GB",
+        "Graphics": "DirectX 11 or 12 compatible card"
+      },
+      "MacOS": {
+        "OS": "MacOS 13 Ventura",
+        "Processor": "Apple Silicon M3",
+        "RAM": "32 GB",
+        "Graphics": "Metal 1.2 Compatible Card"
+      },
+      "Linux": {
+        "OS": "Ubuntu 22.04",
+        "Processor": "Quad-core Intel or AMD, 2.5 GHz or faster",
+        "RAM": "32 GB",
+        "Graphics": "GeForce 2080, Vulkan"
+      }
+    },
+    "Minimum Software Requirements": {
+      "Windows": {
+        "OS": "Windows 10 version 1703",
+        "DirectX": "DirectX End-User Runtimes (June 2010)"
+      },
+      "MacOS": {
+        "OS": "MacOS 13 Ventura"
+      },
+      "Linux": {
+        "OS": "CentOS 7.x and up",
+        "Kernel": "3.x or newer",
+        "Dependencies": "glibc 2.17 or newer"
+      }
+    },
+    "Developing with the Engine": {
+      "Windows": {
+        "Requirements": "Visual Studio 2022",
+        "iOS Development": "iTunes 12 or higher"
+      },
+      "MacOS": {
+        "Requirements": "Xcode 14.1 or newer"
+      },
+      "Linux": {
+        "Requirements": "Ubuntu 22.04, clang 16.0.6",
+        "Optional": "Visual Studio Code, Rider"
+      }
+    },
+    "Prerequisite Installer": {
+      "Description": "Installs necessary components for running the editor and engine.",
+      "Location": "Engine/Extras/Redist/en-us folder",
+      "Components": [
+        "DirectX Components",
+        "Visual C++ Redists",
+        "XInput 1.3",
+        "X3DAudio 1.7",
+        "XAudio 2.7",
+        "D3D Compiler 4.3",
+        "D3DX9 4.3",
+        "D3DX10 4.3",
+        "D3DX11 4.3"
+      ]
+    },
+    "Rendering Features Requirements": {
+      "Lumen": {
+        "Software Ray Tracing": "DirectX 11 with Shader Model 5",
+        "Hardware Ray Tracing": "DirectX 12, RTX-2000, RX-6000, or Intel Arc"
+      },
+      "Nanite": {
+        "Requirements": "DirectX 12, Vulkan with SM6 enabled"
+      },
+      "Virtual Shadow Maps": {
+        "Requirements": "DirectX 12, Vulkan with SM6 enabled"
+      },
+      "Temporal Super Resolution": {
+        "Requirements": "Shader Model 5, SM6 for better performance"
+      }
+    },
+    "Acquiring Unreal Engine": {
+      "Methods": [
+        "Download from Epic's Perforce proxy server",
+        "Access source code on GitHub"
+      ],
+      "GitHub Access Steps": [
+        "Sign up on GitHub",
+        "Link GitHub to Epic Games account",
+        "Authorize EpicGames OAuth App",
+        "Join @EpicGames organization on GitHub"
+      ],
+      "Source Code Branches": [
+        "Release Branch",
+        "Main Branch"
+      ]
+    },
+    "Building from Source": {
+      "Steps": [
+        "Generate project files",
+        "Load project in Visual Studio",
+        "Set solution configuration to Development Editor",
+        "Build UE target"
+      ]
+    },
+    "Connecting to Perforce": {
+      "Steps": [
+        "Install P4V Perforce client",
+        "Open connection with provided server info",
+        "Create new workspace",
+        "Download Unreal Engine"
+      ]
+    },
+    "Running the Editor": {
+      "Methods": [
+        "Command Line with project path",
+        "Executable with project argument"
+      ],
+      "Create Project Steps": [
+        "Select development category",
+        "Choose a template",
+        "Configure project defaults",
+        "Set project location and name",
+        "Create project"
+      ]
+    },
+    "Compiling Code Projects": {
+      "Description": "Use UnrealBuildTool with .build.cs and .target.cs files.",
+      "Build Configurations": [
+        {
+          "State": "Debug",
+          "Description": "No optimizations, easier to debug"
+        },
+        {
+          "State": "Development",
+          "Description": "Optimizations for development and performance"
+        },
+        {
+          "State": "Shipping",
+          "Description": "Optimal performance, for game release"
+        }
+      ],
+      "Targets": [
+        {
+          "Type": "Game",
+          "Description": "Builds stand-alone executable"
+        },
+        {
+          "Type": "Editor",
+          "Description": "Open project in Unreal Editor"
+        }
+      ]
+    }
+  }
+}
+{
+  "Onboarding Guide for Non-Games Licensees": {
+    "Description": "Steps to get started with Unreal Engine for non-games licensees.",
+    "Term Definitions": {
+      "UDN": "Unreal Developer Network for custom license support.",
+      "Unreal Engine": "Suite of tools for creating interactive experiences.",
+      "UE": "Acronym for Unreal Engine.",
+      "Unreal Editor": "Interface for developing with Unreal Engine.",
+      "Epic Games Launcher": "Platform for installing and managing Unreal Engine.",
+      "Datasmith": "Import tool for CAD, BIM, and 3D content."
+    },
+    "Quickstart": {
+      "Steps": [
+        {
+          "Step": 1,
+          "Description": "Set up UDN access for technical administrators and staff."
+        },
+        {
+          "Step": 2,
+          "Description": "Install Unreal Engine via the Epic Games Launcher or other methods."
+        },
+        {
+          "Step": 3,
+          "Description": "Install Datasmith plugins if required."
+        },
+        {
+          "Step": 4,
+          "Description": "Launch Unreal Editor from the Launcher or installation directory."
+        },
+        {
+          "Step": 5,
+          "Description": "Create a new project from a template."
+        },
+        {
+          "Step": 6,
+          "Description": "Start learning with the Online Learning Platform and Documentation."
+        },
+        {
+          "Step": 7,
+          "Description": "Get help from UDN or the public community."
+        }
+      ]
+    },
+    "Accessing and Managing Accounts": {
+      "Epic Account": {
+        "Description": "Create an Epic account for access to Unreal Engine features."
+      },
+      "UDN Access": {
+        "Description": "Primary technical contact grants UDN access to staff."
+      },
+      "Security": {
+        "Description": "Enable Two-Factor Authentication for account security."
+      }
+    },
+    "Installing Unreal Engine": {
+      "Requirements": {
+        "Windows": "Windows 10 64-bit, Quad-core Intel/AMD, 8 GB RAM, DirectX 11/12 GPU",
+        "MacOS": "MacOS 13 Ventura, Apple Silicon M3, 32 GB RAM, Metal 1.2 GPU",
+        "Linux": "Ubuntu 22.04, Quad-core Intel/AMD, 32 GB RAM, GeForce 2080"
+      },
+      "Acquiring Unreal Engine": {
+        "Binary": "Download using Epic Games Launcher.",
+        "Source Code": "Download from GitHub or Perforce for custom needs."
+      }
+    },
+    "Getting Started": {
+      "Launching Unreal Editor": {
+        "Methods": [
+          "Log into Epic Games Launcher and click Launch",
+          "Navigate to installation directory and launch executable"
+        ]
+      },
+      "Creating Projects": {
+        "Description": "Use Project Browser to create new projects or open existing ones."
+      },
+      "Sample Projects": {
+        "Description": "Access example projects from the Learn tab in the Launcher."
+      }
+    },
+    "Learning Resources": {
+      "Documentation": {
+        "Description": "Access quick-start guides, reference manuals, and programming guides."
+      },
+      "Learning Videos": {
+        "Description": "Online Learning Platform offers on-demand tutorials."
+      }
+    },
+    "Support Resources": {
+      "UDN": {
+        "Description": "Premium support for custom licensees through UDN."
+      },
+      "Community": {
+        "Description": "Engage with the public community on Unreal Engine Forums."
+      },
+      "Contact": {
+        "Description": "Reach out to Business Development Manager or email developer-access@unrealengine.com."
+      }
+    }
+  }
+}
+{
+  "Directory Structure": {
+    "Description": "Overview of the directories that make up the engine and game projects.",
+    "Root Directory": [
+      {
+        "Name": "Engine",
+        "Description": "Contains all source code, content, and tools for the engine."
+      },
+      {
+        "Name": "Templates",
+        "Description": "Collection of project templates available when creating new projects."
+      },
+      {
+        "Name": "GenerateProjectFiles.bat",
+        "Description": "Creates Unreal Engine solution and project files for Visual Studio."
+      },
+      {
+        "Name": "Default.uprojectdirs",
+        "Description": "Helper file that allows the engine to discover projects in subdirectories."
+      }
+    ],
+    "Common Directories": [
+      {
+        "Name": "Binaries",
+        "Description": "Contains executable files created during compiling."
+      },
+      {
+        "Name": "Build",
+        "Description": "Files needed for building the engine or game, including platform-specific builds."
+      },
+      {
+        "Name": "Config",
+        "Description": "Configuration files controlling engine behavior."
+      },
+      {
+        "Name": "Content",
+        "Description": "Holds content for the engine or game, including asset packages and maps."
+      },
+      {
+        "Name": "DerivedDataCache",
+        "Description": "Contains derived data files generated on-load for referenced content."
+      },
+      {
+        "Name": "Intermediate",
+        "Description": "Temporary files generated during building the engine or game."
+      },
+      {
+        "Name": "Plugins",
+        "Description": "Contains plugins used in the engine."
+      },
+      {
+        "Name": "Saved",
+        "Description": "Contains autosaves, configuration (.ini) files, and log files."
+      },
+      {
+        "Name": "Source",
+        "Description": "All source files for engine or game."
+      }
+    ],
+    "Source Subdirectories": {
+      "Engine": [
+        {
+          "Name": "Developer",
+          "Description": "Files used by both the editor and engine."
+        },
+        {
+          "Name": "Editor",
+          "Description": "Files used by just the editor."
+        },
+        {
+          "Name": "Programs",
+          "Description": "External tools used by the engine or editor."
+        },
+        {
+          "Name": "Runtime",
+          "Description": "Files used by just the engine."
+        }
+      ],
+      "Game": [
+        {
+          "Name": "Classes",
+          "Description": "Contains all gameplay class header (.h) files."
+        },
+        {
+          "Name": "Private",
+          "Description": "Contains all source (.cpp) files including gameplay class implementation files."
+        },
+        {
+          "Name": "Public",
+          "Description": "Contains the module header file."
+        }
+      ]
+    },
+    "Modules and Plugins": {
+      "Description": "Unreal Engine functionality is organized into modules and plugins.",
+      "Modules": {
+        "Description": "Contain only code, organized with a *.Build.cs file."
+      },
+      "Plugins": {
+        "Description": "Contain source files, binaries, and a .uplugin file. Can also contain assets."
+      }
+    },
+    "Engine-specific Directories": [
+      {
+        "Name": "Documentation",
+        "Description": "Contains engine documentation, both source and published files.",
+        "Subdirectories": [
+          {
+            "Name": "HTML",
+            "Description": "Published HTML documentation files."
+          },
+          {
+            "Name": "Source",
+            "Description": "Source markdown documentation files."
+          }
+        ]
+      },
+      {
+        "Name": "Extras",
+        "Description": "Additional helper and utility files."
+      },
+      {
+        "Name": "Programs",
+        "Description": "Contains configuration files and log files for projects stored in the Unreal Engine root directory."
+      },
+      {
+        "Name": "Shaders",
+        "Description": "Holds the shader source files (.usf) for the engine."
+      }
+    ]
+  }
+}

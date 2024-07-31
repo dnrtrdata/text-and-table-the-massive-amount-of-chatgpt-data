@@ -1,0 +1,754 @@
+{
+    "topic": "Shadowing",
+    "description": "An overview of available shadowing methods and the properties they support in Unreal Engine.",
+    "sections": {
+        "Introduction": {
+            "summary": "Shadows provide depth and grounding for objects in the scene. All types of lights support shadowing, determined by their mobility (Static, Stationary, or Movable)."
+        },
+        "Supported Shadowing Methods": {
+            "summary": "Different shadowing methods available based on light mobility settings.",
+            "methods": {
+                "Shadow Mapping": {
+                    "description": "Renders geometry into shadow depth maps. Works on all platforms supporting dynamic shadowing but doesn't support Nanite geometry. Requires manual setup of shadowing distances."
+                },
+                "Virtual Shadow Maps": {
+                    "description": "Uses virtualized shadow depth maps. Provides high-quality shadows with simplified setup, efficient culling when used with Nanite geometry."
+                },
+                "Ray-traced Shadows": {
+                    "description": "Uses Hardware Ray Tracing with denoising algorithms for real-time high-quality shadows."
+                },
+                "Distance Field Shadows": {
+                    "description": "Uses signed distance fields per Static Mesh for dynamic soft area shadows, supported by Lumen Software Ray Tracing."
+                },
+                "Precomputed Shadows with Lightmass": {
+                    "description": "Generates lightmap textures for Static geometry using scene lighting data. Requires setup with proper lightmap UVs and can be time-consuming based on scene complexity."
+                },
+                "Static and Stationary Light Preview Shadowing": {
+                    "description": "Shows preview shadows for lights with Static or Stationary mobility. Requires lighting build to resolve preview shadows."
+                }
+            }
+        },
+        "Configuring Shadowing Properties of Lights": {
+            "summary": "Details the properties available for different light types to configure shadows.",
+            "properties": {
+                "Source Angle, Radius, Height, and Width": {
+                    "description": "Controls the size and shape of shadows. Larger values soften shadows."
+                },
+                "Attenuation Radius": {
+                    "description": "Sets the bounding area affected by the light. Important for performance optimization."
+                },
+                "Casting Shadows": {
+                    "description": "Determines whether the light casts shadows."
+                },
+                "Volumetric Shadowing": {
+                    "description": "Enables light to contribute to volumetric fog and controls fog intensity and color."
+                },
+                "Global Illumination Indirect Lighting": {
+                    "description": "Provides indirect lighting and soft area shadows for grounding objects within a space."
+                },
+                "Shadow Bias": {
+                    "description": "Adjusts shadow map accuracy to reduce self-shadowing artifacts and improve contact hardening."
+                },
+                "Contact Shadows": {
+                    "description": "Screen space effect to improve shadow accuracy and contact hardening. Limited to visible camera view."
+                },
+                "Lightmass Settings": {
+                    "description": "Affects precomputed lighting for Static or Stationary lights. Controls softness, saturation, and falloff of shadows."
+                }
+            }
+        },
+        "Shadowing with Materials and Textures": {
+            "summary": "Using Light Functions and IES Light Profiles to further define light and shadow properties.",
+            "details": {
+                "Light Functions": {
+                    "description": "Applies material filters to non-lightmapped lights to simulate effects like moving cloud shadows."
+                },
+                "IES Light Profiles": {
+                    "description": "Uses real-world measured data to define light distribution and falloff."
+                }
+            }
+        },
+        "Distance Field Shadowing": {
+            "summary": "Uses mesh distance fields for shadowing with Movable light sources. Produces soft shadows similar to ray tracing and virtual shadow maps."
+        },
+        "Directional Light": {
+            "summary": "Unique settings for large world lighting, including cloud and atmosphere shadowing, and cascaded shadow maps.",
+            "details": {
+                "Cloud and Atmosphere Shadowing": {
+                    "description": "Controls how the light interacts with Sky Atmosphere and Volumetric Clouds."
+                },
+                "Cascaded Shadow Maps": {
+                    "description": "Splits the camera view frustum into cascades for dynamic shadowing over larger distances."
+                }
+            }
+        },
+        "Shadow Performance and Optimization Options": {
+            "summary": "Optimization techniques for improving shadow performance in a scene.",
+            "options": {
+                "Attenuation Radius": {
+                    "description": "Limits the area affected by light to improve performance."
+                },
+                "Disabling Cast Shadows": {
+                    "description": "Improves performance by disabling shadows for less critical lights or assets."
+                },
+                "Max Draw Distance": {
+                    "description": "Limits the distance for dynamic shadow contribution to improve performance."
+                },
+                "Shadow Map Resolution": {
+                    "description": "Adjusts the resolution of the shadow map for a balance between quality and performance."
+                },
+                "Samples Per Pixel for Ray Tracing Shadows": {
+                    "description": "Adjusts the sample count for ray-traced shadows to balance quality and performance."
+                }
+            }
+        },
+        "Resources": {
+            "Developer Forums": "Ask questions and help your peers.",
+            "Learning Library": "Write your own tutorials or read those from others."
+        }
+    }
+}
+{
+    "topic": "Capsule Shadows",
+    "description": "Information on using physics capsules for dynamic soft shadowing of Skeletal Meshes in Unreal Engine.",
+    "sections": {
+        "Introduction": {
+            "summary": "Capsule Shadows enable soft shadow casting for Skeletal Meshes by using a capsule representation of the character's Physics Asset. These shadows help to ground the character in both indirectly and directly lit areas."
+        },
+        "Getting Started": {
+            "Capsule Shadows Overview": {
+                "summary": "An overview of using physics capsules for dynamic soft shadowing of Skeletal Meshes."
+            },
+            "Capsule Shadows Quick Start": {
+                "summary": "A guide to setting up and using Physics Assets for Skeletal Mesh characters for soft shadowing."
+            }
+        },
+        "Resources": {
+            "Developer Forums": "Ask questions and help your peers.",
+            "Learning Library": "Write your own tutorials or read those from others."
+        },
+        "Tags": [
+            "rendering",
+            "lighting",
+            "shadows"
+        ]
+    }
+}
+{
+    "topic": "Capsule Shadows",
+    "description": "Information on using physics capsules for dynamic soft shadowing of Skeletal Meshes in Unreal Engine.",
+    "sections": {
+        "Overview": {
+            "summary": "Capsule Shadows enable soft shadow casting for Skeletal Meshes by using a capsule representation of the character's Physics Asset. These shadows help to ground the character in both indirectly and directly lit areas."
+        },
+        "Character Capsule Representation": {
+            "summary": "A Physics Asset creates an approximate representation of the character to support very soft shadowing. Capsules attached to the character's bones move and cast shadows accurately within the scene.",
+            "images": [
+                {
+                    "description": "Character with Capsule Representation",
+                    "url": "URL_to_image"
+                },
+                {
+                    "description": "Capsule Representation Only",
+                    "url": "URL_to_image"
+                }
+            ]
+        },
+        "Usage": {
+            "steps": [
+                "Open your Skeletal Mesh and in the Asset Details panel, assign your Physics Asset to the Shadow Physics Asset slot.",
+                "Enable Capsule Direct Shadow for soft shadowing from direct lights.",
+                "Enable Capsule Indirect Shadow for soft shadowing from precomputed lighting.",
+                "Adjust Capsule Indirect Shadow Min Visibility to control shadow darkness in indirectly lit areas."
+            ],
+            "settings": {
+                "Capsule Direct Shadow": "Enables soft shadowing from direct (movable) lights.",
+                "Capsule Indirect Shadow": "Enables soft shadowing from precomputed lighting (lightmaps and skylight).",
+                "Capsule Indirect Shadow Min Visibility": "Controls the minimum visibility of the capsule shadow in indirectly lit areas."
+            },
+            "examples": [
+                {
+                    "description": "Capsule Indirect Shadow Enabled vs Disabled",
+                    "images": [
+                        {
+                            "description": "Capsule Indirect Shadow Enabled",
+                            "url": "URL_to_image"
+                        },
+                        {
+                            "description": "Capsule Indirect Shadow Disabled",
+                            "url": "URL_to_image"
+                        }
+                    ]
+                },
+                {
+                    "description": "Indirect Capsule Shadows Enabled vs Disabled",
+                    "images": [
+                        {
+                            "description": "Indirect Capsule Shadows Enabled",
+                            "url": "URL_to_image"
+                        },
+                        {
+                            "description": "Indirect Capsule Shadows Disabled",
+                            "url": "URL_to_image"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Capsule Direct Shadows": {
+            "summary": "Enable Capsule Direct Shadow on light sources to define soft area shadowing based on light source angle or size.",
+            "examples": [
+                {
+                    "description": "Light Source Angle for Directional Light",
+                    "images": [
+                        {
+                            "description": "Light Source Angle: 1.0 (Default)",
+                            "url": "URL_to_image"
+                        },
+                        {
+                            "description": "Light Source Angle: 2.0",
+                            "url": "URL_to_image"
+                        }
+                    ]
+                },
+                {
+                    "description": "Source Radius for Spot and Point Lights",
+                    "images": [
+                        {
+                            "description": "Source Radius: 5.0",
+                            "url": "URL_to_image"
+                        },
+                        {
+                            "description": "Source Radius: 15.0",
+                            "url": "URL_to_image"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Performance": {
+            "summary": "Capsule Shadows are efficient, computing shadowing at half resolution with a depth-aware upsample, using screen tile culling to reduce shadowing work.",
+            "example": {
+                "description": "GPU Cost with 10 Capsules using a Radeon 7870 at 1080p",
+                "data": {
+                    "A single character on screen": "0.29 ms",
+                    "Each additional character on screen": "0.05 ms"
+                }
+            }
+        },
+        "Limitations": {
+            "list": [
+                "Requires DirectX 11 due to tiled deferred implementation using compute shaders.",
+                "Movable Point and Spot Lights are not currently supported.",
+                "Self-shadowing artifacts can exist for arbitrary mesh shapes.",
+                "Can only use Sphyls and Spheres for capsule representation.",
+                "Soft capsule shadows becoming ambient occlusion can cause hard line artifacts."
+            ]
+        },
+        "Resources": {
+            "Developer Forums": "Ask questions and help your peers.",
+            "Learning Library": "Write your own tutorials or read those from others."
+        },
+        "Tags": [
+            "rendering",
+            "lighting",
+            "shadows"
+        ]
+    }
+}
+{
+    "topic": "Capsule Shadows",
+    "description": "A guide to setting up and using Physics Assets for dynamic soft shadowing of Skeletal Meshes in Unreal Engine.",
+    "sections": {
+        "Overview": {
+            "summary": "Unreal Engine supports soft shadowing for characters in lit areas with Capsule Shadows using a capsule representation of a Skeletal Mesh from a Physics Asset. This shadowing method grounds a character to the scene with soft area shadowing, especially in indirectly lit areas, which is not possible when using traditional shadow mapping techniques.",
+            "images": [
+                {
+                    "description": "Character with Capsule Representation",
+                    "url": "character_with_capsule_representation.png"
+                },
+                {
+                    "description": "Capsule Representation Only",
+                    "url": "capsule_representation_only.png"
+                }
+            ]
+        },
+        "Character Capsule Representation": {
+            "summary": "A Physics Asset is used to create an approximate representation of the character to support very soft shadowing. Since the capsules are attached to the bones of the character, this allows for the shadow to move and cast accurately within the scene."
+        },
+        "Usage": {
+            "steps": [
+                {
+                    "title": "Open your Skeletal Mesh",
+                    "description": "In the Asset Details panel, use the Shadow Physics Asset selection to assign your Physics Asset that will be used for Capsule Shadows.",
+                    "images": [
+                        {
+                            "description": "Capsule Shadow Settings",
+                            "url": "capsule_shadow_settings.png"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Capsule Shadow Settings": {
+            "properties": [
+                {
+                    "name": "Capsule Direct Shadow",
+                    "description": "This will enable soft shadowing from direct (movable) lights when the capsule representation is assigned to the Skeletal Mesh's Shadow Physics Asset slot."
+                },
+                {
+                    "name": "Capsule Indirect Shadow",
+                    "description": "This will enable soft shadowing from precomputed lighting (lightmaps and skylight) when the capsule representation is assigned to the Skeletal Mesh's Shadow Physics Asset slot."
+                },
+                {
+                    "name": "Capsule Indirect Shadow Min Visibility",
+                    "description": "This will allow artists to control how dark the capsule shadow, in indirectly lit areas, can be."
+                }
+            ]
+        },
+        "Capsule Indirect Shadows": {
+            "summary": "When you enable Capsule Indirect Shadow, the capsule representation of the character will be used to cast a directional soft shadow based on the volume lighting samples placed and computed by Lightmass during a lighting build.",
+            "images": [
+                {
+                    "description": "Capsule Indirect Shadow Enabled",
+                    "url": "capsule_indirect_shadow_enabled.png"
+                },
+                {
+                    "description": "Capsule Indirect Shadow Disabled",
+                    "url": "capsule_indirect_shadow_disabled.png"
+                },
+                {
+                    "description": "Indirect Capsule Shadows Enabled",
+                    "url": "indirect_capsule_shadows_enabled.png"
+                },
+                {
+                    "description": "Indirect Capsule Shadows Disabled",
+                    "url": "indirect_capsule_shadows_disabled.png"
+                }
+            ],
+            "details": "In an enclosed area where light is coming through an opening, the indirect lighting cache is used to give directionality and softness to the capsule shadow by interpolating between the placed volume lighting samples as the character moves through the space."
+        },
+        "Indirect Minimum Shadow Visibility": {
+            "summary": "Artists are afforded additional control by adjusting the Capsule Indirect Shadow Min Visibility. This enables you to adjust how dark the capsule shadow will be in indirectly lit areas, using precomputed lighting.",
+            "images": [
+                {
+                    "description": "Capsule Shadow Indirect Min Visibility: 0.1 (Default)",
+                    "url": "capsule_shadow_indirect_min_visibility_0.1.png"
+                },
+                {
+                    "description": "Capsule Shadow Indirect Min Visibility: 0.45",
+                    "url": "capsule_shadow_indirect_min_visibility_0.45.png"
+                }
+            ]
+        },
+        "Capsule Direct Shadows": {
+            "summary": "Enabling Capsule Direct Shadow on light sources enables you to define how soft area shadowing is for the shadow caster on a shadow receiver based on the angle of the light or the size of the light source.",
+            "images": [
+                {
+                    "description": "Capsule Direct Shadow Example",
+                    "url": "capsule_direct_shadow_example.png"
+                }
+            ]
+        },
+        "Light Source Angle": {
+            "summary": "For a Directional Light, the Source Angle property enables you specify the Sun's angle in degrees to soften shadows.",
+            "images": [
+                {
+                    "description": "Light Source Angle: 1.0 (Default)",
+                    "url": "light_source_angle_1.0.png"
+                },
+                {
+                    "description": "Light Source Angle: 2.0",
+                    "url": "light_source_angle_2.0.png"
+                }
+            ]
+        },
+        "Source Radius": {
+            "summary": "For Spot and Point Lights, the Source Radius sets the size of the light source emitting light; the larger the source the softer the shadows and smaller, the more hard the shadow contacts are.",
+            "images": [
+                {
+                    "description": "Source Radius: 5.0",
+                    "url": "source_radius_5.0.png"
+                },
+                {
+                    "description": "Source Radius: 15.0",
+                    "url": "source_radius_15.0.png"
+                }
+            ]
+        },
+        "Performance": {
+            "summary": "The GPU performance cost of Capsule Shadows is proportional to the number of capsules used, the number of characters, and the screen size that their shadow affects.",
+            "details": {
+                "GPU Cost with 10 Capsules": [
+                    {
+                        "description": "A single character on screen",
+                        "time_in_ms": "0.29 ms"
+                    },
+                    {
+                        "description": "Each additional character on screen",
+                        "time_in_ms": "0.05 ms"
+                    }
+                ]
+            }
+        },
+        "Limitations": {
+            "summary": "Capsule Shadows have several limitations due to the nature of their implementation.",
+            "details": [
+                "Requires DirectX 11, due to tiled deferred implementation using compute shaders.",
+                "Movable Point and Spot Lights are not currently supported.",
+                "Self-shadowing artifacts can exist for arbitrary mesh shapes.",
+                "Can only use Sphyls and Spheres for capsule representation.",
+                "When capsule shadows get so soft that they become ambient occlusion, there's an artifact in the shadowing that causes a hard line."
+            ]
+        }
+    }
+}
+{
+    "topic": "Contact Shadows",
+    "description": "An overview of using screen space shadowing to harden shadow contact points and add visual depth.",
+    "sections": {
+        "Overview": {
+            "summary": "Contact Shadows provide a more accurate approximation of shadowing by adding contoured shadows that enhance visual depth and fidelity in a scene. This is achieved through a per-pixel screen space algorithm executed on a per-light basis.",
+            "images": [
+                {
+                    "description": "Contact Shadows Enabled",
+                    "url": "contact_shadows_enabled.png"
+                },
+                {
+                    "description": "Contact Shadows Disabled",
+                    "url": "contact_shadows_disabled.png"
+                }
+            ]
+        },
+        "Adding Detail to your Characters": {
+            "summary": "Enabling Contact Shadows for a Point Light can render an additional Level of Detail (LOD) for characters. This enhances details and provides a more realistic shadowing effect.",
+            "images": [
+                {
+                    "description": "Contact Shadow Off",
+                    "url": "contact_shadow_off.png"
+                },
+                {
+                    "description": "Light's Contact Shadow Length = 0.1",
+                    "url": "contact_shadow_length_0.1.png"
+                }
+            ]
+        },
+        "Scenes with Contact Shadows": {
+            "summary": "Contact Shadows can be used to eliminate the need for computing parallax occlusion mapping shadows within a material's pixel shader that only supports one light. This improves the visual quality of materials with depth.",
+            "images": [
+                {
+                    "description": "Contact Shadows with Parallax Occlusion Mapping",
+                    "url": "contact_shadows_parallax_occlusion.png"
+                },
+                {
+                    "description": "Contact Shadow Length = 0.1 on both lights",
+                    "url": "contact_shadow_length_0.1_both_lights.png"
+                }
+            ]
+        },
+        "Enabling Contact Shadows": {
+            "steps": [
+                {
+                    "title": "Drag a Point Light into your scene",
+                    "description": "Start by adding a Point Light to your scene from the Place Actors panel.",
+                    "images": [
+                        {
+                            "description": "Drag Point Light",
+                            "url": "drag_point_light.png"
+                        }
+                    ]
+                },
+                {
+                    "title": "Expand the Light section in the Details panel",
+                    "description": "In the Details panel of the Point Light Component, click on the expansion arrow to reveal additional settings.",
+                    "images": [
+                        {
+                            "description": "Expand Light Section",
+                            "url": "expand_light_section.png"
+                        }
+                    ]
+                },
+                {
+                    "title": "Set the Contact Shadow Length",
+                    "description": "Set the Contact Shadow Length to a value greater than 0 to enable Contact Shadows. A value of 1 means the ray traverses the entire screen, while a value of 0.5 means the ray traverses only half of the screen.",
+                    "images": [
+                        {
+                            "description": "Set Contact Shadow Length",
+                            "url": "set_contact_shadow_length.png"
+                        }
+                    ]
+                }
+            ],
+            "notes": [
+                "The number of samples taken in the scene depth buffer remains constant. Increasing the Contact Shadow length can result in more noise (artifacts).",
+                "Typically, setting the Contact Shadow length to a maximum value of 1 is recommended."
+            ]
+        }
+    },
+    "tags": [
+        "rendering",
+        "lighting",
+        "shadows"
+    ],
+    "resources": [
+        {
+            "name": "Developer Forums",
+            "url": "https://forums.unrealengine.com"
+        },
+        {
+            "name": "Learning Library",
+            "url": "https://www.unrealengine.com/en-US/onlinelearning-courses"
+        }
+    ]
+}
+{
+    "topic": "Virtual Shadow Maps",
+    "description": "Learn about the high-resolution shadow techniques designed with film-quality assets and large dynamically lit open worlds in mind.",
+    "sections": {
+        "Overview": {
+            "summary": "Virtual Shadow Maps (VSMs) deliver high-resolution shadowing for film-quality assets and large, dynamically lit open worlds using Unreal Engine 5 features like Nanite Virtualized Geometry, Lumen Global Illumination, and World Partition.",
+            "images": [
+                {
+                    "description": "Example of high-resolution shadowing with Virtual Shadow Maps",
+                    "url": "vsm_example.png"
+                }
+            ]
+        },
+        "Goals of Virtual Shadow Maps": {
+            "summary": "Virtual Shadow Maps aim to significantly increase shadow resolution, provide plausible soft shadows with controllable performance costs, and offer a simple, unified solution replacing various Stationary Light shadowing techniques.",
+            "list": [
+                "Increase shadow resolution to match detailed Nanite geometry.",
+                "Provide plausible soft shadows with controllable performance costs.",
+                "Simple solution with limited adjustments needed.",
+                "Replace multiple Stationary Light shadowing techniques with a unified path."
+            ]
+        },
+        "Enabling Virtual Shadow Maps": {
+            "summary": "VSMs can be enabled in the Project Settings under Engine > Rendering in the Shadows section or by using the console variable `r.Shadow.Virtual.Enable`.",
+            "steps": [
+                {
+                    "title": "Open Project Settings",
+                    "description": "Navigate to Engine > Rendering > Shadows."
+                },
+                {
+                    "title": "Set Shadow Map Method",
+                    "description": "Choose Virtual Shadow Maps from the dropdown menu."
+                },
+                {
+                    "title": "Enable using console variable",
+                    "description": "Use `r.Shadow.Virtual.Enable` in the console."
+                }
+            ],
+            "images": [
+                {
+                    "description": "Project Settings menu",
+                    "url": "project_settings.png"
+                }
+            ]
+        },
+        "Soft Shadows with Shadow Map Ray Tracing": {
+            "summary": "Shadow Map Ray Tracing (SMRT) produces plausible soft shadows and contact hardening by sampling along the ray path, improving on the uniform blurring of previous methods.",
+            "images": [
+                {
+                    "description": "SMRT example with soft shadows and contact hardening",
+                    "url": "smrt_example.png"
+                }
+            ]
+        },
+        "Controlling Penumbra Shadow Quality": {
+            "summary": "Penumbra shadow softness and quality can be controlled using console variables, with default settings generally suitable for most scenes.",
+            "variables": [
+                "r.Shadow.Virtual.SMRT.RayCountLocal",
+                "r.Shadow.Virtual.SMRT.RayCountDirectional",
+                "r.Shadow.Virtual.SMRT.SamplesPerRayLocal",
+                "r.Shadow.Virtual.SMRT.SamplesPerRayDirectional"
+            ]
+        },
+        "Limitations of Shadow Map Ray Tracing": {
+            "summary": "Despite high quality, SMRT has inherent limitations, including penumbra size limits, inconsistent penumbra, and potential artifacts from missing pages.",
+            "list": [
+                "Penumbra size limits to avoid sample divergence.",
+                "Inconsistent penumbra due to single depth layer storage.",
+                "Artifacts from missing pages, especially at screen edges."
+            ]
+        },
+        "Clipmaps for Directional Light": {
+            "summary": "Directional Lights use clipmap structures to handle large areas, with each level covering twice the radius of the previous one, maintaining high resolution near the camera.",
+            "images": [
+                {
+                    "description": "Clipmap Visualization",
+                    "url": "clipmap_visualization.png"
+                }
+            ]
+        },
+        "Local Lights": {
+            "summary": "Local lights use a single 16k VSM with a mip chain for shadow detail, providing increased resolution compared to traditional shadow maps.",
+            "images": [
+                {
+                    "description": "Local Light VSM Visualization",
+                    "url": "local_light_vsm.png"
+                }
+            ]
+        },
+        "Moving Lights": {
+            "summary": "Movable lights use a different LOD bias than stationary lights, with a gradual transition to original bias when the light stops moving, controllable via console variables.",
+            "variables": [
+                "r.Shadow.Virtual.ResolutionLodBiasLocalMoving",
+                "r.Shadow.Virtual.ResolutionLodBiasDirectionalMoving"
+            ]
+        },
+        "Translucent surfaces": {
+            "summary": "VSMs support high quality shadow filtering for translucent surfaces with Substrate and legacy paths, controllable via the console variable `r.Shadow.Virtual.TranslucentQuality`.",
+            "settings": [
+                "Any value greater than 1: High quality shadows for lit translucent surfaces.",
+                "0: Normal quality shadows for lit translucent surfaces."
+            ]
+        },
+        "Coarse Pages": {
+            "summary": "Coarse Pages ensure low-resolution shadow data for systems like Volumetric Fog, with options to disable non-Nanite objects in coarse pages for performance improvement.",
+            "variables": [
+                "r.Shadow.Virtual.NonNanite.IncludeInCoarsePages",
+                "r.Shadow.Virtual.MarkCoarsePagesLocal",
+                "r.Shadow.Virtual.MarkCoarsePagesDirectional"
+            ]
+        },
+        "Visualization": {
+            "summary": "Virtual Shadow Maps have several visualization modes to assist in profiling and debugging, accessible from the Level Viewport or via console commands.",
+            "modes": [
+                "Shadow Mask",
+                "Clipmap/Mip Level",
+                "Virtual Page",
+                "Cached Page"
+            ],
+            "console_commands": [
+                "r.Shadow.Virtual.Visualize [mode]",
+                "ShowFlag.VisualizeVirtualShadowMap",
+                "r.Shadow.Virtual.Visualize.Layout",
+                "r.Shadow.Virtual.Visualize.DumpLightNames",
+                "r.Shadow.Virtual.Visualize.LightName [light name]"
+            ]
+        },
+        "Caching": {
+            "summary": "Caching reuses shadow map pages from previous frames to maintain high performance. Pages are redrawn due to changes in geometry or light movement.",
+            "tips": [
+                "Avoid large disocclusions and camera cuts.",
+                "Quantize time-of-day changes for Directional Lights."
+            ],
+            "images": [
+                {
+                    "description": "Cached Page Visualization",
+                    "url": "cached_page_visualization.png"
+                }
+            ]
+        },
+        "Managing Cache Invalidations": {
+            "summary": "Decreasing cache invalidations involves visualizing and reducing the sources causing them. Use visualization tools to inspect invalidating objects and bounds.",
+            "steps": [
+                "Visualize cache invalidations using Cached Page visualization.",
+                "Inspect bounds of invalidating objects using `r.Shadow.Virtual.Cache.DrawInvalidatingBounds 1`.",
+                "Switch frequently invalidating static objects to Movable."
+            ],
+            "images": [
+                {
+                    "description": "Invalidating Bounds Visualization",
+                    "url": "invalidating_bounds_visualization.png"
+                }
+            ]
+        },
+        "Non-Nanite Deformation and Foliage": {
+            "summary": "Careful use of deforming geometry and foliage with Capsule Shadows or Contact Shadows can help mitigate performance costs associated with non-Nanite objects.",
+            "tips": [
+                "Enable Nanite on as much geometry as possible.",
+                "Use Mesh LODs to switch off dynamic shadow casting in the distance.",
+                "Consider disabling non-Nanite objects in coarse pages."
+            ]
+        },
+        "Separate Static Caching": {
+            "summary": "Separate Static Caching optimizes scenes with static and dynamic geometry by caching static geometry separately, compositing it with dynamic geometry to improve performance.",
+            "steps": [
+                "Enable with `r.Shadow.Virtual.Cache.StaticSeparate 1`.",
+                "Ensure accurate Mobility settings for Actors."
+            ],
+            "images": [
+                {
+                    "description": "Static Caching Visualization",
+                    "url": "static_caching_visualization.png"
+                }
+            ]
+        },
+        "GPU Profiling and Optimization": {
+            "summary": "Use Unreal Engine's GPU Profiler and platform-specific tools to check performance. Focus on Shadow Depths and Shadow Projection categories for Virtual Shadow Maps.",
+            "sections": {
+                "Shadow Depths": {
+                    "summary": "Cost of rendering geometry into shadow maps. Optimize by reducing page counts and improving caching.",
+                    "tips": [
+                        "Enable Nanite on as much geometry as possible.",
+                        "Reduce number of shadow casting lights and shadow resolution."
+                    ]
+                },
+                "Shadow Projection": {
+                    "summary": "Cost of sampling shadow maps using Shadow Map Ray Tracing. Optimize by reducing lights per pixel and adjusting Source Radius/Angle.",
+                    "tips": [
+                        "Reduce Source Radius of local lights.",
+                        "Adjust samples per ray for Shadow Map Ray Tracing."
+                    ]
+                }
+            }
+        },
+        "One Pass Projection": {
+            "summary": "Experimental feature enabling a single-pass shadow projection solution for multiple small local lights, improving performance in complex scenes.",
+            "steps": [
+                "Enable with `r.UseClusteredDeferredShading 1` and `r.Shadow.Virtual.OnePassProjection 1`.",
+                "Adjust `r.Shadow.Virtual.OnePassProjection.MaxLightsPerPixel` to control maximum shadowed lights per pixel."
+            ],
+            "images": [
+                {
+                    "description": "One Pass Projection Visualization",
+                    "url": "one_pass_projection.png"
+                }
+            ]
+        },
+        "Supported Platforms": {
+            "summary": "VSMs are supported on PlayStation 5, Xbox Series S|X, and PCs with specific graphics card and driver requirements. Full support details are available in the Hardware and Software Specifications documentation.",
+            "platforms": [
+                "PlayStation 5",
+                "Xbox Series S|X",
+                "PCs with NVIDIA Maxwell-generation or newer, AMD GCN-generation or newer",
+                "Apple Silicon M2 or newer",
+                "Linux with NVIDIA GeForce 2080 or newer"
+            ]
+        },
+        "Issues and Limitations": {
+            "summary": "VSMs have known issues and limitations, including performance with multiple lights, artifacts with low poly geometry, and incomplete support for virtual reality and split-screen.",
+            "issues": [
+                "Performance with multiple small local lights.",
+                "Artifacts with low poly geometry and smooth normals.",
+                "Incomplete support for virtual reality and split-screen.",
+                "Potential overflow of the physical page pool causing corruption.",
+                "Incompatibility with some Scene Capture components."
+            ],
+            "images": [
+                {
+                    "description": "Example of corrupted virtual shadow maps",
+                    "url": "corrupted_vsm.png"
+                }
+            ]
+        }
+    },
+    "tags": [
+        "rendering",
+        "lighting",
+        "shadows",
+        "virtual shadow maps"
+    ],
+    "resources": [
+        {
+            "name": "Developer Forums",
+            "url": "https://forums.unrealengine.com"
+        },
+        {
+            "name": "Learning Library",
+            "url": "https://www.unrealengine.com/en-US/onlinelearning-courses"
+        }
+    ]
+}

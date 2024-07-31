@@ -1,0 +1,93 @@
+{
+    "topic": "One File Per Actor (OFPA)",
+    "description": "An introduction to the One File Per Actor system and how it can be used in your projects.",
+    "sections": {
+        "Overview": {
+            "summary": "One File Per Actor (OFPA) is a feature that saves data for instances of Actors in external files, reducing overlap between users and improving collaborative development. This removes the need to save the main Level file when making changes to its Actors.",
+            "images": [
+                {
+                    "description": "Example of OFPA in action",
+                    "url": "ofpa_example.png"
+                }
+            ]
+        },
+        "Enabling One File Per Actor": {
+            "summary": "OFPA is enabled by default with World Partition. To enable it in a non-partitioned world, follow these steps:",
+            "steps": [
+                {
+                    "title": "Open World Settings",
+                    "description": "Go to Window > World Settings in the main menu."
+                },
+                {
+                    "title": "Enable External Actors",
+                    "description": "In the World section, check the box next to Use External Actors. Click Yes when prompted to convert all Actors to external packaging."
+                },
+                {
+                    "title": "Save Your Level",
+                    "description": "After conversion, save your Level."
+                }
+            ],
+            "images": [
+                {
+                    "description": "World Settings panel",
+                    "url": "world_settings.png"
+                }
+            ]
+        },
+        "Converting Sublevels": {
+            "summary": "Only the current Level is converted to OFPA when activated. Sublevels must be converted individually. Use the ConvertLevelsToExternalActorsCommandlet commandlet for automatic conversion of a Level and its sublevels.",
+            "steps": [
+                {
+                    "title": "Open Command Prompt",
+                    "description": "Navigate to the location of UnrealEditor.exe."
+                },
+                {
+                    "title": "Run the Commandlet",
+                    "description": "Type the command: UnrealEditor.exe -run=\"ConvertLevelsToExternalActorsCommandlet\" -nosourcecontrol -convertsublevels \"/Game/Maps/TestMaps/ExternalActors/MasterMap\". Press Enter to execute."
+                }
+            ],
+            "images": [
+                {
+                    "description": "Commandlet breakdown",
+                    "url": "commandlet_breakdown.png"
+                }
+            ]
+        },
+        "Using OFPA With Source Control": {
+            "summary": "OFPA uses encoded filenames for external Actor files in source control. Use the View Changelist window to view and validate the contents of a changelist before submitting.",
+            "steps": [
+                {
+                    "title": "View Changelist Window",
+                    "description": "Displays existing changelists and their files, showing Actor names, Level paths, and Asset types instead of encoded filenames."
+                },
+                {
+                    "title": "Validate Changelist",
+                    "description": "Validate contents before submission to avoid dangling references."
+                }
+            ],
+            "images": [
+                {
+                    "description": "View Changelist window",
+                    "url": "view_changelist.png"
+                }
+            ],
+            "note": "Changelist support is only available when using Perforce as the source control provider."
+        }
+    },
+    "tags": [
+        "landscape",
+        "world partition",
+        "one file per actor",
+        "source control"
+    ],
+    "resources": [
+        {
+            "name": "Developer Forums",
+            "url": "https://forums.unrealengine.com"
+        },
+        {
+            "name": "Learning Library",
+            "url": "https://www.unrealengine.com/en-US/onlinelearning-courses"
+        }
+    ]
+}

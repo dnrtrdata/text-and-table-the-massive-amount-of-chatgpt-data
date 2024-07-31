@@ -1,0 +1,689 @@
+{
+    "WorldPartition": {
+        "Overview": {
+            "Purpose": "Automatic data management and distance-based level streaming system for large world management.",
+            "Benefits": [
+                "Removes need to divide large levels into sublevels.",
+                "Stores world in a single persistent level separated into grid cells.",
+                "Automatic streaming system based on distance from a streaming source."
+            ],
+            "Features": [
+                "One File Per Actor",
+                "World Partition - Data Layers",
+                "Level Instancing",
+                "World Partition - Hierarchical Levels of Detail"
+            ]
+        },
+        "EnablingWorldPartition": {
+            "Methods": [
+                {
+                    "Method": "Create Project from Games Template",
+                    "Details": "World Partition is enabled by default in many project templates."
+                },
+                {
+                    "Method": "Use Open World Default Map",
+                    "Details": "Select Open World map type when creating a new level."
+                },
+                {
+                    "Method": "Convert Existing Levels",
+                    "Details": "Use Tools > Convert Level menu option or World Partition Convert Commandlet."
+                }
+            ],
+            "Templates": [
+                {
+                    "Template": "Blank",
+                    "EnableStreaming": "Disabled by default"
+                },
+                {
+                    "Template": "First Person",
+                    "EnableStreaming": "Disabled by default"
+                },
+                {
+                    "Template": "Third Person",
+                    "EnableStreaming": "Disabled by default"
+                },
+                {
+                    "Template": "Top Down",
+                    "EnableStreaming": "Disabled by default"
+                },
+                {
+                    "Template": "Vehicle Advanced",
+                    "EnableStreaming": "Disabled by default"
+                }
+            ]
+        },
+        "ConvertingExistingLevels": {
+            "Command": "UnrealEditor.exe QAGame -run=WorldPartitionConvertCommandlet Playground.umap -AllowCommandletRendering",
+            "Steps": [
+                "Open Command Prompt and navigate to UnrealEditor.exe.",
+                "Run the command with appropriate arguments."
+            ],
+            "OptionalArguments": [
+                "-SCCProvider=None",
+                "-Verbose",
+                "-ConversionSuffix",
+                "-DeleteSourceLevels",
+                "-ReportOnly",
+                "-GenerateIni",
+                "-SkipStableGUIDValidation",
+                "-OnlyMergeSubLevels",
+                "-FoliageTypePath=[Path]"
+            ],
+            "ExampleIniFile": {
+                "Path": "FirstPersonExampleMap.ini",
+                "Contents": {
+                    "WorldPartitionConvertCommandlet": {
+                        "EditorHashClass": "WorldPartitionEditorSpatialHash",
+                        "RuntimeHashClass": "WorldPartitionRuntimeSpatialHash",
+                        "LevelsGridPlacement": [
+                            {
+                                "Path": "/Game/Maps/Highrise_Audio",
+                                "Bounds": true
+                            },
+                            {
+                                "Path": "/Game/Maps/Highrise_Collisions_Temp",
+                                "Bounds": true
+                            },
+                            {
+                                "Path": "/Game/Maps/Highrise_Gameplay",
+                                "Bounds": true
+                            },
+                            {
+                                "Path": "/Game/Maps/Highrise_Lights",
+                                "Bounds": true
+                            },
+                            {
+                                "Path": "/Game/Maps/Highrise_Vista",
+                                "AlwaysLoaded": true
+                            }
+                        ],
+                        "HLODLayerAssetsPath": "",
+                        "DefaultHLODLayerName": ""
+                    },
+                    "WorldPartitionEditorSpatialHash": {
+                        "CellSize": 51200,
+                        "WorldImage": "None",
+                        "WorldImageTopLeftW": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "WorldImageBottomRightW": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    },
+                    "WorldPartitionRuntimeSpatialHash": {
+                        "Grids": [
+                            {
+                                "GridName": "MainGrid",
+                                "CellSize": 3200,
+                                "LoadingRange": 25600.0,
+                                "DebugColor": {
+                                    "R": 0.5,
+                                    "G": 0.5,
+                                    "B": 0.5,
+                                    "A": 1.0
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "UsingWorldPartition": {
+            "Description": "Stores world in a single persistent Level file, subdivides into grid cells.",
+            "GridCells": "Loaded/unloaded at runtime based on streaming sources."
+        },
+        "ActorsInWorldPartition": {
+            "SpatiallyLoadedSetting": {
+                "RuntimeGrid": "Determines partition grid placement.",
+                "IsSpatiallyLoaded": [
+                    "Enabled: Loaded when in range of streaming source.",
+                    "Disabled: Loaded unless assigned to disabled Data Layer."
+                ]
+            },
+            "OneFilePerActor": "No need to check out Level file from source control for actor changes."
+        },
+        "StreamingSources": {
+            "Types": [
+                {
+                    "Type": "Player Controller",
+                    "Description": "Default streaming source."
+                },
+                {
+                    "Type": "World Partition Streaming Source Component",
+                    "Description": "Added to locations in the world for controlled streaming."
+                }
+            ],
+            "Options": [
+                "Default Visualizer Loading Range",
+                "Target Grid",
+                "Debug Color",
+                "Target HLOD Layer",
+                "Shapes",
+                "Priority",
+                "Streaming Source Enabled",
+                "Target State"
+            ]
+        },
+        "RuntimeGridSettings": {
+            "Options": [
+                "Grid Name",
+                "Cell Size",
+                "Loading Range",
+                "Block on Slow Streaming",
+                "Priority",
+                "Debug Color",
+                "Preview Grids"
+            ]
+        },
+        "LoadingAndUnloadingRegionsInEditor": {
+            "Description": "Initially unloads world, loads only essential actors.",
+            "WorldPartitionWindow": [
+                {
+                    "Step": "Open World Partition Editor",
+                    "Details": "Window > World Partition > World Partition Editor"
+                },
+                {
+                    "Step": "Select Region",
+                    "Details": "Click and drag region, right-click to load/unload."
+                }
+            ],
+            "LocationVolumes": {
+                "Description": "Editor-only volumes to manage regions.",
+                "Steps": [
+                    "Place Location Volume in level.",
+                    "Save level.",
+                    "Manage region in World Partition window."
+                ]
+            }
+        },
+        "MinimapGeneration": {
+            "Description": "Generate minimap for World Partition window.",
+            "Steps": [
+                "Use Build Minimap option in Build menu.",
+                "Enable Virtual Textures support if minimap does not appear."
+            ]
+        },
+        "ShortcutsAndOptions": {
+            "Hotkeys": [
+                {
+                    "Key": "Shift+Drag",
+                    "Description": "Snaps selection to runtime grid size."
+                },
+                {
+                    "Key": "Double Click",
+                    "Description": "Moves camera to location."
+                },
+                {
+                    "Key": "Shift+Double Click",
+                    "Description": "Starts PIE session at clicked location."
+                },
+                {
+                    "Key": "Ctrl+Double Click",
+                    "Description": "Loads region around clicked location."
+                },
+                {
+                    "Key": "MMB+Drag",
+                    "Description": "Shows distance from clicked point to end point."
+                }
+            ]
+        },
+        "HLODGeneration": {
+            "Description": "Generate HLODs using Build HLODs option or commandlet.",
+            "Command": "UnrealEditor.exe [ProjectPath] [MapPath] -run=WorldPartitionBuilderCommandlet -AllowCommandletRendering -builder=WorldPartitionHLODsBuilder"
+        },
+        "CookingWorldPartitionWorld": {
+            "Command": "UnrealEditor.exe QAGame -run=cook -targetplatform=WindowsNoEditor -Unversioned -map=Playground",
+            "Steps": [
+                "Open Command Prompt and navigate to UnrealEditor.exe.",
+                "Run the command with appropriate arguments."
+            ]
+        },
+        "BlueprintSupport": {
+            "Description": "Both Blueprint Classes and Level Blueprints are supported.",
+            "Preference": "Blueprint Classes are preferred."
+        },
+        "DebuggingAndRuntimeOverrides": {
+            "ConsoleCommands": [
+                {
+                    "Command": "wp.Runtime.ToggleDrawRuntimeHash2D",
+                    "Description": "Toggles 2D debug display."
+                },
+                {
+                    "Command": "wp.Runtime.ToggleDrawRuntimeHash3D",
+                    "Description": "Toggles 3D debug display."
+                },
+                {
+                    "Command": "wp.Runtime.ShowRuntimeSpatialHashGridLevel",
+                    "Description": "Chooses grid level to display."
+                },
+                {
+                    "Command": "wp.Runtime.ShowRuntimeSpatialHashGridLevelCount",
+                    "Description": "Sets number of grid levels to display."
+                },
+                {
+                    "Command": "wp.Runtime.ShowRuntimeSpatialHashGridIndex",
+                    "Description": "Shows specific grid index."
+                },
+                {
+                    "Command": "wp.Runtime.RuntimeSpatialHashCellToSourceAngleContributionToCellImportance",
+                    "Description": "Modulates angle contribution to cell importance."
+                },
+                {
+                    "Command": "wp.Runtime.OverrideRuntimeSpatialHashLoadingRange",
+                    "Description": "Sets runtime loading range."
+                },
+                {
+                    "Command": "wp.Runtime.MaxLoadingLevelStreamingCells",
+                    "Description": "Limits concurrent loading cells."
+                },
+                {
+                    "Command": "wp.Runtime.HLOD 0",
+                    "Description": "Shows world without HLODs."
+                }
+            ]
+        },
+        "WorldPartitionBuilderCommandlets": {
+            "Description": "Automate batch processes and data generation/modification.",
+            "Types": [
+                {
+                    "Type": "HLODs Builder",
+                    "Command": "UnrealEditor.exe [ProjectPath] [MapPath] -run=WorldPartitionBuilderCommandlet -AllowCommandletRendering -builder=WorldPartitionHLODsBuilder"
+                },
+                {
+                    "Type": "MiniMap Builder",
+                    "Command": "UnrealEditor.exe [ProjectPath] [MapPath] -run=WorldPartitionBuilderCommandlet -AllowCommandletRendering -builder=WorldPartitionMiniMapBuilder"
+                },
+                {
+                    "Type": "Rename Duplicate Builder",
+                    "Command": "UnrealEditor.exe [ProjectPath] [MapPath] -run=WorldPartitionBuilderCommandlet -SCCProvider=None -builder=WorldPartitionRenameDuplicateBuilder -NewPackage=[NewPackagePath]"
+                },
+                {
+                    "Type": "Resave Actors Builder",
+                    "Command": "UnrealEditor.exe [ProjectPath] [MapPath] -run=WorldPartitionBuilderCommandlet -SCCProvider=None -builder=WorldPartitionResaveActorsBuilder"
+                },
+                {
+                    "Type": "Foliage Builder",
+                    "Command": "UnrealEditor.exe QAGame Playground.umap -run=WorldPartitionBuilderCommandlet -Builder=WorldPartitionFoliageBuilder -NewGridSize=[Value]"
+                },
+                {
+                    "Type": "Navigation Data Builder",
+                    "Command": "UnrealEditor.exe [ProjectPath] [MapPath] -run=WorldPartitionBuilderCommandlet -AllowCommandletRendering -builder=WorldPartitionNavigationDataBuilder -SCCProvider=None"
+                },
+                {
+                    "Type": "Smart Object Collection Builder",
+                    "Command": "UnrealEditor.exe [ProjectPath] [MapPath] -run=WorldPartitionBuilderCommandlet -builder=WorldPartitionSmartObjectCollectionBuilder"
+                },
+                {
+                    "Type": "PCG Builder",
+                    "CommandLine": "UnrealEditor.exe [ProjectPath] [MapPath] -run=WorldPartitionBuilderCommandlet -AllowCommandletRendering -Builder=PCGWorldPartitionBuilder -IncludeGraphNames=GraphA;GraphB",
+                    "ConsoleCommand": "pcg.BuildComponents -IncludeGraphNames=GraphA;GraphB"
+                }
+            ]
+        }
+    }
+}
+{
+    "LevelInstancing": {
+        "Overview": {
+            "Purpose": "Improve and streamline level editing experience using Level Instances.",
+            "Benefits": [
+                "In-context editing to see immediate effects.",
+                "Changes propagate across all instances.",
+                "Create copies of static mesh arrangements as templates.",
+                "Production-ready process used in City Sample and Valley of the Ancient demos."
+            ]
+        },
+        "TypesOfLevelInstances": {
+            "LevelInstances": {
+                "Description": "Collections of Actors combined to create a sublevel, repeatable across the project.",
+                "UseCase": "Points of interest and standalone gameplay setups."
+            },
+            "PackedLevelBlueprints": {
+                "Description": "Static Mesh assets combined into a single Blueprint Actor optimized for rendering.",
+                "UseCase": "Static buildings and dense visual setups."
+            }
+        },
+        "CreatingLevelInstances": {
+            "Steps": [
+                {
+                    "Step": "Select Actors",
+                    "Action": "Right-click one of them, navigate to Level > Create Level Instance."
+                },
+                {
+                    "Step": "Configure Settings",
+                    "Details": {
+                        "ExternalActors": "Enable to use the One File per Actor system.",
+                        "PivotType": "Select Center Min Z, Center, or Pivot Actor.",
+                        "PivotActor": "Specify Actor if Pivot Actor is selected."
+                    }
+                },
+                {
+                    "Step": "Save Level Instance",
+                    "Action": "Replace selected Actors with a new Level Instance Actor."
+                }
+            ],
+            "Result": "Actors become children of the Level Instance Actor and are not selectable."
+        },
+        "CreatingPackedLevelBlueprints": {
+            "Steps": [
+                {
+                    "Step": "Select Actors",
+                    "Action": "Right-click one of them, navigate to Level > Create Packed Level Actor."
+                },
+                {
+                    "Step": "Configure Settings",
+                    "Details": {
+                        "ExternalActors": "Enable to use the One File per Actor system.",
+                        "PivotType": "Select Center Min Z, Center, or Pivot Actor.",
+                        "PivotActor": "Specify Actor if Pivot Actor is selected."
+                    }
+                },
+                {
+                    "Step": "Save Packed Level Blueprint",
+                    "Action": "Creates a Packed Level Actor in the level."
+                }
+            ]
+        },
+        "EditingLevelInstances": {
+            "EditingLevelInstance": {
+                "Steps": [
+                    {
+                        "Step": "Select Level Instance",
+                        "Action": "Right-click, navigate to Level > Edit."
+                    },
+                    {
+                        "Step": "Make Changes",
+                        "Action": "Other Actors are grayed out for easier editing."
+                    },
+                    {
+                        "Step": "Commit Changes",
+                        "Action": "Select Level Instance Actor in Outliner and click Commit Changes in Details panel."
+                    }
+                ],
+                "Result": "Changes propagate to all copies of the Level Instance."
+            },
+            "EditingPackedLevelBlueprint": {
+                "Steps": [
+                    {
+                        "Step": "Select Packed Level Blueprint",
+                        "Action": "Click Edit in Outliner or double-click in Content Browser."
+                    },
+                    {
+                        "Step": "Make Changes",
+                        "Action": "Open Blueprint Editor window."
+                    }
+                ],
+                "Result": "Changes propagate to all copies of the Packed Level Blueprint."
+            }
+        },
+        "BreakingLevelInstances": {
+            "Description": "Removes Level Instance Actor and replaces it with original assets. Cannot be undone.",
+            "Effect": "Does not delete Level Instance or Packed Level Blueprint from Content Browser."
+        },
+        "LevelInstancesAtRuntime": {
+            "DataLayers": {
+                "Description": "Support for World Partition: Data Layers.",
+                "Example": "Assign Level Instance to a Data Layer, actors within can inherit or have additional Data Layers."
+            },
+            "StreamingModes": {
+                "EmbeddedMode": {
+                    "Description": "Level instances using OFPA are discarded, actors added to World Partition grid at runtime.",
+                    "Limitations": "Some non-OFPA actors (e.g., AWorldSettings) are lost at runtime."
+                },
+                "LevelStreamingMode": {
+                    "Description": "Level instances not using OFPA use standard Level streaming at runtime.",
+                    "Performance": "Adds runtime cost, not recommended for high density of Levels."
+                }
+            }
+        }
+    }
+}
+{
+    "WorldPartitionDataLayers": {
+        "Overview": {
+            "Purpose": "Organize Actors into separate layers for efficient management and streaming.",
+            "Benefits": [
+                "Dynamic loading and unloading of Actors.",
+                "Separation of gameplay elements and environment assets.",
+                "Enhanced collaboration for artists and designers.",
+                "Replacement for the older Layers system."
+            ]
+        },
+        "AddingActorsToDataLayers": {
+            "DataLayerOutliner": {
+                "Description": "View and manage Data Layers in the world.",
+                "Options": [
+                    {
+                        "ToggleVisibility": "1",
+                        "Description": "Toggle visibility in Level Editor."
+                    },
+                    {
+                        "IsDynamicallyLoadedFlag": "2",
+                        "Description": "Status of dynamic loading flag."
+                    },
+                    {
+                        "EditorDynamicallyLoadedFlag": "3",
+                        "Description": "Toggle Editor dynamic loading."
+                    },
+                    {
+                        "ToggleActorListVisibility": "4",
+                        "Description": "Toggle list of Actors in layer."
+                    },
+                    {
+                        "EditorVisibleAtStartup": "5",
+                        "Description": "Visibility at Editor startup."
+                    },
+                    {
+                        "GenerateHLODs": "6",
+                        "Description": "Generate HLODs for Actors in layer."
+                    },
+                    {
+                        "RuntimeLoadState": "7",
+                        "Description": "Load, unload, or activate at runtime."
+                    },
+                    {
+                        "AffectsRuntimeLoading": "8",
+                        "Description": "Affects Actors' runtime loading."
+                    }
+                ],
+                "ContextMenuOptions": [
+                    "Create Empty Data Layer",
+                    "Add Selected Actors to New Data Layer",
+                    "Add Selected Actors to Selected Data Layer",
+                    "Remove Selected Actors from Selected Data Layer",
+                    "Delete Selected Data Layer",
+                    "Rename Selected Data Layer",
+                    "Select Actors in Data Layers",
+                    "Append Actors in Data Layer to Selection",
+                    "Deselect Actors in Data Layer",
+                    "Make All Data Layers Visible"
+                ]
+            },
+            "ActorDetailsPanel": {
+                "Description": "Add Actors to Data Layers via Details panel.",
+                "Steps": [
+                    "Scroll to the Data Layers section at the bottom.",
+                    "Click + to add an entry to the Data Layers list.",
+                    "Select a Data Layer from the dropdown menu.",
+                    "Drag and drop Data Layers from the Data Layer Outliner."
+                ]
+            }
+        },
+        "ManagingFiles": {
+            "Description": "Minimize file overlap, maintain data integrity.",
+            "Details": [
+                "Assigning Data Layers affects only the Actor's file.",
+                "Renaming a Data Layer only changes its label.",
+                "Deleting a Data Layer only affects the WorldDataLayer file."
+            ]
+        },
+        "UsingDataLayersWithBlueprints": {
+            "Description": "Control Data Layer states via Blueprints.",
+            "Example": {
+                "TriggerBox": "Controls the state of a Data Layer.",
+                "Steps": [
+                    "Player enters or exits the trigger area.",
+                    "Set Data Layer State function node changes the state.",
+                    "Data Layer variable is exposed using Actor Data Layer type."
+                ],
+                "Note": "Avoid setting Data Layer state using label to prevent issues if the Data Layer is renamed."
+            }
+        },
+        "ConvertingFromPreviousLayerSystem": {
+            "Description": "Convert layers to Data Layers with dynamic loading disabled when moving to World Partition."
+        }
+    }
+}
+{
+    "WorldPartitionHierarchicalLevelOfDetail": {
+        "Overview": {
+            "Purpose": "Manage distant, non-interactive objects by displaying HLOD proxies instead of fully detailed meshes.",
+            "Benefits": [
+                "Visualize unloaded World Partition grid cells.",
+                "Reduce draw calls per frame.",
+                "Increase performance in large open worlds."
+            ],
+            "UnsupportedComponents": "Landscapes and Water components."
+        },
+        "CreatingHLODLayers": {
+            "Steps": [
+                {
+                    "Step": "Create HLOD Layer",
+                    "Action": "Open Content Drawer, click + Add, navigate to Miscellaneous, and select HLOD Layer."
+                },
+                {
+                    "Step": "Open HLOD Layer",
+                    "Action": "Double-click the new HLOD Layer to open it in the Asset Editor."
+                },
+                {
+                    "Step": "Configure HLOD Layer",
+                    "Settings": [
+                        {
+                            "Name": "Layer Type",
+                            "Options": [
+                                "Instancing",
+                                "Merged Mesh",
+                                "Simplified Mesh"
+                            ]
+                        },
+                        {
+                            "Name": "Mesh Merge Settings",
+                            "Description": "Available for Merged Mesh type."
+                        },
+                        {
+                            "Name": "Proxy Settings",
+                            "Description": "Available for Simplified Mesh type."
+                        }
+                    ]
+                }
+            ]
+        },
+        "LayerTypes": {
+            "Instancing": {
+                "Description": "Replaces Static Mesh assets with Instanced Static Mesh (ISM) components using the lowest LOD settings. Ideal for trees and foliage."
+            },
+            "MergedMesh": {
+                "Description": "Merges Static Mesh assets into a single proxy mesh."
+            },
+            "SimplifiedMesh": {
+                "Description": "Merges Static Mesh assets into a single proxy mesh with simplification."
+            }
+        },
+        "MeshMergeSettings": {
+            "AvailableFor": "Merged Mesh type",
+            "Settings": [
+                "Generate Lightmap UV",
+                "Target Lightmap Resolution",
+                "Computed Lightmap Resolution",
+                "Pivot Point at Zero",
+                "Merge Physics Data",
+                "Merge Materials",
+                "Material Settings",
+                "Gutter Size",
+                "Create Merged Materials",
+                "Bake Vertex Data to Mesh",
+                "Output UVs",
+                "LODSelection Type",
+                "Specific LOD",
+                "Use Vertex Data for Baking Material",
+                "Use Texture Binning",
+                "Reuse Mesh Lightmap UVs",
+                "Merge Equivalent Materials",
+                "Use Landscape Culling",
+                "Include Imposters",
+                "Allow Distance Fields",
+                "Generate Nanite Enabled Mesh"
+            ]
+        },
+        "ProxySettings": {
+            "AvailableFor": "Simplified Mesh type",
+            "Settings": [
+                "Screen Size",
+                "Calculate Correct LODModel",
+                "Override Spatial Sampling Distance",
+                "Material Settings",
+                "Merge Distance",
+                "Unresolved Geometry Color",
+                "Transfer Distance Override",
+                "Hard Edge Angle",
+                "Normal Calculation Method",
+                "Lightmap Resolution",
+                "Compute Lightmap Resolution",
+                "Enable Volume Culling",
+                "Allow Distance Fields",
+                "Reuse Mesh Lightmap UVs",
+                "Group Identical Meshes for Baking",
+                "Create Collision",
+                "Allow Vertex Colors",
+                "Generate Lightmap UVs",
+                "Generate Nanite Enabled Mesh"
+            ]
+        },
+        "UsingHLODLayers": {
+            "Description": "Add Actors to HLOD Layers and generate HLODs using a commandlet.",
+            "AddingActors": [
+                "HLOD property in Actor's Details panel.",
+                "Default HLOD Layer property of a Data Layer.",
+                "Default HLOD Layer property of the World Settings."
+            ],
+            "GeneratingHLODs": {
+                "Command": "WorldPartitionHLODsBuilder commandlet",
+                "Steps": [
+                    {
+                        "Step": "Open Command Prompt",
+                        "Action": "Navigate to location of UE4Editor.exe."
+                    },
+                    {
+                        "Step": "Run Command",
+                        "Action": "Use command 'UE4Editor.exe YourProject YourMap -run=WorldPartitionBuilderCommandlet -AllowCommandletRendering -Builder=WorldPartitionHLODsBuilder'"
+                    }
+                ],
+                "Options": [
+                    "-SetupHLODs",
+                    "-BuildHLODs",
+                    "-DeleteHLODs"
+                ]
+            }
+        },
+        "VisualizingHLODs": {
+            "InEditor": {
+                "Steps": [
+                    {
+                        "Step": "Change View Mode",
+                        "Action": "Set to Level of Detail Coloration > Hierarchical LOD Coloration."
+                    },
+                    {
+                        "Step": "Zoom Out",
+                        "Result": "Actors assigned to HLOD Layer appear in green, HLOD proxies in blue."
+                    }
+                ]
+            },
+            "AtRuntime": {
+                "Command": "wp.Runtime.ToggleDrawRuntimeHash2D",
+                "Description": "Displays HLOD cells that are loaded in green."
+            }
+        }
+    }
+}

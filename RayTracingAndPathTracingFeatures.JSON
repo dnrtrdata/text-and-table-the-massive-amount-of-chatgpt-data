@@ -1,0 +1,669 @@
+{
+  "topic": "Hardware Ray Tracing and Path Tracing Features",
+  "description": "A collection of topics around the supported features of ray tracing and path tracing.",
+  "sections": {
+    "Introduction": {
+      "summary": "Ray Tracing techniques used in film, TV, and visualization for photo-realistic images require powerful computers and time. Unreal Engine uses its ray tracing code base for real-time and offline rendering paths, offering optimized real-time rendering and uncompromised offline rendering with the Path Tracer.",
+      "applications": ["film", "television", "architectural visualization"]
+    },
+    "Ray Tracing in Unreal Engine": {
+      "modes": [
+        {
+          "type": "Hybrid Ray Tracer",
+          "description": "Couples ray tracing with raster techniques for real-time rendering."
+        },
+        {
+          "type": "Path Tracer",
+          "description": "Generates high-quality, compromise-free rendered results."
+        }
+      ]
+    },
+    "System Requirements": {
+      "Operating System": "Windows 10 RS5 (Build 1809) or later",
+      "GPU": "NVIDIA RTX and some GTX series cards with DXR support",
+      "Unreal Engine Version": "5.0 and later",
+      "Rendering Path": "Deferred Path"
+    },
+    "Overviews": {
+      "Hardware Ray Tracing": "Features that use hardware to render real-time ray traced results.",
+      "Path Tracer": "Features of the Path Tracer rendering mode."
+    },
+    "Guides": {
+      "Ray Tracing Performance Guide": "Topics for improving performance of ray tracing features.",
+      "Hardware Ray Tracing Tips and Tricks": "Aid for development of projects using hardware ray tracing.",
+      "Rendering High Quality Frames with Movie Render Queue": "Guide for configuring Movie Render Queue for high-quality cinematics."
+    },
+    "Reference": {
+      "Hardware Ray Tracing and Path Tracer Features Properties": "Listing of all properties for Ray Tracing and Path Tracer features."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Hardware Ray Tracing",
+  "description": "An overview of features using hardware for real-time ray traced results.",
+  "sections": {
+    "Introduction": {
+      "summary": "Ray tracing used in film, TV, and visualization for high-quality results with soft shadowing, ambient occlusion, and reflections. Requires powerful computers and time. Unreal Engine uses supported hardware for real-time rendering with subtle lighting effects.",
+      "applications": ["film", "television", "visualization"]
+    },
+    "Enabling Hardware Ray Tracing": {
+      "steps": [
+        "In Project Settings, enable Support Hardware Ray Tracing under Engine > Rendering.",
+        "Restart the editor for changes to take effect.",
+        "Enable specific ray tracing features like Ray Traced Shadows and Ray Traced Skylight as needed."
+      ]
+    },
+    "Features": {
+      "Ray Traced Shadows": "Simulates soft area lighting effects based on light source size or angle.",
+      "Ray Traced Ambient Occlusion": "Accurately shadows areas blocking ambient lighting, grounding objects better.",
+      "Ray Traced Reflections": {
+        "status": "deprecated",
+        "description": "Simulates accurate environment reflections with multiple bounces."
+      },
+      "Ray Traced Translucency": {
+        "status": "deprecated",
+        "description": "Represents glass and liquid materials with physically correct properties."
+      },
+      "Ray Traced Global Illumination": {
+        "status": "deprecated",
+        "description": "Adds real-time interactive bounce lighting to indirectly lit areas."
+      },
+      "Final Gather Method": {
+        "status": "experimental",
+        "description": "Uses a two-pass algorithm for real-time global illumination with performance trade-offs."
+      }
+    },
+    "Using Ray Tracing Features": {
+      "Post Process Volume": {
+        "controls": ["Ambient Occlusion", "Global Illumination", "Reflections", "Translucency"]
+      },
+      "Lights": {
+        "features": ["Soft area shadows based on light source size and distance."]
+      },
+      "Sky Lights": {
+        "features": ["Soft ambient shadowing when Cast Ray Traced Shadow is enabled."]
+      }
+    },
+    "Performance and Debugging": {
+      "Stat GPU": "Check GPU performance of ray tracing features.",
+      "Stat D3D12RayTracing": "Check ray tracing resource usage.",
+      "Ray Tracing Debug View Modes": "Look at specific areas and features of ray tracing.",
+      "Force Disable All Ray Tracing Effects": "Enable/disable all ray tracing features quickly."
+    },
+    "Supported Features": {
+      "Rendering Path": {
+        "Deferred": "Y",
+        "Forward": "N"
+      },
+      "Types of Lights": {
+        "Directional Light": "Y",
+        "Sky Light": "Y",
+        "Point Light": "Y",
+        "Spot Light": "Y",
+        "Rect Light": "Y"
+      },
+      "Lighting Features": {
+        "Emissive Surfaces": "Partially",
+        "Light Transmission": "N",
+        "Area Shadowing": "Y",
+        "IES Profiles": "Y",
+        "Light Functions": "Y",
+        "Volumetric Fog": "Y",
+        "Image Based Lighting": "Y",
+        "Lumen Hardware Ray Tracing": "Y"
+      },
+      "Materials": {
+        "Blend Mode": {
+          "Opaque": "Y",
+          "Masked": "Y",
+          "Translucent": "Y",
+          "Anisotropic": "Y"
+        },
+        "Shading Model": {
+          "Default Lit": "Y",
+          "Unlit": "Partially",
+          "Masked": "Partially",
+          "SubSurface": "Y",
+          "Clear Coat": "Y",
+          "TwoSided Foliage": "Y",
+          "Hair": "Partially",
+          "Cloth": "Partially",
+          "Material Functions": "Y",
+          "Two-Sided": "Y",
+          "World Position Offset": "Y"
+        }
+      },
+      "Geometry Types": {
+        "Skeletal Mesh": "Y",
+        "Static Mesh": "Y",
+        "Nanite Virtualized Geometry": "Y",
+        "Geometry Cache": "Y",
+        "Landscape": "Y",
+        "HISM": "Y",
+        "ISM": "Y",
+        "Splines": "Y",
+        "Procedural Mesh": "Y",
+        "Levels of Detail": "Y"
+      },
+      "Visual Effects": {
+        "Niagara": "Partially"
+      },
+      "Platform Support": {
+        "Multi-View": "Y"
+      }
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Path Tracer",
+  "description": "An overview of the features of the Path Tracer rendering mode.",
+  "sections": {
+    "Introduction": {
+      "summary": "The Path Tracer is a progressive, hardware-accelerated rendering mode providing physically correct and compromise-free global illumination, reflection, and refraction of materials. Ideal for photorealistic renders with minimal setup.",
+      "applications": ["film", "TV", "architecture"]
+    },
+    "Benefits": {
+      "summary": "High-quality photorealistic renders, minimal setup, reduced feature gaps with real-time features, full integration with Sequencer and Movie Render Queue."
+    },
+    "System Requirements": {
+      "Operating System": "Windows 10 1809 or later",
+      "GPU": "NVIDIA RTX and DXR driver-enabled GTX series",
+      "Project Settings": [
+        "DirectX 12 as Default RHI",
+        "Enable Path Tracing and Support Hardware Ray Tracing",
+        "Enable Support Compute Skin Cache"
+      ]
+    },
+    "Enabling Path Tracer": {
+      "steps": [
+        "Enable required project settings.",
+        "Restart the engine for changes to take effect."
+      ]
+    },
+    "Using Path Tracer": {
+      "summary": "Enable Path Tracer view in Level Viewport, progressive sampling and denoising for clean renders, interactive use with scene changes resetting samples."
+    },
+    "Movie Render Queue": {
+      "summary": "Use Movie Render Queue for high-quality path-traced renders, settings for higher resolution and anti-aliasing, and denoising options."
+    },
+    "Post Process Volume Settings": {
+      "properties": [
+        "Max. Bounces",
+        "Samples Per Pixel",
+        "Max Path Exposure",
+        "Reference Depth of Field",
+        "Reference Atmosphere",
+        "Denoiser",
+        "Lighting Components"
+      ]
+    },
+    "Limitations": {
+      "summary": "Issues with bright materials, dynamic scene elements, and using Path Tracing Material Quality Switch Nodes."
+    },
+    "Supported Features": {
+      "Geometry Types": [
+        "Nanite",
+        "Skinned Meshes",
+        "World Position Offset-driven Animation",
+        "Hair Strands",
+        "Landscape",
+        "Spline Meshes",
+        "Instanced Static Mesh",
+        "Hierarchical Instanced Static Mesh",
+        "Water Geometry"
+      ],
+      "Light Types": [
+        "Directional Light",
+        "Sky Light",
+        "Point Light",
+        "Spot Light",
+        "Rect Light"
+      ],
+      "Material Shading Models": [
+        "Unlit",
+        "Default Lit",
+        "Subsurface",
+        "Preintegrated Skin",
+        "Alpha Holdout",
+        "Clear Coat",
+        "Subsurface Profile",
+        "Two Sided Foliage",
+        "Hair",
+        "Cloth",
+        "Eye",
+        "SingleLayerWater",
+        "Thin Translucent"
+      ],
+      "Additional Features": [
+        "Emissive Materials",
+        "Sky Atmosphere",
+        "Volumetric Clouds",
+        "Exponential Height Fog",
+        "Volumetric Fog",
+        "IES Profiles",
+        "Light Functions",
+        "Depth of Field",
+        "Motion Blur"
+      ]
+    },
+    "Useful Console Variables": {
+      "variables": [
+        "r.PathTracing.VisibleLights",
+        "r.PathTracing.ProgressDisplay",
+        "r.PathTracing.Denoiser",
+        "r.PathTracing.HeterogeneousVolumes"
+      ]
+    },
+    "Additional Information": {
+      "details": [
+        "Reducing Firefly Artifacts",
+        "Denoising Options",
+        "Skylighting with the Path Tracer",
+        "Fog and Atmosphere Volumetrics",
+        "Glass Rendering with the Path Tracer",
+        "Approximate Caustics",
+        "Ray Type Switch Material Node",
+        "Post Process Material Buffers",
+        "DBuffer Decal Material Expressions"
+      ]
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Hardware Ray Tracing and Path Tracer Features Properties",
+  "description": "A listing of all available properties settings for Ray Tracing and Path Tracer features.",
+  "sections": {
+    "Introduction": {
+      "summary": "Reference for properties and settings of Real-Time Ray Tracing and Path Tracer features."
+    },
+    "Post Process Volume": {
+      "properties": {
+        "Global Illumination": {
+          "Method": "Choose global illumination method: None, Lumen, Screen Space, or Ray Traced.",
+          "Ray Tracing Global Illumination": {
+            "Type": [
+              "Disabled",
+              "Brute Force",
+              "Final Gather"
+            ],
+            "Max Bounces": "Sets the maximum number of light bounces for RTGI.",
+            "Samples Per Pixel": "Sets the number of samples per pixel for RTGI. Default is 1."
+          }
+        },
+        "Reflections": {
+          "Method": "Choose dynamic scene reflections method: None, Lumen, Screen Space, or Ray Traced.",
+          "Ray Tracing Reflections": {
+            "Max Roughness": "Sets max roughness value for Ray Traced Reflections. Lower values fallback to other methods more quickly.",
+            "Max Bounces": "Sets max number of bounces for Ray Traced Reflections. Default is 1.",
+            "Samples Per Pixel": "Sets number of samples per pixel for Ray Traced Reflections. Default is 1.",
+            "Shadows": [
+              "Hard Shadows",
+              "Area Shadows",
+              "Disable"
+            ],
+            "Include Translucent Objects": "Include translucent materials in Ray Tracing Reflections."
+          }
+        },
+        "Ray Tracing Ambient Occlusion": {
+          "Enabled": "Enables Ray Tracing Ambient Occlusion (RTAO).",
+          "Samples Per Pixel": "Sets number of samples per pixel for RTAO. Default is 1.",
+          "Intensity": "Defines ambient occlusion effect strength.",
+          "Radius": "Controls ambient occlusion distance in Unreal Units."
+        },
+        "Translucency": {
+          "Type": "Choose Ray Tracing or Raster method for reflections within this volume.",
+          "Ray Tracing Translucency": {
+            "Max Roughness": "Sets max roughness value for Ray Traced Translucency. Lower values fallback to other methods more quickly.",
+            "Max Refraction Rays": "Sets max number of refraction rays for Ray Traced Translucency. Default is 3.",
+            "Samples Per Pixel": "Sets number of samples per pixel for Ray Traced Translucency. Default is 1.",
+            "Shadows": [
+              "Hard Shadows",
+              "Area Shadows",
+              "Disable"
+            ],
+            "Refraction": "Enable or disable refraction for Ray Traced Translucency."
+          }
+        },
+        "Path Tracing": {
+          "Max. Bounces": "Sets max number of light bounces before termination.",
+          "Samples Per Pixel": "Sets number of samples per pixel for convergence. Higher samples reduce noise.",
+          "Filter Width": "Sets filter width for anti-aliasing. Lower widths yield sharper results.",
+          "Emissive Materials": "Enable bounce lighting for emissive materials to prevent double-counting illumination.",
+          "Max Path Exposure": "Sets max exposure for path tracing to reduce firefly artifacts.",
+          "Denoiser": "Use denoiser plugin on last sample to remove noise."
+        }
+      }
+    },
+    "Types of Lights": {
+      "Directional Light": {
+        "Source Angle": "Sets light source angle for shadow softness.",
+        "Cast Ray Traced Shadow": "Use ray-traced shadows or traditional shadow maps.",
+        "Affect Ray Tracing Reflections": "Affects objects in reflections when Ray Traced Reflections is enabled.",
+        "Affect Ray Tracing Global Illumination": "Contributes to ray traced global illumination when enabled.",
+        "Shadow Source Angle Factor": "Scaling factor for shadow source angle relative to Light Source Angle.",
+        "Samples Per Pixel": "Sets number of samples per pixel for Ray Traced Shadows from a Directional Light. Default is 1."
+      },
+      "Point and Spot Lights": {
+        "Source Radius": "Sets light source radius for shadow softness.",
+        "Cast Ray Traced Shadow": "Use ray-traced shadows or traditional shadow maps.",
+        "Affect Ray Tracing Reflections": "Affects objects in reflections when Ray Traced Reflections is enabled.",
+        "Affect Ray Tracing Global Illumination": "Contributes to ray traced global illumination when enabled.",
+        "Samples Per Pixel": "Sets number of samples per pixel for Ray Traced Shadows from Point and Spot Lights. Default is 1."
+      },
+      "Rect Light": {
+        "Source Width": "Sets light source width.",
+        "Source Height": "Sets light source height.",
+        "Barn Door Angle": "Sets angle of barn doors for light direction and spread.",
+        "Barn Door Length": "Sets length of barn doors for light edge sharpness.",
+        "Cast Ray Traced Shadow": "Use ray-traced shadows or traditional shadow maps.",
+        "Affect Ray Tracing Reflections": "Affects objects in reflections when Ray Traced Reflections is enabled.",
+        "Affect Ray Tracing Global Illumination": "Contributes to ray traced global illumination when enabled.",
+        "Samples Per Pixel": "Sets number of samples per pixel for Ray Traced Shadows from a Rect Light. Default is 1."
+      },
+      "Sky Light": {
+        "Cast Ray Traced Shadow": "Use ray-traced shadows or traditional shadow maps.",
+        "Affect Ray Tracing Reflections": "Affects objects in reflections when Ray Traced Reflections is enabled.",
+        "Affect Ray Tracing Global Illumination": "Contributes to ray traced global illumination when enabled.",
+        "Samples Per Pixel": "Sets number of samples per pixel for Ray Traced Shadows from a Sky Light. Default is 1."
+      }
+    },
+    "Actors": {
+      "Rendering: Advanced": {
+        "Visible in Ray Tracing": "Enable component visibility in ray tracing effects."
+      },
+      "Ray Tracing: Advanced": {
+        "Evaluate World Position Offset": "Evaluate Actor for ray tracing effects using World Position Offset.",
+        "Ray Tracing Far Field": "Enable component as far field primitive for ray tracing.",
+        "Ray Tracing Group Id": "Defines runtime groups for components. -1 means no group.",
+        "Ray Tracing Group Culling Priority": "Sets culling priority. Higher priority for smaller objects."
+      }
+    },
+    "Materials": {
+      "Material": {
+        "Cast Ray Traced Shadows": "Allow Material to cast ray traced shadows when enabled."
+      }
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Ray Tracing Performance Guide",
+  "description": "A selection of topics for improving performance of ray tracing features in your projects.",
+  "sections": {
+    "Introduction": {
+      "summary": "Optimize and improve performance of ray tracing features to maintain a real-time performance budget, typically targeting 30 or 60 FPS."
+    },
+    "Overview of Ray Tracing Costs": {
+      "categories": [
+        "Building Bottom Level Acceleration Structures (BLAS) for dynamically deforming meshes.",
+        "Building Top Level Acceleration Structure (TLAS) and Shader Binding Table (SBT).",
+        "Ray traversal for each ray tracing feature."
+      ],
+      "geometry_types": {
+        "Static Meshes": "r.RayTracing.Geometry.StaticMeshes",
+        "Skeletal Meshes": "r.RayTracing.Geometry.SkeletalMeshes",
+        "Instanced Static Meshes": "r.RayTracing.Geometry.InstancedStaticMeshes",
+        "Landscape Terrain": "r.RayTracing.Geometry.Landscape",
+        "Geometry Cache": "r.RayTracing.Geometry.GeometryCache",
+        "Geometry Collection": "r.RayTracing.Geometry.GeometryCollection",
+        "Niagara Meshes": "r.RayTracing.Geometry.NiagaraMeshes",
+        "Niagara Ribbons": "r.RayTracing.Geometry.NiagaraRibbons",
+        "Niagara Sprites": "r.RayTracing.Geometry.NiagaraSprites",
+        "Procedural Meshes": "r.RayTracing.Geometry.ProceduralMeshes"
+      }
+    },
+    "BLAS Updates": {
+      "dynamic_meshes": [
+        "Skinned meshes through GPUSkinCache",
+        "Landscape",
+        "Geometry Collections",
+        "Hair",
+        "Procedural Mesh",
+        "Niagara Particle Systems"
+      ],
+      "optimization": {
+        "high_polygon_skeletal_meshes": "Use Ray Tracing Min LOD in Skeletal Mesh Editor.",
+        "BLAS_memory_dumps": "Use D3D12.DumpRayTracingGeometries to get memory allocations list."
+      }
+    },
+    "WPO on Static Mesh Components": {
+      "summary": "WPO requires dynamic BLAS rebuilds and unique memory for each instance. Enabled with Evaluate World Position Offset setting.",
+      "commands": [
+        "r.RayTracing.Geometry.StaticMeshes.WPO 1",
+        "r.RayTracing.Geometry.StaticMeshes.WPO.CullingRadius 5000.0f"
+      ]
+    },
+    "TLAS Build": {
+      "summary": "TLAS rebuilds every frame with costs on Rendering Thread, RHI Thread, and GPU. Number of instances is a key factor.",
+      "stat_commands": [
+        "Stat SceneRendering",
+        "Stat D3D12RayTracing",
+        "Stat GPU"
+      ],
+      "optimization_tip": "Keep ray tracing instances below 100,000 after culling for 30 FPS target on next-gen consoles."
+    },
+    "Culling": {
+      "options": [
+        "Cull objects behind camera by distance and solid angle.",
+        "Cull objects in front and behind camera by distance and solid angle.",
+        "Cull objects in front and behind camera by distance or solid angle."
+      ],
+      "commands": [
+        "r.RayTracing.Culling.Radius",
+        "r.RayTracing.Culling.Angle",
+        "r.RayTracing.Culling.UserGroupIds"
+      ]
+    },
+    "Ray Traversal Cost": {
+      "summary": "Ray queries traverse acceleration structures to find hits. Minimize mesh overlap for better performance.",
+      "optimization_tip": "Disable Visible in Ray Tracing for skyboxes and grass to reduce traversal costs."
+    },
+    "Debug Visualization Modes": {
+      "commands": [
+        "show raytracingdebug 1",
+        "r.RayTracing.DebugVisualizationMode [mode]"
+      ],
+      "modes": [
+        "Performance",
+        "Traversal Node",
+        "Traversal Triangle",
+        "Traversal All"
+      ]
+    },
+    "Picker Debug Visualization Mode": {
+      "commands": [
+        "r.RayTracing.Debug.PickerDomain 0",
+        "r.RayTracing.Debug.PickerDomain 1"
+      ]
+    },
+    "Dynamic Instances Debug Visualization Mode": {
+      "summary": "Shows dynamic instances within the ray-tracing scene. Static instances are Red, dynamic instances are Green."
+    },
+    "Hit Shading Costs": {
+      "optimization_tip": "Use Ray Tracing Quality Switch node in materials to lower ray tracing shading costs."
+    },
+    "Far Field": {
+      "summary": "Extends Lumen Global Illumination and Reflections up to one kilometer using HLOD1 meshes.",
+      "commands": [
+        "r.LumenScene.FarFields 1",
+        "r.RayTracing.DebugVisualizationMode FarField",
+        "Showflag.RayTracingDebug 1"
+      ]
+    },
+    "Additional Debug Visualization Modes": {
+      "summary": "Provides information about the ray tracing scene. Access via View Modes dropdown or console commands."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Hardware Ray Tracing Tips and Tricks",
+  "description": "A collection of topics to aid with the development of projects using hardware ray tracing features.",
+  "sections": {
+    "Introduction": {
+      "summary": "Suggestions for using Hardware Ray Tracing features effectively."
+    },
+    "Materials": {
+      "Ray Tracing Quality Switch Replace Node": {
+        "description": "Use this node to lower the cost of ray tracing features by replacing complex material logic with simpler alternatives."
+      },
+      "Ray Traced Shadows Per Material": {
+        "description": "Use the Cast Ray Traced Shadows checkbox to control if a material casts ray traced shadows."
+      },
+      "Testing Material Costs": {
+        "description": "Use r.RayTracing.EnableMaterials to test the performance impact of complex materials."
+      },
+      "Translucency Index of Refraction (IOR)": {
+        "description": "Control IOR for translucent materials. Enable Refraction in the Post Process Volume and set Max Refraction Rays."
+      },
+      "Material Setup": {
+        "steps": [
+          "Enable Two Sided in your Material.",
+          "Set the Lighting Mode to Surface Translucency Volume or Surface Forward Shading.",
+          "Use the Refraction input to control the index of refraction."
+        ]
+      },
+      "Post Process Volume Rendering Features Setup": {
+        "steps": [
+          "Under the Translucency category, set the Type to Ray Tracing.",
+          "Enable Refraction and set Max Refraction Rays."
+        ]
+      }
+    },
+    "Refraction Control": {
+      "description": "Control the amount of refraction using the Refraction input in a Material. Adjust Max Refraction Rays in Post Process Volume."
+    },
+    "Single and Two Sided Material Refraction": {
+      "description": "Two-sided materials provide accurate results for ray tracing transparency."
+    },
+    "Light Transmission for Subsurface Profile Materials": {
+      "description": "Enable light transmission for materials using a Subsurface Profile by enabling the Transmission property on the light source."
+    },
+    "Reflections": {
+      "Ray Tracing Reflection Capture Fallback": {
+        "description": "Use reflection capture fallback for cheaper reflections. Enable with r.RayTracing.Reflections.ReflectionCaptures."
+      },
+      "Including Translucent Objects in Reflections": {
+        "description": "Enable Include Translucent Objects in Post Process Volume settings for Ray Traced Reflections."
+      }
+    },
+    "Sky Lights": {
+      "description": "Disable sky dome mesh for Sky Light contribution to save performance."
+    },
+    "Geometry Considerations with Ray Tracing": {
+      "description": "Small holes and detailed geometry can impact performance. Indoor environments are slower to render."
+    },
+    "General Optimizations": {
+      "Reflections and Translucency Maximum Roughness": {
+        "description": "Use Max Roughness to set a threshold for raytraced reflections. Set in Post Process Volume or with r.RayTracing.Reflections.MaxRoughness."
+      },
+      "Maximum Ray Distance": {
+        "description": "Set maximum ray distance for Global Illumination, Reflections, and Translucency using MaxRayDistance console variables."
+      },
+      "Ray Traced Global Illumination": {
+        "description": "Adjust Screen Percentage and Samples Per Pixel. Set light contribution to global illumination on each Light Actor."
+      }
+    },
+    "Ray Tracing Solid Angle and Distance-based Culling": {
+      "description": "Optimize performance by culling objects outside of the camera view using r.RayTracing.Culling and related variables."
+    },
+    "Evaluating Denoiser Quality": {
+      "steps": [
+        "Disable Temporal Anti-Aliasing and Depth of Field.",
+        "Compare Denoised single sample per pixel with Undenoised multiple samples per pixel."
+      ]
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Rendering High Quality Frames with Movie Render Queue",
+  "description": "A how-to guide for configuring the Unreal Engine Movie Render Queue feature to get high-quality cinematics—particularly when using ray tracing.",
+  "sections": {
+    "Introduction": {
+      "summary": "This guide provides a step-by-step process to render high-quality image sequences using Unreal Engine's Movie Render Queue feature."
+    },
+    "Objective": {
+      "summary": "Learn to configure Sequencer and Movie Render Queue for high-quality rendering, especially with ray tracing."
+    },
+    "Step 1: Project Setup": {
+      "System Configuration": {
+        "description": "Increase TDR delay to avoid GPU timeouts. Navigate to HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers and set TdrDelay to 60.",
+        "notes": "Requires admin rights."
+      },
+      "Download the Sample Project": {
+        "description": "Download and set up the ArchViz Interior project from the Epic Games Launcher."
+      },
+      "Enable the Movie Render Pipeline Plugin": {
+        "description": "Enable the Movie Render Pipeline plugin in the project settings under Edit > Plugins."
+      }
+    },
+    "Step 2: Load a Project Sequence into the Sequencer Editor": {
+      "description": "Load the archviz_cine_MASTER sequence into the Sequencer Editor from Content > Cinematic folder."
+    },
+    "Step 3: Add a Sequence to the Movie Render Queue": {
+      "description": "Add the sequence to the Movie Render Queue by selecting it from the list or dragging it into the queue window."
+    },
+    "Step 4: How to Select Configuration Options": {
+      "description": "Add and configure settings such as output format, anti-aliasing, and console variables in the Setting/Presets window."
+    },
+    "Output Settings Explained": {
+      "description": "Explanation of various output formats and their properties, including alpha channel support and compression type."
+    },
+    "Rendering Settings Explained": {
+      "description": "Explanation of rendering options, including Deferred Rendering and UI Renderer (Non-Composited)."
+    },
+    "Additional Settings Explained": {
+      "description": "Explanation of additional configurable items such as Anti-aliasing, Burn In, Camera, Console Variables, Game Overrides, and High Resolution."
+    },
+    "Step 5: Select Your Options": {
+      "description": "Add the following options to the Setting/Presets window: .png Sequence [8bit], Deferred Rendering, Anti-Aliasing, Console Variables."
+    },
+    "Step 6: Configure the Anti-Aliasing Settings": {
+      "description": "Set spatial and temporal sample counts, override anti-aliasing mode, and set warm-up counts for high-quality rendering."
+    },
+    "Step 7: Configure the Console Variables": {
+      "description": "Enter console variables to enhance render quality, including settings for motion blur, depth of field, bloom, and ray tracing."
+    },
+    "Step 8: Configure the Output": {
+      "description": "Set output directory, file name format, resolution, and frame range for rendering the sequence."
+    },
+    "Step 9: Save Your Configuration Settings": {
+      "description": "Save the configuration settings as a preset for future use."
+    },
+    "Step 10: Final Output and Results": {
+      "description": "Render the sequence locally and review the output for quality improvements."
+    },
+    "Troubleshoot the Render": {
+      "description": "Steps to troubleshoot render failures, including checking GPU drivers and disabling GPU timeout."
+    },
+    "On Your Own!": {
+      "description": "Suggestions for further exploration, including remote rendering, temporal sampling, and additional ray-tracing console commands."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}

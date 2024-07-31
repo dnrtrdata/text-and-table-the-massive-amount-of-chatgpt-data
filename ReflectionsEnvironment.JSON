@@ -1,0 +1,262 @@
+{
+  "topic": "Reflections Environment",
+  "description": "Systems for how reflections are captured and displayed on reflective surfaces in Unreal Engine.",
+  "sections": {
+    "Introduction": {
+      "summary": "Overview of the importance of reflections in creating realistic environments and how different reflection systems work."
+    },
+    "Types of Reflections": {
+      "description": "Different reflection systems available in Unreal Engine, their types, supported platforms, and use cases."
+    },
+    "Reflection Systems": {
+      "Lumen Reflections": {
+        "description": "Dynamic reflections using software or hardware-based ray tracing for high-end desktop PCs and next-gen consoles.",
+        "more_info": "Lumen Global Illumination and Reflections"
+      },
+      "Ray Tracing Reflections": {
+        "description": "Hardware ray tracing for accurate environment representation requiring supported NVIDIA GPU and Windows OS with DirectX 12.",
+        "note": "Deprecated and may be removed in a future release.",
+        "more_info": "Hardware Ray Tracing"
+      },
+      "Screen Space Reflections": {
+        "description": "Dynamic post process effect limited to on-screen reflections, suitable for desktop and consoles.",
+        "more_info": "Screen Space Reflections"
+      },
+      "Reflection Captures": {
+        "description": "Static, low-cost captures using Box or Sphere shapes, suitable for all platforms with no runtime performance impact.",
+        "more_info": "Reflection Capture Actors"
+      },
+      "Planar Reflections": {
+        "description": "Dynamic reflections using Planar Reflection Actor, accurate but costly, supported on all platforms.",
+        "more_info": "Planar Reflection"
+      }
+    },
+    "High Quality Reflections": {
+      "description": "Tips for achieving higher quality reflections by enabling High Precision Normals GBuffer for better normal and tangent representation.",
+      "steps": {
+        "Project Settings": {
+          "description": "Enable High Precision Normals in Project Settings under Engine > Rendering > Optimizations."
+        },
+        "Static Mesh Asset": {
+          "description": "Enable Use High Precision Tangent Basis in the Static Mesh Editor under LOD 0 > Build Settings."
+        }
+      }
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Planar Reflection",
+  "description": "An overview of the planar reflections actor that can be used to create mirror-like reflections in Unreal Engine.",
+  "sections": {
+    "Introduction": {
+      "summary": "Planar Reflections provide more accurate reflections than Screen Space Reflections (SSR) but at a higher rendering cost. They work by rendering the level again from the direction of the reflection."
+    },
+    "Comparison with Screen Space Reflections": {
+      "summary": "SSR is more efficient but less reliable, often causing reflection artifacts at the edges. Planar Reflections avoid these issues but are more computationally expensive.",
+      "images": [
+        {
+          "name": "SSR vs Planar Reflections",
+          "description": "Comparison showing the limitations of SSR and the accuracy of Planar Reflections."
+        }
+      ]
+    },
+    "Enabling Planar Reflections": {
+      "steps": [
+        {
+          "step": "Edit Project Settings",
+          "description": "In the Main menu, select Project Settings, navigate to Rendering > Reflections, and enable 'Support global clip plane for Planar Reflections'. Restart the UE Editor when prompted."
+        },
+        {
+          "step": "Place Planar Reflection Actor",
+          "description": "In the Place Actors panel under Visual Effects tab, drag a Planar Reflection Actor to the Level. Use the G key to hide/unhide and the Move, Rotate, and Scale tools to position it."
+        }
+      ]
+    },
+    "Properties of Planar Reflection Actor": {
+      "Normal Distortion Strength": "Controls the strength of normals when distorting the planar reflection.",
+      "Prefilter Roughness": "The roughness value to prefilter the planar reflection texture with. Larger values increase GPU cost.",
+      "Distance from Plane Fadeout Start": "Start distance for fading out the planar reflection.",
+      "Distance from Plane Fadeout End": "End distance for completely fading out the planar reflection.",
+      "Angle from Plane Fade Start": "Start angle for fading out the planar reflection.",
+      "Angle from Plane Fade End": "End angle for completely fading out the planar reflection.",
+      "Show Preview Plane": "Toggles the visibility of the reflection plane in the Editor.",
+      "Advanced Properties": {
+        "Prefilter Roughness Distance": "Distance at which the prefilter roughness value will be achieved.",
+        "Screen Percentage": "Downsample percent to reduce GPU time rendering the planar reflection.",
+        "Extra FOV": "Additional Field of View used when rendering to the reflection texture.",
+        "Render Scene Two-Sided": "Renders the scene as two-sided to hide artifacts.",
+        "LOD Distance Factor": "Scales the distance used by Level of Detail (LOD)."
+      }
+    },
+    "Scene Capture Properties": {
+      "Primitive Render Mode": "Controls what primitives get rendered into the scene capture.",
+      "Capture Source": "Controls capture source type.",
+      "Capture Every Frame": "Updates the capture's contents every frame.",
+      "Capture on Movement": "Updates the capture's contents on movement.",
+      "Always Persist Rendering State": "Persists the rendering state for Motion Blur and Temporal Anti-Aliasing.",
+      "Hidden Actors": "List of selected Actors to hide in the scene capture.",
+      "Show Only Actors": "List of Actors to render in the scene capture.",
+      "Max View Distance Override": "Maximum render distance for primitives in the scene capture.",
+      "Capture Sort Priority": "Sets the capture priority within the frame.",
+      "Use Ray Tracing if Enabled": "Uses ray tracing for this capture if enabled.",
+      "Profiling Event Name": "Name for the profiling event when profiling the GPU."
+    },
+    "Planar Reflection Limitations": {
+      "description": "Planar Reflections render the entire scene twice, doubling the frame time for Rendering thread and GPU. Limit their use and size to manage performance."
+    },
+    "Planar Reflection Performance": {
+      "Kite Demo": {
+        "description": "Due to large terrain, strategically placed and scaled Planar Reflection Actors were used. Planar Reflections dramatically increase rendering time.",
+        "images": [
+          {
+            "name": "Planar Reflections Off",
+            "description": "Rendering time without Planar Reflections."
+          },
+          {
+            "name": "Planar Reflections On",
+            "description": "Rendering time with Planar Reflections."
+          }
+        ]
+      },
+      "Infinity Blade Dungeons": {
+        "description": "Only one Planar Reflection was needed and scaled to match the water mesh. Less performance impact compared to the Kite Demo due to optimized assets for mobile devices.",
+        "images": [
+          {
+            "name": "Planar Reflections Off",
+            "description": "Rendering time without Planar Reflections."
+          },
+          {
+            "name": "Planar Reflections On",
+            "description": "Rendering time with Planar Reflections."
+          }
+        ]
+      }
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Reflections Captures",
+  "description": "An overview of using placed reflection probes to capture and project reflections onto reflective material surfaces in Unreal Engine.",
+  "sections": {
+    "Introduction": {
+      "summary": "Reflection Capture Actors are probes placed around the world to capture a static image of the area they cover. This reflection method reprojects the captured cubemap onto surrounding reflective materials, providing a low-cost reflection method with no runtime performance cost."
+    },
+    "Reflection Capture Shapes": {
+      "summary": "There are two shapes: sphere and box. Sphere shapes are generally more useful as they provide uniform error without discontinuities, while box shapes are limited and work best in hallways or rectangular rooms.",
+      "shapes": {
+        "Sphere": {
+          "description": "The sphere shape has an influence radius that controls the affected pixels and the projection sphere. Smaller captures override larger ones for refinement."
+        },
+        "Box": {
+          "description": "The box shape captures the level within a transition distance outside the box. It has a limited use case and often creates significant artifacts."
+        }
+      }
+    },
+    "Setting Up a Level to Use the Reflection Environment": {
+      "steps": [
+        {
+          "step": "Setup Diffuse Lighting",
+          "description": "Ensure diffuse lighting and indirect lighting are correctly set up using lightmaps. Fix common errors like shadow-casting skyboxes, lack of LightmassImportanceVolume, missing lightmap UVs, and incorrect precomputed lighting settings."
+        },
+        {
+          "step": "Material Setup",
+          "description": "Use normal maps and roughness on materials to obscure reflection artifacts. Curvy geometry or rough surfaces work best."
+        },
+        {
+          "step": "Place Reflection Captures",
+          "description": "Place reflection captures in desired areas, ensuring significant contrast between lit and shadowed areas. Avoid placing captures too close to level geometry."
+        }
+      ]
+    },
+    "Glossy Indirect Specular": {
+      "description": "The Reflection Environment provides indirect specular reflections by capturing static levels and reprojecting them onto simple shapes. Each pixel blends between multiple cubemaps for the final result. Materials with varying glossiness are supported by generating blurry mipmaps from the captured cubemaps."
+    },
+    "Reflection Capture Lightmap Mixing": {
+      "description": "UE mixes indirect specular from Reflection Captures with indirect diffuse lighting from lightmaps to reduce leaking. Lightmap mixing works well for rough surfaces but is disabled for smooth surfaces to match Screen Space Reflections and Planar Reflections."
+    },
+    "Editing Reflection Probes": {
+      "steps": [
+        {
+          "step": "Using Custom HDRI Cubemap",
+          "description": "Specify and use custom HDRI cubemaps for reflection probes by selecting an HDRI texture and assigning it to the Reflection Capture Actor."
+        },
+        {
+          "step": "Adjusting Reflection Probe Resolution",
+          "description": "Adjust the global resolution of HDRI cubemaps for Reflection Capture Actors in Project Settings, ensuring values are powers of 2."
+        },
+        {
+          "step": "Adjusting Skylight Reflection Resolution",
+          "description": "Define and adjust the resolution of HDRI cubemaps for Skylights similarly to reflection probes."
+        },
+        {
+          "step": "Blending Multiple Reflection Probe Data",
+          "description": "Blend different HDRI cubemaps by overlapping Reflection Capture Actors with different cubemaps."
+        }
+      ]
+    },
+    "Visualizing": {
+      "description": "Use the Reflection Override viewmode to see how reflections are set up. New show flags help isolate components of the lighting for better visualization."
+    },
+    "Performance Considerations": {
+      "description": "The cost of the Reflection Environment depends on the number of captures influencing on-screen pixels. Performance can be managed by culling reflections efficiently."
+    },
+    "Limitations": {
+      "description": "Reflections are approximate and may show errors due to projection onto simple shapes. Dynamic objects cannot be reflected, and there can be significant leaking in certain lighting conditions."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "topic": "Screen Space Reflections",
+  "description": "An effect which alters the reflections that appear on the surface of materials within the scene view in Unreal Engine.",
+  "sections": {
+    "Introduction": {
+      "summary": "Screen Space Reflection (SSR) is an effect enabled by default that alters the appearance of objects reflected on the surfaces of materials. SSR is limited to reflecting what is visible on the screen, leading to potential artifacts when objects are off-screen or occluded."
+    },
+    "Properties": {
+      "summary": "There are a few properties that can be tweaked to adjust the SSR effect.",
+      "properties": {
+        "Intensity": {
+          "description": "Enables, fades, or disables the SSR feature by percentage. Avoid using numbers between 0 and 1 for consistency."
+        },
+        "Quality": {
+          "description": "Adjusts the quality of the SSR effect. 0 represents the lowest quality, while 100 represents the maximum quality. The default value is 50 to balance performance and visual fidelity."
+        },
+        "Max Roughness": {
+          "description": "Determines the roughness value at which SSR starts to fade out. A value of 0.8 works well, but lower values can improve performance."
+        }
+      }
+    },
+    "Usage and Performance": {
+      "summary": "SSR is efficient in rendering but limited by its reliance on screen-space data. This can cause artifacts in reflections, especially at the edges of the screen or with highly reflective surfaces."
+    },
+    "Comparison with Planar Reflections": {
+      "summary": "SSR vs. Planar Reflections",
+      "comparison": {
+        "SSR": {
+          "pros": "More efficient, less costly to render.",
+          "cons": "Limited to on-screen data, prone to artifacts."
+        },
+        "Planar Reflections": {
+          "pros": "More accurate reflections, including off-screen objects.",
+          "cons": "Higher rendering cost, less efficient."
+        }
+      }
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help your peers.",
+      "Learning Library": "Write your own tutorials or read those from others."
+    }
+  }
+}

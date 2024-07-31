@@ -1,0 +1,175 @@
+{
+  "Playing_and_Simulating": {
+    "Overview": {
+      "Description": "Play-test and simulate your game inside Unreal Editor without building it into a standalone application.",
+      "Preview_Methods": ["Play In Editor (PIE)", "Simulate In Editor (SIE)"],
+      "Key_Difference": "PIE starts at Player Start location with player control. SIE doesn't move the Camera or spawn a player character."
+    },
+    "PIE_Tutorial": {
+      "Project_Setup": "Create a new project using the Blueprint Third Person template with Starter Content enabled.",
+      "Steps": [
+        {
+          "Step": 1,
+          "Action": "Click Play on the Main Toolbar.",
+          "Result": "Game starts in the Level Editor Viewport."
+        },
+        {
+          "Step": 2,
+          "Action": "Click or right-click in the Level Editor Viewport.",
+          "Result": "Assign mouse control to the playable character."
+        },
+        {
+          "Step": 3,
+          "Action": "Use WASD keys for movement, Spacebar to jump, Mouse for camera.",
+          "Toolbar_Controls": ["Pause", "Stop", "Eject"]
+        },
+        {
+          "Step": 4,
+          "Action": "Pause the game with Shift + F1, click Pause.",
+          "Result": "Play button changes to Resume, Frame Skip available."
+        },
+        {
+          "Step": 5,
+          "Action": "Click Eject to release control.",
+          "Result": "Switch to mouse cursor controls."
+        },
+        {
+          "Step": 6,
+          "Action": "Select text in the Level Viewport, change its value.",
+          "Result": "Text changes in the Level Viewport."
+        },
+        {
+          "Step": 7,
+          "Action": "Click Possess, then Resume.",
+          "Result": "Changes visible in the Level."
+        },
+        {
+          "Step": 8,
+          "Action": "Press Shift + F1, click Eject.",
+          "Result": "Regain mouse control."
+        },
+        {
+          "Step": 9,
+          "Action": "Right-click text Actor, select Keep Simulation Changes.",
+          "Result": "Changes saved."
+        },
+        {
+          "Step": 10,
+          "Action": "Press Esc.",
+          "Result": "Stop play session, changes saved."
+        }
+      ]
+    },
+    "Play_Modes": {
+      "Access": "From Main Toolbar, click vertical ellipsis button.",
+      "Options": [
+        "Selected Viewport",
+        "Mobile Preview ES3.1 (PIE)",
+        "New Editor Window (PIE)",
+        "VR Preview",
+        "Standalone Game"
+      ],
+      "Default": "Selected Viewport"
+    },
+    "PIE_Console": {
+      "Description": "In-game console for commands.",
+      "Access": "Press tilde (~) key.",
+      "Use_Case": "Profile project performance."
+    },
+    "SIE_Tutorial": {
+      "Steps": [
+        {
+          "Step": 1,
+          "Action": "Open Starter Content > Props, drag Material Sphere to Level.",
+          "Result": "Sphere placed above stairs."
+        },
+        {
+          "Step": 2,
+          "Action": "Enable Simulate Physics in Details panel.",
+          "Result": "Sphere falls to ground on play."
+        },
+        {
+          "Step": 3,
+          "Action": "Press Alt + S (Windows) or Option + S (macOS) to simulate.",
+          "Result": "Game starts, sphere falls."
+        },
+        {
+          "Step": 4,
+          "Action": "Press Esc to stop simulation.",
+          "Result": "Toolbar shows Simulate button."
+        },
+        {
+          "Step": 5,
+          "Action": "Click Simulate, then Pause.",
+          "Result": "Step through simulation with Frame Advance."
+        }
+      ]
+    },
+    "Resources": {
+      "Forums": "Ask questions and help peers.",
+      "Learning_Library": "Write or read tutorials."
+    }
+  }
+}
+{
+  "Running_Unreal_Engine": {
+    "Overview": {
+      "Description": "Running the engine as a game or editor, including launching specific maps and using in-game commands.",
+      "Operating_Systems": "Instructions are for Development build configuration.",
+      "Binary_Info": "Use UEEditor-_.exe or UE-_.exe for other configurations."
+    },
+    "Running_Editor": {
+      "Command_Line": {
+        "Steps": [
+          "Navigate to [LauncherInstall][VersionNumber]/Engine/Binaries/Win64.",
+          "Run UEEditor.exe with project path as argument: UEEditor.exe '[ProjectPath][ProjectName].uproject'"
+        ],
+        "Debug": "Add -debug switch for debug modules."
+      },
+      "Executable": {
+        "Steps": [
+          "Navigate to [LauncherInstall][VersionNumber]/Engine/Binaries/Win64.",
+          "Create and rename shortcut for UEEditor.exe.",
+          "Add project path to Target property and save: '[LauncherInstall][VersionNumber]/Engine/Binaries/Win64/UEEditor.exe '[ProjectPath][ProjectName].uproject'",
+          "Double-click shortcut to launch editor."
+        ]
+      },
+      "No_Arguments": "Launches Project Browser to create or open projects."
+    },
+    "Running_Uncooked_Game": {
+      "Command_Line": {
+        "Steps": [
+          "Navigate to [LauncherInstall][VersionNumber]/Engine/Binaries/Win64.",
+          "Run UEEditor.exe with project path and -game parameter: UEEditor.exe '[ProjectPath][ProjectName].uproject' -game"
+        ]
+      },
+      "Executable": {
+        "Steps": [
+          "Navigate to [LauncherInstall][VersionNumber]/Engine/Binaries/Win64.",
+          "Create and rename shortcut for UEEditor.exe.",
+          "Add project path and -game to Target property and save: '[LauncherInstall][VersionNumber]/Engine/Binaries/Win64/UEEditor.exe '[ProjectPath][ProjectName].uproject' -game'",
+          "Double-click shortcut to run game."
+        ]
+      }
+    },
+    "Running_Cooked_Game": "See Packaging Projects for running cooked builds.",
+    "In_Game_Commands": {
+      "Description": "Use console commands for various functions.",
+      "Access": "Summon console with ~ or Tab keys.",
+      "Commands": ["EXIT/QUIT", "DISCONNECT", "OPEN [MapURL]", "TRAVEL [MapURL]", "VIEWMODE [Mode]"]
+    },
+    "Loading_Maps": {
+      "Startup": {
+        "Default_Map": "Specified in DefaultEngine.ini.",
+        "Override_Map": "Use command line to specify map: UEEditor.exe '[ProjectPath][ProjectName].uproject' ExampleMap -game"
+      },
+      "New_Map": {
+        "Commands": ["OPEN [MapName]", "TRAVEL [MapName]"]
+      }
+    },
+    "Resources": {
+      "Forums": "Ask questions and help peers.",
+      "Learning_Library": "Write or read tutorials."
+    }
+  }
+}

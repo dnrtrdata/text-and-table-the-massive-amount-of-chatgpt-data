@@ -1,0 +1,349 @@
+{
+  "Editor": {
+    "Description": "Main page for the Editor section of the Unreal Engine Project Settings.",
+    "Categories": {
+      "2D": "Reference for the 2D section of the Unreal Engine Project Settings.",
+      "Appearance": "Reference for the Appearance section of the Unreal Engine Project Settings.",
+      "Blueprint": "Reference for the Blueprint Project Settings section.",
+      "ClassViewer": "Reference for the Class Viewer Settings section.",
+      "DerivedData": "Reference for the Derived Data section.",
+      "HierarchicalLODMeshSimplification": "Reference for the Hierarchical LOD Mesh Simplification Settings section.",
+      "LevelSequences": "Reference for the Level Sequences Settings section.",
+      "MeshSimplification": "Reference for the Mesh Simplification section.",
+      "Paper2DImport": "Reference for the Paper2D - Import section.",
+      "Performance": "Reference for the Performance Settings section.",
+      "SkeletalMeshSimplification": "Reference for the Skeletal Mesh Simplification section.",
+      "SourceControl": "Reference for the Source Control section.",
+      "StructViewer": "Reference for the Struct Viewer section.",
+      "TextureImport": "Reference for the Texture Import section.",
+      "WidgetDesignerTeam": {
+        "Description": "Reference for the Widget Designer (Team) section.",
+        "Subsections": {
+          "UI": "UI settings",
+          "Basics": "Basic settings"
+        }
+      }
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "2D": {
+    "Description": "Reference for the 2D section of the Unreal Engine Project Settings.",
+    "General": {
+      "Enable2DCombinedTranslateRotateWidget": "Shows 2D combined translate and rotate tool in the Viewport Toolbar if enabled."
+    },
+    "LayerSnapping": {
+      "EnableSnapLayers": "Shows 2D layer snapping controls in the Viewport Toolbar if enabled.",
+      "SnapAxis": "Sets the world space axis for 2D snap layers.",
+      "SnapLayers": "Snap layers displayed in the Viewport Toolbar."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "Appearance": {
+    "Description": "Reference for the Appearance section of the Unreal Engine Project Settings.",
+    "Units": {
+      "DisplayUnitsOnApplicableProperties": "Units display on editor properties with units set if enabled.",
+      "DisplayUnitsOnComponentTransforms": "Units display on component transform properties if enabled.",
+      "DistanceLength": "Set of units to display distance/length value.",
+      "Mass": "Set of units to display masses.",
+      "Time": "Units to display time.",
+      "Angles": {
+        "Description": "Units to display angles.",
+        "Options": ["Degrees", "Radians"]
+      },
+      "SpeedVelocity": {
+        "Description": "Units to display speeds and velocities.",
+        "Options": ["Centimeters Per Second", "Meters Per Second", "Kilometers Per Hour", "Miles Per Hour"]
+      },
+      "Temperature": {
+        "Description": "Units to display temperatures.",
+        "Options": ["Celsius", "Fahrenheit", "Kelvin"]
+      },
+      "Force": {
+        "Description": "Units to display forces.",
+        "Options": ["Newtons", "Pounds Force", "Kilograms Force"]
+      }
+    },
+    "ReferenceViewer": {
+      "ShowSearchableNames": "Defines if the Show Searchable Names option is enabled by default.",
+      "Options": ["No Preference", "Show by Default", "Hide by Default"],
+      "DefaultMaxSearchBreadth": "The default maximum search breadth for the Reference Viewer."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "Blueprint": {
+    "Description": "Reference for the Blueprint Project Settings section of the Unreal Engine Project Settings.",
+    "Blueprints": {
+      "ForceAllDependenciesToRecompile": {
+        "Description": "Disables faster compiles for individual Blueprints if no function signature changes.",
+        "Note": "Deprecated and should not be used."
+      },
+      "CompilerMessagesDisabledExceptInEditor": "List of compiler messages suppressed outside of full editor sessions.",
+      "CompilerMessagesDisabledEntirely": "List of compiler messages suppressed completely, used for non-critical warnings in blueprints that can't be updated."
+    },
+    "Actors": {
+      "ValidateUnloadedSoftActorReferences": {
+        "Description": "Loads packages to look for soft references to Actors when deleting/renaming.",
+        "Note": "Disable to improve performance but increases the risk of breaking Blueprints."
+      }
+    },
+    "Experimental": {
+      "EnableChildActorExpansionInTreeView": "Option to expand Child Actor components in component tree views.",
+      "DefaultChildActorTreeViewMode": {
+        "Description": "Default view mode for child Actor components in a Blueprint Actor's component tree.",
+        "Options": ["Component Only", "Component with Child Actor", "Child Actor Only"]
+      },
+      "NamespacesToAlwaysInclude": {
+        "Description": "List of namespaces always exposed in any Blueprint for all project users.",
+        "Note": "Requires Blueprint namespace enabled in Editor Preferences."
+      }
+    },
+    "Play": {
+      "BaseClassesToAllowRecompilingDuringPlayInEditor": "Blueprints from these base classes allowed to recompile during Play-in-Editor."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "ClassViewer": {
+    "Description": "Reference for the Class Viewer Settings section of the Unreal Engine Project Settings.",
+    "ClassVisibilityManagement": {
+      "ListOfDirectoriesToConsiderInternalOnly": "Base directories considered Internal Only for the class picker.",
+      "ListOfBaseClassesToConsiderInternalOnly": "Base classes considered Internal Only for the class picker."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "DerivedData": {
+    "Description": "Reference for the Derived Data section of the Unreal Engine Project Settings.",
+    "Warnings": {
+      "EnableWarnings": {
+        "Description": "Enable warnings for certain configuration issues.",
+        "Details": "Checks Derived Data Cache (DDC) configuration and shows pop-up messages on Editor startup."
+      },
+      "RecommendGlobalLocalDDCPath": "Warns if local cache is not set by UE-LocalDataCachePath env variable or Global Local DDC Path Editor setting.",
+      "RecommendGlobalSharedDDCPath": "Warns if shared cache is not set by UE-SharedDataCachePath env variable or Global Shared DDC Path Editor setting.",
+      "RecommendGlobalS3DDCPath": "Warns if AWS S3 Cache Editor setting is disabled.",
+      "RecommendEnableS3DDC": "Warns if Global Local S3DDC Path Editor setting is not set.",
+      "RecommendUseUnrealCloudDDC": "Warns if Unreal Cloud DDC (Horde Storage) is not used."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "HierarchicalLODMeshSimplification": {
+    "Description": "Reference for the Hierarchical LOD Mesh Simplification Settings section of the Unreal Engine Project Settings.",
+    "General": {
+      "HierarchicalLODMeshReductionPlugin": "Mesh reduction plugin used for simplifying mesh geometry for Hierarchical LOD."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "LevelSequences": {
+    "Description": "Reference for the Level Sequences Settings section of the Unreal Engine Project Settings.",
+    "Timeline": {
+      "DefaultStartTime": "Default start time for new level sequences in seconds.",
+      "DefaultDuration": "Default duration for new level sequences in seconds."
+    },
+    "Shots": {
+      "ShotDirectory": "Default directory for the shots.",
+      "ShotPrefix": "Default prefix for shot names.",
+      "FirstShotNumber": "First shot number.",
+      "ShotIncrement": "Default shot increment.",
+      "ShotNumDigits": "Number of digits for the shot number.",
+      "TakeNumDigits": "Number of digits for the take number.",
+      "FirstTakeNumber": "First take number.",
+      "TakeSeparator": "Single character separator between shot number and take number.",
+      "SubsequenceSeparator": "Single character separator between take number and subsequence number."
+    },
+    "TrackSettings": {
+      "FBXSettings": "Mapping between FBX file property name and property track path."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "MeshSimplification": {
+    "Description": "Reference for the Mesh Simplification section of the Unreal Engine Project Settings.",
+    "General": {
+      "MeshReductionBackwardCompatible": {
+        "Description": "Mesh reduction backward compatible.",
+        "Note": "Deprecated and should not be used."
+      },
+      "MeshReductionPlugin": "Mesh reduction plugin for simplifying mesh geometry."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "Paper2DImport": {
+    "Description": "Reference for the Paper2D - Import section of the Unreal Engine Project Settings.",
+    "NewAssetSettings": {
+      "PickBestMaterialWhenCreatingSprites": {
+        "Description": "Scan source texture for appropriate material when creating sprites.",
+        "Note": "If disabled, Default Masked Material is used."
+      },
+      "PickBestMaterialWhenCreatingTileMaps": {
+        "Description": "Scan source texture for appropriate material when creating tile maps.",
+        "Note": "If disabled, Default Masked Material is used."
+      },
+      "AnalysisCanUseOpaque": "Allow opaque materials in 'best material' analysis.",
+      "DefaultPixelsPerUnrealUnit": "Scaling factor between pixels and Unreal Units for new sprite assets."
+    },
+    "ImportSettings": {
+      "NormalMapTextureSuffixes": "Default suffixes for associated normal maps when importing sprites.",
+      "BaseMapTextureSuffixes": "Suffix to remove from texture name before looking for normal maps.",
+      "DefaultSpriteTextureGroup": "Texture group for imported sprite textures (UI for modern, 2D pixels for retro).",
+      "OverrideTextureCompression": "Override texture compression settings on imported sprite textures.",
+      "DefaultSpriteTextureCompression": {
+        "Description": "Compression settings for building the texture.",
+        "Options": [
+          "Default (DXT1/5, BC1/3 on DX11)",
+          "Normalmap (DXT5, BC5 on DX11)",
+          "Masks (no sRGB)",
+          "Grayscale (R8, RGB8 sRGB)",
+          "Displacementmap (8/16bit)",
+          "VectorDisplacementmap (RGBA8)",
+          "HDR (RGB, no sRGB)",
+          "UserInterface2D (RGBA)",
+          "Alpha (no sRGB, BC4 on DX11)",
+          "DistanceFieldFont (R8)",
+          "HDRCompressed (RGB, BC6H, DX11)",
+          "BC7 (DX11, optional A)",
+          "Half-Float (R16F)"
+        ]
+      }
+    },
+    "MaterialSettings": {
+      "UnlitDefaultMaskedMaterial": "Unlit default masked material for new sprites (binary opacity).",
+      "UnlitDefaultTranslucentMaterial": "Unlit default translucent material for new sprites (smooth opacity).",
+      "UnlitDefaultOpaqueSpriteMaterial": "Unlit default opaque material for new sprites.",
+      "LitDefaultMaskedMaterial": "Lit default masked material for new sprites (binary opacity).",
+      "LitDefaultTranslucentMaterialName": "Lit default translucent material for new sprites (smooth opacity).",
+      "LitDefaultOpaqueMaterial": "Lit default opaque material for new sprites."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "Performance": {
+    "Description": "Reference for the Performance Settings section of the Unreal Engine Project Settings.",
+    "ViewportResolution": {
+      "DefaultScreenPercentageModeForRealTimeEditorViewports": {
+        "Description": "Default screen percentage mode for real-time editor viewports.",
+        "Options": [
+          "Manual: Controls screen percentage with r.ScreenPercentage CVar.",
+          "Based on Display Resolution: Auto control based on display resolution (r.ScreenPercentage.Auto.*).",
+          "Based on OS DPI Scale."
+        ]
+      },
+      "DefaultScreenPercentageModeForNonRealTimeEditorViewports": {
+        "Description": "Default screen percentage mode for non-real-time editor viewports.",
+        "Options": [
+          "Manual: Controls screen percentage with r.ScreenPercentage CVar.",
+          "Based on Display Resolution: Auto control based on display resolution (r.ScreenPercentage.Auto.*).",
+          "Based on OS DPI Scale."
+        ]
+      },
+      "ManualScreenPercentageToBeSetByDefaultForEditorViewports": "Manual screen percentage for editor viewports by default.",
+      "MinimumDefaultRenderingResolutionForEditorViewports": "Minimum rendering resolution for editor viewports (in pixels).",
+      "MaximumDefaultRenderingResolutionForEditorViewports": "Maximum rendering resolution for editor viewports (in pixels)."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "SkeletalMeshSimplification": {
+    "Description": "Reference for the Skeletal Mesh Simplification section of the Unreal Engine Project Settings.",
+    "General": {
+      "SkeletalMeshReductionPlugin": "Mesh reduction plugin for simplifying Skeletal Meshes."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "SourceControl": {
+    "Description": "Reference for the Source Control section of the Unreal Engine Project Settings.",
+    "Settings": {
+      "EnableValidationTag": "Adds a validation tag to the changelist description on submit.",
+      "ShouldDeleteNewFilesOnRevert": {
+        "Description": "Controls whether new files are deleted on revert.",
+        "Options": [
+          "Enabled: Deletes files from computer when reverted.",
+          "Disabled: Removes files from source control but keeps them on local drive."
+        ]
+      },
+      "CollectionChangelistTags": "Lines to add to any collection on check-in.",
+      "SpecificCollectionChangelistTags": "Map of collection names and additional text for changelist descriptions on check-in."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "StructViewer": {
+    "Description": "Reference for the Struct Viewer section of the Unreal Engine Project Settings.",
+    "StructVisibilityManagement": {
+      "ListOfDirectoriesToConsiderInternalOnly": "Base directories considered Internal Only for the struct picker.",
+      "ListOfBaseStructsToConsiderInternalOnly": "Base structs considered Internal Only for the struct picker."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "TextureImport": {
+    "Description": "Reference for the Texture Import section of the Unreal Engine Project Settings.",
+    "VirtualTextures": {
+      "AutoVirtualTexturingSize": "Automatically enables Virtually Texture Streaming for textures >= this size during import. Does not affect existing textures."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}
+{
+  "WidgetDesignerTeam": {
+    "Description": "Reference for the Widget Designer (Team) section of the Unreal Engine Project Settings.",
+    "Overview": "Widgets represent individual menus or on-screen elements, defined in the Content Browser and built in UMG with a WYSIWYG designer and Blueprint graph.",
+    "Compiler": {
+      "AllowBlueprintTick": {
+        "Description": "Widgets cannot respond to Event Tick if disabled."
+      },
+      "AllowBlueprintPaint": {
+        "Description": "Widgets cannot override On Paint function if disabled."
+      },
+      "PropertyBindingRule": {
+        "Description": "Controls use of property bindings in widgets, which impact performance.",
+        "Options": [
+          "Allow: Free use of property binding.",
+          "Prevent: No new bindings, can edit existing ones.",
+          "Prevent and Warn: No new bindings, warning on existing.",
+          "Prevent and Error: No new bindings, error on existing."
+        ]
+      },
+      "Rules": "Custom widget compiler rule classes in C++ extending UWidgetCompilerRule, executed during widget blueprint compilation.",
+      "DirectoryCompilerOptions": "Set Allow Blueprint Tick, Allow Blueprint Paint, Property Binding Rule, and custom Rules selectively in project directories."
+    }
+  },
+  "DeveloperForums": "Ask questions and help your peers.",
+  "LearningLibrary": "Write or read tutorials."
+}

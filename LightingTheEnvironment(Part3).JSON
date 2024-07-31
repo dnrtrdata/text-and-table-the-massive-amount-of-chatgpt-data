@@ -1,0 +1,947 @@
+{
+  "StationaryLightMobility": {
+    "Description": "Partially dynamic and precomputed lighting capable of changing some properties during runtime.",
+    "Features": {
+      "Mobility": {
+        "Type": "Stationary",
+        "ChangeableProperties": ["brightness", "color"]
+      },
+      "Comparison": {
+        "StaticLights": "Cannot change during gameplay",
+        "Performance": "Medium",
+        "Quality": "High",
+        "Mutability": "Medium"
+      },
+      "Lighting": {
+        "DynamicDirectLighting": "Uses dynamic direct lighting and static indirect lighting.",
+        "IndirectLighting": "Stored in lightmaps.",
+        "DirectShadowing": "Stored in shadow maps.",
+        "DeferredShading": "Allows runtime changes in brightness and color.",
+        "Specular": "High quality analytical specular."
+      },
+      "Shadowing": {
+        "MaxOverlap": 4,
+        "OverlapVisualization": "Shows offending lights in red when overlap limit is reached.",
+        "EnableOverlapVisualization": "Level Editor View Mode > Optimization Viewmodes"
+      },
+      "Materials": {
+        "Opaque": {
+          "IndirectLighting": "Uses distance field shadow maps for accurate transitions.",
+          "LightingBuild": "Required to display shadows."
+        },
+        "Translucent": {
+          "Shadowing": "Precomputed shadow depth map applied at runtime.",
+          "Resolution": {
+            "ControlledBy": ["StaticShadowDepthMapTransitionSampleDistanceX", "StaticShadowDepthMapTransitionSampleDistanceY"],
+            "DefaultValue": 100
+          }
+        }
+      },
+      "DynamicShadowing": {
+        "MovableObjects": "Per object shadows for movable objects.",
+        "Example": "Stationary Directional Light with movable and static geometry.",
+        "CascadedShadowMaps": "For whole scene shadows with moving foliage."
+      },
+      "IndirectShadowing": {
+        "Storage": "In lightmaps, similar to Static Lights.",
+        "Modification": "Intensity and color can be changed using Post Process Volume."
+      },
+      "AreaShadows": {
+        "Enabled": "For soft area shadowing on static geometry.",
+        "PropertyLocation": "Lightmass section in the Light's Details panel."
+      }
+    }
+  }
+}
+{
+  "LightingToolsAndPlugins": {
+    "Description": "A collection of tools and plugins useful for lighting scenes.",
+    "Purpose": "Help light environments or provide visualization options for objects in a scene.",
+    "Plugins": [
+      {
+        "Name": "HDRI Backdrop Visualization Tool",
+        "Description": "A Blueprint tool for setting up product visualization using HDR image projection with real-time lighting and shadowing."
+      },
+      {
+        "Name": "Sun and Sky Actor",
+        "Description": "Provides a time of day system that is geographically accurate for location, date, and time."
+      },
+      {
+        "Name": "Geographically Accurate Sun Positioning Tool",
+        "Description": "Gives fine control over the Sun's geographic location based on latitude, longitude, date, and time."
+      }
+    ],
+    "Categories": ["rendering", "lighting", "architectural visualization"]
+  }
+}
+{
+  "HDRIBackdropVisualizationTool": {
+    "Description": "A Blueprint tool for quick product visualization using HDR image projection with real-time lighting and shadowing.",
+    "Benefits": {
+      "Setup": "Quick and customizable setup.",
+      "IlluminationAndReflections": "Provides beautiful illumination and reflections.",
+      "ShadowCatcher": "Includes a fake ground plane for consistent shadow catching."
+    },
+    "Features": {
+      "BackgroundMesh": "Sky dome or custom geometry.",
+      "DynamicSkyLight": "Ambient lighting.",
+      "DynamicReflections": "Real-time reflections.",
+      "GroundProjection": "Shadow catching."
+    },
+    "EnablingPlugin": {
+      "Steps": [
+        "Open your project in Unreal Editor.",
+        "Click Edit in the Main menu and select Plugins.",
+        "Under Rendering, enable HDRI Backdrop Plugin.",
+        "Restart the project to apply changes."
+      ]
+    },
+    "Workflow": {
+      "Steps": [
+        "Import a spherical HDR image using the Content Browser.",
+        "Set appropriate Maximum Texture Size and Mip Gen Settings in the Texture Editor.",
+        "Create a New Level and select Empty Level.",
+        "Drag HDRI Backdrop asset into the Level Viewport.",
+        "Configure settings in the Details panel.",
+        "Optionally, add a Light Source and set it to Movable."
+      ]
+    },
+    "HDRImageSetup": {
+      "Settings": [
+        "Imported, Displayed, and Max-In-Game resolution",
+        "Mip Gen Settings to NoMipmaps",
+        "Maximum Texture Size to match larger resolution value"
+      ]
+    },
+    "BackdropMeshSetup": {
+      "AvailableMeshes": [
+        {
+          "Name": "EnviroDome",
+          "Description": "Sky dome mesh for large exterior environments."
+        },
+        {
+          "Name": "EnviroBoxSharp",
+          "Description": "Box environment with hard edges for interiors."
+        },
+        {
+          "Name": "EnviroBox",
+          "Description": "Box environment with smooth edges for studio-like environments."
+        }
+      ]
+    },
+    "HDRIBackdropSettings": {
+      "Properties": [
+        {
+          "Name": "Cubemap",
+          "Description": "Assign an imported HDR image."
+        },
+        {
+          "Name": "Intensity",
+          "Description": "Set the intensity of the Sky Light."
+        },
+        {
+          "Name": "Size",
+          "Description": "Set the size of the mesh."
+        },
+        {
+          "Name": "ProjectionCenter",
+          "Description": "Define the projection point of the HDR image."
+        },
+        {
+          "Name": "LightingDistanceFactor",
+          "Description": "Specify the ground area affected by lighting and shadows."
+        },
+        {
+          "Name": "UseCameraProjection",
+          "Description": "Disable ground tracking and enable HDR image to follow the camera."
+        },
+        {
+          "Name": "Mesh",
+          "Description": "Specify a custom Static Mesh for the backdrop."
+        }
+      ]
+    },
+    "AdditionalNotes": {
+      "SkyLightInteraction": "Delete any existing Sky Light to avoid performance issues.",
+      "HDRImageStretching": "Adjust Projection Center to minimize stretching.",
+      "RayTracingFeatures": "Supports Hardware Ray Tracing features.",
+      "IntensityAdjustment": "Manually adjust intensity when switching HDR images.",
+      "HighPrecisionNormals": "Enable for higher quality reflections.",
+      "ReflectionCaptureResolution": "Set a power of 2 value for desired resolution."
+    },
+    "AdditionalResources": [
+      "NASA's Juno 3D Model from 'NASA 3D Resources'",
+      "HDR Images from 'HDRI Haven'"
+    ],
+    "Categories": ["rendering", "artist tool", "lighting", "visualization"]
+  }
+}
+{
+  "SunAndSkyActor": {
+    "Description": "A tool providing a geographically accurate time of day system for location, date, and time.",
+    "Features": {
+      "Components": [
+        "Directional Light",
+        "Sky Light",
+        "SkyAtmosphere"
+      ],
+      "Settings": [
+        "Daylight Saving Time (DST)",
+        "Date",
+        "Time of day"
+      ],
+      "Industries": [
+        "Games",
+        "Architecture, Engineering, and Construction (AEC)",
+        "Automotive",
+        "Product Design",
+        "Manufacturing"
+      ]
+    },
+    "ProjectSetup": {
+      "Templates": [
+        {
+          "Category": "Architecture, Engineering, and Construction",
+          "Template": "ArchVis",
+          "Description": "For architecture visualization with examples for sun studies and interior rendering."
+        }
+      ],
+      "Settings": [
+        "Enable Extend default luminance range in Auto Exposure settings",
+        "Enable Sun Position Calculator Plugin"
+      ]
+    },
+    "EnablingSunPositionCalculatorPlugin": {
+      "Steps": [
+        "Open Unreal Editor and go to Edit > Plugins.",
+        "Enable Sun Position Calculator Plugin under the Misc category.",
+        "Restart the project."
+      ]
+    },
+    "UsingSunAndSkyActor": {
+      "Steps": [
+        "Find Sun and Sky Actor in the Lights tab.",
+        "Drag it into the Level viewport.",
+        "Remove existing Directional Light, Sky Light, or SkyAtmosphere components.",
+        "Enable Extend default luminance range in Auto Exposure settings in Project Settings under Rendering category.",
+        "Alternatively, lower Lux intensity of Directional Light in the SunSky Actor."
+      ]
+    },
+    "PropertiesAndSettings": {
+      "Location": {
+        "Latitude": "Degree north or south of the equator.",
+        "Longitude": "Degree east or west of the prime meridian.",
+        "TimeZone": "Time zone using GMT as a basis.",
+        "NorthOffset": "Directional position of North."
+      },
+      "Date": {
+        "Month": "Current month.",
+        "Day": "Current day.",
+        "UseDaylightSavingTime": "Enables DST.",
+        "DSTStartMonth": "Month DST starts.",
+        "DSTStartDay": "Day DST starts.",
+        "DSTEndMonth": "Month DST ends.",
+        "DSTEndDay": "Day DST ends.",
+        "DSTSwitchHour": "Hours for DST switch."
+      },
+      "Time": {
+        "SolarTime": "Time of day in military time (e.g., 12:30 AM is 00.5, 12:30 PM is 12.5)."
+      }
+    },
+    "ArchVisTemplateLevelExamples": {
+      "Exterior": {
+        "Description": "Demonstrates SunSky Actor with multiple cameras and time-of-day sequence.",
+        "Path": "Content/ArchVisProject"
+      },
+      "Interior": {
+        "Description": "Uses SunSky Actor components with precomputed static lighting.",
+        "Path": "Content/ArchVisProject",
+        "Features": [
+          "Lightmass for baked global illumination.",
+          "Lightmass Importance Volumes and Portals."
+        ]
+      }
+    },
+    "AdditionalNotes": {
+      "RayTracingFeatures": "Enabled by default for Directional Light and Sky Light.",
+      "RotationalValues": "Manually changing rotational values will reset with other setting changes.",
+      "RealTimeCapture": "Enabled by default for SkyLight Actors."
+    },
+    "AdditionalResources": [
+      "LatLong.net for location coordinates.",
+      "TimeAndDate.com for time zone information."
+    ],
+    "Categories": [
+      "rendering",
+      "artist tool",
+      "lighting",
+      "visualization",
+      "environmental lighting"
+    ]
+  }
+}
+{
+  "GeographicallyAccurateSunPositioningTool": {
+    "Description": "A tool for precise control over the Sun's position based on geographic location, date, and time.",
+    "Context": "Critical for true-to-life renderings in architecture and construction projects.",
+    "Functionality": "Places the Sun in Unreal Engine Level using mathematical equations for realistic sunlight and shadow patterns.",
+    "Setup": {
+      "Prerequisite": "Ensure Level contains a BP_SkySphere instance.",
+      "Steps": [
+        {
+          "Step": "EnablePlugin",
+          "Description": "From main menu, choose Edit > Plugins and enable Sun Position Calculator under Misc category. Restart Unreal Editor."
+        },
+        {
+          "Step": "ShowContent",
+          "Description": "In Content Browser, enable Show Engine Content and Show Plugin Content."
+        },
+        {
+          "Step": "AddSunPosition",
+          "Description": "Find BP_SunPosition Asset in SunPosition Content folder and drag it into the Viewport."
+        },
+        {
+          "Step": "ConfigureDetails",
+          "Description": "Select BP_SunPosition Actor and set properties in Details panel."
+        }
+      ]
+    },
+    "Properties": {
+      "Location": {
+        "Latitude": "Use negative values for coordinates South of equator, positive for North.",
+        "Longitude": "Use negative values for coordinates West of meridian, positive for East.",
+        "TimeZone": "Offset from UTC or GMT in hours.",
+        "NorthOffset": "Controls relation between Level objects and cardinal points."
+      },
+      "DateAndTime": "Set the time of year and time of day to simulate."
+    },
+    "RuntimeModifications": {
+      "Steps": [
+        {
+          "Step": "SetDirectionalLightMovable",
+          "Description": "Make main Directional Light in Level Movable."
+        },
+        {
+          "Step": "RetrieveObjectReference",
+          "Description": "Use Get All Actors of Class node to get BP_SunPosition Actor reference and save to a variable."
+        },
+        {
+          "Step": "ModifyValues",
+          "Description": "Use Get and Set nodes to change values and invoke Update Sun node."
+        }
+      ],
+      "Example": "UI slider to change hour between 6am and 10pm."
+    },
+    "Categories": [
+      "rendering",
+      "artist tool",
+      "lighting",
+      "visualization"
+    ]
+  }
+}
+{
+  "MeshDistanceFields": {
+    "Description": "An overview of Mesh Distance Fields and features for game development.",
+    "Functionality": {
+      "AmbientOcclusion": "Dynamic ambient occlusion for Static Mesh Actors.",
+      "Shadowing": "Dynamic shadowing.",
+      "ParticleCollision": "GPU particle collision.",
+      "MaterialEditor": "Dynamic flow maps and more."
+    },
+    "HowItWorks": {
+      "SignedDistanceField": "Stores distance to nearest surface in a volume texture.",
+      "Properties": [
+        {
+          "Name": "PositiveDistance",
+          "Description": "Exterior of the mesh."
+        },
+        {
+          "Name": "NegativeDistance",
+          "Description": "Interior of the mesh."
+        }
+      ],
+      "SphereTracing": "Safely skip through empty space using known distance.",
+      "ConeIntersection": "Compute soft area shadows and sky occlusion."
+    },
+    "SceneRepresentation": {
+      "Generation": "Offline using triangle raytracing stored in volume texture.",
+      "Visualization": "Show > Visualize > Mesh Distance Fields."
+    },
+    "Quality": {
+      "Control": "Volume texture resolution in Distance Field Resolution Scale in Static Mesh Editor.",
+      "Adjustment": "Increase resolution to capture important features, affecting memory footprint."
+    },
+    "GlobalDistanceField": {
+      "Description": "Low-resolution Distance Field using Signed Distance Fields occlusion following the camera.",
+      "Visualization": "Show > Visualize > Global Distance Field."
+    },
+    "Foliage": {
+      "TwoSidedDistanceField": "For high-density meshes like trees with masked material surfaces.",
+      "FoliageToolSettings": "Enable Affect Distance Field Lighting for selected foliage types."
+    },
+    "EnablingDistanceFields": {
+      "Steps": [
+        {
+          "Step": "Open Project Settings",
+          "Description": "Click Edit on Main menu, select Project Settings."
+        },
+        {
+          "Step": "EnableGenerateMeshDistanceFields",
+          "Description": "Under Engine > Rendering, toggle Generate Mesh Distance Fields."
+        },
+        {
+          "Step": "RestartProject",
+          "Description": "Restart the project."
+        }
+      ],
+      "Visualization": "Show > Visualize > Mesh Distance Fields."
+    },
+    "Limitations": {
+      "FeatureLevel": "Support for feature level 5 platforms only (DX-11 and above).",
+      "RigidMeshes": "Only casts shadows from rigid meshes.",
+      "DeformedMaterials": "May cause self-shadowing artifacts.",
+      "NonUniformScaling": "Not handled correctly, except for mirroring.",
+      "SupportedTypes": [
+        "Static Mesh",
+        "Instances Static Mesh",
+        "Foliage",
+        "Landscape (Heightfield)"
+      ],
+      "IntelCards": "Disabled on Intel cards due to hardware limitations."
+    },
+    "References": [
+      "Quilez, Inigo. 'Raymarching Distance Fields.' N.p, 2008"
+    ],
+    "Essentials": [
+      {
+        "Title": "Distance Field Ambient Occlusion",
+        "Description": "Create dynamic ambient occlusion for SkyLights."
+      },
+      {
+        "Title": "Distance Field Soft Shadows",
+        "Description": "Create dynamic soft area shadowing."
+      },
+      {
+        "Title": "Using Distance Field Shadows",
+        "Description": "Setup and use Distance Field Shadowing."
+      },
+      {
+        "Title": "Using Distance Field Ambient Occlusion",
+        "Description": "Setup and use Distance Field Ambient Occlusion."
+      },
+      {
+        "Title": "Using Distance Field Indirect Shadows",
+        "Description": "Setup and use Distance Field Indirect Shadows."
+      },
+      {
+        "Title": "Mesh Distance Fields Properties",
+        "Description": "Reference page for all Mesh Distance Field settings."
+      }
+    ],
+    "Categories": [
+      "static mesh",
+      "rendering",
+      "lighting",
+      "shadows",
+      "distance fields"
+    ]
+  }
+}
+{
+  "DistanceFieldAmbientOcclusion": {
+    "Description": "An overview of using Mesh Distance Fields for dynamic ambient occlusion with SkyLights.",
+    "Features": {
+      "DynamicAO": "Supports dynamic scene changes; occlusion is computed from world-space occluders.",
+      "SignedDistanceFieldVolumes": "Precomputed around rigid meshes for medium scale Ambient Occlusion."
+    },
+    "Setup": {
+      "Prerequisite": "Enable Generate Mesh Distance Fields in Project Settings.",
+      "Steps": [
+        "Drag a Sky Light into the scene and set its Mobility to Movable."
+      ]
+    },
+    "SkyLightSettings": {
+      "Adjustments": [
+        {
+          "Name": "Occlusion Contrast",
+          "Comparison": ["0", "1"]
+        },
+        {
+          "Name": "Minimum Occlusion",
+          "Comparison": ["0", "1"]
+        },
+        {
+          "Name": "Occlusion Tint",
+          "Comparison": ["Black", "Red"]
+        }
+      ],
+      "Visualization": "Show > Visualize > Distance Fields Ambient Occlusion"
+    },
+    "Quality": {
+      "Description": "Determined by the resolution of the Mesh Distance Field it represents.",
+      "Note": "Larger details of the mesh should be well represented for good results."
+    },
+    "OcclusionResults": {
+      "Types": [
+        {
+          "Name": "Diffuse",
+          "Description": "Produces a bent normal used to modify the diffuse sky light calculation."
+        },
+        {
+          "Name": "Specular",
+          "Description": "Provides approximate specular occlusion by intersecting directional occlusion cone with reflection cone."
+        }
+      ],
+      "SpecularOcclusionMode": "Use r.AOSpecularOcclusionMode for more accurate results."
+    },
+    "Foliage": {
+      "Steps": [
+        "Enable Affect Distance Field Lighting in the Foliage Tool settings.",
+        "Enable Two-Sided Distance Field Generation for foliage type assets."
+      ],
+      "Issues": "Foliage LODs can cause over-occlusion; use World Position Offset and Pixel Depth Offset to mitigate."
+    },
+    "Landscapes": {
+      "Representation": "Use heightfield instead of Mesh Distance Field.",
+      "Note": "No self-shadowing or Distance Field shadowing; use Far Shadows with Cascaded Shadow Maps for far distances."
+    },
+    "Performance": {
+      "Optimization": [
+        {
+          "Change": "Culling algorithm for screen tiles.",
+          "OriginalCost": 3.63,
+          "NewCost": 3.48,
+          "Savings": 0.15
+        },
+        {
+          "Change": "Fast approximations for slow instructions.",
+          "OriginalCost": 3.25,
+          "NewCost": 3.09,
+          "Savings": 0.16
+        },
+        {
+          "Change": "Transform moved out of inner loop.",
+          "OriginalCost": 3.09,
+          "NewCost": 3.04,
+          "Savings": 0.05
+        },
+        {
+          "Change": "Compute shader for ClearUAV.",
+          "OriginalCost": 3.04,
+          "NewCost": 2.62,
+          "Savings": 0.42
+        }
+      ],
+      "SmoothSampling": "Improves ghosting and smooths occlusion."
+    },
+    "GlobalDistanceFields": {
+      "Description": "Low-resolution Distance Field using Signed Distance Fields occlusion following the camera.",
+      "Visualization": "Show > Visualize > Global Distance Field."
+    },
+    "Limitations": {
+      "Technique": [
+        "Only Ambient Occlusion provided.",
+        "Shadows only cast from rigid meshes."
+      ],
+      "Implementation": [
+        "Updates to AO from dynamic scene changes lag as work is spread across multiple frames.",
+        "Large objects have diminished Distance Field resolution."
+      ]
+    },
+    "TipsAndTricks": {
+      "CheapBounceLight": "Uncheck Lower Hemisphere is Solid Color on Sky Light and paint in ground color into the cubemap."
+    },
+    "Categories": [
+      "static mesh",
+      "rendering",
+      "lighting",
+      "shadows",
+      "distance fields"
+    ]
+  }
+}
+{
+  "DistanceFieldSoftShadows": {
+    "Description": "An overview of using Mesh Distance Fields for dynamic soft area shadowing.",
+    "Features": {
+      "DynamicShadowing": "Provides shadowing from movable light sources using object Distance Fields.",
+      "AreaShadowing": "Calculates high-quality area shadows from spherical light source shapes."
+    },
+    "Setup": {
+      "Prerequisite": "Enable Generate Mesh Distance Fields in Project Settings.",
+      "Steps": [
+        "Drag a Light into the scene and set its Mobility to Movable.",
+        "Enable Distance Field Shadows in the Light Details panel."
+      ]
+    },
+    "Settings": {
+      "PointAndSpotLights": {
+        "SourceRadius": "Determines shadow penumbras size. Represented by a yellow sphere in the Editor."
+      },
+      "DirectionalLights": {
+        "SourceAngle": "Determines shadow penumbras size. Avoids leaking and over-biasing problems."
+      }
+    },
+    "Comparison": {
+      "TraditionalShadowMap": "Standard shadow map comparison.",
+      "DistanceFieldShadow": "Soft area shadows with Distance Fields."
+    },
+    "Quality": {
+      "Impact": "Significant impact on shadow accuracy. Increased resolution improves shadows.",
+      "Visualization": "Use Mesh Distance Field Visualization to inspect quality."
+    },
+    "Performance": {
+      "GPUPerformance": {
+        "Tests": [
+          {
+            "Description": "Directional Light with distance of 10k units, 3 Cascaded Shadow Maps",
+            "CSMCost": 3.1,
+            "DFSCost": 2.3,
+            "Faster": "25%"
+          },
+          {
+            "Description": "Directional Light with distance of 30k units, 6 Cascaded Shadow Maps",
+            "CSMCost": 4.9,
+            "DFSCost": 2.8,
+            "Faster": "43%"
+          },
+          {
+            "Description": "One Point Light with a large radius",
+            "CSMCost": 1.8,
+            "DFSCost": 1.3,
+            "Faster": "30%"
+          },
+          {
+            "Description": "Five Point Lights with a small radius",
+            "CSMCost": 3.2,
+            "DFSCost": 1.8,
+            "Faster": "45%"
+          }
+        ]
+      }
+    },
+    "Optimizations": {
+      "Considerations": [
+        "Larger Source Angle increases cost.",
+        "Larger Distance Field Shadow Distance reduces culling efficiency.",
+        "Two-Sided Distance Field Generation increases cost.",
+        "Enable Compress Mesh Distance Fields to reduce memory usage.",
+        "Enable Eight Bit Mesh Distance Fields for half memory usage."
+      ],
+      "GlobalDistanceField": {
+        "Description": "Caches mostly static primitives and composites them into a few volume textures."
+      }
+    },
+    "Limitations": {
+      "General": "Shares limitations of Mesh Distance Fields technique.",
+      "Specific": [
+        "Only Ambient Occlusion provided.",
+        "Shadows only cast from rigid meshes."
+      ]
+    },
+    "Categories": [
+      "static mesh",
+      "rendering",
+      "lighting",
+      "shadows",
+      "distance fields"
+    ]
+  }
+}
+{
+  "UsingDistanceFieldShadows": {
+    "Description": "How to set up and use Distance Field Shadowing for dynamic lighting in games.",
+    "Benefits": {
+      "DynamicLighting": "Ideal for long view distances or large open worlds.",
+      "Efficiency": "Shadows at farther distances than traditional Cascaded Shadow Maps (CSM) with Directional Light."
+    },
+    "SetupSteps": {
+      "Prerequisite": "Enable Generate Mesh Distance Fields in Project Settings (Rendering section).",
+      "Steps": [
+        {
+          "Step": 1,
+          "Description": "Navigate to Place Actors panel, select and drag a Directional, Spot, or Point Light into the main viewport."
+        },
+        {
+          "Step": 2,
+          "Description": "Select the Light, go to its Details panel, and set its Mobility to Movable or Stationary."
+        },
+        {
+          "Step": 3,
+          "Description": "In the Details panel under Distance Field Shadows, enable Distance Field Shadows."
+        }
+      ],
+      "Note": "If the option is grayed out, ensure Generate Mesh Distance Fields is enabled in Project Settings and the light's Mobility is set to Movable or Stationary."
+    },
+    "EndResult": {
+      "Description": "Once set to Movable or Stationary and Distance Field Shadowing is enabled, the light will automatically use them for the level.",
+      "DirectionalLights": "Distance Field Shadowing enabled for any distance beyond the Cascaded Shadow Maps Dynamic Shadow Distance value."
+    },
+    "Comparison": {
+      "CSMOnly": "Cascaded Shadow Maps Only",
+      "CSMandDFS": "Cascaded Shadow Maps and Distance Field Shadows"
+    },
+    "AdditionalSettings": {
+      "Description": "Refer to the Distance Field Reference for settings specific to Directional Lights and Point/Spot Lights.",
+      "Benefits": [
+        "Artistic control over shadow softness and distance.",
+        "Global adjustments to remove self-shadowing artifacts from LOD meshes at farther distances."
+      ]
+    },
+    "Categories": [
+      "static mesh",
+      "rendering",
+      "lighting",
+      "shadows",
+      "distance fields"
+    ]
+  }
+}
+{
+  "UsingDistanceFieldAmbientOcclusion": {
+    "Description": "How to set up and use Distance Field Ambient Occlusion (DFAO) for dynamic Ambient Occlusion in games.",
+    "Benefits": {
+      "DynamicAO": "Uses Mesh Distance Fields for movable Static Meshes, not limited to screen space or precomputed lighting."
+    },
+    "SetupSteps": {
+      "Prerequisite": "Enable Generate Mesh Distance Fields in Project Settings (Rendering section).",
+      "Steps": [
+        {
+          "Step": 1,
+          "Description": "Navigate to Place Actors panel, select and drag a Sky Light into the Level Viewport."
+        },
+        {
+          "Step": 2,
+          "Description": "Select the Sky Light, go to its Details panel, and set its Mobility to Movable."
+        }
+      ]
+    },
+    "EndResult": {
+      "Description": "Once the Sky Light is set to Movable, DFAO will be automatically enabled for your level.",
+      "Comparison": {
+        "WithoutDFAO": "Sky Light without Distance Field Ambient Occlusion",
+        "WithDFAO": "Sky Light with Distance Field Ambient Occlusion"
+      }
+    },
+    "AdditionalSettings": {
+      "Description": "Refer to the Distance Field Reference for settings specific to DFAO for Sky Lights.",
+      "Benefits": [
+        "Control over occlusion accuracy.",
+        "Adjust tint and contrast.",
+        "Artistic control over scene appearance."
+      ]
+    },
+    "Categories": [
+      "static mesh",
+      "rendering",
+      "lighting",
+      "shadows",
+      "distance fields"
+    ]
+  }
+}
+{
+  "UsingDistanceFieldIndirectShadows": {
+    "Description": "How to set up and use Distance Field Indirect Shadows (DFIS) for area shadowing in indirectly lit areas.",
+    "Benefits": {
+      "DynamicShadowing": "Provides soft area shadowing for movable objects in indirectly lit areas.",
+      "Integration": "Blends dynamic objects with precomputed lighting without complex material setups or decals."
+    },
+    "SetupSteps": {
+      "Note": "DFIS does not require Generate Mesh Distance Fields to be enabled for the entire project.",
+      "Steps": [
+        {
+          "Step": 1,
+          "Description": "In the Content Browser, select a Static Mesh asset and open the Static Mesh Editor."
+        },
+        {
+          "Step": 2,
+          "Description": "In the Static Mesh Editor, navigate to the Details panel and enable Generate Mesh Distance Fields in the Static Mesh Settings section. Save and close the editor."
+        },
+        {
+          "Step": 3,
+          "Description": "From the Content Browser, drag the mesh into the Level Viewport."
+        },
+        {
+          "Step": 4,
+          "Description": "Select the Actor in the Level, go to the Details panel, and set its Mobility to Movable."
+        },
+        {
+          "Step": 5,
+          "Description": "Under the Lighting tab, enable Distance Field Indirect Shadow."
+        },
+        {
+          "Step": 6,
+          "Description": "If lighting hasn't been built, click Build on the Main menu and select Build Lighting Only."
+        }
+      ]
+    },
+    "EndResult": {
+      "Description": "Movable Static Meshes cast soft shadows in indirectly lit areas.",
+      "Note": "Indirect shadows will be minimal in directly lit or brightly lit areas."
+    },
+    "AdditionalSettings": {
+      "Description": "Refer to the Distance Fields Reference for settings specific to Distance Field Indirect Shadows for Static Mesh Actors."
+    },
+    "Categories": [
+      "static mesh",
+      "rendering",
+      "lighting",
+      "shadows",
+      "distance fields"
+    ]
+  }
+}
+{
+  "MeshDistanceFieldsProperties": {
+    "Description": "A reference page for all the Mesh Distance Field settings available in Unreal Engine.",
+    "Purpose": "Use these settings to obtain specific styles or optimize your project.",
+    "SettingsCategories": {
+      "ProjectSettings": {
+        "Location": "Edit > Project Settings > Rendering > Software Ray Tracing",
+        "Settings": [
+          {
+            "Property": "Generate Mesh Distance Fields",
+            "Description": "Builds Static Mesh Distance Fields for use with Distance Field Shadows and Ambient Occlusion. Increases build times and memory usage."
+          },
+          {
+            "Property": "Distance Field Voxel Density",
+            "Description": "Determines default scale of mesh conversion into distance field voxel dimensions. Large values consume memory quickly."
+          }
+        ]
+      },
+      "LightComponents": {
+        "DirectionalLight": {
+          "Settings": [
+            {
+              "Property": "Source Angle",
+              "Description": "Supports soft area shadows for dynamic shadowing methods."
+            },
+            {
+              "Property": "Distance Field Shadow Distance",
+              "Description": "Farthest distance for Distance Field Shadowing."
+            },
+            {
+              "Property": "Distance Field Shadows",
+              "Description": "Toggles Distance Field Shadows for the light source."
+            },
+            {
+              "Property": "Distance Field Trace Distance",
+              "Description": "Distance in world units for how far shadows can cast."
+            },
+            {
+              "Property": "Ray Start Offset Depth Scale",
+              "Description": "Controls offset for tracing shadows from receiving surface as camera gets further away."
+            }
+          ]
+        },
+        "PointSpotLight": {
+          "Settings": [
+            {
+              "Property": "Source Radius",
+              "Description": "Size of light source sphere; larger values create larger penumbra but may lower performance."
+            },
+            {
+              "Property": "Distance Field Shadows",
+              "Description": "Toggles Distance Field area shadows."
+            },
+            {
+              "Property": "Ray Start Offset Depth Scale",
+              "Description": "Controls offset for Distance Field Shadows from receiving surface as camera moves away."
+            }
+          ]
+        },
+        "SkyLight": {
+          "Settings": [
+            {
+              "Property": "Occlusion Max Distance",
+              "Description": "Maximum distance from an occluder to compute occlusion contribution."
+            },
+            {
+              "Property": "Occlusion Contrast",
+              "Description": "Raises contrast of computed occlusion."
+            },
+            {
+              "Property": "Occlusion Exponent",
+              "Description": "Exponent applied to AO; values lower than 1 brighten occlusion without losing contact shadows."
+            },
+            {
+              "Property": "Min Occlusion",
+              "Description": "Prevents occlusion from going fully black; simulates multi-bounce lighting."
+            },
+            {
+              "Property": "Occlusion Tint",
+              "Description": "Constant color used to color occlusion."
+            },
+            {
+              "Property": "Occlusion Combine Mode",
+              "Description": "Controls how DFAO is combined with SSAO."
+            }
+          ]
+        }
+      },
+      "StaticMeshEditor": {
+        "BuildSettings": {
+          "Settings": [
+            {
+              "Property": "Distance Field Resolution Scale",
+              "Description": "Adjusts quality of generated Mesh Distance Field; impacts volume texture size."
+            },
+            {
+              "Property": "Two-Sided Distance Field Generation",
+              "Description": "Enables two-sided generation for soft shadows with overlapping planes; higher performance cost."
+            },
+            {
+              "Property": "Distance Field Replacement Mesh",
+              "Description": "Selects Distance Field of another Static Mesh to use."
+            }
+          ]
+        },
+        "GeneralSettings": {
+          "Settings": [
+            {
+              "Property": "Generate Mesh Distance Field",
+              "Description": "Generates Distance Field for mesh for use with Distance Field Indirect Shadows."
+            },
+            {
+              "Property": "Distance Field Self Shadow Bias",
+              "Description": "Reduces self-shadowing when using World Position Offset to animate mesh vertices."
+            }
+          ]
+        }
+      },
+      "ActorComponents": {
+        "Settings": [
+          {
+            "Property": "Distance Field Indirect Shadow",
+            "Description": "Uses Mesh Distance Field representation for shadowing indirect lighting on movable components."
+          },
+          {
+            "Property": "Override Distance Field Self Shadow Bias",
+            "Description": "Overrides Distance Field Self Shadow Bias setting of the Static Mesh Asset."
+          },
+          {
+            "Property": "Distance Field Indirect Shadow Min Visibility",
+            "Description": "Controls how dark Distance Field Indirect Shadow can be."
+          },
+          {
+            "Property": "Distance Field Self Shadow Bias",
+            "Description": "Reduces self-shadowing when using World Position Offset to animate mesh vertices."
+          },
+          {
+            "Property": "Affect Distance Field Lighting",
+            "Description": "Controls whether the primitive should affect dynamic Distance Field Lighting methods."
+          }
+        ]
+      }
+    },
+    "Categories": [
+      "static mesh",
+      "rendering",
+      "lighting",
+      "shadows",
+      "distance fields"
+    ]
+  }
+}

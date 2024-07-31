@@ -1,0 +1,84 @@
+{
+  "FBX_Material_Pipeline": {
+    "Overview": {
+      "Description": "Guide for transferring materials and textures with meshes using the FBX content pipeline.",
+      "Compatibility": "Uses FBX 2020.2; different versions may cause issues."
+    },
+    "Material_Support": {
+      "Supported_Material_Types": [
+        "Surface",
+        "Anisotropic",
+        "Blinn",
+        "Lambert",
+        "Phong",
+        "Phong E"
+      ],
+      "Supported_Maps": "Certain maps or textures supported; uncommon types may require manual connections."
+    },
+    "Multiple_Materials": {
+      "Description": "Meshes can have several materials applied, handled by the FBX pipeline.",
+      "Maya_Usage": "Select faces and apply materials; Unreal creates materials and slots corresponding to Maya setup."
+    },
+    "Material_Naming": {
+      "Description": "Materials named same as source materials in 3D application.",
+      "Maya": "Name transferred from shading engine applied to mesh in Maya."
+    },
+    "Material_Ordering": {
+      "Description": "Uses material names for ordering; Skin## naming convention not required since 4.14.",
+      "Tooltip": "Slot Name tooltip shows imported Material name."
+    },
+    "Material_Slots": {
+      "Add_Remove": "Use add(+) button to add slots, remove (x) button to remove slots.",
+      "Blueprints_C++": "Set materials at runtime using Slot Name with Set Material By Name."
+    },
+    "Texture_Import": {
+      "Description": "Diffuse or normal maps imported if enabled; incompatible or unknown attribute textures not imported.",
+      "Unreal_Editor": "Creates Texture Sample and Texture Coordinate expressions."
+    },
+    "References": [
+      "Developer Forums",
+      "Learning Library"
+    ]
+  }
+}
+{
+  "Importing_Materials_Reference": {
+    "Overview": {
+      "Description": "Reference guide for importing materials from 3DS Max and Maya.",
+      "Compatibility": "Uses FBX 2020.2; different versions may cause issues."
+    },
+    "Supported_Materials": {
+      "Types": [
+        "Surface",
+        "Anisotropic",
+        "Blinn",
+        "Lambert",
+        "Phong",
+        "Phong E"
+      ],
+      "Note": "Only basic materials supported; uncommon textures not imported."
+    },
+    "Material_Naming": {
+      "Description": "Materials named based on originating application.",
+      "Maya": "Name transferred from shading engine applied to mesh."
+    },
+    "Material_Ordering": {
+      "Description": "Specify material order using *_skin## naming convention.",
+      "Example": [
+        "M_ExampleMesh_skin00",
+        "M_ExampleMesh_skin01"
+      ]
+    },
+    "Multiple_Materials": {
+      "Description": "FBX pipeline imports meshes with multiple materials.",
+      "Maya_Usage": "Select faces, apply materials; Unreal creates corresponding materials and slots."
+    },
+    "Texture_Import": {
+      "Description": "Diffuse or normal maps imported if Import Textures setting is enabled."
+    },
+    "References": [
+      "Developer Forums",
+      "Learning Library"
+    ]
+  }
+}

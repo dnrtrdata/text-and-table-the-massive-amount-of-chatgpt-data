@@ -1,0 +1,111 @@
+{
+  "Packaging_Projects": {
+    "Overview": {
+      "Description": "Packaging Unreal game projects for distribution.",
+      "Purpose": "Ensure all code and content is up to date and in the proper format for the target platform."
+    },
+    "Steps": {
+      "Compiling": "Compile project-specific source code.",
+      "Cooking": "Convert content into a format usable by the target platform.",
+      "Bundling": "Bundle compiled code and cooked content into distributable files."
+    },
+    "Package_Project_Options": {
+      "Access": "File > Package Project > [PlatformName]",
+      "Platforms": "List of supported platforms for packaging.",
+      "Advanced_Options": "Settings available before packaging."
+    },
+    "Setting_Game_Default_Map": {
+      "Steps": [
+        "Click Edit > Project Settings > Maps & Modes.",
+        "Set the Game Default Map to load on startup."
+      ]
+    },
+    "Creating_Packages": {
+      "Steps": [
+        "File > Package Project > [PlatformName]",
+        "Select target directory.",
+        "Packaging process runs in background with status indicator."
+      ],
+      "Status_Indicator": ["Cancel button", "Show Log link"]
+    },
+    "Distribution": {
+      "iOS": "Create Distribution Certificate and MobileProvision on Apple's developer website.",
+      "Android": "Create key to sign .apk file and configure SigningConfig.xml."
+    },
+    "Advanced_Settings": {
+      "Access": "File > Package Project > Packaging Settings...",
+      "Options": [
+        {
+          "Option": "Build Configuration",
+          "Description": "Select DebugGame for debugging, Development for performance, Shipping for final build."
+        },
+        {
+          "Option": "Staging Directory",
+          "Description": "Directory for packaged build."
+        },
+        {
+          "Option": "Full Rebuild",
+          "Description": "Compile all code for shipping builds."
+        },
+        {
+          "Option": "Use Pak File",
+          "Description": "Package assets as single .pak file."
+        },
+        {
+          "Option": "Generate Chunks",
+          "Description": "Generate .pak file chunks for streaming installs."
+        },
+        {
+          "Option": "Build Http Chunk Install Data",
+          "Description": "Generate data for HTTP chunk installer."
+        },
+        {
+          "Option": "Http Chunk Install Data Directory",
+          "Description": "Directory for HTTP chunk install data."
+        },
+        {
+          "Option": "Http Chunk Install Data Version",
+          "Description": "Version name for HTTP chunk install data."
+        },
+        {
+          "Option": "Include Prerequisites Installer",
+          "Description": "Include installers for game prerequisites."
+        }
+      ]
+    },
+    "Signing_and_Encryption": {
+      "Description": "Sign or encrypt .pak files using OpenSSL.",
+      "Options": [
+        "Encrypt Pak INI Files",
+        "Encrypt Pak Index",
+        "Encrypt UAsset Files",
+        "Encrypt Assets",
+        "Enable Pak Signing"
+      ]
+    },
+    "Content_Cooking": {
+      "Description": "Cook content for target platform without packaging.",
+      "Steps": ["File > Cook Content > [PlatformName]"]
+    },
+    "Optimizing_Load_Times": {
+      "Methods": [
+        {
+          "Method": "Event Driven Loader (EDL) and Asynchronous Loading Thread (ALT)",
+          "Description": "Activate ALT in Project Settings for faster loading."
+        },
+        {
+          "Method": "Compressing Pak File",
+          "Description": "Enable compression in Project Settings > Packaging."
+        },
+        {
+          "Method": "Ordering Pak File",
+          "Description": "Optimize .pak file order using GameOpenOrder.log."
+        }
+      ]
+    },
+    "Resources": {
+      "Forums": "Ask questions and help peers.",
+      "Learning_Library": "Write or read tutorials."
+    }
+  }
+}

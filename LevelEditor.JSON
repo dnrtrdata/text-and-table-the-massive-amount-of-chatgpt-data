@@ -1,0 +1,941 @@
+{
+    "LevelEditor": {
+        "Overview": {
+            "Description": "The Level Editor provides the core level creation functionality for Unreal Editor. It is used to create, view, and modify levels by placing, transforming, and editing the properties of Actors.",
+            "KeyConcepts": [
+                {
+                    "Term": "Level",
+                    "Description": "A 3D environment in which game experiences are created."
+                },
+                {
+                    "Term": "Actor",
+                    "Description": "Any object that can be placed in a level, with 3D position, rotation, and scale data."
+                }
+            ]
+        },
+        "DefaultInterface": {
+            "Description": "The interface is customizable, but the default layout includes several key components.",
+            "Components": [
+                "Tab Bar and Menu Bar",
+                "Toolbar",
+                "Bottom Toolbar",
+                "Place Actor / Modes",
+                "Viewports",
+                "Content Browser / Content Drawer",
+                "Outliner",
+                "Details"
+            ]
+        },
+        "TabBar": {
+            "Description": "Displays the name of the current level. Other editor windows can be docked here for quick navigation.",
+            "Details": [
+                "Reflects the level currently being edited.",
+                "Tabs named after current assets being edited.",
+                "Current project name displayed to the right."
+            ]
+        },
+        "Toolbar": {
+            "Description": "Displays a group of commands for quick access to commonly used tools and operations.",
+            "Details": "See Toolbar documentation for more details."
+        },
+        "MenuBar": {
+            "Description": "Provides access to general tools and commands. It includes a console for entering special commands.",
+            "Components": [
+                "Console with auto-complete for commands",
+                "Source Control status button"
+            ]
+        },
+        "Modes": {
+            "Description": "Enable specialized editing interfaces and workflows for particular types of Actors or geometry.",
+            "Modes": [
+                {
+                    "Icon": "Select",
+                    "Name": "Select",
+                    "Shortcut": "Shift + 1",
+                    "Description": "Activate Select mode to select Actors in your scene."
+                },
+                {
+                    "Icon": "Landscape",
+                    "Name": "Landscape",
+                    "Shortcut": "Shift + 2",
+                    "Description": "Activate Landscape mode to edit Landscape terrains."
+                },
+                {
+                    "Icon": "Foliage",
+                    "Name": "Foliage",
+                    "Shortcut": "Shift + 3",
+                    "Description": "Activate Foliage Mode to paint instanced foliage."
+                },
+                {
+                    "Icon": "Mesh Paint",
+                    "Name": "Mesh Paint",
+                    "Shortcut": "Shift + 4",
+                    "Description": "Activate Mesh Paint mode to paint vertex colors and textures on Static Mesh Actors."
+                },
+                {
+                    "Icon": "Modeling",
+                    "Name": "Modeling",
+                    "Shortcut": "Shift + 5",
+                    "Description": "Activate Modeling editing mode."
+                },
+                {
+                    "Icon": "Fracture",
+                    "Name": "Fracture",
+                    "Shortcut": "Shift + 6",
+                    "Description": "Activate Fracture mode to create destructible objects and environments."
+                },
+                {
+                    "Icon": "Brush",
+                    "Name": "Brush Editing",
+                    "Shortcut": "Shift + 7",
+                    "Description": "Activate Brush Editing mode to modify Geometry Brushes."
+                },
+                {
+                    "Icon": "Animation",
+                    "Name": "Animation",
+                    "Shortcut": "Shift + 8",
+                    "Description": "Activate Animation editing mode."
+                }
+            ]
+        },
+        "Viewport": {
+            "Description": "Your window into the worlds you create in Unreal Engine.",
+            "Details": [
+                "Contains viewports that can be maximized to fill the entire panel.",
+                "Displays the world in orthographic or perspective views."
+            ]
+        },
+        "DetailsPanel": {
+            "Description": "Contains information, utilities, and functions for the current selection in the viewport.",
+            "Details": [
+                "Transform edit boxes for moving, rotating, and scaling Actors.",
+                "Displays all editable properties for selected Actors.",
+                "Quick access to additional editing functionality."
+            ]
+        },
+        "Outliner": {
+            "Description": "Displays all Actors within the scene in a hierarchical tree view.",
+            "Details": [
+                "Select and modify Actors directly from the Outliner.",
+                "Use the Info dropdown menu for additional columns like Levels, Layers, or ID Names."
+            ]
+        },
+        "BottomToolbar": {
+            "Description": "Contains shortcuts to the Command Console, Output Log, and Derived Data functionality. Displays source control status."
+        },
+        "LayersPanel": {
+            "Description": "Allows you to organize Actors in your Level.",
+            "Details": [
+                "Quickly select and control visibility of groups of related Actors.",
+                "Useful for decluttering scenes and managing modular parts."
+            ]
+        }
+    }
+}
+{
+    "EditorViewports": {
+        "Description": "The Viewports are your window into the worlds you create in Unreal Engine. They can be navigated just as you would in a game, or can be used in a more schematic design sense as you would for an architectural blueprint. The Unreal Editor viewports contain a variety of tools and visualizers to help you see exactly the data you need.",
+        "ViewportTopics": [
+            {
+                "Title": "Using Editor Viewports",
+                "Description": "Basic concepts and features of the Viewports in Unreal Editor."
+            },
+            {
+                "Title": "Viewport Modes",
+                "Description": "Explanations for the available View Modes within the viewports."
+            },
+            {
+                "Title": "Viewport Show Flags",
+                "Description": "Descriptions of all of the available Show Flags for the viewports."
+            },
+            {
+                "Title": "Viewport Controls",
+                "Description": "Learn about the various control schemes for the editor's viewports."
+            }
+        ]
+    }
+}
+{
+    "UsingEditorViewports": {
+        "Description": "Basic concepts and features of the Viewports in Unreal Editor.",
+        "Details": {
+            "Introduction": "The Viewports are your window into the worlds you create in Unreal. They can be navigated just as you would in a game, or can be used in a more schematic design sense as you would for an architectural Blueprint. The Unreal Editor viewports contain a variety of tools and visualizers to help you see exactly the data you need.",
+            "ViewportTypes": {
+                "Description": "There are two main types of Viewports in Unreal Editor: Perspective and Orthographic.",
+                "Types": {
+                    "Perspective": "A 3D window into the game world.",
+                    "Orthographic": {
+                        "Front": "2D Viewport looking down the X-Axis.",
+                        "Side": "2D Viewport looking down the Y-Axis.",
+                        "Top": "2D Viewport looking down the Z-Axis."
+                    }
+                },
+                "Shortcuts": {
+                    "Perspective": "Alt + G",
+                    "Front": "Alt + H",
+                    "Side": "Alt + J",
+                    "Top": "Alt + K"
+                }
+            },
+            "ViewportLayout": {
+                "Description": "By default, you see a single Perspective Viewport when you open Unreal Editor.",
+                "DefaultLayout": "The Viewport panel contains multiple Viewports, laid out in a grid with a default layout of 4x4, consisting of Perspective, Top, Front, and Side views.",
+                "Controls": {
+                    "Minimize": "Minimize Viewport button located in the top right corner of each Viewport.",
+                    "Maximize": "Maximize Viewport button located in the top right corner of each Viewport."
+                }
+            },
+            "ViewModes": {
+                "Description": "The Unreal Editor viewports have a large number of visualization modes to help you see the type of data being processed in your scene, as well as to diagnose any errors or unexpected results.",
+                "CommonModes": {
+                    "Lit": "Shows the scene with full lighting.",
+                    "Unlit": "Shows the scene without lighting.",
+                    "Wireframe": "Shows the scene as a wireframe model."
+                },
+                "Access": "All view modes can be accessed from the View Mode menu within the viewport."
+            },
+            "GameView": {
+                "Description": "Game View causes the Viewport to display the scene as it would appear in the game, hiding editor-specific elements.",
+                "Enable": "Press the G key (by default) with the Viewport focused or choose the Game View option from the Viewport Options menu."
+            },
+            "ImmersiveMode": {
+                "Description": "Immersive Mode maximizes the Viewport to the full extents of the window containing the Viewport panel, enabling a full-screen editing experience.",
+                "Enable": "Press the F11 key (by default) with the Viewport focused or choose the Immersive Mode option from the Viewport Options menu.",
+                "Restore": "Press the F11 key again or the Restore Viewport button located at the top right of the Viewport when in Immersive Mode."
+            }
+        }
+    }
+}
+{
+    "ViewportModes": {
+        "Description": "Explanations for the available View Modes within the viewports.",
+        "Details": {
+            "Introduction": "The Unreal Editor viewports have a large number of visualization modes to help you see the type of data being processed in your scene, as well as to diagnose any errors or unexpected results.",
+            "Modes": [
+                {
+                    "Name": "Lit",
+                    "Hotkey": "Alt + 4",
+                    "ConsoleCommand": "viewmode lit",
+                    "Description": "Shows the final result of your scene once all of the Materials and lighting have been applied."
+                },
+                {
+                    "Name": "Unlit",
+                    "Hotkey": "Alt + 3",
+                    "ConsoleCommand": "viewmode unlit",
+                    "Description": "Removes all lighting from the scene, showing you Base Color only."
+                },
+                {
+                    "Name": "Wireframe",
+                    "Hotkey": "Alt + 2",
+                    "ConsoleCommand": "viewmode wireframe",
+                    "Description": "Shows all of the polygon edges in the scene. In the case of Brushes, you will see the resultant geometry."
+                },
+                {
+                    "Name": "Detail Lighting",
+                    "Hotkey": "Alt + 5",
+                    "ConsoleCommand": "viewmode lit_detaillighting",
+                    "Description": "Activates a neutral Material across the entire scene, using the normal maps of the original materials."
+                },
+                {
+                    "Name": "Lighting Only",
+                    "Hotkey": "Alt + 6",
+                    "ConsoleCommand": "viewmode lightingonly",
+                    "Description": "Shows a neutral Material that is only affected by lighting, without normal maps."
+                },
+                {
+                    "Name": "Light Complexity",
+                    "Hotkey": "Alt + 7",
+                    "ConsoleCommand": "viewmode lightcomplexity",
+                    "Description": "Shows the number of non-static lights affecting your geometry.",
+                    "Coloration": [
+                        {
+                            "Color": "LightComplexity_0",
+                            "Lights": "0"
+                        },
+                        {
+                            "Color": "LightComplexity_1",
+                            "Lights": "1"
+                        },
+                        {
+                            "Color": "LightComplexity_2",
+                            "Lights": "2"
+                        },
+                        {
+                            "Color": "LightComplexity_3",
+                            "Lights": "3"
+                        },
+                        {
+                            "Color": "LightComplexity_4",
+                            "Lights": "4"
+                        },
+                        {
+                            "Color": "LightComplexity_5",
+                            "Lights": "5+"
+                        }
+                    ]
+                },
+                {
+                    "Name": "Shader Complexity",
+                    "Hotkey": "Alt + 8",
+                    "ConsoleCommand": "viewmode shadercomplexity",
+                    "Description": "Visualizes the number of shader instructions being used to calculate each pixel of your scene."
+                },
+                {
+                    "Name": "Stationary Light Overlap",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode stationarylightoverlap",
+                    "Description": "Displays overlap of stationary lights."
+                },
+                {
+                    "Name": "Lightmap Density",
+                    "Hotkey": "Alt + 0",
+                    "ConsoleCommand": "viewmode lightmapdensity",
+                    "Description": "Displays the lightmap density of objects that are texture mapped, color-coding them by their relation to an ideal/max density setting."
+                },
+                {
+                    "Name": "Reflections",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode reflections",
+                    "Description": "Overrides all materials with a flat normal and a roughness of 0, which is a mirror."
+                },
+                {
+                    "Name": "LOD Coloration",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode LODColoration",
+                    "Description": "Displays the current LOD index of a primitive."
+                },
+                {
+                    "Name": "HLOD Coloration",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode hlodcoloration",
+                    "Description": "Displays the Hierarchical LOD Cluster index of a primitive."
+                },
+                {
+                    "Name": "Buffer Visualization",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode buffervisualization",
+                    "Description": "Offers access to individual buffers within the graphics card to help diagnose scene appearance."
+                }
+            ],
+            "BufferVisualizationModes": [
+                {
+                    "Name": "Base Color",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode basecolor",
+                    "Description": "Shows only the Base Color of the Materials in your scene."
+                },
+                {
+                    "Name": "Decal Mask",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode decalmask",
+                    "Description": "Shows in white any surface which can receive deferred decals."
+                },
+                {
+                    "Name": "Diffuse Color",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode diffusecolor",
+                    "Description": "Shows the result of Base Color and the Material's Ambient Occlusion inputs."
+                },
+                {
+                    "Name": "Shading Model",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode shadingmodel",
+                    "Description": "Shows the value of the Shading Model property for each Material in the scene."
+                },
+                {
+                    "Name": "Material AO",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode materialao",
+                    "Description": "Shows the result of any texturing or Material Expression nodes connected to the Material's Ambient Occlusion input."
+                },
+                {
+                    "Name": "Metallic",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode metallic",
+                    "Description": "Shows the result of any texturing or Material Expression nodes connected to the Material's Metallic input."
+                },
+                {
+                    "Name": "Opacity",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode opacity",
+                    "Description": "Shows the result of any texturing or Material Expression nodes connected to the Material's Opacity input."
+                },
+                {
+                    "Name": "Roughness",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode roughness",
+                    "Description": "Shows the result of any texturing or Material Expression nodes connected to the Material's Roughness input."
+                },
+                {
+                    "Name": "Scene Color",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode scenecolor",
+                    "Description": "Shows the result of the scene before any post processing is done."
+                },
+                {
+                    "Name": "Scene Depth",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode scenedepth",
+                    "Description": "Shows the depth of the scene in a constant gradient from white (farthest away) to black (closest)."
+                },
+                {
+                    "Name": "Separate Translucency RGB",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode separatettranslucencyrgb",
+                    "Description": "Shows the color information of any Materials that are Translucent and using Separate Translucency."
+                },
+                {
+                    "Name": "Separate Translucency A",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode separatettranslucencya",
+                    "Description": "Shows only the alpha information of any Materials that are Translucent and using Separate Translucency."
+                },
+                {
+                    "Name": "Specular Color",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode specularcolor",
+                    "Description": "Shows the color being imparted to the specular reflections of a Material."
+                },
+                {
+                    "Name": "Specular",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode specular",
+                    "Description": "Shows the results of any texturing or Material Expression nodes fed into a Material's Specular input."
+                },
+                {
+                    "Name": "Subsurface Color",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode subsurfacecolor",
+                    "Description": "Shows the results of any texturing or Material Expression nodes fed into a Material's Subsurface Color input."
+                },
+                {
+                    "Name": "World Normal",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode worldnormal",
+                    "Description": "Shows the world space normal of any opaque surfaces."
+                },
+                {
+                    "Name": "Ambient Occlusion",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode ambientocclusion",
+                    "Description": "Shows the result of any ambient occlusion calculations taking place in the scene."
+                }
+            ],
+            "LandscapeVisualizers": [
+                {
+                    "Name": "Normal",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode landscape_normal",
+                    "Description": "Shows a Landscape in its normal, lit state."
+                },
+                {
+                    "Name": "LOD",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode landscape_lod",
+                    "Description": "Breaks a landscape up into color-coded panels representing their current LOD state."
+                },
+                {
+                    "Name": "Layer Density",
+                    "Hotkey": "None",
+                    "ConsoleCommand": "viewmode landscape_layerdensity",
+                    "Description": "Shows the landscape in a color-coded mode which shifts from green to red as more layers are added."
+                }
+            ],
+            "Exposure": {
+                "Description": "Exposure is a post-processing effect that controls the overall brightness of a scene. It can be set to a fixed value or left to automatic.",
+                "Types": {
+                    "Automatic": "Adjusts the exposure dynamically as you move from light to dark areas and vice versa.",
+                    "Fixed": "Locks the exposure in place to prevent automatic adjustments."
+                }
+            }
+        }
+    }
+}
+{
+    "Viewport Show Flags": {
+        "Description": "Descriptions of all the available Show Flags for the viewports.",
+        "Sections": [
+            {
+                "Name": "Common",
+                "Flags": [
+                    {
+                        "Name": "Anti-aliasing",
+                        "Description": "Shows/hides the effect of anti-aliasing."
+                    },
+                    {
+                        "Name": "BSP",
+                        "Description": "Shows/hides any Brushes in the level. (Alt + Q)"
+                    },
+                    {
+                        "Name": "Collision",
+                        "Description": "Shows/hides collision objects in the level. (Alt + C)"
+                    },
+                    {
+                        "Name": "Fog",
+                        "Description": "Shows/hides the effects of Height Fog. (Alt + F)"
+                    },
+                    {
+                        "Name": "Landscape",
+                        "Description": "Shows/hides any Landscape objects. (T)"
+                    },
+                    {
+                        "Name": "Navigation",
+                        "Description": "Shows/hides any Nav Meshes or other navigation Actors. (P)"
+                    },
+                    {
+                        "Name": "Static Meshes",
+                        "Description": "Shows/hides any Static Meshes in the scene. (Alt + W)"
+                    },
+                    {
+                        "Name": "Translucency",
+                        "Description": "Shows/hides all objects with translucent Materials."
+                    }
+                ]
+            },
+            {
+                "Name": "Post Processing",
+                "Flags": [
+                    {
+                        "Name": "Bloom",
+                        "Description": "Shows/hides the effect bloom."
+                    },
+                    {
+                        "Name": "Camera Imperfections",
+                        "Description": "Shows/hides the effect of Camera Imperfections."
+                    },
+                    {
+                        "Name": "Color Grading",
+                        "Description": "Shows/hides the effect of Color Grading."
+                    },
+                    {
+                        "Name": "Depth of Field",
+                        "Description": "Shows/hides the effect of Depth of Field."
+                    },
+                    {
+                        "Name": "Lens Flares",
+                        "Description": "Shows/hides the effect of Lens Flares."
+                    },
+                    {
+                        "Name": "Motion Blur",
+                        "Description": "Shows/hides the effect of Motion Blur."
+                    },
+                    {
+                        "Name": "Tonemapper",
+                        "Description": "Shows/hides Tonemapper effects."
+                    },
+                    {
+                        "Name": "Vignette",
+                        "Description": "Shows/hides Vignette effects."
+                    }
+                ]
+            },
+            {
+                "Name": "Light Types",
+                "Flags": [
+                    {
+                        "Name": "Directional Lights",
+                        "Description": "Shows/hides the result of lighting from the Directional Light actor."
+                    },
+                    {
+                        "Name": "Point Lights",
+                        "Description": "Shows/hides the result of lighting from the Point Light actor."
+                    },
+                    {
+                        "Name": "Sky Lighting",
+                        "Description": "Shows/hides the result of lighting from the Sky Light actor."
+                    },
+                    {
+                        "Name": "Spot Lights",
+                        "Description": "Shows/hides the result of lighting from the Spot Light actor."
+                    }
+                ]
+            },
+            {
+                "Name": "Lighting Components",
+                "Flags": [
+                    {
+                        "Name": "Ambient Occlusion",
+                        "Description": "Shows/hides ambient occlusion in the scene."
+                    },
+                    {
+                        "Name": "Diffuse",
+                        "Description": "Shows/hides the result of diffuse lighting in the scene."
+                    },
+                    {
+                        "Name": "Direct Lighting",
+                        "Description": "Shows/hides the result of direct lighting."
+                    },
+                    {
+                        "Name": "Dynamic Shadows",
+                        "Description": "Shows/hides dynamic shadows in the scene."
+                    },
+                    {
+                        "Name": "Global Illumination",
+                        "Description": "Shows/hides the result of global illumination."
+                    },
+                    {
+                        "Name": "Specular",
+                        "Description": "Shows/hides the result of specularity in the scene."
+                    }
+                ]
+            },
+            {
+                "Name": "Lighting Features",
+                "Flags": [
+                    {
+                        "Name": "Ambient Cubemap",
+                        "Description": "Shows/hides the result of the ambient cubemap."
+                    },
+                    {
+                        "Name": "Distance Field Ambient Occlusion",
+                        "Description": "Shows/hides the result of AO generated from Distance Field meshes."
+                    },
+                    {
+                        "Name": "Light Functions",
+                        "Description": "Shows/hides the result of light function materials on lights."
+                    },
+                    {
+                        "Name": "Reflection Environment",
+                        "Description": "Shows/hides the result of the reflection environment."
+                    },
+                    {
+                        "Name": "Subsurface Scattering",
+                        "Description": "Shows/hides the result of any subsurface scattering within the screen space."
+                    },
+                    {
+                        "Name": "Volumetric Fog",
+                        "Description": "Shows/hides the volumetric fog."
+                    }
+                ]
+            },
+            {
+                "Name": "Lumen",
+                "Flags": [
+                    {
+                        "Name": "Detail Traces",
+                        "Description": "Shows detail traces."
+                    },
+                    {
+                        "Name": "Far Field Traces",
+                        "Description": "Shows far field traces."
+                    },
+                    {
+                        "Name": "Global Traces",
+                        "Description": "Shows global traces."
+                    },
+                    {
+                        "Name": "Screen Traces",
+                        "Description": "Shows screen traces."
+                    },
+                    {
+                        "Name": "Secondary Bounces",
+                        "Description": "Shows secondary bounces."
+                    }
+                ]
+            },
+            {
+                "Name": "Developer",
+                "Flags": [
+                    {
+                        "Name": "AI Debug",
+                        "Description": "Shows the paths an AI-driven pawn is using to navigate."
+                    },
+                    {
+                        "Name": "GBuffer Hints",
+                        "Description": "Colorizes objects that have improper Materials."
+                    },
+                    {
+                        "Name": "Log Visualizer",
+                        "Description": "Draws any data to the screen required by the Log Visualizer system."
+                    },
+                    {
+                        "Name": "Refraction",
+                        "Description": "Shows/hides the results of refraction on Materials."
+                    },
+                    {
+                        "Name": "Test Image",
+                        "Description": "Shows a test image for monitor and graphics settings."
+                    }
+                ]
+            },
+            {
+                "Name": "Visualize",
+                "Flags": [
+                    {
+                        "Name": "Adaptive Depth of Field",
+                        "Description": "Applies a color coding filter for Depth of Field."
+                    },
+                    {
+                        "Name": "Bloom",
+                        "Description": "Shows a visualization window for bloom effects."
+                    },
+                    {
+                        "Name": "Distance Field Ambient Occlusion",
+                        "Description": "Shows a visualization of ambient occlusion from mesh distance fields."
+                    },
+                    {
+                        "Name": "Motion Blur",
+                        "Description": "Changes the view to a Motion Blur visualizer."
+                    },
+                    {
+                        "Name": "Screen Space Reflections",
+                        "Description": "Shows a visualization for Screen Space Reflections."
+                    }
+                ]
+            },
+            {
+                "Name": "Advanced",
+                "Flags": [
+                    {
+                        "Name": "Atmospheric Fog",
+                        "Description": "Shows/hides atmospheric fog Actors."
+                    },
+                    {
+                        "Name": "Audio Radius",
+                        "Description": "Shows/hides the radius of audio Actors."
+                    },
+                    {
+                        "Name": "Bounds",
+                        "Description": "Shows/hides bounds on selected objects."
+                    },
+                    {
+                        "Name": "Constraints",
+                        "Description": "Shows/hides rigid body constraints."
+                    },
+                    {
+                        "Name": "Foliage",
+                        "Description": "Shows/hides any Foliage Actors in the scene."
+                    }
+                ]
+            },
+            {
+                "Name": "Volumes",
+                "Flags": [
+                    {
+                        "Name": "Show All",
+                        "Description": "Shows all types of volumes in the scene."
+                    },
+                    {
+                        "Name": "Hide All",
+                        "Description": "Hides all types of volumes in the scene."
+                    },
+                    {
+                        "Name": "Audio",
+                        "Description": "Shows/hides Audio Volumes."
+                    },
+                    {
+                        "Name": "Blocking",
+                        "Description": "Shows/hides Blocking Volumes."
+                    },
+                    {
+                        "Name": "Camera Blocking Volume",
+                        "Description": "Shows/hides Camera Blocking Volumes."
+                    }
+                ]
+            },
+            {
+                "Name": "Layers",
+                "Flags": [
+                    {
+                        "Name": "Show All",
+                        "Description": "Sets all Layers in the scene to be visible."
+                    },
+                    {
+                        "Name": "Hide All",
+                        "Description": "Hides all Layers in the scene."
+                    }
+                ]
+            },
+            {
+                "Name": "Sprites",
+                "Flags": [
+                    {
+                        "Name": "Show All",
+                        "Description": "Shows all types of billboard sprites."
+                    },
+                    {
+                        "Name": "Hide All",
+                        "Description": "Hides all types of billboard sprites."
+                    },
+                    {
+                        "Name": "Characters",
+                        "Description": "Shows/hides Character billboard sprites."
+                    },
+                    {
+                        "Name": "Effects",
+                        "Description": "Shows/hides Effects billboard sprites."
+                    },
+                    {
+                        "Name": "Lighting",
+                        "Description": "Shows/hides Light Actor billboard sprites."
+                    }
+                ]
+            },
+            {
+                "Name": "Foliage Types",
+                "Flags": [
+                    {
+                        "Name": "Show All",
+                        "Description": "Shows all foliage types."
+                    },
+                    {
+                        "Name": "Hide All",
+                        "Description": "Hides all foliage types."
+                    }
+                ]
+            }
+        ]
+    }
+}
+{
+    "Viewport Controls": {
+        "Description": "Learn about the various control schemes for the editor's viewports.",
+        "Sections": [
+            {
+                "Name": "Navigation Controls",
+                "Controls": [
+                    {
+                        "Type": "Standard",
+                        "Perspective": {
+                            "LMB + Drag": "Moves the camera forward/backward and rotates left/right.",
+                            "RMB + Drag": "Rotates the viewport camera.",
+                            "LMB + RMB + Drag": "Moves up and down."
+                        },
+                        "Orthographic": {
+                            "LMB + Drag": "Creates a marquee selection box.",
+                            "RMB + Drag": "Pans the viewport camera.",
+                            "LMB + RMB + Drag": "Zooms the viewport camera in and out."
+                        },
+                        "Focusing": {
+                            "F": "Focuses the camera on the selected object."
+                        }
+                    },
+                    {
+                        "Type": "Magic Mouse and Magic Trackpad",
+                        "Perspective": {
+                            "LMB + Drag": "Moves the camera forward/backward and rotates left/right.",
+                            "RMB + Drag": "Rotates the viewport camera."
+                        },
+                        "Orthographic": {
+                            "LMB + Drag": "Creates a marquee selection box.",
+                            "RMB + Drag": "Pans the viewport camera."
+                        },
+                        "Focusing": {
+                            "F": "Focuses the camera on the selected object."
+                        }
+                    },
+                    {
+                        "Type": "Game-style",
+                        "Controls": {
+                            "W / Numpad8 / Up": "Moves the camera forward.",
+                            "S / Numpad2 / Down": "Moves the camera backward.",
+                            "A / Numpad4 / Left": "Moves the camera left.",
+                            "D / Numpad6 / Right": "Moves the camera right.",
+                            "E / Numpad9 / Page Up": "Moves the camera up.",
+                            "Q / Numpad7 / Page Dn": "Moves the camera down.",
+                            "Z / Numpad1": "Zooms the camera out.",
+                            "C / Numpad3": "Zooms the camera in."
+                        }
+                    },
+                    {
+                        "Type": "Pan, Orbit, and Zoom",
+                        "Controls": {
+                            "Alt + LMB + Drag": "Tumbles the viewport around a single pivot.",
+                            "Alt + RMB + Drag": "Dollies (zooms) the camera toward/away from a pivot.",
+                            "Alt + MMB + Drag": "Tracks the camera in the direction of mouse movement."
+                        }
+                    },
+                    {
+                        "Type": "Scaled Camera Zoom and Pan",
+                        "Description": "Sensitivity of zoom and pan camera operations is scaled with the distance between the selected objects and the camera.",
+                        "Controls": {
+                            "Enable": "Level Editor > Viewports > Controls > Use distance-scaled camera speed."
+                        }
+                    },
+                    {
+                        "Type": "Orbit Around Selection",
+                        "Description": "Camera orbits around the pivot of selected objects.",
+                        "Controls": {
+                            "Enable": "Level Editor > Viewports > Controls > Orbit camera around selection."
+                        }
+                    }
+                ]
+            },
+            {
+                "Name": "Selection Controls",
+                "Controls": [
+                    {
+                        "Type": "Simple Selection",
+                        "Actions": {
+                            "LMB": "Selects the Actor under the cursor.",
+                            "Ctrl + LMB": "Adds the Actor under the cursor to the current selection."
+                        }
+                    },
+                    {
+                        "Type": "Box Selection (2D Viewports Only)",
+                        "Actions": {
+                            "LMB + Drag": "Replaces the current selection with the Actors in the box.",
+                            "Shift + LMB + Drag": "Adds the Actors in the box to the current selection.",
+                            "Ctrl + RMB + Drag": "Removes selected Actors in the box from the current selection."
+                        }
+                    }
+                ]
+            },
+            {
+                "Name": "Transform Controls",
+                "Controls": [
+                    {
+                        "Type": "General",
+                        "Actions": {
+                            "LMB + Drag (on Transform Tool)": "Moves, rotates, or scales the selected Actors.",
+                            "W": "Selects the Move Tool.",
+                            "E": "Selects the Rotate Tool.",
+                            "R": "Selects the Scale Tool.",
+                            "V": "Toggles vertex snapping.",
+                            "MMB + Drag (on Pivot)": "Moves the pivot of the selection temporarily."
+                        }
+                    },
+                    {
+                        "Type": "Move Tool",
+                        "Actions": {
+                            "Alt + LMB + Drag (on arrows)": "Creates and moves a duplicate of the selected Actor(s)."
+                        },
+                        "Perspective Viewports": {
+                            "Ctrl + LMB + Drag": "Moves the selected Actor(s) along the X axis.",
+                            "Ctrl + RMB + Drag": "Moves the selected Actor(s) along the Y axis.",
+                            "Ctrl + LMB + RMB + Drag": "Moves the selected Actor(s) along the Z axis."
+                        },
+                        "Orthographic Viewports": {
+                            "Ctrl + LMB + Drag": "Moves the selected Actor(s) along the plane defined by the two visible axes."
+                        }
+                    },
+                    {
+                        "Type": "Rotate Tool (Perspective Viewports Only)",
+                        "Actions": {
+                            "Ctrl + LMB + Drag": "Rotates the selected Actor(s) along the X axis.",
+                            "Ctrl + RMB + Drag": "Rotates the selected Actor(s) along the Y axis.",
+                            "Ctrl + LMB + RMB + Drag": "Rotates the selected Actor(s) along the Z axis."
+                        }
+                    },
+                    {
+                        "Type": "Scale Tool",
+                        "Actions": {
+                            "Ctrl + LMB + Drag": "Scales the selected Actor(s) uniformly along all axes."
+                        },
+                        "Orthographic Viewports": {
+                            "Ctrl + RMB + Drag": "Rotates the selected Actor(s) along the visible axis."
+                        }
+                    }
+                ]
+            },
+            {
+                "Name": "Display Controls",
+                "Actions": {
+                    "G": "Toggles Game Mode.",
+                    "Ctrl + R": "Toggles real-time playback in the active viewport.",
+                    "F11": "Toggles immersive mode (full-screen)."
+                }
+            }
+        ]
+    }
+}

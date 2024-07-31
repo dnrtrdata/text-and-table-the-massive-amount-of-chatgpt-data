@@ -1,0 +1,1207 @@
+{
+    "guide": "Layers Panel",
+    "description": "Tool for organizing Actors in the level into layers for quick selection and controlling visibility.",
+    "sections": {
+        "overview": {
+            "title": "Layers Panel",
+            "description": "Organize Actors in your Level for quick selection and visibility control."
+        },
+        "layer_creation": {
+            "title": "Layer Creation",
+            "description": "Create layers to manage and organize Actors.",
+            "methods": {
+                "create_empty_layer": {
+                    "description": "Right-click in the Layers panel and choose 'Create Empty Layer'."
+                },
+                "create_layer_from_selection": {
+                    "description": "Select objects, right-click in the Layers panel, and choose 'Add Selected Actors to New Layer'."
+                },
+                "create_layer_by_drag_and_drop": {
+                    "description": "Select Actors and drag them from the World Outliner to the Layers panel."
+                }
+            }
+        },
+        "layer_naming": {
+            "title": "Layer Naming",
+            "description": "Assign descriptive names to layers for easy identification and filtering.",
+            "steps": {
+                "rename_layer": {
+                    "description": "Right-click on the layer, choose 'Rename', and enter a new name."
+                }
+            }
+        },
+        "searching_layers": {
+            "title": "Searching Layers",
+            "description": "Filter layers using the search box in the Layers panel.",
+            "steps": {
+                "search_layers": {
+                    "description": "Type in the search box to filter layers in real-time."
+                },
+                "clear_search": {
+                    "description": "Press the 'X' button to clear the current search terms."
+                }
+            }
+        },
+        "layer_contents": {
+            "title": "Layer Contents",
+            "description": "View and manage the contents of a layer in the Layers panel.",
+            "steps": {
+                "view_layer_contents": {
+                    "description": "Press the 'See Contents' button with the layer selected."
+                },
+                "view_actor_types": {
+                    "description": "Buttons show the types and numbers of Actors in the layer."
+                }
+            }
+        },
+        "adding_actors": {
+            "title": "Adding Actors",
+            "description": "Add Actors to layers by selection or drag and drop.",
+            "methods": {
+                "add_selection_to_layer": {
+                    "description": "Select Actors, right-click the layer, and choose 'Add Selected Actors to Selected Layers'."
+                },
+                "drag_and_drop": {
+                    "description": "Drag Actors from the World Outliner to the layer in the Layers panel."
+                }
+            }
+        },
+        "removing_actors": {
+            "title": "Removing Actors",
+            "description": "Remove Actors from layers individually or as a group.",
+            "methods": {
+                "remove_individual_actor": {
+                    "description": "Press the 'X' button next to the Actor in the layer contents view."
+                },
+                "remove_selection_from_layer": {
+                    "description": "Select Actors, right-click the layer, and choose 'Remove Selected Actors from Layers'."
+                }
+            }
+        },
+        "searching_layer_contents": {
+            "title": "Searching Layer Contents",
+            "description": "Filter Actors within a layer using the search box in the layer contents view.",
+            "steps": {
+                "search_layer_contents": {
+                    "description": "Type in the search box to filter Actors in real-time."
+                },
+                "clear_search": {
+                    "description": "Press the 'X' button to clear the current search terms."
+                }
+            }
+        },
+        "visibility": {
+            "title": "Visibility",
+            "description": "Toggle the visibility of layer contents using the Visibility (eye) button."
+        },
+        "selection_methods": {
+            "title": "Selection Methods",
+            "description": "Select Actors within a layer by group, individually, or by type.",
+            "methods": {
+                "select_all_actors": {
+                    "description": "Double-click the layer or right-click and choose 'Select Actors'."
+                },
+                "append_layer_actors_to_selection": {
+                    "description": "Right-click the layer and choose 'Append Actors to Selection'."
+                },
+                "remove_layer_actors_from_selection": {
+                    "description": "Right-click the layer and choose 'Deselect Actors'."
+                },
+                "type_specific_selection": {
+                    "description": "Use buttons to select all of one type of Actor within a layer."
+                }
+            }
+        },
+        "details_layers_section": {
+            "title": "Details Layers Section",
+            "description": "Displays which layers the selected Actor(s) belong to and allows removal from layers."
+        }
+    },
+    "resources": {
+        "developer_forums": "Ask questions and help peers.",
+        "learning_library": "Write and read tutorials."
+    }
+}{
+  "guide": "Level Editor Details Panel",
+  "description": "Open this panel to display properties and customized editing tools for selected Actors in the Level Editor.",
+  "sections": {
+    "overview": {
+      "title": "Level Editor Details Panel",
+      "description": "Contains information, utilities, and functions specific to the current selection in the viewport. It provides transform edit boxes, editable properties, and access to additional editing functionality."
+    },
+    "actor_names": {
+      "title": "Actor Names",
+      "description": "Set friendly names for Actors in the editor to easily access or find them using the search functionality.",
+      "steps": {
+        "edit_actor_name": {
+          "description": "Type the name into the text box at the top of the Details panel."
+        }
+      }
+    },
+    "search_filter": {
+      "title": "Search Filter",
+      "description": "Filter properties within the Details panel using the Search Details box.",
+      "steps": {
+        "filter_properties": {
+          "description": "Type in the Search box to filter properties automatically."
+        },
+        "clear_filter": {
+          "description": "Click the Clear Search button to remove the filter."
+        }
+      }
+    },
+    "favorites": {
+      "title": "Favorites",
+      "description": "Flag frequently changed properties for quick access.",
+      "steps": {
+        "enable_favorites": {
+          "description": "In the Edit menu, select Editor Preferences, and under Experimental, check the Enable Details Panel Favorites option."
+        },
+        "mark_property_as_favorite": {
+          "description": "Click the star icon next to a property in any Details panel to mark it as a favorite."
+        }
+      }
+    },
+    "default_values": {
+      "title": "Default Values",
+      "description": "Indicator displayed when a property is modified from its default value.",
+      "steps": {
+        "reset_to_default": {
+          "description": "Click the Reset to Default indicator and choose to reset the value from the menu."
+        }
+      }
+    },
+    "edit_conditions": {
+      "title": "Edit Conditions",
+      "description": "Properties can be enabled or disabled based on conditions. Edit conditions depend on another variable's value.",
+      "examples": {
+        "indirect_lighting": "Properties related to indirect lighting are enabled based on a global toggle for indirect lighting."
+      },
+      "steps": {
+        "toggle_property": {
+          "description": "Use the checkbox in the left margin to enable or disable the property."
+        }
+      }
+    },
+    "editconst_properties": {
+      "title": "EditConst Properties",
+      "description": "Properties declared as editconst cannot be modified in the editor. They display values and are highlighted."
+    },
+    "categories": {
+      "title": "Categories",
+      "description": "Properties in the Details panel are grouped into categories such as Rendering, Lighting, Collision, Transform, Static Mesh, Materials, Actor, Code View, and Layers."
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Level Editor Modes",
+  "description": "An overview of the set of tools used to control the Level Editor modes.",
+  "sections": {
+    "overview": {
+      "title": "Level Editor Modes",
+      "description": "Enable specialized editing interfaces and workflows for editing particular types of Actors or geometry."
+    },
+    "accessing_modes": {
+      "title": "Accessing Modes",
+      "description": "In the Level Editor Toolbar, open the Modes dropdown to display a selection of modes."
+    },
+    "modes_list": {
+      "title": "Modes List",
+      "description": "Different modes and their functions.",
+      "modes": [
+        {
+          "icon": "LE Tools Select",
+          "mode": "Select",
+          "shortcut": "Shift + 1",
+          "description": "Activate Select mode to select Actors in your scene."
+        },
+        {
+          "icon": "LE Tools Landscape",
+          "mode": "Landscape",
+          "shortcut": "Shift + 2",
+          "description": "Activate Landscape mode to edit Landscape terrains."
+        },
+        {
+          "icon": "LE Tools Foliage",
+          "mode": "Foliage",
+          "shortcut": "Shift + 3",
+          "description": "Activate Foliage Mode to paint instanced foliage."
+        },
+        {
+          "icon": "LE Tools Mesh Paint",
+          "mode": "Mesh Paint",
+          "shortcut": "Shift + 4",
+          "description": "Activate Mesh Paint mode to paint vertex colors and textures on Static Mesh Actors directly in the viewport."
+        },
+        {
+          "icon": "LE Tools Modeling",
+          "mode": "Modeling",
+          "shortcut": "Shift + 5",
+          "description": "Activate Modeling editing mode."
+        },
+        {
+          "icon": "LE Tools Fracture",
+          "mode": "Fracture",
+          "shortcut": "Shift + 6",
+          "description": "Activate Fracture mode to create destructible objects and environments."
+        },
+        {
+          "icon": "LE Tools Brush",
+          "mode": "Brush Editing",
+          "shortcut": "Shift + 7",
+          "description": "Activate Brush Editing mode to modify Geometry Brushes."
+        },
+        {
+          "icon": "LE Tools Animation",
+          "mode": "Animation",
+          "shortcut": "Shift + 8",
+          "description": "Activate Animation editing mode."
+        }
+      ]
+    },
+    "modes_functionality": {
+      "title": "Modes Functionality",
+      "description": "Modes change the primary behavior of the Level Editor for specialized tasks like moving and transforming assets, sculpting landscapes, generating foliage, creating geometry brushes and volumes, and painting on meshes. Panels contain tools tailored to the selected mode."
+    },
+    "closing_and_hiding_panels": {
+      "title": "Closing and Hiding Panels",
+      "description": "Close a panel by clicking the 'X' in the upper-right corner of the tab. Hide a panel by right-clicking the tab and selecting 'Hide Tab'. Reopen a closed panel from the Window menu."
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Select Mode",
+  "description": "Guide to the Select Mode, which allows for rapid deployment of placeable Actors in your levels.",
+  "sections": {
+    "overview": {
+      "title": "Select Mode",
+      "description": "A specialized tool for speeding up and simplifying environment creation in Unreal Engine 5, focusing only on Actors."
+    },
+    "functionality": {
+      "title": "Functionality",
+      "description": "Speeds up design times when placing and editing various props and elements in your Level."
+    },
+    "activation": {
+      "title": "Activation",
+      "description": "When Select Mode is active, you can drag an instance of an asset from the Place Actors panel and immediately transform and edit Actors in the Level.",
+      "steps": [
+        "Drag an instance of an asset from the Place Actors panel.",
+        "Transform and edit Actors directly in the Level."
+      ]
+    },
+    "reference": {
+      "title": "Reference",
+      "description": "See Placing Actors for other methods of placing Actors."
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Mesh Paint Mode",
+  "description": "Mesh Paint is a tool for interactively painting vertex colors on Meshes in the Editor Viewport.",
+  "sections": {
+    "overview": {
+      "title": "Mesh Paint Mode",
+      "description": "Provides a quick way to adjust color and texture on your Mesh's Materials."
+    },
+    "starting_out": {
+      "title": "Starting Out",
+      "description": "Introduction to Mesh Paint Mode.",
+      "topics": {
+        "mesh_paint_overview": {
+          "title": "Mesh Paint Overview",
+          "description": "A quick guide to getting started with Mesh Paint Mode."
+        },
+        "mesh_paint_tool_reference": {
+          "title": "Mesh Paint Tool Reference",
+          "description": "Describes settings for various parts of the Mesh Paint Tool."
+        }
+      }
+    },
+    "guides": {
+      "title": "Guides",
+      "description": "Detailed guides on using Mesh Paint Mode.",
+      "topics": {
+        "share_vertex_color_data": {
+          "title": "How to Share Vertex Color Data Between Instances",
+          "description": "Transfer vertex color data across meshes using Mesh Paint Mode."
+        },
+        "selecting_colors": {
+          "title": "Selecting Colors",
+          "description": "Overview of color selection process for Mesh Paint Mode."
+        }
+      }
+    },
+    "advanced_topics": {
+      "title": "Advanced Topics",
+      "description": "How Mesh Paint handles painting on individual instances and multi-texture setups.",
+      "topics": {
+        "painting_on_instances": {
+          "title": "Painting on Instances",
+          "description": "Copy vertex color from one instance to another."
+        },
+        "vertex_color_matching": {
+          "title": "Vertex Color Matching",
+          "description": "Repair vertex colors when a new version of a mesh is imported with a different vertex count."
+        }
+      }
+    },
+    "setting_up_materials": {
+      "title": "Setting up Materials",
+      "description": "Requires Mesh's Material to contain a Vertex Color node.",
+      "topics": {
+        "vertex_color_materials": {
+          "title": "Vertex Color Materials",
+          "description": "Set up materials that utilize Vertex Color for painting in Mesh Paint Mode."
+        },
+        "texture_blending_materials": {
+          "title": "Create a Material for Texture Blending",
+          "description": "Set up materials for 2-way, 3-way, 4-way, and 5-way texture blending.",
+          "types": {
+            "2_way": "2-Way (alpha) texture blending.",
+            "3_way": "3-Way (RGB) texture blending.",
+            "4_way": "4-Way (ARGB) texture blending.",
+            "5_way": "5-Way (1-ARGB) texture blending."
+          }
+        },
+        "specific_example": {
+          "title": "How To Create a 2-Texture Material for Vertex Color Painting",
+          "description": "Create and use a Two-Texture Material for vertex color painting on Meshes."
+        }
+      }
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Mesh Paint Overview",
+  "description": "A down-and-dirty quick guide to getting your feet wet with Mesh Paint Mode.",
+  "sections": {
+    "overview": {
+      "title": "Mesh Paint Overview",
+      "description": "Enables interactive painting of vertex colors on Static Meshes in the Level Viewport. Allows for unique color/alpha values on multiple instances of a Mesh and uses that data in Materials."
+    },
+    "visualization_and_blending": {
+      "title": "Visualization and Blending",
+      "description": "Color data can be visualized directly and edited on multiple Meshes simultaneously. Blend Weights enable blending of multiple textures using linear interpolation."
+    },
+    "basic_steps": {
+      "title": "Basic Steps",
+      "description": "Quick start guide for using Mesh Paint Mode.",
+      "steps": [
+        "Set up a Material that uses vertex color and apply it to a Mesh.",
+        "Activate Mesh Paint mode and select your Mesh Actor.",
+        "Set your paint color and adjust brush properties.",
+        "Hold Ctrl, click and drag on your Mesh to apply paint."
+      ]
+    },
+    "detailed_process": {
+      "title": "Detailed Process",
+      "description": "Detailed explanation of the process, including brush settings and Material configuration."
+    },
+    "activating_mesh_paint_mode": {
+      "title": "Activating Mesh Paint Mode",
+      "description": "Open the Modes drop-down menu and select Mesh Paint mode to display the Mesh Paint panel and Color tab.",
+      "steps": [
+        "Open the Modes drop-down menu.",
+        "Select Mesh Paint mode.",
+        "Mesh Paint panel and Color tab appear in the Modes toolbar."
+      ]
+    },
+    "editor_actions": {
+      "title": "Editor Actions",
+      "description": "Common Editor actions such as camera movement and selection can be performed while Mesh Paint panel is active. Certain features like translating objects are disabled. The Place Actors panel remains available."
+    },
+    "viewport_settings": {
+      "title": "Viewport Settings",
+      "description": "When Mesh Paint panel is open, the perspective Viewport is in Real Time Mode by default. Change this or other Viewport settings via the dropdown arrow in the upper left corner of the Viewport.",
+      "steps": [
+        "Click the dropdown arrow in the upper left corner of the Viewport.",
+        "Open the Viewport Options menu."
+      ]
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Mesh Paint Material Setup",
+  "description": "Examples for various material setups for using Mesh Paint Mode's Blend Weight system.",
+  "sections": {
+    "overview": {
+      "title": "Setting up Materials",
+      "description": "The Mesh Paint system requires the Mesh's Material to contain a Vertex Color node to pass vertex color data from the Mesh to the Material."
+    },
+    "topics": {
+      "vertex_color_materials": {
+        "title": "Vertex Color Materials",
+        "description": "Set up materials that utilize Vertex Color to paint colors in Mesh Paint Mode."
+      },
+      "texture_blending_materials": {
+        "title": "Texture Blending Materials",
+        "description": "Set up materials for various types of texture blending.",
+        "types": [
+          {
+            "title": "Create a Material for 2-Way Texture Blending",
+            "description": "Create a material for 2-way (alpha) texture blending."
+          },
+          {
+            "title": "Create a Material for 3-Way Texture Blends",
+            "description": "Set up materials for 3-way (RGB) texture blending."
+          },
+          {
+            "title": "Create a Material for 4-Way Texture Blends",
+            "description": "Set up materials for 4-way (ARGB) texture blending."
+          },
+          {
+            "title": "Create a Material for 5-Way Texture Blends",
+            "description": "Set up materials for 5-way (1-ARGB) texture blending."
+          }
+        ]
+      },
+      "specific_example": {
+        "title": "How To Create a 2-Texture Material for Vertex Color Painting",
+        "description": "Create and use a Two-Texture Material for vertex color painting on Meshes."
+      }
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Vertex Color Materials",
+  "description": "This page describes how to set up materials that utilize Vertex Color so that you can paint colors in Mesh Paint Mode.",
+  "sections": {
+    "overview": {
+      "title": "Vertex Color Materials",
+      "description": "An infinite number of ways to use colors from a Vertex Color material expression. This setup multiplies the colors into an existing material for tinting with the Mesh Paint tool."
+    },
+    "steps": {
+      "title": "Steps to Create Vertex Color Materials",
+      "description": "Follow these steps to set up a paintable material.",
+      "steps_list": [
+        {
+          "title": "Example Mesh",
+          "description": "Start with a desaturated material to allow room for added color."
+        },
+        {
+          "title": "Base Material Network",
+          "description": "Intercept the Base Color connection and multiply it by a Vertex Color expression's RGB value."
+        },
+        {
+          "title": "Add Nodes",
+          "description": "Add a Multiply node and a corresponding Vertex Color node to the network."
+        },
+        {
+          "title": "Select Colors Tab",
+          "description": "In Mesh Paint mode, select the Colors tab in the Mode Toolbar."
+        },
+        {
+          "title": "Painting Result",
+          "description": "Paint on the mesh to produce the desired result."
+        }
+      ]
+    },
+    "images": {
+      "base_material_network": "URL_to_base_material_network_image",
+      "vertex_color_network": "URL_to_vertex_color_network_image",
+      "colors_tab": "URL_to_colors_tab_image",
+      "painting_result": "URL_to_painting_result_image"
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Create a Material for 2-Way Texture Blending",
+  "description": "This page describes how to create a material for 2-way (alpha) texture blending.",
+  "sections": {
+    "overview": {
+      "title": "2-Way Texture Blending Material",
+      "description": "Use the vertex alpha value to blend between two diffuse textures in the Material Editor."
+    },
+    "material_setup": {
+      "title": "Material Setup",
+      "description": "The Material handles modulating diffuse color by the painted vertex color (RGB) and blending between two diffuse and normal textures using the vertex alpha channel.",
+      "steps": [
+        {
+          "title": "Apply Material and Select Mesh",
+          "description": "Apply the Material, select the mesh, select Mesh Paint from the Modes drop-down, activate the Mesh Weight Painting Tool panel, and set the Texture Weight Type to Alpha (Two Textures)."
+        },
+        {
+          "title": "Paint with Alpha",
+          "description": "Begin painting with alpha to designate where each texture will be placed."
+        },
+        {
+          "title": "View in Alpha Mode",
+          "description": "View the object in Alpha mode to see the designated texture placement."
+        },
+        {
+          "title": "Result in Normal View",
+          "description": "View the result without any special view modes."
+        },
+        {
+          "title": "Paint Colors",
+          "description": "Start painting colors in RGB mode."
+        },
+        {
+          "title": "Final Modulated Result",
+          "description": "See the final result modulated with the blended textures."
+        }
+      ]
+    },
+    "images": {
+      "alpha_mode_view": "URL_to_alpha_mode_view_image",
+      "normal_view_result": "URL_to_normal_view_result_image",
+      "rgb_mode_painting": "URL_to_rgb_mode_painting_image",
+      "final_modulated_result": "URL_to_final_modulated_result_image"
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Create a Material for 3-Way Texture Blends",
+  "description": "This page describes how to set up materials for 3-way (RGB) texture blending.",
+  "sections": {
+    "overview": {
+      "title": "3-Way Texture Blending Material",
+      "description": "Blending 3 separate textures using the Mesh Paint tool requires a special setup in the Material."
+    },
+    "material_setup": {
+      "title": "Material Setup",
+      "description": "Overview of the setup for 3-way texture blending.",
+      "steps": [
+        {
+          "title": "Linear Interpolation for Each Channel",
+          "description": "Each color channel (RGB) gets its own Linear Interpolation (Lerp) expression."
+        },
+        {
+          "title": "Texture Plugging",
+          "description": [
+            "Each texture plugs into the B input of its corresponding Lerp node.",
+            "The Lerp for Texture 1 plugs into the Material, driven by the Red channel from the vertex color.",
+            "The Lerp for Texture 2 plugs into the A input of the Lerp for Texture 1, driven by the Green channel from the vertex color.",
+            "The Lerp for Texture 3 plugs into the A input of the Lerp for Texture 2, driven by the Blue channel from the vertex color."
+          ]
+        },
+        {
+          "title": "Default Texture",
+          "description": "Texture 1 wraps around and becomes the A plug for the final Lerp, making it the default texture."
+        },
+        {
+          "title": "Activate Mesh Weight Painting Tool",
+          "description": "Set the Texture Weight Type to RGB (Three Textures) in the Mesh Weight Painting Tool."
+        }
+      ]
+    },
+    "example": {
+      "title": "Example",
+      "description": "Example of the Material with the mesh viewed in RGB Mode, showing vertex colors and the final result.",
+      "images": {
+        "rgb_mode_view": "URL_to_rgb_mode_view_image",
+        "final_result": "URL_to_final_result_image"
+      }
+    },
+    "custom_material_function": {
+      "title": "Custom Material Function",
+      "description": "For repeated setups, consider deploying a custom Material Function."
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Create a Material for 4-Way Texture Blends",
+  "description": "This page describes how to set up materials for 4-way (ARGB) texture blending.",
+  "sections": {
+    "overview": {
+      "title": "4-Way Texture Blending Material",
+      "description": "Use the vertex color channels (ARGB) to blend between four textures in the Material Editor."
+    },
+    "material_setup": {
+      "title": "Material Setup",
+      "description": "Overview of the setup for 4-way texture blending.",
+      "steps": [
+        {
+          "title": "Linear Interpolation for Each Channel",
+          "description": "Each color channel (ARGB) gets its own Linear Interpolation (Lerp) expression."
+        },
+        {
+          "title": "Texture Plugging",
+          "description": [
+            "Each texture plugs into the B input of its corresponding Lerp node.",
+            "The Lerp for Texture 1 plugs into the Material, driven by the Alpha channel from the vertex color.",
+            "The Lerp for Texture 2 plugs into the A input of the Lerp for Texture 1, driven by the Red channel from the vertex color.",
+            "The Lerp for Texture 3 plugs into the A input of the Lerp for Texture 2, driven by the Green channel from the vertex color.",
+            "The Lerp for Texture 4 plugs into the A input of the Lerp for Texture 3, driven by the Blue channel from the vertex color."
+          ]
+        },
+        {
+          "title": "Default Texture",
+          "description": "Texture 1 wraps around and becomes the A plug for the final Lerp, making it the default texture."
+        },
+        {
+          "title": "Activate Mesh Weight Painting Tool",
+          "description": "Set the Texture Weight Type to ARGB (Four Textures) in the Mesh Weight Painting Tool."
+        }
+      ]
+    },
+    "example": {
+      "title": "Example",
+      "description": "Example of the Material with the mesh viewed in RGB Mode, showing vertex colors and the final result.",
+      "images": {
+        "rgb_mode_view": "URL_to_rgb_mode_view_image",
+        "final_result": "URL_to_final_result_image"
+      }
+    },
+    "custom_material_function": {
+      "title": "Custom Material Function",
+      "description": "For repeated setups, consider deploying a custom Material Function."
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Create a Material for 5-Way Texture Blends",
+  "description": "This page describes how to set up materials for 5-way (1-ARGB) texture blending.",
+  "sections": {
+    "overview": {
+      "title": "5-Way Texture Blending Material",
+      "description": "Use the vertex color channels (1-ARGB) to blend between five textures in the Material Editor."
+    },
+    "material_setup": {
+      "title": "Material Setup",
+      "description": "Overview of the setup for 5-way texture blending.",
+      "steps": [
+        {
+          "title": "Linear Interpolation for Each Channel",
+          "description": "Each color channel (ARGB) gets its own Linear Interpolation (Lerp) expression."
+        },
+        {
+          "title": "Additional Lerp for Fifth Color",
+          "description": "An additional Lerp is driven by 1 minus the alpha of the Vertex Color node."
+        },
+        {
+          "title": "Texture Plugging",
+          "description": [
+            "Each texture plugs into the B input of its corresponding Lerp node.",
+            "The Lerp for Texture 1 plugs into the Material, driven by the Alpha channel from the vertex color.",
+            "The Lerp for Texture 2 plugs into the A input of the Lerp for Texture 1, driven by the Red channel from the vertex color.",
+            "The Lerp for Texture 3 plugs into the A input of the Lerp for Texture 2, driven by the Green channel from the vertex color.",
+            "The Lerp for Texture 4 plugs into the A input of the Lerp for Texture 3, driven by the Blue channel from the vertex color.",
+            "The Lerp for Texture 5 plugs into the A input of the Lerp for Texture 4, driven by the 1-alpha from the vertex color."
+          ]
+        },
+        {
+          "title": "Default Texture",
+          "description": "Texture 1 wraps around and becomes the A plug for the final Lerp, making it the default texture."
+        },
+        {
+          "title": "Activate Mesh Weight Painting Tool",
+          "description": "Set the Texture Weight Type to ARGB - 1 (Five Textures) in the Mesh Weight Painting Tool."
+        }
+      ]
+    },
+    "example": {
+      "title": "Example",
+      "description": "Example of the Material with the mesh viewed in RGB Mode, showing vertex colors and the final result.",
+      "images": {
+        "rgb_mode_view": "URL_to_rgb_mode_view_image",
+        "final_result": "URL_to_final_result_image"
+      }
+    },
+    "custom_material_function": {
+      "title": "Custom Material Function",
+      "description": "For repeated setups, consider deploying a custom Material Function."
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "How To Create a 2-Texture Material for Vertex Color Painting",
+  "description": "This page shows you a specific example of how to create and use a Two-Texture Material for use with vertex color painting on Meshes.",
+  "sections": {
+    "overview": {
+      "title": "2-Texture Material for Vertex Color Painting",
+      "description": "Demonstrates how to create a two-texture Material that blends a rock texture and a moss texture for vertex color painting."
+    },
+    "steps": {
+      "title": "Steps",
+      "steps_list": [
+        {
+          "title": "Create the Material",
+          "description": "In the Content Browser, click Add New > Material. Name the material (e.g., M_2TextureMoss). Double-click the new Material to open the Material Editor."
+        },
+        {
+          "title": "Create and Set Up TextureSample Nodes",
+          "description": [
+            "Right-click in the graph, search for TextureSample, and add four TextureSample nodes.",
+            "Select the top two nodes and assign Diffuse textures (e.g., T_Rock_Basalt_D and T_Ground_Grass_D).",
+            "Select the bottom two nodes and assign Normal maps (e.g., T_Rock_Basalt_N and T_Ground_Grass_N)."
+          ]
+        },
+        {
+          "title": "Add the Vertex Color and Linear Interpolation Nodes",
+          "description": [
+            "Add a VertexColor node to the graph.",
+            "Add two LinearInterpolate (Lerp) nodes to the graph.",
+            "Connect the Diffuse textures to the first Lerp node (Rock to A, Grass to B).",
+            "Connect the Normal maps to the second Lerp node (Rock to A, Grass to B).",
+            "Connect the VertexColor node to the Alpha input of both Lerp nodes.",
+            "Connect the Diffuse Lerp node to the Base Color input and the Normal Lerp node to the Normal input on the Material node."
+          ]
+        },
+        {
+          "title": "Set Up Remaining Material Properties",
+          "description": [
+            "Add a Constant node and set its value to 0. Connect it to the Metallic and Specular inputs.",
+            "Add another Constant node and set its value to 1. Connect it to the Roughness input."
+          ]
+        },
+        {
+          "title": "Final Result",
+          "description": "The Material can now be used with Vertex Color painting to paint textures on a mesh. Adjust Brush settings (Strength, Radius, Falloff) to vary the texture application."
+        }
+      ]
+    },
+    "images": {
+      "rock_without_moss": "URL_to_rock_without_moss_image",
+      "rock_with_moss": "URL_to_rock_with_moss_image",
+      "material_graph": "URL_to_material_graph_image",
+      "texture_sample_setup": "URL_to_texture_sample_setup_image",
+      "vertex_color_node": "URL_to_vertex_color_node_image",
+      "lerp_nodes_setup": "URL_to_lerp_nodes_setup_image",
+      "final_result": "URL_to_final_result_image"
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Mesh Paint Tool Reference",
+  "description": "This page describes settings for various parts of the Mesh Paint Tool.",
+  "sections": {
+    "overview": {
+      "title": "Mesh Paint Tool Reference",
+      "description": "Inside the Mesh Paint mode panel, various options are available for using the mesh paint system, each with its own settings for painting vertex color, blending between textures, or painting directly onto the texture file."
+    },
+    "painting_methods": {
+      "title": "Vertex Painting Methods",
+      "description": "The Mesh Paint Tool has three different painting modes: Vertex Color Painting, Vertex Weight Painting, and Texture Weight Painting.",
+      "methods": [
+        {
+          "name": "Vertex Color Painting",
+          "description": "Paint vertex colors on your mesh and access its available properties. Switch between Paint Color and Erase Color by pressing the X key.",
+          "settings": [
+            {
+              "name": "Paint Color",
+              "description": "The color applied while painting (LMB + Drag). Click the swatch to open the Color Picker. Type values into the R, G, B, and A fields."
+            },
+            {
+              "name": "Erase Color",
+              "description": "The color used as the 'eraser' color while erasing (SHIFT + LMB + Drag). Click the swatch to open the Color Picker. Type values into the R, G, B, and A fields."
+            },
+            {
+              "name": "Channels",
+              "description": "Check boxes to set which color/alpha channels are affected by the paint brush."
+            },
+            {
+              "name": "LOD Model Painting",
+              "description": "The specific Level of Detail (LOD) that vertex color painting will be applied to."
+            }
+          ]
+        },
+        {
+          "name": "Vertex Weight Painting",
+          "description": "Paint vertex weights on your mesh and access its available properties.",
+          "settings": [
+            {
+              "name": "Texture Weight Type",
+              "description": "Configures the blend weight 'strategy' by setting the number of textures to blend between.",
+              "types": [
+                {
+                  "name": "Alpha (Two Textures)",
+                  "description": "Provides 2 texture channels, controlled by painting alpha. Requires a 2-way alpha lerp blend material."
+                },
+                {
+                  "name": "RGB (Three Textures)",
+                  "description": "Provides 3 texture channels, controlled by painting RGB values. Requires a 3-way lerp blend material."
+                },
+                {
+                  "name": "ARGB (Four Textures)",
+                  "description": "Provides 4 texture channels, controlled by painting ARGB values. Requires a 4-way lerp blend material."
+                },
+                {
+                  "name": "ARGB - 1 (Five Textures)",
+                  "description": "Provides 5 texture channels, controlled by painting ARGB values. An internal one minus calculation on the alpha provides a fifth channel for blending. Requires a 5-way lerp blend material."
+                }
+              ]
+            },
+            {
+              "name": "Paint Texture Weight Index",
+              "description": "The texture Blend Weight index used when applied during painting."
+            },
+            {
+              "name": "Erase Texture Weight Index",
+              "description": "The texture Blend Weight index used when erased during painting."
+            }
+          ]
+        },
+        {
+          "name": "Texture Weight Painting",
+          "description": "Paint on textures and access its available properties. Cycle through textures using the Toolbar or by pressing the period (.) and comma (,) keys. Commit changes using the toolbar or by pressing CTRL + SHIFT + C.",
+          "settings": [
+            {
+              "name": "Paint Color",
+              "description": "The color applied while painting (LMB + Drag). Click the swatch to open the Color Picker. Type values into the R, G, B, and A fields."
+            },
+            {
+              "name": "Erase Color",
+              "description": "The color applied while erasing (SHIFT + LMB + Drag). Click the swatch to open the Color Picker. Type values into the R, G, B, and A fields."
+            },
+            {
+              "name": "Enable Seam Painting",
+              "description": "If checked, dilation is used to allow painting of texture seams."
+            },
+            {
+              "name": "Channels",
+              "description": "Check boxes to set which color/alpha channels are affected by the paint brush."
+            },
+            {
+              "name": "UV Channel",
+              "description": "The UV channel of the selected Actor that will be used for the painted texture."
+            },
+            {
+              "name": "Paint Texture",
+              "description": "Shows the texture to apply painting to. Click the Name field to the right of the swatch to change the texture."
+            },
+            {
+              "name": "Previous Texture",
+              "description": "Cycles to the previous texture. (Comma)"
+            },
+            {
+              "name": "Next Texture",
+              "description": "Cycles to the next texture. (Period)"
+            },
+            {
+              "name": "Commit Texture",
+              "description": "Commits texture painting changes. (Ctrl-Shift-C)"
+            }
+          ]
+        }
+      ]
+    },
+    "mesh_paint_tools": {
+      "title": "Mesh Paint Tools",
+      "description": "Tools to select your mesh and change vertex color data when using Vertex Color Painting or Vertex Weight Painting.",
+      "tools": [
+        {
+          "name": "Select",
+          "description": "Select the mesh for painting."
+        },
+        {
+          "name": "Paint",
+          "description": "Enable the mesh painting tools."
+        },
+        {
+          "name": "Swap Colors",
+          "description": "Swap the Paint color and Erase color used for Mesh Painting. (X)"
+        },
+        {
+          "name": "Fill",
+          "description": "Fill the Mesh or instance being painted using the Paint color, respecting the Channels settings."
+        },
+        {
+          "name": "Apply",
+          "description": "Propagate vertex colors on the instance to the source Meshes. (Formerly the Propagate tool.)"
+        },
+        {
+          "name": "Import",
+          "description": "Import a TGA image file to populate the vertex colors of the selected instances."
+        },
+        {
+          "name": "Save",
+          "description": "Save the source Meshes for the selected Mesh instances."
+        },
+        {
+          "name": "Copy",
+          "description": "Copy the vertex colors from the selected instance to the source Mesh asset."
+        },
+        {
+          "name": "Paste",
+          "description": "Paste vertex colors on the selected Mesh instances."
+        },
+        {
+          "name": "Remove",
+          "description": "Remove vertex colors from the selected Mesh instances."
+        },
+        {
+          "name": "Fix",
+          "description": "Fix vertex colors applied to the selected Meshes."
+        },
+        {
+          "name": "All LODs",
+          "description": "Apply the vertex colors from LOD0 to all LOD levels. (Formerly the Apply tool.)"
+        },
+        {
+          "name": "Previous LOD",
+          "description": "Cycle to the previous possible Mesh LOD level to Paint on. (B)"
+        },
+        {
+          "name": "Next LOD",
+          "description": "Cycle to the next possible Mesh LOD level to Paint on. (N)"
+        }
+      ]
+    },
+    "brush_settings": {
+      "title": "Brush Settings",
+      "description": "Settings for the brush used in Mesh Paint Tool, designed for wide areas or fine details.",
+      "settings": [
+        {
+          "name": "Radius",
+          "description": "Sets the radius of the brush in Unreal units. Adjust with CTRL + Left Bracket ([) to decrease, and CTRL + Right Bracket (]) to increase."
+        },
+        {
+          "name": "Strength",
+          "description": "Sets the amount of paint to apply each time you click or move the mouse cursor while painting is enabled."
+        },
+        {
+          "name": "Falloff",
+          "description": "Sets how the brush's strength falls off with distance. A falloff value of 1.0 means 100% strength at the center, fading linearly to the radius."
+        },
+        {
+          "name": "Enable Brush Flow",
+          "description": "Configures the brush to apply paint to every single render frame, similar to an airbrush."
+        },
+        {
+          "name": "Ignore Back-Facing",
+          "description": "Ignore triangles facing away from the camera so they are not affected by the paint brush."
+        }
+      ]
+    },
+    "visualization": {
+      "title": "Visualization",
+      "description": "Settings to view the painted vertex colors individually or all together.",
+      "settings": [
+        {
+          "name": "Color View Mode",
+          "description": "Enable different view modes to visualize how vertex color is being applied to your Meshes within the Viewport.",
+          "modes": [
+            {
+              "name": "Off",
+              "description": "Restores the default Editor View Mode."
+            },
+            {
+              "name": "RGB Channels",
+              "description": "Displays the Actors unlit, with RGB vertex colors showing."
+            },
+            {
+              "name": "Alpha Channel",
+              "description": "Displays the Actors unlit, with only vertex alpha."
+            },
+            {
+              "name": "Red Channel",
+              "description": "Displays the Actors unlit, with Red vertex color."
+            },
+            {
+              "name": "Green Channel",
+              "description": "Displays the Actors unlit, with Green vertex color."
+            },
+            {
+              "name": "Blue Channel",
+              "description": "Displays the Actors unlit, with Blue vertex color."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Painting on Instances",
+  "description": "This page shows how to copy vertex color from one instance to another.",
+  "sections": {
+    "overview": {
+      "title": "Painting on Instances",
+      "description": "When painting vertex colors, you are only painting on an individual Instance of the Material and not the actual Material Asset itself. Use the Mesh Paint Toolbar's Colors tab to copy and paste the data onto another mesh or multiple meshes."
+    },
+    "instance_color_size": {
+      "title": "Instance Color Size",
+      "description": "Displays the number of bytes of memory used by the vertex color data in the Mesh Paint panel, reflecting the total for all Assets currently selected."
+    },
+    "commands": {
+      "title": "Commands",
+      "description": "Commands available in the Mesh Paint Toolbar's Colors tab for managing vertex color data.",
+      "commands_list": [
+        {
+          "command": "Copy",
+          "description": "Copies the instance vertex color data for the selected Mesh. See Sharing Instance Color Data and the Mesh Paint Tool Reference for more information."
+        },
+        {
+          "command": "Paste",
+          "description": "Pastes instance vertex color data that was previously copied. See Sharing Instance Color Data and the Mesh Paint Tool Reference for more information."
+        },
+        {
+          "command": "Remove",
+          "description": "Discards the data for all selected Meshes and restores the default vertex colors. See the Mesh Paint Tool Reference for more information."
+        },
+        {
+          "command": "Fix",
+          "description": "Attempts to match stored instance data on re-imported Meshes with different vertex counts. See Vertex Color Matching and the Mesh Paint Tool Reference for more information."
+        }
+      ]
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "How to Share Vertex Color Data Between Instances",
+  "description": "This page shows how to transfer vertex color data across meshes using Mesh Paint Mode.",
+  "sections": {
+    "overview": {
+      "title": "Sharing Vertex Color Data",
+      "description": "Paint a mesh and share the vertex colors with other instances of the mesh in the same level. Use the Copy and Paste tools in the Mesh Paint Toolbar."
+    },
+    "steps": {
+      "title": "Steps to Copy and Paste Vertex Color Data",
+      "steps_list": [
+        {
+          "step": "Select the instance that contains the color data you want to copy and click the Copy icon."
+        },
+        {
+          "step": "Select the instance(s) to copy the color data to and click the Paste icon."
+        },
+        {
+          "step": "The color data should now be applied to all of the instances."
+        }
+      ]
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Vertex Color Matching",
+  "description": "A tool which allows vertex colors to be repaired when a new version of a mesh is imported with a different vertex count.",
+  "sections": {
+    "overview": {
+      "title": "Vertex Color Matching",
+      "description": "When a Static Mesh is reimported with a different vertex count, vertex colors on the instance can become mismatched, causing errors. The Fix tool in the Mesh Paint Toolbar corrects this issue."
+    },
+    "errors": {
+      "title": "Common Errors",
+      "description": "Errors like 'StaticMeshActor_73 (LOD 0) has hand-painted vertex colors that no longer match the original StaticMesh' occur when vertex counts mismatch, causing visual issues or missing vertex colors on consoles."
+    },
+    "fix_tool_usage": {
+      "title": "Using the Fix Tool",
+      "description": "The Fix tool is available in the Mesh Paint Toolbar to correct vertex color mismatches.",
+      "steps": [
+        {
+          "step": "Select the instance with mismatched vertex colors."
+        },
+        {
+          "step": "Click the Fix tool in the Mesh Paint Toolbar."
+        },
+        {
+          "step": "The Fix tool corrects vertex colors to match the original Static Mesh Asset."
+        }
+      ]
+    },
+    "availability": {
+      "title": "Tool Availability",
+      "description": "The Fix tool is only available if a Mesh needs fixing; otherwise, it is disabled."
+    },
+    "effectiveness": {
+      "title": "Tool Effectiveness",
+      "description": "The Fix tool works well for small changes. More extreme changes might not match colors perfectly, but the tool ensures some color match. It is not automatic to allow easy reversal of the fix if needed."
+    },
+    "examples": {
+      "title": "Examples",
+      "description": "Comparison of the original mesh before and after applying the Fix tool.",
+      "images": {
+        "before_fix": "URL_to_original_mesh_before_fix_image",
+        "after_fix": "URL_to_lower_poly_mesh_after_fix_image"
+      }
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Selecting Colors",
+  "description": "An overview of the process of color selection for Mesh Paint Mode.",
+  "sections": {
+    "overview": {
+      "title": "Color Selection in Mesh Paint Mode",
+      "description": "The Mesh Paint tool relies on a pair of colors: Paint Color and Erase Color. Users can swap between them at any time using a standard Color Picker window."
+    },
+    "erase_color": {
+      "title": "Erase Color",
+      "description": "For workflow purposes, think of the Erase Color as an alternate paint color rather than a tool that removes previous strokes. It acts like painting with a different color."
+    },
+    "swap_and_reset": {
+      "title": "Swap and Reset Colors",
+      "description": "Use the Swap icon to reverse the Paint and Erase colors. Use the Reset icon to return to the default colors for all channels (RGBA) or individually. Default Paint color is white (1, 1, 1, 1) and Erase color is black (0, 0, 0, 1).",
+      "icons": {
+        "swap_icon": "URL_to_swap_icon_image",
+        "reset_icon": "URL_to_reset_icon_image"
+      }
+    },
+    "toolbar_functions": {
+      "title": "Toolbar Functions",
+      "description": "Clicking on Swap Colors in the Modes Toolbar functions the same as the Swap icon in the Mesh Paint panel."
+    },
+    "color_picker": {
+      "title": "Color Picker",
+      "description": "The Color Picker provides various ways to quickly select colors, save color swatches, and set up color themes. See the Color Picker documentation for details."
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}

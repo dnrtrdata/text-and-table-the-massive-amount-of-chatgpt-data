@@ -1,0 +1,187 @@
+{
+  "Customization": {
+    "Description": "Customize UE5's layout, keybindings, and functionality to suit workflows.",
+    "Features": {
+      "Overview": "UE5 allows custom layouts, color schemes, keyboard shortcuts, and plugin functionality.",
+      "Plugins": {
+        "Description": "Install, enable, and disable plugins.",
+        "Link": "Refer to plugin management documentation."
+      },
+      "KeyboardShortcuts": {
+        "Description": "Modify and create keyboard shortcuts.",
+        "Link": "Refer to keyboard customization guide."
+      },
+      "EditorPreferences": {
+        "Description": "Configure editor behavior for controls, viewports, and source control.",
+        "Link": "Refer to editor settings documentation."
+      }
+    },
+    "Resources": {
+      "Forums": "Ask questions and assist peers.",
+      "Library": "Read and write tutorials."
+    }
+  }
+}
+{
+  "Plugins": {
+    "Overview": "Plugins add specific functionality to UE without modifying core code.",
+    "Types": ["Unreal Engine plugins", "Third-party plugins"],
+    "EnablePlugin": {
+      "Steps": [
+        "Go to Edit > Plugins.",
+        "Find and select the plugin.",
+        "Check the box to enable it.",
+        "Save and restart UE."
+      ],
+      "Notes": "Beta plugins may show a warning."
+    },
+    "DisablePlugin": {
+      "Steps": [
+        "Go to Edit > Plugins.",
+        "Find and select the plugin.",
+        "Uncheck the box to disable it.",
+        "Save and restart UE."
+      ],
+      "Notes": "Disabling a dependent plugin might affect functionality."
+    },
+    "InstallMarketplacePlugin": {
+      "Steps": [
+        "In Epic Games Launcher, go to Marketplace.",
+        "Search and add the plugin to cart.",
+        "Checkout and go to the plugin page.",
+        "Click Install to Engine.",
+        "Select the engine version and install.",
+        "Open UE and enable the plugin."
+      ],
+      "Notes": "Payment required for paid plugins."
+    },
+    "StorageLocations": {
+      "Windows": "C:\\Program Files\\Epic Games\\UE_[version]\\Engine\\Plugins",
+      "macOS": "/Users/Shared/Epic Games/UE_[version]/Engine/Plugins"
+    },
+    "Resources": {
+      "Forums": "Ask questions and assist peers.",
+      "Library": "Read and write tutorials."
+    }
+  }
+}
+{
+  "KeyboardShortcuts": {
+    "Overview": "Configure keybinds for commands to suit workflows.",
+    "Access": "Go to Edit > Editor Preferences > Keyboard Shortcuts.",
+    "Commands": {
+      "Grouping": "Commands are grouped by functional area.",
+      "Bindings": "Each command can have up to two shortcuts."
+    },
+    "CreateShortcut": {
+      "Steps": [
+        "Click inside the text field for the command.",
+        "Press the desired key combination.",
+        "Click outside the text field to save."
+      ],
+      "Notes": "Warnings appear for conflicts; use Override to resolve."
+    },
+    "RemoveShortcut": {
+      "Steps": [
+        "Click the Delete (X) button next to the shortcut."
+      ]
+    },
+    "ImportExport": {
+      "Description": "Migrate keybinds via .ini files.",
+      "ExportSteps": [
+        "Click the Export button at the top of the Keyboard Shortcuts editor."
+      ],
+      "ImportSteps": [
+        "Click the Import button at the top of the Keyboard Shortcuts editor."
+      ]
+    },
+    "Resources": {
+      "Forums": "Ask questions and assist peers.",
+      "Library": "Read and write tutorials."
+    }
+  }
+}
+{
+  "EditorPreferences": {
+    "Overview": "Modify settings for controls, viewports, source control, auto-saving, and more.",
+    "Access": "Go to Edit > Editor Preferences.",
+    "LevelEditorPreferences": {
+      "Viewports": {
+        "FlightCameraControl": {
+          "Options": [
+            "Use WASD for Camera Controls",
+            "Use WASD Only When Right Mouse Button is Held",
+            "Never Use WASD for Camera Controls"
+          ],
+          "Description": "Sets how the flight camera is controlled."
+        },
+        "GrabAndDrag": "Enables scrolling camera with mouse drag in orthographic viewports.",
+        "OrthographicZoom": "Zoom centered around cursor.",
+        "LinkOrthographicMovement": "Link orthographic viewports to move together.",
+        "AspectRatioConstraint": {
+          "Options": ["Maintain Y-Axis FOV", "Maintain X-Axis FOV", "Maintain Major Axis FOV"],
+          "Description": "Controls FOV axis for aspect ratio."
+        },
+        "MouseScrollSpeed": "Adjusts perspective camera speed with mouse."
+      },
+      "LookAndFeel": {
+        "HighlightObjects": "Highlights objects under cursor in viewports."
+      }
+    },
+    "EditorLookAndFeel": {
+      "SmallToolBarIcons": "Enables smaller toolbar icons."
+    },
+    "LevelEditing": {
+      "CombinedWidget": "Enables combined Translate/Rotate widget.",
+      "BSPSelection": "Sets brush selection behavior.",
+      "AutoUpdateBSP": "Auto-updates BSP geometry on modification.",
+      "PreserveActorScale": "Keeps original actor scale on replace."
+    },
+    "SourceControl": {
+      "PromptCheckout": "Prompts for SCC checkout on package modification.",
+      "EnableSourceControl": "Enables source control integration.",
+      "AddNewFiles": "Auto-adds new files to source control.",
+      "Settings": {
+        "Host": "Source control server host and port.",
+        "Username": "Source control username.",
+        "Workspace": "Source control clientspec."
+      }
+    },
+    "Particles": {
+      "UseCurves": "Uses curves for distributions instead of lookup tables."
+    },
+    "ContentBrowser": {
+      "AutoReimport": "Auto-reimports modified textures.",
+      "LoadWarningThreshold": "Sets object load warning threshold."
+    },
+    "Privacy": {
+      "CrashReports": "Generates crash reports on engine crashes.",
+      "BugReports": "Generates bug reports on issues.",
+      "UsageData": "Collects anonymized usage data.",
+      "DisableBugReports": {
+        "Steps": [
+          "Go to Edit > Editor Preferences.",
+          "Scroll to Privacy category.",
+          "Click Bug Reports and select Don't Send."
+        ]
+      },
+      "DisableUsageData": {
+        "Steps": [
+          "Scroll to Privacy category.",
+          "Click Usage Data and select Don't Send."
+        ]
+      }
+    },
+    "AutoSave": {
+      "EnableAutoSave": "Enables automatic saving.",
+      "SaveMaps": "Auto-saves modified maps.",
+      "SavePackages": "Auto-saves modified content packages.",
+      "Frequency": "Sets auto-save interval in minutes.",
+      "Warning": "Sets warning time before auto-save."
+    },
+    "Resources": {
+      "Forums": "Ask questions and assist peers.",
+      "Library": "Read and write tutorials."
+    }
+  }
+}

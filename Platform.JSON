@@ -1,0 +1,1637 @@
+{
+  "Platforms": {
+    "Description": "Reference for the Platforms section of the Unreal Engine Project Settings.",
+    "Categories": {
+      "Android": {
+        "Description": "Reference for the Android section of the Unreal Engine Project Settings.",
+        "Subsections": {
+          "Android Material Quality - ES31": "Reference for the ES31 section.",
+          "Android Material Quality - Vulkan": "Reference for the Vulkan section.",
+          "Android SDK": "Reference for the Android SDK section.",
+          "Android SM5 Material Quality - Vulkan": "Reference for the SM5 Vulkan section."
+        }
+      },
+      "iOS": {
+        "Description": "Reference for the iOS section of the Unreal Engine Project Settings.",
+        "Subsections": {
+          "iOS Material Quality": "Reference for the iOS Material Quality section."
+        }
+      },
+      "Linux": "Reference for the Linux section.",
+      "Windows": {
+        "Description": "Reference for the Windows section.",
+        "Subsections": {
+          "ui": "UI settings reference.",
+          "basics": "Basic settings reference."
+        }
+      }
+    }
+  },
+  "Developer Resources": {
+    "Forums": "Ask questions and help your peers in the Developer Forums.",
+    "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+  }
+}
+{
+  "Android": {
+    "Description": "Reference for the Android section of the Unreal Engine Project Settings.",
+    "APK Packaging": {
+      "Settings": [
+        {
+          "Name": "Android Package Name",
+          "Description": "Official product name for Play Store, format 'com.Company.Project'. Must be unique and have at least 2 sections separated by a period."
+        },
+        {
+          "Name": "Store Version",
+          "Description": "Version number for store, range 1-2147483647."
+        },
+        {
+          "Name": "Store Version Offset",
+          "Description": "Offsets for different architectures: ARMv7, ARM64, x86_64."
+        },
+        {
+          "Name": "Application Display Name",
+          "Description": "App name for end users; uses project name if blank."
+        },
+        {
+          "Name": "Version Display Name",
+          "Description": "Version for end users, usually x.y."
+        },
+        {
+          "Name": "Minimum SDK Version",
+          "Description": "Minimum Android version (19=KitKat, 21=Lollipop) for installation."
+        },
+        {
+          "Name": "Target SDK Version",
+          "Description": "Target Android version for running the app."
+        },
+        {
+          "Name": "Install Location",
+          "Description": "Preferred install location: Internal Only, Prefer External, Auto."
+        },
+        {
+          "Name": "Enable Lint Depreciation Checks",
+          "Description": "Enable -Xlint:unchecked and -Clint:depreciation for Java compiling (Gradle only)."
+        },
+        {
+          "Name": "Package Game Data Inside .apk",
+          "Description": "Whether to place data inside .apk instead of a separate .obb file. Necessary for Amazon but not Google Play."
+        },
+        {
+          "Name": "Generate Install Files for All Platforms",
+          "Description": "Generate batch (.bat) and shell script (.command) files for all platforms."
+        },
+        {
+          "Name": "Disable .obb Verification",
+          "Description": "Disable verification of .obb file on first start or update."
+        },
+        {
+          "Name": "Force Small .obb Files",
+          "Description": "Limit .obb file size to 1 GB."
+        },
+        {
+          "Name": "Allow Large .obb Files",
+          "Description": "Allow .obb files up to 4 GB (Google Play limit is 2 GB)."
+        },
+        {
+          "Name": "Allow Patch .obb File",
+          "Description": "Generate a patch .obb for overflow content."
+        },
+        {
+          "Name": "Allow Overflow .obb Files",
+          "Description": "Generate up to two overflow .obb files."
+        },
+        {
+          "Name": "Use ExternalFilesDir for UnrealGame Files",
+          "Description": "Place UnrealGame files in ExternalFilesDir, removed on uninstall."
+        },
+        {
+          "Name": "Make Log Files Always Publicly Accessible",
+          "Description": "Log files in a public directory; may require WRITE_EXTERNAL_STORAGE."
+        },
+        {
+          "Name": "Orientation",
+          "Description": "Application orientation: Portrait, Reverse Portrait, Sensor Portrait, Landscape, Reverse Landscape, Sensor Landscape, Sensor, Full Sensor."
+        },
+        {
+          "Name": "Maximum Supported Aspect Ratio",
+          "Description": "Max aspect ratio (width/height)."
+        },
+        {
+          "Name": "Use Display Cutout Region",
+          "Description": "Use display cutout area on Android 9+."
+        },
+        {
+          "Name": "Restore Scheduled Notifications on Reboot",
+          "Description": "Restore scheduled local notifications on reboot."
+        },
+        {
+          "Name": "Enable Full Screen Immersive on KitKat and Above Devices",
+          "Description": "Hide software navigation buttons."
+        },
+        {
+          "Name": "Enable Improved Virtual Keyboard",
+          "Description": "Edit text field directly."
+        },
+        {
+          "Name": "Preferred Depth Buffer Format",
+          "Description": "Preferred depth buffer bitcount: Default, 16-bit, 24-bit, 32-bit."
+        },
+        {
+          "Name": "Validate Texture Formats",
+          "Description": "Verify support for cooked texture formats at runtime."
+        },
+        {
+          "Name": "Force Gradle to Compress Native Libs",
+          "Description": "Force Gradle to compress native libs for MinSDKVersion >= 23."
+        },
+        {
+          "Name": "Enable Compression of Relocation Tables",
+          "Description": "Generate Android binary with RELR and APS2 relocation tables for MinSDKVersion >= 28."
+        },
+        {
+          "Name": "Status of Platform Setup File",
+          "Description": "Shows project configuration status for Android platform."
+        },
+        {
+          "Name": "Accept SDK License",
+          "Description": "Accept SDK license agreement for Gradle."
+        },
+        {
+          "Name": "Build Folder",
+          "Description": "Folder containing build files, recommended to check into source control."
+        }
+      ]
+    },
+    "App Bundles": {
+      "Settings": [
+        {
+          "Name": "Generate Bundle (AAB)",
+          "Description": "Generate an AAB bundle."
+        },
+        {
+          "Name": "Generate Universal .apk from Bundle",
+          "Description": "Generate a universal .apk from bundle."
+        },
+        {
+          "Name": "Enable ABI Split",
+          "Description": "Separate ABIs into their own .apk files."
+        },
+        {
+          "Name": "Enable Language Split",
+          "Description": "Separate resources by language into their own .apk."
+        },
+        {
+          "Name": "Enable Density Split",
+          "Description": "Separate resources by density into their own .apk."
+        }
+      ]
+    },
+    "Build": {
+      "Settings": [
+        {
+          "Name": "Support OpenGL ES3.2",
+          "Description": "Include shaders for devices supporting OpenGL ES 3.2+."
+        },
+        {
+          "Name": "Support Vulkan",
+          "Description": "Support Vulkan RHI and include Vulkan shaders."
+        },
+        {
+          "Name": "Support Vulkan Desktop / SM5",
+          "Description": "Enable Vulkan SM5 rendering support."
+        },
+        {
+          "Name": "Debug Vulkan Layer Directory",
+          "Description": "Directory for Debug Vulkan Layers to package."
+        },
+        {
+          "Name": "Debug Vulkan Device Layers",
+          "Description": "Debug Vulkan Device Layers to enable."
+        },
+        {
+          "Name": "Debug Vulkan Instance Layers",
+          "Description": "Debug Vulkan Instance Layers to enable."
+        },
+        {
+          "Name": "Support Backbuffer Sampling on OpenGL",
+          "Description": "Render to offscreen surface for UMG background blur support."
+        },
+        {
+          "Name": "Support ARM64",
+          "Description": "Support ARM64 CPU architecture."
+        },
+        {
+          "Name": "Support x86_64",
+          "Description": "Support x86_64 architecture."
+        }
+      ]
+    },
+    "Advanced": {
+      "Settings": [
+        {
+          "Name": "Detect Vulkan Device Support",
+          "Description": "Detect Vulkan device support by default."
+        },
+        {
+          "Name": "Advanced APK Packaging",
+          "Description": "Additional tags and settings for nodes and sections."
+        },
+        {
+          "Name": "Extra Permissions",
+          "Description": "Add extra permissions (e.g., 'android.permission.INTERNET')."
+        },
+        {
+          "Name": "Package for Oculus Mobile Device",
+          "Description": "Package for Oculus Mobile device."
+        },
+        {
+          "Name": "Remove Oculus Signature Files",
+          "Description": "Remove Oculus Signature Files (.osig) from .apk."
+        }
+      ]
+    },
+    "Distribution Signing": {
+      "Settings": [
+        {
+          "Name": "Key Store",
+          "Description": "File output by keytool, specified with -keystore."
+        },
+        {
+          "Name": "Key Alias",
+          "Description": "Name of the key specified with -alias."
+        },
+        {
+          "Name": "Key Store Password",
+          "Description": "Password specified for keystore."
+        },
+        {
+          "Name": "Key Password",
+          "Description": "Password for the key, same as keystore if left blank."
+        },
+        {
+          "Name": "Google Play Services",
+          "Description": "Settings for Google Play services integration."
+        },
+        {
+          "Name": "Enable Google Play Support",
+          "Description": "Enable Google Play support."
+        }
+      ]
+    },
+    "Icons": {
+      "Settings": [
+        {
+          "Name": "Default Icon",
+          "Description": "Default app icon."
+        },
+        {
+          "Name": "LDPI Icon",
+          "Description": "Icon for low-density screens."
+        },
+        {
+          "Name": "MDPI Icon",
+          "Description": "Icon for medium-density screens."
+        },
+        {
+          "Name": "HDPI Icon",
+          "Description": "Icon for high-density screens."
+        },
+        {
+          "Name": "XHDPI Icon",
+          "Description": "Icon for extra-high-density screens."
+        }
+      ]
+    },
+    "Launch Images": {
+      "Settings": [
+        {
+          "Name": "Show Launch Image",
+          "Description": "Show image as startup splash screen."
+        },
+        {
+          "Name": "Download Background Image",
+          "Description": "Background image for downloading OBB files."
+        },
+        {
+          "Name": "Launch Portrait",
+          "Description": "Splash screen for portrait orientations."
+   },
+    {
+      "Name": "Launch Landscape",
+      "Description": "Splash screen for landscape orientations."
+    }
+  ]
+},
+"Graphics Debugger": {
+  "Settings": [
+    {
+      "Name": "Enable Mali Perf Counters",
+      "Description": "Disable security.perf_harden for performance counters on Mali devices."
+    },
+    {
+      "Name": "Android Graphics Debugger",
+      "Description": "Configure project for different graphics debuggers."
+    }
+  ]
+},
+"Input": {
+  "Settings": [
+    {
+      "Name": "Allow IMU Sampling",
+      "Description": "Enable accelerometer, magnetometer, and gyroscope events."
+    },
+    {
+      "Name": "Allow Bluetooth Controllers",
+      "Description": "Enable input from Bluetooth controllers."
+    },
+    {
+      "Name": "Block Android System Keys",
+      "Description": "Prevent controllers from sending Android_Back and Android_Menu events."
+    },
+    {
+      "Name": "Block Force Feedback",
+      "Description": "Block force feedback when controllers are attached."
+    }
+  ]
+},
+"Audio": {
+  "Settings": [
+    {
+      "Name": "Encoding Format",
+      "Description": "Audio encoding options: Default, Ogg Vorbis, ADCPM."
+    },
+    {
+      "Name": "Audio Mixer Sample Rate",
+      "Description": "Sample rate for the audio mixer."
+    },
+    {
+      "Name": "Callback Buffer Size",
+      "Description": "Amount of audio to compute per callback."
+    },
+    {
+      "Name": "Number of Buffers To Enqueue",
+      "Description": "Number of buffers to keep enqueued."
+    },
+    {
+      "Name": "Max Channels",
+      "Description": "Maximum number of audio channels."
+    },
+    {
+      "Name": "Number of Source Workers",
+      "Description": "Number of workers for source audio computation."
+    },
+    {
+      "Name": "Compression Overrides",
+      "Description": "Settings for audio compression overrides."
+    },
+    {
+      "Name": "Cook Overrides",
+      "Description": "Settings for audio cook overrides."
+    },
+    {
+      "Name": "Spatialization Plugin",
+      "Description": "Spatialization plugin to use."
+    },
+    {
+      "Name": "Reverb Plugin",
+      "Description": "Reverb plugin to use."
+    },
+    {
+      "Name": "Occlusion Plugin",
+      "Description": "Occlusion plugin to use."
+    },
+    {
+      "Name": "Sound Cue Cook Quality",
+      "Description": "Quality level to cook SoundCues at."
+    }
+  ]
+},
+"Multi-Texture Formats": {
+  "Settings": [
+    {
+      "Name": "Include ETC2 Textures",
+      "Description": "Include ETC2 textures when packaging with Android (Multi) variant."
+    },
+    {
+      "Name": "Include DXT Textures",
+      "Description": "Include DXT textures when packaging with Android (Multi) variant."
+    },
+    {
+      "Name": "Include ASTC Textures",
+      "Description": "Include ASTC textures when packaging with Android (Multi) variant."
+    },
+    {
+      "Name": "Texture Format Priorities",
+      "Description": "Prioritize texture formats: ETC2, DXT, ASTC."
+    }
+  ]
+},
+"Misc": {
+  "Settings": [
+    {
+      "Name": "Stream landscape visual mesh LODs",
+      "Description": "Enable LOD streaming for landscape visual meshes."
+    },
+    {
+      "Name": "Enable DOM storage for WebViews",
+      "Description": "Enable DOM storage API for WebViews."
+    }
+  ]
+},
+"Developer Resources": {
+  "Forums": "Ask questions and help your peers in the Developer Forums.",
+  "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+}
+       },
+        {
+          "Name": "Launch Landscape",
+          "Description": "Splash screen for landscape orientations."
+        }
+      ]
+    },
+    "Graphics Debugger": {
+      "Settings": [
+        {
+          "Name": "Enable Mali Perf Counters",
+          "Description": "Disable security.perf_harden for performance counters on Mali devices."
+        },
+        {
+          "Name": "Android Graphics Debugger",
+          "Description": "Configure project for different graphics debuggers."
+        }
+      ]
+    },
+    "Input": {
+      "Settings": [
+        {
+          "Name": "Allow IMU Sampling",
+          "Description": "Enable accelerometer, magnetometer, and gyroscope events."
+        },
+        {
+          "Name": "Allow Bluetooth Controllers",
+          "Description": "Enable input from Bluetooth controllers."
+        },
+        {
+          "Name": "Block Android System Keys",
+          "Description": "Prevent controllers from sending Android_Back and Android_Menu events."
+        },
+        {
+          "Name": "Block Force Feedback",
+          "Description": "Block force feedback when controllers are attached."
+        }
+      ]
+    },
+    "Audio": {
+      "Settings": [
+        {
+          "Name": "Encoding Format",
+          "Description": "Audio encoding options: Default, Ogg Vorbis, ADCPM."
+        },
+        {
+          "Name": "Audio Mixer Sample Rate",
+          "Description": "Sample rate for the audio mixer."
+        },
+        {
+          "Name": "Callback Buffer Size",
+          "Description": "Amount of audio to compute per callback."
+        },
+        {
+          "Name": "Number of Buffers To Enqueue",
+          "Description": "Number of buffers to keep enqueued."
+        },
+        {
+          "Name": "Max Channels",
+          "Description": "Maximum number of audio channels."
+        },
+        {
+          "Name": "Number of Source Workers",
+          "Description": "Number of workers for source audio computation."
+        },
+        {
+          "Name": "Compression Overrides",
+          "Description": "Settings for audio compression overrides."
+        },
+        {
+          "Name": "Cook Overrides",
+          "Description": "Settings for audio cook overrides."
+        },
+        {
+          "Name": "Spatialization Plugin",
+          "Description": "Spatialization plugin to use."
+        },
+        {
+          "Name": "Reverb Plugin",
+          "Description": "Reverb plugin to use."
+        },
+        {
+          "Name": "Occlusion Plugin",
+          "Description": "Occlusion plugin to use."
+        },
+        {
+          "Name": "Sound Cue Cook Quality",
+          "Description": "Quality level to cook SoundCues at."
+        }
+      ]
+    },
+    "Multi-Texture Formats": {
+      "Settings": [
+        {
+          "Name": "Include ETC2 Textures",
+          "Description": "Include ETC2 textures when packaging with Android (Multi) variant."
+        },
+        {
+          "Name": "Include DXT Textures",
+          "Description": "Include DXT textures when packaging with Android (Multi) variant."
+        },
+        {
+          "Name": "Include ASTC Textures",
+          "Description": "Include ASTC textures when packaging with Android (Multi) variant."
+        },
+        {
+          "Name": "Texture Format Priorities",
+          "Description": "Prioritize texture formats: ETC2, DXT, ASTC."
+        }
+      ]
+    },
+    "Misc": {
+      "Settings": [
+        {
+          "Name": "Stream landscape visual mesh LODs",
+          "Description": "Enable LOD streaming for landscape visual meshes."
+        },
+        {
+          "Name": "Enable DOM storage for WebViews",
+          "Description": "Enable DOM storage API for WebViews."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}
+{
+  "Android Material Quality - ES31": {
+    "Description": "Reference for the Android Material Quality - ES31 section of the Unreal Engine Project Settings.",
+    "Forward Rendering Overrides": {
+      "Settings": [
+        {
+          "Name": "Discard Quality During Cook",
+          "Description": "Discard quality during cook."
+        },
+        {
+          "Name": "Enable Quality Override",
+          "Description": "Enable quality override."
+        },
+        {
+          "Name": "Force Fully Rough",
+          "Description": "Force Roughness input to 1 to improve performance."
+        },
+        {
+          "Name": "Force Non-Metal",
+          "Description": "Force Metallic input to 0 to improve performance."
+        },
+        {
+          "Name": "Disable Lightmap Directionality",
+          "Description": "Disable lightmap directionality."
+        },
+        {
+          "Name": "Force Low Quality Reflections",
+          "Description": "Force low quality reflections."
+        },
+        {
+          "Name": "Force Not Use Pre-Integrated GF for Simple IBL",
+          "Description": "Force not use pre-integrated GF for simple IBL."
+        },
+        {
+          "Name": "Disable Material Normal Calculation",
+          "Description": "Disable material normal calculation."
+        },
+        {
+          "Name": "Mobile Shadow Mapping Quality",
+          "Description": "Set mobile shadow mapping quality."
+        },
+        {
+          "Name": "Update Preview Shaders",
+          "Description": "Update editor to reflect changes to quality settings."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}
+{
+  "Android Material Quality - Vulkan": {
+    "Description": "Reference for the Android Material Quality - Vulkan section of the Unreal Engine Project Settings.",
+    "Forward Rendering Overrides": {
+      "Settings": [
+        {
+          "Name": "Discard Quality During Cook",
+          "Description": "Discard quality during cook."
+        },
+        {
+          "Name": "Enable Quality Override",
+          "Description": "Enable quality override."
+        },
+        {
+          "Name": "Force Fully Rough",
+          "Description": "Force Roughness input to 1 to improve performance."
+        },
+        {
+          "Name": "Force Non-Metal",
+          "Description": "Force Metallic input to 0 to improve performance."
+        },
+        {
+          "Name": "Disable Lightmap Directionality",
+          "Description": "Disable lightmap directionality."
+        },
+        {
+          "Name": "Force Low Quality Reflections",
+          "Description": "Force low quality reflections."
+        },
+        {
+          "Name": "Force Not Use Pre-Integrated GF for Simple IBL",
+          "Description": "Force not use pre-integrated GF for simple IBL."
+        },
+        {
+          "Name": "Disable Material Normal Calculation",
+          "Description": "Disable material normal calculation."
+        },
+        {
+          "Name": "Mobile Shadow Mapping Quality",
+          "Description": "Set mobile shadow mapping quality."
+        },
+        {
+          "Name": "Update Preview Shaders",
+          "Description": "Update editor to reflect changes to quality settings."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}
+{
+  "Android SDK": {
+    "Description": "Reference for the Android SDK section of the Unreal Engine Project Settings.",
+    "SDK Config": {
+      "Settings": [
+        {
+          "Name": "Location of Android SDK",
+          "Description": "On-disk location of Android SDK; falls back to ANDROID_HOME environment variable if blank."
+        },
+        {
+          "Name": "Location of Android NDK",
+          "Description": "On-disk location of Android NDK; falls back to NDKROOT environment variable if blank."
+        },
+        {
+          "Name": "Location of JAVA",
+          "Description": "On-disk location of Java; falls back to JAVA_HOME environment variable if blank."
+        },
+        {
+          "Name": "SDK API Level",
+          "Description": "Define which SDK to package and compile Java with: specific version, latest, or matchndk."
+        },
+        {
+          "Name": "NDK API Level",
+          "Description": "Define which NDK to compile with: specific version or latest. Choosing android-21 or later excludes pre-5.0 devices."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}
+{
+  "Android SM5 Material Quality - Vulkan": {
+    "Description": "Reference for the Android SM5 Material Quality - Vulkan section of the Unreal Engine Project Settings.",
+    "Forward Rendering Overrides": {
+      "Settings": [
+        {
+          "Name": "Discard Quality During Cook",
+          "Description": "Discard quality during cook."
+        },
+        {
+          "Name": "Enable Quality Override",
+          "Description": "Enable quality override."
+        },
+        {
+          "Name": "Force Fully Rough",
+          "Description": "Force Roughness input to 1 to improve performance."
+        },
+        {
+          "Name": "Force Non-Metal",
+          "Description": "Force Metallic input to 0 to improve performance."
+        },
+        {
+          "Name": "Disable Lightmap Directionality",
+          "Description": "Disable lightmap directionality."
+        },
+        {
+          "Name": "Force Low Quality Reflections",
+          "Description": "Force low quality reflections."
+        },
+        {
+          "Name": "Force Not Use Pre-Integrated GF for Simple IBL",
+          "Description": "Force not using pre-integrated GF for simple IBL."
+        },
+        {
+          "Name": "Disable Material Normal Calculation",
+          "Description": "Disable material normal calculation."
+        },
+        {
+          "Name": "Mobile Shadow Mapping Quality",
+          "Description": "Set mobile shadow mapping quality."
+        },
+        {
+          "Name": "Update Preview Shaders",
+          "Description": "Update editor to reflect changes to quality settings."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}
+{
+  "iOS": {
+    "Description": "Reference for the iOS section of the Unreal Engine Project Settings.",
+    "Mobile Provision": {
+      "Description": "Override default provisioning profiles and certificates.",
+      "Settings": [
+        {
+          "Name": "Import Provision",
+          "Description": "Select provisioning profiles for your application."
+        },
+        {
+          "Name": "Import Certificate",
+          "Description": "Select the certificate for your application."
+        }
+      ]
+    },
+    "Bundle Information": {
+      "Description": "Settings for Info.plist file generated during build.",
+      "Settings": [
+        {
+          "Name": "Bundle Display Name",
+          "Description": "Display name for the application under the icon."
+        },
+        {
+          "Name": "Bundle Name",
+          "Description": "Short name for the application bundle."
+        },
+        {
+          "Name": "Bundle Identifier",
+          "Description": "Unique identifier for your app in the App Store."
+        },
+        {
+          "Name": "Version Info",
+          "Description": "Version of the application."
+        }
+      ]
+    },
+    "Orientation": {
+      "Description": "Supported orientations for the application.",
+      "Settings": [
+        {
+          "Name": "Supports Portrait Orientation",
+          "Description": "Support default portrait orientation."
+        },
+        {
+          "Name": "Supports Upside Down Orientation",
+          "Description": "Support upside-down orientation."
+        },
+        {
+          "Name": "Supports Landscape Left Orientation",
+          "Description": "Support left landscape orientation."
+        },
+        {
+          "Name": "Supports Landscape Right Orientation",
+          "Description": "Support right landscape orientation."
+        },
+        {
+          "Name": "Preferred Landscape Orientation",
+          "Description": "Initial orientation at launch: Landscape (left or right Home button)."
+        }
+      ]
+    },
+    "Input": {
+      "Description": "Settings for input devices.",
+      "Settings": [
+        {
+          "Name": "Multiple Gamepads",
+          "Description": "Allow multiple gamepads simultaneously."
+        },
+        {
+          "Name": "AppleTV Remote Landscape Mode",
+          "Description": "Enable Siri Remote landscape mode."
+        },
+        {
+          "Name": "AppleTV Remote Absolute Trackpad Values",
+          "Description": "Center of trackpad is 0,0 for virtual joystick."
+        },
+        {
+          "Name": "Allow MFi Controllers",
+          "Description": "Enable Bluetooth connected controllers."
+        },
+        {
+          "Name": "Block Force Feedback",
+          "Description": "Block force feedback when controllers are attached."
+        },
+        {
+          "Name": "Disable Motion Controls",
+          "Description": "Disable device motion data."
+        },
+        {
+          "Name": "Use Integrated Keyboard",
+          "Description": "Use keyboard without UITextField."
+        }
+      ]
+    },
+    "File System": {
+      "Description": "Settings for file access.",
+      "Settings": [
+        {
+          "Name": "Support iTunes File Sharing",
+          "Description": "Enable iTunes File Sharing."
+        },
+        {
+          "Name": "Support Files App",
+          "Description": "Enable access from Files app (requires iTunes File Sharing)."
+        }
+      ]
+    },
+    "Rendering": {
+      "Description": "Settings for rendering performance.",
+      "Settings": [
+        {
+          "Name": "Use Fast-Math Intrinsics",
+          "Description": "Enable Metal shading language's 'fast' intrinsics."
+        },
+        {
+          "Name": "Force 32-bit Floating Point Precision",
+          "Description": "Force Metal shaders to use 32-bit precision."
+        },
+        {
+          "Name": "Enable Fast-Math Optimizations",
+          "Description": "Enable Metal shader-compiler's -ffast-math optimizations."
+        },
+        {
+          "Name": "Tier of Indirect Argument Buffers",
+          "Description": "Compile shaders using a tier Indirect Argument Buffers."
+        },
+        {
+          "Name": "Support Apple A8",
+          "Description": "Enable support for Apple A8 devices."
+        },
+        {
+          "Name": "Metal Mobile Renderer",
+          "Description": "Compile iOS Metal shaders for the Mobile renderer."
+        },
+        {
+          "Name": "Metal Desktop Renderer",
+          "Description": "Compile iOS Metal shaders for the desktop renderer."
+        },
+        {
+          "Name": "Metal Shader Standard To Target",
+          "Description": "Choose Metal shader language version: v2.3 or v2.4."
+        }
+      ]
+    },
+    "OS Info": {
+      "Description": "Settings for supported iOS versions.",
+      "Settings": [
+        {
+          "Name": "Minimum iOS Version",
+          "Description": "Minimum iOS version supported: 14.0 or 15.0."
+        }
+      ]
+    },
+    "Power Usage": {
+      "Description": "Settings to manage power consumption.",
+      "Settings": [
+        {
+          "Name": "Frame Rate Lock",
+          "Description": "Set max frame rate: None, 20 FPS, 30 FPS, or 60 FPS."
+        },
+        {
+          "Name": "Enable Dynamic Max FPS",
+          "Description": "Use device MaxRefreshRate instead of a constant."
+        }
+      ]
+    },
+    "Devices": {
+      "Description": "Settings for supported devices.",
+      "Settings": [
+        {
+          "Name": "Supports iPad",
+          "Description": "Add support for iPad devices."
+        },
+        {
+          "Name": "Supports iPhone",
+          "Description": "Add support for iPhone devices."
+        }
+      ]
+    },
+    "Build": {
+      "Description": "Build settings for the iOS project.",
+      "Settings": [
+        {
+          "Name": "Build Project as a Framework",
+          "Description": "Build the iOS project as a framework."
+        },
+        {
+          "Name": "Override Location of Metal Toolchain",
+          "Description": "Override default install location of Metal developer tools for Windows."
+        },
+        {
+          "Name": "Generate dSYMs for Debugging",
+          "Description": "Generate dSYM file for debugging and profiling."
+        },
+        {
+          "Name": "Generate dSYMs as a Bundle",
+          "Description": "Generate dSYM bundle for third-party crash tools."
+        },
+        {
+          "Name": "Generate .udebugsymbols File",
+          "Description": "Generate .udebugsymbols file for offline symbolication."
+        },
+        {
+          "Name": "Generate Xcode Archive Package",
+          "Description": "Generate Xcode archive package."
+        },
+        {
+          "Name": "Support Bitcode in Shipping",
+          "Description": "Enable Bitcode compiling."
+        },
+        {
+          "Name": "Enable Advertising Identifier (IDFA)",
+          "Description": "Enable Advertising Identifier."
+        },
+        {
+          "Name": "Additional Non-Shipping Linker Flags",
+          "Description": "Additional linker flags for non-shipping builds."
+        },
+        {
+          "Name": "Additional Shipping Linker Flags",
+          "Description": "Additional linker flags for shipping builds."
+        },
+        {
+          "Name": "Override Existing SSH Permissions File",
+          "Description": "Path of the SSH permissions key for remote server connection."
+        },
+        {
+          "Name": "Support User Switching on tvOS",
+          "Description": "Enable Multi-User feature on tvOS."
+        },
+        {
+          "Name": "Dev Center Username",
+          "Description": "Username for DevCenter login with Turnkey."
+        },
+        {
+          "Name": "Dev Center Password",
+          "Description": "Password for DevCenter login with Turnkey."
+        }
+      ]
+    },
+    "Remote Build Options": {
+      "Description": "Settings for remote build options.",
+      "Settings": [
+        {
+          "Name": "Remote Server Name",
+          "Description": "Name or IP address of the remote Mac for builds."
+        },
+        {
+          "Name": "RSync User Name",
+          "Description": "Username for RSync on the remote server."
+        },
+        {
+          "Name": "Remote Server Override Build Path",
+          "Description": "Optional path on the remote Mac for build files."
+        },
+        {
+          "Name": "Found Existing SSH Permissions File",
+          "Description": "Location of an existing SSH key found by Unreal Engine."
+        },
+        {
+          "Name": "Cw Rsync Install Path",
+          "Description": "Install directory of cwRsync."
+        },
+        {
+          "Name": "Generate SSH Key",
+          "Description": "Generate the SSH key."
+        }
+      ]
+    },
+    "Online": {
+      "Description": "Settings for online features.",
+      "Settings": [
+        {
+          "Name": "Enable Game Center Support",
+          "Description": "Enable Game Center support."
+        },
+        {
+          "Name": "Enable Cloud Kit Support",
+          "Description": "Enable Cloud Kit support."
+        },
+        {
+          "Name": "iCloud Save Files Sync Strategy",
+          "Description": "Strategy for reading from iCloud save files."
+        },
+        {
+          "Name": "Enable Background Fetch",
+          "Description": "Enable background fetch support."
+        },
+        {
+          "Name": "Enable Facebook Support",
+          "Description": "Enable Facebook support."
+        },
+        {
+          "Name": "Facebook App ID",
+          "Description": "Facebook App ID from Facebook Developer Center."
+        },
+        {
+          "Name": "Allow Web Connections to Non-HTTPS Websites",
+          "Description": "Allow connections to non-HTTPS websites."
+        },
+        {
+          "Name": "Enable Remote Notifications Support",
+          "Description": "Enable remote notifications support."
+        }
+      ]
+  },
+    "Extra PList Data": {
+      "Description": "Additional plist key/value data.",
+      "Settings": [
+        {
+          "Name": "Additional Plist Data",
+          "Description": "Add additional plist data; separate lines with \\n."
+        }
+      ]
+    },
+    "Required Icons": {
+      "Description": "Settings for required icons.",
+      "Settings": [
+        {
+          "Name": "Marketing Icon (1024x1024)",
+          "Description": "Icon for App Store (1024x1024px)."
+        },
+        {
+          "Name": "Default iPhone Icon (120x120)",
+          "Description": "Default icon for iPhone (120x120px)."
+        },
+        {
+          "Name": "Default iPad Icon (152x152)",
+          "Description": "Default icon for iPad (152x152px)."
+        },
+        {
+          "Name": "iPad Pro Retina App Icon (167x167)",
+          "Description": "High-resolution icon for iPad Pro Retina (167x167px)."
+        }
+      ]
+    },
+    "Optional Icons": {
+      "Description": "Settings for optional icons.",
+      "Settings": [
+        {
+          "Name": "3x iPhone App Icon (180x180)",
+          "Description": "3x iPhone App Icon (180x180)."
+        },
+        {
+          "Name": "3x iPhone Spotlight Icon (120x120)",
+          "Description": "3x iPhone Spotlight Icon (120x120)."
+        },
+        {
+          "Name": "Default Spotlight Icon (80x80)",
+          "Description": "Default Spotlight Icon (80x80)."
+        },
+        {
+          "Name": "3x iPhone Settings Icon (87x87)",
+          "Description": "3x iPhone Settings Icon (87x87)."
+        },
+        {
+          "Name": "Default Settings Icon (58x58)",
+          "Description": "Default Settings Icon (58x58)."
+        },
+        {
+          "Name": "3x iPhone Notification Icon (60x60)",
+          "Description": "3x iPhone Notification Icon (60x60)."
+        },
+        {
+          "Name": "Default Notification Icon (40x40)",
+          "Description": "Default Notification Icon (40x40)."
+        }
+      ]
+    },
+    "Launch Screen": {
+      "Description": "Settings for launch screen.",
+      "Settings": [
+        {
+          "Name": "Custom Launchscreen Storyboard",
+          "Description": "Use a custom LaunchScreen storyboard."
+        },
+        {
+          "Name": "Launch Screen Image",
+          "Description": "Image for Launch Screen when custom storyboard is not used."
+        }
+      ]
+    },
+    "TvOS": {
+      "Description": "Settings for TvOS icons.",
+      "Settings": [
+        {
+          "Name": "Icon Large Back (1280x768)",
+          "Description": "Large back icon (1280x768)."
+        },
+        {
+          "Name": "Icon Large Front (1280x768)",
+          "Description": "Large front icon (1280x768)."
+        },
+        {
+          "Name": "Icon Large Middle (1280x768)",
+          "Description": "Large middle icon (1280x768)."
+        },
+        {
+          "Name": "Icon Small Back (400x240)",
+          "Description": "Small back icon (400x240)."
+        },
+        {
+          "Name": "Icon Small Front (400x240)",
+          "Description": "Small front icon (400x240)."
+        },
+        {
+          "Name": "Icon Small Middle (400x240)",
+          "Description": "Small middle icon (400x240)."
+        },
+        {
+          "Name": "Top Shelf (1920x720)",
+          "Description": "Top shelf icon (1920x720)."
+        },
+        {
+          "Name": "Top Shelf (6840x1440)",
+          "Description": "Top shelf icon (6840x1440)."
+        },
+        {
+          "Name": "Top Shelf Wide (2320x720)",
+          "Description": "Top shelf wide icon (2320x720)."
+        },
+        {
+          "Name": "2x Top Shelf Wide (4640x1440)",
+          "Description": "2x top shelf wide icon (4640x1440)."
+        }
+      ]
+    },
+    "Audio": {
+      "Description": "Settings for audio configuration.",
+      "Settings": [
+        {
+          "Name": "Audio Mixer Sample Rate",
+          "Description": "Sample rate for the audio mixer."
+        },
+        {
+          "Name": "Callback Buffer Size",
+          "Description": "Amount of audio to compute per callback."
+        },
+        {
+          "Name": "Number of Buffers To Enqueue",
+          "Description": "Number of buffers to keep enqueued."
+        },
+        {
+          "Name": "Max Channels",
+          "Description": "Maximum number of audio channels."
+        },
+        {
+          "Name": "Number of Source Workers",
+          "Description": "Number of workers for source audio computation."
+        },
+        {
+          "Name": "Compression Overrides",
+          "Description": "Settings for audio compression overrides."
+        },
+        {
+          "Name": "Cook Overrides",
+          "Description": "Settings for audio cook overrides."
+        },
+        {
+          "Name": "Spatialization Plugin",
+          "Description": "Choose spatialization plugin: Built-In, Resonance Audio, Other."
+        },
+        {
+          "Name": "Reverb Plugin",
+          "Description": "Choose reverb plugin: Built-In, Resonance Audio, Other."
+        },
+        {
+          "Name": "Occlusion Plugin",
+          "Description": "Choose occlusion plugin: Built-In, Other."
+        },
+        {
+          "Name": "Sound Cue Cook Quality",
+          "Description": "Quality level to cook SoundCues at."
+        }
+      ]
+    },
+    "Compression Overrides": {
+      "Description": "Settings for overriding audio compression.",
+      "Settings": [
+        {
+          "Name": "Override Compression Times",
+          "Description": "Override Sound Group compression times."
+        },
+        {
+          "Name": "Duration Threshold",
+          "Description": "Fully decompress sounds under this threshold."
+        },
+        {
+          "Name": "Maximum Branches on Random SoundCue Nodes",
+          "Description": "Preload only this number of branches on random Sound Cues."
+        },
+        {
+          "Name": "Quality Index for Sound Cues",
+          "Description": "Override quality index for Sound Cues."
+        }
+      ]
+    },
+    "Cook Overrides": {
+      "Description": "Settings for overriding audio cook.",
+      "Settings": [
+        {
+          "Name": "Resample for Device",
+          "Description": "Enable audio resampling for this platform."
+        },
+        {
+          "Name": "Compression Quality Modifier",
+          "Description": "Scale all compression qualities for this platform."
+        },
+        {
+          "Name": "Stream Caching",
+          "Description": "Settings for stream caching."
+        },
+        {
+          "Name": "Resampling Quality",
+          "Description": "Settings for resampling quality."
+        }
+      ]
+    },
+    "Stream Caching": {
+      "Description": "Settings for audio stream caching.",
+      "Settings": [
+        {
+          "Name": "Max Cache Size (KB)",
+          "Description": "Max memory for audio cache."
+        },
+        {
+          "Name": "Max Chunk Size Override (KB)",
+          "Description": "Override max chunk size for stream caching."
+        }
+      ]
+    },
+    "Resampling Quality": {
+      "Description": "Settings for audio resampling quality.",
+      "Settings": [
+        {
+          "Name": "Max Sample Rate",
+          "Description": "Maximum sample rate for resampling."
+        },
+        {
+          "Name": "High Sample Rate",
+          "Description": "High sample rate for resampling."
+        },
+        {
+          "Name": "Medium Sample Rate",
+          "Description": "Medium sample rate for resampling."
+        },
+        {
+          "Name": "Low Sample Rate",
+          "Description": "Low sample rate for resampling."
+        },
+        {
+          "Name": "Min Sample Rate",
+          "Description": "Minimum sample rate for resampling."
+        }
+      ]
+    },
+    "Misc": {
+      "Description": "Miscellaneous settings.",
+      "Settings": [
+        {
+          "Name": "Stream Landscape Visual Mesh LODs",
+          "Description": "Enable LOD streaming for landscape visual meshes."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}
+{
+  "iOS Material Quality": {
+    "Description": "Reference for the iOS Material Quality section of the Unreal Engine Project Settings.",
+    "Forward Rendering Overrides": {
+      "Settings": [
+        {
+          "Name": "Discard Quality During Cook",
+          "Description": "Discard quality during cook."
+        },
+        {
+          "Name": "Enable Quality Override",
+          "Description": "Enable quality override."
+        },
+        {
+          "Name": "Force Fully Rough",
+          "Description": "Force Roughness input to 1 to improve performance."
+        },
+        {
+          "Name": "Force Non-Metal",
+          "Description": "Force Metallic input to 0 to improve performance."
+        },
+        {
+          "Name": "Disable Lightmap Directionality",
+          "Description": "Disable lightmap directionality."
+        },
+        {
+          "Name": "Force Low Quality Reflections",
+          "Description": "Force low quality reflections."
+        },
+        {
+          "Name": "Force Not Use Pre-Integrated GF for Simple IBL",
+          "Description": "Force not using pre-integrated GF for simple IBL."
+        },
+        {
+          "Name": "Disable Material Normal Calculation",
+          "Description": "Disable material normal calculation."
+        },
+        {
+          "Name": "Mobile Shadow Mapping Quality",
+          "Description": "Set mobile shadow mapping quality."
+        },
+        {
+          "Name": "Update Preview Shaders",
+          "Description": "Update editor to reflect changes to quality settings."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}
+{
+  "Linux": {
+    "Description": "Reference for the Linux section of the Unreal Engine Project Settings.",
+    "Targeted RHIs": {
+      "Settings": [
+        {
+          "Name": "Vulkan Desktop (SM5)",
+          "Description": "Vulkan Desktop (SM5)."
+        },
+        {
+          "Name": "Vulkan Mobile (ES3.1)",
+          "Description": "Vulkan Mobile (ES3.1)."
+        }
+      ]
+    },
+    "Splash": {
+      "Settings": [
+        {
+          "Name": "Editor Splash",
+          "Description": "Editor Splash."
+        },
+        {
+          "Name": "Game Splash",
+          "Description": "Game Splash."
+        }
+      ]
+    },
+    "Icon": {
+      "Settings": [
+        {
+          "Name": "Game Icon",
+          "Description": "Game Icon."
+        }
+      ]
+    },
+    "Audio": {
+      "Settings": [
+        {
+          "Name": "Spatialization Plugin",
+          "Description": "Defines which spatialization plugin to use: Built-In, Resonance Audio, Other."
+        },
+        {
+          "Name": "Reverb Plugin",
+          "Description": "Defines which reverb plugin to use: Built-In, Resonance Audio, Other."
+        },
+        {
+          "Name": "Occlusion Plugin",
+          "Description": "Defines which occlusion plugin to use: Built-In, Other."
+        },
+        {
+          "Name": "Sound Cue Cook Quality",
+          "Description": "Quality level to cook SoundCues at."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}
+{
+  "Windows": {
+    "Description": "Reference for the Windows section of the Unreal Engine Project Settings.",
+    "Targeted RHIs": {
+      "Settings": [
+        {
+          "Name": "Default RHI",
+          "Description": "Select the Rendering Hardware Interface (RHI) to use: Default, DirectX 11, DirectX 12, Vulkan."
+        },
+        {
+          "Name": "DirectX 11 & 12 (SM5)",
+          "Description": "Enable DirectX 11 and 12 as targeted RHIs."
+        },
+        {
+          "Name": "DirectX 12 (SM6, Experimental)",
+          "Description": "Enable DirectX 12 as the targeted RHI."
+        },
+        {
+          "Name": "Vulkan (SM5)",
+          "Description": "Enable Vulkan as the targeted RHI."
+        },
+        {
+          "Name": "DirectX Mobile Emulation",
+          "Description": "Enable DirectX Mobile Emulation as the targeted RHI."
+        }
+      ]
+    },
+    "Toolchain": {
+      "Settings": [
+        {
+          "Name": "Compiler Version",
+          "Description": "Select the compiler version: Default, Visual Studio 2015 (deprecated), Visual Studio 2017, Visual Studio 2019, Visual Studio 2022."
+        }
+      ]
+    },
+    "Splash": {
+      "Settings": [
+        {
+          "Name": "Editor Splash",
+          "Description": "Editor Splash."
+        },
+        {
+          "Name": "Game Splash",
+          "Description": "Game Splash."
+        }
+      ]
+    },
+    "Icon": {
+      "Settings": [
+        {
+          "Name": "Game Icon",
+          "Description": "Game Icon."
+        }
+      ]
+    },
+    "Audio": {
+      "Settings": [
+        {
+          "Name": "Audio Mixer Sample Rate",
+          "Description": "Sample rate for the audio mixer."
+        },
+        {
+          "Name": "Callback Buffer Size",
+          "Description": "Amount of audio to compute per callback."
+        },
+        {
+          "Name": "Number of Buffers To Enqueue",
+          "Description": "Number of buffers to keep enqueued."
+        },
+        {
+          "Name": "Max Channels",
+          "Description": "Maximum number of audio channels."
+        },
+        {
+          "Name": "Number of Source Workers",
+          "Description": "Number of workers for source audio computation."
+        },
+        {
+          "Name": "Compression Overrides",
+          "Description": "Settings for audio compression overrides."
+        },
+        {
+          "Name": "Cook Overrides",
+          "Description": "Settings for audio cook overrides."
+        },
+        {
+          "Name": "Spatialization Plugin",
+          "Description": "Select spatialization plugin: Built-In, Resonance Audio, Other."
+        },
+        {
+          "Name": "Reverb Plugin",
+          "Description": "Select reverb plugin: Built-In, Resonance Audio, Other."
+        },
+        {
+          "Name": "Occlusion Plugin",
+          "Description": "Select occlusion plugin: Built-In, Other."
+        },
+        {
+          "Name": "Sound Cue Cook Quality",
+          "Description": "Quality level to cook SoundCues at."
+        }
+      ]
+    },
+    "Compression Overrides": {
+      "Settings": [
+        {
+          "Name": "Override Compression Times",
+          "Description": "Override Sound Group compression times."
+        },
+        {
+          "Name": "Duration Threshold",
+          "Description": "Fully decompress sounds under this threshold."
+        },
+        {
+          "Name": "Maximum Branches on Random SoundCue Nodes",
+          "Description": "Preload only this number of branches on random Sound Cues."
+        },
+        {
+          "Name": "Quality Index for Sound Cues",
+          "Description": "Override quality index for Sound Cues."
+        }
+      ]
+    },
+    "Cook Overrides": {
+      "Settings": [
+        {
+          "Name": "Resample for Device",
+          "Description": "Enable audio resampling for this platform."
+        },
+        {
+          "Name": "Compression Quality Modifier",
+          "Description": "Scale all compression qualities for this platform."
+        },
+        {
+          "Name": "Stream Caching",
+          "Description": "Settings for stream caching."
+        },
+        {
+          "Name": "Resampling Quality",
+          "Description": "Settings for resampling quality."
+        }
+      ]
+    },
+    "Stream Caching": {
+      "Settings": [
+        {
+          "Name": "Max Cache Size (KB)",
+          "Description": "Max memory for audio cache."
+        },
+        {
+          "Name": "Max Chunk Size Override (KB)",
+          "Description": "Override max chunk size for stream caching."
+        }
+      ]
+    },
+    "Resampling Quality": {
+      "Settings": [
+        {
+          "Name": "Max Sample Rate",
+          "Description": "Maximum sample rate for resampling."
+        },
+        {
+          "Name": "High Sample Rate",
+          "Description": "High sample rate for resampling."
+        },
+        {
+          "Name": "Medium Sample Rate",
+          "Description": "Medium sample rate for resampling."
+        },
+        {
+          "Name": "Low Sample Rate",
+          "Description": "Low sample rate for resampling."
+        },
+        {
+          "Name": "Min Sample Rate",
+          "Description": "Minimum sample rate for resampling."
+        }
+      ]
+    },
+    "Developer Resources": {
+      "Forums": "Ask questions and help your peers in the Developer Forums.",
+      "Learning Library": "Write your own tutorials or read those from others in the Learning Library."
+    }
+  }
+}

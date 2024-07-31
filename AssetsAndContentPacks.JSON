@@ -1,0 +1,723 @@
+{
+  "AssetsAndContentPacks": {
+    "Description": "Overview of how to work with Assets and content packs in Unreal Engine 5.",
+    "Definition": "Any piece of content in an Unreal Engine project is an Asset, serving as building blocks for your game and application.",
+    "Types": [
+      "Static Meshes",
+      "Materials",
+      "Particle systems",
+      "Sound cues",
+      "Blueprints"
+    ],
+    "Creation": {
+      "External": "Created in other 3D applications like Maya or 3ds Max.",
+      "Internal": "Created directly inside Unreal Engine."
+    },
+    "Management": "Manage Assets through the Content Browser.",
+    "LearningResources": [
+      {
+        "Topic": "Importing Assets Directly",
+        "Description": "Two methods of importing small sets of Assets."
+      },
+      {
+        "Topic": "Working with Assets",
+        "Description": "How to create, delete, and manage Assets from the Content Browser."
+      },
+      {
+        "Topic": "Migrating Assets",
+        "Description": "How to copy Assets from one project to another."
+      },
+      {
+        "Topic": "Asset Metadata",
+        "Description": "How to create, read, and modify metadata on Assets."
+      },
+      {
+        "Topic": "Reimporting Assets Automatically",
+        "Description": "Setup and use auto-reimport functionality."
+      },
+      {
+        "Topic": "Reference Viewer",
+        "Description": "Tool to find and organize Asset references."
+      },
+      {
+        "Topic": "Consolidating Assets",
+        "Description": "Remove duplicate Assets by consolidating into one."
+      },
+      {
+        "Topic": "Class Viewer",
+        "Description": "Tool for examining Unreal Engine classes and creating child classes."
+      },
+      {
+        "Topic": "Global Asset Picker",
+        "Description": "Quickly find Assets from any folder."
+      },
+      {
+        "Topic": "Property Matrix",
+        "Description": "View and edit multiple properties of multiple actors simultaneously."
+      }
+    ],
+    "Community": [
+      {
+        "Resource": "Developer Forums",
+        "Purpose": "Ask questions and help peers."
+      },
+      {
+        "Resource": "Learning Library",
+        "Purpose": "Write and read tutorials."
+      }
+    ]
+  }
+}
+{
+  "ImportingAssetsDirectly": {
+    "Description": "Two methods to import small sets of Assets into Unreal Engine.",
+    "Methods": {
+      "ContentBrowser": {
+        "Steps": [
+          "Open Content Drawer or Browser.",
+          "Select target folder in Sources panel.",
+          "Click Add or Import button.",
+          "Browse to extracted Sample Assets and select files.",
+          "Click Open to import."
+        ],
+        "Result": "Dialog with import options appears."
+      },
+      "DragAndDrop": {
+        "Steps": [
+          "Open Content Drawer or Browser.",
+          "Select target folder in Sources panel.",
+          "Open file manager and navigate to assets.",
+          "Drag and drop assets into Content Browser."
+        ],
+        "Result": "Dialog with import options appears."
+      }
+    },
+    "ImportingAssets": {
+      "Description": "After selecting files, the Import Options window appears with specific settings.",
+      "Options": [
+        "Click Import All to import all selected Assets.",
+        "Click Import for individual settings."
+      ],
+      "AutomaticDetection": "Unreal Engine detects some Texture types like Normal maps."
+    },
+    "SavingImportedAssets": {
+      "Description": "Assets appear with an asterisk indicating unsaved status.",
+      "Steps": [
+        "Click Save All in Content Browser's menu.",
+        "Select which Assets to save in the dialog.",
+        "Click Save Selected to save."
+      ],
+      "Result": "Asterisks removed, indicating successful save."
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "WorkingWithAssets": {
+    "Description": "Create, delete, and manage Assets from the Content Browser.",
+    "CommonWorkflows": {
+      "CreatingAssets": {
+        "Steps": [
+          "Right-click in Content Browser.",
+          "Choose Asset to create from context menu."
+        ],
+        "Note": "Creates a blank Asset to populate."
+      },
+      "AssetPaths": {
+        "Description": "Assets are located and referenced by their path.",
+        "Examples": [
+          "Blueprints: /Game/BP_MyBlueprint.BP_MyBlueprint",
+          "HLOD: /Game/HLOD/MyHLOD.HLOD_StaticMesh"
+        ]
+      },
+      "AssetReferences": {
+        "Description": "Assets reference each other.",
+        "Steps": [
+          "Right-click Asset in Content Browser.",
+          "Select Reference Viewer to see references."
+        ],
+        "CopyingReferences": {
+          "Steps": [
+            "Select Asset(s), right-click, and choose Copy Reference."
+          ],
+          "Examples": [
+            "Material'/Game/StarterContent/Materials/M_Metal_Brushed_Nickel'"
+          ]
+        }
+      },
+      "ManagingAssets": {
+        "Actions": [
+          {
+            "Action": "Edit",
+            "Description": "Opens Asset in its Editor."
+          },
+          {
+            "Action": "Rename",
+            "Description": "Makes Asset's name editable."
+          },
+          {
+            "Action": "Duplicate",
+            "Description": "Creates a copy of the Asset."
+          },
+          {
+            "Action": "Save",
+            "Description": "Saves the Asset."
+          },
+          {
+            "Action": "Show in Folder View",
+            "Description": "Highlights Asset's parent folder."
+          },
+          {
+            "Action": "Show in Explorer/Finder",
+            "Description": "Opens file location on disk."
+          }
+        ],
+        "Warning": "Do not move, copy, or delete Assets directly on disk."
+      },
+      "MovingAndCopyingAssets": {
+        "Steps": [
+          "Drag Asset to another folder.",
+          "Select Move Here, Copy Here, or Advanced Copy Here."
+        ]
+      },
+      "DeletingAssets": {
+        "Steps": [
+          "Right-click and select Delete.",
+          "Press Delete on keyboard."
+        ],
+        "Confirmation": {
+          "IfNoReferences": "Click Delete to confirm.",
+          "IfReferences": "Replace References or Force Delete."
+        }
+      },
+      "ExportingAssets": {
+        "Steps": [
+          "Right-click Asset in Content Browser.",
+          "Select Asset Actions > Export."
+        ],
+        "FileTypes": "Depends on Asset type (e.g., FBX, OBJ)."
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "MigratingAssets": {
+    "Description": "Copy Assets from one project to another using the Migrate tool.",
+    "Steps": [
+      "Select Asset(s) in Content Browser.",
+      {
+        "SelectMultiple": [
+          "Hold Ctrl and click each Asset.",
+          "Hold Shift to select a range of Assets."
+        ]
+      },
+      "Right-click selected Assets and choose Asset Actions > Migrate.",
+      "Review Asset Report and uncheck any Assets not to migrate.",
+      "Click OK to confirm migration.",
+      "Select target project's Content folder and click Select Folder.",
+      "Confirm overwrite if prompted.",
+      "View migration confirmation and message log."
+    ],
+    "Troubleshooting": [
+      "Ensure migration to a Content folder.",
+      "Check and migrate all dependencies if Assets don't display correctly."
+    ],
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "AssetMetadata": {
+    "Description": "Create, read, and modify metadata on Unreal Engine Assets.",
+    "MetadataUsage": {
+      "Purpose": "Record information as key-value pairs for asset management.",
+      "Examples": [
+        "Creator name",
+        "Intended usage",
+        "Workflow status (In Progress, Done, Approved)"
+      ],
+      "Limitations": "Not accessible in runtime gameplay code; for scripting in the Unreal Editor."
+    },
+    "ImportingMetadata": {
+      "Description": "Import metadata through the FBX import process.",
+      "Reference": "See FBX Asset Metadata Pipeline for details."
+    },
+    "EditorUI": {
+      "ViewingMetadata": {
+        "Steps": [
+          "Right-click Asset in Content Browser.",
+          "Select Asset Actions > Show Metadata."
+        ]
+      },
+      "FilteringContentBrowser": {
+        "Steps": [
+          "Open Project Settings via Edit > Project Settings.",
+          "Go to Game > Asset Manager > Metadata Tags For Asset Registry.",
+          "Add keys for filtering.",
+          "Use Filters bar in Content Browser with tag name=value."
+        ]
+      }
+    },
+    "WorkingWithMetadata": {
+      "Setup": [
+        "Install Editor Scripting Utilities plugin.",
+        "Use nodes under Editor Scripting > Metadata category."
+      ],
+      "BlueprintImplementation": {
+        "ClassRequirement": "Derived from Editor-only class, e.g., PlacedEditorUtilityBase.",
+        "LoadAsset": "Use Editor Scripting > Load Asset node.",
+        "SaveChanges": "Use Save Asset or Save Loaded Asset node."
+      },
+      "GetMetadata": {
+        "Steps": [
+          "Use Get Metadata Tag node for single tag.",
+          "Use Get Metadata Tag Values node for all tags as tag-value map."
+        ]
+      },
+      "SetMetadata": {
+        "Steps": [
+          "Use Set Metadata Tag node.",
+          "Adds new tag or updates existing tag with specified value."
+        ]
+      },
+      "RemoveMetadata": {
+        "Steps": [
+          "Use Remove Metadata Tag node with tag name.",
+          "Loop node to remove all tags."
+        ]
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ReimportingAssetsAutomatically": {
+    "Description": "Auto reimporting in UE4 updates assets with changes from external content packages.",
+    "Setup": {
+      "Steps": [
+        "Go to Editor Preferences > Loading & Saving > Auto Reimport.",
+        "Enable Monitor Content Directories checkbox."
+      ],
+      "DefaultRecommendation": "Place all source content files in the Content folder for default settings."
+    },
+    "Settings": {
+      "DirectoriesToMonitor": {
+        "Description": "Defines folders UE4 will monitor for changes.",
+        "Paths": [
+          "Virtual paths (e.g., /Game/Textures)",
+          "Absolute paths (e.g., C:/Game/SourceArt/)"
+        ]
+      },
+      "IncludeExcludeWildcards": {
+        "Description": "Limit reimport to certain file types or exclude subfolders/extensions.",
+        "Examples": [
+          "*.fbx for only fbx files",
+          "*.fbx, *.png, *.psd for fbx, png, and psd files",
+          "Subfolder/* to ignore changes in a subfolder"
+        ]
+      },
+      "ImportThresholdTime": "Time in seconds to wait after detecting a change before processing.",
+      "AutoCreateAssets": "Automatically create an asset for a new file in monitored paths.",
+      "AutoDeleteAssets": "Delete associated asset when source content file is deleted if 1-1 mapping exists.",
+      "DetectChangesOnRestart": {
+        "Description": "Detect changes to files that occurred while UE4 was shutdown.",
+        "Recommendation": "Turn off if using source control to avoid redundant reimporting."
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ReferenceViewer": {
+    "Description": "Tool to find and organize Asset references.",
+    "AssetReferences": {
+      "Definition": "One Asset references another if it uses it.",
+      "Example": "Actor references a Material it uses.",
+      "Direction": "References are unidirectional."
+    },
+    "ToolUsage": {
+      "OpenReferenceViewer": {
+        "Steps": [
+          "Select Asset(s) in Content Browser.",
+          "Right-click and select Reference Viewer."
+        ],
+        "Display": [
+          "One Asset: Shows that Asset's references.",
+          "Multiple Assets: Shows common references.",
+          "Folder: Shows references for all Assets in that folder."
+        ]
+      },
+      "ViewerElements": [
+        "Referencing Assets",
+        "Selected Assets",
+        "Referenced Assets",
+        "Toolbar",
+        "Search Panel"
+      ],
+      "ContextMenuOptions": [
+        {
+          "Option": "Browse to Asset",
+          "Description": "Opens Content Browser with Asset selected."
+        },
+        {
+          "Option": "Edit",
+          "Description": "Opens Asset in its Editor."
+        },
+        {
+          "Option": "Zoom to Fit",
+          "Description": "Fits reference tree inside window."
+        },
+        {
+          "Option": "Re-Center Graph",
+          "Description": "Generates new reference tree for selected Asset."
+        },
+        {
+          "Option": "Make Collection With",
+          "Description": "Creates new Collection with referencers or dependencies."
+        },
+        {
+          "Option": "Copy Referenced Objects List",
+          "Description": "Copies list of referenced Assets to clipboard."
+        },
+        {
+          "Option": "Copy Referencing Objects List",
+          "Description": "Copies list of referencing Assets to clipboard."
+        },
+        {
+          "Option": "Show Referenced Objects List",
+          "Description": "Shows list of referenced Assets."
+        },
+        {
+          "Option": "Show Referencing Objects List",
+          "Description": "Shows list of referencing Assets."
+        },
+        {
+          "Option": "Show Reference Tree",
+          "Description": "Opens Reference Tree tool."
+        },
+        {
+          "Option": "Size Map",
+          "Description": "Shows size map of Asset and dependencies."
+        },
+        {
+          "Option": "Audit Assets",
+          "Description": "Opens Asset Audit tool."
+        }
+      ]
+    },
+    "ToolbarOptions": [
+      "Refresh, Back, and Forward buttons",
+      "View menu for control over graph display",
+      "Toggle Duplicate References button",
+      "Asset Filters controls"
+    ],
+    "SearchPanelOptions": [
+      "Search box for references by name",
+      "Filters for references by Asset type",
+      "Search options for depth and breadth limits"
+    ],
+    "NodeTypes": {
+      "Regular": "Fully displayed node with Asset details.",
+      "Compact": "Compact node with minimal details.",
+      "Inactive": "Semi-transparent nodes excluded by filters but in reference chain.",
+      "Overflow": "Nodes for large breadth limits; double-click to view remaining references."
+    },
+    "KeyboardShortcuts": {
+      "Referencers": {
+        "IncreaseDepth": "R",
+        "DecreaseDepth": "SHIFT + R",
+        "SetDepth": "CTRL + R"
+      },
+      "Dependencies": {
+        "IncreaseDepth": "D",
+        "DecreaseDepth": "SHIFT + D",
+        "SetDepth": "CTRL + D"
+      },
+      "BreadthLimit": {
+        "IncreaseLimit": "L",
+        "DecreaseLimit": "SHIFT + L",
+        "SetLimit": "CTRL + L"
+      },
+      "ReferenceTypes": {
+        "ShowHideSoft": "S",
+        "ShowHideHard": "H",
+        "ShowHideEditorOnly": "E",
+        "ShowHideManagement": "M",
+        "ShowHideNames": "N",
+        "ShowHideCppPackages": "C"
+      },
+      "View": {
+        "ShowHideDuplicates": "U",
+        "ToggleCompact": "V",
+        "TogglePathComment": "P",
+        "ZoomToFit": "F",
+        "ToggleFilters": "A",
+        "Search": "CTRL + F"
+      },
+      "Asset": {
+        "Edit": "CTRL + E",
+        "Browse": "CTRL + B",
+        "CopyPaths": "N"
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ConsolidatingAssets": {
+    "Description": "Combine multiple Assets into a single Asset and fix references.",
+    "Usage": {
+      "Purpose": [
+        "Consolidate duplicate Assets to reduce project size.",
+        "Use Replace References tool to reassign references and delete duplicates."
+      ],
+      "Caution": "Improper use can lead to data loss; deleted Assets cannot be recovered."
+    },
+    "ConsolidationProcess": {
+      "Stages": [
+        "Replace references to target Asset in loaded objects.",
+        "Attempt to delete objects to be consolidated.",
+        "Leave object redirectors for unloaded Assets."
+      ]
+    },
+    "PreConsolidationSteps": [
+      "Close all sub-editors using the Assets.",
+      "Ensure compatibility of Assets (same class/type).",
+      "Avoid if Asset to consolidate to references a consolidating Asset."
+    ],
+    "UsingReplaceReferencesTool": {
+      "Steps": [
+        "Select duplicate Assets in Content Browser.",
+        "Right-click and choose Asset Actions > Replace References.",
+        "In Replace References dialog, select target Asset.",
+        "Enable Save dirtied assets option if desired.",
+        "Click Consolidate Assets.",
+        "Confirm deletion of redundant Assets."
+      ],
+      "Notes": [
+        "Only Assets of the same type can be consolidated.",
+        "Use Fixup Redirects commandlet after consolidation."
+      ]
+    },
+    "PostConsolidationSteps": [
+      "Save consolidated Assets before loading unloaded references."
+    ],
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ClassViewer": {
+    "Description": "Tool for examining Unreal Engine classes and creating child classes.",
+    "Usage": [
+      "Examine hierarchical list of classes.",
+      "Create and open Blueprints.",
+      "Open C++ Header files and create new C++ classes."
+    ],
+    "OpeningClassViewer": {
+      "Steps": [
+        "Go to Tools > Class Viewer from Unreal Engine's main menu."
+      ]
+    },
+    "Interface": {
+      "FiltersSearchBar": {
+        "Description": "Filters drop-down to restrict classes and Search bar to find classes by name.",
+        "Options": [
+          "Actors",
+          "Placeable Actors",
+          "Blueprint base classes"
+        ]
+      },
+      "SettingsButton": {
+        "Description": "Open Settings menu to expand/collapse classes, show/hide internal classes, and show Developer folder classes."
+      },
+      "ClassesView": {
+        "Description": "Displays classes fitting selected criteria."
+      }
+    },
+    "WorkingWithClasses": {
+      "ExpandCollapseClasses": "Click drop-down arrow to show children of a class.",
+      "ContextMenuOptions": {
+        "BlueprintClass": {
+          "Options": [
+            "Create Blueprint: Creates new Blueprint parented to selected Blueprint.",
+            "Edit Blueprint: Opens Blueprint in Blueprint Editor.",
+            "Find in Content Browser: Finds Blueprint Actor in Content Browser."
+          ]
+        },
+        "C++Class": {
+          "Options": [
+            "Create Blueprint: Creates new Blueprint parented to selected Blueprint.",
+            "Open Source Code: Opens class header file in Visual Studio.",
+            "Create New C++ Class: Opens C++ Class Wizard to create new class with selected class as Parent."
+          ]
+        }
+      }
+    },
+    "DraggingAndDroppingClasses": {
+      "Description": "Drag Blueprint class to viewport or combo box in Details panel or World Settings.",
+      "Notes": [
+        "Classes not loaded will not appear in combo box.",
+        "Dropping class into combo box will force-load class."
+      ]
+    },
+    "ClassPicker": {
+      "Description": "Switch Class Viewer to Class Picker mode using code.",
+      "ConfiguringClassPicker": {
+        "Options": {
+          "Mode": "ClassPicker (default) or ClassBrowsing.",
+          "DisplayMode": "TreeView (shows parent-child relationships) or ListView (simple list of classes).",
+          "Filters": [
+            "bIsActorsOnly: Shows classes that are children of AActor.",
+            "bIsPlaceableOnly: Shows classes placeable in Level.",
+            "bIsBlueprintBaseOnly: Shows Blueprint base classes.",
+            "bShowUnloadedBlueprints: Shows unloaded Blueprints.",
+            "bShowNoneOption: Shows None option in Class Picker."
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "GlobalAssetPicker": {
+    "Description": "Tool for quickly finding and editing Assets from any folder in the Asset Tree.",
+    "Usage": [
+      "Access with Ctrl + P.",
+      "Search for the asset by typing part of its name.",
+      "Mouse over asset to see relevant data tooltip.",
+      "Click and drag asset into the scene.",
+      "Double-click asset to open associated editor."
+    ],
+    "ViewOptions": {
+      "Description": "Same as Content Browser, for changing display and scale of assets.",
+      "Note": "Thumbnail editor not available."
+    },
+    "Limitations": [
+      "Cannot pull up context menu.",
+      "Window is not movable or resizable.",
+      "Closes when clicking off, dragging an asset, or double-clicking."
+    ],
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "PropertyMatrix": {
+    "Description": "Tool for viewing and editing multiple properties of multiple actors simultaneously.",
+    "Features": {
+      "BulkObjectEditing": {
+        "Benefits": [
+          "Set varying values for multiple objects.",
+          "Works with thousands of objects.",
+          "Handles various object types."
+        ]
+      },
+      "BulkFineGrainObjectComparison": {
+        "Benefits": [
+          "Sort values on thousands of objects.",
+          "Find assets and Actors with incorrect settings."
+        ]
+      },
+      "DeepPropertyAndArraySupport": {
+        "Benefits": [
+          "Edit properties of arrays and struct types.",
+          "Expose columns for any property.",
+          "Handles array indices."
+        ]
+      }
+    },
+    "AccessingPropertyMatrix": {
+      "Steps": [
+        "Select Property Matrix button in Details panel.",
+        "Right-click assets in Content Browser > Asset Actions > Edit Selection in Property Matrix.",
+        "Right-click selection in Outliner > Edit Selection in Property Matrix.",
+        "Right-click selection in Outliner > Edit Components in Property Matrix."
+      ]
+    },
+    "UsingPropertyMatrix": {
+      "Description": "Table that handles data like grid-based editors with Display and Edit modes.",
+      "Columns": {
+        "AddingRemoving": [
+          "Add/remove columns by pinning/unpinning properties in Pinned Columns panel.",
+          "Remove columns by right-clicking or middle-clicking column headers."
+        ],
+        "AutoPopulate": "Attempts to auto-populate table with valuable columns."
+      },
+      "EditingProperties": {
+        "Description": "Cells display bound values as text and can be customized.",
+        "Features": [
+          "Apply changes to selected items.",
+          "Copy/paste selected cells.",
+          "Compare property values deep in an object.",
+          "Handle array indices."
+        ]
+      },
+      "Sorting": {
+        "Description": "Sort columns by clicking header; arrow indicates sort order."
+      }
+    },
+    "Controls": {
+      "Keyboard": {
+        "Escape": "Exits edit mode.",
+        "Ctrl+C": "Copy cell's string representation to clipboard.",
+        "Ctrl+V": "Set cell's value as text in clipboard.",
+        "Ctrl+A": "Select all cells.",
+        "Home/Ctrl+Left": "Move to first cell in row.",
+        "End/Ctrl+Right": "Move to last cell in row.",
+        "Ctrl+Home": "Move to first cell in table.",
+        "Ctrl+End": "Move to last cell in table.",
+        "Left/Shift+Tab": "Move to previous cell in row.",
+        "Right/Tab": "Move to next cell in row.",
+        "Up": "Move to previous cell in column.",
+        "Down": "Move to next cell in column.",
+        "Ctrl+Up": "Move to first cell in column.",
+        "Ctrl+Down": "Move to last cell in column.",
+        "Shift+Up": "Move to previous cell and add to selection.",
+        "Shift+Down": "Move to next cell and add to selection.",
+        "Ctrl+Shift+Up": "Move to first cell and select all rows in between.",
+        "Ctrl+Shift+Down": "Move to last cell and select all rows in between.",
+        "F2": "Enter edit mode."
+      },
+      "Mouse": {
+        "LMBClickCell": "Select cell and its row.",
+        "Ctrl+LMBClickCell": "Add/remove cell's row to/from selection.",
+        "Shift+LMBClickCell": "Select cell and all rows between original and clicked cell.",
+        "LMBClickCurrentCell": "Enter edit mode.",
+        "LMBDoubleClickCell": "Select cell and enter edit mode.",
+        "MMBClickColumnHeader": "Remove column.",
+        "MMBClickPropertyInDetails": "Toggle pinning property to table."
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "Levels": {
+    "Description": "Levels contain everything a player can see and interact with, such as environments, objects, characters, etc.",
+    "Definition": "A Level is part of your game's world, containing everything visible and interactive. Multiple levels usually have transitions, like progressing after defeating a boss.",
+    "FileFormat": "Unreal Engine saves each Level as a separate .umap file, sometimes referred to as Maps.",
+    "Components": [
+      {
+        "Type": ".umap file",
+        "Description": "The Level itself, a container holding everything else."
+      },
+      {
+        "Type": "Static Mesh Actors",
+        "Description": "Environmental fixtures like trees, rocks, and walls."
+      },
+      {
+        "Type": "Skeletal Mesh Actor",
+        "Description": "Represents the player character."
+      },
+      {
+        "Type": "Lights",
+        "Description": "One or more lights of different types."
+      },
+      {
+        "Type": "Sounds",
+        "Description": "Ambient sounds and sound effects, e.g., footsteps."
+      }
+    ],
+    "ComplexFeatures": [
+      "Particle effects",
+      "Visual post-processing",
+      "Level Streaming"
+    ],
+    "AdvancedProjectExample": {
+      "Name": "Stack O Bot",
+      "Source": "Unreal Engine Marketplace"
+    },
+    "LearnMore": [
+      {
+        "Topic": "Working with Levels",
+        "Description": "How to create, save, and open level assets."
+      },
+      {
+        "Topic": "Managing Multiple Levels",
+        "Description": "Use the Levels window to manage your persistent level and sublevels."
+      },
+      {
+        "Topic": "World Settings",
+        "Description": "Set and override Level-specific settings."
+      },
+      {
+        "Topic": "Changing the Default Level",
+        "Description": "Set the default editor and game Levels for your project."
+      }
+    ],
+    "Community": [
+      {
+        "Resource": "Developer Forums",
+        "Purpose": "Ask questions and help your peers."
+      },
+      {
+        "Resource": "Learning Library",
+        "Purpose": "Write and read tutorials."
+      }
+    ]
+  }
+}
+{
+  "WorkingWithLevels": {
+    "Description": "How to create, save, and open level assets.",
+    "Storage": "Levels are stored in individual Asset files with special considerations.",
+    "Workflows": [
+      "Creating Levels",
+      "Saving Levels",
+      "Opening Levels"
+    ],
+    "CreatingLevels": {
+      "Methods": [
+        "Main menu: File > New Level",
+        "Right-click in Content Browser: Create Basic Asset > Level",
+        "Keyboard shortcut: Ctrl + N (Windows) or Cmd + N (Mac)"
+      ],
+      "NewLevelWindow": {
+        "Description": "Displays all available Level templates.",
+        "Templates": [
+          "Open World: Sample content with World Partition feature.",
+          "Empty Open World: Uses World Partition without content.",
+          "Basic: Includes floor plane, lighting, atmosphere, and fog.",
+          "Empty Level: No content."
+        ],
+        "Action": "Select the desired template and click Create. The new Level opens automatically."
+      },
+      "SourceControl": "New Levels are automatically added to source control when created and saved."
+    },
+    "SavingLevels": {
+      "Methods": [
+        "Main menu: File > Save Current Level",
+        "Keyboard shortcut: Ctrl + S (Windows) or Cmd + S (Mac)"
+      ],
+      "FirstSave": "Specify name and folder in Save Level As window.",
+      "SaveCopy": [
+        "Main menu: File > Save Current Level As",
+        "Keyboard shortcut: Ctrl + Alt + S (Windows) or Cmd + Option + S (Mac)"
+      ],
+      "Prompt": "Changing Levels will prompt to save current Level(s)."
+    },
+    "OpeningLevels": {
+      "Methods": [
+        "Main menu: File > Open Level and select Level",
+        "Keyboard shortcut: Ctrl + O (Windows) or Cmd + O (Mac)"
+      ]
+    },
+    "Community": [
+      {
+        "Resource": "Developer Forums",
+        "Purpose": "Ask questions and help peers."
+      },
+      {
+        "Resource": "Learning Library",
+        "Purpose": "Write and read tutorials."
+      }
+    ]
+  }
+}
+{
+  "ManagingMultipleLevels": {
+    "Description": "Use the Levels window to manage persistent levels and sublevels.",
+    "Context": "For Unreal Engine 4 legacy projects or non-game projects. For Unreal Engine 5.0+, World Partition replaces the Levels window.",
+    "Steps": {
+      "AccessingLevelsWindow": "Access from the Windows menu.",
+      "PersistentLevel": "Always present, with one or more sublevels.",
+      "LevelActions": [
+        "Change current level",
+        "Save levels",
+        "Access Level Blueprints",
+        "Modify levels via Viewport"
+      ],
+      "PersistentLevelOptions": [
+        "Make current level",
+        "Change visibility and lock status",
+        "Select all Actors"
+      ],
+      "SublevelOptions": [
+        "Similar options to Persistent Level",
+        "Remove sublevel",
+        "Change streaming method"
+      ],
+      "VisibilityNote": "Visibility changes are for visualization only and do not affect streaming into the game."
+    },
+    "AddingNewSublevels": {
+      "Methods": [
+        "Split from existing Level or sublevel",
+        "Create a new Level",
+        "Add an existing Level"
+      ],
+      "MakeCurrentNote": "New sublevels become the current Level. Right-click to switch back to previous level."
+    },
+    "AddingExistingLevel": {
+      "Steps": [
+        "Click Levels dropdown > Add Existing",
+        "Select and open Level in Open Level dialog"
+      ]
+    },
+    "CreatingEmptySublevel": {
+      "Steps": [
+        "Click Levels dropdown > Create New",
+        "Choose blank level or template",
+        "Select save location and name, then Save"
+      ]
+    },
+    "SplittingOffSublevels": {
+      "Steps": [
+        "Select Actors to move in Scene Outliner or Viewport",
+        "Click Levels dropdown > Create New with Selected Actors",
+        "Select save location and name, then Save"
+      ],
+      "Note": "Selected Actors are moved to new sublevel."
+    },
+    "MovingActorsBetweenLevels": {
+      "Steps": [
+        "Select Actors to move in Scene Outliner or Viewport",
+        "Right-click a Level in the Levels window, select Move Selected Actors to Level",
+        "Press Ctrl+S to save all Levels"
+      ]
+    },
+    "LevelDetails": {
+      "Description": "Access additional information about Levels. Set Level Streaming Volumes and other settings.",
+      "PersistentLevels": "No additional details, but can change to another Level.",
+      "Sublevels": {
+        "Settings": [
+          "Offset Position and Rotation",
+          "Streaming Volumes",
+          "Debug Level Color",
+          "Advanced settings for performance"
+        ]
+      }
+    },
+    "VisualizingSublevels": {
+      "Steps": [
+        "Set sublevel color in Levels window or Level Details window",
+        "Toggle level color: Show button > Advanced > Level Coloration",
+        "Persistent level shown in white, sublevels in selected colors",
+        "Works in perspective and orthographic viewports, toggled off with Game Mode"
+      ]
+    },
+    "Community": [
+      {
+        "Resource": "Developer Forums",
+        "Purpose": "Ask questions and help peers."
+      },
+      {
+        "Resource": "Learning Library",
+        "Purpose": "Write and read tutorials."
+      }
+    ]
+  }
+}
+{
+  "WorldSettings": {
+    "Description": "The World Settings panel is where you set and override Level-specific settings.",
+    "Access": "Main menu: Window > World Settings. Docks next to the Details panel.",
+    "Usage": "Specify settings for the current Level using the Search box to quickly find settings.",
+    "SettingsGroups": [
+      {
+        "Group": "Precomputed Visibility",
+        "Description": "Reduces rendering thread time at the cost of runtime memory, optimizing performance for smaller levels."
+      },
+      {
+        "Group": "Game Mode",
+        "Description": "Select and configure Game Mode for current Level, defining game rules."
+      },
+      {
+        "Group": "Lightmass",
+        "Description": "Specify Lightmass settings for indirect lighting and ambient occlusion."
+      },
+      {
+        "Group": "World",
+        "Description": "Core aspects like level bounds, navigation systems, and Actor destruction depth."
+      },
+      {
+        "Group": "Physics",
+        "Description": "Override World Gravity and specify advanced physics settings."
+      },
+      {
+        "Group": "Broadphase",
+        "Description": "Settings for Broadphase collision using NVIDIA's PhysX system."
+      },
+      {
+        "Group": "HLOD System",
+        "Description": "Enable Hierarchical Levels of Detail (HLODs) for performance optimization."
+      },
+      {
+        "Group": "World Partition Setup and World Partition",
+        "Description": "Data management and distance-based level streaming for large world management."
+      },
+      {
+        "Group": "Navigation",
+        "Description": "Configure the navigation grid for your Level."
+      },
+      {
+        "Group": "VR",
+        "Description": "Adjust the scale of your virtual world with the World to Meters variable."
+      },
+      {
+        "Group": "Rendering",
+        "Description": "Settings for distance field ambient occlusion and dynamic indirect shadows."
+      },
+      {
+        "Group": "Audio",
+        "Description": "Configure default sound behaviors like volume, reverb, and fade time."
+      },
+      {
+        "Group": "Tick",
+        "Description": "Enable or disable per-frame Tick() update function for Actors or Components."
+      },
+      {
+        "Group": "AI",
+        "Description": "Enable Unreal Engine 4's Artificial Intelligence system."
+      },
+      {
+        "Group": "Cooking",
+        "Description": "Settings for building and deploying your game to different platforms."
+      }
+    ],
+    "Community": [
+      {
+        "Resource": "Developer Forums",
+        "Purpose": "Ask questions and help peers."
+      },
+      {
+        "Resource": "Learning Library",
+        "Purpose": "Write and read tutorials."
+      }
+    ]
+  }
+}
+{
+  "ChangingDefaultLevel": {
+    "Description": "How to set the default editor and game Levels for your project.",
+    "Steps": [
+      {
+        "Step": 1,
+        "Action": "Click on the Edit menu and select Project Settings."
+      },
+      {
+        "Step": 2,
+        "Action": "Project Settings will open your project's settings."
+      },
+      {
+        "Step": 3,
+        "Action": "Click on Maps & Modes in the left panel."
+      },
+      {
+        "Step": 4,
+        "Action": "Click the dropdown arrow next to Game Default Map and select the desired Level."
+      },
+      {
+        "Step": 5,
+        "Action": "Click the dropdown arrow next to Editor Startup Map to change it if desired."
+      }
+    ],
+    "AdvancedSettings": {
+      "Description": "In Default Maps, you can set Local Map Options, a Transition Map, and a Server Default Map."
+    },
+    "Community": [
+      {
+        "Resource": "Developer Forums",
+        "Purpose": "Ask questions and help peers."
+      },
+      {
+        "Resource": "Learning Library",
+        "Purpose": "Write and read tutorials."
+      }
+    ]
+  }
+}

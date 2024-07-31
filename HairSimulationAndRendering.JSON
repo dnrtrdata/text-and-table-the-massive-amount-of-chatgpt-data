@@ -1,0 +1,1824 @@
+{
+  "HairRenderingAndSimulation": {
+    "Overview": {
+      "Description": "Unreal Engine's strand-based workflow for realistic hair rendering and simulation. Supports real-time projects with photo-real hairs, utilizing both strands and cards.",
+      "Example": "MetaHuman example showing grooms with strands and cards."
+    },
+    "GettingStarted": {
+      "Guide": "Quick start guide for hair rendering and simulation.",
+      "Setup": "Instructions to set up projects for importing and rendering groom assets."
+    },
+    "ImportingGrooms": {
+      "Description": "Process and settings for importing groom assets."
+    },
+    "GroomComponentsAndAssets": {
+      "Description": "Assets and components needed for rendering grooms.",
+      "Editor": "Guide for managing and editing Groom Assets."
+    },
+    "AdditionalTopics": {
+      "GroomStrands": "Settings for strand geometry.",
+      "Bindings": "Binding groom components to skeletal meshes.",
+      "Interpolation": "Defining groom curves movement with meshes and physics.",
+      "PhysicsSimulation": "Enabling and configuring physics on grooms.",
+      "LevelOfDetail": "Managing level of detail for grooms.",
+      "CardsAndMeshes": "Assigning cards and meshes to groom levels of detail.",
+      "GroomMaterials": "Managing materials for grooms.",
+      "Textures": "Creating follicle and strand textures for grooms.",
+      "DeformerGraph": "Defining groom behaviors with mesh deformations.",
+      "PerformanceAndDebugging": "Optimizing and debugging grooms.",
+      "GroomCaches": "Overview of using imported Groom Caches.",
+      "AlembicSpecification": "Guidelines for exporting grooms as Alembic files.",
+      "XGenGuidelines": "Guidelines for exporting grooms for Unreal Engine."
+    },
+    "Resources": {
+      "MetaHumanCreator": "Information on MetaHuman Creator.",
+      "DeveloperForums": "Community forums for questions and peer help.",
+      "LearningLibrary": "User tutorials and learning resources."
+    }
+  }
+},
+{
+  "GroomSimulationAndRenderingQuickStartGuide": {
+    "Overview": {
+      "Description": "Guide to get started with hair rendering and simulation on skinned meshes in Unreal Engine.",
+      "Goals": [
+        "Set up a project for hair rendering.",
+        "Use a groom with an animated skeletal mesh.",
+        "Set up a basic Hair material.",
+        "Enable and control hair physics."
+      ]
+    },
+    "RequiredSetup": {
+      "CreateProject": "Create a new project using the Third Person template.",
+      "ProjectSettings": "Enable Support Compute Skin Cache in Project Settings under Rendering > Optimization.",
+      "Plugins": "Enable Alembic Groom Importer and Groom plugins."
+    },
+    "ImportingGroom": {
+      "Description": "Process to create and import groom assets.",
+      "Steps": [
+        "Create groom in DCC application and export as Alembic .abc.",
+        "Import Alembic file into Unreal Engine.",
+        "Modify Groom Import Options as needed."
+      ]
+    },
+    "AttachingGroomToSkeletalMesh": {
+      "Description": "Attaching and binding a groom to a Skeletal Mesh.",
+      "Steps": [
+        "Add Groom Component to Skeletal Mesh.",
+        "Assign imported groom to Groom Asset slot.",
+        "Create and assign Binding Asset."
+      ]
+    },
+    "SettingUpHairMaterial": {
+      "Description": "Guide to create and assign a basic Hair Material.",
+      "Steps": [
+        "Create new Material with Hair shading model.",
+        "Set up material properties and node setup.",
+        "Apply material to Groom Asset."
+      ]
+    },
+    "SettingUpHairPhysics": {
+      "Description": "Enable physics simulation for Groom Asset.",
+      "Steps": [
+        "Open Groom Asset in Groom Asset Editor.",
+        "Enable Simulation in Physics tab.",
+        "Configure physics properties."
+      ]
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "lighting",
+        "physics",
+        "hair",
+        "metahumans"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "SettingUpProjectForGrooms": {
+    "Overview": {
+      "Description": "Steps to enable settings and plugins for importing and rendering groom assets in Unreal Engine."
+    },
+    "ProjectSettings": {
+      "Description": "Enable skinning system for forwarding skin deformation to groom system.",
+      "Steps": [
+        "Go to Project Settings under Rendering > Optimizations.",
+        "Enable Support Compute Skin Cache.",
+        "Restart the editor."
+      ]
+    },
+    "GroomPlugins": {
+      "Description": "Enable required and optional plugins for grooms.",
+      "Steps": [
+        "Open Plugins browser from the Edit menu.",
+        "Enable the following plugins:",
+        {
+          "PluginList": [
+            {
+              "Name": "Alembic Groom Importer",
+              "Description": "Import Alembic (*.abc) files containing groom data.",
+              "DefaultStatus": "Disabled"
+            },
+            {
+              "Name": "Groom",
+              "Description": "Enable rendering and simulation of imported grooms.",
+              "DefaultStatus": "Disabled"
+            },
+            {
+              "Name": "Hair Card Generator (Optional)",
+              "Description": "Generate cards from strands in your groom.",
+              "DefaultStatus": "Disabled"
+            },
+            {
+              "Name": "Deformer Graph (Optional)",
+              "Description": "Enable deformation graphs for customizing mesh deformations.",
+              "DefaultStatus": "Enabled"
+            }
+          ]
+        },
+        "Restart the editor for changes to take effect."
+      ]
+    },
+    "Resources": {
+      "Tags": [
+        "plugins",
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GroomComponentsAndAssets": {
+    "Overview": {
+      "Description": "Components and assets for creating and rendering grooms in Unreal Engine.",
+      "TraditionalMethods": "Card-based techniques for hair in real-time projects. Strand-based techniques in Unreal Engine for improved visual fidelity.",
+      "FileFormat": "Unreal Engine uses Alembic file types with naming conventions for multiple hair groupings."
+    },
+    "Components": {
+      "GroomAsset": {
+        "Description": "Stores imported groom data from an Alembic file.",
+        "EditorFunctions": [
+          "Assign Materials",
+          "Define LOD settings",
+          "Configure physics settings",
+          "Debug with view modes"
+        ]
+      },
+      "GroomBindingAsset": {
+        "Description": "Links a Groom asset to a skeletal mesh for skin motion and deformation.",
+        "Editor": "Preview binding with Groom Asset Editor."
+      },
+      "GroomComponent": {
+        "Description": "Represents instances of groom assets in a level.",
+        "Properties": [
+          "Hair Width",
+          "Hair Root Scale",
+          "Hair Tip Scale",
+          "Hair Shadow Density",
+          "Hair Raytracing Radius Scale",
+          "Use Hair Raytracing Geometry",
+          "LOD Bias",
+          "Use Stable Rasterization",
+          "Scatter Scene Lighting",
+          "Hair Length Scale",
+          "Materials",
+          "Groom Asset",
+          "Binding Asset",
+          "Use Cards",
+          "Attachment Name",
+          "Groom Cache",
+          "Simulation"
+        ]
+      }
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GroomComponentsAndAssets": {
+    "Overview": {
+      "Description": "Components and assets for creating and rendering grooms in Unreal Engine.",
+      "TraditionalMethods": "Card-based techniques for hair in real-time projects. Strand-based techniques in Unreal Engine for improved visual fidelity.",
+      "FileFormat": "Unreal Engine uses Alembic file types with naming conventions for multiple hair groupings."
+    },
+    "Components": {
+      "GroomAsset": {
+        "Description": "Stores imported groom data from an Alembic file.",
+        "EditorFunctions": [
+          "Assign Materials",
+          "Define LOD settings",
+          "Configure physics settings",
+          "Debug with view modes"
+        ]
+      },
+      "GroomBindingAsset": {
+        "Description": "Links a Groom asset to a skeletal mesh for skin motion and deformation.",
+        "Editor": "Preview binding with Groom Asset Editor."
+      },
+      "GroomComponent": {
+        "Description": "Represents instances of groom assets in a level.",
+        "Properties": [
+          "Hair Width",
+          "Hair Root Scale",
+          "Hair Tip Scale",
+          "Hair Shadow Density",
+          "Hair Raytracing Radius Scale",
+          "Use Hair Raytracing Geometry",
+          "LOD Bias",
+          "Use Stable Rasterization",
+          "Scatter Scene Lighting",
+          "Hair Length Scale",
+          "Materials",
+          "Groom Asset",
+          "Binding Asset",
+          "Use Cards",
+          "Attachment Name",
+          "Groom Cache",
+          "Simulation"
+        ]
+      }
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GroomAssetEditor": {
+    "Overview": {
+      "Description": "Manage and edit attributes of Groom Assets. Supports strand-based and card-based geometry for scalability.",
+      "Functionality": [
+        "Render settings",
+        "Physics simulation",
+        "Levels of Detail (LODs)"
+      ]
+    },
+    "OpeningEditor": {
+      "Description": "Open from Content Browser by double-clicking or right-click context menu."
+    },
+    "Interface": {
+      "Regions": [
+        "Viewport Display Options",
+        "Viewport",
+        "Details Panels"
+      ]
+    },
+    "ViewportDisplayOptions": {
+      "Description": "Toolbar for rendering and visualization options.",
+      "Options": [
+        "Viewport Options",
+        "Perspectives",
+        "View Modes",
+        "Show",
+        "LODs"
+      ]
+    },
+    "ShowDropdown": {
+      "Description": "Groom-specific visualization options for debugging and inspection.",
+      "Options": [
+        "Guide",
+        "Guide Influence",
+        "UV",
+        "Root UV",
+        "Root UDIM",
+        "Dimension",
+        "Seed",
+        "Radius Variation",
+        "Tangent",
+        "Base Color",
+        "Roughness",
+        "Hair CVs",
+        "Vis. Clusters",
+        "Hair Groups"
+      ]
+    },
+    "DetailsPanels": {
+      "Description": "Configure various attributes related to the groom.",
+      "Panels": [
+        {
+          "Name": "Level of Detail",
+          "Description": "Configure LODs and their properties."
+        },
+        {
+          "Name": "Interpolation",
+          "Description": "Define movement of groom curves with respect to skinning and physics."
+        },
+        {
+          "Name": "Strands",
+          "Description": "Configure properties of strand geometry."
+        },
+        {
+          "Name": "Cards",
+          "Description": "Configure and generate card geometry for LODs."
+        },
+        {
+          "Name": "Meshes",
+          "Description": "Configure and generate mesh geometry for LODs."
+        },
+        {
+          "Name": "Materials",
+          "Description": "Assign materials to groom."
+        },
+        {
+          "Name": "Physics",
+          "Description": "Set up physics simulation for groom."
+        }
+      ]
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "lighting",
+        "physics",
+        "hair",
+        "metahumans"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GroomStrands": {
+    "Overview": {
+      "Description": "Configure settings for strand geometry in the Groom Asset Editor.",
+      "Groups": "Each groom is divided into groups with unique properties and settings."
+    },
+    "Statistics": {
+      "Description": "Displays statistics about each hair group.",
+      "Details": [
+        "Number of curves and points for rendered strands.",
+        "Number of curves and points for guides.",
+        "Maximum width of individual rendered strands.",
+        "Min, max, and average points per curve.",
+        "Available attributes like Root UV, per point color, clump IDs."
+      ]
+    },
+    "GroupProperties": {
+      "Description": "Settings for each hair group.",
+      "Properties": [
+        {
+          "Name": "Material",
+          "Description": "Material used for rendering strands."
+        },
+        {
+          "Name": "Hair Width",
+          "Description": "Specifies hair width in centimeters."
+        },
+        {
+          "Name": "Hair Root Scale",
+          "Description": "Scaling factor applied at curve root, interpolated to tip."
+        },
+        {
+          "Name": "Hair Tip Scale",
+          "Description": "Scaling factor applied at curve tip, interpolated from root."
+        },
+        {
+          "Name": "Hair Shadow Density",
+          "Description": "Scaling factor for voxelization to adjust hair transmission."
+        },
+        {
+          "Name": "Hair Raytracing Radius Scale",
+          "Description": "Scaling factor for ray-traced hair geometry."
+        },
+        {
+          "Name": "Use Hair Raytracing Geometry",
+          "Description": "Enables ray tracing to use hair geometry."
+        },
+        {
+          "Name": "Voxelize",
+          "Description": "Enable strands voxelization for shadows and occlusion."
+        },
+        {
+          "Name": "Use Stable Rasterization",
+          "Description": "Snaps hair geometry to pixels to avoid aliasing."
+        },
+        {
+          "Name": "Scatter Scene Lighting",
+          "Description": "Lights hair with scene color, useful for vellus and short hair."
+        }
+      ]
+    },
+    "VisualizingHairGroups": {
+      "Description": "Visualize different groups within a groom asset.",
+      "Steps": [
+        "Select View > Groups in preview window.",
+        "Group colors in preview match Group IDs in Strands details panel."
+      ]
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GroomInterpolation": {
+    "Overview": {
+      "Description": "Settings to define how groom curves move with respect to skinning and physics simulation."
+    },
+    "Visualization": {
+      "Description": "Visualize guide influences in Groom Asset Editor and Level Editor.",
+      "Options": [
+        "Show > Guides or Strands Guides Influences in Groom Asset Editor.",
+        "View Modes > Groom > Guides or Groom > Strands Guides Influences in Level Editor."
+      ]
+    },
+    "GlobalInterpolation": {
+      "Description": "Preserves original groom shape under large deformations using Radial Basis Function (RBF).",
+      "Visualization": "Select Lit > Groom > Root Bindings to visualize RBF samples."
+    },
+    "InterpolationProperties": {
+      "Description": "Modify properties set during groom import.",
+      "Properties": [
+        {
+          "Name": "Curve Decimation",
+          "Description": "Reduces the number of strands by randomly removing them."
+        },
+        {
+          "Name": "Vertex Decimation",
+          "Description": "Removes vertices on strands to reduce complexity."
+        },
+        {
+          "Name": "Guide Type",
+          "Description": "Defines which guides are used: Imported, Generated, or Rigged."
+        },
+        {
+          "Name": "Hair to Guide Density",
+          "Description": "Ratio of strands used as guides."
+        },
+        {
+          "Name": "Rigged guide num. curves",
+          "Description": "Number of guides generated on groom and skeletal mesh."
+        },
+        {
+          "Name": "Rigged guide num points",
+          "Description": "Number of points/bones per guide."
+        },
+        {
+          "Name": "Interpolation Quality",
+          "Description": "Quality of interpolation: Low, Medium, High."
+        },
+        {
+          "Name": "Interpolation Distance",
+          "Description": "Metric for pairing guides and strands: Parametric, Root, Index, Distance."
+        },
+        {
+          "Name": "Randomize Guide",
+          "Description": "Slightly randomizes guides to break up clumps."
+        },
+        {
+          "Name": "Use Unique Guide",
+          "Description": "Uses a single guide for motion interpolation."
+        },
+        {
+          "Name": "RBF Interpolation",
+          "Description": "Uses RBF for interpolation instead of local skin rigid transform."
+        },
+        {
+          "Name": "RBF Type",
+          "Description": "Type of RBF interpolation: Rigid Transform, Offset Transform, Smooth Transform, No Skinning."
+        },
+        {
+          "Name": "Enable Guide-Cache Support",
+          "Description": "Allows attaching a simulation cache dynamically at runtime."
+        },
+        {
+          "Name": "Hair Interpolation Type",
+          "Description": "Type of interpolation: Rigid Transform, Offset Transform, Smooth Transform, No Skinning."
+        }
+      ]
+    },
+    "LODInterpolationProperties": {
+      "Description": "Properties in LOD panel related to groom interpolation.",
+      "Properties": [
+        {
+          "Name": "RBF Interpolation",
+          "Description": "Sets global interpolation mode for LOD: Auto, Enable, Disable."
+        }
+      ]
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "EnablingPhysicsSimulationOnGrooms": {
+    "Overview": {
+      "Description": "Guide to enable and configure physics simulations for grooms in Unreal Engine."
+    },
+    "EnablingPhysicsSimulation": {
+      "Steps": [
+        "Go to Groom Asset Editor > Physics panel.",
+        "Enable the checkbox for Enable Simulation."
+      ]
+    },
+    "SimulationProperties": {
+      "GroomAssetEditor": {
+        "PhysicsPanel": {
+          "Properties": [
+            {
+              "Name": "Enable Simulation",
+              "Description": "Enables physics simulation for this groom grouping."
+            },
+            {
+              "Name": "Niagara Solver",
+              "Description": "Select the solver for simulation: Groom Rods, Groom Springs, Custom Solver."
+            },
+            {
+              "Name": "Custom System",
+              "Description": "Add a custom Niagara system when Custom Solver is selected."
+            },
+            {
+              "Name": "Sub Steps",
+              "Description": "Number of sub steps per frame. Solver calls at 24 FPS."
+            },
+            {
+              "Name": "Iteration Count",
+              "Description": "Number of iterations to solve constraints with XPBD solver."
+            },
+            {
+              "Name": "Gravity Vector",
+              "Description": "Acceleration vector in cm/s2 for gravity."
+            },
+            {
+              "Name": "Air Drag",
+              "Description": "Coefficient between 0 and 1 for air drag."
+            },
+            {
+              "Name": "Air Velocity",
+              "Description": "Velocity of surrounding air in cm/s."
+            },
+            {
+              "Name": "Solve Bend",
+              "Description": "Enables solving of the bend constraint during XPBD loop."
+            },
+            {
+              "Name": "Project Bend",
+              "Description": "Enables projection of the bend constraint after XPBD loop."
+            },
+            {
+              "Name": "Bend Damping",
+              "Description": "Damping for bend constraint between 0 and 1."
+            },
+            {
+              "Name": "Bend Stiffness",
+              "Description": "Stiffness for bend constraint in GPa."
+            },
+            {
+              "Name": "Bend Stiffness Scale",
+              "Description": "Curve to scale bend stiffness along each strand."
+            },
+            {
+              "Name": "Solve Stretch",
+              "Description": "Enables solving of the stretch constraint during XPBD loop."
+            },
+            {
+              "Name": "Project Stretch",
+              "Description": "Enables projection of the stretch constraint after XPBD loop."
+            },
+            {
+              "Name": "Stretch Damping",
+              "Description": "Damping for stretch constraint between 0 and 1."
+            },
+            {
+              "Name": "Stretch Stiffness",
+              "Description": "Stiffness for stretch constraint in GPa."
+            },
+            {
+              "Name": "Stretch Stiffness Scale",
+              "Description": "Curve to scale stretch stiffness along each strand."
+            },
+            {
+              "Name": "Solve Collision",
+              "Description": "Enables solving of the collision constraint during XPBD loop."
+            },
+            {
+              "Name": "Project Collision",
+              "Description": "Enables projection of the collision constraint after XPBD loop."
+            },
+            {
+              "Name": "Static Friction",
+              "Description": "Static friction for collision against physics assets."
+            },
+            {
+              "Name": "Kinetic Friction",
+              "Description": "Kinetic friction for collision against physics assets."
+            },
+            {
+              "Name": "Strand Viscosity",
+              "Description": "Viscosity between 0 and 1 for self-collision."
+            },
+            {
+              "Name": "Grid Dimension",
+              "Description": "Dimension of the grid for computing viscosity force."
+            },
+            {
+              "Name": "Collision Radius",
+              "Description": "Radius for collision detection against physics assets."
+            },
+            {
+              "Name": "Radius Scale",
+              "Description": "Curve to scale collision radius along each strand."
+            },
+            {
+              "Name": "Strands Size",
+              "Description": "Number of particles per guide for simulation."
+            },
+            {
+              "Name": "Strands Density",
+              "Description": "Density of strands in g/cm3."
+            },
+            {
+              "Name": "Strands Smoothing",
+              "Description": "Smoothing between 0 and 1 for guide curves."
+            },
+            {
+              "Name": "Strands Thickness",
+              "Description": "Thickness of strands in cm for mass and inertia computation."
+            },
+            {
+              "Name": "Thickness Scale",
+              "Description": "Curve to scale strands thickness along each strand."
+            }
+          ]
+        },
+        "LODPanel": {
+          "Properties": [
+            {
+              "Name": "Simulation",
+              "Description": "Overrides simulation for this LOD: Auto, Enable, Disable."
+            }
+          ]
+        }
+      },
+      "GroomComponent": {
+        "Properties": [
+          {
+            "Name": "Physics Asset",
+            "Description": "Physics asset for hair simulation."
+          },
+          {
+            "Name": "Override Settings",
+            "Description": "Override groom asset physics settings."
+          },
+          {
+            "Name": "Reset Simulation",
+            "Description": "Reset simulation at a specific point in time."
+          },
+          {
+            "Name": "Debug Simulation",
+            "Description": "Make simulation strands visible."
+          },
+          {
+            "Name": "Local Simulation",
+            "Description": "Simulate strands in local space."
+          },
+          {
+            "Name": "Linear Velocity Scale",
+            "Description": "Amount of linear velocities sent to local groom space from reference bone."
+          },
+          {
+            "Name": "Angular Velocity Scale",
+            "Description": "Amount of angular velocities sent to local groom space from reference bone."
+          },
+          {
+            "Name": "Local Bone",
+            "Description": "Name of the bone used for local space simulation."
+          },
+          {
+            "Name": "Teleport Distance",
+            "Description": "Distance threshold to reset simulation."
+          },
+          {
+            "Name": "Gravity Vector",
+            "Description": "Acceleration vector in cm/s2 for gravity."
+          },
+          {
+            "Name": "Air Drag",
+            "Description": "Coefficient between 0 and 1 for air drag."
+          },
+          {
+            "Name": "Air Velocity",
+            "Description": "Velocity of surrounding air in cm/s."
+          },
+          {
+            "Name": "Bend Damping",
+            "Description": "Damping for bend constraint between 0 and 1."
+          },
+          {
+            "Name": "Bend Stiffness",
+            "Description": "Stiffness for bend constraint in GPa."
+          },
+          {
+            "Name": "Stretch Damping",
+            "Description": "Damping for stretch constraint between 0 and 1."
+          },
+          {
+            "Name": "Stretch Stiffness",
+            "Description": "Stiffness for stretch constraint in GPa."
+          },
+          {
+            "Name": "Static Friction",
+            "Description": "Static friction for collision against physics assets."
+          },
+          {
+            "Name": "Kinetic Friction",
+            "Description": "Kinetic friction for collision against physics assets."
+          },
+          {
+            "Name": "Strand Viscosity",
+            "Description": "Viscosity between 0 and 1 for self-collision."
+          },
+          {
+            "Name": "Collision Radius",
+            "Description": "Radius for collision detection against physics assets."
+          }
+        ]
+      }
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "SettingUpLevelOfDetailForGrooms": {
+    "Overview": {
+      "Description": "Guide to set up and manage level of detail (LOD) groups for grooms. Simplifying grooms farther from the camera decreases rendering cost and improves performance."
+    },
+    "ManagingLODs": {
+      "Steps": [
+        "Open Groom Asset Editor and navigate to LOD panel.",
+        "Define hair group behaviors according to screen coverage."
+      ]
+    },
+    "LODModes": {
+      "Options": [
+        {
+          "Name": "Default",
+          "Description": "Uses LOD mode defined in project settings."
+        },
+        {
+          "Name": "Auto",
+          "Description": "Automatically adapts number of curves based on screen size."
+        },
+        {
+          "Name": "Manual",
+          "Description": "Manually adapts number of curves and points based on LOD entries."
+        }
+      ],
+      "AutoLODBias": "Increase the distance at which groom starts to reduce number of curves."
+    },
+    "CreatingLODs": {
+      "Steps": [
+        "Select LOD Mode in LOD panel.",
+        "Create up to 8 LOD entries for each colored hair group.",
+        "Define screen size, geometry type, binding type for each LOD."
+      ],
+      "GeometryTypes": [
+        {
+          "Name": "Strands",
+          "Description": "Uses strand geometry and supports skinning, RBF, and simulation."
+        },
+        {
+          "Name": "Cards",
+          "Description": "Uses card geometry and supports skinning, RBF, and simulation."
+        },
+        {
+          "Name": "Meshes",
+          "Description": "Uses mesh geometry, supports only RBF."
+        }
+      ]
+    },
+    "Visualization": {
+      "Description": "Visualize LODs in Groom Asset Editor preview window.",
+      "Steps": [
+        "Select LOD Auto to switch between levels automatically.",
+        "Use dropdown to view available levels of detail."
+      ],
+      "Stats": [
+        "Geometry type",
+        "LOD Index",
+        "Screen Size",
+        "Number of curves",
+        "Number of points",
+        "Hair thickness scale"
+      ]
+    },
+    "LODProperties": {
+      "Properties": [
+        {
+          "Name": "LOD Mode",
+          "Description": "Defines how LOD adapts curves and points: Auto or Manual."
+        },
+        {
+          "Name": "Auto LOD Bias",
+          "Description": "Decreases screen size at which curve reduction occurs when Auto LOD is selected."
+        },
+        {
+          "Name": "Curve Decimation",
+          "Description": "Reduces number of hair strands uniformly."
+        },
+        {
+          "Name": "Vertex Decimation",
+          "Description": "Reduces number of points for each hair strand."
+        },
+        {
+          "Name": "Angular Threshold",
+          "Description": "Max angular difference between adjacent vertices to remove vertices during simplification, in degrees."
+        },
+        {
+          "Name": "Screen Size",
+          "Description": "Screen size at which this LOD should be enabled."
+        },
+        {
+          "Name": "Thickness Scale",
+          "Description": "Scales hair strands radius to compensate curve reduction."
+        },
+        {
+          "Name": "Visible",
+          "Description": "Defines whether this hair group's LODs are visible."
+        },
+        {
+          "Name": "Geometry Type",
+          "Description": "Defines geometry type for this LOD: Strands, Cards, Meshes."
+        },
+        {
+          "Name": "Binding Type",
+          "Description": "Defines attachment type: Rigid or Skinning."
+        },
+        {
+          "Name": "Simulation",
+          "Description": "Sets whether groom simulates physics interactions."
+        },
+        {
+          "Name": "RBF Interpolation",
+          "Description": "Sets whether groom uses RBF Interpolation."
+        }
+      ]
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "SettingUpCardsAndMeshesForGrooms": {
+    "Overview": {
+      "Description": "Guide to set up and assign cards and meshes to levels of detail (LODs) for grooms."
+    },
+    "ManagingLODs": {
+      "Steps": [
+        "Open Groom Asset Editor and navigate to LOD panel.",
+        "Add new entries and configure mesh geometry and materials in Cards and Meshes panels."
+      ]
+    },
+    "GeneratingCardMeshes": {
+      "Steps": [
+        "Enable Hair Card Generator plugin.",
+        "Open Groom Asset in Groom Asset Editor.",
+        "Select Cards panel and click Add Card Asset.",
+        "Set LOD Index, Layout, Group Index.",
+        "Click Generate Hair Cards under Mesh assignment slot.",
+        "Configure settings in Card Generation Settings dialog and click Generate."
+      ],
+      "Settings": [
+        {
+          "Name": "Base Filename",
+          "Description": "Name to identify the generated set of cards."
+        },
+        {
+          "Name": "Destination Path",
+          "Description": "Path of the generated mesh and textures."
+        },
+        {
+          "Name": "# Cards",
+          "Description": "Number of unique cards to represent strand data."
+        },
+        {
+          "Name": "# Textures",
+          "Description": "Number of unique strand textures to create in the output atlas."
+        },
+        {
+          "Name": "# Triangles",
+          "Description": "Target triangle count across all cards."
+        },
+        {
+          "Name": "Max Flyaway Cards",
+          "Description": "Number of cards for single flyaway strands."
+        }
+      ]
+    },
+    "CardsPanel": {
+      "Description": "Configure cards mesh, textures, and mapping to specific hair groups and LODs.",
+      "Properties": [
+        {
+          "Name": "Material",
+          "Description": "Assigned material used for card representation LODs."
+        },
+        {
+          "Name": "Guide Type",
+          "Description": "Type of guides used for cards: Generated or Guide-Based."
+        },
+        {
+          "Name": "Mesh",
+          "Description": "Referenced mesh geometry."
+        },
+        {
+          "Name": "Textures",
+          "Description": "Layout setting for attributes packed into textures: Default or Compact."
+        },
+        {
+          "Name": "Group Index",
+          "Description": "Group index on which card geometry is mapped."
+        },
+        {
+          "Name": "LOD Index",
+          "Description": "LOD index at which card asset should be used."
+        }
+      ]
+    },
+    "CardGenerationSettings": {
+      "Description": "Settings for generating card meshes in Groom Asset Editor.",
+      "Properties": [
+        {
+          "Name": "Base Filename",
+          "Description": "Name to identify the generated set of cards."
+        },
+        {
+          "Name": "Generate Geometry for All Groups",
+          "Description": "Generate cards using all physics groups."
+        },
+        {
+          "Name": "LODIndex",
+          "Description": "Sets the LOD index."
+        },
+        {
+          "Name": "Destination Path",
+          "Description": "Path of the generated mesh and textures."
+        },
+        {
+          "Name": "Reduce Cards from Previous LOD",
+          "Description": "Generates cards sharing textures of previous LOD."
+        },
+        {
+          "Name": "Random Seed",
+          "Description": "Number used to initialize card generator for different results."
+        },
+        {
+          "Name": "Atlas Size",
+          "Description": "Size in pixels of the generated texture assets."
+        },
+        {
+          "Name": "Reserved Texture Space LOD",
+          "Description": "Percentage of texture reserved for subsequent LOD."
+        },
+        {
+          "Name": "Use Groom Asset Strand Width",
+          "Description": "Creates textures using Hair Width, Hair Root Scale, and Hair Tip Scale from Strands panel."
+        },
+        {
+          "Name": "Number of Cards",
+          "Description": "Target number of cards to generate."
+        },
+        {
+          "Name": "Number of Textures",
+          "Description": "Number of textures in the atlas."
+        },
+        {
+          "Name": "Number of Triangles",
+          "Description": "Target number of triangles for all cards."
+        },
+        {
+          "Name": "Max Flyaway Cards",
+          "Description": "Maximum number of flyaway cards."
+        }
+      ]
+    },
+    "MeshesPanel": {
+      "Description": "Configure mesh, textures, and mapping to specific hair groups and LODs.",
+      "Properties": [
+        {
+          "Name": "Material",
+          "Description": "Assigned material used for mesh representation LODs."
+        },
+        {
+          "Name": "Mesh",
+          "Description": "Referenced mesh geometry."
+        },
+        {
+          "Name": "Textures",
+          "Description": "Depth, Coverage, Tangent, RootUV, CoordU, Seed, Color, Roughness, Auxiliary."
+        },
+        {
+          "Name": "Group Index",
+          "Description": "Group index on which mesh geometry is mapped."
+        },
+        {
+          "Name": "LOD Index",
+          "Description": "LOD index at which mesh asset should be used."
+        },
+        {
+          "Name": "Minimum LOD",
+          "Description": "Minimum LOD to cook for all platforms or specify for individual platforms."
+        }
+      ]
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GroomMaterials": {
+    "Overview": {
+      "Description": "Manage materials for grooms in the Material panel of the Groom Asset Editor."
+    },
+    "ManagingMaterials": {
+      "Steps": [
+        "Add material slots with the Add (+) icon.",
+        "Remove material slots with the Remove (trash bin) icon."
+      ],
+      "MaterialSlots": "Each material has a unique name, appearing as a dropdown in the Cards, Meshes, and Strands panels. A material slot can override ones set in the Groom Asset Editor."
+    },
+    "ValidMaterial": {
+      "Requirements": [
+        "Material must use the Hair shading model.",
+        "Enable Use with Hair Strands flag in the Usage section of the Material Editor."
+      ]
+    },
+    "HairAttributesExpression": {
+      "Description": "Access hair attributes in a Material Graph using the Hair Attributes expression.",
+      "Properties": [
+        {
+          "Name": "U / V",
+          "Description": "UV coordinates of hair. U is along the hair (0=root, 1=tip)."
+        },
+        {
+          "Name": "Length",
+          "Description": "Length of the current curve."
+        },
+        {
+          "Name": "Radius",
+          "Description": "Radius of the curve at the current position."
+        },
+        {
+          "Name": "Seed",
+          "Description": "Random value (0 to 1) uniform along the curve."
+        },
+        {
+          "Name": "Tangent",
+          "Description": "Tangent vector aligned in the direction of the curve."
+        },
+        {
+          "Name": "Root UV",
+          "Description": "UV of the underlying mesh at the curve's root position."
+        },
+        {
+          "Name": "BaseColor",
+          "Description": "Per curve's point color."
+        },
+        {
+          "Name": "Roughness",
+          "Description": "Per curve's point roughness."
+        },
+        {
+          "Name": "Depth",
+          "Description": "Depth offset, used for cards and mesh geometry."
+        },
+        {
+          "Name": "Coverage",
+          "Description": "Coverage mask value, used for cards and mesh geometry."
+        },
+        {
+          "Name": "AuxiliaryData",
+          "Description": "Auxiliary data, used for cards and mesh geometry."
+        },
+        {
+          "Name": "AtlasUVs",
+          "Description": "Cards UVs, used for cards and mesh geometry."
+        },
+        {
+          "Name": "Group Index",
+          "Description": "Group index of the curve."
+        },
+        {
+          "Name": "AO",
+          "Description": "Per curve's ambient occlusion."
+        },
+        {
+          "Name": "Clump ID",
+          "Description": "Clump ID of the curve."
+        }
+      ],
+      "Example": "Example setup of Hair Attributes expression in a hair material."
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GeneratingGroomTextures": {
+    "Overview": {
+      "Description": "Create follicle and strands textures for groom assets to enhance LOD meshes and blend hair with surfaces."
+    },
+    "CreatingTexturesInEditor": {
+      "Steps": [
+        "Locate Groom asset in Content Browser.",
+        "Right-click and select Create Follicle Texture or Create Strands Textures.",
+        "Configure settings in the dialog or leave them as-is.",
+        "Click Create to generate the textures."
+      ]
+    },
+    "FollicleTexture": {
+      "Description": "Contains a small distance field of hair roots for blending hair with a skeletal mesh.",
+      "Settings": [
+        {
+          "Name": "Resolution",
+          "Description": "Texture resolution, rounded to the closest power-of-two size (e.g., 256, 512, 1024)."
+        },
+        {
+          "Name": "Root Radius",
+          "Description": "Radial size (in pixels) of the root of the strand in the generated follicle mask."
+        },
+        {
+          "Name": "Groom",
+          "Description": "Groom asset used to generate the follicle texture mask."
+        },
+        {
+          "Name": "Channel",
+          "Description": "Color channel where the texture mask is stored."
+        }
+      ],
+      "Example": "Combining several grooms follicle textures into a single texture mask."
+    },
+    "StrandsTextures": {
+      "Description": "Multiple textures generated from groom data for use with cards and hair helmets.",
+      "Settings": [
+        {
+          "Name": "Layout",
+          "Description": "Determines how attributes are packed into textures: Default or Compact."
+        },
+        {
+          "Name": "Resolution",
+          "Description": "Texture resolution, rounded to the closest power-of-two size."
+        },
+        {
+          "Name": "Trace Type",
+          "Description": "Direction of traces for projection: Trace Outside, Trace Inside, Trace Bidirectional."
+        },
+        {
+          "Name": "Trace Distance",
+          "Description": "Distance from mesh surface until hair is projected onto the mesh."
+        },
+        {
+          "Name": "Mesh Type",
+          "Description": "Type of input mesh for tracing: Static or Skeletal."
+        },
+        {
+          "Name": "Static Mesh",
+          "Description": "Select static mesh asset for strand projection."
+        },
+        {
+          "Name": "Skeletal Mesh",
+          "Description": "Select skeletal mesh asset for strand projection."
+        },
+        {
+          "Name": "LOD Index",
+          "Description": "Index for level of detail mesh the texture projection is performed."
+        },
+        {
+          "Name": "Section Index",
+          "Description": "Index of the mesh section for texture projection."
+        },
+        {
+          "Name": "UV Channel Index",
+          "Description": "UV channel index for texture projection."
+        },
+        {
+          "Name": "Group Index",
+          "Description": "Specify which groom group index to bake into textures."
+        }
+      ],
+      "Examples": [
+        "Depth",
+        "Coverage",
+        "Tangent",
+        "Attributes",
+        "Material"
+      ]
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "lighting",
+        "physics",
+        "hair",
+        "metahumans"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "SettingUpAGroomDeformerGraph": {
+    "Overview": {
+      "Description": "Use deformer graphs to define groom behaviors with mesh deformations. Create and edit Deformer Graph assets to customize mesh deformations for skinned meshes in Unreal Engine."
+    },
+    "DeformerGraphComponents": {
+      "KeyAreas": [
+        "Source and Parameters panels",
+        "Deformer Graph",
+        "Details Panel",
+        "Shader Text Editor panel"
+      ],
+      "Elements": [
+        {
+          "Name": "Primary Node",
+          "Description": "Binding to the type of data it provides. Set to Groom Component."
+        },
+        {
+          "Name": "Groom and Guides Input Nodes",
+          "Description": "Provide access to groom and guides data."
+        },
+        {
+          "Name": "Custom Compute Kernel Node",
+          "Description": "Defines the deformation applied to the groom and guides."
+        },
+        {
+          "Name": "Write Groom Output Node",
+          "Description": "Writes out modified groom data."
+        }
+      ]
+    },
+    "SettingUpDeformerGraph": {
+      "Steps": [
+        "Enable the Deformer Graph plugin in the Plugins Browser and restart the engine.",
+        "Create a Deformer Graph asset in the Content Browser.",
+        "Set Primary node dropdown to Groom Component and drag into the graph.",
+        "Add Groom data interface node, Write Groom output data interface node, Custom Compute Kernel node.",
+        "Connect nodes in the graph.",
+        "Select Custom Compute Kernel node, set Execution Domain in Details panel.",
+        "Input custom HLSL code in Shader Text Editor.",
+        "Compile and save the deformer graph.",
+        "Apply groom deformer to a Groom component on a skeletal mesh using the Mesh Deformers selection box."
+      ],
+      "ExecutionDomains": [
+        {
+          "Name": "Curve",
+          "Description": "Uses one GPU thread per curve."
+        },
+        {
+          "Name": "Control Points",
+          "Description": "Uses one GPU thread per control point."
+        }
+      ]
+    },
+    "Considerations": {
+      "Points": [
+        "Access additional data like scene data or input parameters with Blueprint logic.",
+        "Compute kernel defines deformation logic, consuming inputs and computing outputs.",
+        "All time and game dependent effects on a groom are visible when the editor is Playing or Simulating."
+      ]
+    },
+    "ShaderTextEditor": {
+      "Description": "Modify Custom Compute Kernel node programming using HLSL to control specific mesh deformation behaviors.",
+      "Panel": {
+        "Sections": [
+          {
+            "Name": "Declarations",
+            "Description": "Displays kernel input and output functions (read-only)."
+          },
+          {
+            "Name": "Shader Text",
+            "Description": "Input custom HLSL code."
+          }
+        ],
+        "CompilerOutput": "Check for errors during compilation in the Compiler Output panel."
+      },
+      "Example": {
+        "Code": "if (Index < ReadControlPointCount()) {\n const float3 P = ReadInPosition(Index);\n const float U = ReadInCoordU(Index);\n const float T = abs(sin(U * ReadTime()));\n WriteOutPosition(Index, P + T * float3(5,0,0));\n}",
+        "Description": "Groom deformer applied to a groom with a 'wave' effect, changing position over time."
+      }
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GroomPerformanceAndDebugging": {
+    "Overview": {
+      "Description": "Optimize and debug grooms by understanding the rendering pipeline and adjusting performance based on project needs."
+    },
+    "RenderingPipelineStages": {
+      "Stages": [
+        {
+          "Name": "Simulation",
+          "Description": "Simulates guides' motions based on scene environment and groom component motion."
+        },
+        {
+          "Name": "Interpolation",
+          "Description": "Transfers guides' motions to rendering strands and applies surface skinning."
+        },
+        {
+          "Name": "Voxelization",
+          "Description": "Voxelizes hair curves to generate density volume for shadow and hair transmittance."
+        },
+        {
+          "Name": "Primary Visibility",
+          "Description": "Rasterizes hair curves for the current camera viewport."
+        },
+        {
+          "Name": "Lighting",
+          "Description": "Lights all hair samples using voxel or deep shadow data."
+        },
+        {
+          "Name": "Composition",
+          "Description": "Composes final hair pixel into the scene color buffer."
+        }
+      ]
+    },
+    "PerformanceOptimization": {
+      "Tips": [
+        {
+          "Stage": "Simulation, Interpolation, Voxelization, Primary Visibility",
+          "Suggestions": [
+            "Set LOD Mode to Auto.",
+            "Use triangle strip geometry with r.HairStrands.Strands.UseTriangleStrips.",
+            "Balance samples per pixel with r.HairStrands.Visibility.MSAA.SamplePerPixel.",
+            "Turn off update of non-visible grooms with r.HairStrands.Shadow.CastShadowWhenNonVisible."
+          ]
+        },
+        {
+          "Stage": "Lighting",
+          "Suggestions": [
+            "Reduce voxel size with r.HairStrands.Voxelization.Virtual.VoxelWorldSize.",
+            "Increase ray matching step scaling with r.HairStrands.Voxelization.Raymarching.SteppingScale."
+          ]
+        },
+        {
+          "Stage": "Environment Lighting",
+          "Suggestions": [
+            "Disable hair ambient occlusion with r.HairStrands.SkyAO.",
+            "Change hair sky lighting integrator with r.HairStrands.SkyLighting.IntegrationType."
+          ]
+        }
+      ]
+    },
+    "DebuggingGrooms": {
+      "ViewportOptions": [
+        {
+          "Option": "Lit > Groom",
+          "Description": "Access various groom visualization modes."
+        },
+        {
+          "Option": "Instances",
+          "Description": "Inspect all visible instances' properties, including LOD index, geometry type, and more."
+        },
+        {
+          "Option": "Guides",
+          "Description": "Displays simulation guides for visible grooms."
+        }
+      ],
+      "ConsoleCommands": [
+        {
+          "Command": "r.HairStrands.Dump",
+          "Description": "Output information about Groom assets, Groom Binding assets, and Groom Component memory footprint."
+        },
+        {
+          "Command": "r.HairStrands.Voxelization.Virtual.VoxelPageCountPerDim",
+          "Description": "Increase the number of pages for voxelization."
+        },
+        {
+          "Command": "r.HairStrands.Voxelization.Virtual.VoxelWorldSize",
+          "Description": "Increase voxel resolution by reducing voxel size."
+        }
+      ]
+    },
+    "KnownLimitations": [
+      "Frame rate depends on groom size, resolution, and hardware. Expect 30Hz or higher framerate with an RTX-2090Ti at 1080p.",
+      "Depth of Field may produce artifacts.",
+      "Path Tracer renders grooms differently than rasterizer.",
+      "No proper precomputed (Static / Stationary) lighting support."
+    ],
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "physics",
+        "hair",
+        "metahumans",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "GroomCaches": {
+    "Overview": {
+      "Description": "Use imported Groom Caches to play back groom animations simulated in other DCC applications and exported to Unreal Engine using Alembic."
+    },
+    "TypesOfGroomCaches": {
+      "GuidesGroomCache": {
+        "Description": "Supports vertex position animation of guides, uses in-engine strands interpolation, suitable for animations needing only vertex position changes.",
+        "Attributes": ["Vertex Position"],
+        "Advantages": ["More lightweight and performant"],
+        "Requirements": ["Enable simulation on Groom Asset groups"]
+      },
+      "StrandsGroomCache": {
+        "Description": "Supports animated attributes for every strand, including vertex position, width, and color. Higher fidelity but consumes more memory and bandwidth.",
+        "Attributes": ["Vertex Position", "Width", "Color"],
+        "Advantages": ["More flexibility, exact simulation from DCC application"],
+        "Requirements": ["Must contain vertex position animation"]
+      },
+      "TopologyRequirement": "Groom Cache and Groom Asset must have the same topology."
+    },
+    "ImportingGroomCache": {
+      "Steps": [
+        "Locate Groom Cache Alembic in Content Browser.",
+        "Right-click and select import options.",
+        "Ensure Import Groom Cache is enabled.",
+        "Disable Import Groom Asset if a compatible Groom Asset exists and specify it.",
+        "Configure Groom Cache settings like animation range and skip empty frames.",
+        "Click Import to complete the process."
+      ],
+      "Settings": [
+        {
+          "Name": "Import Groom Cache",
+          "Description": "Enable to import Groom Cache."
+        },
+        {
+          "Name": "Override Guides",
+          "Description": "Use guides from Alembic or generate new ones."
+        },
+        {
+          "Name": "Disable Import Groom Asset",
+          "Description": "Disable if a compatible Groom Asset is already available."
+        },
+        {
+          "Name": "Animation Range",
+          "Description": "Specify starting and ending frames, and skip empty frames."
+        }
+      ]
+    },
+    "UsingGroomCache": {
+      "Assignment": {
+        "Steps": [
+          "Assign Groom Cache to Groom Cache slot of a Groom Component.",
+          "Ensure topological compatibility between Groom Cache and Groom Asset.",
+          "Enable simulation for each Groom Group for Guides Groom Caches."
+        ],
+        "Restrictions": [
+          "Cannot assign Groom Cache if Groom Component already has a Groom Binding assigned."
+        ]
+      },
+      "LevelSequence": {
+        "Steps": [
+          "Add Groom Cache track to Actor with Groom Component in Level Sequence.",
+          "Resize Groom Cache section to fit animation range if not automatic."
+        ]
+      }
+    },
+    "Resources": {
+      "Tags": [
+        "import",
+        "rendering",
+        "lighting",
+        "hair",
+        "grooms"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "AlembicForGroomsSpecification": {
+    "Overview": {
+      "Description": "Guidelines for exporting Grooms as Alembic files for use with Unreal Engine, providing a minimally viable implementation of strand-based hair importing, rendering, and simulation."
+    },
+    "Goals": [
+      "Define a groom-specific, informal, Alembic metadata schema.",
+      "Map Unreal Engine hair attributes onto Alembic."
+    ],
+    "Curves": {
+      "Description": "General shape of hair read from Alembic Curve schema.",
+      "Schema": "Alembic::AbcGeom::ICurves",
+      "Width": {
+        "Description": "Groom attributes retrieved and used when building the groom. Falls back to 1 cm if not specified.",
+        "StorageOptions": [
+          "GeometryScope::kConstantScope",
+          "GeometryScope::kUniformScope",
+          "GeometryScope::kVertexScope"
+        ]
+      }
+    },
+    "NamingConventions": {
+      "Description": "Property names must be lowercase, no spaces or special characters.",
+      "Prefix": "groom_<attr>"
+    },
+    "ScopingAndPrecedence": {
+      "Scopes": [
+        {
+          "Name": "Constant",
+          "Description": "Single value for all curves in an AbcGeom::ICurves Object."
+        },
+        {
+          "Name": "Uniform",
+          "Description": "Value per-curve in an AbcGeom::ICurves Object."
+        },
+        {
+          "Name": "Vertex",
+          "Description": "Value per-curve per-cv."
+        }
+      ]
+    },
+    "GeneralProperties": [
+      {
+        "Name": "groom_version_major",
+        "Type": "int16",
+        "Scope": "Constant",
+        "Optional": "No",
+        "Description": "Identifies major version of the groom schema.",
+        "Value": "1"
+      },
+      {
+        "Name": "groom_version_minor",
+        "Type": "int16",
+        "Scope": "Constant",
+        "Optional": "No",
+        "Description": "Identifies minor version of the groom schema.",
+        "Value": "5"
+      },
+      {
+        "Name": "groom_tool",
+        "Type": "string",
+        "Scope": "Constant",
+        "Optional": "Yes",
+        "Description": "Name and version of the tool that generated the file."
+      },
+      {
+        "Name": "groom_properties",
+        "Type": "string",
+        "Scope": "Constant",
+        "Optional": "Yes",
+        "Description": "Tool-specific options used for debugging."
+      }
+    ],
+    "GeometryParameters": [
+      {
+        "Name": "groom_guide",
+        "Type": "int8/16/32",
+        "Scope": "Constant/Uniform",
+        "Optional": "Yes",
+        "Description": "Guides generated from imported strands and decimation settings.",
+        "Range": "0 = Not a guide / 1 = Guide"
+      },
+      {
+        "Name": "groom_group_id",
+        "Type": "int32",
+        "Scope": "Constant/Uniform",
+        "Optional": "Yes",
+        "Description": "All strands grouped together.",
+        "Range": "[0, INT_MAX]"
+      },
+      {
+        "Name": "groom_root_uv",
+        "Type": "float32/64[2]",
+        "Scope": "Uniform",
+        "Optional": "Yes",
+        "Description": "Root UVs of the underlying surface on which roots are bound to. Supports UDIM texture coordinates.",
+        "Range": "[-FLOAT_MAX, FLOAT_MAX]"
+      },
+      {
+        "Name": "groom_id",
+        "Type": "int32",
+        "Scope": "Uniform",
+        "Optional": "Yes",
+        "Description": "Strands IDs for debugging and with groom_closest_guides attribute.",
+        "Range": "[0, INT_MAX]"
+      },
+      {
+        "Name": "groom_color",
+        "Type": "float32/64[3]",
+        "Scope": "Vertex",
+        "Optional": "Yes",
+        "Description": "Color of strands. Falls back to black.",
+        "Range": "[0, FLOAT_MAX]"
+      },
+      {
+        "Name": "groom_roughness",
+        "Type": "float32",
+        "Scope": "Vertex",
+        "Optional": "Yes",
+        "Description": "Roughness of strands. Falls back to black.",
+        "Range": "[0, FLOAT_MAX]"
+      },
+      {
+        "Name": "groom_closest_guides",
+        "Type": "int32[3]",
+        "Scope": "Uniform",
+        "Optional": "Yes",
+        "Description": "Specialized use where interpolation data is computed outside Unreal Engine.",
+        "Range": "[0, INT_MAX]"
+      },
+      {
+        "Name": "groom_guide_weights",
+        "Type": "float32[3]",
+        "Scope": "Uniform",
+        "Optional": "Yes",
+        "Description": "Specialized use where interpolation data is computed outside Unreal Engine."
+      },
+      {
+        "Name": "groom_clumpid",
+        "Type": "int32",
+        "Scope": "Uniform",
+        "Optional": "Yes",
+        "Description": "Clump ID."
+      },
+      {
+        "Name": "groom_group_name",
+        "Type": "string",
+        "Scope": "Constant/Uniform",
+        "Optional": "Yes",
+        "Description": "Group name."
+      }
+    ],
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "lighting",
+        "physics",
+        "hair",
+        "metahumans"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+},
+{
+  "XGenGuidelinesForGroomCreation": {
+    "Overview": {
+      "Description": "Guidelines for exporting grooms from Maya's legacy XGen to Alembic files for use with Unreal Engine."
+    },
+    "StepsForConversion": {
+      "ConvertGuidesToNURBSCurves": {
+        "Steps": [
+          "Set Maya's menu to Modeling.",
+          "Open XGen Editor from the Generate dropdown.",
+          "In the XGen window, use the Utilities tab to select Guides to Curves.",
+          "Click Create Curves."
+        ]
+      },
+      "ConvertGroomsToInteractiveGrooms": {
+        "Steps": [
+          "Select XGen Description nodes.",
+          "Use the Generate dropdown to select Convert to Interactive Groom."
+        ]
+      },
+      "ExportSplineDescriptionsToNURBSCurves": {
+        "Steps": [
+          "Select XGen Spline Description nodes.",
+          "Use Generate dropdown to select Cache > Export Cache.",
+          "Set Cache Time Frame to Current Frame, disable Multiple Transforms, enable Write Final Width.",
+          "Enter file name, select Alembic as file type, and click Export."
+        ]
+      }
+    },
+    "CreatingAttributes": {
+      "CreateGroupIDAttributes": {
+        "Script": "from maya import cmds\n\nattr_name = 'groom_group_id'\ngroups = ['hair_brows_splineDescription1|SplineGrp0', 'hair_lashes_splineDescription1|SplineGrp0', 'hair_head_splineDescription1|SplineGrp0']\n\nfor groom_group_id, group_name in enumerate(groups):\n    curves = cmds.listRelatives(group_name, ad=True, type='nurbsCurve')\n    cmds.addAttr(group_name, longName=attr_name, attributeType='short', defaultValue=groom_group_id, keyable=True)\n    cmds.addAttr(group_name, longName='{}_AbcGeomScope'.format(attr_name), dataType='string', keyable=True)\n    cmds.setAttr('{}.{}_AbcGeomScope'.format(group_name, attr_name), 'con', type='string')"
+      },
+      "CreateGuideAttributes": {
+        "Script": "from maya import cmds\n\nattr_name = 'groom_guide'\ncurves = cmds.listRelatives('xgGroom', ad=True, type='nurbsCurve')\nguides_group = cmds.createNode('transform', name='guides')\ncmds.addAttr(guides_group, longName=attr_name, attributeType='short', defaultValue=1, keyable=True)\ncmds.addAttr(guides_group, longName='riCurves', attributeType='bool', defaultValue=1, keyable=True)\ncmds.addAttr(guides_group, longName='{}_AbcGeomScope'.format(attr_name), dataType='string', keyable=True)\ncmds.setAttr('{}.{}_AbcGeomScope'.format(guides_group, attr_name), 'con', type='string')\nfor curve in curves:\n    cmds.parent(curve, guides_group, shape=True, relative=True)"
+      },
+      "GroomWidthAttribute": {
+        "Description": "Maya exports width values directly on curves, automatically converted to groom_width attribute in Unreal Engine. Falls back to 1 cm if not specified."
+      }
+    },
+    "ExportToAlembic": {
+      "Steps": [
+        "Select Guides and Group_ID curves to export.",
+        "Ensure each node has a unique name.",
+        "Use Cache dropdown to select Alembic Cache > Export Selection to Alembic.",
+        "Set Cache time range to Current Frame.",
+        "Add groom_group_id and groom_guide to Attributes category.",
+        "Enter file name, select Alembic as file type, and click Export Selection."
+      ]
+    },
+    "ApplyingTexturesToHairUVs": {
+      "Steps": [
+        "In Maya, use Modeling menu to select Generate > Create Interactive Groom Splines.",
+        "Create guides and brush hair as needed.",
+        "Export curves as Alembic Cache using Generate > Cache > Create New Cache.",
+        "Reimport exported hair curves with source mesh in Maya scene.",
+        "Edit and run Python script to generate Alembic file.",
+        "In Unreal Engine, create a new Material using Hair Shading Model.",
+        "Add Hair Attributes expression, plug Root UV into UV input of Texture Sample.",
+        "Drag imported hair Alembic file into level from Content Browser, assign hair material."
+      ],
+      "Script": "from maya import cmds\nfrom maya import OpenMaya\nimport os\n\ndef create_root_uv_attribute(curves_group, mesh_node, uv_set='map1'):\n    if not cmds.objExists(curves_group):\n        raise RuntimeError('Group not found: \"{}\"'.format(curves_group))\n    curve_shapes = cmds.listRelatives(curves_group, shapes=True, noIntermediate=True)\n    curve_shapes = cmds.ls(curve_shapes, type='nurbsCurve')\n    if not curve_shapes:\n        raise RuntimeError('Invalid curves group. No nurbs-curves found in group.')\n    points = list()\n    for curve_shape in curve_shapes:\n        point = cmds.pointPosition('{}.cv[0]'.format(curve_shape), world=True)\n        points.append(point)\n    values = list()\n    uvs = find_closest_uv_point(points, mesh_node, uv_set=uv_set)\n    for u, v in uvs:\n        values.append([u, v, 0])\n    name = 'groom_root_uv'\n    cmds.addAttr(curves_group, ln=name, dt='vectorArray')\n    cmds.addAttr(curves_group, ln='{}_AbcGeomScope'.format(name), dt='string')\n    cmds.addAttr(curves_group, ln='{}_AbcType'.format(name), dt='string')\n    cmds.setAttr('{}.{}'.format(curves_group, name), len(values), *values, type='vectorArray')\n    cmds.setAttr('{}.{}_AbcGeomScope'.format(curves_group, name), 'uni', type='string')\n    cmds.setAttr('{}.{}_AbcType'.format(curves_group, name), 'vector2', type='string')\n    return uvs\n\ndef find_closest_uv_point(points, mesh_node, uv_set='map1'):\n    if not cmds.objExists(mesh_node):\n        raise RuntimeError('Node not found: \"{}\"'.format(mesh_node))\n    uv_sets = cmds.polyUVSet(mesh_node, q=True, allUVSets=True)\n    if uv_set not in uv_sets:\n        raise RuntimeError('Invalid uv_set provided: \"{}\"'.format(uv_set))\n    selection_list = OpenMaya.MSelectionList()\n    selection_list.add(mesh_node)\n    mesh_dagpath = OpenMaya.MDagPath()\n    selection_list.getDagPath(0, mesh_dagpath)\n    mesh_dagpath.extendToShape()\n    fn_mesh = OpenMaya.MFnMesh(mesh_dagpath)\n    uvs = list()\n    for i in range(len(points)):\n        script_util = OpenMaya.MScriptUtil()\n        script_util.createFromDouble(0.0, 0.0)\n        uv_point = script_util.asFloat2Ptr()\n        point = OpenMaya.MPoint(*points[i])\n        fn_mesh.getUVAtPoint(point, uv_point, OpenMaya.MSpace.kWorld, uv_set)\n        u = OpenMaya.MScriptUtil.getFloat2ArrayItem(uv_point, 0, 0)\n        v = OpenMaya.MScriptUtil.getFloat2ArrayItem(uv_point, 0, 1)\n        uvs.append((u, v))\n    return uvs\n\ndef abc_export(filepath, node=None, start_frame=1, end_frame=1, data_format='otawa', uv_write=True):\n    job_command = '-frameRange {} {} '.format(start_frame, end_frame)\n    job_command += '-dataFormat {} '.format(data_format)\n    job_command += '-attr groom_root_uv '\n    if uv_write:\n        job_command += '-uvWrite '\n    job_command += '-root {} '.format(node)   \n    job_command += '-file {} '.format(filepath) \n    cmds.AbcExport(verbose=True, j=job_command)\n\ndef main():\n    export_directory = 'D:/Dev/Ref'\n    hair_file = os.path.join(export_directory, 'hair_export.abc')\n    curve_top_group= 'description1|SplineGrp0'\n    uv_mesh='pPlane1'\n    create_root_uv_attribute(curve_top_group , uv_mesh)\n    abc_export(hair_file, curve_top_group)\nmain()"
+    },
+    "Resources": {
+      "Tags": [
+        "rendering",
+        "lighting",
+        "physics",
+        "hair",
+        "metahumans"
+      ],
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}

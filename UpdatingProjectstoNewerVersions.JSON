@@ -1,0 +1,138 @@
+{
+  "UpdatingProjects": {
+    "Overview": "Learn how to update projects to a newer version of Unreal Engine using built-in features.",
+    "Note": "Once updated, projects cannot be opened in older versions. Convert a copy first.",
+    "Prerequisites": {
+      "Software": "Visual Studio 2019 must be installed."
+    },
+    "Steps": [
+      {
+        "Step": 1,
+        "Description": "Launch the newer Unreal Engine version."
+      },
+      {
+        "Step": 2,
+        "Description": "Find the project in the Unreal Project Browser. Use the search bar if needed."
+      },
+      {
+        "Step": 3,
+        "Description": "Select the project tile and click Open."
+      },
+      {
+        "Step": 4,
+        "Description": "In the dialog, click Open a Copy. More Options are available."
+      },
+      {
+        "Options": [
+          {
+            "Option": "Convert in-place",
+            "Warning": "May cause data corruption if conversion fails."
+          },
+          {
+            "Option": "Skip conversion",
+            "Warning": "May cause data loss if project fails to open."
+          }
+        ]
+      }
+    ],
+    "ConversionResult": {
+      "Success": "Project opens in Unreal Editor.",
+      "Failure": "Error log displayed; manual resolution required."
+    },
+    "Resources": {
+      "Forums": "Ask questions and help peers in Developer Forums.",
+      "Library": "Read and write tutorials in the Learning Library."
+    }
+  }
+}
+{
+  "RecoveryHub": {
+    "Overview": "Plugin to help recover an Unreal Engine session after a crash or abnormal exit.",
+    "Note": "Recovery Hub was called Disaster Recovery in Unreal Engine 4. Not enabled by default.",
+    "DiskSpaceWarning": "Assets > 2GB will consume significant disk space. Disable if space is low.",
+    "HowItWorks": {
+      "Description": "On launch, checks for abnormal session end, replays transactions to recover work.",
+      "Transactions": "Records changes as transactions, can roll back to previous state if crashed.",
+      "Support": "Supports Level editing and Sequencer, works with autosave files."
+    },
+    "EnablingAutosave": "Enable from General > Saving & Loading in Editor Preferences.",
+    "Interface": {
+      "MainToolbar": {
+        "Import": "Import crash data dump (.json).",
+        "Delete": "Delete selected session."
+      },
+      "SessionsPanel": "Displays list of saved sessions.",
+      "ConfigurationsButton": "Opens plugin settings in Project Settings.",
+      "SessionDetails": "Displays transactions of the selected session."
+    },
+    "RecoveringSession": [
+      "Open Recovery Hub (Tools > Recovery Hub).",
+      "Select session from Sessions panel.",
+      "Click Recover All."
+    ],
+    "DeletingSession": [
+      "Open Recovery Hub (Tools > Recovery Hub).",
+      "Select session from Sessions panel.",
+      "Click Delete."
+    ],
+    "Resources": {
+      "Forums": "Ask questions and help peers in Developer Forums.",
+      "Library": "Read and write tutorials in the Learning Library."
+    }
+  }
+}
+{
+  "CreatingCustomTemplates": {
+    "Overview": "Steps for converting an existing project to a template in Unreal Engine.",
+    "Description": "Templates provide a starting point for projects, allowing custom configurations including content, settings, and plugins.",
+    "Steps": [
+      {
+        "Step": 1,
+        "Description": "Copy the project's folder to the Templates folder in the Unreal Engine installation directory."
+      },
+      {
+        "Step": 2,
+        "Description": "For source-compiled Unreal Engine, locate the Templates folder at [ForkLocation]\\UE4\\Templates."
+      },
+      {
+        "Step": 3,
+        "Description": "Update the [ProjectName]\\Config\\DefaultGame.ini file with the ProjectName variable."
+      },
+      {
+        "Example": {
+          "Path": "[/Script/EngineSettings.GeneralProjectSettings]",
+          "ProjectID": "E6468D0243A591234122E38F92DB28F4",
+          "ProjectName": "MyTestTemplate"
+        }
+      },
+      {
+        "Step": 4,
+        "Description": "Copy TemplateDefs.ini from an existing template folder to the [ProjectName]\\Config folder."
+      },
+      {
+        "Step": 5,
+        "Description": "Update LocalizedDisplayNames and LocalizedDescriptions in TemplateDefs.ini for each supported language."
+      },
+      {
+        "Example": {
+          "Path": "[/Script/GameProjectGeneration.TemplateProjectDefs]",
+          "DisplayName": "LocalizedDisplayNames=(Language=\"en\",Text=\"My Test Template\")",
+          "Description": "LocalizedDescriptions=(Language=\"en\",Text=\"This is a custom template that includes a first-person character and uses Blueprint.\")"
+        }
+      },
+      {
+        "Step": 6,
+        "Description": "Assign a category to the template in TemplateDefs.ini. Options: Games, ME, AEC, MFG."
+      },
+      {
+        "Step": 7,
+        "Description": "Add icon and preview images in the [ProjectName]\\Media folder (PNG format). Naming: Icon: [ProjectName].png, Preview: [ProjectName]_Preview.png."
+      }
+    ],
+    "EndResult": "The new template will appear in the New Project dialog. Restart Unreal Engine to see changes.",
+    "Resources": {
+      "Forums": "Ask questions and help peers in Developer Forums.",
+      "Library": "Read and write tutorials in the Learning Library."
+    }
+  }
+}

@@ -1,0 +1,414 @@
+{
+  "VirtualScouting": {
+    "Description": "Virtual Scouting lets filmmakers scout a digital environment in virtual reality.",
+    "BetaFeature": "Learn to use this Beta feature, but use caution when shipping with it.",
+    "ToolsPurpose": "Gives filmmakers new ways to navigate and interact in virtual production environments, aiding creative decisions.",
+    "Benefits": [
+      "Directors and DOPs can find locations, compose shots, set up scene blocking, and get accurate representations of filming locations.",
+      "Artists and set designers can experience locations in VR, using tools to check distances and modify the world.",
+      "Capture images from the virtual world to help the production team track decisions made during VR sessions.",
+      "Controllers and settings can be customized in Blueprint without needing C++."
+    ],
+    "StartingOut": [
+      {
+        "Title": "VirtualScoutingOverview",
+        "Description": "Learn how filmmakers can scout a digital environment in VR."
+      },
+      {
+        "Title": "ActivatingTheVirtualScoutingTools",
+        "Description": "Describes how to enable the Virtual Scouting tools."
+      }
+    ]
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "VirtualScoutingOverview": {
+    "Description": "With Virtual Scouting, filmmakers can scout a digital environment in virtual reality.",
+    "ToolsPurpose": "Provides new ways to navigate and interact in virtual production environments, aiding creative decisions.",
+    "Benefits": [
+      "Directors and cinematographers can find locations, compose shots, set up scene blocking, and get accurate representations of filming locations.",
+      "Artists and set designers can experience locations in VR, using tools to check distances and modify the world.",
+      "Capture images from the virtual world for tracking decisions made during VR sessions."
+    ],
+    "ProjectSpotlight": "Video showcasing advantages of using real-time virtual production tools.",
+    "Plugin": {
+      "Name": "Virtual Production Utilities",
+      "Features": [
+        "Custom-tailored controls for filmmakers.",
+        "Dynamic customization using Blueprints without modifying C++ code."
+      ]
+    },
+    "Compatibility": [
+      "HTC Vive",
+      "HTC Vive Pro",
+      "Oculus Rift",
+      "Oculus Rift S"
+    ],
+    "Menu": {
+      "Description": "Supports virtual production scenarios with easy access to tools.",
+      "Toggle": "Menu button on motion controller.",
+      "Buttons": {
+        "HTCVive": "Above the trackpad",
+        "OculusTouch": "A button on right, X button on left"
+      }
+    },
+    "Settings": {
+      "Description": "Modify settings for Virtual Scouting tools while in VR.",
+      "Access": "Upper right corner of the Virtual Scouting menu panel.",
+      "Options": [
+        {"Name": "Grip Inertia", "Description": "Enables gliding to a stop when navigating with Grip buttons."},
+        {"Name": "Transform Gizmo", "Description": "Displays Move, Rotate, and Scale Gizmos for selected objects."},
+        {"Name": "Help System", "Description": "Shows tooltips for controller buttons when raised in front of HMD."},
+        {"Name": "Unit Scale", "Description": "Toggle between Metric and Imperial units."},
+        {"Name": "Live Editing", "Description": "Creates keyframes when interacting with objects on different Sequencer frames."},
+        {"Name": "Exit VR Mode", "Description": "Returns to UE4 standard editor window (Shift+V keyboard shortcut)."},
+        {"Name": "Flight Nav Speed", "Description": "Slider to specify navigation speed with the Navigation tool."},
+        {"Name": "Grip Nav Speed", "Description": "Slider to specify navigation speed with the Grip buttons."}
+      ]
+    },
+    "Navigation": {
+      "DefaultTool": "Navigation is the default tool in VR Mode.",
+      "SwitchMethods": [
+        "Select Navigation option in Virtual Scouting menu.",
+        "Hold down the menu button on motion controller for two seconds."
+      ],
+      "Controllers": {
+        "HTCVive": "Point controller in direction, press trigger to fly.",
+        "OculusTouch": "Move joystick in direction to fly."
+      },
+      "AdjustSpeed": "Maximum speed can be adjusted in Virtual Scouting Settings."
+    },
+    "GripControls": {
+      "Description": "Navigate through the scene by pressing and holding the Grip button on one motion controller.",
+      "Method": "Press Grip button, move hand towards yourself, release button."
+    },
+    "WorldMovementOptions": {
+      "Default": "Grip buttons bring up the World Movement Grid.",
+      "TurnOff": "Disable Grid and Post Process settings in VR Mode settings."
+    },
+    "Teleport": {
+      "Description": "Jump to another location in the level.",
+      "Method": [
+        "Vive: Rest thumb over bottom section of trackpad, move controller to adjust locator, press top section of trackpad to teleport.",
+        "OculusTouch: Hold down B or Y button, move controller to adjust locator, release button to teleport."
+      ]
+    },
+    "Bookmark": {
+      "Description": "Place a location flag in the scene to return to or for others to teleport to.",
+      "Steps": [
+        "Switch to Bookmark tool in Virtual Scouting menu.",
+        "Press trigger on motion controller to place location flag.",
+        "View location flags in Bookmarks tab in the right panel of the Virtual Scouting menu."
+      ]
+    },
+    "WorldScale": {
+      "Description": "Change your world scale to make yourself larger or smaller.",
+      "Range": "0.1 to 60",
+      "ScalingSteps": [
+        "Larger: Start with hands far apart, press and hold grip buttons, bring hands together, release grip buttons.",
+        "Smaller: Start with hands close together, press and hold grip buttons, move hands apart, release grip buttons."
+      ],
+      "ResetScale": "Double tap one of the Grip buttons twice or teleport to reset scale to 1.0."
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "VRCameraAndLightTools": {
+    "Description": "How to use the VR camera and light tools for virtual scouting.",
+    "Tools": {
+      "Viewfinder": {
+        "Description": "View the environment through a virtual lens and spawn a virtual camera with the same viewport.",
+        "Activation": "Open the Virtual Scouting menu and select the Viewfinder option.",
+        "Features": [
+          {
+            "Control": "Trackpad or Thumbstick",
+            "Description": "Upper-left and upper-right sections change the lens; bottom area takes a snapshot."
+          },
+          "Snapshots saved to Content/Snapshots/[Level Name] folder."
+        ]
+      },
+      "VirtualCamera": {
+        "Description": "Spawn a virtual camera in the scene and change the lens using the same controls as the viewfinder display.",
+        "Controls": "Operate the camera with your controller or the Interaction tool."
+      },
+      "CameraContextMenu": {
+        "Description": "Make changes to the camera's settings directly in VR.",
+        "Activation": "Click the menu button on your motion controller while the camera is highlighted.",
+        "Options": [
+          "Delete: Removes the camera from the level.",
+          "Mark: Spawns a camera location flag at the current position.",
+          "Focal Length: Opens a HUD with lens options.",
+          "F-Stop: Opens a HUD with aperture options.",
+          "Snapshot: Takes a snapshot image from the camera's current position."
+        ]
+      },
+      "CameraMonitor": {
+        "Description": "Shows what the camera sees and can be interacted with to pin or move it.",
+        "Features": [
+          "Pin button keeps the monitor visible.",
+          "Toggle button locks the monitor to the camera or you.",
+          "Reposition the monitor by selecting the bar underneath it.",
+          "Anchor the monitor in its current location by selecting the arrow button."
+        ]
+      },
+      "CameraMarks": {
+        "Description": "Save the position and settings of the camera to recreate the same shot composition.",
+        "Steps": [
+          "Open Virtual Scouting menu, select Camera Marks tab.",
+          "Press the trigger on the motion controller to teleport to the camera mark."
+        ]
+      },
+      "Tripod": {
+        "Description": "Connect the virtual camera to your motion controller to operate the camera's pan and tilt rotation.",
+        "Activation": "Open Virtual Scouting menu, select Tripod option.",
+        "Steps": [
+          "Press trigger to attach camera to the tripod rig.",
+          "Press trigger again to detach the camera."
+        ]
+      },
+      "Handheld": {
+        "Description": "Connect the virtual camera to your motion controller for handheld operation.",
+        "Activation": "Open Virtual Scouting menu, select Handheld option.",
+        "Steps": [
+          "Press trigger to attach camera to the handheld rig.",
+          "Press trigger again to detach the camera."
+        ]
+      },
+      "Dolly": {
+        "Description": "Create a dolly track in VR and move the virtual camera along the track.",
+        "Activation": "Open Virtual Scouting menu, select Dolly option.",
+        "Steps": [
+          {
+            "Controller": "Vive",
+            "AddPoints": "Click top section on trackpad.",
+            "SpawnRails": "Click bottom section of trackpad."
+          },
+          {
+            "Controller": "Oculus Touch",
+            "AddPoints": "Press B or Y button.",
+            "SpawnRails": "Press down on thumbstick."
+          }
+        ]
+      }
+    },
+    "VRLightTools": {
+      "Gaffer": {
+        "Description": "Spawn a light in your scene and move/adjust it like a real light on set.",
+        "Activation": "Open Virtual Scouting menu, select Gaffer option.",
+        "Steps": [
+          "Press trigger to make a light appear.",
+          "Move controller inside the light's collision layer to move and rotate the light.",
+          "Adjust spread and brightness using the trackpad or thumbstick."
+        ],
+        "Controls": [
+          {
+            "Controller": "Vive",
+            "Brightness": "Top section makes light brighter, bottom section makes it dimmer.",
+            "Spread": "Left section widens spread, right section narrows spread."
+          },
+          {
+            "Controller": "Oculus Touch",
+            "Brightness": "Top section makes light brighter, bottom section makes it dimmer.",
+            "Spread": "Left section widens spread, right section narrows spread."
+          }
+        ]
+      },
+      "LightContextMenu": {
+        "Description": "Edit the light's intensity, spread, and temperature.",
+        "Activation": "Select light and press the Menu button on motion controller.",
+        "Options": [
+          "Delete: Removes the selected light.",
+          "Intensity: Brings up HUD with Brightness options.",
+          "Spread: Brings up HUD with throw angle options.",
+          "Temperature: Brings up HUD with color temperature options in Kelvin.",
+          "Duplicate: Spawns a copy of the light."
+        ]
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "VREditingTools": {
+    "Interaction": {
+      "Description": "Transform and manipulate objects in your scene.",
+      "Activation": [
+        "Select the Interact option in the Virtual Scouting menu.",
+        "Double tap the menu button on one of your motion controllers."
+      ],
+      "Usage": [
+        "Select an object by pointing and pressing the trigger.",
+        "Move selected object by holding the trigger and moving the controller.",
+        "Scroll up or down on Vive trackpad to move object along pointer ray.",
+        "Select an object by holding controller inside its collision layer and pressing trigger."
+      ]
+    },
+    "TransformationGizmos": {
+      "Description": "Transform objects by scaling, rotating, and translating.",
+      "ViveControllers": {
+        "TrackpadSections": [
+          "Top: Fly through the scene while holding an object.",
+          "Bottom: Teleport.",
+          "Right: Cycle through transformation gizmos (translation, rotation, scaling).",
+          "Left: Toggle between selected gizmo and Universal Gizmo."
+        ],
+        "UniversalGizmo": "Combines translation, rotation, and scaling into one gizmo."
+      },
+      "OculusTouchControllers": {
+        "ThumbstickDirections": "Move thumbstick to fly, press B or Y to teleport.",
+        "ThumbstickClick": "Cycle through transformation gizmos and Universal Gizmo."
+      },
+      "Gizmos": "Translation, rotation, and scaling are separate gizmos with options to constrain movement to two axes."
+    },
+    "ObjectContextMenu": {
+      "Description": "Perform actions on selected objects.",
+      "Activation": "Press the Menu button on the motion controller.",
+      "Options": [
+        "Delete: Removes the selected object from the scene.",
+        "Duplicate: Makes a copy of the selected object."
+      ],
+      "SpecificMenus": {
+        "Cameras": "Refer to Camera Context Menu.",
+        "Lights": "Refer to Light Context Menu."
+      },
+      "EnableGizmos": "Enable Transform Gizmo option in the Virtual Scouting menu."
+    },
+    "Marker": {
+      "Description": "Spawn a colored ribbon in your scene for making notations.",
+      "Activation": "Open the Virtual Scouting menu and select the Marker option.",
+      "Usage": [
+        "Press trigger to draw a ribbon.",
+        "Change color by resting thumb on Vive trackpad or moving Oculus thumbstick.",
+        "Click down on trackpad or thumbstick to select color."
+      ],
+      "EraseMarks": [
+        "Select the eraser icon in the color wheel.",
+        "Move controller to the mark and press trigger.",
+        "Marks can also be deleted with Undo option or Undo gesture."
+      ]
+    },
+    "Measure": {
+      "Description": "Measure distance between objects or locations in metric or imperial units.",
+      "Activation": "Open the Virtual Scouting menu and select the Measure option.",
+      "Usage": [
+        "Pointer ray projects from controller.",
+        "Press trigger to trace a line to another object and measure distance.",
+        "Switch measurement units in the Settings panel."
+      ],
+      "Flags": [
+        "Place flags with top section of Vive trackpad or B/Y buttons on Oculus.",
+        "Remove flags by interacting with them and clicking bottom half of trackpad or pulling thumbstick down.",
+        "Flags disappear when switching away from the Measure tool."
+      ]
+    },
+    "MultiUserEditing": {
+      "Description": "Explore a scene together with key production members.",
+      "Functionality": [
+        "Changes reflected to all users in the session.",
+        "Teleport to another user's location by selecting their name in the menu."
+      ],
+      "Compatibility": "Not all users need to be in VR; desktop users can perform complex actions."
+    },
+    "Pointer": {
+      "Description": "Create a pointer ray visible to other users.",
+      "Activation": "Activate the Navigation tool and press top section of Vive trackpad or trigger on Oculus controller."
+    },
+    "Flare": {
+      "Description": "Show your location to other users.",
+      "Activation": "Hold both controllers up over your head until they are close together."
+    },
+    "Sequencer": {
+      "Description": "Play back a sequence within your scene.",
+      "Activation": "Open the Virtual Scouting Menu and select the Sequence panel.",
+      "Usage": [
+        "Scrub timeline by holding trigger and moving controller left or right.",
+        "Play/pause sequence by pressing B/Y buttons on Oculus or center of Vive trackpad.",
+        "Track playhead forward/back by sliding thumb over trackpad or moving thumbstick."
+      ]
+    },
+    "LiveEditingWithSequencer": {
+      "Description": "Animate and keyframe objects in real time while in VR.",
+      "Requirements": "Sequence must be associated with the level.",
+      "Usage": [
+        "Enable Live Editing in Virtual Scouting Settings.",
+        "Set keys and manipulate objects on different frames using Interaction tool."
+      ]
+    },
+    "EditingTurnOffSnapping": {
+      "Description": "Disable snapping features for smoother interactions.",
+      "Steps": [
+        "Navigate to Edit > Editor Preferences.",
+        "Select the Viewports section.",
+        "Disable Grid Snapping, Rotation Snapping, and Scale Snapping."
+      ]
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "ActivatingTheVirtualScoutingTools": {
+    "Description": "Describes how to enable the Virtual Scouting tools.",
+    "BetaFeature": "Learn to use this Beta feature, but use caution when shipping with it.",
+    "Compatibility": [
+      "HTC Vive",
+      "HTC Vive Pro",
+      "Oculus Rift",
+      "Oculus Rift S"
+    ],
+    "Prerequisites": [
+      "See SteamVR Prerequisites",
+      "See Oculus Prerequisites"
+    ],
+    "Steps": [
+      {
+        "Step": "Open your project and select Edit > Plugins from the main menu.",
+        "Action": "Enable the Virtual Production Utilities plugin under Virtual Production.",
+        "Note": "Restart the editor when prompted."
+      },
+      {
+        "Step": "Select Edit > Project Settings from the main menu.",
+        "Action": "In Project Settings > Plugins > Virtual Production Editor > Virtual Production, set the Virtual Scouting User Interface to VirtualScoutingWidget.",
+        "Note": "If the plugin is enabled but the UI is not set to VirtualScoutingWidget, it may affect VR Editor behavior. This will be resolved in a future release."
+      },
+      {
+        "Step": "Select Edit > Editor Preferences from the main menu.",
+        "Action": "In General > VR Mode > Motion Controllers, set the Interactor Class to VirtualScoutingInteractor."
+      },
+      {
+        "Step": "Select Edit > Editor Preferences from the main menu.",
+        "Action": "In General > VR Mode > Motion Controllers, set the Teleporter Class to VirtualScoutingTeleporter."
+      },
+      {
+        "Step": "Select Edit > Editor Preferences from the main menu.",
+        "Action": "In General > VR Mode > World Movement, uncheck Show World Movement Grid and Show World Movement Post Process."
+      },
+      {
+        "Step": "Select Edit > Editor Preferences from the main menu.",
+        "Action": "In Level Editor > Viewports > Grid Snapping, uncheck Enable Grid Snapping, Enable Rotation Snapping, and Enable Scale Snapping."
+      },
+      {
+        "Step": "Enter VR Mode.",
+        "Result": "Once in VR Mode, pressing the Menu button on your VR controller will make the Virtual Scouting panel appear, giving you access to the various Virtual Scouting tools."
+      }
+    ],
+    "EndResult": "For more information about the individual tools, see the Virtual Scouting Overview."
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}

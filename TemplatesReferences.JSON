@@ -1,0 +1,469 @@
+{
+  "TemplatesReference": {
+    "Overview": {
+      "Description": "Templates in Unreal Engine for creating projects.",
+      "Details": "Templates include character controllers, Blueprints, and features without additional configuration."
+    },
+    "CreatingProject": {
+      "Description": "Guide to create a project from a template.",
+      "Link": "Creating New Project page"
+    },
+    "TemplateDescription": {
+      "Description": "Details about each template when selected."
+    },
+    "CustomTemplates": {
+      "Description": "Create custom templates from existing projects.",
+      "Link": "Creating Custom Templates page"
+    },
+    "ConfiguringInput": {
+      "Description": "Set up controls for playable characters (Pawn).",
+      "Steps": [
+        "Go to Edit > Project Settings.",
+        "Scroll to Engine section, click Input."
+      ],
+      "Bindings": {
+        "ActionMappings": "Keys for actions like jumping.",
+        "AxisMappings": "Controls movement, e.g., left/right in Side Scroller template."
+      }
+    },
+    "AvailableTemplates": {
+      "Categories": [
+        "Games",
+        "Film, Television, Live Events",
+        "Architecture, Engineering, Construction",
+        "Automotive, Product Design, Manufacturing",
+        "Simulation"
+      ],
+      "BlankTemplate": "Basic template with no additional content."
+    },
+    "GamesTemplates": {
+      "Description": "Starting points for various games.",
+      "Templates": [
+        {
+          "Name": "First Person",
+          "Contents": "Character with a gun shooting physics-based projectiles.",
+          "Link": "First Person Template Overview"
+        },
+        {
+          "Name": "Third Person",
+          "Contents": "Third-person character with camera above and behind.",
+          "Link": "Third Person Template Overview"
+        },
+        {
+          "Name": "Top Down",
+          "Contents": "Character moved by clicking/tapping, fixed camera."
+        },
+        {
+          "Name": "Handheld AR",
+          "Contents": "AR applications for Android/iOS, environment scanning.",
+          "Links": [
+            "Handheld AR Template Quickstart",
+            "Handheld AR Template Technical Reference"
+          ]
+        },
+        {
+          "Name": "Vehicle",
+          "Contents": "Physics-driven vehicle with two camera views."
+        },
+        {
+          "Name": "Virtual Reality",
+          "Contents": "VR projects with teleport locomotion and input actions.",
+          "Links": [
+            "VR template",
+            "Developing for VR in Unreal Engine"
+          ]
+        }
+      ]
+    },
+    "FilmTelevisionLiveEventsTemplates": {
+      "Description": "Templates for live production work.",
+      "Templates": [
+        {
+          "Name": "Virtual Production",
+          "Contents": "VR Scouting, Virtual Camera, SDI Video, Composure, nDisplay.",
+          "Links": [
+            "Virtual Scouting Overview",
+            "Virtual Camera Actor Quick Start"
+          ]
+        },
+        {
+          "Name": "DMX",
+          "Contents": "Examples for controlling lighting fixtures and DMX data streams."
+        },
+        {
+          "Name": "InCamera VFX",
+          "Contents": "Blueprints, plugins for in-camera VFX workflows.",
+          "Links": [
+            "In-Camera VFX Template",
+            "In-Camera VFX Overview"
+          ]
+        },
+        {
+          "Name": "nDisplay",
+          "Contents": "Rendering on complex display arrangements for live performances.",
+          "Links": [
+            "nDisplay Template",
+            "Rendering to Multiple Displays with nDisplay"
+          ]
+        }
+      ]
+    },
+    "ArchitectureEngineeringConstructionTemplates": {
+      "Description": "Templates for importing and refining content from 3D programs.",
+      "Templates": [
+        {
+          "Name": "Archvis",
+          "Contents": "Architectural visualization workflows with sample scenes."
+        },
+        {
+          "Name": "Design Configurator",
+          "Contents": "Toggle object states, animation sequences, and design options."
+        },
+        {
+          "Name": "Collab Viewer",
+          "Contents": "Navigation and interaction for desktop/VR in collaborative sessions.",
+          "Link": "Collab Viewer Template"
+        },
+        {
+          "Name": "Handheld AR",
+          "Contents": "AR applications for Android/iOS, environment scanning.",
+          "Links": [
+            "Handheld AR Template Quickstart",
+            "Handheld AR Template Technical Reference"
+          ]
+        }
+      ]
+    },
+    "AutomotiveProductDesignManufacturingTemplates": {
+      "Description": "Templates for importing and refining content for desktop and XR applications.",
+      "Templates": [
+        {
+          "Name": "Photo Studio",
+          "Contents": "Photographic studio environment for cinematics and presentations."
+        },
+        {
+          "Name": "Product Configurator",
+          "Contents": "Generic product configurator using Variant Manager, UMG, Blueprint.",
+          "Link": "Product Configurator"
+        },
+        {
+          "Name": "Collab Viewer",
+          "Contents": "Navigation and interaction for desktop/VR in collaborative sessions.",
+          "Link": "Collab Viewer Template"
+        },
+        {
+          "Name": "Handheld AR",
+          "Contents": "AR applications for Android/iOS, environment scanning.",
+          "Links": [
+            "Handheld AR Template Quickstart",
+            "Handheld AR Template Technical Reference"
+          ]
+        }
+      ]
+    },
+    "SimulationTemplates": {
+      "Description": "Starting points for enterprise simulation applications.",
+      "Features": [
+        "Specific settings for outdoor environments.",
+        "Realistic sky and lighting.",
+        "Georeferencing tools."
+      ],
+      "Templates": [
+        {
+          "Name": "Simulation Blank",
+          "Contents": "Empty project with settings and plugins for simulations.",
+          "Features": [
+            "Earth atmosphere",
+            "Atmospheric lighting",
+            "Volumetric clouds",
+            "Geographical coordinates",
+            "World Geodetic System (WGS84)"
+          ]
+        },
+        {
+          "Name": "Handheld AR",
+          "Contents": "AR applications for Android/iOS, environment scanning.",
+          "Links": [
+            "Handheld AR Template Quickstart",
+            "Handheld AR Template Technical Reference"
+          ]
+        },
+        {
+          "Name": "Virtual Reality",
+          "Contents": "VR projects with teleport locomotion and input actions.",
+          "Links": [
+            "VR template",
+            "Developing for VR in Unreal Engine"
+          ]
+        }
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "FirstPersonTemplate": {
+    "Introduction": {
+      "Description": "First Person template in Unreal Engine 5.",
+      "Details": "Templates include ready-to-use assets like level geometry, controllable characters, and simple animations."
+    },
+    "FirstPersonGames": {
+      "Description": "Player sees the game from the character's viewpoint.",
+      "Comparison": "Shows parts of the character models, different from third-person perspective."
+    },
+    "TemplateContents": {
+      "Elements": [
+        "Playable first-person character (move and shoot)",
+        "Gun that fires projectiles",
+        "Level with basic geometry",
+        "Cubes reacting to collisions"
+      ]
+    },
+    "CreatingProject": {
+      "Steps": [
+        "Open Project Browser",
+        "Select Games category",
+        "Choose First Person template"
+      ],
+      "Settings": "Refer to Creating a New Project page.",
+      "StarterContent": "Select 'With Starter Content' for ready-to-use objects."
+    },
+    "FirstPersonProject": {
+      "Description": "Control a first-person character using keyboard and mouse.",
+      "Instructions": [
+        "Click Play in Main Toolbar",
+        "Use WASD keys to move, mouse to look around",
+        "Pick up gun and left-click to shoot"
+      ]
+    },
+    "TemplateDetails": {
+      "Blueprints": {
+        "Description": "Located in Content/FirstPerson/Blueprints folder.",
+        "Contents": [
+          "Player character",
+          "Rifle",
+          "Rifle projectile",
+          "Game mode"
+        ]
+      },
+      "FirstPersonCharacter": {
+        "Assets": "Located in Content/FirstPersonArms folder.",
+        "Contents": [
+          "Skeletal Mesh",
+          "Materials",
+          "Textures",
+          "Animations"
+        ]
+      },
+      "RifleAndProjectile": {
+        "Assets": "Located in Content/FPWeapon folder.",
+        "Rifle": "Skeletal Mesh (SK_FPGun)",
+        "Projectiles": "Spawned on left-click, physics impulse applied"
+      },
+      "Level": {
+        "Assets": "Located in Content/LevelPrototyping folder."
+      }
+    },
+    "ImprovingProject": {
+      "Description": "Import content and tweak for more interesting game.",
+      "Instructions": [
+        "Drag-and-drop content from Content Browser",
+        "Use starter content if included"
+      ],
+      "Link": "See Level Designer Quick Start for more instructions."
+    },
+    "NextSteps": {
+      "Suggestions": [
+        "Import different model for gun or choose different weapon",
+        "Populate Level with free content from Quixel Bridge",
+        "Add visual effects using post-processing",
+        "Create HUD with Unreal Motion Graphics (UMG)",
+        "Add AI characters using Behavior Trees"
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ThirdPersonTemplate": {
+    "Introduction": {
+      "Description": "Third Person template in Unreal Engine 5.",
+      "Details": "Templates include ready-to-use assets like level geometry, controllable characters, and simple animations."
+    },
+    "ThirdPersonGames": {
+      "Description": "Player sees the game world from a fixed distance behind and above their character.",
+      "CameraControl": "Control camera distance and position as needed."
+    },
+    "TemplateContents": {
+      "Elements": [
+        "Playable third-person character (move and jump)",
+        "Additional character meshes",
+        "Level with basic geometry",
+        "Physics-enabled cubes reacting to collisions",
+        "Redesigned Mannequins"
+      ]
+    },
+    "CreatingProject": {
+      "Steps": [
+        "Open Project Browser",
+        "Select Games category",
+        "Choose Third Person template"
+      ],
+      "Settings": "Refer to Creating a New Project page.",
+      "StarterContent": "Select 'With Starter Content' for ready-to-use objects."
+    },
+    "ThirdPersonProject": {
+      "Description": "Control a third-person character using keyboard and mouse.",
+      "Instructions": [
+        "Click Play in Main Toolbar",
+        "Use WASD keys to move, Space bar to jump, mouse to look around"
+      ]
+    },
+    "TemplateDetails": {
+      "ThirdPersonCharacter": {
+        "Assets": "Located in Content/Characters folder.",
+        "Mannequins": [
+          "Manny",
+          "Quinn"
+        ],
+        "LODSettings": "Optimize for different platforms using Data Asset in Content/Characters/Mannequins/Meshes folder."
+      },
+      "Animations": {
+        "Assets": "Located in Content/Characters/Mannequins/Animations folder.",
+        "IKRig": "Used to dynamically modify pose-based solver parameters.",
+        "ControlRig": "Pose and animate directly in editor, see Control Rig section in documentation."
+      },
+      "Level": {
+        "Assets": "Located in Content/LevelPrototyping folder."
+      }
+    },
+    "ImprovingProject": {
+      "Description": "Import content and tweak for more interesting game.",
+      "CharacterChange": {
+        "Steps": [
+          "Go to Content/ThirdPerson/Blueprints, open BP_ThirdPersonCharacterBlueprint in Blueprint Editor.",
+          "Select Mesh(CharacterMesh) Component in Components panel.",
+          "In Details panel, select SKM_Manny in Skeletal Mesh parameter.",
+          "Set Animation Mode to Use Animation Blueprint, Anim Class to ABP_Manny.",
+          "Compile and Save the Blueprint."
+        ],
+        "TutorialLink": "See Setting Up Character Movement for detailed instructions."
+      },
+      "Level": {
+        "Instructions": "Drag-and-drop content from Content Browser.",
+        "StarterContent": "Use starter content if included."
+      },
+      "Link": "See Level Designer Quick Start for more instructions."
+    },
+    "NextSteps": {
+      "Suggestions": [
+        "Import different model for player character from Marketplace or use MetaHuman.",
+        "Populate Level with free content from Quixel Bridge.",
+        "Add visual effects using post-processing.",
+        "Create HUD with Unreal Motion Graphics (UMG).",
+        "Add AI characters using Behavior Trees."
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "SimulationBlankTemplate": {
+    "Introduction": {
+      "Description": "Simulation Blank template in Unreal Engine 5.",
+      "Details": "Empty WorldLevel template with simulation-specific settings."
+    },
+    "Features": {
+      "Environment": [
+        "Flat Static Mesh ground",
+        "SunSky system with Earth settings",
+        "Volumetric clouds",
+        "Exponential Height Fog",
+        "Cosmetic stars",
+        "Global Post-Process Volume",
+        "Georeferencing Actor"
+      ],
+      "SunSky": {
+        "Settings": [
+          "North offset for GeoReferencing",
+          "Directional light with realistic Sun properties",
+          "Far shadows using Virtual Shadow Maps"
+        ],
+        "Requirements": "Enable DirectX 12 (SM6. Experimental) under Project Settings > Platforms - Windows and a compatible graphics card."
+      },
+      "GeographicLocation": "UE origin set to 73W, 45N, adaptable to actual location."
+    },
+    "CustomBlueprints": {
+      "BP_SimGameMode": {
+        "Components": [
+          "BP_SimPlayerController",
+          "BP_SimfloatingPawn"
+        ],
+        "Purpose": "Enhance default Controller and Pawn classes."
+      }
+    },
+    "SimulationPlayerController": {
+      "Description": "Controller with key shortcuts for player actions.",
+      "Actions": [
+        "Navigate with floating Pawn",
+        "Alternate between floating Pawn and Level Pawn",
+        "Control time of day",
+        "Display profiling and geospatial widgets"
+      ],
+      "Shortcuts": [
+        { "Key": "Enter", "Action": "Alternate between Floating Pawn and Level Pawn" },
+        { "Key": "Tab", "Action": "Switch to next controllable Pawn" },
+        { "Key": "Shift + Tab", "Action": "Switch to previous controllable Pawn" },
+        { "Key": "1 - 6", "Action": "Control specific Level Pawn" },
+        { "Key": "End", "Action": "Decrease Time of Day" },
+        { "Key": "Page Down", "Action": "Increase Time of Day" },
+        { "Key": "Insert", "Action": "Transition Time of Day to Dawn" },
+        { "Key": "Home", "Action": "Transition Time of Day to Noon" },
+        { "Key": "Page Up", "Action": "Transition Time of Day to Dusk" },
+        { "Key": "P", "Action": "Show/Hide Profiling Widget" },
+        { "Key": "G", "Action": "Show/Hide Geospatial Widget" }
+      ]
+    },
+    "Widgets": {
+      "GeospatialWidget": {
+        "Description": "Displays current Earth location in different coordinate systems.",
+        "CoordinateSystems": [
+          "Projected CRS",
+          "Geographic CRS (Lat/Long)",
+          "Geocentric (ECEF)"
+        ],
+        "Link": "Refer to Georeferencing a Level page."
+      },
+      "ProfilingWidget": {
+        "Description": "Debug utility for application performance profiling.",
+        "Counters": [
+          "FPS",
+          "Unit",
+          "Engine",
+          "SceneRendering",
+          "Game",
+          "GPU"
+        ],
+        "VSync": "Enable/Disable vertical sync",
+        "FPSCap": "Cap FPS to 30 or 60."
+      }
+    },
+    "SimulationFloatingPawn": {
+      "Description": "Improved Pawn with controllable navigation speed.",
+      "Controls": "Mouse wheel to adjust speed, click to reset."
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}

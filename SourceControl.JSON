@@ -1,0 +1,73 @@
+{
+  "Source_Control": {
+    "Overview": {
+      "Description": "Manage changes over time to code and data, enabling team coordination.",
+      "Supported_Systems": ["Perforce", "SVN"]
+    },
+    "Activating_Source_Control": {
+      "Methods": [
+        "Level Editor Preferences",
+        "Content Browser"
+      ],
+      "Editor_Preferences": {
+        "Path": "Edit > Editor Preferences > Loading & Saving",
+        "Options": [
+          {"Option": "Automatically Checkout on Asset Modification", "Description": "Auto-checkout modified assets."},
+          {"Option": "Prompt for Checkout on Package Modification", "Description": "Prompt for checkout on changes."},
+          {"Option": "Add New Files when Modified", "Description": "Add new files to source control on modification."},
+          {"Option": "Use Global Settings", "Description": "Use global login settings."},
+          {"Option": "Tool for diffing text", "Description": "File path for diffing text files."}
+        ]
+      },
+      "Content_Browser": {
+        "Steps": [
+          "Right-click any asset or folder.",
+          "In the Source Control section, click Connect to Source Control.",
+          "Enter information and click Accept Settings."
+        ],
+        "Result": "Assets display source-control status."
+      }
+    },
+    "Status_Icons": {
+      "Icons": [
+        {"Icon": "Checked out by you", "Description": "Asset checked out by you."},
+        {"Icon": "Checked out by another user", "Description": "Asset checked out by another user."},
+        {"Icon": "Marked for add", "Description": "Asset marked for addition."},
+        {"Icon": "Not in depot", "Description": "Asset not in depot."},
+        {"Icon": "Newer version exists", "Description": "Newer version available in source control."}
+      ]
+    },
+    "Source_Control_Actions": {
+      "Actions": [
+        {"Action": "Check Out", "Description": "Lock asset for editing."},
+        {"Action": "Refresh", "Description": "Refresh asset status."},
+        {"Action": "History", "Description": "View asset revision history."},
+        {"Action": "Diff Against Depot", "Description": "Compare with depot version."}
+      ]
+    },
+    "Checking_Out_and_In": {
+      "Check_Out": "Right-click asset and choose Check Out.",
+      "Check_In": [
+        "Right-click asset and choose Check In.",
+        "Enter changelist description.",
+        "Click OK to finish."
+      ]
+    },
+    "Content_Hot_Reloading": {
+      "Description": "Auto-reload content on modification via source control.",
+      "Manual_Reload": "Right-click asset and select Reload under Asset Actions."
+    },
+    "Deactivating_Source_Control": {
+      "Warning": "Only deactivate if certain, as it will desynchronize content.",
+      "Steps": [
+        "Click green double-arrow icon in Level Editor.",
+        "Click Run Without Source Control.",
+        "Green icon changes to red circle with slash."
+      ]
+    },
+    "Resources": {
+      "Forums": "Ask questions and help peers.",
+      "Learning_Library": "Write or read tutorials."
+    }
+  }
+}

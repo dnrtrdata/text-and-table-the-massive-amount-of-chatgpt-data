@@ -1,0 +1,664 @@
+{
+  "CodingStandard": {
+    "Description": "Adhere to Epic Games' coding standards for maintainable code.",
+    "Importance": [
+      "80% of software cost goes to maintenance.",
+      "Code is often maintained by others.",
+      "Conventions improve readability.",
+      "Understandable code for mod community.",
+      "Required for cross-compiler compatibility."
+    ]
+  },
+  "ClassOrganization": {
+    "Description": "Organize classes with the reader in mind.",
+    "Example": {
+      "Code": "class EXAMPLEPROJECT_API AExampleActor : public AActor",
+      "Body": [
+        "GENERATED_BODY()",
+        "public: AExampleActor();",
+        "protected: virtual void BeginPlay() override;"
+      ]
+    }
+  },
+  "CopyrightNotice": {
+    "Description": "Include copyright notice in public source files.",
+    "Format": "// Copyright Epic Games, Inc. All Rights Reserved."
+  },
+  "NamingConventions": {
+    "Description": "Use U.S. English spelling and grammar for names.",
+    "Rules": [
+      "Capitalize the first letter of each word.",
+      "Prefix type names with an additional uppercase letter.",
+      "Template classes prefixed by T.",
+      "Classes inheriting from UObject prefixed by U.",
+      "Classes inheriting from AActor prefixed by A.",
+      "Abstract interfaces prefixed by I.",
+      "Enums prefixed by E.",
+      "Boolean variables prefixed by b.",
+      "Typedefs prefixed appropriately."
+    ],
+    "Examples": {
+      "TypeName": "FSkin",
+      "InstanceName": "Skin",
+      "TemplateClass": "TAttribute",
+      "UObjectClass": "UActorComponent",
+      "ActorClass": "AActor",
+      "Enum": "EColorBits",
+      "BooleanVar": "bPendingDestruction"
+    }
+  },
+  "VariableMethodNames": {
+    "Description": "Ensure names are clear, unambiguous, and descriptive.",
+    "Guidelines": [
+      "Declare variables on their own line.",
+      "Comment on each variable.",
+      "Functions returning bool should ask true/false questions.",
+      "Procedure names should use a strong verb followed by an object.",
+      "Prefix function parameter names with 'Out' if passed by reference.",
+      "Boolean In/Out parameters prefixed with 'b'."
+    ],
+    "Examples": {
+      "BoolFunction": "bool IsVisible()",
+      "Procedure": "void ClearBuffer()",
+      "ParamPrefix": "bOutResult"
+    }
+  },
+  "InclusiveLanguage": {
+    "Description": "Use respectful, inclusive, and professional language.",
+    "Guidelines": [
+      "Avoid metaphors that reinforce stereotypes.",
+      "Avoid words referring to historical trauma.",
+      "Use 'they' for hypothetical people.",
+      "Refer to non-persons as 'it'.",
+      "Avoid gender assumptions.",
+      "Avoid slang and colloquialisms.",
+      "Be precise with overloaded words."
+    ],
+    "Examples": {
+      "Blacklist": "deny list",
+      "Whitelist": "allow list",
+      "Master": "primary",
+      "Slave": "secondary"
+    }
+  }
+}
+
+{
+  "PortableCppCode": {
+    "Description": "Guidelines for writing portable C++ code.",
+    "TypeSizes": {
+      "int": "varies in size across platforms, at least 32 bits",
+      "bool": "for boolean values, size not assumed",
+      "TCHAR": "for character, size not assumed",
+      "uint8": "unsigned byte, 1 byte",
+      "int8": "signed byte, 1 byte",
+      "uint16": "unsigned short, 2 bytes",
+      "int16": "signed short, 2 bytes",
+      "uint32": "unsigned int, 4 bytes",
+      "int32": "signed int, 4 bytes",
+      "uint64": "unsigned quad word, 8 bytes",
+      "int64": "signed quad word, 8 bytes",
+      "float": "single precision, 4 bytes",
+      "double": "double precision, 8 bytes",
+      "PTRINT": "integer holding a pointer, size not assumed"
+    }
+  },
+  "StandardLibraries": {
+    "AvoidanceReasons": [
+      "Replace slow implementations.",
+      "Add new functionality early.",
+      "Ensure consistent syntax.",
+      "Avoid incompatible constructs."
+    ],
+    "CurrentApproach": "Prefer standard library if superior, ensure consistency.",
+    "CommonIdioms": [
+      {
+        "Idiom": "atomic",
+        "Use": "for new code, migrate old code."
+      },
+      {
+        "Idiom": "type_traits",
+        "Use": "where overlap exists, prefer standard traits."
+      },
+      {
+        "Idiom": "initializer_list",
+        "Use": "support braced initializer syntax."
+      },
+      {
+        "Idiom": "regex",
+        "Use": "within editor-only code."
+      },
+      {
+        "Idiom": "numeric_limits",
+        "Use": "use entirely."
+      },
+      {
+        "Idiom": "cmath",
+        "Use": "all floating point functions."
+      },
+      {
+        "Idiom": "cstring",
+        "Use": "memcpy() and memset() for performance benefit."
+      }
+    ],
+    "ContainersAndStrings": "Avoid except in interop code."
+  },
+  "Comments": {
+    "Description": "Guidelines for writing comments.",
+    "SelfDocumentingCode": {
+      "BadExample": "t = s + l - b;",
+      "GoodExample": "TotalLeaves = SmallLeaves + LargeLeaves - SmallAndLargeLeaves;"
+    },
+    "UsefulComments": {
+      "BadExample": "// increment Leaves",
+      "GoodExample": "// we know there is another tea leaf"
+    },
+    "OverCommenting": {
+      "BadExample": "// total number of leaves is sum of\n// small and large leaves less the\n// number of leaves that are both\nt = s + l - b;",
+      "GoodExample": "TotalLeaves = SmallLeaves + LargeLeaves - SmallAndLargeLeaves;"
+    },
+    "ContradictingCode": {
+      "BadExample": "// never increment Leaves!\n++Leaves;",
+      "GoodExample": "// we know there is another tea leaf\n++Leaves;"
+    }
+  },
+  "ConstCorrectness": {
+    "Description": "Strive for const-correct code.",
+    "Guidelines": [
+      "Pass arguments by const pointer or reference if not modified.",
+      "Flag methods as const if they do not modify the object.",
+      "Use const iteration over containers if not modifying."
+    ],
+    "Examples": {
+      "MutatingOperation": "void SomeMutatingOperation(FThing& OutResult, const TArray<int32>& InArray)",
+      "NonMutatingOperation": "void FThing::SomeNonMutatingOperation() const",
+      "ByValueParams": "void AddSomeThings(const int32 Count)"
+    },
+    "SpecialCases": {
+      "PassByValue": "exception if moved into a container",
+      "PointerConst": "const T* Ptr = ...;",
+      "ReturnConst": {
+        "Bad": "const TArray<FString> GetSomeArray();",
+        "FineReference": "const TArray<FString>& GetSomeArray();",
+        "FinePointer": "const TArray<FString>* GetSomeArray();",
+        "BadPointer": "const TArray<FString>* const GetSomeArray();"
+      }
+    }
+  },
+  "ExampleFormatting": {
+    "Description": "Use JavaDoc-like system for comments.",
+    "ClassComments": {
+      "Include": [
+        "Description of the problem solved.",
+        "Reason for class creation."
+      ]
+    },
+    "MethodComments": {
+      "Include": [
+        "Function purpose.",
+        "Parameter comments.",
+        "Return comment.",
+        "Extra information: @warning, @note, @see, @deprecated."
+      ]
+    },
+    "ParameterStyles": {
+      "SteepMethod": "@param style for multi-line.",
+      "SweetenMethod": "Integrate parameter and return value in comment."
+    },
+    "CommentLocation": "Include method comments where publicly declared."
+  }
+}
+
+{
+  "ModernCppLanguageSyntax": {
+    "Description": "Guidelines for using modern C++ language features in Unreal Engine.",
+    "SupportedVersions": {
+      "Default": "C++20",
+      "Minimum": "C++17"
+    },
+    "GeneralGuidelines": {
+      "Compatibility": "Ensure features are compatible with all supported compilers.",
+      "PreprocessorConditionals": "Use preprocessor conditionals for features not universally supported."
+    },
+    "Keywords": {
+      "StaticAssert": "Use static_assert for compile-time assertions.",
+      "OverrideAndFinal": "Use override and final keywords, strongly encouraged.",
+      "Nullptr": "Use nullptr instead of NULL, except in C++/CX builds, use TYPE_OF_NULLPTR."
+    },
+    "AutoKeyword": {
+      "GeneralRule": "Avoid using auto, be explicit about types.",
+      "Exceptions": [
+        "Binding a lambda to a variable.",
+        "Iterator variables with verbose types.",
+        "Template code with indiscernible types."
+      ]
+    },
+    "RangeBasedFor": {
+      "Description": "Preferred for easier code readability and maintenance.",
+      "Example": {
+        "OldStyle": "for (auto It = MyMap.CreateIterator(); It; ++It) { ... }",
+        "NewStyle": "for (TPair<FString, int32>& Kvp : MyMap) { ... }"
+      }
+    },
+    "LambdasAndAnonymousFunctions": {
+      "Usage": "Use freely, keep short for readability.",
+      "Example": "Thing* HelloThing = ArrayOfThings.FindByPredicate([](const Thing& Th){ return Th.GetName().Contains(TEXT(\"Hello\")); });",
+      "ExplicitCaptures": "Use explicit captures for readability and performance."
+    },
+    "StronglyTypedEnums": {
+      "Description": "Use enum classes to replace old-style enums.",
+      "Example": {
+        "OldEnum": "namespace EThing { enum Type { Thing1, Thing2 }; }",
+        "NewEnum": "enum class EThing : uint8 { Thing1, Thing2 };"
+      },
+      "Flags": "Use ENUM_CLASS_FLAGS to define bitwise operators."
+    },
+    "MoveSemantics": {
+      "Description": "Main container types support move semantics, use MoveTemp.",
+      "Example": "MemberArray = MoveTemp(InNewArray);"
+    },
+    "DefaultMemberInitializers": {
+      "Usage": "Define defaults inside the class.",
+      "Example": "int32 MaximumNumberOfCupsPerDay = 10;",
+      "Benefits": [
+        "Avoids duplication across constructors.",
+        "Prevents mixing initialization order.",
+        "Combines type, flags, and values in one place."
+      ],
+      "Downsides": [
+        "Changes require rebuilding dependent files.",
+        "Limits patch release fixes.",
+        "Certain initializations are not possible."
+      ]
+    }
+  }
+}
+
+{
+  "ThirdPartyCode": {
+    "ModificationTagging": {
+      "Description": "Tag changes to third-party libraries with //@UE5 and an explanation.",
+      "Example": "// @third party code - BEGIN PhysX\n#include <physx.h>\n// @third party code - END PhysX"
+    }
+  },
+  "CodeFormatting": {
+    "Braces": {
+      "Description": "Place braces on a new line and use them for single-statement blocks.",
+      "Example": "if (bThing) {\n    return;\n}"
+    },
+    "IfElse": {
+      "Description": "Each block in if-else statements should use braces.",
+      "Example": "if (bHaveUnrealLicense) {\n    InsertYourGameHere();\n} else {\n    CallMarkRein();\n}"
+    },
+    "TabsAndIndenting": {
+      "Description": "Indent by execution block, use tabs for leading whitespace (tab size 4).",
+      "CSharpNote": "Use tabs, not spaces, for C# to maintain consistency with C++."
+    },
+    "SwitchStatements": {
+      "Description": "Label fall-through cases, always have a default case with a break.",
+      "Example": "switch (condition) {\n    case 1:\n        // falls through\n    case 2:\n        break;\n    default:\n        break;\n}"
+    },
+    "Namespaces": {
+      "Description": "Use namespaces to organize code, avoid global scope using declarations.",
+      "UECode": "Most UE code not in global namespace, use UE:: for new APIs.",
+      "HeaderTool": "Namespaces not supported by UnrealHeaderTool."
+    }
+  },
+  "PhysicalDependencies": {
+    "FileNames": {
+      "Description": "Avoid prefixes, use #pragma once for header guards.",
+      "Example": "#pragma once\n//<file contents>"
+    },
+    "Headers": {
+      "Description": "Minimize physical coupling, prefer forward declarations.",
+      "SpecificInclusions": "Include specific headers, not general ones like Core.h."
+    },
+    "Modules": {
+      "Description": "Separate public and private definitions into respective directories.",
+      "Example": "Public and Private directories in modules."
+    },
+    "Functions": {
+      "Description": "Split large functions into sub-functions, minimize inline functions.",
+      "FORCEINLINE": "Use FORCEINLINE conservatively to avoid build time issues."
+    }
+  },
+  "Encapsulation": {
+    "ProtectionKeywords": {
+      "Description": "Use protection keywords, prefer private members.",
+      "FinalClass": "Use final for classes not designed for inheritance."
+    }
+  },
+  "GeneralStyleIssues": {
+    "DependencyDistance": {
+      "Description": "Set variables near their usage to avoid accidental changes."
+    },
+    "MethodSplitting": {
+      "Description": "Split methods into sub-methods for better readability."
+    },
+    "FunctionDeclarations": {
+      "Description": "No space between function names and parentheses."
+    },
+    "CompilerWarnings": {
+      "Description": "Address compiler warnings, suppress only as a last resort."
+    },
+    "FileEndLine": {
+      "Description": "Include a blank line at the end of .cpp and .h files."
+    },
+    "DebugCode": {
+      "Description": "Ensure debug code is useful and polished, or don't check it in."
+    },
+    "StringLiterals": {
+      "Description": "Use TEXT() macro around string literals."
+    },
+    "LoopOptimizations": {
+      "Description": "Avoid redundant operations in loops, use statics where necessary."
+    },
+    "HotReload": {
+      "Description": "Minimize dependencies to reduce iteration time during hot reloads."
+    },
+    "IntermediateVariables": {
+      "Description": "Use intermediate variables to simplify complicated expressions.",
+      "Example": "const bool bIsLegalWindow = Blah->BlahP->WindowExists->Etc && Stuff;\nconst bool bIsPlayerDead = bPlayerExists && bGameStarted && bPlayerStillHasPawn && IsTuesday();\nif (bIsLegalWindow && !bIsPlayerDead) {\n    DoSomething();\n}"
+    },
+    "PointerAndReferenceSpacing": {
+      "Description": "One space to the right of pointers and references.",
+      "Example": "FShaderType* Ptr"
+    },
+    "ShadowedVariables": {
+      "Description": "Avoid shadowing variables from outer scopes.",
+      "Example": "int32 Count;"
+    },
+    "AnonymousLiterals": {
+      "Description": "Prefer named constants to describe the meaning.",
+      "Example": "const FName ObjectName = TEXT(\"Soldier\");\nconst float CooldownInSeconds = 5;\nconst bool bVulnerableDuringCooldown = true;\nTrigger(ObjectName, CooldownInSeconds, bVulnerableDuringCooldown);"
+    },
+    "StaticVariables": {
+      "Description": "Avoid defining non-trivial static variables in headers.",
+      "Example": "extern SOMEMODULE_API const FString GUsefulNamedString;"
+    }
+  },
+  "APIDesignGuidelines": {
+    "BooleanParameters": {
+      "Description": "Avoid boolean function parameters, prefer enums.",
+      "Example": "enum class ETeaFlags { None, Milk = 0x01, Sugar = 0x02, Honey = 0x04, Lemon = 0x08 };\nFCup* MakeCupOfTea(FTea* Tea, ETeaFlags Flags = ETeaFlags::None);"
+    },
+    "ParameterLists": {
+      "Description": "Avoid overly-long parameter lists, use a dedicated struct.",
+      "Example": "struct FTeaPartyParams { ... };\nTUniquePtr<FCup[]> MakeTeaForParty(const FTeaPartyParams& Params);"
+    },
+    "OverloadingFunctions": {
+      "Description": "Avoid overloading functions by bool and FString.",
+      "Example": "void Func(const FString& String);\nvoid Func(bool bBool);"
+    },
+    "InterfaceClasses": {
+      "Description": "Interface classes should be abstract and prefixed with 'I'."
+    },
+    "VirtualFunctions": {
+      "Description": "Use virtual and override keywords for overriding methods.",
+      "Example": "class A {\npublic:\n    virtual void F() {}\n};\nclass B : public A {\npublic:\n    virtual void F() override;\n}"
+    }
+  },
+  "PlatformSpecificCode": {
+    "Abstraction": {
+      "Description": "Abstract platform-specific code into platform-specific source files.",
+      "Example": "Engine/Platforms/[PLATFORM]/Source/Runtime/Core/Private/[PLATFORM]PlatformMemory.cpp"
+    },
+    "Defines": {
+      "Description": "Use platform property defines, avoid PLATFORM_[PLATFORM] outside platform-specific directories.",
+      "Example": "#ifndef PLATFORM_USE_PTHREADS\n    #define PLATFORM_USE_PTHREADS 1\n#endif\nWindowsPlatform.h has:\n#define PLATFORM_USE_PTHREADS 0"
+    }
+  }
+}
+
+{
+  "Objects": {
+    "Description": "Basic gameplay elements, Actors, and Objects in Unreal Engine.",
+    "BaseClass": "UObject",
+    "UCLASSMacro": {
+      "Description": "Tags classes derived from UObject to integrate with Unreal's system.",
+      "Details": [
+        "UCLASS provides a reference to a UCLASS describing its type.",
+        "Each UCLASS maintains a Class Default Object (CDO).",
+        "UCLASS and CDO are read-only and can be accessed via GetClass().",
+        "Contains properties and functions with Unreal-specific metadata."
+      ]
+    },
+    "PropertiesAndFunctions": {
+      "Description": "Member variables (properties) or functions must be marked with macros for Unreal recognition.",
+      "Reference": "Refer to Properties and UFunctions reference pages for details."
+    },
+    "UObjectCreation": {
+      "Description": "UObjects are initialized at engine startup, no constructor arguments supported.",
+      "Constructors": [
+        "Should be lightweight, setting up default values and subobjects.",
+        "Use BeginPlay() for initialization in Actors and Actor Components."
+      ],
+      "Methods": [
+        "NewObject<class>: Creates a new instance with optional parameters.",
+        "CreateDefaultSubobject<class>: Creates a component or subobject."
+      ],
+      "MemoryManagement": [
+        "UObjects should not use new operator.",
+        "Memory managed by Unreal Engine and garbage collected."
+      ]
+    },
+    "FunctionalityProvided": {
+      "Benefits": [
+        "Garbage collection",
+        "Reference updating",
+        "Reflection",
+        "Serialization",
+        "Automatic updating of default property changes",
+        "Automatic property initialization",
+        "Automatic editor integration",
+        "Runtime type information",
+        "Network replication"
+      ],
+      "UStructs": "Similar benefits, considered value types, not garbage collected."
+    },
+    "UnrealHeaderTool": {
+      "Description": "Preprocessing step required for UObject-derived types, performed by UnrealHeaderTool (UHT).",
+      "HeaderFileFormat": {
+        "Example": [
+          "#pragma once",
+          "#include 'Object.h'",
+          "#include 'MyObject.generated.h'",
+          "UCLASS()",
+          "class MYPROJECT_API UMyObject : public UObject { GENERATED_BODY() };"
+        ],
+        "Details": [
+          "Last #include directive should be MyObject.generated.h.",
+          "UCLASS macro makes the class visible to Unreal Engine.",
+          "MYPROJECT_API necessary for exposing the class to other modules.",
+          "GENERATED_BODY macro sets up class infrastructure."
+        ]
+      }
+    },
+    "UpdatingObjects": {
+      "Description": "Ticking refers to how Objects are updated.",
+      "Actors": "Tick automatically, can set minimum intervals.",
+      "UObjects": "No built-in update ability, can inherit from FTickableGameObject to implement Tick()."
+    },
+    "DestroyingObjects": {
+      "Description": "Handled by garbage collection when no longer referenced.",
+      "MarkPendingKill": "Sets all pointers to NULL, removes from global searches, deleted on next garbage collection pass.",
+      "SmartPointers": "Not intended for use with UObjects."
+    },
+    "GarbageCollection": {
+      "Details": [
+        "Obj->MarkAsGarbage() tracks stale objects, if gc.PendingKillEnabled=true, objects will be nulled and destroyed.",
+        "Strong references keep UObjects alive; use weak pointers or manually clear references.",
+        "IsValid() checks if object is null or garbage.",
+        "MarkGarbage() flags object for destruction, not garbage collected until all references are released."
+      ]
+    }
+  }
+}
+
+{
+  "UObjectInstanceCreation": {
+    "Description": "Methods for creating new instances of Objects in gameplay code.",
+    "NewObject": {
+      "Description": "Simplest UObject factory method, creates a new instance with an automatically generated name.",
+      "Template": "template< class T > T* NewObject ( UObject* Outer=(UObject*)GetTransientPackage(), UClass* Class=T::StaticClass() )",
+      "Parameters": {
+        "Outer": "Optional UObject to set as the Outer for the Object being created.",
+        "Class": "Optional UClass specifying the class of the Object to be created."
+      },
+      "ReturnValue": "Pointer to the spawned instance of the specified class."
+    },
+    "NewNamedObject": {
+      "Description": "Expands on NewObject() by allowing a name, Object Flags, and a template object.",
+      "Template": "template< class TClass > TClass* NewNamedObject ( UObject* Outer, FName Name, EObjectFlags Flags = RF_NoFlags, UObject const* Template=NULL )",
+      "Parameters": {
+        "Outer": "UObject to set as the Outer for the Object being created.",
+        "Name": "FName to set as the Name for the new Object.",
+        "Flags": "Optional FObjectFlags enum value describing the new Object.",
+        "Template": "Optional UObject to use as a template when creating the new Object."
+      },
+      "ReturnValue": "Pointer to the spawned instance of the specified class."
+    },
+    "ConstructObject": {
+      "Description": "Provides complete flexibility, calls StaticConstructObject(), allocates the Object, executes ClassConstructor, and performs initialization.",
+      "Template": "template< class T > T* ConstructObject ( UClass* Class, UObject* Outer = (UObject*)GetTransientPackage(), FName Name=NAME_None, EObjectFlags SetFlags=RF_NoFlags, UObject const* Template=NULL, bool bCopyTransientsFromClassDefaults=false, struct FObjectInstancingGraph* InstanceGraph=NULL )",
+      "Parameters": {
+        "Class": "UClass specifying the class of the Object to be created.",
+        "Outer": "Optional UObject to set as the Outer for the Object being created.",
+        "Name": "Optional FName to set as the Name for the new Object.",
+        "SetFlags": "Optional EObjectFlags enum value describing the new Object.",
+        "Template": "Optional UObject to use as a template when creating the new Object.",
+        "bCopyTransientsFromClassDefaults": "Optional bool to copy transient properties from class default object.",
+        "FObjectInstancingGraph": "Optional struct containing mappings of instanced objects and components to their templates."
+      },
+      "ReturnValue": "Pointer to the spawned instance of the specified class."
+    },
+    "ObjectFlags": {
+      "Description": "Enumeration used to describe an Object, including type, garbage collection handling, and lifecycle stage.",
+      "Flags": [
+        {
+          "Name": "RF_Public",
+          "Value": "0x00000001",
+          "Description": "Object is visible outside of its package."
+        },
+        {
+          "Name": "RF_Standalone",
+          "Value": "0x00000002",
+          "Description": "Object is kept for editing even if unreferenced."
+        },
+        {
+          "Name": "RF_Native",
+          "Value": "0x00000004",
+          "Description": "Object is native, used for UClass objects."
+        },
+        {
+          "Name": "RF_Transactional",
+          "Value": "0x00000008",
+          "Description": "Object is transactional."
+        },
+        {
+          "Name": "RF_ClassDefaultObject",
+          "Value": "0x00000010",
+          "Description": "Object is the default template for its class."
+        },
+        {
+          "Name": "RF_ArchetypeObject",
+          "Value": "0x00000020",
+          "Description": "Object is a template for another object."
+        },
+        {
+          "Name": "RF_Transient",
+          "Value": "0x00000040",
+          "Description": "Object is not saved to disk."
+        },
+        {
+          "Name": "RF_RootSet",
+          "Value": "0x00000080",
+          "Description": "Object is not garbage collected even if unreferenced."
+        },
+        {
+          "Name": "RF_IsLazyReferenced",
+          "Value": "0x00000100",
+          "Description": "Object is referenced by a lazy pointer."
+        },
+        {
+          "Name": "RF_Unreachable",
+          "Value": "0x00000200",
+          "Description": "Object is not reachable on the object graph."
+        },
+        {
+          "Name": "RF_TagGarbageTemp",
+          "Value": "0x00000400",
+          "Description": "Object marked for use by utilities using garbage collection."
+        },
+        {
+          "Name": "RF_NeedLoad",
+          "Value": "0x00000800",
+          "Description": "Object needs loading."
+        },
+        {
+          "Name": "RF_AsyncLoading",
+          "Value": "0x00001000",
+          "Description": "Object is being loaded asynchronously."
+        },
+        {
+          "Name": "RF_NeedPostLoad",
+          "Value": "0x00002000",
+          "Description": "Object needs to be post-loaded."
+        },
+        {
+          "Name": "RF_NeedPostLoadSubobjects",
+          "Value": "0x00004000",
+          "Description": "Object needs to instance sub-objects and fix up references."
+        },
+        {
+          "Name": "RF_PendingKill",
+          "Value": "0x00008000",
+          "Description": "Object is pending destruction."
+        },
+        {
+          "Name": "RF_BeginDestroyed",
+          "Value": "0x00010000",
+          "Description": "BeginDestroy() has been called on the Object."
+        },
+        {
+          "Name": "RF_FinishDestroyed",
+          "Value": "0x00020000",
+          "Description": "FinishDestroy() has been called on the Object."
+        },
+        {
+          "Name": "RF_AllFlags",
+          "Value": "0x0003ffff",
+          "Description": "Object has all flags, used for error checking."
+        },
+        {
+          "Name": "RF_NoFlags",
+          "Value": "0x00000000",
+          "Description": "Object has no flags, used to avoid a cast."
+        }
+      ],
+      "PredefinedGroups": [
+        {
+          "Name": "RF_Load",
+          "Flags": [
+            "RF_Public",
+            "RF_Standalone",
+            "RF_Native",
+            "RF_Transactional",
+            "RF_ClassDefaultObject",
+            "RF_ArchetypeObject"
+          ],
+          "Description": "Flags loaded from Unreal files."
+        },
+        {
+          "Name": "RF_PropagateToSubobjects",
+          "Flags": [
+            "RF_Public",
+            "RF_ArchetypeObject",
+            "RF_Transactional"
+          ],
+          "Description": "Flags inherited by sub-objects from their super-objects."
+        }
+      ]
+    }
+  }
+}

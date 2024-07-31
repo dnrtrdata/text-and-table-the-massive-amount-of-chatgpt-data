@@ -1,0 +1,264 @@
+{
+  "Installing_Unreal_Engine": {
+    "Prerequisite_Topics": [
+      "Hardware and Software Specifications"
+    ],
+    "Description": "How to download and install Unreal Engine.",
+    "Steps": [
+      "Download and install Epic Games Launcher.",
+      "Sign up/sign in to Epic Games account.",
+      "Install Unreal Engine."
+    ],
+    "Download_and_Install_Launcher": {
+      "Steps": [
+        "Go to Download Unreal Engine page.",
+        "Select license type: Publishing or Creators.",
+        "Click DOWNLOAD NOW for selected license.",
+        "Run the installer after download completes."
+      ]
+    },
+    "Create_Epic_Games_Account": {
+      "Steps": [
+        "Sign in if you have an account.",
+        "Sign up if you don't have an account.",
+        "Sign In to the Launcher."
+      ]
+    },
+    "Install_Unreal_Engine": {
+      "Steps": [
+        "Click Unreal Engine tab in Launcher.",
+        "Click Install Engine button.",
+        "(Optional) Change install path.",
+        "Select components: Platform support, Starter content, Debug symbols, Engine source code.",
+        "Click Install and wait."
+      ]
+    },
+    "Launch_Unreal_Engine": {
+      "Steps": [
+        "Click Launch button after install completes."
+      ]
+    },
+    "Changing_Installation_Location": {
+      "Steps": [
+        "Click Add (+) button in Launcher.",
+        "Select version and location (empty folder).",
+        "(Optional) Configure components.",
+        "Start then cancel the installation.",
+        "Move files to new location.",
+        "Resume installation in Launcher."
+      ]
+    }
+  }
+}
+{
+  "Hardware_and_Software_Specifications": {
+    "Description": "Minimum and recommended hardware specifications and necessary software for Unreal Engine.",
+    "Recommended_Hardware": {
+      "Operating_System": "Windows 10 64-bit version 1909 revision .1350 or higher",
+      "Processor": "Quad-core Intel or AMD, 2.5 GHz or faster",
+      "Video_RAM": "8 GB RAM",
+      "Graphics_Card": "DirectX 11 or 12 compatible"
+    },
+    "Minimum_Software_Requirements": {
+      "Running_the_Engine": {
+        "Operating_System": "Windows 10 version 1703",
+        "DirectX_Runtime": "DirectX End-User Runtimes (June 2010)"
+      },
+      "Developing_with_the_Engine": {
+        "Visual_Studio_Version": "Visual Studio 2022",
+        "iOS_App_Development": {
+          "iTunes_Version": "iTunes 12 or higher"
+        }
+      }
+    },
+    "Prerequisite_Installer": {
+      "Description": "Installs necessary components like DirectX and Visual C++.",
+      "Location": "Engine/Extras/Redist/en-us"
+    },
+    "Graphics_Card_Drivers": {
+      "NVIDIA": "Download NVIDIA drivers here",
+      "AMD": "Download AMD drivers here",
+      "Intel": "Download Intel drivers here"
+    },
+    "Performance_Notes": {
+      "Example_System": {
+        "Operating_System": "Windows 10 22H2",
+        "Power_Supply": "1000W",
+        "RAM": "128GB DDR4-3200",
+        "Processor": "AMD Ryzen Threadripper Pro 3975WX",
+        "OS_Drive": "1 TB M.2 NVMe SSD",
+        "Data_Drive": "4 TB Raid Array (2 x 2TB NVMe SSD in Raid 0)",
+        "GPU": "Nvidia RTX 3080",
+        "NIC": "1GBPS on-board + Intel X550-T1 10G PCI-e"
+      },
+      "Compiling": "12 to 16 cores recommended without Xoreax Incredibuild."
+    },
+    "UE5_Rendering_Features": {
+      "Lumen_Global_Illumination_and_Reflections": {
+        "Software_Ray_Tracing": "DirectX 11 with Shader Model 5",
+        "Hardware_Ray_Tracing": {
+          "OS": "Windows 10 build 1909.1350 and newer",
+          "Graphics_Cards": [
+            "NVIDIA RTX-2000 series or newer",
+            "AMD RX-6000 series or newer",
+            "Intel Arc A-Series or newer"
+          ],
+          "Setting": "SM6 enabled in Project Settings"
+        }
+      },
+      "Nanite_Virtualized_Geometry": {
+        "OS": "Windows 10 build 1909.1350 or newer, Windows 11 with DirectX 12",
+        "DirectX": "DirectX 12 with Shader Model 6.6"
+      },
+      "Virtual_Shadow_Maps": {
+        "OS": "Windows 10 build 1909.1350 or newer, Windows 11 with DirectX 12",
+        "DirectX": "DirectX 12 with Shader Model 6.6"
+      },
+      "Temporal_Super_Resolution": {
+        "Shader_Model": "Shader Model 5",
+        "Setting": "16bit types enabled on D3D12 with Shader Model 6"
+      }
+    }
+  }
+}
+{
+  "MultipleLauncherInstalls": {
+    "Overview": {
+      "Description": "Instructions for enabling Launcher's PCB Mode and adding a Windows Registry Install Path Override.",
+      "Purpose": "Simplify installation and maintenance of Epic Games Launcher and Unreal Engine on multiple computers.",
+      "SupportedOS": "Windows only"
+    },
+    "LauncherPCBMode": {
+      "StorageLocation": "ProgramData folder (%programdata%\\Epic or C:\\ProgramData\\Epic)",
+      "Purpose": "Simplify installation workflow by storing program data in the install folder.",
+      "Steps": [
+        "Install the Launcher on the original computer.",
+        "Close the Launcher.",
+        "Move the Epic folder to the Launcher's install directory (e.g., C:\\Program Files (x86)\\Epic Games\\Launcher).",
+        "Install engines on new computers using the Launcher.",
+        "Copy the Launcher's and Engine's install directory to new computers."
+      ],
+      "DisablingPCBMode": {
+        "Steps": [
+          "Close the Launcher.",
+          "Move the Epic folder back to ProgramData directory.",
+          "Restart the Launcher."
+        ],
+        "Note": "Moving the folder retains manifest files."
+      }
+    },
+    "WindowsRegistryInstallPathOverride": {
+      "Purpose": "Specify registry install path override for different install paths or drive letters.",
+      "RegistryLocations": [
+        "HKEY_LOCAL_MACHINE\\SOFTWARE\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_CURRENT_USER\\SOFTWARE\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_CURRENT_USER\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher\\Overrides"
+      ],
+      "StepsToAddOverride": [
+        "Type 'regedit' in the taskbar search bar.",
+        "Open the Registry Editor.",
+        "Navigate to HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher.",
+        "Create a new Subkey named 'Overrides'.",
+        "Create a new Subkey under 'Overrides' named 'UE_(Engine Version)'.",
+        "Create a new String Value named 'InstallLocation'.",
+        "Set the data value for 'InstallLocation' to the new path (e.g., C:\\Epic Games\\UE_5.0).",
+        "Restart the Launcher to apply changes."
+      ]
+    }
+  }
+}
+{
+  "MultipleLauncherInstalls": {
+    "Overview": {
+      "Description": "How to enable Launcher's PCB Mode and add a Windows Registry Install Path Override.",
+      "Purpose": "Simplify the installation and maintenance of Epic Games Launcher and Unreal Engine on multiple computers.",
+      "SupportedOS": "Windows only"
+    },
+    "LauncherPCBMode": {
+      "StorageLocation": "ProgramData folder (%programdata%\\Epic or C:\\ProgramData\\Epic)",
+      "Purpose": "Simplify workflow by storing program data in the install folder.",
+      "Steps": [
+        "Install the Launcher on the original computer.",
+        "Close the Launcher.",
+        "Move Epic folder to the Launcher's install directory (e.g., C:\\Program Files (x86)\\Epic Games\\Launcher).",
+        "Install engines on new computers using the Launcher.",
+        "Copy Launcher's and Engine's install directory to new computers."
+      ],
+      "DisablingPCBMode": {
+        "Steps": [
+          "Close the Launcher.",
+          "Move the Epic folder back to ProgramData directory.",
+          "Restart the Launcher."
+        ],
+        "Note": "Moving the folder retains manifest files."
+      }
+    },
+    "WindowsRegistryInstallPathOverride": {
+      "Purpose": "Specify registry install path override for different install paths or drive letters.",
+      "RegistryLocations": [
+        "HKEY_LOCAL_MACHINE\\SOFTWARE\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_CURRENT_USER\\SOFTWARE\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_CURRENT_USER\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher\\Overrides"
+      ],
+      "StepsToAddOverride": [
+        "Type 'regedit' in the taskbar search bar.",
+        "Open the Registry Editor.",
+        "Navigate to HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher.",
+        "Create a new Subkey named 'Overrides'.",
+        "Create a new Subkey under 'Overrides' named 'UE_(Engine Version)'.",
+        "Create a new String Value named 'InstallLocation'.",
+        "Set the data value for 'InstallLocation' to the new path (e.g., C:\\Epic Games\\UE_5.0).",
+        "Restart the Launcher to apply changes."
+      ]
+    }
+  }
+}
+{
+  "MultipleLauncherInstalls": {
+    "Overview": {
+      "Description": "How to enable Launcher's PCB Mode and add a Windows Registry Install Path Override.",
+      "Purpose": "Simplify installation and maintenance of Epic Games Launcher and Unreal Engine on multiple computers.",
+      "SupportedOS": "Windows only"
+    },
+    "LauncherPCBMode": {
+      "StorageLocation": "ProgramData folder (%programdata%\\Epic or C:\\ProgramData\\Epic)",
+      "Purpose": "Simplify workflow by storing program data in the install folder.",
+      "Steps": [
+        "Install the Launcher on the original computer.",
+        "Close the Launcher.",
+        "Move Epic folder to Launcher's install directory (e.g., C:\\Program Files (x86)\\Epic Games\\Launcher).",
+        "Install engines on new computers using the Launcher.",
+        "Copy Launcher's and Engine's install directory to new computers."
+      ],
+      "DisablingPCBMode": {
+        "Steps": [
+          "Close the Launcher.",
+          "Move the Epic folder back to ProgramData directory.",
+          "Restart the Launcher."
+        ],
+        "Note": "Moving the folder retains manifest files."
+      }
+    },
+    "WindowsRegistryInstallPathOverride": {
+      "Purpose": "Specify registry install path override for different install paths or drive letters.",
+      "RegistryLocations": [
+        "HKEY_LOCAL_MACHINE\\SOFTWARE\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_CURRENT_USER\\SOFTWARE\\Epic Games\\EpicGamesLauncher\\Overrides",
+        "HKEY_CURRENT_USER\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher\\Overrides"
+      ],
+      "StepsToAddOverride": [
+        "Type 'regedit' in the taskbar search bar.",
+        "Open the Registry Editor.",
+        "Navigate to HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Epic Games\\EpicGamesLauncher.",
+        "Create a new Subkey named 'Overrides'.",
+        "Create a new Subkey under 'Overrides' named 'UE_(Engine Version)'.",
+        "Create a new String Value named 'InstallLocation'.",
+        "Set the data value for 'InstallLocation' to the new path (e.g., C:\\Epic Games\\UE_5.0).",
+        "Restart the Launcher to apply changes."
+      ]
+    }
+  }
+}

@@ -1,0 +1,548 @@
+{
+  "LevelEditorToolbar": {
+    "Description": "Collection of commands providing quick access to tools and operations.",
+    "Sections": [
+      {
+        "Title": "ToolbarPanel",
+        "Description": "Provides quick access to tools and operations.",
+        "Commands": [
+          {
+            "Command": "Save",
+            "Description": "Save the current level."
+          },
+          {
+            "Command": "Modes",
+            "Description": "Display Editor Modes options menu."
+          },
+          {
+            "Command": "QuicklyAdd",
+            "Description": "Shortcuts for adding and opening content."
+          },
+          {
+            "Command": "View",
+            "Description": "Open Settings menu for selection, editing, and previewing options."
+          },
+          {
+            "Command": "Blueprints",
+            "Description": "Access options to create or edit Blueprints."
+          },
+          {
+            "Command": "Cinematics",
+            "Description": "Create a new level or master sequence."
+          },
+          {
+            "Command": "PlayIn",
+            "Description": "Start the game in play mode with Play Options menu."
+          },
+          {
+            "Command": "Launch",
+            "Description": "Launch current map on supported platforms."
+          }
+        ]
+      },
+      {
+        "Title": "BottomToolbar",
+        "Description": "Shortcuts to Command Console, Output Log, Derived Data, and source control status.",
+        "Commands": [
+          {
+            "Command": "OutputLog",
+            "Description": "Debugging tool for printing application information."
+          },
+          {
+            "Command": "CommandConsole",
+            "Description": "Enter console commands for specific editor behaviors."
+          },
+          {
+            "Command": "DerivedData",
+            "Description": "Provides Derived Data functionality."
+          },
+          {
+            "Command": "SourceControl",
+            "Description": "Connect to or assign Source Control solution."
+          }
+        ]
+      }
+    ]
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "QuickSettings": {
+    "Description": "Configure selection, editing, and preview in the Level Viewport.",
+    "Menu": "Settings menu in the Level Editor Toolbar controls selecting, editing, and previewing in the Level Viewport.",
+    "Groups": [
+      {
+        "Name": "Selection",
+        "Options": [
+          {
+            "Option": "Allow Translucent Selection",
+            "Description": "Select Actors with translucent Materials."
+          },
+          {
+            "Option": "Allow Group Selection",
+            "Description": "Selects the whole group when selecting an Actor in a group."
+          },
+          {
+            "Option": "Strict Box Selection",
+            "Description": "Actor must be completely within the selection box."
+          },
+          {
+            "Option": "Box Select Occluded Objects",
+            "Description": "Selects objects occluded by other objects."
+          },
+          {
+            "Option": "Show Transform Widget",
+            "Description": "Toggles Transform widget visibility."
+          }
+        ]
+      },
+      {
+        "Name": "Scalability",
+        "Options": [
+          {
+            "Option": "Engine Scalability Settings",
+            "Description": "Controls fidelity of rendering features."
+          },
+          {
+            "Option": "Material Quality Level",
+            "Description": "Sets Material quality level for previewing."
+          },
+          {
+            "Option": "Preview Rendering Level",
+            "Description": "Sets rendering level used by the editor."
+          }
+        ]
+      },
+      {
+        "Name": "RealTimeAudio",
+        "Options": [
+          {
+            "Option": "Volume",
+            "Description": "Controls volume of Level audio in realtime."
+          }
+        ]
+      },
+      {
+        "Name": "Snapping",
+        "Options": [
+          {
+            "Option": "Enable Actor Snapping",
+            "Description": "Actors snap to location of other Actors."
+          },
+          {
+            "Option": "Distance",
+            "Description": "Sets distance for snapping."
+          },
+          {
+            "Option": "Enable Socket Snapping",
+            "Description": "Actors can snap to sockets."
+          },
+          {
+            "Option": "Enable Vertex Snapping",
+            "Description": "Actors snap to nearest vertex on another Actor."
+          },
+          {
+            "Option": "Enable Planar Snapping",
+            "Description": "Actors snap to nearest location on constraint plane."
+          }
+        ]
+      },
+      {
+        "Name": "Viewport",
+        "Options": [
+          {
+            "Option": "Hide Viewport UI",
+            "Description": "Hides Viewport toolbar and UI widgets."
+          }
+        ]
+      },
+      {
+        "Name": "Previewing",
+        "Options": [
+          {
+            "Option": "Draw Brush Polys",
+            "Description": "Renders semi-translucent polygons for CSG brush faces."
+          },
+          {
+            "Option": "Only Load Visible Levels in Game Preview",
+            "Description": "Loads only visible levels in game preview."
+          },
+          {
+            "Option": "Enable Particle System LOD Switching",
+            "Description": "Uses distance LOD switching for particle systems."
+          },
+          {
+            "Option": "Toggle Particle System Helpers",
+            "Description": "Shows particle system helpers."
+          },
+          {
+            "Option": "Freeze Particle Simulation",
+            "Description": "Freezes particle systems' simulation state."
+          },
+          {
+            "Option": "Enable LOD View Locking",
+            "Description": "Viewports use the same LOD."
+          },
+          {
+            "Option": "Enable Automatic Level Streaming",
+            "Description": "Streams in levels automatically when the camera moves."
+          }
+        ]
+      }
+    ]
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "Outliner": {
+    "Description": "Hierarchical tree view of all Actors within the current Level for selection, attachment, and more.",
+    "Panel": {
+      "Purpose": "Displays all Actors within the scene in a hierarchical tree view.",
+      "Functions": [
+        "Select and modify Actors",
+        "Search and filter Actors by name, type, and other characteristics",
+        "Use advanced search operators to refine Actor searches",
+        "Customize displayed Actor information"
+      ],
+      "DefaultDock": "Right side of the Unreal Editor window",
+      "Instances": {
+        "MaxInstances": 4,
+        "Switching": "Right-click the Outliner tab or go to Window > Outliner"
+      }
+    },
+    "Actions": {
+      "Select": {
+        "Action": "Left-click",
+        "Description": "Selects the Actor."
+      },
+      "ContextMenu": {
+        "Action": "Right-click",
+        "Description": "Displays context menu for quick modifications."
+      },
+      "Attach": {
+        "Action": "Left-click and drag",
+        "Description": "Attaches the Actor being dragged to another Actor."
+      },
+      "Focus": {
+        "Action": "F keyboard shortcut",
+        "Description": "Focuses the selected Actor in the Viewport or Outliner."
+      }
+    },
+    "SearchAndFilter": {
+      "SearchBox": "Search and filter Actors in the scene.",
+      "DefaultSearch": "Displays all Actors with a partial match to the search term.",
+      "AdvancedSearchOperators": [
+        {
+          "Operator": "-",
+          "Action": "Excludes Actors that match a specific term.",
+          "Example": "-Sky"
+        },
+        {
+          "Operator": "+",
+          "Action": "Forces an exact match.",
+          "Example": "+Sky"
+        }
+      ],
+      "CustomFilters": "Save and access custom filters globally across all streams and projects."
+    },
+    "Filters": "Work similarly to Asset filtering in the Content Browser.",
+    "Customization": {
+      "Columns": {
+        "ContextMenu": "Right-click column header to show/hide columns.",
+        "Resize": "Left-click and drag edge of column header."
+      },
+      "AlwaysFrameSelection": "Toggles automatic scrolling to selected Actor in the Viewport."
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "MapCheckErrors": {
+    "Description": "Descriptions of errors generated during map builds or running a map check in Unreal Editor.",
+    "Mechanism": "Alerts you to potential problems in the form of map check errors and warnings.",
+    "PerformingMapCheck": "Displayed after a map build or via the Map Check option in the Level Editor Toolbar's Build menu.",
+    "ErrorTypes": {
+      "Errors": {
+        "Description": "Critical problems that can cause execution failure.",
+        "Examples": [
+          {
+            "Category": "Lighting",
+            "Error": "[LightActor] has same light GUID as [LightActor]",
+            "Fix": "Duplicate and replace the original with the new one."
+          }
+        ]
+      },
+      "Warnings": {
+        "Description": "Issues that may cause improper functionality or performance but are not critical.",
+        "Examples": [
+          {
+            "Category": "Actor",
+            "Warning": "[Actor] : Large Actor casts a shadow and will cause an extreme performance hit unless bUseBooleanEnvironmentShadowing is set to true",
+            "Fix": "Set bUseBooleanEnvironmentShadowing to true."
+          },
+          {
+            "Warning": "[Volume] causes damage, but has no damagetype defined.",
+            "Fix": "Set the 'DamageType' property in the Actor's Property Window->Physics Volume."
+          },
+          {
+            "Warning": "[Actor] : Brush has non-coplanar polygons",
+            "Fix": "Delete and recreate the brush."
+          },
+          {
+            "Warning": "[Actor] in same location as [Another Actor]",
+            "Fix": "Delete one of the Actors or disregard if intentional."
+          },
+          {
+            "Warning": "[Actor] has invalid DrawScale/DrawScale3D",
+            "Fix": "Change any DrawScale's that are zero to be non-zero."
+          },
+          {
+            "Warning": "[Actor] is obsolete and must be removed!",
+            "Fix": "Delete the deprecated Actor."
+          },
+          {
+            "Warning": "[Actor] bStatic true, but has Physics set to something other than PHYS_None!",
+            "Fix": "Change Physics to PHYS_None."
+          },
+          {
+            "Warning": "[Actor] : Volume Actor has NULL collision component - please delete",
+            "Fix": "Delete the volume Actor."
+          },
+          {
+            "Warning": "[Actor] : Volume Actor has a collision component with 0 radius - please delete",
+            "Fix": "Delete the volume Actor."
+          },
+          {
+            "Warning": "[Actor] (LOD [Index]) has hand-painted vertex colors that no longer match the original StaticMesh [StaticMesh]",
+            "Fix": "Refresh the vertex colors."
+          },
+          {
+            "Warning": "[Actor] has collision enabled but StaticMesh [StaticMeshName] has no simple or complex collision.",
+            "Fix": "Set Collision Enabled to No Collision or add collision to the mesh."
+          },
+          {
+            "Warning": "Actor casts dynamic shadows and has a BoundsScale greater than 1!",
+            "Fix": "Reduce BoundsScale or remove dynamic shadows."
+          },
+          {
+            "Warning": "[ActorName] has WorldTrace blocked. It will be considered to be world geometry"
+          }
+        ]
+      },
+      "BSPBrush": {
+        "Warnings": [
+          {
+            "Warning": "[Brush Actor] : Brush has zero polygons - please delete!",
+            "Fix": "Delete the brush."
+          },
+          {
+            "Warning": "Run 'Clean BSP Materials' to clear [count] references"
+          },
+          {
+            "Warning": "[Actor] : Brush has NULL BrushComponent property - please delete!",
+            "Fix": "Delete the brush and create a new one."
+          },
+          {
+            "Warning": "[Brush] : Brush is planar"
+          }
+        ]
+      },
+      "Camera": {
+        "Warnings": [
+          {
+            "Warning": "Camera has AspectRatio=0 - please set this to something non-zero",
+            "Fix": "Set AspectRatio to a non-zero value."
+          }
+        ]
+      },
+      "Class": {
+        "Warnings": [
+          {
+            "Warning": "[ ]::[ ] is obsolete and must be removed (Class is abstract)"
+          },
+          {
+            "Warning": "[ ]::[ ] is obsolete and must be removed (Class is deprecated)"
+          }
+        ]
+      },
+      "Foliage": {
+        "Warnings": [
+          {
+            "Warning": "Foliage instances for a missing Static Mesh have been removed."
+          },
+          {
+            "Warning": "Foliage in this map is missing [MissingCount] cluster component(s) for Static Mesh [MeshName]. Opening the Foliage tool will fix this problem."
+          }
+        ]
+      },
+      "Landscape": {
+        "Warnings": [
+          {
+            "Warning": "[LandscapeComponent] : Fixed up deleted layer weightmap"
+          },
+          {
+            "Warning": "[LandscapeComponent] : Fixed up incorrect layer weightmap texture index"
+          },
+          {
+            "Warning": "Fixed up shared weightmap texture for layer [Layer] in component [Component] (shares with [Name])"
+          },
+          {
+            "Warning": "Landscape ([ProxyName]) has overlapping render components at location ([X,Y])"
+          }
+        ]
+      },
+      "Level": {
+        "Warnings": [
+          {
+            "Warning": "Duplicate level info"
+          },
+          {
+            "Warning": "Two WorldInfos somehow exist..."
+          },
+          {
+            "Warning": "Map should have KillZ set.",
+            "Fix": "Specify a KillZ appropriate for the level."
+          }
+        ]
+      },
+      "Lighting": {
+        "Warnings": [
+          {
+            "Warning": "[Actor] : Light Actor has NULL LightComponent property - please delete!",
+            "Fix": "Delete the Light Actor and create a new one."
+          },
+          {
+            "Warning": "Maps need lighting rebuilt",
+            "Fix": "Rebuild lighting for the map."
+          },
+          {
+            "Warning": "Component is a static type but has invalid lightmap settings! Indirect lighting will be black. Common causes are lightmap resolution of 0, LightmapCoordinateIndex out of bounds."
+          }
+        ]
+      },
+      "Navigation": {
+        "Warnings": [
+          {
+            "Warning": "Paths need to be rebuilt"
+          }
+        ]
+      },
+      "ParticleSystem": {
+        "Warnings": [
+          {
+            "Warning": "[Actor] : Emitter Actor has NULL ParticleSystemComponent property - please delete!",
+            "Fix": "Delete the Emitter Actor and create a new one."
+          },
+          {
+            "Warning": "PSysComp has an empty parameter Actor reference at index [Index] ([Actor])"
+          },
+          {
+            "Warning": "Param.Actor should not be NULL."
+          },
+          {
+            "Warning": "PSysComp has an empty parameter material reference at index [Index] ([Actor])"
+          },
+          {
+            "Warning": "Param.Material should not be NULL."
+          }
+        ]
+      },
+      "SkeletalMesh": {
+        "Warnings": [
+          {
+            "Warning": "[Actor] : SkeletalMeshActor has no PhysicsAsset assigned.",
+            "Fix": "Assign a PhysicsAsset to the SkeletalMeshComponent."
+          },
+          {
+            "Warning": "[Actor] : Skeletal Mesh Actor has NULL SkeletalMeshComponent property"
+          },
+          {
+            "Warning": "[Actor] : Skeletal Mesh Actor has NULL SkeletalMesh"
+          }
+        ]
+      },
+      "Sound": {
+        "Warnings": [
+          {
+            "Warning": "[Actor] : Ambient sound Actor has NULL AudioComponent property - please delete!",
+            "Fix": "Delete the Ambient sound Actor and create a new one."
+          },
+          {
+            "Warning": "Ambient sound Actor's AudioComponent has a NULL SoundCue property!",
+            "Fix": "Set the 'SoundCue' property in the Actor's Property Window->Audio Category->Audio Component."
+          }
+        ]
+      },
+      "StaticMesh": {
+        "Warnings": [
+          {
+            "Warning": "[Static Mesh Actor] : Static Mesh Actor has NULL StaticMesh property",
+            "Fix": "Set the 'StaticMesh' Property in the StaticMeshActor's Property Window->StaticMeshActor Category->StaticMeshComponent."
+          },
+          {
+            "Warning": "[Actor] : Static Mesh Actor has NULL StaticMeshComponent property - please delete!",
+            "Fix": "Delete the Static Mesh Actor and create a new one."
+          },
+          {
+            "Warning": "[StaticMesh] has simple collision but is being scaled non-uniformly - collision creation will fail",
+            "Fix": "Fix the scale or the collision type."
+          },
+          {
+            "Warning": "More overridden materials [Count] on Static Mesh component than are referenced [Count] in source mesh [StaticMesh]"
+          },
+          {
+            "Warning": "[Count] element(s) with zero triangles in Static Mesh [StaticMesh]"
+          }
+        ]
+      },
+      "Volume": {
+        "Warnings": [
+          {
+            "Warning": "LevelGridVolumes are only allowed in the persistent level",
+            "Fix": "Move the LevelGridVolume to the persistent level."
+          },
+          {
+            "Warning": "LevelStreamingVolume is not in the persistent level - please delete",
+            "Fix": "Delete and recreate the level streaming volume."
+          },
+          {
+            "Warning": "No levels are associated with streaming volume.",
+            "Fix": "Associate one or more streaming levels with the LevelStreamingVolume."
+          }
+        ]
+      },
+      "Uncategorized": {
+        "Warnings": [
+          {
+            "Warning": "Filename [Filename] is too long - this may interfere with cooking for consoles. Unreal filenames should be no longer than [Length] characters.",
+            "Fix": "Rename the file to be within the specified length."
+          },
+          {
+            "Warning": "[ObjectName] : Externally referenced"
+          }
+        ]
+      },
+      "Infos": {
+        "Description": "Issues that do not need to be addressed but may be useful to know.",
+        "Examples": [
+          {
+            "Info": "[Actor] : Repaired painted vertex colors"
+          }
+        ]
+      }
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}

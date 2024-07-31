@@ -1,0 +1,397 @@
+{
+    "topic": "Open World Tools",
+    "description": "Information on tools used in the creation of large outdoor environments.",
+    "sections": {
+        "Overview": {
+            "summary": "Unreal Engine 5 is capable of rendering massive open worlds filled with complex flora and fauna. The Open World Tools can procedurally populate large spaces with Static Mesh assets to create natural and lively outdoor environments.",
+            "images": [
+                {
+                    "description": "Example of an open world environment created with Unreal Engine 5",
+                    "url": "open_world_example.png"
+                }
+            ]
+        },
+        "Foliage Mode": {
+            "summary": "Foliage Mode allows you to render Static Mesh or Actor Foliage on the surfaces of other geometry to create ground cover effects.",
+            "link": {
+                "title": "Foliage Mode",
+                "url": "https://docs.unrealengine.com/latest/INT/Engine/Foliage/Mode/index.html"
+            },
+            "images": [
+                {
+                    "description": "Foliage Mode interface",
+                    "url": "foliage_mode.png"
+                }
+            ]
+        },
+        "Grass Quick Start": {
+            "summary": "Learn how to add Grass textures to a landscape quickly and effectively.",
+            "link": {
+                "title": "Grass Quick Start",
+                "url": "https://docs.unrealengine.com/latest/INT/Engine/Content/Types/Grass/QuickStart/index.html"
+            },
+            "images": [
+                {
+                    "description": "Grass textures on a landscape",
+                    "url": "grass_quick_start.png"
+                }
+            ]
+        },
+        "Open World Tools Tips": {
+            "summary": "A collection of tips and tricks on how to get the most out of the Open World Tools.",
+            "link": {
+                "title": "Open World Tools Tips",
+                "url": "https://docs.unrealengine.com/latest/INT/Resources/Tips/OpenWorldTools/index.html"
+            },
+            "images": [
+                {
+                    "description": "Tips for using Open World Tools",
+                    "url": "open_world_tools_tips.png"
+                }
+            ]
+        },
+        "Open World Tools Property Reference": {
+            "summary": "A comprehensive listing of properties and descriptions for the Open World Tools.",
+            "link": {
+                "title": "Open World Tools Property Reference",
+                "url": "https://docs.unrealengine.com/latest/INT/Engine/PropertyReference/OpenWorldTools/index.html"
+            },
+            "images": [
+                {
+                    "description": "Open World Tools property settings",
+                    "url": "open_world_tools_properties.png"
+                }
+            ]
+        },
+        "Procedural Foliage Tool": {
+            "summary": "Instructions on how to set up and use the Procedural Foliage tool to create detailed and varied foliage in large environments.",
+            "link": {
+                "title": "Procedural Foliage Tool",
+                "url": "https://docs.unrealengine.com/latest/INT/Engine/Foliage/ProceduralFoliage/index.html"
+            },
+            "images": [
+                {
+                    "description": "Procedural Foliage Tool in action",
+                    "url": "procedural_foliage_tool.png"
+                }
+            ]
+        }
+    },
+    "tags": [
+        "building virtual worlds",
+        "open world",
+        "foliage",
+        "grass",
+        "procedural foliage"
+    ],
+    "resources": [
+        {
+            "name": "Developer Forums",
+            "url": "https://forums.unrealengine.com"
+        },
+        {
+            "name": "Learning Library",
+            "url": "https://www.unrealengine.com/en-US/onlinelearning-courses"
+        }
+    ]
+}
+{
+    "GrassQuickStart": {
+        "Overview": "Guide to set up and apply grass textures to a landscape. Learn to create, set up, and spawn static meshes for a grassy landscape.",
+        "Prerequisites": {
+            "Download": "Open World Demo Collection from Epic Games Launcher.",
+            "AddToProject": "Select project to follow along and press 'Add to Project'."
+        },
+        "InitialLevelSetup": {
+            "CreateNewLevel": "Use blank Default template.",
+            "AddLandscapeActor": "Click Modes, select Landscape, and click Create.",
+            "AddNoise": {
+                "BrushSize": 65536.0,
+                "ToolStrength": 0.01,
+                "NoiseScale": 256
+            },
+            "Result": "Landscape with subtle noise for artistic effect."
+        },
+        "GrassToolActorSetup": {
+            "CreateGrassType": "Right-click in Content Browser, select Foliage > Landscape Grass Type, name it Grass_00.",
+            "AddGrassMesh": {
+                "GrassDensity": 400.0,
+                "UseGrid": "Enabled",
+                "RandomRotation": "Enabled",
+                "AlignToSurface": "Enabled"
+            }
+        },
+        "LandscapeMaterials": {
+            "CreateMaterial": "Right-click in Content Browser, select Material & Textures, name it MAT_GT_Grass.",
+            "MaterialSetup": {
+                "Textures": [
+                    "T_AlpinePatch001_D_alt_R",
+                    "T_GDC_Grass01_D_NoisyAlpha"
+                ],
+                "MaterialExpressions": [
+                    "Landscape Layer Blend",
+                    "Landscape Layer Sample",
+                    "Landscape Grass Output"
+                ],
+                "LayerNames": [
+                    "Grass",
+                    "Rock"
+                ],
+                "Connections": {
+                    "LayerBlend": "Connect textures to Landscape Layer Blend node.",
+                    "MainMaterialNode": "Connect Output of Layer Blend to Base Color input."
+                }
+            }
+        },
+        "UsingGrassTools": {
+            "ApplyMaterial": "Select Landscape Actor, apply MAT_GT_Grass Material.",
+            "PaintMode": "Click Modes, select Landscape, go to Paint tab.",
+            "AddLayerInfo": "Press Plus icon, select Weight-Blended Layer, save Layer Info for both Rock and Grass.",
+            "PaintingGrass": "Select Grass Target Layer, paint Landscape with grass texture."
+        },
+        "OnYourOwn": {
+            "Suggestions": [
+                "Use Procedural Foliage Tool for dense grass, flowers, bushes.",
+                "Sculpt Landscape with hills, mountains, lakes.",
+                "Create Landscape Material with multiple textures.",
+                "Adjust lighting for early morning or late afternoon effect.",
+                "Use dynamic lighting with Ray Traced Distance Field Soft Shadows.",
+                "Tweak Foliage meshes for desired look.",
+                "Render video with Camera and Sequencer."
+            ]
+        }
+    }
+}
+{
+    "OpenWorldToolsPropertyReference": {
+        "Overview": "Reference listing of properties for Open World Tools.",
+        "FoliageType": {
+            "Mesh": {
+                "Mesh": "Defines which Static Mesh will be used.",
+                "ComponentClass": "Component class for foliage instances.",
+                "OverrideMaterials": "Material overrides for foliage instances."
+            },
+            "Placement": {
+                "ZOffset": "Range of offset to apply to foliage instance's Z location.",
+                "AlignToNormal": "Adjust angle to match surface normal.",
+                "RandomYaw": "Apply random yaw rotation.",
+                "RandomPitchAngle": "Apply random pitch adjustment.",
+                "GroundSlopeAngle": "Placement on surfaces within specified angle range.",
+                "Height": "Altitude range for placement.",
+                "LandscapeLayers": "Limit placement to specific Landscape layers.",
+                "CollisionWithWorld": "Perform overlap test before placement."
+            },
+            "Procedural": {
+                "CollisionRadius": "Determines when instances overlap.",
+                "ShadeRadius": "Ignored if instance can grow in shade.",
+                "NumSteps": "Number of aging and spreading steps.",
+                "InitialSeedDensity": "Seeds per 10 meters squared.",
+                "AverageSpreadDistance": "Average distance between instance and seeds.",
+                "SpreadVariance": "Variance in seed distance.",
+                "SeedsPerStep": "Number of seeds spread per step.",
+                "DistributionSeed": "Seed for initial placement.",
+                "CanGrowInShade": "Ignore shade radius overlap tests.",
+                "SpawnsInShade": "Spawn seeds exclusively in shade.",
+                "MaxInitialAge": "Random initial age for new seeds.",
+                "MaxAge": "Oldest age for seeds.",
+                "OverlapPriority": "Priority for removal when instances overlap.",
+                "ProceduralScale": "Scale range when procedurally generated.",
+                "ScaleCurve": "Instance scale factor based on age.",
+                "ExternalCurve": "For external curve."
+            },
+            "InstanceSettings": {
+                "Mobility": "Mobility property for foliage components.",
+                "CullDistance": "Distance to start fading out instances.",
+                "CastShadow": "Controls if foliage casts a shadow.",
+                "AffectDynamicIndirectLighting": "Controls if foliage affects Light Propagation Volume.",
+                "AffectDistanceFieldLighting": "Controls if foliage affects distance field lighting.",
+                "CastDynamicShadow": "Controls dynamic shadow casting.",
+                "CastStaticShadow": "Controls static shadow casting.",
+                "LightMapResolution": "Overrides lightmap resolution.",
+                "CollisionPresets": "Select collision presets.",
+                "CustomNavigableGeometry": {
+                    "No": "Primitive doesn't have custom navigation geometry.",
+                    "Yes": "Export navigable geometry if affects navmesh.",
+                    "EvenIfNotCollidable": "Export even if non-collidable.",
+                    "DontExport": "Don't export navigable geometry."
+                },
+                "CastShadowAsTwoSided": "Cast shadows as two-sided material.",
+                "ReceivesDecals": "Whether foliage receives decals.",
+                "UseAsOccluder": "Render pre-pass for occlusion."
+            },
+            "Scalability": {
+                "EnableDensityScaling": "Affects by Engine Scalability system."
+            }
+        },
+        "LandscapeGrassType": {
+            "GrassVarieties": {
+                "GrassVarieties": "Grass varieties.",
+                "GrassMesh": "Grass mesh.",
+                "UseGrid": "Use jittered grid sequence for placement.",
+                "PlacementJitter": "Placement jitter.",
+                "StartCullDistance": "Start distance for fading out instances.",
+                "EndCullDistance": "End distance for fading out instances.",
+                "MinLOD": "Smallest LOD for this component.",
+                "Scaling": "Instance scaling type.",
+                "ScaleX": "Range for X scale.",
+                "ScaleY": "Range for Y scale.",
+                "ScaleZ": "Range for Z scale.",
+                "RandomRotation": "Random rotation for instances.",
+                "AlignToSurface": "Tilt instances to surface normal.",
+                "UseLandscapeLightmap": "Use landscape's lightmap."
+            }
+        },
+        "ProceduralFoliageSpawner": {
+            "ProceduralFoliageSimulation": {
+                "RandomSeed": "Seed for generating randomness.",
+                "TileSize": "Length of tile along one axis.",
+                "NumUniqueTiles": "Number of unique tiles to generate.",
+                "FoliageTypes": "Types of foliage to spawn.",
+                "FoliageTypeObject": "Foliage type spawned by simulation."
+            }
+        }
+    }
+}
+{
+    "OpenWorldToolsTips": {
+        "TipTrickHeader": "Tips and tricks for maximizing Open World tools. Techniques from Epic developers who created the Kite Demo. Not a step-by-step tutorial but high-level insights.",
+        "GrassToolFoliageMeshCulling": {
+            "Description": "Adjust Grass Tool culling to render Static Meshes at various distances. Be cautious of performance impact.",
+            "Settings": {
+                "StartEndCullDistance": "Adjust in Landscape Grass Type Actor under Grass Varieties section.",
+                "MinimumScreenSizeCommand": "Use command 'Foliage.MinimumScreenSize 0.0001' to adjust culling based on screen size."
+            }
+        },
+        "ProceduralFoliageVolumeBasedMasking": {
+            "Description": "Restrict tree spawning to certain areas using Procedural Foliage Volumes and Landscape Material layers.",
+            "Steps": [
+                "Set up Landscape Material with unique Layer Blend names.",
+                "Associate Foliage Type with Landscape layer in Foliage Type settings.",
+                "Resimulate in Procedural Foliage Volume."
+            ]
+        },
+        "TextureBasedMaskingForGrassTool": {
+            "Description": "Control Foliage mesh spawning using a Texture as a mask.",
+            "Setup": {
+                "WorldPositionScaling": "Scale Mask Texture in world space.",
+                "MaskTextureChannels": {
+                    "Red": "Define grass mesh spawn areas and blend Landscape base Textures.",
+                    "Green": "Define rock mesh spawn areas."
+                },
+                "MaterialNodes": "Main Material node setup similar to standard Material, Grass Output for spawning meshes."
+            }
+        },
+        "MathBasedMaskingForGrassTool": {
+            "Description": "Use Math functions in Material Editor to control placement without extra Texture data.",
+            "Example": "Checkerboard pattern using Checker Pattern Material Function and One Minus node for complementary placement."
+        },
+        "NonRandomPlacementForGrassTool": {
+            "Description": "Simulate crops growing in a field by adjusting Grass Tool settings.",
+            "Settings": {
+                "UseGrid": "Checked",
+                "PlacementJitter": "Set to 0",
+                "GrassDensity": "Set to something under 100"
+            },
+            "ExampleSetup": "Shows Landscape Grass Type setup for non-random placement."
+        }
+    }
+}
+{
+    "ProceduralFoliageTool": {
+        "Overview": "Tutorial on setting up and using the Procedural Foliage Tool to create and spawn forests in UE5.",
+        "FinalProduct": "New level resembling the example image with a forest created using the Procedural Foliage Tool.",
+        "Prerequisites": {
+            "EnableProceduralFoliage": [
+                "Open Edit menu, select Editor Preferences.",
+                "Enable Procedural Foliage under Experimental section."
+            ],
+            "DownloadOpenWorldDemoCollection": [
+                "Locate and download from the Unreal Engine Marketplace.",
+                "Add to project in the Epic Games Launcher under Library section."
+            ]
+        },
+        "Steps": [
+            {
+                "Step1": {
+                    "Title": "Creating Foliage Type Actors",
+                    "Actions": [
+                        "Create new level using Default Template.",
+                        "Add Landscape Actor by selecting Landscape in Modes dropdown, then click Create.",
+                        "Create Procedural Foliage Spawner, name it (e.g., PFS_Example).",
+                        "Place Procedural Foliage Spawner in level and position it (e.g., 0,0,200) and scale it (e.g., 100,100,10).",
+                        "Create Static Mesh Foliage (e.g., Tree_00).",
+                        "Save all content and level (e.g., PFT_00)."
+                    ]
+                }
+            },
+            {
+                "Step2": {
+                    "Title": "Telling the Spawner What to Spawn",
+                    "Actions": [
+                        "Open Procedural Foliage Spawner and add Foliage Type (Tree_00).",
+                        "Set Static Mesh for Tree_00 (e.g., HillTree_02 from Open World Demo Collection).",
+                        "Select Procedural Foliage Spawner, click Resimulate.",
+                        "Build lighting to see proper results."
+                    ]
+                }
+            },
+            {
+                "Step3": {
+                    "Title": "Tweaking Foliage Type Object Properties",
+                    "Actions": [
+                        "Open Tree_00 Static Mesh Foliage.",
+                        "Enable Align to Normal and Random Yaw in Placement section.",
+                        "Set Shade Radius to 50 in Collision section.",
+                        "Click Resimulate in Procedural Foliage Spawner.",
+                        "Set Num Steps to 0 in Clustering section, click Resimulate.",
+                        "Set Initial Seed Density to 0.25, click Resimulate.",
+                        "Set Num Steps back to 3, click Resimulate.",
+                        "Adjust Max Age to 20.0, Procedural Scale Max to 10.0 in Growth section.",
+                        "Set Max Cull Distance to 20,000 in Instance Settings, click Resimulate."
+                    ]
+                }
+            },
+            {
+                "Step4": {
+                    "Title": "Using Multiple Foliage Type Objects",
+                    "Actions": [
+                        "Duplicate Tree_00 Static Mesh Foliage, name it Tree_01.",
+                        "Change mesh for Tree_01 to ScotsPineTall_01.",
+                        "Add Tree_01 to Procedural Foliage Spawner.",
+                        "Adjust settings for Tree_01 (e.g., Num Steps: 4, Initial Seed Density: 0.125, Average Spread Distance: 100, Can Grow in Shade: Enabled, Spawns in Shade: Enabled, Max Age: 15, Overlap Priority: 1, Procedural Scale Max: 5.0).",
+                        "Click Resimulate in Procedural Foliage Spawner."
+                    ]
+                }
+            },
+            {
+                "Step5": {
+                    "Title": "Implementing Procedural Foliage Blocking Volumes",
+                    "Actions": [
+                        "Find and place Procedural Foliage Blocking Volume in level.",
+                        "Move and scale Procedural Foliage Blocking Volume to desired location.",
+                        "Click Resimulate in Procedural Foliage Spawner."
+                    ],
+                    "ResultComparison": [
+                        "Before Procedural Foliage Blocking Volume is added.",
+                        "After Procedural Foliage Blocking Volume is added."
+                    ]
+                }
+            },
+            {
+                "Step6": {
+                    "Title": "On Your Own",
+                    "Suggestions": [
+                        "Use Foliage Actors instead of Static Mesh Foliage.",
+                        "Use Grass Tool for dense grass, flowers, bushes.",
+                        "Use Landscape Sculpt tools for hills, mountains, lakes.",
+                        "Create Landscape Material with multiple Textures.",
+                        "Adjust Directional Light for early morning or late afternoon effect.",
+                        "Use dynamic lighting with Ray Traced Distance Field Soft Shadows.",
+                        "Use Foliage System tools to tweak placement, rotation, and scale.",
+                        "Render a video of your level with Camera and Sequencer."
+                    ]
+                }
+            }
+        ]
+    }
+}

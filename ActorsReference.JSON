@@ -1,0 +1,1105 @@
+{
+  "ActorsReference": {
+    "Description": "Describes the most common types of Actors in Unreal Engine and where you can learn more about them.",
+    "Notes": "Not a comprehensive list; some plugins add their own Actors.",
+    "Sections": {
+      "MeshActors": {
+        "Description": "Defines shape and size of props or characters.",
+        "Types": [
+          {
+            "Type": "Static Mesh Actors",
+            "Usage": "Build levels and environments.",
+            "Details": "Displays a static mesh in the Level. The Actor can move.",
+            "LearnMore": "Refer to the Static Meshes section."
+          },
+          {
+            "Type": "Skeletal Mesh Actors",
+            "Usage": "Player characters and animated NPCs.",
+            "Details": "Displays an animated mesh whose geometry can be deformed.",
+            "LearnMore": "Refer to the Skeletal Mesh Actors page."
+          }
+        ]
+      },
+      "BrushActors": {
+        "Description": "Displays simple 3D geometry.",
+        "Types": [
+          "Box",
+          "Cone",
+          "Cylinder",
+          "Curved Stair",
+          "Linear Stair",
+          "Spiral Stair",
+          "Sphere"
+        ],
+        "Usage": "Prototype environments and block out levels.",
+        "LearnMore": "Refer to the Geometry Brush Actors page."
+      },
+      "LightActors": {
+        "Description": "Place different types of lights around your Level.",
+        "Types": [
+          "Directional Light",
+          "Point Light",
+          "Spot Light",
+          "Rect Light",
+          "Sky Light"
+        ],
+        "LearnMore": {
+          "LightingConcepts": "Lighting Essential Concepts and Effects",
+          "GlobalIllumination": "Introducing Global Illumination"
+        },
+        "Details": {
+          "DirectionalLight": "Simulates sunlight with parallel shadows.",
+          "PointLight": "Emits light in all directions from a single point.",
+          "SpotLight": "Emits light in a conical shape from a single point.",
+          "RectLight": "Emits light from a rectangular plane.",
+          "SkyLight": "Captures distant parts of your Level as a light source."
+        }
+      },
+      "CameraActors": {
+        "Description": "Used to view your Level and create cinematic sequences.",
+        "LearnMore": "Refer to the Camera Actors page."
+      },
+      "AudioSoundActors": {
+        "Description": "Add music, voice recordings, and sound effects.",
+        "Types": [
+          {
+            "Type": "Ambient Sound Actor",
+            "Usage": "Play a looping sound at a specific location.",
+            "LearnMore": "Refer to the Ambient Sound Actor User Guide page."
+          },
+          {
+            "Type": "Audio Volume",
+            "Usage": "Define areas to process sounds, apply effects.",
+            "LearnMore": "Refer to the Audio Volume page."
+          }
+        ]
+      },
+      "GameplayActors": {
+        "Description": "Trigger interactive functionality.",
+        "Types": [
+          {
+            "Type": "Player Start",
+            "Usage": "Designate where the player character spawns.",
+            "LearnMore": "Refer to the Player Start Actor page."
+          },
+          {
+            "Type": "Trigger Volumes",
+            "Usage": "Cause an event when interacted with.",
+            "LearnMore": "Refer to the Trigger Volume Actors page.",
+            "Subtypes": [
+              "Box Trigger",
+              "Capsule Trigger",
+              "Sphere Trigger"
+            ]
+          },
+          {
+            "Type": "Blocking Volume",
+            "Usage": "Prevent player from passing through."
+          },
+          {
+            "Type": "Kill ZVolume",
+            "Usage": "Destroys the player character upon interaction."
+          },
+          {
+            "Type": "Pain Causing Volume",
+            "Usage": "Causes damage over time to players or objects."
+          }
+        ]
+      },
+      "CharacterPawnActors": {
+        "Description": "Represent player and AI-controlled characters.",
+        "Types": [
+          {
+            "Type": "Pawn",
+            "Usage": "Represents player or AI entity.",
+            "Subtypes": [
+              "Pawn",
+              "Default Pawn"
+            ]
+          },
+          {
+            "Type": "Character",
+            "Usage": "Player character that can walk, run, jump.",
+            "Subtypes": [
+              "Character",
+              "Arch Vis Character",
+              "Paper Character"
+            ],
+            "LearnMore": {
+              "ArchVis": "Using the Archviz Character Pawn (YouTube)",
+              "Paper2D": "Paper 2D Sprites"
+            }
+          }
+        ]
+      },
+      "VisualEffectsActors": {
+        "Description": "Change the look and feel of your Level.",
+        "Types": [
+          {
+            "Type": "Post Process Volume",
+            "Usage": "Applies visual effects to objects within it.",
+            "LearnMore": "Refer to the Post Process Effects section."
+          },
+          {
+            "Type": "Reflection Capture Actors",
+            "Usage": "Capture the contents of the Level for reflection.",
+            "Subtypes": [
+              "Sphere Reflection Capture",
+              "Box Reflection Capture"
+            ],
+            "LearnMore": "Refer to the Reflections Environment page."
+          },
+          {
+            "Type": "Planar Reflection Actor",
+            "Usage": "Creates dynamic mirror reflections.",
+            "LearnMore": "Refer to the Planar Reflections page."
+          },
+          {
+            "Type": "Decal Actor",
+            "Usage": "Renders a Material on top of a surface.",
+            "LearnMore": "Refer to the Decal Actors page."
+          }
+        ]
+      },
+      "WorldbuildingActors": {
+        "Description": "Add realistic details to your Level.",
+        "Types": [
+          {
+            "Type": "Sky Atmosphere Actor",
+            "Usage": "Renders sky and atmosphere effects.",
+            "LearnMore": "Refer to the Sky Atmosphere page."
+          },
+          {
+            "Type": "Volumetric Cloud Actor",
+            "Usage": "Renders clouds using a material-driven approach.",
+            "LearnMore": "Refer to the Volumetric Clouds page."
+          },
+          {
+            "Type": "Exponential Height Fog Actor",
+            "Usage": "Creates more fog density at lower altitudes.",
+            "LearnMore": "Refer to the Exponential Height Fog User Guide page."
+          }
+        ]
+      },
+      "OtherActors": {
+        "Description": "Additional Actors for various functionalities.",
+        "Types": [
+          {
+            "Type": "Text Render Actor",
+            "Usage": "Add text to your Level.",
+            "LearnMore": "Refer to the 3D Text Actor page."
+          },
+          {
+            "Type": "Target Point Actors",
+            "Usage": "Spawn items from a specific point.",
+            "LearnMore": "Refer to the Target Point Actors page."
+          }
+        ]
+      }
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "PhysicsVolumeActor": {
+    "Description": "Describes the properties of Physics Volumes in Unreal Engine.",
+    "Properties": {
+      "TerminalVelocity": {
+        "Description": "Determines terminal velocity of Pawns using CharacterMovement when falling."
+      },
+      "Priority": {
+        "Description": "Determines which PhysicsVolume takes precedence if they overlap."
+      },
+      "FluidFriction": {
+        "Description": "Determines the amount of friction applied by the volume. Higher values make it harder to move through."
+      },
+      "WaterVolume": {
+        "Description": "Determines if the volume contains a fluid, like water."
+      },
+      "PhysicsOnContact": {
+        "Description": "Determines if the Actor is affected by touching the volume."
+      }
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "StaticMeshActors": {
+    "Description": "Place Static Mesh Actors in your Level to create your game world.",
+    "Details": {
+      "Definition": "Displays a 3D mesh in the Level. 'Static' refers to the mesh type, not the Actor's ability to move.",
+      "Usage": "Commonly used to create game worlds or environments."
+    },
+    "DefaultActors": [
+      "Cube",
+      "Sphere",
+      "Cylinder",
+      "Cone",
+      "Plane"
+    ],
+    "CustomActors": "Import your own Static Mesh Actors from other 3D applications.",
+    "ImportingContent": {
+      "LearnMore": "Refer to the Importing Assets Directly page."
+    },
+    "PlacingActors": {
+      "QuickestMethod": "Drag it into the Level Viewport from the Content Browser. Use Transform properties to position it.",
+      "LearnMore": "Refer to the Placing Actors page."
+    },
+    "ChangingMaterials": {
+      "Description": "Override Materials for each Static Mesh Actor individually.",
+      "Example": "Three Static Mesh Actors using the same mesh but different Materials.",
+      "Steps": "Drag Material from Content Browser to Static Mesh Actor in Level Viewport.",
+      "LearnMore": "Refer to the Setting Up Materials With Static Meshes page."
+    },
+    "MovingDuringGameplay": {
+      "Description": "Set Actor's Mobility to Movable to move, rotate, or scale during play.",
+      "Steps": "In Actor's Details panel, set Mobility to Movable.",
+      "LearnMore": "Refer to the Actor Mobility page."
+    },
+    "EnablingPhysics": {
+      "Description": "Enable Simulate Physics in the Actor's Details panel to be affected by gravity and collisions.",
+      "Example": "Sphere Static Mesh Actor with Simulate Physics enabled falls due to gravity.",
+      "LearnMore": "Refer to the Physics section."
+    },
+    "EnablingCollision": {
+      "Description": "Collision allows an Actor to react to other Actors in the environment upon collision.",
+      "DefaultSetting": "If a Static Mesh has Physics Bodies, it will have collision set to Block All.",
+      "LearnMore": "Refer to the Collision documentation."
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "SkeletalMeshActors": {
+    "Description": "Use Skeletal Mesh Actors to create player avatars and populate your game world.",
+    "Details": {
+      "Definition": "Displays an animated mesh whose geometry can be deformed.",
+      "Creation": "Can be created and exported from external 3D applications or programmed directly in Unreal Engine.",
+      "Skeleton": "Consists of bones used in the animation process.",
+      "Usage": "Commonly used for player characters, NPCs, animated creatures, and machinery."
+    },
+    "Examples": "Unreal Engine Mannequin in the Third Person template.",
+    "ImportingContent": {
+      "LearnMore": "Refer to the Importing Assets Directly page."
+    },
+    "PlacingActors": {
+      "QuickestMethod": "Drag it into the Level Viewport from the Content Browser. Use Transform properties to position it.",
+      "LearnMore": "Refer to the Placing Actors page."
+    },
+    "AnimatingActors": {
+      "Methods": [
+        "Animation Blueprint: Play and blend multiple animations.",
+        "Animation Asset: Play a single Animation Sequence one time or in a loop."
+      ],
+      "LearnMore": "Refer to the Skeletal Mesh Animation System page."
+    },
+    "ChangingMaterials": {
+      "Description": "Override materials to change appearance.",
+      "Example": "Three Skeletal Mesh Actors using the Unreal Mannequin mesh with different materials.",
+      "Steps": [
+        "Locate the Material in the Content Browser.",
+        "Drag it over the Skeletal Mesh Actor in the Level Viewport."
+      ],
+      "EnableOption": {
+        "Description": "Enable Used with Skeletal Mesh option in the Material Editor.",
+        "Steps": [
+          "Double click the Material in the Content Browser.",
+          "Enable Used with Skeletal Mesh in the Details panel."
+        ]
+      }
+    },
+    "Collision": {
+      "Description": "Requires a Physics Asset for collision detection.",
+      "Steps": [
+        "Find the Skeletal Mesh in the Content Browser.",
+        "Right-click and select Create > Physics Asset > Create and Assign."
+      ],
+      "LearnMore": "Refer to the Physics Asset Editor documentation."
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "GeometryBrushActors": {
+    "Description": "Guide to using BSP brushes to create level geometry in Unreal Engine.",
+    "Details": {
+      "Definition": "Geometry Brushes (BSP) fill in and carve out volumes of space in your level.",
+      "Usage": "Used for basic shapes in level design, rapid prototyping, and creating filler geometry.",
+      "Recommendation": "Not recommended as a final method of level design, useful in early stages."
+    },
+    "Uses": {
+      "BlockingOutLevels": {
+        "Workflow": [
+          "Block out and path level",
+          "Playtest flow and gameplay",
+          "Modify layout and repeat testing",
+          "Initial meshing pass",
+          "Initial lighting pass",
+          "Playtest for collision and performance issues",
+          "Polish pass"
+        ],
+        "Description": "Use Geometry Brushes to create a shell for the level and finalize layout through testing."
+      },
+      "SimpleFillerGeometry": {
+        "Description": "Use Geometry Brushes for simple geometry when no existing Static Mesh fills the area."
+      }
+    },
+    "CreatingBrushes": {
+      "Steps": [
+        "Choose Place Actors Panel from the add dropdown.",
+        "Select the Geometry icon.",
+        "Drag a primitive type from the list into a Viewport.",
+        "Choose the Brush Type (additive or subtractive) in the Details panel.",
+        "Modify the Brush using Brush Settings, transform widget, or Brush Editing Mode."
+      ]
+    },
+    "BrushPrimitives": [
+      {
+        "Type": "Box",
+        "Settings": [
+          "X: Set the size in the X-Axis.",
+          "Y: Set the size in the Y-Axis.",
+          "Z: Set the size in the Z-Axis.",
+          "Wall Thickness: Set the thickness of the inner walls if Hollow is checked.",
+          "Hollow: Creates a hollow space inside the Brush.",
+          "Tessellated: Tessellate the sides into triangles."
+        ]
+      },
+      {
+        "Type": "Cone",
+        "Settings": [
+          "Z: Set the height in the Z-Axis.",
+          "Cap Z: Set the height of the inner cap in the Z-Axis if Hollow is checked.",
+          "Outer Radius: Set the radius of the base.",
+          "Inner Radius: Set the radius of the inner wall if Hollow is checked.",
+          "Sides: Set the number of sides around the cone.",
+          "Align to Side: Align rotation along the X-Axis.",
+          "Hollow: Creates a hollow space inside the Brush."
+        ]
+      },
+      {
+        "Type": "Cylinder",
+        "Settings": [
+          "Z: Set the height in the Z-Axis.",
+          "Outer Radius: Set the radius of the cylinder.",
+          "Inner Radius: Set the radius of the hollow space if Hollow is checked.",
+          "Sides: Set the number of sides around the cylinder.",
+          "Align to Side: Align rotation along the X-Axis.",
+          "Hollow: Creates a hollow space inside the Brush."
+        ]
+      },
+      {
+        "Type": "Curved Stair",
+        "Settings": [
+          "Inner Radius: Set the radius of the inner column.",
+          "Step Height: Set the height of each stair.",
+          "Step Width: Set the width of each stair.",
+          "Angle of Curve: Set the angle of rotation for each stair.",
+          "Num Steps: Set the number of steps.",
+          "Add to First Step: Change height of the first step.",
+          "Counter Clockwise: Curve stairs counterclockwise."
+        ]
+      },
+      {
+        "Type": "Linear Stair",
+        "Settings": [
+          "Step Length: Set the length of each stair.",
+          "Step Height: Set the height of each stair.",
+          "Step Width: Set the width of each stair.",
+          "Num Steps: Set the number of stairs.",
+          "Add to First Step: Change height of the first step."
+        ]
+      },
+      {
+        "Type": "Spiral Stair",
+        "Settings": [
+          "Inner Radius: Set the radius of the inner column.",
+          "Step Width: Set the width of each stair.",
+          "Step Height: Set the difference in height of each stair.",
+          "Step Thickness: Set the thickness of the stair.",
+          "Num Steps Per 360: Set the number of steps for one complete revolution.",
+          "Num Steps: Set the number of steps.",
+          "Add to First Step: Change height of the first step.",
+          "Sloped Ceiling: Create a sloped underside for the staircase.",
+          "Sloped Floor: Create a sloped floor, turning it into a spiraling ramp.",
+          "Counter Clockwise: Curve stairs counterclockwise."
+        ]
+      },
+      {
+        "Type": "Sphere",
+        "Settings": [
+          "Radius: Set the radius of the sphere.",
+          "Tessellation: Set the number of sides used to make the sphere (capped at 5)."
+        ]
+      }
+    ],
+    "ModifyingBrushes": {
+      "Methods": [
+        "Brush Editing Mode: Direct manipulation of vertices, edges, and faces.",
+        "Transform Widgets: Translate, rotate, and scale interactively.",
+        "Brush Properties: Edit using the Details panel."
+      ]
+    },
+    "BrushTypes": {
+      "DropdownOptions": [
+        "Additive: Solid, filled-in spaces.",
+        "Subtractive: Hollow, carved-out spaces."
+      ]
+    },
+    "AdvancedProperties": {
+      "Polygons": [
+        "Merge: Merge planar faces.",
+        "Separate: Reverse merge effects."
+      ],
+      "Solidity": [
+        "Solid: Blocks players and projectiles, creates cuts in surrounding Brushes.",
+        "Semi-Solid: Blocks players and projectiles, does not create cuts.",
+        "Non-Solid: Does not block players or projectiles, does not create cuts."
+      ],
+      "Order": [
+        "To First: Make the selected Brush first to be calculated.",
+        "To Last: Make the selected Brush last to be calculated."
+      ],
+      "AlignAndStaticMesh": [
+        "Align Brush Vertices: Snap vertices to the grid.",
+        "Create Static Mesh: Convert Brush to Static Mesh Actor."
+      ]
+    },
+    "BrushSurfaces": {
+      "Categories": [
+        "Geometry: Manage Material application across Brush surfaces.",
+        "Surface Properties: Control texture placement and lightmap resolution.",
+        "Lighting: Adjust shadows and lighting properties."
+      ]
+    },
+    "NextSteps": {
+      "Description": "Use geometry tools in Modeling Mode to further develop your level.",
+      "Conversion": "Convert Geometry Brushes to Static Meshes using Create Static Mesh."
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "CameraActors": {
+    "Description": "Understanding the fundamentals of Cameras in Unreal Engine.",
+    "Details": {
+      "Definition": "Every experience in Unreal Engine 5 requires at least one Camera Actor.",
+      "Types": [
+        {
+          "Type": "Camera Actor",
+          "Description": "Generic camera for stationary or mobile viewpoints."
+        },
+        {
+          "Type": "Cine Camera Actor",
+          "Description": "Specialized camera for creating cinematics.",
+          "LearnMore": "Refer to the Cine Camera Actor page."
+        }
+      ]
+    },
+    "AdditionalActors": [
+      {
+        "Type": "Camera Blocking Volume",
+        "Description": "Prevents the camera from entering a specific volume."
+      },
+      {
+        "Type": "Camera Rig Crane",
+        "Description": "Emulates a boom arm or Camera Jib system for Crane Shots.",
+        "LearnMore": "Refer to the Camera Rigs page."
+      },
+      {
+        "Type": "Camera Rig Rail",
+        "Description": "Emulates a Camera Dolly system for Tracking Shots.",
+        "LearnMore": "Refer to the Camera Rigs page."
+      },
+      {
+        "Type": "Level Sequence Actor",
+        "Description": "Container for the Level Sequence Asset, binding its data to a Level.",
+        "LearnMore": "Refer to the Sequencer Overview page."
+      }
+    ],
+    "PlacingActors": {
+      "Description": "Place Camera Actors from the Place Actors panel by dragging and dropping into the Level Viewport."
+    },
+    "PreviewingCameraActor": {
+      "Description": "Select a Camera Actor to open a separate preview window showing the camera's view."
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "AudioVolumeActor": {
+    "Description": "Audio Volume reference details",
+    "Properties": {
+      "ReverbSettings": {
+        "Priority": {
+          "Description": "Highest priority volume is used in overlapping volumes."
+        },
+        "ApplyReverb": {
+          "Description": "Determines if reverb settings should be used."
+        },
+        "ReverbEffect": {
+          "Description": "Reverb asset to use for the volume."
+        },
+        "Volume": {
+          "Description": "Overall volume level of the reverb effect."
+        },
+        "FadeTime": {
+          "Description": "Time (in seconds) to fade from current reverb settings to the volume's setting."
+        },
+        "Enabled": {
+          "Description": "Determines if the volume is enabled and affects sounds."
+        }
+      },
+      "AmbientZoneSettings": {
+        "Description": "Define how Sound Actors inside the Audio Volume are altered by the Player's location.",
+        "Properties": {
+          "ExteriorVolume": {
+            "Description": "Final volume of exterior sounds when the player is inside the volume."
+          },
+          "ExteriorTime": {
+            "Description": "Time to fade to new exterior volume in seconds."
+          },
+          "ExteriorLPF": {
+            "Description": "Lowpass Filter multiplier applied to exterior sounds when inside (1.0 for maximum LPF)."
+          },
+          "ExteriorLPFTime": {
+            "Description": "Time to fade to new Lowpass Filter level in seconds."
+          },
+          "InteriorVolume": {
+            "Description": "Final volume of interior sounds when the player is outside the volume."
+          },
+          "InteriorTime": {
+            "Description": "Time to fade to new interior volume in seconds."
+          },
+          "InteriorLPF": {
+            "Description": "Lowpass Filter multiplier applied to interior sounds when outside (1.0 for maximum LPF)."
+          },
+          "InteriorLPFTime": {
+            "Description": "Time to fade to new Lowpass Filter level in seconds."
+          }
+        }
+      }
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "PlayerStartActor": {
+    "Description": "Use Player Start Actors to set up starting locations for players.",
+    "Details": {
+      "Purpose": "Control where each player character spawns at runtime.",
+      "VisualRepresentation": "Game controller icon with a flag and an arrow indicating spawn direction.",
+      "Components": "Capsule representing physical space, Transform widget."
+    },
+    "Placement": {
+      "Method": "Drag-and-drop from the Place Actors panel.",
+      "Steps": [
+        "Click the Quick Add button on the Main Toolbar.",
+        "Select Basic > Player Start.",
+        "Drag the Player Start Actor into the Level Viewport."
+      ],
+      "MultipleStarts": "Use Blueprint or C++ to control which Player Start is used."
+    },
+    "Behavior": {
+      "SpawnPosition": "Player's position and rotation match the Player Start's.",
+      "RandomStart": "If more than one Player Start, spawn from a random unobstructed Player Start.",
+      "BADsizeWarning": "Appears if the Player Start Actor overlaps with other objects."
+    },
+    "BlueprintNodes": {
+      "FindPlayerStart": "Finds a Player Start Actor with a specific tag.",
+      "RestartPlayerAtPlayerStart": "Respawns a player using a specified Player Start Actor."
+    },
+    "PIEOptions": {
+      "SpawnLocation": "Choose to spawn at the current camera location or the default Player Start location.",
+      "PlayFromHere": "Right-click desired starting location in Level Viewport and select Play From Here."
+    },
+    "Customization": {
+      "Functions": [
+        {
+          "Name": "FindPlayerStart()",
+          "Description": "Determine a different starting location when a player restarts."
+        },
+        {
+          "Name": "ChoosePlayerStart()",
+          "Description": "Custom logic for choosing a starting location when a player first joins."
+        }
+      ]
+    },
+    "Example": {
+      "Description": "Implementation of FindPlayerStart() to return the Player Start Actor closest to a saved Checkpoint Location.",
+      "LearnMore": "Refer to Game Mode and Game State documentation."
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "TriggerVolumeActors": {
+    "Description": "Actor that can be activated and cause events to occur in the Level.",
+    "Details": {
+      "Purpose": "Used to cause an event when interacted with by another object in the level.",
+      "Types": [
+        "Box Trigger",
+        "Capsule Trigger",
+        "Sphere Trigger"
+      ],
+      "Differences": "Shapes of the area of influence used to detect activation."
+    },
+    "PlacingTriggers": {
+      "Method": "Drag and drop one of the Trigger types from the Place Actors panel Basic tab."
+    },
+    "TriggeringEvents": {
+      "Usage": "Activate events in the Level Blueprint in response to collisions or player input.",
+      "Steps": [
+        "Select the Trigger in the Viewport.",
+        "Right-click in the Level Blueprint Event Graph.",
+        "Choose an event under Add Event for [Trigger Actor Name]."
+      ],
+      "EventNode": "Exec pin of the event node fires each time the event occurs."
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "VolumeActors": {
+    "Description": "Reference for the different kinds of Volume Actors in Unreal Engine.",
+    "Details": {
+      "Definition": "Volumes are three-dimensional Actors that change behavior and characteristics of the area they cover.",
+      "Purpose": "Used to detect when certain Actor types enter a specific area and trigger a response.",
+      "Uses": [
+        "Causing damage to players or other Actors.",
+        "Blocking certain Actors from entering.",
+        "Changing environment elements when an Actor enters.",
+        "Changing lighting or visibility."
+      ]
+    },
+    "Placement": {
+      "Method": "Place Volumes in a Level via drag-and-drop from the Volumes category.",
+      "Steps": [
+        "Click the Create button in the Main Toolbar.",
+        "Select the Volumes category.",
+        "Drag the Volume to the Level Viewport."
+      ],
+      "LearnMore": "Refer to Placing Actors and Transforming Actors documentation."
+    },
+    "VisualRepresentation": {
+      "Description": "Volumes are invisible at runtime; add visual representation if needed.",
+      "Example": "Use fire particle effect with Pain-Causing Volume to indicate danger."
+    },
+    "VolumeTypes": {
+      "CollisionAndOverlapVolumes": [
+        {
+          "Type": "Blocking Volume",
+          "Description": "Acts as a collision surface, improving performance and predictability."
+        },
+        {
+          "Type": "Camera Blocking Volume",
+          "Description": "Blocks cameras to prevent them from entering unwanted locations."
+        },
+        {
+          "Type": "Kill Z Volume",
+          "Description": "Prevents objects from going out of bounds by calling FellOutOfWorld function."
+        },
+        {
+          "Type": "Pain-Causing Volume",
+          "Description": "Configurable properties to specify damage type, amount, and frequency."
+        },
+        {
+          "Type": "Physics Volume",
+          "Description": "Configures physical setup for characters and other physics objects."
+        },
+        {
+          "Type": "Trigger Volume",
+          "Description": "Causes events when a Player or object enters/exits. Used with Level Blueprint."
+        }
+      ],
+      "GraphicsAndAudioVolumes": [
+        {
+          "Type": "Audio Volume",
+          "Description": "Adds sound to the area they cover. Two types: legacy and Audio Gameplay Volumes."
+        },
+        {
+          "Type": "Cull Distance Volume",
+          "Description": "Culls objects based on distance from the camera to optimize scenes."
+        },
+        {
+          "Type": "Hierarchical LOD Volume",
+          "Description": "Groups Actors into HLOD clusters for performance optimization."
+        },
+        {
+          "Type": "Lightmass Volumes",
+          "Description": "Controls photon emission for high quality lighting in specific areas."
+        },
+        {
+          "Type": "Mesh Merge Culling Volume",
+          "Description": "Combines contained mesh objects into a single mesh for performance improvement."
+        },
+        {
+          "Type": "Post Process Volume",
+          "Description": "Overrides Post Process settings applied to the camera inside the volume."
+        },
+        {
+          "Type": "Precomputed Visibility Volume",
+          "Description": "Stores visibility of Actors for performance optimization in accessible areas."
+        },
+        {
+          "Type": "Precomputed Visibility Override Volume",
+          "Description": "Manually overrides visibility of Actors for performance optimization."
+        }
+      ],
+      "LevelAndAIVolumes": [
+        {
+          "Type": "Level Streaming Volume",
+          "Description": "Controls when levels stream in/out of memory based on Player's position."
+        },
+        {
+          "Type": "Nav Mesh Bounds Volume",
+          "Description": "Controls where Nav Meshes are built in a level for navigation paths."
+        }
+      ]
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "PainCausingVolumeActor": {
+    "Description": "Pain-Causing Volume reference details",
+    "Properties": {
+      "PainCausing": {
+        "Description": "Whether the volume currently causes damage or not."
+      },
+      "DamagePerSec": {
+        "Description": "Damage done per second to the Actors in the volume when Pain Causing is enabled."
+      },
+      "DamageType": {
+        "Description": "Determines the type of damage done to the Actor."
+      },
+      "PainInterval": {
+        "Description": "Amount of time (in seconds) between applied damage when Pain Causing is enabled."
+      },
+      "EntryPain": {
+        "Description": "Determines if damage is applied immediately upon entering the volume, in addition to recurring damage based on the Pain Interval."
+      }
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "DecalActors": {
+    "Description": "A guide to using the Deferred Decal actor.",
+    "Details": {
+      "Benefits": [
+        "Performance with many lights is predictable.",
+        "Allows effects like a wet layer by manipulating a screen space mask."
+      ],
+      "Rendering": "The decal is rendered by a box around the affecting area."
+    },
+    "AddingDecals": {
+      "Method": "Select a decal material in the Content Browser, right-click in the Viewport, and choose Place Actor.",
+      "TransformTools": "Resize and orient using translation and rotation widgets."
+    },
+    "SizingAndOffsetting": {
+      "Description": "Position and orient the decal using translation and rotation widgets.",
+      "Scaling": "Non-uniform scaling widget controls width, height, and far-plane distance."
+    },
+    "DeferredDecalProperties": {
+      "Properties": [
+        {
+          "Item": "Material",
+          "Description": "Holds the material used as a decal."
+        },
+        {
+          "Item": "Sort Order",
+          "Description": "Controls rendering order of stacked decals. Higher values render on top."
+        }
+      ],
+      "Warning": "Setting too many sort values on different decals can harm performance."
+    },
+    "MaterialSettings": {
+      "Description": "Defines how material properties are applied to the GBuffer.",
+      "Modes": [
+        {
+          "Mode": "Translucent",
+          "Description": "Blends full material, updates GBuffer, not for baked lighting."
+        },
+        {
+          "Mode": "Stain",
+          "Description": "Modulates BaseColor, blends rest, updates GBuffer, not for baked lighting."
+        },
+        {
+          "Mode": "Normal",
+          "Description": "Blends normal, updates GBuffer, not for baked lighting."
+        },
+        {
+          "Mode": "Emissive",
+          "Description": "For additive emissive only."
+        },
+        {
+          "Mode": "DBuffer_Translucent Color, Normal, Roughness",
+          "Description": "Non-metal, works for baked lighting, becomes DBM_TranslucentNormal if normal is not hooked up."
+        },
+        {
+          "Mode": "DBuffer_Translucent Color",
+          "Description": "Non-metal, works for baked lighting."
+        },
+        {
+          "Mode": "DBuffer_Translucent Color, Normal",
+          "Description": "Non-metal, works for baked lighting, becomes DBM_DBuffer_Color if normal is not hooked up."
+        },
+        {
+          "Mode": "DBuffer_Translucent Color, Roughness",
+          "Description": "Non-metal, works for baked lighting."
+        },
+        {
+          "Mode": "DBuffer_Translucent Normal",
+          "Description": "Non-metal, works for baked lighting."
+        },
+        {
+          "Mode": "DBuffer_Translucent Normal, Roughness",
+          "Description": "Non-metal, works for baked lighting, becomes DBM_DBuffer_Roughness if normal is not hooked up."
+        },
+        {
+          "Mode": "DBuffer_Translucent Roughness",
+          "Description": "Non-metal, works for baked lighting."
+        },
+        {
+          "Mode": "Volumetric Distance Function (experimental)",
+          "Description": "Outputs a signed distance in Opacity depending on LightVector."
+        },
+        {
+          "Mode": "DBM_ScreenSpaceMask",
+          "Description": "Affects masking channel used by SSAO (Ambient Occlusion)."
+        },
+        {
+          "Mode": "DBM_DiffuseSpecularEmissive",
+          "Description": "Affects multiple GBuffer channels."
+        }
+      ]
+    },
+    "Performance": {
+      "Factors": [
+        "Mesh complexity of affected objects does not affect performance.",
+        "Depends on shader complexity and shader box size on the screen.",
+        "Small bounding box improves per pixel performance."
+      ],
+      "Optimization": "Use ShaderComplexity view mode to optimize shader performance."
+    },
+    "Limitations": [
+      "Supports only deferred decals on static objects.",
+      "Normal blending does not wrap around objects.",
+      "Streaming is not hooked up; ensure texture is not streamed.",
+      "Masking decals not fully implemented."
+    ],
+    "ArtifactFix": {
+      "Issue": "Decals may have 2x2 pixel block artifacts on edges.",
+      "Solution": "Use the 'Decal Derivative' node, though it has a significant performance impact."
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "3DTextActor": {
+    "Description": "Guide to placing 3D Text and using it to create motion graphics.",
+    "Details": {
+      "Purpose": "Add high-resolution 3D Text to your Level for clean, high-quality text in virtual environments.",
+      "UseCase": "Suitable for live broadcasts and virtual sets.",
+      "Animation": "Animate 3D text objects using the Sequencer Editor for motion graphics."
+    },
+    "EnablingPlugin": {
+      "Steps": [
+        "Select Edit > Plugins from the Main Menu Bar.",
+        "Enable Text 3D from the Text tab.",
+        "Click Yes to confirm and Restart Now to use the plugin.",
+        "Save your work before restarting if prompted."
+      ]
+    },
+    "Placing3DText": {
+      "Steps": [
+        "In the Place Actors panel, select All Classes, then Text 3D.",
+        "Drag and drop the Text 3D Actor into the level.",
+        "Select the Text 3D Actor in the viewport to view parameters in the Details panel."
+      ]
+    },
+    "3DTextActorSettings": {
+      "Properties": [
+        {
+          "Property": "Text",
+          "Description": "Enter the text used to create the 3D Text geometry. Press Shift+Enter for a line break."
+        },
+        {
+          "Property": "Extrude",
+          "Description": "Set the depth of the geometry (thickness of the letters)."
+        },
+        {
+          "Property": "Bevel",
+          "Description": "Set the size of the bevel along the edges of the characters."
+        },
+        {
+          "Property": "Bevel Type",
+          "Description": "Set the type of edge bevel: Linear for sharp, flat bevel, or Half Circle for rounded edge."
+        },
+        {
+          "Property": "Half Circle Segments",
+          "Description": "Set the number of segments for the curve in Half Circle bevel."
+        },
+        {
+          "Property": "Front Material",
+          "Description": "Select the Material for shading the front surface of the letters."
+        },
+        {
+          "Property": "Bevel Material",
+          "Description": "Select the Material for shading the bevel surface."
+        },
+        {
+          "Property": "Extrude Material",
+          "Description": "Select the Material for shading the sides of the letters."
+        },
+        {
+          "Property": "Back Material",
+          "Description": "Select the Material for shading the back of the letters."
+        },
+        {
+          "Property": "Font",
+          "Description": "Select the True Type (TTF) or Open Type (OTF) font Asset for the letters."
+        },
+        {
+          "Property": "Horizontal Alignment",
+          "Description": "Align text horizontally to Left, Center, or Right."
+        },
+        {
+          "Property": "Vertical Alignment",
+          "Description": "Align text vertically to Top Line, Top, Bottom, or Center."
+        },
+        {
+          "Property": "Kerning",
+          "Description": "Set additional space between each character."
+        },
+        {
+          "Property": "Line Spacing",
+          "Description": "Set additional space between each line."
+        },
+        {
+          "Property": "Word Spacing",
+          "Description": "Set additional space between each word."
+        },
+        {
+          "Property": "Max Width",
+          "Description": "Set the maximum width of the text."
+        },
+        {
+          "Property": "Max Height",
+          "Description": "Set the maximum height of the text."
+        },
+        {
+          "Property": "Scale Proportionally",
+          "Description": "Locks the height and width of the letters to their current ratio."
+        }
+      ]
+    },
+    "AnimatingLetterByLetter": {
+      "Description": "Interpolate 3D translation, rotation, and scaling of letters between starting and ending values.",
+      "Component": "Text3DCharacterTransformComponent",
+      "SetupSteps": [
+        "Select Text 3D Actor in the Viewport or World Outliner.",
+        "Click Add Component in the Details panel and select Text3DCharacterTransform.",
+        "Select the new Text3DCharacterTransform to access its settings.",
+        "Enable location, rotation, and/or scale transforms and adjust settings.",
+        "Use Level Sequence to play back animation effects over time."
+      ],
+      "Settings": [
+        {
+          "Setting": "Enabled",
+          "Description": "Determines whether the Component updates the location, rotation, or scale of the letters."
+        },
+        {
+          "Setting": "Progress",
+          "Description": "Overall progression of the text animation between Begin and End states."
+        },
+        {
+          "Setting": "Order",
+          "Description": "Direction in which the animation progresses across the letters: Normal, From Center, To Center, Opposite."
+        },
+        {
+          "Setting": "Range",
+          "Description": "Amount of overlap between adjacent letters' transformations."
+        },
+        {
+          "Setting": "Begin",
+          "Description": "Initial state for rotation or scale of the letters."
+        },
+        {
+          "Setting": "End or Distance",
+          "Description": "End state for the location, rotation, or scale of the letters."
+        }
+      ]
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "TargetPointActors": {
+    "Description": "Guide to creating and using Target Actors.",
+    "Details": {
+      "Purpose": "Provide a generic point in the world for spawning items.",
+      "Comparison": "Similar to dummy Actors in 3Ds Max or Maya."
+    },
+    "PlacingTargetPointActors": {
+      "Steps": [
+        "Find Target Point Actors in the Modes panel under All Classes category.",
+        "Select and drag it into the world."
+      ]
+    },
+    "UsingTargetPoints": {
+      "UseCases": [
+        "Look-at targets for cameras during cinematic sequences.",
+        "Path points for AI agents.",
+        "Spawn point for VFX.",
+        "Spawn points for items like health and item pickups.",
+        "Visual cue for item placement in the world."
+      ],
+      "Example": "Using a Target Point Actor in a Blueprint as a spawn point."
+    },
+    "Community": {
+      "Forums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}

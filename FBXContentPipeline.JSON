@@ -1,0 +1,620 @@
+{
+  "FBXContentPipeline": {
+    "Overview": "Information on using the FBX content import pipeline for meshes, animations, materials, and textures.",
+    "Introduction": {
+      "Description": "Unreal Engine supports various file formats for importing content. FBX, owned by Autodesk, allows interoperability between DCC applications like Autodesk Motionbuilder, Maya, 3ds Max, and Blender.",
+      "Advantages": [
+        "Single file format for Static Mesh, Skeletal Mesh, animation, and morph targets.",
+        "Importing multiple LODs and Morphs/Blendshapes in one operation.",
+        "Importing Material and Texture assets, automatically applying them to Static Meshes."
+      ],
+      "VersionNote": "Unreal Engine uses FBX 2020.2. Other versions may cause incompatibilities."
+    },
+    "Pipelines": {
+      "FBXAnimationPipeline": "Setting up, exporting, and importing animations for Skeletal Meshes.",
+      "FBXAssetMetadataPipeline": "Importing custom user-defined attributes into Unreal using FBX.",
+      "FBXImportOptionsReference": "Explanations of options in the FBX Import Options dialog.",
+      "FBXMaterialPipeline": "Transferring basic materials and textures with meshes.",
+      "FBXMorphTargetPipeline": "Creating and importing Morph Targets for Skeletal Meshes.",
+      "FBXSceneImport": "Using Import Into Level to bring full FBX scenes into Unreal Engine 4.",
+      "FBXSkeletalMeshPipeline": "Setting up, exporting, and importing Skeletal Meshes.",
+      "FBXStaticMeshPipeline": "Setting up, exporting, and importing Static Meshes.",
+      "FBXImportErrors": "Descriptions of errors generated during FBX file import."
+    },
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "FBX_Animation_Pipeline": {
+    "Overview": {
+      "Description": "Technical overview for importing animations for Skeletal Meshes using FBX pipeline in Unreal.",
+      "Version": "FBX 2020.2",
+      "Compatibility_Note": "Using different FBX versions during export may cause issues."
+    },
+    "Choosing_Tools": {
+      "Options": ["Autodesk Maya", "Autodesk 3ds Max"],
+      "Note": "Choose your preferred tool to display relevant information."
+    },
+    "Naming_Conventions": {
+      "AnimationSequence": "Named after the file or root bone name; can be renamed in Content Browser."
+    },
+    "Creating_Animations": {
+      "Requirements": {
+        "Skeleton": "Required; mesh optional but helpful for visualizing deformation.",
+        "Export_Condition": "Only skeleton needed at export time."
+      },
+      "Reusability": "Animations can be reused across multiple Skeletal Meshes with the same skeleton."
+    },
+    "Exporting_Animations": {
+      "Steps": [
+        "Select joints in viewport.",
+        "File menu: Export Selection or Export All.",
+        "Set location, name, and enable Animations checkbox.",
+        "Click button to export FBX file."
+      ],
+      "Note": "One animation per Skeletal Mesh per file."
+    },
+    "Importing_Animations": {
+      "Options": [
+        "Import Skeletal Mesh with Animation",
+        "Import Individual Animations"
+      ],
+      "Common_Steps": [
+        "Click button in Content Browser.",
+        "Select FBX file in file browser.",
+        "Choose settings in FBX Import Options dialog.",
+        "Click button to import."
+      ],
+      "Mesh_With_Animation": {
+        "Details": "Imported mesh, animation, material, and texture displayed in Content Browser."
+      },
+      "Individual_Animations": {
+        "Details": "AnimationSequence needed for importing animation. Specify existing skeleton when importing."
+      },
+      "Non_Uniform_Scale": {
+        "Support": "Supported and automatically imported if present."
+      },
+      "References": [
+        "Skeletal Mesh Animation page",
+        "Developer Forums",
+        "Learning Library"
+      ]
+    }
+  }
+}
+{
+  "Importing_Animations_Using_FBX": {
+    "Overview": {
+      "Description": "Guide for importing animations from 3D modeling applications into Unreal Engine.",
+      "Prerequisite": "Access to a 3D modeling application."
+    },
+    "Goals": {
+      "Focus": "Show how to import animations from external 3D programs.",
+      "Objectives": [
+        "Export animations from 3D modeling applications.",
+        "Import animations into Unreal Editor."
+      ]
+    },
+    "Compatibility": {
+      "Version": "FBX 2020.2",
+      "Note": "Different versions may cause issues."
+    },
+    "Exporting_Animations": {
+      "Steps": [
+        "Select joints in viewport.",
+        "File menu: Export Selection or Export All.",
+        "Set location, name, and enable Animations checkbox.",
+        "Click button to export FBX file."
+      ],
+      "Note": "One animation per skeletal mesh per file."
+    },
+    "Importing_Animations": {
+      "Options": [
+        "With Skeletal Mesh",
+        "Without Skeletal Mesh"
+      ],
+      "Common_Steps": [
+        "Click Import button in Content Browser.",
+        "Select FBX file.",
+        "Click Open to import.",
+        "Update settings in FBX Import Options dialog.",
+        "Click Import or Import All."
+      ],
+      "With_Skeletal_Mesh": {
+        "Details": "Imported mesh and animations appear in Content Browser. Default AnimationSequence named after skeleton's root bone."
+      },
+      "Without_Skeletal_Mesh": {
+        "Details": "Multiple animations in one FBX file supported if exported from applications like Motion Builder. AnimationSequence needed. Specify existing skeleton."
+      }
+    },
+    "Conclusion": {
+      "Learnings": [
+        "Export animations from 3D modeling applications.",
+        "Import animations into Unreal Editor."
+      ]
+    },
+    "References": [
+      "Developer Forums",
+      "Learning Library"
+    ]
+  }
+}
+{
+  "FBX_Asset_Metadata_Pipeline": {
+    "Overview": {
+      "Description": "Guide for importing custom user-defined attributes into Unreal via FBX and using them with Blueprints and Python.",
+      "Importance": "Enhances artist efficiency through intelligent automation and metadata."
+    },
+    "Metadata_Usage": {
+      "Purpose": "Interoperability with external applications and asset management pipelines.",
+      "Unreal_Editor": "Set and retrieve metadata using Blueprints or Python scripting."
+    },
+    "Metadata_Sources": {
+      "FBX_Import": "Reads FbxProperty values from FBX files and attaches them to Unreal Assets as tag-value pairs.",
+      "Supported_Applications": ["Autodesk Maya", "Autodesk 3ds Max"]
+    },
+    "Creating_Metadata": {
+      "Maya": {
+        "Instructions": "Add extra custom attributes to the object. Attributes appear in the object's Extra Attributes list.",
+        "Example": "String and numeric properties."
+      },
+      "3ds_Max": {
+        "Instructions": "Add metadata to User Defined tab in Object Properties dialog.",
+        "Import_Note": "Metadata imported as a single string in FBX.UDP3DSMAX tag."
+      }
+    },
+    "Metadata_After_Import": {
+      "Notes": [
+        "All keys and values stored as strings in Unreal.",
+        "Spaces in tag names are removed by FBX.",
+        "Tag names have prefixes indicating source (e.g., FBX., SG.).",
+        "Skeletal Mesh metadata includes bone names in prefixes."
+      ],
+      "Example": "Tag 'Created By' in Maya becomes 'FBX.CreatedBy' in Unreal."
+    },
+    "References": [
+      "Asset Metadata",
+      "Developer Forums",
+      "Learning Library"
+    ]
+  }
+}
+{
+  "FBX_Import_Options_Reference": {
+    "Overview": {
+      "Description": "Explains options available in the FBX Import Options dialog for Unreal Engine.",
+      "Purpose": "Guide for tweaking imported assets via the FBX pipeline."
+    },
+    "Static_Mesh_Options": {
+      "Options": [
+        {
+          "Name": "Skeletal Mesh",
+          "Description": "Attempt to import as a Skeletal Mesh."
+        },
+        {
+          "Name": "Auto Generate Collision",
+          "Description": "Generate collision if custom collision is not detected."
+        },
+        {
+          "Name": "Static Mesh LODGroup",
+          "Description": "Choose LOD group, affects default settings and overrides."
+        },
+        {
+          "Name": "Vertex Color Import Option",
+          "Description": "Replace or preserve vertex colors."
+        },
+        {
+          "Name": "Vertex Override Color",
+          "Description": "Override color if Vertex Color Import Option is set to Override."
+        },
+        {
+          "Name": "Remove Degenerates",
+          "Description": "Remove or keep degenerate triangles."
+        },
+        {
+          "Name": "Build Adjacency Buffer",
+          "Description": "Optimize for PN tessellation."
+        },
+        {
+          "Name": "Build Reveresed Index Buffer",
+          "Description": "Optimize for mirrored transform, doubles index buffer size."
+        },
+        {
+          "Name": "Generate Lightmap UVs",
+          "Description": "Generate unique, non-overlapping UVs for static lighting."
+        },
+        {
+          "Name": "One Convex Hull per UCX",
+          "Description": "Force one convex hull per UCX mesh."
+        },
+        {
+          "Name": "Transform Vertex to Absolute",
+          "Description": "Use transform, offset, pivot for world origin."
+        },
+        {
+          "Name": "Bake Pivot in Vertex",
+          "Description": "Apply pivot rotation to mesh."
+        },
+        {
+          "Name": "Import Mesh LODs",
+          "Description": "Create LOD models from defined LODs in the file."
+        },
+        {
+          "Name": "Normal Import Method",
+          "Description": "Handle Normals import with options: Compute Normals, Import Normals, Import Normals and Tangents."
+        },
+        {
+          "Name": "Normal Generation Method",
+          "Description": "Choose between MikkTSpace or Built-in Normal generation."
+        }
+      ]
+    },
+    "Skeletal_Mesh_Options": {
+      "Options": [
+        {
+          "Name": "Skeletal Mesh",
+          "Description": "Attempt to import as a Skeletal Mesh."
+        },
+        {
+          "Name": "Import Mesh",
+          "Description": "Allows animation-only imports."
+        },
+        {
+          "Name": "Import Content Type",
+          "Description": "Type of mesh content being imported."
+        },
+        {
+          "Name": "Skeleton",
+          "Description": "Target Skeleton. Creates new Skeleton if not selected."
+        },
+        {
+          "Name": "Vertex Color Import Options",
+          "Description": "Replace or preserve vertex colors."
+        },
+        {
+          "Name": "Vertex Override Color",
+          "Description": "Override color if Vertex Color Import Option is set to Override."
+        },
+        {
+          "Name": "Update Skeleton Reference Pose",
+          "Description": "Update Skeleton Asset's reference pose."
+        },
+        {
+          "Name": "Use T0As Ref Pose",
+          "Description": "Use frame 0 as the reference pose."
+        },
+        {
+          "Name": "Preserve Smoothing Group",
+          "Description": "Physically split triangles with non-matching smoothing groups."
+        },
+        {
+          "Name": "Import Meshes in Bone Hierarchy",
+          "Description": "Import nested meshes instead of converting to bones."
+        },
+        {
+          "Name": "Import Morph Targets",
+          "Description": "Import MorphTargets with the SkeletalMesh."
+        },
+        {
+          "Name": "Import Mesh LODs",
+          "Description": "Create LOD models from defined LODs in the file."
+        },
+        {
+          "Name": "Normal Import Method",
+          "Description": "Handle Normals import with options: Compute Normals, Import Normals, Import Normals and Tangents."
+        },
+        {
+          "Name": "Normal Generation Method",
+          "Description": "Choose between MikkTSpace or Built-in Normal generation."
+        },
+        {
+          "Name": "Create PhysicsAsset",
+          "Description": "Generate new PhysicsAsset for Skeletal Mesh."
+        },
+        {
+          "Name": "Select PhysicsAsset",
+          "Description": "Choose existing PhysicsAsset or none."
+        }
+      ]
+    },
+    "Animation_Options": {
+      "Options": [
+        {
+          "Name": "Skeleton",
+          "Description": "Target Skeleton. Creates new Skeleton if not selected."
+        },
+        {
+          "Name": "Import Animations",
+          "Description": "Import animations from FBX files."
+        },
+        {
+          "Name": "Animation Length",
+          "Description": "Choose from Exported Time, Animated Time, Set Range."
+        },
+        {
+          "Name": "Import Meshes in Bone Hierarchy",
+          "Description": "Import nested meshes instead of converting to bones."
+        },
+        {
+          "Name": "Frame Import Range",
+          "Description": "Set start and end frame for animation import."
+        },
+        {
+          "Name": "Use Default Sample Rate",
+          "Description": "Use default 30 FPS sample rate."
+        },
+        {
+          "Name": "Custom Sample Rate",
+          "Description": "Specify custom sample rate."
+        },
+        {
+          "Name": "Import Custom Attribute",
+          "Description": "Import custom attributes as curves."
+        },
+        {
+          "Name": "Delete Existing Custom Attribute Curves",
+          "Description": "Delete previous custom attribute curves on reimport."
+        },
+        {
+          "Name": "Import Bone Track",
+          "Description": "Import bone transform tracks."
+        },
+        {
+          "Name": "Set Material Curve Type",
+          "Description": "Set Material Curve Type for custom attributes."
+        },
+        {
+          "Name": "Material Curve Suffixes",
+          "Description": "Specify suffix for Material Curve Types."
+        },
+        {
+          "Name": "Remove Redundant Keys",
+          "Description": "Remove redundant keys when importing custom attributes."
+        },
+        {
+          "Name": "Delete Existing Morph Target Curves",
+          "Description": "Delete existing MorphTargets on reimport."
+        },
+        {
+          "Name": "Do not import curves with 0 values",
+          "Description": "Avoid importing curves with only zero values."
+        },
+        {
+          "Name": "Preserve Local Transform",
+          "Description": "Maintain local transforms during import."
+        },
+        {
+          "Name": "Override Animation Name",
+          "Description": "Assign a specific name to the animation."
+        }
+      ]
+    },
+    "Transform_Options": {
+      "Options": [
+        {
+          "Name": "Import Translation",
+          "Description": "Move mesh along XYZ axis."
+        },
+        {
+          "Name": "Import Rotation",
+          "Description": "Rotate mesh along XYZ axis."
+        },
+        {
+          "Name": "Import Uniform Scale",
+          "Description": "Scale mesh uniformly."
+        }
+      ]
+    },
+    "Miscellaneous_Options": {
+      "Options": [
+        {
+          "Name": "Convert Scene",
+          "Description": "Convert scene to UE4's coordinate system."
+        },
+        {
+          "Name": "Force Front XAxis",
+          "Description": "Use front X axis instead of -Y axis."
+        },
+        {
+          "Name": "Convert Scene Unit",
+          "Description": "Convert scene units to UE4's centimeters."
+        },
+        {
+          "Name": "Override Full Name",
+          "Description": "Use string 'Name' field as full name of the mesh."
+        }
+      ]
+    },
+    "Material_Options": {
+      "Options": [
+        {
+          "Name": "Search Location",
+          "Description": "Specify location to search for matching materials."
+        },
+        {
+          "Name": "Material Import Method",
+          "Description": "Specify method for importing materials."
+        },
+        {
+          "Name": "Import Textures",
+          "Description": "Import textures referenced in the FBX file."
+        },
+        {
+          "Name": "Invert Normal Maps",
+          "Description": "Invert normal maps values if textures are imported."
+        },
+        {
+          "Name": "Reorder Material to Fbx Order",
+          "Description": "Reorder material list to match FBX file."
+        }
+      ]
+    },
+    "Naming_Rules": {
+      "Rules": [
+        {
+          "Placeholder": "%1",
+          "Description": "Name of the asset being imported."
+        },
+        {
+          "Placeholder": "%2",
+          "Description": "Mesh node name in the FBX file."
+        }
+      ],
+      "Content_Type": {
+        "StaticMesh": "Uses %1 and %2 for naming."
+      }
+    }
+  }
+}
+{
+  "FBX_Morph_Target_Pipeline": {
+    "Overview": {
+      "Description": "Guide for creating and importing Morph Targets for Skeletal Meshes using the FBX content pipeline.",
+      "Compatibility": "Uses FBX 2020.2; different versions may cause issues."
+    },
+    "Morph_Targets": {
+      "Definition": "Snapshot of vertex locations for a deformed mesh.",
+      "Usage": "Blend Morph Targets to create expressions or animations."
+    },
+    "Naming": {
+      "Description": "Morph targets named according to blend shapes in the 3D application.",
+      "Format": "[BlendShapeNode]_[BlendShape]"
+    },
+    "Setting_Up_Morph_Targets": {
+      "Steps": [
+        "Start with the base mesh.",
+        "Duplicate and modify mesh to create target pose.",
+        "Select target mesh then base mesh.",
+        "In Create Deformers menu, select Blend Shape.",
+        "Blend shape node visible in base mesh's properties.",
+        "Adjust blend shape's weight to 1.0 to interpolate base mesh."
+      ],
+      "Note": "Refer to application help files for detailed instructions."
+    },
+    "Exporting_Morph_Targets": {
+      "Steps": [
+        "Select base mesh(es) and joints in viewport.",
+        "File menu: Export Selection or Export All.",
+        "Set location and name for FBX file, enable Animations and Deformed Models options.",
+        "Click button to export FBX file."
+      ]
+    },
+    "Importing_Morph_Targets": {
+      "Overview": "Import both SkeletalMesh and morph targets at once.",
+      "Override_Note": "Existing morph targets on the skeleton will be overridden.",
+      "Steps": [
+        "Click Import button in Content Browser.",
+        "Select FBX file in file browser.",
+        "Choose settings in Import dialog, enable Import Morph Targets.",
+        "Click OK to import mesh and LODs."
+      ],
+      "Result": "Mesh, MorphTargetSet, material(s), and texture(s) displayed in Content Browser."
+    },
+    "Usage": {
+      "Preview": "Use Morph Target Previewer tab in Persona to adjust strength and verify function.",
+      "Impact": "Adds subtle but crucial control and believability to character animations."
+    },
+    "References": [
+      "Developer Forums",
+      "Learning Library"
+    ]
+  }
+}
+{
+  "FBX_Scene_Import": {
+    "Overview": {
+      "Description": "Guide for using Import Into Level to bring full FBX scenes into Unreal Engine 4.",
+      "Compatibility": "Uses FBX 2020.2; different versions may cause issues."
+    },
+    "Supported_Asset_Types": [
+      "Static Meshes",
+      "Skeletal Meshes",
+      "Animations",
+      "Materials",
+      "Textures",
+      "Rigid Mesh",
+      "Morph Targets",
+      "Cameras",
+      "Lights"
+    ],
+    "Full_Scene_Workflow": {
+      "Steps": [
+        "File > Import Into Level from Main Menu.",
+        "Select FBX file.",
+        "Choose destination folder.",
+        "Select assets to import using FBX Scene Import Dialog."
+      ],
+      "Import_Options": [
+        "Individual level Actors",
+        "Components of a single Actor",
+        "Components of a single Blueprint Actor Class"
+      ],
+      "Note": "Blueprint Actor Class is required for full scene reimporting."
+    },
+    "FBX_Scene_Import_Options_Dialog": {
+      "Description": "Control which assets are imported and included in the final output.",
+      "Scene_Tab": {
+        "Description": "Tree view of scene hierarchy and general import options.",
+        "Note": "Unchecking in tree view doesn't prevent import, just final output inclusion."
+      },
+      "Static_Meshes_Tab": {
+        "Description": "Options for importing Static Meshes; create presets and overrides."
+      },
+      "Skeletal_Meshes_Tab": {
+        "Description": "Options for importing Skeletal Meshes; create presets and overrides."
+      },
+      "Materials_Tab": {
+        "Description": "Control over imported materials; replace or override locations."
+      },
+      "Option_Overrides": {
+        "Steps": [
+          "Create Override button in Static Meshes or Skeletal Meshes tab.",
+          "Name the new override.",
+          "Set desired options for the override.",
+          "Apply override to selected meshes."
+        ]
+      }
+    },
+    "Full_Scene_Reimporting": {
+      "Description": "Reimport scenes as Blueprint objects with added, removed, or edited components.",
+      "Steps": [
+        "Right-click FBX Scene Import Data asset and choose Reimport.",
+        "FBX Scene Reimport Options dialog opens with changed assets marked."
+      ],
+      "Reimport_Options": {
+        "Tabs": [
+          "Scene",
+          "Static Meshes",
+          "Skeletal Meshes",
+          "Materials"
+        ],
+        "Filters": [
+          "Add",
+          "Delete",
+          "Overwrite",
+          "Diff"
+        ],
+        "Reimport_Scene_Tab": {
+          "Description": "Similar to original Scene tab with Reimport Hierarchy option."
+        },
+        "Reimport_Static_Meshes_Tab": {
+          "Description": "Same functionality as Static Meshes tab for reimporting."
+        },
+        "Reimport_Skeletal_Meshes_Tab": {
+          "Description": "Same functionality as Skeletal Meshes tab for reimporting."
+        },
+        "Reimport_Materials_Tab": {
+          "Description": "Same functionality as Materials tab for reimporting.",
+          "Note": "Importer does not overwrite existing Materials."
+        }
+      }
+    },
+    "References": [
+      "Developer Forums",
+      "Learning Library"
+    ]
+  }
+}

@@ -1,0 +1,2019 @@
+{
+  "UE5_C++ProgDocs(Pt.1)": {
+    "Introduction": {
+      "Description": "Information for programmers developing with Unreal Engine using C++."
+    },
+    "Section Directory": {
+      "Overview": "Unreal Engine offers a comprehensive framework for C++ programmers.",
+      "Experience Required": "Assumes some experience with C++.",
+      "Features": [
+        {
+          "Topic": "Creating Gameplay Classes",
+          "Description": "New classes in C++ reflected in Unreal Editor after compilation. Follows standard C++ syntax."
+        },
+        {
+          "Topic": "Unreal Reflection System",
+          "Description": "Encapsulate classes with Metadata Property Specifier macros for Editor functionality."
+        },
+        {
+          "Topic": "Containers",
+          "Description": "Information on Class and Data Structure collections."
+        },
+        {
+          "Topic": "Gameplay Architecture",
+          "Description": "Build projects using the Gameplay Framework hierarchy of Objects and Actors."
+        },
+        {
+          "Topic": "Creating Delegates",
+          "Description": "Call member functions on C++ objects generically and type-safely."
+        }
+      ]
+    },
+    "Unreal Engine Reflection System": {
+      "Description": "Develop Objects using Unreal Engine's reflection capabilities."
+    },
+    "Coding Standard": {
+      "Description": "Adhere to standards and best practices for maintainable code."
+    },
+    "Containers in Unreal Engine": {
+      "Description": "Class and Data Structure collections in Unreal Engine."
+    },
+    "Gameplay Architecture": {
+      "Description": "Reference for creating and implementing gameplay classes."
+    },
+    "Delegates": {
+      "Description": "Data types that reference and execute member functions on C++ Objects."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help peers.",
+      "Learning Library": "Write and read tutorials."
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.1)": {
+    "Introduction": {
+      "Description": "Information for programmers developing with Unreal Engine using C++."
+    },
+    "Section Directory": {
+      "Overview": "Unreal Engine offers a comprehensive framework for C++ programmers.",
+      "Experience Required": "Assumes some experience with C++.",
+      "Features": [
+        {
+          "Topic": "Creating Gameplay Classes",
+          "Description": "New classes in C++ reflected in Unreal Editor after compilation. Follows standard C++ syntax."
+        },
+        {
+          "Topic": "Unreal Reflection System",
+          "Description": "Encapsulate classes with Metadata Property Specifier macros for Editor functionality."
+        },
+        {
+          "Topic": "Containers",
+          "Description": "Information on Class and Data Structure collections."
+        },
+        {
+          "Topic": "Gameplay Architecture",
+          "Description": "Build projects using the Gameplay Framework hierarchy of Objects and Actors."
+        },
+        {
+          "Topic": "Creating Delegates",
+          "Description": "Call member functions on C++ objects generically and type-safely."
+        }
+      ]
+    },
+    "Unreal Engine Reflection System": {
+      "Description": "Develop Objects using Unreal Engine's reflection capabilities.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for objects in Unreal, defines templates for new Actors or Objects."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Tags classes derived from UObject for the UObject handling system."
+        },
+        {
+          "Concept": "TSubclassOf",
+          "Description": "Template class providing UClass type safety for assigning derived classes."
+        },
+        {
+          "Concept": "Structs",
+          "Description": "Data structures defined using USTRUCT() for organization and member property manipulation."
+        },
+        {
+          "Concept": "Smart Pointer Library",
+          "Description": "Custom implementation of C++11 smart pointers for memory allocation and tracking."
+        },
+        {
+          "Concept": "Interfaces",
+          "Description": "Functions and behaviors implemented in multiple classes for varied gameplay interactions."
+        },
+        {
+          "Concept": "Metadata Specifiers",
+          "Description": "Control interactions of classes, structs, enums, etc., with engine and editor aspects."
+        },
+        {
+          "Concept": "UFUNCTION and UPROPERTY",
+          "Description": "Macros to make UE aware of classes, functions, and variables for garbage collection and editor display."
+        }
+      ]
+    },
+    "Coding Standard": {
+      "Description": "Adhere to standards and best practices for maintainable code."
+    },
+    "Containers in Unreal Engine": {
+      "Description": "Class and Data Structure collections in Unreal Engine."
+    },
+    "Gameplay Architecture": {
+      "Description": "Reference for creating and implementing gameplay classes."
+    },
+    "Delegates": {
+      "Description": "Data types that reference and execute member functions on C++ Objects."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help peers.",
+      "Learning Library": "Write and read tutorials."
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.1)": {
+    "Introduction": {
+      "Description": "Information for programmers developing with Unreal Engine using C++."
+    },
+    "Section Directory": {
+      "Overview": "Unreal Engine offers a comprehensive framework for C++ programmers.",
+      "Experience Required": "Assumes some experience with C++.",
+      "Features": [
+        {
+          "Topic": "Creating Gameplay Classes",
+          "Description": "New classes in C++ reflected in Unreal Editor after compilation. Follows standard C++ syntax."
+        },
+        {
+          "Topic": "Unreal Reflection System",
+          "Description": "Encapsulate classes with Metadata Property Specifier macros for Editor functionality."
+        },
+        {
+          "Topic": "Containers",
+          "Description": "Information on Class and Data Structure collections."
+        },
+        {
+          "Topic": "Gameplay Architecture",
+          "Description": "Build projects using the Gameplay Framework hierarchy of Objects and Actors."
+        },
+        {
+          "Topic": "Creating Delegates",
+          "Description": "Call member functions on C++ objects generically and type-safely."
+        }
+      ]
+    },
+    "Unreal Engine Reflection System": {
+      "Description": "Develop Objects using Unreal Engine's reflection capabilities.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for objects in Unreal, defines templates for new Actors or Objects."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Tags classes derived from UObject for the UObject handling system."
+        },
+        {
+          "Concept": "TSubclassOf",
+          "Description": "Template class providing UClass type safety for assigning derived classes."
+        },
+        {
+          "Concept": "Structs",
+          "Description": "Data structures defined using USTRUCT() for organization and member property manipulation."
+        },
+        {
+          "Concept": "Smart Pointer Library",
+          "Description": "Custom implementation of C++11 smart pointers for memory allocation and tracking."
+        },
+        {
+          "Concept": "Interfaces",
+          "Description": "Functions and behaviors implemented in multiple classes for varied gameplay interactions."
+        },
+        {
+          "Concept": "Metadata Specifiers",
+          "Description": "Control interactions of classes, structs, enums, etc., with engine and editor aspects."
+        },
+        {
+          "Concept": "UFUNCTION and UPROPERTY",
+          "Description": "Macros to make UE aware of classes, functions, and variables for garbage collection and editor display."
+        }
+      ]
+    },
+    "Objects": {
+      "Description": "Basic gameplay elements, Actors, and Objects.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for game objects, using UCLASS macro for engine awareness."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Provides UObject reference, maintains a Class Default Object (CDO)."
+        },
+        {
+          "Concept": "Properties and Functions",
+          "Description": "UObjects have properties and functions marked with special macros for recognition."
+        },
+        {
+          "Concept": "UObject Creation",
+          "Description": "Use NewObject or CreateDefaultSubobject, avoid manual memory management."
+        },
+        {
+          "Concept": "Functionality",
+          "Description": "Benefits include garbage collection, serialization, and automatic property updates."
+        },
+        {
+          "Concept": "Unreal Header Tool",
+          "Description": "Preprocesses header files for UObject-derived types, ensuring proper structure."
+        },
+        {
+          "Concept": "Updating Objects",
+          "Description": "Ticking for updates, destruction managed by garbage collection."
+        },
+        {
+          "Concept": "Destroying Objects",
+          "Description": "Managed by garbage collection, use MarkAsGarbage() for tracking stale objects."
+        }
+      ]
+    },
+    "Coding Standard": {
+      "Description": "Adhere to standards and best practices for maintainable code."
+    },
+    "Containers in Unreal Engine": {
+      "Description": "Class and Data Structure collections in Unreal Engine."
+    },
+    "Gameplay Architecture": {
+      "Description": "Reference for creating and implementing gameplay classes."
+    },
+    "Delegates": {
+      "Description": "Data types that reference and execute member functions on C++ Objects."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help peers.",
+      "Learning Library": "Write and read tutorials."
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.1)": {
+    "Introduction": {
+      "Description": "Information for programmers developing with Unreal Engine using C++."
+    },
+    "Section Directory": {
+      "Overview": "Unreal Engine offers a comprehensive framework for C++ programmers.",
+      "Experience Required": "Assumes some experience with C++.",
+      "Features": [
+        {
+          "Topic": "Creating Gameplay Classes",
+          "Description": "New classes in C++ reflected in Unreal Editor after compilation. Follows standard C++ syntax."
+        },
+        {
+          "Topic": "Unreal Reflection System",
+          "Description": "Encapsulate classes with Metadata Property Specifier macros for Editor functionality."
+        },
+        {
+          "Topic": "Containers",
+          "Description": "Information on Class and Data Structure collections."
+        },
+        {
+          "Topic": "Gameplay Architecture",
+          "Description": "Build projects using the Gameplay Framework hierarchy of Objects and Actors."
+        },
+        {
+          "Topic": "Creating Delegates",
+          "Description": "Call member functions on C++ objects generically and type-safely."
+        }
+      ]
+    },
+    "Unreal Engine Reflection System": {
+      "Description": "Develop Objects using Unreal Engine's reflection capabilities.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for objects in Unreal, defines templates for new Actors or Objects."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Tags classes derived from UObject for the UObject handling system."
+        },
+        {
+          "Concept": "TSubclassOf",
+          "Description": "Template class providing UClass type safety for assigning derived classes."
+        },
+        {
+          "Concept": "Structs",
+          "Description": "Data structures defined using USTRUCT() for organization and member property manipulation."
+        },
+        {
+          "Concept": "Smart Pointer Library",
+          "Description": "Custom implementation of C++11 smart pointers for memory allocation and tracking."
+        },
+        {
+          "Concept": "Interfaces",
+          "Description": "Functions and behaviors implemented in multiple classes for varied gameplay interactions."
+        },
+        {
+          "Concept": "Metadata Specifiers",
+          "Description": "Control interactions of classes, structs, enums, etc., with engine and editor aspects."
+        },
+        {
+          "Concept": "UFUNCTION and UPROPERTY",
+          "Description": "Macros to make UE aware of classes, functions, and variables for garbage collection and editor display."
+        }
+      ]
+    },
+    "Objects": {
+      "Description": "Basic gameplay elements, Actors, and Objects.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for game objects, using UCLASS macro for engine awareness."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Provides UObject reference, maintains a Class Default Object (CDO)."
+        },
+        {
+          "Concept": "Properties and Functions",
+          "Description": "UObjects have properties and functions marked with special macros for recognition."
+        },
+        {
+          "Concept": "UObject Creation",
+          "Description": "Use NewObject or CreateDefaultSubobject, avoid manual memory management."
+        },
+        {
+          "Concept": "Functionality",
+          "Description": "Benefits include garbage collection, serialization, and automatic property updates."
+        },
+        {
+          "Concept": "Unreal Header Tool",
+          "Description": "Preprocesses header files for UObject-derived types, ensuring proper structure."
+        },
+        {
+          "Concept": "Updating Objects",
+          "Description": "Ticking for updates, destruction managed by garbage collection."
+        },
+        {
+          "Concept": "Destroying Objects",
+          "Description": "Managed by garbage collection, use MarkAsGarbage() for tracking stale objects."
+        }
+      ]
+    },
+    "UObject Instance Creation": {
+      "Description": "Methods of creating new instances of Objects in gameplay code.",
+      "Methods": [
+        {
+          "Method": "NewObject",
+          "Description": "Simplest factory method. Creates an instance with an optional outer object and class.",
+          "Signature": "template<class T> T* NewObject(UObject* Outer = (UObject*)GetTransientPackage(), UClass* Class = T::StaticClass())",
+          "Parameters": [
+            {
+              "Parameter": "Outer",
+              "Description": "Optional. A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Class",
+              "Description": "Optional. A UClass specifying the class of the Object to be created."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        },
+        {
+          "Method": "NewNamedObject",
+          "Description": "Allows a name, Object Flags, and a template object to be specified.",
+          "Signature": "template<class TClass> TClass* NewNamedObject(UObject* Outer, FName Name, EObjectFlags Flags = RF_NoFlags, UObject const* Template = NULL)",
+          "Parameters": [
+            {
+              "Parameter": "Outer",
+              "Description": "A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Name",
+              "Description": "An FName to set as the Name for the new Object."
+            },
+            {
+              "Parameter": "Flags",
+              "Description": "Optional. An EObjectFlags enum value describing the new Object."
+            },
+            {
+              "Parameter": "Template",
+              "Description": "Optional. A UObject to use as a template when creating the new Object."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        },
+        {
+          "Method": "ConstructObject",
+          "Description": "For complete flexibility, using StaticConstructObject() for creation.",
+          "Signature": "template<class T> T* ConstructObject(UClass* Class, UObject* Outer = (UObject*)GetTransientPackage(), FName Name = NAME_None, EObjectFlags SetFlags = RF_NoFlags, UObject const* Template = NULL, bool bCopyTransientsFromClassDefaults = false, struct FObjectInstancingGraph* InstanceGraph = NULL)",
+          "Parameters": [
+            {
+              "Parameter": "Class",
+              "Description": "A UClass specifying the class of the Object to be created."
+            },
+            {
+              "Parameter": "Outer",
+              "Description": "Optional. A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Name",
+              "Description": "Optional. An FName to set as the Name for the new Object."
+            },
+            {
+              "Parameter": "SetFlags",
+              "Description": "Optional. An EObjectFlags enum value describing the new Object."
+            },
+            {
+              "Parameter": "Template",
+              "Description": "Optional. A UObject to use as a template when creating the new Object."
+            },
+            {
+              "Parameter": "bCopyTransientsFromClassDefaults",
+              "Description": "Optional. Whether to copy transient properties from the class default object."
+            },
+            {
+              "Parameter": "InstanceGraph",
+              "Description": "Optional. Contains mappings of instanced objects and components to their templates."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        }
+      ],
+      "Object Flags": {
+        "Description": "Enumeration used to describe an Object succinctly.",
+        "Flags": [
+          {
+            "Category": "Object Type",
+            "Flags": [
+              {"Flag": "RF_Public", "Value": "0x00000001", "Description": "Visible outside of the package."},
+              {"Flag": "RF_Standalone", "Value": "0x00000002", "Description": "Kept for editing even if not referenced."},
+              {"Flag": "RF_Native", "Value": "0x00000004", "Description": "Native Object, used for UClass objects."},
+              {"Flag": "RF_Transactional", "Value": "0x00000008", "Description": "Transactional Object."},
+              {"Flag": "RF_ClassDefaultObject", "Value": "0x00000010", "Description": "Default object for its class."},
+              {"Flag": "RF_ArchetypeObject", "Value": "0x00000020", "Description": "Template for another object."},
+              {"Flag": "RF_Transient", "Value": "0x00000040", "Description": "Not saved to disk."}
+            ]
+          },
+          {
+            "Category": "Garbage Collection",
+            "Flags": [
+              {"Flag": "RF_RootSet", "Value": "0x00000080", "Description": "Not garbage collected even if not referenced."},
+              {"Flag": "RF_IsLazyReferenced", "Value": "0x00000100", "Description": "Referenced by a lazy pointer."},
+              {"Flag": "RF_Unreachable", "Value": "0x00000200", "Description": "Not reachable on the object graph."},
+              {"Flag": "RF_TagGarbageTemp", "Value": "0x00000400", "Description": "Marked for use by utilities that use garbage collection."}
+            ]
+          },
+          {
+            "Category": "Object Lifetime",
+            "Flags": [
+              {"Flag": "RF_NeedLoad", "Value": "0x00000800", "Description": "Needs loading."},
+              {"Flag": "RF_AsyncLoading", "Value": "0x00001000", "Description": "Being loaded asynchronously."},
+              {"Flag": "RF_NeedPostLoad ", "Value": "0x00002000", "Description": "Needs to be post-loaded."},
+              {"Flag": "RF_NeedPostLoadSubobjects", "Value": "0x00004000", "Description": "Needs to instance sub-objects."},
+              {"Flag": "RF_PendingKill", "Value": "0x00008000", "Description": "Pending destruction, invalid for gameplay."},
+              {"Flag": "RF_BeginDestroyed", "Value": "0x00010000", "Description": "BeginDestroy() called."},
+              {"Flag": "RF_FinishDestroyed", "Value": "0x00020000", "Description": "FinishDestroy() called."}
+            ]
+          },
+          {
+            "Category": "Special Masks",
+            "Flags": [
+              {"Flag": "RF_AllFlags", "Value": "0x0003ffff", "Description": "All flags. Used mainly for error checking."},
+              {"Flag": "RF_NoFlags", "Value": "0x00000000", "Description": "No flags. Used to avoid a cast."}
+            ]
+          },
+          {
+            "Category": "Predefined Groups",
+            "Flags": [
+              {"Flag": "RF_Load", "Value": "RF_Public | RF_Standalone | RF_Native | RF_Transactional | RF_ClassDefaultObject | RF_ArchetypeObject", "Description": "Flags loaded from Unreal files."},
+              {"Flag": "RF_PropagateToSubobjects", "Value": "RF_Public | RF_ArchetypeObject | RF_Transactional", "Description": "Flags inherited by sub-objects from their super-objects."}
+            ]
+          }
+        ]
+      }
+    },
+    "Coding Standard": {
+      "Description": "Adhere to standards and best practices for maintainable code."
+    },
+    "Containers in Unreal Engine": {
+      "Description": "Class and Data Structure collections in Unreal Engine."
+    },
+    "Gameplay Architecture": {
+      "Description": "Reference for creating and implementing gameplay classes."
+    },
+    "Delegates": {
+      "Description": "Data types that reference and execute member functions on C++ Objects."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help peers.",
+      "Learning Library": "Write and read tutorials."
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.1)": {
+    "Introduction": {
+      "Description": "Information for programmers developing with Unreal Engine using C++."
+    },
+    "Section Directory": {
+      "Overview": "Unreal Engine offers a comprehensive framework for C++ programmers.",
+      "Experience Required": "Assumes some experience with C++.",
+      "Features": [
+        {
+          "Topic": "Creating Gameplay Classes",
+          "Description": "New classes in C++ reflected in Unreal Editor after compilation. Follows standard C++ syntax."
+        },
+        {
+          "Topic": "Unreal Reflection System",
+          "Description": "Encapsulate classes with Metadata Property Specifier macros for Editor functionality."
+        },
+        {
+          "Topic": "Containers",
+          "Description": "Information on Class and Data Structure collections."
+        },
+        {
+          "Topic": "Gameplay Architecture",
+          "Description": "Build projects using the Gameplay Framework hierarchy of Objects and Actors."
+        },
+        {
+          "Topic": "Creating Delegates",
+          "Description": "Call member functions on C++ objects generically and type-safely."
+        }
+      ]
+    },
+    "Unreal Engine Reflection System": {
+      "Description": "Develop Objects using Unreal Engine's reflection capabilities.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for objects in Unreal, defines templates for new Actors or Objects."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Tags classes derived from UObject for the UObject handling system."
+        },
+        {
+          "Concept": "TSubclassOf",
+          "Description": "Template class providing UClass type safety for assigning derived classes."
+        },
+        {
+          "Concept": "Structs",
+          "Description": "Data structures defined using USTRUCT() for organization and member property manipulation."
+        },
+        {
+          "Concept": "Smart Pointer Library",
+          "Description": "Custom implementation of C++11 smart pointers for memory allocation and tracking."
+        },
+        {
+          "Concept": "Interfaces",
+          "Description": "Functions and behaviors implemented in multiple classes for varied gameplay interactions."
+        },
+        {
+          "Concept": "Metadata Specifiers",
+          "Description": "Control interactions of classes, structs, enums, etc., with engine and editor aspects."
+        },
+        {
+          "Concept": "UFUNCTION and UPROPERTY",
+          "Description": "Macros to make UE aware of classes, functions, and variables for garbage collection and editor display."
+        }
+      ]
+    },
+    "Objects": {
+      "Description": "Basic gameplay elements, Actors, and Objects.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for game objects, using UCLASS macro for engine awareness."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Provides UObject reference, maintains a Class Default Object (CDO)."
+        },
+        {
+          "Concept": "Properties and Functions",
+          "Description": "UObjects have properties and functions marked with special macros for recognition."
+        },
+        {
+          "Concept": "UObject Creation",
+          "Description": "Use NewObject or CreateDefaultSubobject, avoid manual memory management."
+        },
+        {
+          "Concept": "Functionality",
+          "Description": "Benefits include garbage collection, serialization, and automatic property updates."
+        },
+        {
+          "Concept": "Unreal Header Tool",
+          "Description": "Preprocesses header files for UObject-derived types, ensuring proper structure."
+        },
+        {
+          "Concept": "Updating Objects",
+          "Description": "Ticking for updates, destruction managed by garbage collection."
+        },
+        {
+          "Concept": "Destroying Objects",
+          "Description": "Managed by garbage collection, use MarkAsGarbage() for tracking stale objects."
+        }
+      ]
+    },
+    "UObject Instance Creation": {
+      "Description": "Methods of creating new instances of Objects in gameplay code.",
+      "Methods": [
+        {
+          "Method": "NewObject",
+          "Description": "Simplest factory method. Creates an instance with an optional outer object and class.",
+          "Signature": "template<class T> T* NewObject(UObject* Outer = (UObject*)GetTransientPackage(), UClass* Class = T::StaticClass())",
+          "Parameters": [
+            {
+              "Parameter": "Outer",
+              "Description": "Optional. A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Class",
+              "Description": "Optional. A UClass specifying the class of the Object to be created."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        },
+        {
+          "Method": "NewNamedObject",
+          "Description": "Allows a name, Object Flags, and a template object to be specified.",
+          "Signature": "template<class TClass> TClass* NewNamedObject(UObject* Outer, FName Name, EObjectFlags Flags = RF_NoFlags, UObject const* Template = NULL)",
+          "Parameters": [
+            {
+              "Parameter": "Outer",
+              "Description": "A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Name",
+              "Description": "An FName to set as the Name for the new Object."
+            },
+            {
+              "Parameter": "Flags",
+              "Description": "Optional. An EObjectFlags enum value describing the new Object."
+            },
+            {
+              "Parameter": "Template",
+              "Description": "Optional. A UObject to use as a template when creating the new Object."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        },
+        {
+          "Method": "ConstructObject",
+          "Description": "For complete flexibility, using StaticConstructObject() for creation.",
+          "Signature": "template<class T> T* ConstructObject(UClass* Class, UObject* Outer = (UObject*)GetTransientPackage(), FName Name = NAME_None, EObjectFlags SetFlags = RF_NoFlags, UObject const* Template = NULL, bool bCopyTransientsFromClassDefaults = false, struct FObjectInstancingGraph* InstanceGraph = NULL)",
+          "Parameters": [
+            {
+              "Parameter": "Class",
+              "Description": "A UClass specifying the class of the Object to be created."
+            },
+            {
+              "Parameter": "Outer",
+              "Description": "Optional. A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Name",
+              "Description": "Optional. An FName to set as the Name for the new Object."
+            },
+            {
+              "Parameter": "SetFlags",
+              "Description": "Optional. An EObjectFlags enum value describing the new Object."
+            },
+            {
+              "Parameter": "Template",
+              "Description": "Optional. A UObject to use as a template when creating the new Object."
+            },
+            {
+              "Parameter": "bCopyTransientsFromClassDefaults",
+              "Description": "Optional. Whether to copy transient properties from the class default object."
+            },
+            {
+              "Parameter": "InstanceGraph",
+              "Description": "Optional. Contains mappings of instanced objects and components to their templates."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        }
+      ],
+      "Object Flags": {
+        "Description": "Enumeration used to describe an Object succinctly.",
+        "Flags": [
+          {
+            "Category": "Object Type",
+            "Flags": [
+              {"Flag": "RF_Public", "Value": "0x00000001", "Description": "Visible outside of the package."},
+              {"Flag": "RF_Standalone", "Value": "0x00000002", "Description": "Kept for editing even if not referenced."},
+              {"Flag": "RF_Native", "Value": "0x00000004", "Description": "Native Object, used for UClass objects."},
+              {"Flag": "RF_Transactional", "Value": "0x00000008", "Description": "Transactional Object."},
+              {"Flag": "RF_ClassDefaultObject", "Value": "0x00000010", "Description": "Default object for its class."},
+              {"Flag": "RF_ArchetypeObject", "Value": "0x00000020", "Description": "Template for another object."},
+              {"Flag": "RF_Transient", "Value": "0x00000040", "Description": "Not saved to disk."}
+            ]
+          },
+          {
+            "Category": "Garbage Collection",
+            "Flags": [
+              {"Flag": "RF_RootSet", "Value": "0x00000080", "Description": "Not garbage collected even if not referenced."},
+              {"Flag": "RF_IsLazyReferenced", "Value": "0x00000100", "Description": "Referenced by a lazy pointer."},
+              {"Flag": "RF_Unreachable", "Value": "0x00000200", "Description": "Not reachable on the object graph."},
+              {"Flag": "RF_TagGarbageTemp", "Value": "0x00000400", "Description": "Marked for use by utilities that use garbage collection."}
+            ]
+          },
+          {
+            "Category": "Object Lifetime",
+            "Flags": [
+              {"Flag": "RF_NeedLoad", "Value": "0x00000800", "Description": "Needs loading."},
+              {"Flag": "RF_AsyncLoading", "Value": "0x00001000", "Description": "Being loaded asynchronously."},
+              {"Flag": "RF_NeedPostLoad ", "Value": "0x00002000", "Description": "Needs to be post-loaded."},
+              {"Flag": "RF_NeedPostLoadSubobjects", "Value": "0x00004000", "Description": "Needs to instance sub-objects."},
+              {"Flag": "RF_PendingKill", "Value": "0x00008000", "Description": "Pending destruction, invalid for gameplay."},
+              {"Flag": "RF_BeginDestroyed", "Value": "0x00010000", "Description": "BeginDestroy() called."},
+              {"Flag": "RF_FinishDestroyed", "Value": "0x00020000", "Description": "FinishDestroy() called."}
+            ]
+          },
+          {
+            "Category": "Special Masks",
+            "Flags": [
+              {"Flag": "RF_AllFlags", "Value": "0x0003ffff", "Description": "All flags. Used mainly for error checking."},
+              {"Flag": "RF_NoFlags", "Value": "0x00000000", "Description": "No flags. Used to avoid a cast."}
+            ]
+          },
+          {
+            "Category": "Predefined Groups",
+            "Flags": [
+              {"Flag": "RF_Load", "Value": "RF_Public | RF_Standalone | RF_Native | RF_Transactional | RF_ClassDefaultObject | RF_ArchetypeObject", "Description": "Flags loaded from Unreal files."},
+              {"Flag": "RF_PropagateToSubobjects", "Value": "RF_Public | RF_ArchetypeObject | RF_Transactional", "Description": "Flags inherited by sub-objects from their super-objects."}
+            ]
+          }
+        ]
+      }
+    },
+    "Unreal Object Handling": {
+      "Description": "Overview of the features of the UObject system.",
+      "Details": [
+        {
+          "Concept": "Marking Classes",
+          "Description": "Using macros turns them into UClasses, UProperties, and UFunctions."
+        },
+        {
+          "Concept": "Automatic Property Initialization",
+          "Description": "UObjects are zeroed on initialization, custom values set in constructor."
+        },
+        {
+          "Concept": "Automatic Updating of References",
+          "Description": "Destroyed AActor or UActorComponent references are nulled to prevent dangling pointers."
+        },
+        {
+          "Concept": "Serialization",
+          "Description": "UProperty values are automatically written or read unless marked as transient."
+        },
+        {
+          "Concept": "Updating Property Values",
+          "Description": "Changes in CDO are applied to instances unless they have custom values."
+        },
+        {
+          "Concept": "Editor Integration",
+          "Description": "UObjects and UProperties are understood by the Editor and can be exposed for editing."
+        },
+        {
+          "Concept": "Run-Time Type Information and Casting",
+          "Description": "UObjects know their UClass and support runtime type decisions and casts."
+        },
+        {
+          "Concept": "Garbage Collection",
+          "Description": "UObjects are cleaned up when no longer referenced, using a reference graph."
+        },
+        {
+          "Concept": "Network Replication",
+          "Description": "Supports network communication, with UProperties and UFunctions tagged for replication."
+        }
+      ]
+    },
+    "Coding Standard": {
+      "Description": "Adhere to standards and best practices for maintainable code."
+    },
+    "Containers in Unreal Engine": {
+      "Description": "Class and Data Structure collections in Unreal Engine."
+    },
+    "Gameplay Architecture": {
+      "Description": "Reference for creating and implementing gameplay classes."
+    },
+    "Delegates": {
+      "Description": "Data types that reference and execute member functions on C++ Objects."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help peers.",
+      "Learning Library": "Write and read tutorials."
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.1)": {
+    "Introduction": {
+      "Description": "Information for programmers developing with Unreal Engine using C++."
+    },
+    "Section Directory": {
+      "Overview": "Unreal Engine offers a comprehensive framework for C++ programmers.",
+      "Experience Required": "Assumes some experience with C++.",
+      "Features": [
+        {
+          "Topic": "Creating Gameplay Classes",
+          "Description": "New classes in C++ reflected in Unreal Editor after compilation. Follows standard C++ syntax."
+        },
+        {
+          "Topic": "Unreal Reflection System",
+          "Description": "Encapsulate classes with Metadata Property Specifier macros for Editor functionality."
+        },
+        {
+          "Topic": "Containers",
+          "Description": "Information on Class and Data Structure collections."
+        },
+        {
+          "Topic": "Gameplay Architecture",
+          "Description": "Build projects using the Gameplay Framework hierarchy of Objects and Actors."
+        },
+        {
+          "Topic": "Creating Delegates",
+          "Description": "Call member functions on C++ objects generically and type-safely."
+        }
+      ]
+    },
+    "Unreal Engine Reflection System": {
+      "Description": "Develop Objects using Unreal Engine's reflection capabilities.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for objects in Unreal, defines templates for new Actors or Objects."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Tags classes derived from UObject for the UObject handling system."
+        },
+        {
+          "Concept": "TSubclassOf",
+          "Description": "Template class providing UClass type safety for assigning derived classes."
+        },
+        {
+          "Concept": "Structs",
+          "Description": "Data structures defined using USTRUCT() for organization and member property manipulation."
+        },
+        {
+          "Concept": "Smart Pointer Library",
+          "Description": "Custom implementation of C++11 smart pointers for memory allocation and tracking."
+        },
+        {
+          "Concept": "Interfaces",
+          "Description": "Functions and behaviors implemented in multiple classes for varied gameplay interactions."
+        },
+        {
+          "Concept": "Metadata Specifiers",
+          "Description": "Control interactions of classes, structs, enums, etc., with engine and editor aspects."
+        },
+        {
+          "Concept": "UFUNCTION and UPROPERTY",
+          "Description": "Macros to make UE aware of classes, functions, and variables for garbage collection and editor display."
+        }
+      ]
+    },
+    "Objects": {
+      "Description": "Basic gameplay elements, Actors, and Objects.",
+      "Details": [
+        {
+          "Concept": "UObject",
+          "Description": "Base class for game objects, using UCLASS macro for engine awareness."
+        },
+        {
+          "Concept": "UCLASS Macro",
+          "Description": "Provides UObject reference, maintains a Class Default Object (CDO)."
+        },
+        {
+          "Concept": "Properties and Functions",
+          "Description": "UObjects have properties and functions marked with special macros for recognition."
+        },
+        {
+          "Concept": "UObject Creation",
+          "Description": "Use NewObject or CreateDefaultSubobject, avoid manual memory management."
+        },
+        {
+          "Concept": "Functionality",
+          "Description": "Benefits include garbage collection, serialization, and automatic property updates."
+        },
+        {
+          "Concept": "Unreal Header Tool",
+          "Description": "Preprocesses header files for UObject-derived types, ensuring proper structure."
+        },
+        {
+          "Concept": "Updating Objects",
+          "Description": "Ticking for updates, destruction managed by garbage collection."
+        },
+        {
+          "Concept": "Destroying Objects",
+          "Description": "Managed by garbage collection, use MarkAsGarbage() for tracking stale objects."
+        }
+      ]
+    },
+    "UObject Instance Creation": {
+      "Description": "Methods of creating new instances of Objects in gameplay code.",
+      "Methods": [
+        {
+          "Method": "NewObject",
+          "Description": "Simplest factory method. Creates an instance with an optional outer object and class.",
+          "Signature": "template<class T> T* NewObject(UObject* Outer = (UObject*)GetTransientPackage(), UClass* Class = T::StaticClass())",
+          "Parameters": [
+            {
+              "Parameter": "Outer",
+              "Description": "Optional. A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Class",
+              "Description": "Optional. A UClass specifying the class of the Object to be created."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        },
+        {
+          "Method": "NewNamedObject",
+          "Description": "Allows a name, Object Flags, and a template object to be specified.",
+          "Signature": "template<class TClass> TClass* NewNamedObject(UObject* Outer, FName Name, EObjectFlags Flags = RF_NoFlags, UObject const* Template = NULL)",
+          "Parameters": [
+            {
+              "Parameter": "Outer",
+              "Description": "A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Name",
+              "Description": "An FName to set as the Name for the new Object."
+            },
+            {
+              "Parameter": "Flags",
+              "Description": "Optional. An EObjectFlags enum value describing the new Object."
+            },
+            {
+              "Parameter": "Template",
+              "Description": "Optional. A UObject to use as a template when creating the new Object."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        },
+        {
+          "Method": "ConstructObject",
+          "Description": "For complete flexibility, using StaticConstructObject() for creation.",
+          "Signature": "template<class T> T* ConstructObject(UClass* Class, UObject* Outer = (UObject*)GetTransientPackage(), FName Name = NAME_None, EObjectFlags SetFlags = RF_NoFlags, UObject const* Template = NULL, bool bCopyTransientsFromClassDefaults = false, struct FObjectInstancingGraph* InstanceGraph = NULL)",
+          "Parameters": [
+            {
+              "Parameter": "Class",
+              "Description": "A UClass specifying the class of the Object to be created."
+            },
+            {
+              "Parameter": "Outer",
+              "Description": "Optional. A UObject to set as the Outer for the Object being created."
+            },
+            {
+              "Parameter": "Name",
+              "Description": "Optional. An FName to set as the Name for the new Object."
+            },
+            {
+              "Parameter": "SetFlags",
+              "Description": "Optional. An EObjectFlags enum value describing the new Object."
+            },
+            {
+              "Parameter": "Template",
+              "Description": "Optional. A UObject to use as a template when creating the new Object."
+            },
+            {
+              "Parameter": "bCopyTransientsFromClassDefaults",
+              "Description": "Optional. Whether to copy transient properties from the class default object."
+            },
+            {
+              "Parameter": "InstanceGraph",
+              "Description": "Optional. Contains mappings of instanced objects and components to their templates."
+            }
+          ],
+          "Return Value": "A pointer to the spawned instance of the specified class."
+        }
+      ],
+      "Object Flags": {
+        "Description": "Enumeration used to describe an Object succinctly.",
+        "Flags": [
+          {
+            "Category": "Object Type",
+            "Flags": [
+              {"Flag": "RF_Public", "Value": "0x00000001", "Description": "Visible outside of the package."},
+              {"Flag": "RF_Standalone", "Value": "0x00000002", "Description": "Kept for editing even if not referenced."},
+              {"Flag": "RF_Native", "Value": "0x00000004", "Description": "Native Object, used for UClass objects."},
+              {"Flag": "RF_Transactional", "Value": "0x00000008", "Description": "Transactional Object."},
+              {"Flag": "RF_ClassDefaultObject", "Value": "0x00000010", "Description": "Default object for its class."},
+              {"Flag": "RF_ArchetypeObject", "Value": "0x00000020", "Description": "Template for another object."},
+              {"Flag": "RF_Transient", "Value": "0x00000040", "Description": "Not saved to disk."}
+            ]
+          },
+          {
+            "Category": "Garbage Collection",
+            "Flags": [
+              {"Flag": "RF_RootSet", "Value": "0x00000080", "Description": "Not garbage collected even if not referenced."},
+              {"Flag": "RF_IsLazyReferenced", "Value": "0x00000100", "Description": "Referenced by a lazy pointer."},
+              {"Flag": "RF_Unreachable", "Value": "0x00000200", "Description": "Not reachable on the object graph."},
+              {"Flag": "RF_TagGarbageTemp", "Value": "0x00000400", "Description": "Marked for use by utilities that use garbage collection."}
+            ]
+          },
+          {
+            "Category": "Object Lifetime",
+            "Flags": [
+              {"Flag": "RF_NeedLoad", "Value": "0x00000800", "Description": "Needs loading."},
+              {"Flag": "RF_AsyncLoading", "Value": "0x00001000", "Description": "Being loaded asynchronously."},
+              {"Flag": "RF_NeedPostLoad ", "Value": "0x00002000", "Description": "Needs to be post-loaded."},
+              {"Flag": "RF_NeedPostLoadSubobjects", "Value": "0x00004000", "Description": "Needs to instance sub-objects."},
+              {"Flag": "RF_PendingKill", "Value": "0x00008000", "Description": "Pending destruction, invalid for gameplay."},
+              {"Flag": "RF_BeginDestroyed", "Value": "0x00010000", "Description": "BeginDestroy() called."},
+              {"Flag": "RF_FinishDestroyed", "Value": "0x00020000", "Description": "FinishDestroy() called."}
+            ]
+          },
+          {
+            "Category": "Special Masks",
+            "Flags": [
+              {"Flag": "RF_AllFlags", "Value": "0x0003ffff", "Description": "All flags. Used mainly for error checking."},
+              {"Flag": "RF_NoFlags", "Value": "0x00000000", "Description": "No flags. Used to avoid a cast."}
+            ]
+          },
+          {
+            "Category": "Predefined Groups",
+            "Flags": [
+              {"Flag": "RF_Load", "Value": "RF_Public | RF_Standalone | RF_Native | RF_Transactional | RF_ClassDefaultObject | RF_ArchetypeObject", "Description": "Flags loaded from Unreal files."},
+              {"Flag": "RF_PropagateToSubobjects", "Value": "RF_Public | RF_ArchetypeObject | RF_Transactional", "Description": "Flags inherited by sub-objects from their super-objects."}
+            ]
+          }
+        ]
+      }
+    },
+    "Unreal Object Handling": {
+      "Description": "Overview of the features of the UObject system.",
+      "Details": [
+        {
+          "Concept": "Marking Classes",
+          "Description": "Using macros turns them into UClasses, UProperties, and UFunctions."
+        },
+        {
+          "Concept": "Automatic Property Initialization",
+          "Description": "UObjects are zeroed on initialization, custom values set in constructor."
+        },
+        {
+          "Concept": "Automatic Updating of References",
+          "Description": "Destroyed AActor or UActorComponent references are nulled to prevent dangling pointers."
+        },
+        {
+          "Concept": "Serialization",
+          "Description": "UProperty values are automatically written or read unless marked as transient."
+        },
+        {
+          "Concept": "Updating Property Values",
+          "Description": "Changes in CDO are applied to instances unless they have custom values."
+        },
+        {
+          "Concept": "Editor Integration",
+          "Description": "UObjects and UProperties are understood by the Editor and can be exposed for editing."
+        },
+        {
+          "Concept": "Run-Time Type Information and Casting",
+          "Description": "UObjects know their UClass and support runtime type decisions and casts."
+        },
+        {
+          "Concept": "Garbage Collection",
+          "Description": "UObjects are cleaned up when no longer referenced, using a reference graph."
+        },
+        {
+          "Concept": "Network Replication",
+          "Description": "Supports network communication, with UProperties and UFunctions tagged for replication."
+        }
+      ]
+    },
+    "Incremental Garbage Collection": {
+      "Description": "Improved garbage collection system for UObjects.",
+      "Details": [
+        {
+          "Concept": "Overview",
+          "Description": "UE uses a mark-and-sweep garbage collector to manage UObject memory, with reachability analysis causing potential gameplay hitches."
+        },
+        {
+          "Concept": "Incremental Reachability Analysis",
+          "Description": "Splits garbage collector's reachability analysis across multiple frames with a configurable time limit."
+        },
+        {
+          "Concept": "Enable Incremental Reachability Analysis",
+          "Description": "Enable with console variables in DefaultEngine.ini.",
+          "Code": [
+            {
+              "Block": "[ConsoleVariables]",
+              "Variables": [
+                "gc.AllowIncrementalReachability=1",
+                "gc.AllowIncrementalGather=1",
+                "gc.IncrementalReachabilityTimeLimit=0.002"
+              ]
+            }
+          ]
+        },
+        {
+          "Concept": "Additional Console Variables",
+          "Description": "Variables for stress-testing and debugging.",
+          "Variables": [
+            {
+              "Variable": "gc.DelayReachabilityIteration",
+              "Description": "Delay reachability analysis by specified frames.",
+              "Type": "INTEGER"
+            },
+            {
+              "Variable": "gc.VerifyNoUnreachableObjects",
+              "Description": "Check no valid object references an unreachable object.",
+              "Type": "0: disabled, 1: enabled"
+            },
+            {
+              "Variable": "gc.ContinuousIncrementalGC",
+              "Description": "Restart incremental GC after previous completion.",
+              "Type": "0: disabled, 1: enabled"
+            }
+          ]
+        },
+        {
+          "Concept": "Performance Comparison",
+          "Description": "Unreal Insights visualization showing performance with and without incremental reachability."
+        }
+      ]
+    },
+    "Coding Standard": {
+      "Description": "Adhere to standards and best practices for maintainable code."
+    },
+    "Containers in Unreal Engine": {
+      "Description": "Class and Data Structure collections in Unreal Engine."
+    },
+    "Gameplay Architecture": {
+      "Description": "Reference for creating and implementing gameplay classes."
+    },
+    "Delegates": {
+      "Description": "Data types that reference and execute member functions on C++ Objects."
+    },
+    "Resources": {
+      "Developer Forums": "Ask questions and help peers.",
+      "Learning Library": "Write and read tutorials."
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.2)": {
+    "Properties": {
+      "Overview": "Reference for creating and implementing properties for gameplay classes.",
+      "PropertyDeclaration": {
+        "Description": "Properties are declared using standard C++ variable syntax, preceded by the UPROPERTY macro.",
+        "Syntax": "UPROPERTY([specifier, ...], [meta(key=value, ...)]) Type VariableName;"
+      },
+      "CoreDataTypes": {
+        "Integers": {
+          "Description": "Convention for integral data types is 'int' or 'uint' followed by the size in bits.",
+          "Types": [
+            {"Type": "uint8", "Description": "8-bit unsigned"},
+            {"Type": "uint16", "Description": "16-bit unsigned"},
+            {"Type": "uint32", "Description": "32-bit unsigned"},
+            {"Type": "uint64", "Description": "64-bit unsigned"},
+            {"Type": "int8", "Description": "8-bit signed"},
+            {"Type": "int16", "Description": "16-bit signed"},
+            {"Type": "int32", "Description": "32-bit signed"},
+            {"Type": "int64", "Description": "64-bit signed"}
+          ],
+          "Bitmasks": {
+            "Description": "Integer properties can be exposed as bitmasks in the Editor.",
+            "Example": "UPROPERTY(EditAnywhere, Meta = (Bitmask)) int32 BasicBits;",
+            "BlueprintCallable": {
+              "Example": "UFUNCTION(BlueprintCallable) void MyFunction(UPARAM(meta=(Bitmask)) int32 BasicBitsParam);"
+            },
+            "CustomBitflags": {
+              "Description": "Customize bitflags' names using UENUM with 'bitflags' meta tag.",
+              "Syntax": "UENUM(Meta = (Bitflags)) enum class EColorBits { ECB_Red, ECB_Green, ECB_Blue };",
+              "AlternativeSyntax": "UENUM(Meta = (Bitflags, UseEnumValuesAsMaskValuesInEditor = 'true')) enum class EColorBits { ECB_Red = 0x01, ECB_Green = 0x02, ECB_Blue = 0x04 }; ENUM_CLASS_FLAGS(EColorBits);",
+              "Usage": "UPROPERTY(EditAnywhere, Meta = (Bitmask, BitmaskEnum = 'EColorBits')) int32 ColorFlags;"
+            }
+          }
+        },
+        "FloatingPointTypes": {
+          "Description": "Unreal uses standard C++ float and double types."
+        },
+        "BooleanTypes": {
+          "Description": "Boolean types can be represented with C++ bool keyword or as a bitfield.",
+          "Example": "uint32 bIsHungry : 1; bool bIsThirsty;"
+        },
+        "Strings": {
+          "Description": "Unreal Engine 4 supports FString, FName, and FText string types.",
+          "Example": "MyDogPtr->DogName = FName(TEXT('Samson Aloysius'));"
+        }
+      },
+      "PropertySpecifiers": {
+        "Description": "Control property behavior with various aspects of the Engine and Editor.",
+        "Specifiers": [
+          {"Tag": "AdvancedDisplay", "Effect": "Property in advanced section."},
+          {"Tag": "AssetRegistrySearchable", "Effect": "Property and value added to Asset Registry."},
+          {"Tag": "BlueprintAssignable", "Effect": "Exposes Multicast Delegates for assigning in Blueprints."},
+          {"Tag": "BlueprintAuthorityOnly", "Effect": "Accepts events tagged with BlueprintAuthorityOnly in Blueprints."},
+          {"Tag": "BlueprintCallable", "Effect": "Property exposed for calling in Blueprint code."},
+          {"Tag": "BlueprintGetter", "Effect": "Specifies a custom accessor function."},
+          {"Tag": "BlueprintReadOnly", "Effect": "Property can be read by Blueprints, not modified."},
+          {"Tag": "BlueprintReadWrite", "Effect": "Property can be read or written from a Blueprint."},
+          {"Tag": "BlueprintSetter", "Effect": "Specifies a custom mutator function."},
+          {"Tag": "Category", "Effect": "Specifies property category in Blueprint editing tools."},
+          {"Tag": "Config", "Effect": "Property made configurable, saved to .ini file."},
+          {"Tag": "DuplicateTransient", "Effect": "Property value reset during duplication."},
+          {"Tag": "EditAnywhere", "Effect": "Property can be edited in property windows."},
+          {"Tag": "EditDefaultsOnly", "Effect": "Property edited by property windows, only on archetypes."},
+          {"Tag": "EditFixedSize", "Effect": "Prevents array length change in Unreal Editor property window."},
+          {"Tag": "EditInline", "Effect": "Edit Object properties in Unreal Editor's property inspector."},
+          {"Tag": "EditInstanceOnly", "Effect": "Property edited by property windows, only on instances."},
+          {"Tag": "Export", "Effect": "Object assigned exported in entirety during copy operations."},
+          {"Tag": "GlobalConfig", "Effect": "Configurable property not overridden in subclasses."},
+          {"Tag": "Instanced", "Effect": "Each instance gets a unique copy of Object assigned to this property."},
+          {"Tag": "Interp", "Effect": "Value can be driven over time by a Track in Sequencer."},
+          {"Tag": "Localized", "Effect": "Localized value defined, usually for strings."},
+          {"Tag": "Native", "Effect": "C++ code responsible for serializing and exposing property to GC."},
+          {"Tag": "NoClear", "Effect": "Prevents Object reference from being set to none in editor."},
+          {"Tag": "NoExport", "Effect": "Property not included in auto-generated class declaration."},
+          {"Tag": "NonPIEDuplicateTransient", "Effect": "Property reset during duplication, except in PIE session."},
+          {"Tag": "NonTransactional", "Effect": "Changes not included in editor's undo/redo history."},
+          {"Tag": "NotReplicated", "Effect": "Skip replication for struct members and parameters."},
+          {"Tag": "Replicated", "Effect": "Property should be replicated over the network."},
+          {"Tag": "ReplicatedUsing", "Effect": "Callback function executed when property updated over network."},
+          {"Tag": "RepRetry", "Effect": "Retry replication if it fails, usually for struct properties."},
+          {"Tag": "SaveGame", "Effect": "Field included in a checkpoint/save system."},
+          {"Tag": "SerializeText", "Effect": "Native property serialized as text."},
+          {"Tag": "SkipSerialization", "Effect": "Property not serialized, can still be exported to text format."},
+          {"Tag": "SimpleDisplay", "Effect": "Properties visible without opening 'Advanced' section."},
+          {"Tag": "TextExportTransient", "Effect": "Property not exported to text format."},
+          {"Tag": "Transient", "Effect": "Transient property not saved or loaded."},
+          {"Tag": "VisibleAnywhere", "Effect": "Property visible in all property windows, not editable."},
+          {"Tag": "VisibleDefaultsOnly", "Effect": "Property visible only in property windows for archetypes."},
+          {"Tag": "VisibleInstanceOnly", "Effect": "Property visible only in property windows for instances."}
+        ]
+      },
+      "MetadataSpecifiers": {
+        "Description": "Control how classes, interfaces, structs, enums, functions, or properties interact with the engine and editor.",
+        "Specifiers": [
+          {"Tag": "AllowAbstract", "Effect": "Show abstract Class types in Class picker."},
+          {"Tag": "AllowedClasses", "Effect": "Indicates Class types of assets to display in Asset picker."},
+          {"Tag": "AllowPreserveRatio", "Effect": "Adds ratio lock for FVector properties in details panels."},
+          {"Tag": "ArrayClamp", "Effect": "Clamps valid values between 0 and array property length."},
+          {"Tag": "AssetBundles", "Effect": "List of Bundle names used in Primary Data Assets."},
+          {"Tag": "BlueprintBaseOnly", "Effect": "Show only Blueprint Classes in Class picker."},
+          {"Tag": "BlueprintCompilerGeneratedDefaults", "Effect": "Property defaults generated by Blueprint compiler."},
+          {"Tag": "ClampMin", "Effect": "Specifies minimum value for float and integer properties."},
+          {"Tag": "ClampMax", "Effect": "Specifies maximum value for float and integer properties."},
+          {"Tag": "ConfigHierarchyEditable", "Effect": "Serialized to a config file, set anywhere in config hierarchy."},
+          {"Tag": "ContentDir", "Effect": "Path picked using directory picker inside Content folder."},
+          {"Tag": "DisplayAfter", "Effect": "Property shows after specified property in Blueprint Editor."},
+          {"Tag": "DisplayName", "Effect": "Custom display name for property."},
+          {"Tag": "DisplayPriority", "Effect": "Determines sorting order of properties in same category."},
+          {"Tag": "DisplayThumbnail", "Effect": "Displays thumbnail of Asset type property."},
+          {"Tag": "EditCondition", "Effect": "Boolean property indicates whether editing is disabled."},
+          {"Tag": "EditFixedOrder", "Effect": "Keeps array elements from being reordered."},
+          {"Tag": "ExactClass", "Effect": "Indicates only exact Classes can be used."},
+          {"Tag": "ExposeFunctionCategories ", "Effect": "List of categories whose functions are exposed in Blueprint Editor."},
+          {"Tag": "ExposeOnSpawn", "Effect": "Property exposed on Spawn Actor node."},
+          {"Tag": "FilePathFilter", "Effect": "Indicates path filter in file picker."},
+          {"Tag": "GetByRef", "Effect": "Returns a const reference to property in 'Get' Blueprint Node."},
+          {"Tag": "HideAlphaChannel", "Effect": "Hides Alpha property in FColor and FLinearColor."},
+          {"Tag": "HideViewOptions", "Effect": "Hides view options in Class picker."},
+          {"Tag": "InlineEditConditionToggle", "Effect": "Boolean property displayed inline as edit condition toggle."},
+          {"Tag": "LongPackageName", "Effect": "Converts path to a long package name."},
+          {"Tag": "MakeEditWidget", "Effect": "Exposes Transform or Rotator property in viewport as movable widget."},
+          {"Tag": "NoGetter", "Effect": "Prevents 'get' Node generation for property."},
+          {"Tag": "ScriptName", "Effect": "Custom name for class, property, or function in scripting language."}
+        ]
+      },
+      "Resources": {
+        "DeveloperForums": "Ask questions and help peers.",
+        "LearningLibrary": "Write or read tutorials."
+      }
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.2)": {
+    "Structs": {
+      "Overview": "Reference to creating and implementing structs for gameplay classes.",
+      "Definition": {
+        "Description": "A struct is a data structure that organizes and manipulates its member properties.",
+        "UStruct": {
+          "Description": "Recognized by Unreal Engine's reflection system, faster than UObject, supports UProperty.",
+          "Limitations": "Not managed by Garbage Collection, cannot provide UFunction functionality."
+        }
+      },
+      "Implementation": {
+        "Steps": [
+          {"Step": "Open the header (.h) file for struct definition."},
+          {"Step": "Put USTRUCT macro above struct definition."},
+          {"Step": "Include GENERATED_BODY() macro as first line."}
+        ],
+        "Example": "USTRUCT([Specifier, Specifier, ...]) struct FStructName { GENERATED_BODY() };",
+        "UPROPERTY": "Tag member variables with UPROPERTY for Unreal Reflection System and Blueprint Scripting."
+      },
+      "StructSpecifiers": {
+        "Description": "Metadata controlling struct behavior with Engine and Editor.",
+        "Specifiers": [
+          {"Tag": "Atomic", "Effect": "Serialized as a single unit, no auto-generated code."},
+          {"Tag": "BlueprintType", "Effect": "Exposes struct as type for Blueprint variables."},
+          {"Tag": "NoExport", "Effect": "No auto-generated code, header for parsing metadata only."}
+        ]
+      },
+      "BestPractices": {
+        "Tips": [
+          "Use Unreal Engine's smart pointer and garbage collection to prevent garbage collection from removing UObjects.",
+          "Best for simple data types, use UObject or AActor subclass for complex interactions.",
+          "Not considered for replication, but UProperty variables are.",
+          "Automatically creates Make and Break functions for Structs with BlueprintType tag."
+        ],
+        "MakeFunction": "Appears for any UStruct with BlueprintType tag.",
+        "BreakFunction": "Appears if at least one BlueprintReadOnly or BlueprintReadWrite property, provides output pin for each tagged property."
+      },
+      "Resources": {
+        "DeveloperForums": "Ask questions and help peers.",
+        "LearningLibrary": "Write or read tutorials."
+      }
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.2)": {
+    "TSubclassOf": {
+      "Overview": "TSubclassOf is a template class providing UClass type safety.",
+      "Usage": {
+        "Scenario": "Creating a projectile class to specify damage type.",
+        "WithoutTSubclassOf": {
+          "Description": "Using UClass for property, any UClass can be chosen.",
+          "Example": "UPROPERTY(EditDefaultsOnly, Category=Damage) UClass* DamageType;"
+        },
+        "WithTSubclassOf": {
+          "Description": "Using TSubclassOf to enforce choice of classes derived from UDamageType.",
+          "Example": "UPROPERTY(EditDefaultsOnly, Category=Damage) TSubclassOf<UDamageType> DamageType;"
+        }
+      },
+      "Benefits": {
+        "EditorSafety": "Property windows list only classes derived from UDamageType.",
+        "C++TypeSafety": "Compilation error for incompatible TSubclassOf types, runtime check for UClass."
+      },
+      "ExampleCode": {
+        "RuntimeCheck": "UClass* ClassA = UDamageType::StaticClass(); TSubclassOf<UDamageType> ClassB; ClassB = ClassA;",
+        "CompileTimeCheck": "TSubclassOf<UDamageType_Lava> ClassC; ClassB = ClassC;"
+      },
+      "Resources": {
+        "DeveloperForums": "Ask questions and help peers.",
+        "LearningLibrary": "Write or read tutorials."
+      }
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.2)": {
+    "UnrealInterfaces": {
+      "Overview": "Create and implement Unreal Interfaces in C++ and Blueprints.",
+      "Prerequisites": [
+        "Unreal Engine Reflection System"
+      ],
+      "Purpose": "Ensures classes implement a common set of functions for shared functionality.",
+      "Example": {
+        "Scenario": "Player character triggers actions like traps, alerting enemies, or awarding points.",
+        "Classes": [
+          {"Class": "Traps", "DerivesFrom": "AActor"},
+          {"Class": "Enemies", "DerivesFrom": "APawn or ACharacter"},
+          {"Class": "Point-awards", "DerivesFrom": "UDataAsset"}
+        ]
+      },
+      "DeclarationInC++": {
+        "Differences": [
+          "Use UINTERFACE macro instead of UCLASS",
+          "Inherit from UInterface instead of UObject"
+        ],
+        "Example": {
+          "Header": "#pragma once\n#include \"CoreMinimal.h\"\n#include \"UObject/Interface.h\"\n#include \"ReactToTriggerInterface.generated.h\"\nUINTERFACE(MinimalAPI, Blueprintable)\nclass UReactToTriggerInterface : public UInterface\n{\n\tGENERATED_BODY()\n};\nclass IReactToTriggerInterface\n{\n\tGENERATED_BODY()\n\tpublic:\n\t// Add interface function declarations here\n};"
+        }
+      },
+      "InterfaceSpecifiers": {
+        "Specifiers": [
+          {"Tag": "Blueprintable", "Description": "Exposes interface for Blueprint implementation."},
+          {"Tag": "BlueprintType", "Description": "Exposes class as a type for Blueprint variables."},
+          {"Tag": "DependsOn", "Description": "Specifies dependency classes for build system."},
+          {"Tag": "MinimalAPI", "Description": "Exports only type information for use by other modules, improves compile times."}
+        ]
+      },
+      "ImplementationInC++": {
+        "Steps": [
+          "Include interface header file.",
+          "Inherit from I-prefixed interface class."
+        ],
+        "Example": {
+          "Header": "#include \"CoreMinimal.h\"\n#include \"GameFramework/Actor.h\"\n#include \"ReactToTriggerInterface.h\"\n#include \"Trap.generated.h\"\nUCLASS(Blueprintable, Category=\"MyGame\")\nclass ATrap : public AActor, public IReactToTriggerInterface\n{\n\tGENERATED_BODY()\n\tpublic:\n\t// Add interface function overrides here\n};"
+        }
+      },
+      "InterfaceFunctions": {
+        "C++Only": {
+          "Description": "Declare virtual C++ function in interface header without UFUNCTION specifiers.",
+          "Example": {
+            "Header": "#pragma once\n#include \"ReactToTriggerInterface.generated.h\"\nUINTERFACE(MinimalAPI, Blueprintable)\nclass UReactToTriggerInterface : public UInterface\n{\n\tGENERATED_BODY()\n};\nclass IReactToTriggerInterface\n{\n\tGENERATED_BODY()\n\tpublic:\n\tvirtual bool ReactToTrigger();\n};",
+            "CPP": "#include \"ReactToTriggerInterface.h\"\nbool IReactToTriggerInterface::ReactToTrigger()\n{\n\treturn false;\n}"
+          }
+        },
+        "BlueprintCallable": {
+          "Description": "Specify UFUNCTION macro with BlueprintCallable specifier. Use BlueprintImplementableEvent or BlueprintNativeEvent specifiers.",
+          "Example": {
+            "Header": "#pragma once\n#include \"ReactToTriggerInterface.generated.h\"\nUINTERFACE(MinimalAPI, Blueprintable)\nclass UReactToTriggerInterface : public UInterface\n{\n\tGENERATED_BODY()\n};\nclass IReactToTriggerInterface\n{\n\tGENERATED_BODY()\n\tpublic:\n\tUFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category=Trigger Reaction)\nbool ReactToTrigger();\n};"
+          }
+        },
+        "BlueprintNativeEvent": {
+          "Description": "Can be implemented in C++ or Blueprint.",
+          "Example": {
+            "Header": "#pragma once\n#include \"ReactToTriggerInterface.generated.h\"\nUINTERFACE(MinimalAPI, Blueprintable)\nclass UReactToTriggerInterface : public UInterface\n{\n\tGENERATED_BODY()\n};\nclass IReactToTriggerInterface\n{\n\tGENERATED_BODY()\n\tpublic:\n\tUFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=Trigger Reaction)\nbool ReactToTrigger();\n};"
+          }
+        },
+        "OverrideBlueprintNativeEventInC++": {
+          "Description": "Create additional function with _Implementation suffix for BlueprintNativeEvent.",
+          "Example": {
+            "Header": "#include \"CoreMinimal.h\"\n#include \"GameFramework/Actor.h\"\n#include \"ReactToTriggerInterface.h\"\n#include \"Trap.generated.h\"\nUCLASS(Blueprintable, Category=\"MyGame\")\nclass ATrap : public AActor, public IReactToTriggerInterface\n{\n\tGENERATED_BODY()\n\tpublic:\n\tvirtual bool ReactToTrigger() override;\n\tbool ReactToTrigger_Implementation() override;\n};",
+            "CPP": "#include \"Trap.h\"\nbool ATrap::ReactToTrigger()\n{\n\treturn false;\n}\nbool ATrap::ReactToTrigger_Implementation()\n{\n\treturn false;\n}"
+          }
+        },
+        "CallBlueprintEventFromC++": {
+          "Description": "Use static Execute_ function wrapper to call BlueprintImplementableEvent or BlueprintNativeEvent.",
+          "Example": "bool bReacted = IReactToTriggerInterface::Execute_ReactToTrigger(OriginalObject);"
+        }
+      },
+      "DetermineClassImplementsInterface": {
+        "Methods": [
+          {"Method": "OriginalObject->GetClass()->ImplementsInterface(UReactToTriggerInterface::StaticClass())"},
+          {"Method": "OriginalObject->Implements<UReactToTriggerInterface>()"},
+          {"Method": "IReactToTriggerInterface* ReactingObject = Cast<IReactToTriggerInterface>(OriginalObject)"}
+        ]
+      },
+      "SafelyStoreObjectAndInterfacePointers": {
+        "Description": "Use TScriptInterface to store reference to object implementing specific interface.",
+        "Example": {
+          "StoreReference": "TScriptInterface<IMyInterface> MyScriptInterface; if (MyObjectPtr->Implements<UMyInterface>()) { MyScriptInterface = TScriptInterface<IMyInterface>(MyObjectPtr); }",
+          "RetrieveObjectPointer": "UMyObject* MyRetrievedObjectPtr = MyScriptInterface.GetObject();",
+          "RetrieveInterfacePointer": "IMyInterface* MyRetrievedInterfacePtr = MyScriptInterface.GetInterface();"
+        }
+      },
+      "BlueprintImplementableInterfaces": {
+        "Description": "Use Blueprintable metadata specifier for Blueprint implementation. All interface functions must be BlueprintNativeEvent or BlueprintImplementableEvent."
+      },
+      "Resources": {
+        "DeveloperForums": "Ask questions and help peers.",
+        "LearningLibrary": "Write or read tutorials."
+      }
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.2)": {
+    "MetadataSpecifiers": {
+      "Overview": "Metadata keywords used when declaring UClasses, UFunctions, UProperties, UEnums, and UInterfaces to specify behavior with Unreal Engine and editor.",
+      "Usage": {
+        "Description": "Control interaction with engine and editor. Add using meta with specifiers and values.",
+        "Syntax": "{UCLASS/UENUM/UINTERFACE/USTRUCT/UFUNCTION/UPROPERTY}(SpecifierX, meta=(MetaTag1='Value1', MetaTag2, ..), SpecifierY)"
+      },
+      "Example": {
+        "Enum": "UENUM() enum class EMyEnum : uint8 { DefaultValue = 0 UMETA(MetaTag1='Value1', MetaTag2, ..), ValueWithoutMetaSpecifiers, ValueWithMetaSpecifiers UMETA((MetaTag1='Value1', MetaTag2, ..), FinalValue (MetaTag1='Value1', MetaTag2, ..)) };"
+      },
+      "ClassMetaTags": {
+        "Tags": [
+          {"Tag": "BlueprintSpawnableComponent", "Effect": "Component class can be spawned by a Blueprint."},
+          {"Tag": "BlueprintThreadSafe", "Effect": "Marks functions as callable on non-game threads in animation Blueprints."},
+          {"Tag": "ChildCannotTick", "Effect": "Blueprint classes based on this class cannot tick if native class cannot tick."},
+          {"Tag": "ChildCanTick", "Effect": "Blueprint classes can override bCanEverTick flag even if native class cannot tick."},
+          {"Tag": "DeprecatedNode", "Effect": "Class is deprecated, shows warning when compiled."},
+          {"Tag": "DeprecationMessage", "Effect": "Adds custom message to deprecation warning."},
+          {"Tag": "DisplayName", "Effect": "Replaces code-generated name with provided name in Blueprint node."},
+          {"Tag": "DontUseGenericSpawnObject", "Effect": "Prevents spawning class using Generic Create Object node in Blueprints."},
+          {"Tag": "ExposedAsyncProxy", "Effect": "Exposes proxy object in Async Task nodes."},
+          {"Tag": "IgnoreCategoryKeywordsInSubclasses", "Effect": "First subclass ignores inherited ShowCategories and HideCategories specifiers."},
+          {"Tag": "IsBlueprintBase", "Effect": "Indicates if class is acceptable base for Blueprints."},
+          {"Tag": "KismetHideOverrides", "Effect": "List of Blueprint events not allowed to be overridden."},
+          {"Tag": "ProhibitedInterfaces", "Effect": "Lists incompatible interfaces."},
+          {"Tag": "RestrictedToClasses", "Effect": "Restricts usage to listed classes."},
+          {"Tag": "ShortToolTip", "Effect": "Short tooltip for contexts where full tooltip is overwhelming."},
+          {"Tag": "ShowWorldContextPin", "Effect": "Shows World context pins for Blueprint nodes."},
+          {"Tag": "UsesHierarchy", "Effect": "Instantiates hierarchical editing features in Details panels."},
+          {"Tag": "ToolTip", "Effect": "Overrides automatically generated tooltip."},
+          {"Tag": "ScriptName", "Effect": "Custom name for class, property, or function when exporting to scripting language."}
+        ]
+      },
+      "EnumMetaTags": {
+        "Tags": [
+          {"Tag": "Bitflags", "Effect": "Enumerated type used as flags by integer UPROPERTY variables with Bitmask specifier."},
+          {"Tag": "Experimental", "Effect": "Labels type as experimental and unsupported."},
+          {"Tag": "ToolTip", "Effect": "Overrides automatically generated tooltip."}
+        ],
+        "ValueTags": [
+          {"Tag": "DisplayName", "Effect": "Custom name for enumerated value."},
+          {"Tag": "Hidden", "Effect": "Value will not appear in Editor."},
+          {"Tag": "ToolTip", "Effect": "Overrides automatically generated tooltip for value."}
+        ]
+      },
+      "InterfaceMetaTags": {
+        "Tags": [
+          {"Tag": "CannotImplementInterfaceInBlueprint", "Effect": "Interface cannot contain BlueprintImplementableEvent or BlueprintNativeEvent functions, except internal-only functions. Blueprint-callable functions must be implemented in native code."}
+        ]
+      },
+      "StructMetaTags": {
+        "Tags": [
+          {"Tag": "HasNativeBreak", "Effect": "Custom Break Struct node specified by module, class, and function name."},
+          {"Tag": "HasNativeMake", "Effect": "Custom Make Struct node specified by module, class, and function name."},
+          {"Tag": "HiddenByDefault", "Effect": "Pins in Make Struct and Break Struct nodes are hidden by default."},
+          {"Tag": "ShortToolTip", "Effect": "Short tooltip for contexts where full tooltip is overwhelming."},
+          {"Tag": "ToolTip", "Effect": "Overrides automatically generated tooltip."}
+        ]
+      },
+      "FunctionMetaTags": {
+        "Tags": [
+          {"Tag": "AdvancedDisplay", "Effect": "Parameters listed will show up as advanced pins requiring UI expansion."},
+          {"Tag": "AdvancedDisplayN", "Effect": "Parameters after Nth will show up as advanced pins requiring UI expansion."},
+          {"Tag": "ArrayParm", "Effect": "Indicates BlueprintCallable function should use Call Array Function node."},
+          {"Tag": "ArrayTypeDependentParams", "Effect": "Specifies parameter that determines types of parameters in ArrayParm list."},
+          {"Tag": "AutoCreateRefTerm", "Effect": "Automatically creates default for disconnected reference pins."},
+          {"Tag": "BlueprintAutocast", "Effect": "Adds cast node for return type and first parameter of static BlueprintPure function."},
+          {"Tag": "BlueprintInternalUseOnly", "Effect": "Function used for internal implementation details, not exposed in Blueprint graph."},
+          {"Tag": "BlueprintProtected", "Effect": "Function can only be called on owning Object in Blueprint."},
+          {"Tag": "CallableWithoutWorldContext", "Effect": "Indicates function can be called even if class does not implement GetWorld."},
+          {"Tag": "CommutativeAssociativeBinaryOperator", "Effect": "Uses Commutative Associative Binary node with Add Pin button for additional input pins."},
+          {"Tag": "CompactNodeTitle", "Effect": "Displays function in compact display mode with provided name."},
+          {"Tag": "CustomStructureParam", "Effect": "Parameters treated as wildcards, requires CustomThunk and custom exec function."},
+          {"Tag": "DefaultToSelf", "Effect": "Indicates Object property's default value should be self context of node."},
+          {"Tag": "DeprecatedFunction", "Effect": "Deprecated function causes compilation warnings in Blueprints."},
+          {"Tag": "DeprecationMessage", "Effect": "Custom message added to deprecation warning."},
+          {"Tag": "DeterminesOutputType", "Effect": "Return type dynamically changes to match input connected to named parameter pin."},
+          {"Tag": "DevelopmentOnly", "Effect": "Function only runs in Development mode."},
+          {"Tag": "DisplayName", "Effect": "Replaces code-generated name with provided name in Blueprint node."},
+          {"Tag": "ExpandEnumAsExecs", "Effect": "Creates input execution pin for each entry in enum used by parameter."},
+          {"Tag": "ForceAsFunction", "Effect": "Changes BlueprintImplementableEvent with no return value to a function."},
+          {"Tag": "HidePin", "Effect": "Hides parameter pin from user's view."},
+          {"Tag": "HideSelfPin", "Effect": "Hides 'self' pin indicating the object on which the function is called."},
+          {"Tag": "InternalUseParam", "Effect": "Hides named parameter's pin from user's view."},
+          {"Tag": "KeyWords", "Effect": "Specifies set of keywords for searching function in Blueprint Graph."},
+          {"Tag": "Latent", "Effect": "Indicates latent action with one parameter of type FLatentActionInfo."},
+          {"Tag": "LatentInfo", "Effect": "Specifies which parameter is the LatentInfo parameter."},
+          {"Tag": "MaterialParameterCollectionFunction", "Effect": "Indicates material override node for BlueprintCallable function."},
+          {"Tag": "NativeBreakFunc", "Effect": "Displays function as standard Break Struct node."},
+          {"Tag": "NotBlueprintThreadSafe", "Effect": "Function treated as exception to class's general BlueprintThreadSafe metadata."},
+          {"Tag": "ShortToolTip", "Effect": "Short tooltip for contexts where full tooltip is overwhelming."},
+          {"Tag": "ToolTip", "Effect": "Overrides automatically generated tooltip."},
+          {"Tag": "UnsafeDuringActorConstruction", "Effect": "Function not safe to call during Actor construction."},
+          {"Tag": "WorldContext", "Effect": "Specifies parameter determining the World in which operation takes place."},
+          {"Tag": "ScriptName", "Effect": "Custom name for class, property, or function when exporting to scripting language."}
+        ]
+      },
+      "PropertyMetaTags": {
+        "Tags": [
+          {"Tag": "AllowAbstract", "Effect": "Indicates whether abstract Class types should be shown in Class picker."},
+          {"Tag": "AllowedClasses", "Effect": "Comma delimited list indicating Class types of assets to display in Asset picker."},
+          {"Tag": "AllowPreserveRatio", "Effect": "Adds ratio lock for FVector properties in details panels."},
+          {"Tag": "ArrayClamp", "Effect": "Clamps valid values between 0 and length of named array property."},
+          {"Tag": "AssetBundles", "Effect": "List of Bundle names for SoftObjectPtr or SoftObjectPath properties in Primary Data Assets."},
+          {"Tag": "BlueprintBaseOnly", "Effect": "Indicates only Blueprint Classes should be shown in Class picker for Subclass and SoftClass properties."},
+          {"Tag": "BlueprintCompilerGeneratedDefaults", "Effect": "Generated property defaults by Blueprint compiler not copied post-compile."},
+          {"Tag": "ClampMin", "Effect": "Specifies minimum value for float and integer properties."},
+          {"Tag": "ClampMax", "Effect": "Specifies maximum value for float and integer properties."},
+          {"Tag": "ConfigHierarchyEditable", "Effect": "Serialized to config file, set anywhere in config hierarchy."},
+          {"Tag": "ContentDir", "Effect": "Indicates path picked using directory picker inside Content folder for FDirectoryPath properties."},
+          {"Tag": "DisplayAfter", "Effect": "Property shows after specified property in Blueprint Editor, respecting source code order."},
+          {"Tag": "DisplayName", "Effect": "Custom display name for property, replacing code-generated name."},
+          {"Tag": "DisplayPriority", "Effect": "Determines sorting order for properties in same category, highest-priority value is 1."},
+          {"Tag": "DisplayThumbnail", "Effect": "Displays thumbnail for Asset type properties."},
+          {"Tag": "EditCondition", "Effect": "Specifies boolean property indicating whether editing is disabled, can use full C++ expression."},
+          {"Tag": "EditFixedOrder", "Effect": "Prevents reordering elements of an array by dragging."},
+          {"Tag": "ExactClass", "Effect": "Indicates only exact Classes specified in AllowedClasses can be used for FSoftObjectPath properties."},
+          {"Tag": "ExposeFunctionCategories", "Effect": "Specifies list of categories whose functions are exposed in Blueprint Editor."},
+          {"Tag": "ExposeOnSpawn", "Effect": "Property exposed on Spawn Actor node for class."},
+          {"Tag": "FilePathFilter", "Effect": "Indicates path filter in file picker for FFilePath properties."},
+          {"Tag": "GetByRef", "Effect": "Makes 'Get' Blueprint Node return const reference instead of copy for Sparse Class Data."},
+          {"Tag": "HideAlphaChannel", "Effect": "Hides Alpha property when displaying FColor and FLinearColor properties."},
+          {"Tag": "HideViewOptions", "Effect": "Hides view options in Class picker for Subclass and SoftClass properties."},
+          {"Tag": "InlineEditConditionToggle", "Effect": "Boolean property displayed inline as edit condition toggle in other properties."},
+          {"Tag": "LongPackageName", "Effect": "Converts path to long package name for FDirectoryPath properties."},
+          {"Tag": "MakeEditWidget", "Effect": "Exposes Transform or Rotator properties as movable widget in viewport."},
+          {"Tag": "NoGetter", "Effect": "Prevents generation of 'get' Node for property, usable with Sparse Class Data."},
+          {"Tag": "ScriptName", "Effect": "Custom name for class, property, or function when exporting to scripting language, including deprecated names."}
+        ]
+      },
+      "Resources": {
+        "DeveloperForums": "Ask questions and help peers.",
+        "LearningLibrary": "Write or read tutorials."
+      }
+    }
+  }
+}
+
+{
+  "UE5_C++ProgDocs(Pt.2)": {
+    "UFunctions": {
+      "Overview": "Overview for creating and implementing functions for gameplay Classes.",
+      "UFunctionDeclaration": {
+        "Description": "UFunction is a C++ function recognized by Unreal Engine's reflection system. Declared with UFUNCTION macro.",
+        "Syntax": "UFUNCTION([specifier1=setting1, specifier2, ...], [meta(key1='value1', key2, ...)]) ReturnType FunctionName([Parameter1, Parameter2, ..., ParameterN1=DefaultValueN1, ParameterN2=DefaultValueN2]) [const];",
+        "Usage": "Exposes UFunctions to Blueprint Visual Scripting graphs, binds to Delegates, acts as network callbacks, creates console commands."
+      },
+      "FunctionSpecifiers": {
+        "Description": "Control how the function behaves with various aspects of the engine and editor.",
+        "Specifiers": [
+          {"Tag": "BlueprintAuthorityOnly", "Effect": "Function executes from Blueprint code if running on network authority."},
+          {"Tag": "BlueprintCallable", "Effect": "Function can be executed in a Blueprint or Level Blueprint graph."},
+          {"Tag": "BlueprintCosmetic", "Effect": "Function is cosmetic and does not run on dedicated servers."},
+          {"Tag": "BlueprintImplementableEvent", "Effect": "Function can be implemented in a Blueprint or Level Blueprint graph."},
+          {"Tag": "BlueprintNativeEvent", "Effect": "Function designed to be overridden by Blueprint with a default native implementation."},
+          {"Tag": "BlueprintPure", "Effect": "Function does not affect owning object and can be executed in Blueprint graph."},
+          {"Tag": "CallInEditor", "Effect": "Function can be called in editor via button in Details panel."},
+          {"Tag": "Category", "Effect": "Specifies function category in Blueprint editing tools."},
+          {"Tag": "Client", "Effect": "Function executed only on client that owns the Object."},
+          {"Tag": "CustomThunk", "Effect": "UnrealHeaderTool does not produce thunk for function; user provides with DECLARE_FUNCTION or DEFINE_FUNCTION macros."},
+          {"Tag": "Exec", "Effect": "Function can be executed from in-game console."},
+          {"Tag": "NetMulticast", "Effect": "Function executed locally on server and replicated to all clients."},
+          {"Tag": "Reliable", "Effect": "Function replicated over network, guaranteed to arrive regardless of errors."},
+          {"Tag": "SealedEvent", "Effect": "Function cannot be overridden in subclasses, only for events."},
+          {"Tag": "ServiceRequest", "Effect": "Function is an RPC service request, implies NetMulticast and Reliable."},
+          {"Tag": "ServiceResponse", "Effect": "Function is an RPC service response, implies NetMulticast and Reliable."},
+          {"Tag": "Server", "Effect": "Function executed only on server."},
+          {"Tag": "Unreliable", "Effect": "Function replicated over network but can fail due to bandwidth limitations."},
+          {"Tag": "WithValidation", "Effect": "Declares additional validation function, returns bool to indicate if call should proceed."}
+        ]
+      },
+      "MetadataSpecifiers": {
+        "Description": "Control how classes, interfaces, structs, enums, functions, or properties interact with engine and editor.",
+        "Specifiers": [
+          {"Tag": "AdvancedDisplay", "Effect": "Parameters listed show up as advanced pins."},
+          {"Tag": "AdvancedDisplayN", "Effect": "Parameters after Nth show up as advanced pins."},
+          {"Tag": "ArrayParm", "Effect": "BlueprintCallable function uses Call Array Function node, listed parameters treated as wild card array properties."},
+          {"Tag": "ArrayTypeDependentParams", "Effect": "Specifies parameter determining types of parameters in ArrayParm list."},
+          {"Tag": "AutoCreateRefTerm", "Effect": "Automatically creates default for disconnected reference pins."},
+          {"Tag": "BlueprintAutocast", "Effect": "Adds cast node for return type and first parameter of static BlueprintPure function."},
+          {"Tag": "BlueprintInternalUseOnly", "Effect": "Function used for internal implementation, not exposed in Blueprint graph."},
+          {"Tag": "BlueprintProtected", "Effect": "Function can only be called on owning Object in Blueprint."},
+          {"Tag": "CallableWithoutWorldContext", "Effect": "Indicates function can be called even if class does not implement GetWorld."},
+          {"Tag": "CommutativeAssociativeBinaryOperator", "Effect": "Uses Commutative Associative Binary node with Add Pin button for additional input pins."},
+          {"Tag": "CompactNodeTitle", "Effect": "Displays function in compact mode with provided name."},
+          {"Tag": "CustomStructureParam", "Effect": "Parameters treated as wildcards, requires CustomThunk and custom exec function."},
+          {"Tag": "DefaultToSelf", "Effect": "Object property's default value is self context of node."},
+          {"Tag": "DeprecatedFunction", "Effect": "Deprecated function causes compilation warnings in Blueprints."},
+          {"Tag": "DeprecationMessage", "Effect": "Custom message added to deprecation warning."},
+          {"Tag": "DeterminesOutputType", "Effect": "Return type dynamically changes to match input connected to named parameter pin."},
+          {"Tag": "DevelopmentOnly", "Effect": "Function only runs in Development mode."},
+          {"Tag": "DisplayName", "Effect": "Replaces code-generated name with provided name in Blueprint node."},
+          {"Tag": "ExpandEnumAsExecs", "Effect": "Creates input execution pin for each entry in enum used by parameter."},
+          {"Tag": "ForceAsFunction", "Effect": "Changes BlueprintImplementableEvent with no return value to a function."},
+          {"Tag": "HidePin", "Effect": "Hides parameter pin from user's view."},
+          {"Tag": "HideSelfPin", "Effect": "Hides 'self' pin indicating object on which function is called."},
+          {"Tag": "InternalUseParam", "Effect": "Hides named parameter's pin from user's view."},
+          {"Tag": "KeyWords", "Effect": "Specifies set of keywords for searching function in Blueprint Graph."},
+          {"Tag": "Latent", "Effect": "Indicates latent action, parameter named by LatentInfo specifier."},
+          {"Tag": "LatentInfo", "Effect": "Specifies which parameter is the LatentInfo parameter."},
+          {"Tag": "MaterialParameterCollectionFunction", "Effect": "Indicates material override node for BlueprintCallable function."},
+          {"Tag": "NativeBreakFunc", "Effect": "Displays function as standard Break Struct node."},
+          {"Tag": "NotBlueprintThreadSafe", "Effect": "Function treated as exception to class's general BlueprintThreadSafe metadata."},
+          {"Tag": "ShortToolTip", "Effect": "Short tooltip for contexts where full tooltip is overwhelming."},
+          {"Tag": "ToolTip", "Effect": "Overrides automatically generated tooltip."},
+          {"Tag": "UnsafeDuringActorConstruction", "Effect": "Function not safe to call during Actor construction."},
+          {"Tag": "WorldContext", "Effect": "Specifies parameter determining World in which operation takes place."},
+          {"Tag": "ScriptName", "Effect": "Custom name for class, property, or function when exporting to scripting language, including deprecated names."}
+        ]
+      },
+      "FunctionParameterSpecifiers": {
+        "Description": "Specifiers for function parameters.",
+        "Specifiers": [
+          {"Tag": "Out", "Effect": "Declares parameter as passed by reference, allowing modification by function."},
+          {"Tag": "Optional", "Effect": "Makes certain function parameters optional, default value depends on function."}
+        ]
+      },
+      "Delegates": {
+        "Description": "Call member functions on C++ objects in a generic, type-safe way.",
+        "Reference": "See the Delegates page for reference and usage information."
+      },
+      "Timers": {
+        "Description": "Schedule actions after a delay or over time, like temporary invulnerability or periodic damage.",
+        "Reference": "See the Gameplay Timers page for reference and usage information."
+      },
+      "Resources": {
+        "DeveloperForums": "Ask questions and help peers.",
+        "LearningLibrary": "Write or read tutorials."
+      }
+    }
+  }
+}
+
+{
+  "UnrealSmartPointerLibrary": {
+    "Overview": "Custom implementation of shared pointers, including weak pointers and non-nullable shared references.",
+    "Description": "The Unreal Smart Pointer Library eases memory allocation and tracking, includes Shared, Weak, and Unique Pointers, and adds non-nullable Shared References. Not usable with the UObject system.",
+    "SmartPointerTypes": {
+      "SharedPointers": {
+        "Description": "Owns the referenced object, handles deletion when no references exist, can be empty.",
+        "UseCase": "Indefinite object ownership, allows creating Shared Reference."
+      },
+      "SharedReferences": {
+        "Description": "Owns non-null referenced object, can convert to Shared Pointer.",
+        "UseCase": "Guarantees non-null object, indicates shared ownership."
+      },
+      "WeakPointers": {
+        "Description": "Does not own referenced object, can become null, can produce Shared Pointer for safe temporary access.",
+        "UseCase": "Breaks reference cycles, prevents dangling pointers."
+      },
+      "UniquePointers": {
+        "Description": "Sole ownership of referenced object, transfers ownership, compile error on copy attempts, deletes object on destruction.",
+        "UseCase": "Exclusive object ownership."
+      }
+    },
+    "Benefits": {
+      "PreventsMemoryLeaks": "Automatically deletes objects when no more shared references exist.",
+      "WeakReferencing": "Breaks reference cycles, prevents dangling pointers.",
+      "OptionalThreadSafety": "Manages reference counting across multiple threads, can trade for performance.",
+      "RuntimeSafety": "Shared References are never null, always dereferenceable.",
+      "ConfersIntent": "Distinguishes object owners from observers.",
+      "Memory": "Smart Pointers are twice the size of C++ pointers in 64-bit, plus 16-byte reference controller, Unique Pointers same size as C++ pointers."
+    },
+    "HelperClassesAndFunctions": {
+      "TSharedFromThis": "Adds AsShared or SharedThis functions for acquiring TSharedRef.",
+      "MakeSharedMakeShareable": "Creates Shared Pointer from C++ pointer, MakeShared allocates in single memory block, MakeShareable supports private constructors and custom deletion behavior.",
+      "StaticCastSharedRefStaticCastSharedPtr": "Static cast utility for downcasting to derived type.",
+      "ConstCastSharedRefConstCastSharedPtr": "Converts const Smart Reference or Pointer to mutable version."
+    },
+    "ImplementationDetails": {
+      "Speed": {
+        "Description": "Smart Pointers are suitable for high-level systems, resource management, or tools programming, with some overhead compared to raw C++ pointers.",
+        "Benefits": [
+          "Constant time operations.",
+          "Dereferencing as fast as raw C++ pointers in shipping builds.",
+          "Copying never allocates memory.",
+          "Thread-safe Smart Pointers are lockless."
+        ],
+        "Drawbacks": [
+          "More overhead in creation and copying.",
+          "Reference counting adds cycles.",
+          "Uses more memory.",
+          "Two heap allocations for reference controllers, MakeShared avoids second allocation."
+        ]
+      },
+      "IntrusiveAccessors": {
+        "Description": "Allows access to object as Shared Reference or Pointer, useful with class factories.",
+        "Example": {
+          "Code": "class FRegistryObject; class FMyBaseClass: public TSharedFromThis<FMyBaseClass> { virtual void RegisterAsBaseClass(FRegistryObject* RegistryObject) { TSharedRef<FMyBaseClass> ThisAsSharedRef = AsShared(); RegistryObject->Register(ThisAsSharedRef); } }; class FMyDerivedClass : public FMyBaseClass { virtual void Register(FRegistryObject* RegistryObject) override { TSharedRef<FMyDerivedClass> AsSharedRef = SharedThis(this); RegistryObject->Register(ThisAsSharedRef); } }; class FRegistryObject { void Register(TSharedRef<FMyBaseClass>); };"
+        },
+        "Warning": "Do not call AsShared or SharedThis from constructors."
+      },
+      "Casting": {
+        "Description": "Cast Smart Pointers with provided functions, up-casting is implicit, static casting used instead of dynamic casting.",
+        "Example": {
+          "Code": "TSharedPtr<FDragDropOperation> Operation = DragDropEvent.GetOperation(); TSharedPtr<FAssetDragDropOp> DragDropOp = StaticCastSharedPtr<FAssetDragDropOp>(Operation);"
+        }
+      },
+      "ThreadSafety": {
+        "Description": "Default Smart Pointers are single-thread safe. Use thread-safe versions for multi-thread access.",
+        "ThreadSafeVersions": [
+          "TSharedPtr<T, ESPMode::ThreadSafe>",
+          "TSharedRef<T, ESPMode::ThreadSafe>",
+          "TWeakPtr<T, ESPMode::ThreadSafe>",
+          "TSharedFromThis<T, ESPMode::ThreadSafe>"
+        ],
+        "Notes": [
+          "Reads and copies are always thread-safe.",
+          "Writes and resets must be synchronized."
+        ]
+      },
+      "TipsAndLimitations": [
+        "Avoid passing data as TSharedRef or TSharedPtr parameters to avoid overhead.",
+        "Forward-declare Shared Pointers to incomplete types.",
+        "Not compatible with Unreal objects (UObject and derived classes)."
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+
+{
+  "SharedPointers": {
+    "Overview": "Smart pointers that support shared ownership, automatic invalidation, weak references, and more.",
+    "Description": "Shared Pointers are both strong and nullable. They prevent memory leaks, dangling pointers, and pointers to uninitialized memory, and provide shared ownership, automatic invalidation, and weak references.",
+    "Features": [
+      "Shared Ownership: Reference counting ensures the object is not deleted as long as any Shared Pointer references it.",
+      "Automatic Invalidation: Volatile objects can be safely referenced without worrying about dangling pointers.",
+      "Weak References: Weak Pointers can break reference cycles.",
+      "Indication of Intent: Distinguishes owners from observers and provides non-nullable references."
+    ],
+    "Characteristics": [
+      "Robust syntax",
+      "Non-intrusive",
+      "Thread-safe (conditionally)",
+      "Good performance, light on memory"
+    ],
+    "ComparisonWithSharedReferences": {
+      "Description": "Shared References are not nullable and always reference valid objects. Prefer Shared References unless a nullable object is needed."
+    },
+    "DeclarationAndInitialization": {
+      "Examples": [
+        {
+          "Description": "Create an empty shared pointer",
+          "Code": "TSharedPtr<FMyObjectType> EmptyPointer;"
+        },
+        {
+          "Description": "Create a shared pointer to a new object",
+          "Code": "TSharedPtr<FMyObjectType> NewPointer(new FMyObjectType());"
+        },
+        {
+          "Description": "Create a Shared Pointer from a Shared Reference",
+          "Code": "TSharedRef<FMyObjectType> NewReference(new FMyObjectType()); TSharedPtr<FMyObjectType> PointerFromReference = NewReference;"
+        },
+        {
+          "Description": "Create a Thread-safe Shared Pointer",
+          "Code": "TSharedPtr<FMyObjectType, ESPMode::ThreadSafe> NewThreadsafePointer = MakeShared<FMyObjectType, ESPMode::ThreadSafe>(MyArgs);"
+        }
+      ],
+      "Note": "When copying a Shared Pointer, the reference count of the object is increased. Reset with Reset function or assign null pointer. Transfer contents with MoveTemp or MoveTempIfPossible."
+    },
+    "ConvertingBetweenSharedPointersAndReferences": {
+      "Description": "Shared References implicitly convert to Shared Pointers, ensuring the new Shared Pointer references a valid object. Create a Shared Reference from a non-null Shared Pointer using ToSharedRef.",
+      "Examples": [
+        {
+          "Description": "Convert Shared Reference to Shared Pointer",
+          "Code": "TSharedPtr<FMyObjectType> MySharedPointer = MySharedReference;"
+        },
+        {
+          "Description": "Convert Shared Pointer to Shared Reference",
+          "Code": "if (MySharedPointer.IsValid()) { MySharedReference = MySharedPointer.ToSharedRef(); }"
+        }
+      ]
+    },
+    "Comparison": {
+      "Description": "Test Shared Pointers for equality, check validity with IsValid, bool operator, or Get.",
+      "Examples": [
+        {
+          "Description": "Test for equality",
+          "Code": "if (NodeA == NodeB) { /* ... */ }"
+        },
+        {
+          "Description": "Check validity",
+          "Code": "if (Node.IsValid()) { /* ... */ } if (Node) { /* ... */ } if (Node.Get() != nullptr) { /* ... */ }"
+        }
+      ]
+    },
+    "DereferencingAndAccessing": {
+      "Description": "Dereference, call methods, and access members like regular C++ pointers. Perform null-checking with IsValid or bool operator before dereferencing.",
+      "Examples": [
+        {
+          "Description": "Dereference and call method",
+          "Code": "if (Node) { Node->ListChildren(); Node.Get()->ListChildren(); (*Node).ListChildren(); }"
+        }
+      ]
+    },
+    "CustomDeleters": {
+      "Description": "Support custom deleters for referenced objects. Provide a lambda function to run custom deletion code when creating Smart Pointer.",
+      "Examples": [
+        {
+          "Description": "Create Smart Pointer with custom deleter",
+          "Code": "void DestroyMyObjectType(FMyObjectType* ObjectAboutToBeDeleted) { /* Custom deletion code */ } TSharedRef<FMyObjectType> NewReference(new FMyObjectType(), [](FMyObjectType* Obj){ DestroyMyObjectType(Obj); }); TSharedPtr<FMyObjectType> NewPointer(new FMyObjectType(), [](FMyObjectType* Obj){ DestroyMyObjectType(Obj); });"
+        }
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+
+{
+  "SharedReferences": {
+    "Overview": "Smart pointer type that cannot be uninitialized or assigned null.",
+    "Description": "A Shared Reference is a strong, non-nullable Smart Pointer for data objects outside of the Engine's UObject system. They cannot be reset, assigned a null object, or created empty, and always contain a valid object. Preferred over Shared Pointers unless an empty or nullable object is needed.",
+    "Characteristics": [
+      "Strong and non-nullable",
+      "Cannot be uninitialized or assigned null",
+      "No IsValid method",
+      "Can be reassigned to another object after creation"
+    ],
+    "DeclarationAndInitialization": {
+      "Example": {
+        "Description": "Create a shared reference to a new node",
+        "Code": "TSharedRef<FMyObjectType> NewReference = MakeShared<FMyObjectType>();"
+      },
+      "InvalidExamples": [
+        {
+          "Description": "Attempt to create unassigned reference",
+          "Code": "TSharedRef<FMyObjectType> UnassignedReference;"
+        },
+        {
+          "Description": "Attempt to assign null to reference",
+          "Code": "TSharedRef<FMyObjectType> NullAssignedReference = nullptr;"
+        },
+        {
+          "Description": "Assign potentially null object",
+          "Code": "TSharedRef<FMyObjectType> NullAssignedReference = NullObject;"
+        }
+      ]
+    },
+    "ConvertingBetweenSharedPointersAndReferences": {
+      "Description": "Shared References convert to Shared Pointers, ensuring the new Shared Pointer references a valid object. Create a Shared Reference from a non-null Shared Pointer using ToSharedRef.",
+      "Examples": [
+        {
+          "Description": "Convert Shared Reference to Shared Pointer",
+          "Code": "TSharedPtr<FMyObjectType> MySharedPointer = MySharedReference;"
+        },
+        {
+          "Description": "Convert Shared Pointer to Shared Reference",
+          "Code": "if (MySharedPointer.IsValid()) { MySharedReference = MySharedPointer.ToSharedRef(); }"
+        }
+      ]
+    },
+    "Comparison": {
+      "Description": "Test Shared References for equality, meaning they reference the same object.",
+      "Example": {
+        "Description": "Test for equality",
+        "Code": "TSharedRef<FMyObjectType> ReferenceA, ReferenceB; if (ReferenceA == ReferenceB) { /* ... */ }"
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+
+{
+  "WeakPointers": {
+    "Overview": "Smart pointers that store weak references and do not prevent their objects from being destroyed.",
+    "Description": "Weak Pointers store a weak reference to an object and do not prevent its destruction. Use the Pin function to produce a Shared Pointer, guaranteeing the object's existence while using it. Useful for indicating observation without ownership and breaking reference cycles.",
+    "Features": [
+      "Weak reference storage",
+      "Does not control object lifetime",
+      "Can be converted to Shared Pointers",
+      "Helps break reference cycles"
+    ],
+    "DeclarationInitializationAssignment": {
+      "Examples": [
+        {
+          "Description": "Allocate a new data object and create a strong reference to it.",
+          "Code": "TSharedRef<FMyObjectType> ObjectOwner = MakeShared<FMyObjectType>();"
+        },
+        {
+          "Description": "Create a weak pointer to the new data object.",
+          "Code": "TWeakPtr<FMyObjectType> ObjectObserver(ObjectOwner);"
+        },
+        {
+          "Description": "Resetting strong reference destroys the object.",
+          "Code": "ObjectOwner.Reset(); if (ObjectObserver.Pin()) { check(false); }"
+        },
+        {
+          "Description": "Copy weak pointer.",
+          "Code": "TWeakPtr<FMyObjectType> AnotherObjectObserver = ObjectObserver;"
+        },
+        {
+          "Description": "Reset weak pointer.",
+          "Code": "ObjectObserver = nullptr; AnotherObjectObserver.Reset();"
+        }
+      ]
+    },
+    "ConvertingToSharedPointers": {
+      "Description": "Use Pin function to create a Shared Pointer, ensuring object validity while in scope.",
+      "Example": {
+        "Description": "Acquire a Shared Pointer from the Weak Pointer and check validity.",
+        "Code": "if (TSharedPtr<FMyObjectType> LockedObserver = ObjectObserver.Pin()) { LockedObserver->SomeFunction(); }"
+      }
+    },
+    "DereferencingAccessing": {
+      "Description": "Promote Weak Pointer to Shared Pointer with Pin function before accessing object to ensure validity.",
+      "Method": "Use Get function on Shared Pointer or Weak Pointer."
+    },
+    "BreakingReferenceCycles": {
+      "Description": "Use Weak Pointers to break reference cycles where objects reference each other with strong pointers, preventing deletion."
+    },
+    "UsageWarnings": {
+      "Warnings": [
+        {
+          "Description": "Using as keys in Sets or Maps",
+          "Reason": "Weak Pointers can become invalid without notifying the container. Use Shared Pointers or Shared References as keys."
+        },
+        {
+          "Description": "Checking IsValid does not guarantee object validity.",
+          "Reason": "Objects can become invalid due to activity on another thread. Use Pin function to ensure validity during access."
+        }
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}

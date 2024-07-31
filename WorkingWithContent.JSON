@@ -1,0 +1,238 @@
+{
+  "Content": {
+    "Overview": "Information on using art created in external applications, importing it into Unreal Engine, and setting it up for use in visualization and interactive applications.",
+    "AssetCreationLocations": {
+      "CreatedInUnrealEditor": [
+        "Game Levels",
+        "Materials",
+        "Particle Systems",
+        "Cinematic Sequences",
+        "Blueprint Scripts",
+        "AI Navigation Meshes",
+        "Precalculated Light Maps",
+        "Level Lights"
+      ],
+      "CreatedUsingExternalApplication": [
+        "Static Meshes",
+        "Skeletal Meshes",
+        "Skeletal Animation",
+        "Textures",
+        "Sounds (WAVs)",
+        "IES Light Profiles",
+        "NVIDIA APEX files (APB and APX)"
+      ]
+    },
+    "StartingOut": [
+      {
+        "ArtistQuickStart": "Learn how to get started with Unreal Engine 5 as a content creator."
+      }
+    ],
+    "ContentGuides": [
+      {
+        "AlembicFileImporter": "Describes the Alembic File import process along with import options."
+      },
+      {
+        "FBXContentPipeline": "Information on using the FBX content import pipeline for meshes, animations, materials, and textures."
+      },
+      {
+        "HairRenderingAndSimulation": "Information on rendering, simulation, creation, and editing of hair grooms in Unreal Engine."
+      },
+      {
+        "InterchangeFramework": "Information on importing and exporting content using the Interchange Framework."
+      },
+      {
+        "SkeletalMeshes": "Create characters in Unreal Engine using Skeletal Mesh assets."
+      },
+      {
+        "StaticMeshes": "Information on importing and working with Static Mesh assets in Unreal Engine."
+      },
+      {
+        "Datasmith": "Datasmith gets your design data into Unreal quickly and easily."
+      },
+      {
+        "GLTransmissionFormat": "Importing and Exporting Unreal Engine Content using the glTF file format."
+      },
+      {
+        "UniversalSceneDescription": "Importing and Editing Content using Universal Scene Description (USD) in Unreal Engine."
+      },
+      {
+        "LiDARPointCloudPlugin": "Use the LiDAR Point Cloud Plugin to import LiDAR point clouds into Unreal Engine."
+      },
+      {
+        "ModelingAndGeometryScripting": "Tools for modeling in-engine."
+      },
+      {
+        "WorkingWithSceneVariants": "The Variant Manager can help you switch between different representations of your scene."
+      },
+      {
+        "SpeedTree": "The landing page for using SpeedTree with Unreal Engine 4."
+      },
+      {
+        "Localization": "Information about how to localize your project for different regions and cultures."
+      }
+    ],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "AlembicFileImporter": {
+    "Overview": "Describes the Alembic File import process along with import options.",
+    "Introduction": "Alembic file format (ABC) is an interchange framework for complex, animated scenes. Unreal Engine 4 (UE4) allows importing Alembic files to render animations in real-time.",
+    "ExportingAlembicCaches": {
+      "FromMaya": [
+        "Select Export All to Alembic... or Selection from the Cache and Alembic Cache menu.",
+        "In Export window, enable UV Write and Write Face Sets options, then click Export."
+      ]
+    },
+    "ImportingAlembicFiles": {
+      "Steps": [
+        "In Content Browser, click Import and select your .abc file.",
+        "In Alembic Cache Import Options window, define import options and select assets to include/exclude."
+      ],
+      "SupportedGeometry": "Unreal Engine supports meshes with three and four-sided polygons. Geometry with more than four sides, NURBS, or SubDiv surfaces will fail to load."
+    },
+    "ImportAsStaticMesh": {
+      "Overview": "Imports a single frame as Static Mesh without animation.",
+      "Options": {
+        "MergeMeshes": "Enable to merge Static Meshes on import.",
+        "PropagateMatrixTransformations": "Enable to apply transformations before merging meshes.",
+        "GenerateLightmapUVs": "Enable to create lightmap UVs on import."
+      }
+    },
+    "ImportAsGeometryCache": {
+      "Overview": "Imports Alembic animation as a Geometry Cache for vertex-varying sequences.",
+      "Options": {
+        "MotionVectors": [
+          "No Motion Vectors: Default, no motion blur.",
+          "Import Abc Velocities as Motion Vectors: Imports velocities as motion vectors.",
+          "Calculate Motion Vectors During Import: Calculates motion vectors during import."
+        ]
+      }
+    },
+    "ImportAsSkeletalMesh": {
+      "Overview": "Imports Alembic file as a Skeletal Mesh with base poses as morph targets.",
+      "CompressionOptions": {
+        "MergeMeshes": "Enable to merge individual meshes for compression.",
+        "BakeMatrixAnimation": "Enable to bake Matrix-only animation as vertex animation.",
+        "BaseCalculationType": [
+          "Percentage Based: Uses percentage to determine number of bases.",
+          "Fixed Number: Sets a fixed number of bases to import."
+        ],
+        "MinimumVertexInfluencePercentage": "Sets minimum percentage of influenced vertices for a morph target to be valid."
+      }
+    },
+    "NormalCalculation": {
+      "Types": [
+        "Force One Smoothing Group Per Object: Forces smooth normals for each object.",
+        "Hard Edge Angle Threshold: Determines hard edges based on angle threshold.",
+        "RecomputeNormals: Forces recomputation of normals."
+      ]
+    },
+    "SamplingOptions": {
+      "Types": [
+        "Per Frame: Samples animation per frame.",
+        "Per X Frames: Samples animation at intervals determined by Frame Steps.",
+        "Per Time Step: Samples animation at intervals determined by Time Steps."
+      ],
+      "FrameRange": {
+        "Start": "Starting frame index.",
+        "End": "Ending frame index.",
+        "SkipEmptyFrames": "Skips empty frames at the start of Alembic sequence."
+      }
+    },
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write your own tutorials or read those from others."
+    }
+  }
+}
+{
+  "ArtistQuickStart": {
+    "Overview": "Learn how to get started with Unreal Engine 5 as a content creator.",
+    "PrerequisiteTopics": [
+      "Installing Unreal Engine",
+      "Creating a New Project"
+    ],
+    "Steps": [
+      {
+        "Step": "Required Project Setup",
+        "Details": [
+          "Open Unreal Engine from the Launcher.",
+          "Create a new Project using the Games > Blank template with C++ and Starter Content enabled.",
+          "Name the project Artist_QuickStart and click Create Project."
+        ]
+      },
+      {
+        "Step": "Creating Folders",
+        "Details": [
+          "Download and extract Quick Start Assets.",
+          "In Content Browser, click Add New, select New Folder, name it QuickStartContent, and open the folder."
+        ]
+      },
+      {
+        "Step": "Importing Meshes",
+        "Details": [
+          "In QuickStartContent folder, click Import and select Basic_Asset1 and Basic_Asset2 FBX mesh files.",
+          "In FBX Import Options dialog, click Import or Import All and save imported meshes."
+        ]
+      },
+      {
+        "Step": "Importing Textures",
+        "Details": [
+          "In QuickStartContent folder, click Import and select T_Rock_04_D and T_Rock_04_n TGA files.",
+          "Click OK for normal map settings, then save imported images."
+        ]
+      },
+      {
+        "Step": "Preparing Meshes for Import",
+        "Details": [
+          "Select the mesh(es) in your 3D tool, choose Export Selection, save as FBX in UE5 Content folder with appropriate options."
+        ]
+      },
+      {
+        "Step": "Creating Materials",
+        "Details": [
+          "In Content Browser, click Add New, select Material, name it Rock, and open in Material Editor."
+        ]
+      },
+      {
+        "Step": "Editing Materials",
+        "Details": [
+          "In Material Editor, change Shading Model to Subsurface, add Texture Sample Nodes, and connect them to corresponding pins in Rock Material Main Node.",
+          "Adjust Constant and Constant3Vector nodes, set Specular, Roughness, Opacity, and Subsurface Color values."
+        ]
+      },
+      {
+        "Step": "Applying Materials to Static Mesh Actors",
+        "Details": [
+          "Open imported asset in Static Mesh Editor, set Rock Material as default under LOD0, and save.",
+          "Drag and drop Static Mesh Actor with new material into the level."
+        ]
+      }
+    ],
+    "FinalSteps": {
+      "OnYourOwn": [
+        "Create a new Material simulating plastic, apply it to Basic_Asset1, and update with a Brick Normal Map Texture."
+      ]
+    },
+    "AdditionalResources": {
+      "GeneralFBXPipeline": "FBX Content Pipeline",
+      "SkeletalMeshPipeline": "FBX Skeletal Mesh Pipeline",
+      "AnimationPipeline": "FBX Animation Pipeline",
+      "MorphTargetPipeline": "FBX Morph Target Pipeline",
+      "MaterialPipeline": "FBX Material Pipeline",
+      "AudioImport": "Audio Files",
+      "SupportedImageTypes": "Texture Import Guide",
+      "MaterialsInfo": "Materials",
+      "ContentBrowserInfo": "Content Browser",
+      "StaticMeshEditorInfo": "Static Mesh Editor UI"
+    },
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help your peers.",
+      "LearningLibrary": "Write your own tutorials or read those from others."
+    }
+  }
+}

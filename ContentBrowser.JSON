@@ -1,0 +1,754 @@
+{
+  "ContentBrowser": {
+    "Description": "A tool to view, manage, and work with project Assets in Unreal Editor.",
+    "Functions": [
+      "Create, import, organize, view, and manage Assets.",
+      "Manage content folders and perform specific Asset operations."
+    ],
+    "Operations": [
+      "Browse and interact with Assets.",
+      "Find Assets with text and advanced filtering.",
+      "Organize Assets into collections.",
+      "Identify problematic Assets.",
+      "Migrate Assets between folders or projects."
+    ],
+    "AccessingContentBrowser": {
+      "Methods": [
+        "From Window menu in top menu bar.",
+        "From Create menu on Main Toolbar.",
+        "By clicking Content Drawer button on bottom toolbar."
+      ],
+      "Instances": "Open up to four instances simultaneously.",
+      "UseCases": [
+        "Filter different Asset types in different browsers.",
+        "Move Assets between folders."
+      ],
+      "Docking": "Dock along the bottom, re-dock, float as window, or move to Sidebar."
+    },
+    "ContentDrawer": {
+      "Description": "Special instance of Content Browser with different behavior.",
+      "OpeningMethods": [
+        "Click Content Drawer button on bottom bar.",
+        "Use Ctrl + Space (Windows) or Cmd + Space (macOS) shortcut."
+      ],
+      "Behavior": "Automatically minimizes when losing focus, can be docked to stay open."
+    },
+    "ContentBrowserTopics": [
+      {
+        "Title": "Content Browser Interface",
+        "Description": "Describes the interface and functionality."
+      },
+      {
+        "Title": "Sources Panel Reference",
+        "Description": "Working with the Sources panel."
+      },
+      {
+        "Title": "Content Browser Settings Reference",
+        "Description": "Adjust settings like thumbnail display and Asset filtering."
+      },
+      {
+        "Title": "Filters and Collections",
+        "Description": "Sort and group Assets using filters and Collections."
+      },
+      {
+        "Title": "Advanced Search Syntax",
+        "Description": "Reference for advanced search operators."
+      }
+    ],
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ContentBrowserInterface": {
+    "Description": "Describes the Content Browser interface and functionality.",
+    "Areas": [
+      "Navigation Bar",
+      "Sources Panel",
+      "Collections",
+      "Filters",
+      "Search Bar",
+      "Asset View",
+      "Settings Button"
+    ],
+    "NavigationBar": {
+      "Description": "Controls for working with Assets, navigating folder paths, and breadcrumb trail.",
+      "Components": [
+        {
+          "Name": "Asset Control Buttons",
+          "Functions": [
+            "Add: Add existing or new Assets.",
+            "Import: Open file browser to add Assets.",
+            "Save All: Save all unsaved Assets."
+          ]
+        },
+        {
+          "Name": "History Back and Forward Buttons",
+          "Description": "Navigate back and forward between recent paths."
+        },
+        {
+          "Name": "Breadcrumb Trail Path",
+          "Description": "Shows current folder path. Click folders to navigate."
+        }
+      ]
+    },
+    "SourcesPanel": {
+      "Description": "List of all folders in your project.",
+      "Components": [
+        {
+          "Name": "Favorites Panel",
+          "Description": "References to your favorite Assets."
+        },
+        {
+          "Name": "Project Name",
+          "Description": "Current project name. Click to collapse/expand folders list."
+        },
+        {
+          "Name": "Search Buttons",
+          "Description": "Open Search bar to filter folders in real time."
+        },
+        {
+          "Name": "Asset Tree",
+          "Description": "Hierarchical list of folders. Behaves like OS folder trees."
+        }
+      ]
+    },
+    "Collections": {
+      "Description": "Displays list of Collections.",
+      "Components": [
+        {
+          "Name": "Collapse / Expand Button",
+          "Description": "Collapse or expand Collections area."
+        },
+        {
+          "Name": "Add Collections Button",
+          "Description": "Create a new Collection."
+        },
+        {
+          "Name": "Search Buttons",
+          "Description": "Open Search bar to filter Collections."
+        },
+        {
+          "Name": "Collections List",
+          "Description": "Alphabetical list of all Collections."
+        },
+        {
+          "Name": "Asset Count",
+          "Description": "Number of Assets in each Collection."
+        }
+      ]
+    },
+    "FiltersColumn": {
+      "Description": "Contains built-in and custom filters. Enable/disable by clicking."
+    },
+    "SearchBar": {
+      "Description": "Locate Assets by name and type.",
+      "Components": [
+        {
+          "Name": "Filters Button",
+          "Description": "Open Filters menu to customize Asset display."
+        },
+        {
+          "Name": "Search Bar",
+          "Description": "Search for Assets by name."
+        },
+        {
+          "Name": "Save Search Button",
+          "Description": "Save current search as filter or Collection."
+        },
+        {
+          "Name": "Previous Searches Button",
+          "Description": "List of previous searches."
+        }
+      ]
+    },
+    "AssetView": {
+      "Description": "Shows available Assets in the selected folder or Collection.",
+      "Components": [
+        {
+          "Name": "View Area",
+          "Description": "Shows Assets after applying filters and search criteria."
+        },
+        {
+          "Name": "Asset Count",
+          "Description": "Number of Assets displayed after filtering."
+        }
+      ]
+    },
+    "SettingsButton": {
+      "Description": "Opens Settings menu to adjust view style, filters, content, and search options."
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "DevelopersFolder": {
+    "Description": "Sandbox environment for developers to duplicate and work on Assets without affecting the main project.",
+    "Purpose": "Experiment with Asset modifications and project refactors.",
+    "SharedProjects": "Each developer has a personal folder named after their Windows username, minus invalid characters.",
+    "BestPractices": "Do not reference Assets from this folder outside of it to avoid cooking errors.",
+    "EnablingDevelopersFolder": {
+      "Steps": [
+        "In the Content Browser, click Settings.",
+        "Enable the Show Developer Content option."
+      ]
+    },
+    "CollaboratingWithOthers": {
+      "Steps": [
+        "In the Content Browser, click the Filters button.",
+        "Select Other Filters > Other Developers."
+      ]
+    },
+    "ExcludingFromCookedBuilds": {
+      "Steps": [
+        "Go to Edit > Project Settings and search for Directories to never cook.",
+        "Click Add (+) to add a new item.",
+        "Click ... to open folder list.",
+        "Select the Developers folder."
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "SourcesPanelReference": {
+    "Description": "Reference for working with the Sources panel inside the Content Browser.",
+    "Overview": "Located on the left side, lists all folders and Collections, customizable for other Asset types.",
+    "Usage": "Select folders, collections, or groups to display their contents in the Asset View panel.",
+    "TogglingSourcesPanel": {
+      "Steps": [
+        "Open Settings menu in the Content Browser.",
+        "Enable or disable Show Sources Panel option."
+      ],
+      "Benefit": "Gives more space to work with Assets in the Asset View."
+    },
+    "AddingRemovingSources": {
+      "DefaultSources": [
+        "Hierarchical list of all project folders.",
+        "Alphabetical list of Asset Collections."
+      ],
+      "AdditionalSources": [
+        {
+          "Source": "Favorites",
+          "Contents": "Assets marked as Favorites.",
+          "HowToAdd": "Enable Show Favorites option in Settings menu."
+        },
+        {
+          "Source": "C++ Classes folder",
+          "Contents": "Hierarchy of all C++ classes.",
+          "HowToAdd": "Enable Show C++ Classes option in Settings menu."
+        },
+        {
+          "Source": "Developers folder",
+          "Contents": "Collaboration folder for multi-user projects.",
+          "HowToAdd": "Enable Show Developers Content option in Settings menu."
+        },
+        {
+          "Source": "Engine Content folder",
+          "Contents": "Stock Assets with various functionalities.",
+          "HowToAdd": "Enable Show Engine Content option in Settings menu."
+        },
+        {
+          "Source": "Plugin-specific content folders",
+          "Contents": "Content folders added by plugins.",
+          "HowToAdd": "Enable Show Plugin Content option in Settings menu."
+        },
+        {
+          "Source": "Localized content",
+          "Contents": "Localized content in L10N/ folder.",
+          "HowToAdd": "Enable Show Localized Content option in Settings menu."
+        }
+      ]
+    },
+    "SourceBasedAssetDisplay": {
+      "Description": "Shows Assets from the selected source, with search and filter capabilities.",
+      "SelectionMethods": [
+        "Left-click: Replace current selection.",
+        "Shift + Left-click: Select range between start and end.",
+        "Ctrl + Left-click: Select or deselect individual folders."
+      ]
+    },
+    "RightClickContextMenu": {
+      "Options": [
+        {
+          "Option": "New Folder",
+          "Description": "Create a new folder as a child of the selected folder."
+        },
+        {
+          "Option": "Show in New Content Browser",
+          "Description": "Open folder in a new Content Browser window."
+        },
+        {
+          "Option": "Folder Options",
+          "Description": ""
+        },
+        {
+          "Option": "Add/Import Content",
+          "Description": "Import or create new Assets in the selected folder."
+        },
+        {
+          "Option": "Show in Explorer/Finder",
+          "Description": "Open the folder in OS file explorer."
+        },
+        {
+          "Option": "Rename",
+          "Description": "Edit the folder name."
+        },
+        {
+          "Option": "Add to Favorites",
+          "Description": "Add folder to Favorites."
+        },
+        {
+          "Option": "Set Color",
+          "Description": "Set the folder color for organization."
+        },
+        {
+          "Option": "Bulk Operations",
+          "Description": ""
+        },
+        {
+          "Option": "Save All",
+          "Description": "Save all modified Assets in the folder."
+        },
+        {
+          "Option": "Resave All",
+          "Description": "Resave all Assets in the folder."
+        },
+        {
+          "Option": "Delete",
+          "Description": "Delete the folder and its contents."
+        },
+        {
+          "Option": "Fix Up Redirectors in Folder",
+          "Description": "Find and fix redirectors in the folder."
+        },
+        {
+          "Option": "Migrate",
+          "Description": "Copy Assets and dependencies to another project."
+        },
+        {
+          "Option": "Reference Viewer",
+          "Description": "Show a graph of folder references."
+        },
+        {
+          "Option": "Size Map",
+          "Description": "Show an interactive map of memory usage."
+        },
+        {
+          "Option": "Audit Assets",
+          "Description": "Display detailed information about Assets."
+        },
+        {
+          "Option": "Shader Cook Statistics",
+          "Description": "Display shader cooking statistics."
+        },
+        {
+          "Option": "Validate Assets in Folder",
+          "Description": "Flag Assets with issues."
+        },
+        {
+          "Option": "Source Control",
+          "Description": ""
+        },
+        {
+          "Option": "Connect to Source Control",
+          "Description": "Connect folder to source control."
+        },
+        {
+          "Option": "Check Out",
+          "Description": "Lock folder from edits by others."
+        },
+        {
+          "Option": "Mark for Add",
+          "Description": "Mark folder for addition to source control."
+        },
+        {
+          "Option": "Check In",
+          "Description": "Submit edits and additions, unlocking the folder."
+        },
+        {
+          "Option": "Sync",
+          "Description": "Sync folder to latest version, overriding local changes."
+        },
+        {
+          "Option": "Move Here",
+          "Description": "Move folder to new location."
+        },
+        {
+          "Option": "Copy Here",
+          "Description": "Duplicate folder in the destination."
+        },
+        {
+          "Option": "Advanced Copy Here",
+          "Description": "Duplicate folder and dependencies in the destination."
+        }
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ContentBrowserSettingsReference": {
+    "Description": "Adjust thumbnail display, Asset filtering, and other areas of the Content Browser.",
+    "SettingsButton": {
+      "Location": "Top-right corner of the Content Browser.",
+      "Options": [
+        "View type",
+        "Search filters",
+        "Content to include/exclude",
+        "Search options"
+      ]
+    },
+    "ViewType": {
+      "Description": "How Assets in the Asset View are displayed.",
+      "Types": [
+        {
+          "Type": "Tiles",
+          "Description": "Grid layout of tiles."
+        },
+        {
+          "Type": "List",
+          "Description": "List of thumbnails with names and file types."
+        },
+        {
+          "Type": "Columns",
+          "Description": "Spreadsheet-like arrangement of properties."
+        }
+      ],
+      "Operations": [
+        "Sort Assets by column value.",
+        "Hide/Unhide columns.",
+        "Export Asset details as CSV (Columns view only)."
+      ]
+    },
+    "Locking": {
+      "Description": "Toggle Lock Content Browser to ignore Find in Content Browser requests."
+    },
+    "ViewSettings": {
+      "Options": [
+        {
+          "Option": "Show Folders",
+          "Description": "Show all Assets in a single view. Disable Show Empty Folders to hide empty folders."
+        },
+        {
+          "Option": "Show Favorites",
+          "Description": "Adds Favorites category to the Sources panel if at least one folder or Asset is marked as favorite."
+        },
+        {
+          "Option": "Filter Recursively",
+          "Description": "Toggle recursive filtering in Asset View."
+        },
+        {
+          "Option": "Show All Folder",
+          "Description": "Toggle visibility of the All folder in Sources Panel."
+        },
+        {
+          "Option": "Organize Folders",
+          "Description": "Automatically organize folders in Asset view."
+        },
+        {
+          "Option": "Path View Filters",
+          "Description": "Toggle Path View options for large-scale projects."
+        },
+        {
+          "Option": "Show Sources Panel",
+          "Description": "Toggle visibility of the Sources panel."
+        }
+      ]
+    },
+    "ContentSettings": {
+      "Options": [
+        {
+          "Option": "Show C++ Classes",
+          "Description": "Show the Engine C++ Classes folder."
+        },
+        {
+          "Option": "Show Developers Content",
+          "Description": "Show the Developers folder."
+        },
+        {
+          "Option": "Show Engine Content",
+          "Description": "Show the Engine Content folder."
+        },
+        {
+          "Option": "Show Plugin Content",
+          "Description": "Show plugin-specific content."
+        },
+        {
+          "Option": "Show Localized Content",
+          "Description": "Show localized content."
+        }
+      ]
+    },
+    "SearchSettings": {
+      "Options": [
+        "Asset class names",
+        "Asset paths",
+        "Collection names"
+      ]
+    },
+    "ThumbnailSettings": {
+      "Options": [
+        {
+          "Option": "Thumbnail Size",
+          "Description": "Choose from Tiny, Small, Medium, Large, Huge."
+        },
+        {
+          "Option": "Thumbnail Edit Mode",
+          "Description": "Adjust thumbnails of 3D Assets by dragging inside the thumbnail."
+        },
+        {
+          "Option": "Real-Time Thumbnails",
+          "Description": "Render thumbnails in real time."
+        }
+      ]
+    },
+    "EditorPreferences": {
+      "Description": "Adjust settings from the Editor Preferences menu.",
+      "Settings": [
+        {
+          "Setting": "Assets to Load at Once Before Warning",
+          "Description": "Max Assets loaded simultaneously before warning."
+        },
+        {
+          "Setting": "Open Sources Panel by Default",
+          "Description": "Sources Panel opens by default."
+        },
+        {
+          "Setting": "Number of Assets to Keep in Recently Opened Filter",
+          "Description": "Assets displayed by the Recently Opened filter."
+        },
+        {
+          "Setting": "Enable Realtime Material Instance Thumbnails",
+          "Description": "Render Material instance thumbnails in real time."
+        }
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "FiltersAndCollections": {
+    "Description": "Use filters and Collections to sort and group Assets within the Content Browser.",
+    "Differences": {
+      "Filters": "Automatically show/hide Assets, multiple active, saved locally, shared across projects.",
+      "Collections": "Manually added references, view one at a time, local or shared with users."
+    },
+    "AssetFilters": {
+      "Description": "Narrow down visible Assets based on type or state.",
+      "Enabling": {
+        "Steps": [
+          "Click Filters drop-down in Search bar.",
+          "Select filters from categories."
+        ],
+        "Categories": {
+          "PlusSign": "All filters in category enabled.",
+          "MinusSign": "Some filters in category enabled.",
+          "EmptyCheckbox": "No filters in category enabled."
+        }
+      },
+      "CustomFilters": {
+        "CreationSteps": [
+          "Go to Custom Filter > Create New Filter.",
+          "Enter Filter Label, Color, and Filter String."
+        ]
+      },
+      "DisablingFilters": {
+        "Methods": [
+          "Click filter in Filters area to toggle.",
+          "Click filter name in drop-down to disable and remove."
+        ]
+      },
+      "BulkOperations": {
+        "Options": [
+          "Remove: Remove filter from Filters area.",
+          "Enable Only This: Disable all others except selected.",
+          "Enable All Filters: Enable all filters.",
+          "Disable All Filters: Disable all filters.",
+          "Remove All Filters: Remove all filters.",
+          "Remove All But This: Remove all except selected."
+        ]
+      },
+      "RecentlyOpenedFilter": {
+        "Description": "View 20 most recently opened Assets in a folder.",
+        "Customization": "Change number of listed Assets in Editor Preferences."
+      }
+    },
+    "Collections": {
+      "Description": "Organize sets of Assets into groups, with references only.",
+      "CreatingCollections": {
+        "Steps": [
+          "Click Add (+) button in Collections panel.",
+          "Select Collection type (Shared, Private, Local).",
+          "Enter name and press Enter."
+        ]
+      },
+      "AddingAssets": {
+        "Methods": [
+          "Drag Asset into Collection.",
+          "Right-click Asset, select Manage Collections, choose Collection.",
+          "Select Asset, enable check mark next to Collection."
+        ]
+      },
+      "RemovingAssets": {
+        "Methods": [
+          "Right-click Asset, select Manage Collections, uncheck Collection.",
+          "Select Asset, disable check mark next to Collection."
+        ],
+        "Warning": "Pressing Delete will delete the Asset entirely, not just remove from Collection."
+      },
+      "RenamingDeletingCollections": {
+        "Rename": "Right-click Collection, select Rename, enter new name, press Enter.",
+        "Delete": "Right-click Collection, select Delete, confirm in window."
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "AdvancedSearchSyntax": {
+    "Description": "Reference for advanced search operators in the Content Browser.",
+    "Usage": "Refine searches for content, search for key-value pairs from Asset metadata, and access special key values.",
+    "Operators": [
+      {
+        "Operator": "Equal (Binary)",
+        "Syntax": "===:",
+        "Description": "Tests if value for a key is equal to the specified value.",
+        "Example": "Name==Blast"
+      },
+      {
+        "Operator": "NotEqual (Binary)",
+        "Syntax": "!=!:",
+        "Description": "Tests if value for a key is not equal to the specified value.",
+        "Example": "Name!=Blast"
+      },
+      {
+        "Operator": "Less (Binary)",
+        "Syntax": "<",
+        "Description": "Tests if value for a key is less than the specified value (numeric only).",
+        "Example": "Triangles<92"
+      },
+      {
+        "Operator": "LessOrEqual (Binary)",
+        "Syntax": "<=<:",
+        "Description": "Tests if value for a key is less than or equal to the specified value (numeric only).",
+        "Example": "Triangles<=92"
+      },
+      {
+        "Operator": "Greater (Binary)",
+        "Syntax": ">",
+        "Description": "Tests if value for a key is greater than the specified value (numeric only).",
+        "Example": "Triangles>92"
+      },
+      {
+        "Operator": "GreaterOrEqual (Binary)",
+        "Syntax": ">= >:",
+        "Description": "Tests if value for a key is greater than or equal to the specified value (numeric only).",
+        "Example": "Triangles>=92"
+      },
+      {
+        "Operator": "Or (Binary)",
+        "Syntax": "OR |||",
+        "Description": "Returns true if either of two values evaluate to true.",
+        "Example": "Blast OR Type:Blueprint"
+      },
+      {
+        "Operator": "And (Binary)",
+        "Syntax": "AND &&&",
+        "Description": "Returns true if both values evaluate to true.",
+        "Example": "Blast AND Type:Blueprint"
+      },
+      {
+        "Operator": "Not (Pre-Unary)",
+        "Syntax": "NOT !",
+        "Description": "Returns the inverted results of the value that follows it.",
+        "Example": "NOT Blast"
+      },
+      {
+        "Operator": "TextCmpInvert (Pre-Unary)",
+        "Syntax": "-",
+        "Description": "Returns the inverted result of a text comparison.",
+        "Example": "-Blast"
+      },
+      {
+        "Operator": "TextCmpExact (Pre-Unary)",
+        "Syntax": "+",
+        "Description": "Performs an exact text comparison.",
+        "Example": "+Blast"
+      },
+      {
+        "Operator": "TextCmpAnchor (Pre-Unary)",
+        "Syntax": "...",
+        "Description": "Performs an 'ends with' text comparison.",
+        "Example": "...ast"
+      },
+      {
+        "Operator": "TextCmpAnchor (Post-Unary)",
+        "Syntax": "...",
+        "Description": "Performs a 'starts with' text comparison.",
+        "Example": "Bla..."
+      }
+    ],
+    "SpecialKeys": {
+      "Description": "Keys available for all Asset types, supporting Equal or NotEqual comparisons.",
+      "Keys": [
+        "Name: The Asset name.",
+        "Path: The Asset path.",
+        "Class: The Asset class.",
+        "ParentClass: The Asset's parent class.",
+        "Collection: The names of any collections containing the Asset."
+      ]
+    },
+    "Strings": {
+      "Description": "Strings can be quoted or not, with quoted strings allowing spaces and special characters. Use backslashes to escape nested quotes.",
+      "Examples": [
+        "\"Foo\\\"bar\" -> Foo\"bar",
+        "'Foo\\'bar' -> Foo'bar",
+        "\"Foo\\'bar\" -> Foo'bar",
+        "'Foo\\\"bar' -> Foo\"bar",
+        "\"Foo\\\\bar\" -> Foo\\bar",
+        "'Foo\\\\bar' -> Foo\\bar"
+      ]
+    },
+    "AssetMetadata": {
+      "Description": "Metadata is displayed when hovering over an Asset's name. Use metadata to search for Assets.",
+      "Syntax": "[Metadata Name] [Operator] [String or Numeric Value]",
+      "Examples": [
+        "Triangles>=10500",
+        "Type==Skeletal",
+        "UVChannels>2",
+        "CollisionPrims!=0"
+      ]
+    },
+    "SearchExamples": {
+      "Basic": [
+        "Triangles>1500: Search for Assets with more than 1500 triangles.",
+        "Type==Blueprint: Search for all Blueprint Assets."
+      ],
+      "Advanced": [
+        "(BlendMode==Translucent AND ShadingModel==DefaultLit) OR (MaterialDomain==DeferredDecal AND HasSceneColor==False): Complex search combining multiple conditions."
+      ]
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}

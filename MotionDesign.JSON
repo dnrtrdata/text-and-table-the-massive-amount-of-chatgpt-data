@@ -1,0 +1,270 @@
+{
+  "MotionDesign": {
+    "Overview": {
+      "Description": "Create graphics and animations for broadcast using Motion Design.",
+      "Caution": "Experimental feature, use caution when shipping."
+    },
+    "Features": {
+      "Purpose": "Suite for motion graphics artists for rapid iteration and scalability.",
+      "Components": [
+        "Reworked world outliner",
+        "User interface",
+        "Rigging tools",
+        "Cloners",
+        "Customizable 2D/3D shapes",
+        "Material Designer"
+      ],
+      "MaterialDesigner": {
+        "Description": "Create materials using a streamlined, layer-based workflow."
+      },
+      "RundownTool": {
+        "Description": "Robust tool for running live-updated broadcast graphics.",
+        "TransitionLogic": "Minimal rigging needed."
+      }
+    },
+    "Capabilities": [
+      "On-air compatible graphics",
+      "High-end 3D product design",
+      "Advertising visuals"
+    ],
+    "GettingStarted": {
+      "QuickStartGuide": "Get started working with Motion Design.",
+      "FirstGraphicTutorial": "Learn to create your first graphic."
+    },
+    "Support": {
+      "Forums": "Ask questions and help peers in Developer Forums.",
+      "LearningLibrary": "Write or read tutorials from others."
+    }
+  }
+}
+{
+  "MotionDesignQuickStartGuide": {
+    "Introduction": {
+      "Title": "Motion Design Quick Start Guide",
+      "Description": "Get started with Motion Design, an Experimental feature for broadcast graphics creation.",
+      "Caution": "Use caution when shipping with it."
+    },
+    "Overview": {
+      "WhatIsMotionDesign": {
+        "Description": "Internal Editor plugin for broadcasting graphics, playout, and real-time data visualization for live TV.",
+        "Uses": [
+          "News",
+          "Weather",
+          "Sports production",
+          "Interstitial graphics"
+        ],
+        "Features": "3D parametric shapes, dynamic material builder."
+      }
+    },
+    "EnablingPlugins": {
+      "Steps": [
+        "Enable Motion Design and Storm Sync Motion Design Bridge plugins."
+      ]
+    },
+    "CreatingScene": {
+      "Steps": [
+        "Create an empty level or use a template.",
+        "Select Motion Design template in Toolbar.",
+        "Click Create Defaults.",
+        "Click Spawn to configure actors.",
+        "Switch to Motion Design Mode (SHIFT+9)."
+      ],
+      "DeletingScene": {
+        "Steps": [
+          "Use Deactivate Scene button or delete Default Scene group manually."
+        ]
+      }
+    },
+    "UIOverview": {
+      "Components": [
+        "Motion Design Tool Box",
+        "Palettes tabs",
+        "Sequencer",
+        "Operator Stack",
+        "Outliner",
+        "Details panel",
+        "Viewport utility toolbar"
+      ],
+      "ToolBox": {
+        "Description": "Place parametric 2D/3D shapes, text, SVGs, cloners, and Media Plate.",
+        "Viewport": "Zoom and select Motion Design Viewport."
+      }
+    },
+    "ToolShortcuts": {
+      "Description": "Modifier and Transition Logic panels, accessed via Editor Panel Shortcuts."
+    },
+    "Outliner": {
+      "Description": "Customized Unreal Engine Outliner with additional functionality."
+    },
+    "Sequencer": {
+      "Description": "Create, modify, and preview animations with added Motion Design tools."
+    },
+    "ModifiersStack": {
+      "Description": "Add and manage modifiers for selected actors.",
+      "Categories": [
+        "Geometry",
+        "Layout",
+        "Rendering",
+        "Transform"
+      ]
+    },
+    "AnimatorsStack": {
+      "Description": "Add and manage animators for selected actors.",
+      "Categories": [
+        "Bounce",
+        "Time",
+        "Wiggle"
+      ]
+    },
+    "RemoteControl": {
+      "Description": "Linked preset with parameters for actors, modifiers, and animators.",
+      "UI": {
+        "Components": [
+          "Save preset",
+          "Mode switch",
+          "Protocols and Logic toggles",
+          "Log toggle",
+          "Web App button"
+        ]
+      }
+    },
+    "Broadcast": {
+      "Description": "Facilitates output of Motion Design assets on displays or media outputs.",
+      "UI": {
+        "Components": [
+          "Save Asset",
+          "Start/Stop All Channels",
+          "Show Channel Preview toggle",
+          "Profiles dropdown",
+          "Client/Server controls",
+          "Channels controls",
+          "Output Devices list",
+          "Details panel"
+        ]
+      }
+    },
+    "Support": {
+      "Forums": "Ask questions and help peers in Developer Forums.",
+      "LearningLibrary": "Write or read tutorials from others."
+    }
+  }
+}
+{
+  "YourFirstGraphicWithMotionDesign": {
+    "Introduction": {
+      "Title": "Your First Graphic with Motion Design",
+      "Description": "Step-by-step guide to create an animated 2D graphic with Motion Design. Use caution as it's an Experimental feature."
+    },
+    "GettingStarted": {
+      "Prerequisites": [
+        "Familiarize with Motion Design Quickstart",
+        "Enable required plugins"
+      ],
+      "Options": [
+        "Use Motion Design in an existing level",
+        "Create a new level using Motion Design template"
+      ]
+    },
+    "ExistingLevel": {
+      "Steps": [
+        "Open Motion Design interface",
+        "Switch to Motion Design Mode (SHIFT+9)",
+        "Activate Motion Design mode",
+        "Add default actors using Create Defaults"
+      ]
+    },
+    "NewLevel": {
+      "Steps": [
+        "Create new level (File > New Level)",
+        "Select Motion Design template for 2D design",
+        "Configure and spawn default scene actors"
+      ]
+    },
+    "UIOverview": {
+      "Components": [
+        "Motion Design Tool Box",
+        "Details panel",
+        "Viewport utility toolbar",
+        "Motion Design Outliner",
+        "Sequencer"
+      ]
+    },
+    "ShapeCreationAndGroups": {
+      "Steps": [
+        "Create shapes using Motion Design toolbox",
+        "Customize shapes in Details panel",
+        "Anchor shapes",
+        "Group shapes using CTRL+G"
+      ]
+    },
+    "MaterialDesigner": {
+      "Steps": [
+        "Select shape and open Material Designer",
+        "Set Material Type to Material Designer",
+        "Customize shape with solid color",
+        "Add and adjust pattern"
+      ]
+    },
+    "TextAndLogo": {
+      "Steps": [
+        "Add text using Toolbox",
+        "Customize text properties in Details panel",
+        "Group text lines",
+        "Add logo using Material Designer"
+      ]
+    },
+    "Animation": {
+      "Steps": [
+        "Animate graphic using Sequencer",
+        "Set keyframes for position and opacity",
+        "Add marks for animation control",
+        "Animate logo using Material Designer"
+      ]
+    },
+    "RemoteControl": {
+      "Steps": [
+        "Expose properties to Remote Control",
+        "Create controllers for exposed properties",
+        "Set up Conditional Behavior for properties"
+      ]
+    },
+    "ExportImport": {
+      "ExportSPAK": [
+        "Open level and export as .spak file",
+        "Auto-collect required files",
+        "Name and save .spak file"
+      ],
+      "ImportSPAK": [
+        "Drag .spak file into Content Browser",
+        "Verify and import contents"
+      ]
+    },
+    "RundownTool": {
+      "Overview": {
+        "Description": "Interface to manage and play out graphics",
+        "Components": [
+          "Template List",
+          "Playback Controls",
+          "Page List",
+          "Page Details",
+          "Toolbar",
+          "Page Preview"
+        ]
+      },
+      "UsingRundownTool": {
+        "Steps": [
+          "Add level to Rundown",
+          "Preview template",
+          "Modify page details",
+          "Duplicate pages",
+          "Set output display",
+          "Start All Channels"
+        ]
+      }
+    },
+    "Support": {
+      "Forums": "Ask questions and help peers in Developer Forums",
+      "LearningLibrary": "Write or read tutorials from others"
+    }
+  }
+}

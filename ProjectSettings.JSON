@@ -1,0 +1,349 @@
+{
+  "ProjectSettings": {
+    "Overview": {
+      "Description": "Overview of project settings in Unreal Engine.",
+      "Configuration": [
+        "Project configuration options.",
+        "Engine behavior settings.",
+        "Platform-specific settings.",
+        "Plugin configuration options."
+      ],
+      "Storage": "Settings stored in Engine.ini file."
+    },
+    "Access": {
+      "Description": "How to access Project Settings.",
+      "Steps": "Go to Edit > Project Settings in the main menu."
+    },
+    "CategoriesAndSections": {
+      "Description": "Structure of the Project Settings window.",
+      "Navigation": "Categories on the left, settings on the right.",
+      "Search": "Search for specific options by name."
+    },
+    "ExportImport": {
+      "Description": "Export or import settings.",
+      "Location": "Upper-right corner of the Project Settings window."
+    },
+    "IniFiles": {
+      "Description": "Details about .ini files.",
+      "EditorIni": "Updated with every change, applies to all platforms.",
+      "PlatformIni": "Edited manually, platform-specific.",
+      "Example": "<ProjectDirectory>\\Config\\Windows\\WindowsEngine.ini"
+    },
+    "SectionsAndCategories": [
+      "Project",
+      "Game",
+      "Engine",
+      "Editor",
+      "Platforms",
+      "Plugins"
+    ],
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "Project": {
+      "Description": "Set project info like name, version, company, etc.",
+      "Sections": {
+        "About": {
+          "Description": "Project description details.",
+          "Fields": [
+            "Project ID",
+            "Project Name",
+            "Project Version",
+            "Project Thumbnail"
+          ]
+        },
+        "Publisher": {
+          "Description": "Company details and support.",
+          "Fields": [
+            "Company Name",
+            "Company Distinguished Name",
+            "Homepage",
+            "Support Contact"
+          ]
+        },
+        "Legal": {
+          "Description": "Legal notices and policies.",
+          "Fields": [
+            "Copyright Notice",
+            "Licensing Terms",
+            "Privacy Policy"
+          ]
+        },
+        "Displayed": {
+          "Description": "Window title and debug info.",
+          "Fields": [
+            "Project Displayed Title",
+            "Project Debug Title Info"
+          ]
+        },
+        "Settings": {
+          "Description": "Window and VR settings.",
+          "Fields": [
+            "Should Window Preserve Aspect Ratio",
+            "Use Borderless Window",
+            "Start in VR",
+            "Allow Window Resize",
+            "Allow Close",
+            "Allow Maximize",
+            "Allow Minimize"
+          ]
+        },
+        "Encryption": {
+          "Description": "Encryption settings for .pak files.",
+          "Fields": [
+            "Encryption Key",
+            "Secondary Encryption Keys",
+            "Encrypt Pak Ini Files",
+            "Encrypt Pak Index",
+            "Encrypt UAsset Files",
+            "Encrypt All Asset Files",
+            "Generate New Encryption Key"
+          ]
+        },
+        "Signing": {
+          "Description": "RSA key settings for signing .pak files.",
+          "Fields": [
+            "Signing Public Exponent",
+            "Signing Modulus",
+            "Signing Private Exponent",
+            "Enable Pak Signing",
+            "Generate New Signing Keys"
+          ]
+        },
+        "GameplayTags": {
+          "Description": "Settings for gameplay tags.",
+          "Fields": [
+            "Import Tags from Config",
+            "Warn on Invalid Tags",
+            "Clear Invalid Tags",
+            "Invalid Tag Characters",
+            "Category Remapping",
+            "Gameplay Tag Table List",
+            "Gameplay Tag Redirects",
+            "Gameplay Tag List"
+          ]
+        },
+        "AdvancedReplication": {
+          "Description": "Advanced settings for gameplay tags.",
+          "Fields": [
+            "Fast Replication",
+            "Commonly Replicated Tags",
+            "Num Bits for Container Size",
+            "Net Index First Bit Segment"
+          ]
+        },
+        "AdvancedGameplayTags": {
+          "Description": "Settings for restricted gameplay tags.",
+          "Fields": [
+            "Restricted Config Files",
+            "Restricted Tag List"
+          ]
+        },
+        "MapsAndModes": {
+          "Description": "Default maps and modes.",
+          "Fields": [
+            "Default GameMode",
+            "Default Pawn Class",
+            "HUD Class",
+            "Player Controller Class",
+            "Game State Class",
+            "Player State Class",
+            "Spectator Class",
+            "Global Default Server Game Mode",
+            "Game Mode Map Prefixes",
+            "Game Mode Class Aliases",
+            "Default Maps",
+            "Editor Startup Map",
+            "Editor Template Map Overrides",
+            "Game Default Map",
+            "Local Map Options",
+            "Transition Map",
+            "Server Default Map"
+          ]
+        },
+        "LocalMultiplayer": {
+          "Description": "Settings for local multiplayer.",
+          "Fields": [
+            "Use Splitscreen",
+            "Two Player Splitscreen Layout",
+            "Three Player Splitscreen Layout",
+            "Four Player Splitscreen Layout",
+            "Skip Assigning Gamepad to Player 1"
+          ]
+        },
+        "GameInstance": {
+          "Description": "Settings for the GameInstance class.",
+          "Fields": [
+            "Game Instance Class"
+          ]
+        },
+        "Movies": {
+          "Description": "Settings for startup movies.",
+          "Fields": [
+            "Wait for Movies to Complete",
+            "Movies Are Skippable",
+            "Startup Movies"
+          ]
+        },
+        "Packaging": {
+          "Description": "Settings for packaging the project.",
+          "Fields": [
+            "Use Pak File",
+            "Use Io Store",
+            "Use Zen Store",
+            "Make Binary Config",
+            "Generate Chunks",
+            "Generate No Chunks",
+            "Chunk Hard References Only",
+            "Build HTTP Chunk Install Data",
+            "HTTP Chunk Install Data Directory",
+            "Package Compression Min Size to Consider DDC",
+            "HTTP Chunk Install Data Version",
+            "Share Material Shader Code",
+            "Deterministic Shader Code Order",
+            "Shared Material Native Libraries",
+            "Ini Key Denylist",
+            "Ini Section Denylist",
+            "Additional Builds for This Project",
+            "Force One Chunk Per File",
+            "Max Chunk Size",
+            "Create Compressed Cooked Packages",
+            "Package Compression Format",
+            "Use This Compression Format Not Hardware Override",
+            "Package Compression Command Line Options",
+            "Package Compression Method",
+            "Encoder Effort Level for Debug & Development",
+            "Encoder Effort Level for Test & Shipping",
+            "Encoder Effort Level for Distribution",
+            "Minimum Amount of Bytes Which Should Be Saved When Compressing a Block of Data",
+            "Minimum Percentage of a Block of Data Which Should Be Saved When Performing Compression",
+            "Enable DDC for IoStore Compression",
+            "Include Crash Reporter",
+            "Internationalization Support",
+            "Localization Targets to Chunk",
+            "Localization Target Catch All Chunk ID",
+            "Cook Everything in the Project Content Directory",
+            "Cook Only Maps",
+            "Exclude Editor Content When Cooking",
+            "Exclude Movie Files When Staging",
+            "Specific Movies to Package",
+            "Specific Movies to Copy",
+            "Compressed Chunk Wildcard",
+            "List of Maps to Include in a Packaged Build",
+            "Additional Asset Directories to Cook",
+            "Directories to Never Cook",
+            "Test Directories to Not Search",
+            "Additional Non-Asset Directories to Package",
+            "Additional Non-Asset Directories to Copy",
+            "Additional Non-Asset Directories to Package for Dedicated Server Only",
+            "Additional Non-Asset Directories to Copy for Dedicated Server Only",
+            "Localizations to Package"
+          ]
+        },
+        "Build": {
+          "Description": "Build settings for the project.",
+          "Fields": [
+            "Build",
+            "Build Configuration",
+            "Build Target",
+            "Staging Directory",
+            "Full Rebuild",
+            "For Distribution",
+            "Include Debug Files in Shipping Builds"
+          ]
+        },
+        "Prerequisites": {
+          "Description": "Prerequisite settings for the project.",
+          "Fields": [
+            "Include Prerequisites Installer",
+            "Include App-Local Prerequisites",
+            "App-Local Prerequisites Directory"
+          ]
+        },
+        "SupportedPlatforms": {
+          "Description": "Supported platforms for the project.",
+          "Fields": [
+            "All Platforms",
+            "Android",
+            "IOS",
+            "Linux",
+            "LinuxARM64",
+            "TVOS",
+            "Windows"
+          ]
+        },
+        "TargetHardware": {
+          "Description": "Optimization settings for target hardware.",
+          "Fields": [
+            "Class of hardware to target",
+            "Graphical level to target"
+          ]
+        },
+        "PendingChanges": {
+          "Description": "Pending changes to the project's settings.",
+          "Fields": []
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "ProjectSettings": {
+    "Game": {
+      "Description": "Reference for the Game section of Unreal Engine Project Settings.",
+      "Sections": {
+        "AssetManager": {
+          "Description": "Settings for managing game assets.",
+          "Fields": [
+            "Primary Asset Types to Scan",
+            "Directories to Exclude",
+            "Primary Asset Rules",
+            "Custom Primary Asset Rules",
+            "Only Cook Production Assets",
+            "Should Manager Determine Type and Name",
+            "Should Guess Type and Name in Editor",
+            "Should Acquire Missing Chunks on Load",
+            "Should Warn About Invalid Assets"
+          ]
+        },
+        "Redirects": {
+          "Description": "Settings for asset redirects.",
+          "Fields": [
+            "Primary Asset Id Redirects",
+            "Primary Asset Type Redirects",
+            "Asset Path Redirects"
+          ]
+        },
+        "AssetRegistry": {
+          "Description": "Settings for asset registry metadata.",
+          "Fields": [
+            "Metadata Tags For Asset Registry"
+          ]
+        },
+        "AssetTools": {
+          "Description": "Settings for asset tools.",
+          "Fields": []
+        },
+        "AdvancedCopy": {
+          "Description": "Settings for advanced copying of assets.",
+          "Fields": [
+            "Advanced Copy Customizations"
+          ]
+        }
+      }
+    },
+    "Resources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}

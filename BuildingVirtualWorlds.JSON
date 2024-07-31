@@ -1,0 +1,330 @@
+{
+  "EpicGamesDeveloper": {
+    "Documentation": "Unreal Engine 5.4 Documentation",
+    "Sections": {
+      "Building Virtual Worlds": {
+        "Description": "Tools and techniques for interactive environment and level design.",
+        "Overview": "Create small real-time environments or large open world game levels with Unreal Engine tools.",
+        "Topics": [
+          "Design and build environments",
+          "Level editor basics",
+          "Lighting, props, foliage"
+        ]
+      },
+      "Starting Out": {
+        "Level Designer Quick Start": {
+          "Description": "Basics of the Unreal Editor."
+        }
+      },
+      "Content Guides": {
+        "Hierarchical Level of Detail": {
+          "Description": "Information on the Hierarchical Level of Detail system."
+        },
+        "Landscape Outdoor Terrain": {
+          "Description": "Creating terrain for large outdoor environments."
+        },
+        "Lighting the Environment": {
+          "Description": "Features and tools for lighting scenes."
+        },
+        "One File Per Actor": {
+          "Description": "Introduction to the One File Per Actor System."
+        },
+        "Open World Tools": {
+          "Description": "Tools for creating large outdoor environments."
+        },
+        "Procedural Content Generation Framework": {
+          "Description": "Landing page for Procedural Content Generation Framework."
+        },
+        "Water System": {
+          "Description": "Features and tools for water rendering and meshing."
+        },
+        "World Partition": {
+          "Description": "Overview of the World Partition system."
+        },
+        "Level Editor": {
+          "Description": "Interface for game level and environment design."
+        },
+        "Actor Editor Context": {
+          "Description": "System for organizing Actors in your Level."
+        }
+      },
+      "Community": {
+        "Developer Forums": "Ask questions and help your peers.",
+        "Learning Library": "Write and read tutorials."
+      }
+    }
+  }
+}
+{
+  "EpicGamesDeveloper": {
+    "Documentation": "Unreal Engine 5.4 Documentation",
+    "Sections": {
+      "Building Virtual Worlds": {
+        "Georeferencing a Level": {
+          "Description": "Use the georeferencing plugin to associate UE4 level map locations with physical space.",
+          "Overview": "Georeferencing links an environment to real-world locations using the georeferencing plugin. It enables UE to express geographic coordinates.",
+          "Prerequisites": "Enable the GeoReferencing plugin.",
+          "Theoretical Background": {
+            "Coordinate Reference Systems (CRS) and Ellipsoids": {
+              "Description": "Planets are ellipsoids, not planes or spheres, requiring specific ellipsoid models like WGS84.",
+              "Details": "Different CRS use various ellipsoid models. WGS84 is common for Earth."
+            },
+            "Geographic CRS": {
+              "Description": "Uses polar coordinates (latitude, longitude, altitude) for locations.",
+              "Details": "Defines locations in degrees or DMS (Degrees, Minutes, Seconds)."
+            },
+            "Geocentric CRS": {
+              "Description": "Uses Cartesian coordinates with the origin at the planet's center.",
+              "Details": "Standard for distributed simulation protocols like DIS/HLA."
+            },
+            "Projected CRS": {
+              "Description": "Flattens the planet using a map projection.",
+              "Details": "Common projection is Mercator; UTM is widely used, dividing Earth into 60 zones."
+            }
+          },
+          "How to Describe a CRS": {
+            "Description": "Conventions like WKT and EPSG codes define CRS settings.",
+            "References": [
+              "https://en.wikipedia.org/wiki/Geographic_coordinate_system",
+              "https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84",
+              "https://en.wikipedia.org/wiki/ECEF",
+              "https://en.wikipedia.org/wiki/Mercator_projection",
+              "https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system",
+              "https://en.wikipedia.org/wiki/Military_Grid_Reference_System"
+            ]
+          },
+          "Georeferencing Plugin": {
+            "Description": "Defines level origin coordinates in one CRS and converts coordinates between CRS.",
+            "Cases": {
+              "Flat Planet": "Use a projected CRS for small environments.",
+              "Round Planet": "Account for planet curvature; use spherical or ellipsoidal shapes."
+            }
+          },
+          "Setting up the Georeferencing System": {
+            "Steps": [
+              "Enable the plugin from Edit > Plugins.",
+              "Use the plugin to convert coordinates between systems."
+            ]
+          },
+          "Converting Coordinates": {
+            "Description": "Access the Georeferencing system to convert coordinates using Blueprint nodes.",
+            "Details": "System works in double precision; outputs specific structures for Blueprint use."
+          },
+          "Obtaining Values": {
+            "Methods": [
+              "In Blueprint, call ToFloatApproximation.",
+              "Use custom C++ code for double precision.",
+              "Convert to display text with rounding options."
+            ]
+          },
+          "Tangent Vectors and Transforms": {
+            "Description": "Get tangent vectors and transforms for locations on the planet.",
+            "Tools": [
+              "Get ENUVectors at Geographic Location node",
+              "Get Tangent Transform at Geographic Location node",
+              "Get Planet Center Transform node"
+            ]
+          },
+          "Additional Tools and Content": {
+            "Georeferencing Status Bar": "Sample UMG widget displaying view location in various CRS.",
+            "Coordinates Inspector Utility Widget": "Control georeferenced coordinates of your view.",
+            "Location Probes and Rebasing Actors": "BP_Location Probe Blueprint for in-game coordinate measurements; BP_Rebasing Actor to control origin shifting."
+          }
+        }
+      },
+      "Community": {
+        "Developer Forums": "Ask questions and help your peers.",
+        "Learning Library": "Write and read tutorials."
+      }
+    }
+  }
+}
+{
+  "EpicGamesDeveloper": {
+    "Documentation": "Unreal Engine 5.4 Documentation",
+    "Sections": {
+      "Building Virtual Worlds": {
+        "Hierarchical Level of Detail": {
+          "Description": "Information on the Hierarchical Level of Detail system in Unreal Engine.",
+          "Building HLOD Meshes": {
+            "Description": "How to generate HLOD meshes for Unreal Engine 5 projects.",
+            "Processes": [
+              {
+                "Step": "Generate Clusters",
+                "Description": "Groups Actors based on Cluster Generation Settings.",
+                "Details": "Define Cluster Generation Settings, click Generate Clusters, view progress bar, and see clustered LOD Actors in HLOD Outliner."
+              },
+              {
+                "Step": "Generate Proxy Meshes",
+                "Description": "Creates proxy meshes from clusters.",
+                "Details": "Click Generate Proxy Meshes, view progress bar, process time varies with scene complexity and settings."
+              }
+            ]
+          },
+          "Generate Clusters": {
+            "Description": "Uses settings from HLOD Levels to group Static Mesh Actors.",
+            "Details": "Progress bar shows LOD level generation; view clusters in HLOD Outliner and editor viewport; adjust Cluster Generation Settings as needed."
+          },
+          "Generate Proxy Meshes": {
+            "Description": "Combines clusters into a single Static Mesh Actor.",
+            "Details": "Click Generate Proxy Meshes, progress bar shows HLOD Level and Proxy Meshes being generated; process time varies based on settings and hardware."
+          }
+        }
+      },
+      "Community": {
+        "Developer Forums": "Ask questions and help your peers.",
+        "Learning Library": "Write and read tutorials."
+      }
+    }
+  }
+}
+{
+  "EpicGamesDeveloper": {
+    "Documentation": "Unreal Engine 5.4 Documentation",
+    "Sections": {
+      "Building Virtual Worlds": {
+        "Hierarchical Level of Detail": {
+          "Overview": {
+            "Description": "Combines Static Mesh Actors into a single HLOD Proxy Mesh and Material for performance improvement by reducing draw calls.",
+            "Usage": "Enable the HLOD system in each Level.",
+            "Proxy Meshes": {
+              "Description": "Can be opened independently and settings adjusted. Merges textures but excludes alpha channels for Mask or Opacity."
+            },
+            "Hierarchical LOD Volume": {
+              "Description": "Defines HLOD clusters manually. Drag into Level from Place Actors panel.",
+              "Example": "Group Actors in the volume to create clusters. Enable Only Generate Clusters for Volumes for specific Actor clustering."
+            },
+            "Example": {
+              "Description": "Generated Clusters before and after adding HLOD Volume.",
+              "Steps": [
+                "Define HLOD Level Desired Bound Radius.",
+                "Drag and scale Volume to cover Actors.",
+                "Select LODActor from HLOD Outliner to view clusters."
+              ]
+            },
+            "HLOD Overrides": {
+              "Description": "Override HLODSettings in Details panel of selected LOD Actor."
+            },
+            "HLOD Visualization": {
+              "Description": "View Mesh LODs and HLODs in the viewport using View Mode or console command viewmode hlodcoloration."
+            }
+          }
+        }
+      },
+      "Community": {
+        "Developer Forums": "Ask questions and help your peers.",
+        "Learning Library": "Write and read tutorials."
+      }
+    }
+  }
+}
+{
+  "EpicGamesDeveloper": {
+    "Documentation": "Unreal Engine 5.4 Documentation",
+    "Sections": {
+      "Building Virtual Worlds": {
+        "Hierarchical Level of Detail": {
+          "Hierarchical Level of Detail Outliner": {
+            "Description": "Reference for interface elements and properties in the HLOD Outliner.",
+            "Overview": {
+              "Description": "Options to define HLOD meshes setup. Access via the window menu under Level Editor."
+            },
+            "HLOD Actions": {
+              "Description": "Options for generating HLOD Proxy Meshes, saving HLOD data, and switching LOD views.",
+              "Details": {
+                "Generate Proxy Meshes": "Uses clustered LODs to merge Actors into a single asset.",
+                "Build (Rebuild) All": "Generates clusters and builds Proxy Meshes in one step.",
+                "Save All": "Saves all external HLOD data.",
+                "LOD View": "Chooses the LOD level to view or assigns a Forced Viewing Level."
+              }
+            },
+            "HLOD Scene Actors": {
+              "Description": "Displays generated clusters and LODActors with contextual actions.",
+              "Actions": {
+                "Select LOD Actor": "Selects the LOD Actor in the viewport.",
+                "Select Contained Actors": "Selects all Actors in the LOD Cluster.",
+                "ForceView": "Toggles the LOD view of the HLOD Actor.",
+                "Rebuild Proxy Mesh": "Rebuilds the Proxy Mesh for the selected cluster.",
+                "Create Containing Hierarchical Volume": "Creates a volume around clustered Actors.",
+                "Delete Cluster": "Deletes the selected Cluster."
+              }
+            },
+            "Actor Context Menu": {
+              "Description": "Actions for Scene Actors in generated HLOD clusters.",
+              "Actions": {
+                "Remove From Cluster": "Removes the selected Actor from the cluster.",
+                "Exclude From Cluster Generation": "Excludes the Actor from cluster generation."
+              }
+            },
+            "Properties": {
+              "Cluster Generation Settings": {
+                "Description": "Controls HLOD cluster generation settings.",
+                "Properties": {
+                  "Allow Specific Exclusion": "Excludes specific meshes from HLOD levels.",
+                  "Desired Bound Radius": "Radius for clustering meshes.",
+                  "Desired Filling Percentage": "Percentage of cluster volume to be occupied.",
+                  "Min Number of Actors to Build": "Minimum number of Actors to build LODActor.",
+                  "Only Generate Clusters for Volumes": "Generates clusters only for meshes within HLOD Volumes."
+                }
+              },
+              "Mesh Generation Settings": {
+                "Description": "Controls properties for merging HLOD cluster Actors.",
+                "Properties": {
+                  "Transition Screen Size": "Distance to show cluster based on size.",
+                  "Override Draw Distance": "Predefined distance for cluster switching.",
+                  "Simplify Mesh": "Simplifies resulting mesh.",
+                  "Merge Settings": {
+                    "Generate Light Map UV": "Generates lightmap UV for merged mesh.",
+                    "Target Light Map Resolution": "Lightmap resolution for HLOD Actor.",
+                    "Computed Light Map Resolution": "Computes lightmap resolution by summing input Mesh Components.",
+                    "Pivot Point at Zero": "Pivot at World Origin or first Actor listed.",
+                    "Merge Physics Data": "Merges collision primitives for combined Actors.",
+                    "Merge Materials": "Combines materials into a single material.",
+                    "Material Settings": "Controls how materials are packed and combined.",
+                    "Gutter Size": "Space between UV islands.",
+                    "Bake Vertex Data to Mesh": "Bakes vertex data into Proxy Mesh.",
+                    "Output UVs": "Incorporates painted vertex colors into HLOD Actor and Material.",
+                    "LODSelection Type": "Defines how LOD level is determined.",
+                    "Specific LOD": "Exports specific LOD level from source meshes.",
+                    "Use Vertex Data for Baking Material": "Uses vertex data for material baking.",
+                    "Use Texture Binning": "Calculates output texture sizes based on importance.",
+                    "Reuse Mesh Lightmap UVs": "Reuses source mesh's lightmap UVs.",
+                    "Merge Equivalent Materials": "Merges material instances.",
+                    "Use Landscape Culling": "Uses landscape geometry for culling.",
+                    "Allow Distance Field": "Computes distance field for mesh."
+                  }
+                }
+              },
+              "Material Settings": {
+                "Description": "Controls how materials are packed and combined.",
+                "Properties": {
+                  "Texture Size": "Size of generated BaseColor texture map.",
+                  "Texture Sizing Type": "Texture size parameters for Material properties.",
+                  "Normal Map": "Generates a Normal map.",
+                  "Metallic Map": "Generates a Metallic map.",
+                  "Metallic Constant": "Sets a metallic constant value.",
+                  "Roughness Map": "Generates a Roughness map.",
+                  "Roughness Constant": "Sets a roughness constant value.",
+                  "Specular Map": "Generates a Specular map.",
+                  "Specular Constant": "Sets a specular constant value.",
+                  "Emissive Map": "Generates an Emissive map.",
+                  "Opacity Map": "Bakes an Opacity map for the merged Actor.",
+                  "Opacity Constant": "Sets a constant value for Opacity.",
+                  "Opacity Mask Map": "Bakes an Opacity Mask map.",
+                  "Opacity Mask Constant": "Sets a constant value for Opacity Mask.",
+                  "Ambient Occlusion Map": "Generates an Ambient Occlusion map.",
+                  "Ambient Occlusion Constant": "Sets an ambient occlusion constant value.",
+                  "Blend Mode": "Defines the Blend Mode for Proxy Materials."
+                }
+              }
+            }
+          }
+        }
+      },
+      "Community": {
+        "Developer Forums": "Ask questions and help your peers.",
+        "Learning Library": "Write and read tutorials."
+      }
+    }
+  }
+}

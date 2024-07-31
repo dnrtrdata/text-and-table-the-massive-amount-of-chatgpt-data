@@ -1,0 +1,752 @@
+{
+  "BlueprintSplines": {
+    "Description": "Landing page for Blueprint Spline and Spline Mesh Components.",
+    "Links": [
+      {
+        "Category": "Starting Out",
+        "Pages": [
+          {
+            "Title": "Blueprint Spline Components Overview",
+            "URL": "link_to_documentation_page"
+          }
+        ]
+      },
+      {
+        "Category": "Reference",
+        "Pages": [
+          {
+            "Title": "Blueprint Spline Mesh Component Property Reference",
+            "URL": "link_to_documentation_page"
+          },
+          {
+            "Title": "Blueprint Spline Component Property Reference",
+            "URL": "link_to_documentation_page"
+          }
+        ]
+      }
+    ],
+    "Tags": [
+      "splines",
+      "blueprints",
+      "components"
+    ],
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "BlueprintSplineComponentsOverview": {
+    "Description": "An overview of how to use the Blueprint Spline Components and Blueprint Spline Mesh Components.",
+    "BlueprintSplineComponent": {
+      "Description": "A path to define and use positional data.",
+      "Usage": [
+        "Move Actors or other Components around the world.",
+        "Place a series of Actors or other Components along the spline."
+      ],
+      "Editing": [
+        "Editable in the Blueprint Viewport and Level Editor.",
+        "Add, remove, or duplicate Spline Points.",
+        "Change tangent types.",
+        "Animate on tick.",
+        "Editable using the Blueprint Construction Script."
+      ]
+    },
+    "BlueprintSplineMeshComponent": {
+      "Description": "Deform a single Static Mesh along a two point spline.",
+      "Usage": "Control two points through Blueprints.",
+      "Limitations": "Cannot add more Spline Points."
+    },
+    "SharedProcedures": "Share the same procedures for adding them to a Blueprint and use the same editing tools.",
+    "Tags": [
+      "splines",
+      "blueprints",
+      "components"
+    ],
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "BlueprintSplineComponentPropertyReference": {
+    "Description": "Contains a reference of all properties available in the editor for Blueprint Spline Components.",
+    "Properties": {
+      "Transform": [
+        {
+          "Property": "Location",
+          "Description": "The location of the Actor or Component in World Space or Relative to its parent."
+        },
+        {
+          "Property": "Rotation",
+          "Description": "The rotation of the Actor or Component in World Space or Relative to its parent."
+        },
+        {
+          "Property": "Scale",
+          "Description": "The Scale of the Actor or Component in World Space or Relative to its parent."
+        }
+      ],
+      "Sockets": [
+        {
+          "Property": "Parent Socket",
+          "Description": "Specify a Socket or Joint to attach this component to when it's the Child of a Skeletal Mesh Component (or Static Mesh Component with a Socket)."
+        }
+      ],
+      "Spline": [
+        {
+          "Property": "Duration",
+          "Description": "%doxygen:USplineComponent::Duration%"
+        },
+        {
+          "Property": "Override Construction Script",
+          "Description": "%doxygen:USplineComponent::bSplineHasBeenEdited%"
+        },
+        {
+          "Property": "Input Spline Points to Construction Script",
+          "Description": "%doxygen:USplineComponent::bInputSplinePointsToConstructionScript%"
+        },
+        {
+          "Property": "Draw Debug",
+          "Description": "%doxygen:USplineComponent::bDrawDebug%"
+        },
+        {
+          "Property": "Closed Loop",
+          "Description": "%doxygen:USplineComponent::bClosedLoop%"
+        },
+        {
+          "Property": "Default Up Vector",
+          "Description": "%doxygen:USplineComponent::DefaultUpVector%"
+        }
+      ],
+      "Advanced": [
+        {
+          "Property": "Reparam Steps Per Segment",
+          "Description": "%doxygen:USplineComponent::ReparamStepsPerSegment%"
+        },
+        {
+          "Property": "Stationary Endpoints",
+          "Description": "%doxygen:USplineComponent::bStationaryEndpoints%"
+        }
+      ],
+      "Editor": [
+        {
+          "Property": "Editor Unselected Spline Segment Color",
+          "Description": "Color of an unselected spline component segment in the editor."
+        },
+        {
+          "Property": "Editor Selected Spline Segment Color",
+          "Description": "Color of a selected spline component segment in the editor."
+        },
+        {
+          "Property": "Should Visualize Scale",
+          "Description": "Whether or not scale visualization should be displayed in the editor."
+        },
+        {
+          "Property": "Scale Visualization Width",
+          "Description": "Width of the spline when scale visualization is enabled in the editor."
+        }
+      ],
+      "Selected Points": [
+        {
+          "Property": "Input Key",
+          "Description": "Index of the selected Curve Point on the curve."
+        },
+        {
+          "Property": "Position",
+          "Description": "Location of the selected Curve Point in local space."
+        },
+        {
+          "Property": "Arrive Tangent",
+          "Description": "Vector that defines the tangent of the curve as it approaches the selected Curve Point."
+        },
+        {
+          "Property": "Leave Tangent",
+          "Description": "Vector that defines the tangent of the curve as it departs the selected Curve Point."
+        },
+        {
+          "Property": "Rotation",
+          "Description": "Rotation can be applied to a Curve Point to modify its tangents."
+        },
+        {
+          "Property": "Scale",
+          "Description": "Scale can be applied to a Curve Point to modify its tangents."
+        },
+        {
+          "Property": "Type",
+          "Description": "Defines the type of curve at the selected Curve Point.",
+          "Types": [
+            {
+              "Type": "Linear",
+              "Description": "From the selected Curve Point to the next, the curve will be straight."
+            },
+            {
+              "Type": "Curve",
+              "Description": "Default value. The locations of the Curve Points define the tangents."
+            },
+            {
+              "Type": "Constant",
+              "Description": "Like Linear but doesn't affect the tangent coming into or departing the Curve Point."
+            },
+            {
+              "Type": "CurveClamped",
+              "Description": "Like Curve but clamps the tangents."
+            },
+            {
+              "Type": "CurveCustomTangent",
+              "Description": "If you adjust any tangent, it is set to this value."
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        {
+          "Property": "Component Tags",
+          "Description": "%doxygen:UActorComponent::ComponentTags%"
+        }
+      ],
+      "Activation": [
+        {
+          "Property": "Auto Activate",
+          "Description": "%doxygen:UActorComponent::bAutoActivate%"
+        }
+      ],
+      "Events": [
+        {
+          "Property": "On Component Hit",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentHit%"
+        },
+        {
+          "Property": "On Component Begin Overlap",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentBeginOverlap%"
+        },
+        {
+          "Property": "On Component End Overlap",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentEndOverlap%"
+        },
+        {
+          "Property": "On Component Wake",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentWake%"
+        },
+        {
+          "Property": "On Component Sleep",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentSleep%"
+        },
+        {
+          "Property": "On Begin Cursor Over",
+          "Description": "%doxygen:UPrimitiveComponent::OnBeginCursorOver%"
+        },
+        {
+          "Property": "On End Cursor Over",
+          "Description": "%doxygen:UPrimitiveComponent::OnEndCursorOver%"
+        },
+        {
+          "Property": "On Clicked",
+          "Description": "%doxygen:UPrimitiveComponent::OnClicked%"
+        },
+        {
+          "Property": "On Released",
+          "Description": "%doxygen:UPrimitiveComponent::OnReleased%"
+        },
+        {
+          "Property": "On Input Touch Begin",
+          "Description": "%doxygen:UPrimitiveComponent::OnInputTouchBegin%"
+        },
+        {
+          "Property": "On Input Touch End",
+          "Description": "%doxygen:UPrimitiveComponent::OnInputTouchEnd%"
+        },
+        {
+          "Property": "On Input Touch Enter",
+          "Description": "%doxygen:UPrimitiveComponent::OnInputTouchEnter%"
+        },
+        {
+          "Property": "On Input Touch Leave",
+          "Description": "%doxygen:UPrimitiveComponent::OnInputTouchLeave%"
+        },
+        {
+          "Property": "Physics Volume Changed",
+          "Description": "Delegate called when PhysicsVolume has been changed."
+        }
+      ]
+    },
+    "Tags": [
+      "splines",
+      "blueprints",
+      "components"
+    ],
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "BlueprintSplineMeshComponentPropertyReference": {
+    "Description": "Contains a reference of all properties available in the editor for Blueprint Spline Mesh Components.",
+    "Properties": {
+      "Transform": [
+        {
+          "Property": "Location",
+          "Description": "The location of the Actor or Component in World Space or Relative to its parent."
+        },
+        {
+          "Property": "Rotation",
+          "Description": "The rotation of the Actor or Component in World Space or Relative to its parent."
+        },
+        {
+          "Property": "Scale",
+          "Description": "The Scale of the Actor or Component in World Space or Relative to its parent."
+        }
+      ],
+      "Sockets": [
+        {
+          "Property": "Parent Socket",
+          "Description": "Specify a Socket or Joint to attach this component to when it's the Child of a Skeletal Mesh Component (or Static Mesh Component with a Socket)."
+        }
+      ],
+      "StaticMesh": [
+        {
+          "Property": "Static Mesh",
+          "Description": "Specifies the Static Mesh to render for this component."
+        }
+      ],
+      "Materials": [
+        {
+          "Property": "Element #",
+          "Description": "Additional Material Properties based on the Material IDs applied to the Static Mesh."
+        }
+      ],
+      "SplineMesh": [
+        {
+          "Property": "Start Pos",
+          "Description": "%doxygen:FSplineMeshParams::StartPos%"
+        },
+        {
+          "Property": "Start Tangent",
+          "Description": "%doxygen:FSplineMeshParams::StartTangent%"
+        },
+        {
+          "Property": "End Pos",
+          "Description": "%doxygen:FSplineMeshParams::EndPos%"
+        },
+        {
+          "Property": "End Tangent",
+          "Description": "%doxygen:FSplineMeshParams::EndTangent%"
+        },
+        {
+          "Property": "Spline Up Dir",
+          "Description": "%doxygen:USplineMeshComponent::SplineUpDir%"
+        },
+        {
+          "Property": "Forward Axis",
+          "Description": "%doxygen:USplineMeshComponent::ForwardAxis%"
+        }
+      ],
+      "Advanced": [
+        {
+          "Property": "Start Scale",
+          "Description": "%doxygen:FSplineMeshParams::StartScale%"
+        },
+        {
+          "Property": "Start Roll",
+          "Description": "%doxygen:FSplineMeshParams::StartRoll%"
+        },
+        {
+          "Property": "Start Offset",
+          "Description": "%doxygen:FSplineMeshParams::StartOffset%"
+        },
+        {
+          "Property": "End Scale",
+          "Description": "%doxygen:FSplineMeshParams::EndScale%"
+        },
+        {
+          "Property": "End Roll",
+          "Description": "%doxygen:FSplineMeshParams::EndRoll%"
+        },
+        {
+          "Property": "End Offset",
+          "Description": "%doxygen:FSplineMeshParams::EndOffset%"
+        },
+        {
+          "Property": "Smooth Interp Roll Scale",
+          "Description": "%doxygen:USplineMeshComponent::bSmoothInterpRollScale%"
+        },
+        {
+          "Property": "Spline Boundary Min",
+          "Description": "%doxygen:USplineMeshComponent::SplineBoundaryMin%"
+        },
+        {
+          "Property": "Spline Boundary Max",
+          "Description": "%doxygen:USplineMeshComponent::SplineBoundaryMax%"
+        }
+      ],
+      "Spline": [
+        {
+          "Property": "Allow Spline Editing Per Instance",
+          "Description": "%doxygen:USplineMeshComponent::bAllowSplineEditingPerInstance%"
+        }
+      ],
+      "Physics": {
+        "Description": "Physics body details showing the physics properties.",
+        "Properties": [
+          {
+            "Property": "Double Sided Geometry",
+            "Description": "If enabled, the physics triangle mesh will use double-sided faces when doing scene queries."
+          },
+          {
+            "Property": "Simple Collision Physical Material",
+            "Description": "Physical material to use for simple collision on this body."
+          },
+          {
+            "Property": "Physics Type",
+            "Description": "Simulated: Uses physics simulation. Kinematic: Not affected by physics but can interact with physically simulated bodies. Default: Inherits behavior from OwnerComponent."
+          },
+          {
+            "Property": "Mass in KG",
+            "Description": "Mass of the body in KG."
+          },
+          {
+            "Property": "Linear Damping",
+            "Description": "'Drag' force added to reduce linear movement."
+          },
+          {
+            "Property": "Angular Damping",
+            "Description": "'Drag' force added to reduce angular movement."
+          },
+          {
+            "Property": "Enable Gravity",
+            "Description": "If the object should have the force of gravity applied."
+          },
+          {
+            "Property": "Start Awake",
+            "Description": "If the object should start awake or initially be sleeping."
+          },
+          {
+            "Property": "Center Of Mass Offset",
+            "Description": "User specified offset for the center of mass of this object."
+          },
+          {
+            "Property": "Mass Scale",
+            "Description": "Per-instance scaling of mass."
+          },
+          {
+            "Property": "Max Angular Velocity",
+            "Description": "The maximum angular velocity for this instance."
+          },
+          {
+            "Property": "Sleep Family",
+            "Description": "The set of values used in considering when to put this body to sleep. Options: Normal, Sensitive, Custom."
+          },
+          {
+            "Property": "Inertia Tensor Scale",
+            "Description": "Per-instance scaling of inertia (larger values mean more difficulty rotating)."
+          },
+          {
+            "Property": "Walkable Slope Override",
+            "Description": "Custom walkable slope setting for this body."
+          },
+          {
+            "Property": "Walkable Slope Behavior",
+            "Description": "Behavior of this surface (whether we affect the walkable slope)."
+          },
+          {
+            "Property": "Walkable Slope Angle",
+            "Description": "Override a walkable slope, applying the rules of the Walkable Slope Behavior."
+          },
+          {
+            "Property": "Custom Sleep Threshold Multiplier",
+            "Description": "If Sleep Family is set to Custom, multiply the natural sleep threshold by this amount."
+          },
+          {
+            "Property": "Stabilization Threshold Multiplier",
+            "Description": "The stabilization factor for this body if Physics stabilization is enabled."
+          },
+          {
+            "Property": "Update Mass when Scale Changes",
+            "Description": "If true, it will update the mass when the scale changes."
+          },
+          {
+            "Property": "Generate Wake Events",
+            "Description": "Determines whether 'wake/sleep' events should fire when this object is woken up or put to sleep by the physics simulation."
+          }
+        ]
+      },
+      "Collision": {
+        "Description": "Physics body details showing the collision properties.",
+        "Properties": [
+          {
+            "Property": "Never Needs Cooked Collision Data",
+            "Description": "Opt out of CreatePhysicsMeshes for certain meshes."
+          },
+          {
+            "Property": "Collision Complexity",
+            "Description": "Collision Trace behavior - keeps simple (convex) and complex (per-poly) separate by default."
+          },
+          {
+            "Property": "Collision Responses",
+            "Description": "See the Collision Response Reference documentation for more information."
+          },
+          {
+            "Property": "Simulation Generates Hit Events",
+            "Description": "Should 'Hit' events fire when this object collides during physics simulation."
+          },
+          {
+            "Property": "Phys Material Override",
+            "Description": "Allows overriding the PhysicalMaterial to use for simple collision on this body."
+          },
+          {
+            "Property": "Use CCD",
+            "Description": "If true, Continuous Collision Detection (CCD) will be used for this component."
+          },
+          {
+            "Property": "Ignore Analytic Collisions",
+            "Description": "If true, ignore analytic collisions and treat objects as a general implicit surface."
+          },
+          {
+            "Property": "Smooth Edge Collisions",
+            "Description": "Remove unnecessary edge collisions to allow smooth sliding over surfaces composed of multiple actors/components."
+          }
+        ]
+      },
+      "Lighting": [
+        {
+          "Property": "Cast Shadow",
+          "Description": "%doxygen:UPrimitiveComponent::CastShadow%"
+        },
+        {
+          "Property": "Affect Dynamic Indirect Lighting",
+          "Description": "%doxygen:UPrimitiveComponent::bAffectDynamicIndirectLighting%"
+        },
+        {
+          "Property": "Affect Distance Field Lighting",
+          "Description": "%doxygen:UPrimitiveComponent::bAffectDistanceFieldLighting%"
+        },
+        {
+          "Property": "Cast Dynamic Shadow",
+          "Description": "%doxygen:UPrimitiveComponent::bCastDynamicShadow%"
+        },
+        {
+          "Property": "Cast Static Shadow",
+          "Description": "%doxygen:UPrimitiveComponent::bCastStaticShadow%"
+        },
+        {
+          "Property": "Cast Volumetric Translucent Shadow",
+          "Description": "%doxygen:UPrimitiveComponent::bCastVolumetricTranslucentShadow%"
+        },
+        {
+          "Property": "Self Shadow Only",
+          "Description": "%doxygen:UPrimitiveComponent::bSelfShadowOnly%"
+        },
+        {
+          "Property": "Cast Far Shadow",
+          "Description": "%doxygen:UPrimitiveComponent::bCastFarShadow%"
+        },
+        {
+          "Property": "Cast Inset Shadow",
+          "Description": "%doxygen:UPrimitiveComponent::bCastInsetShadow%"
+        },
+        {
+          "Property": "Cast Cinematic Shadow",
+          "Description": "%doxygen:UPrimitiveComponent::bCastCinematicShadow%"
+        },
+        {
+          "Property": "Cast Hidden Shadow",
+          "Description": "%doxygen:UPrimitiveComponent::bCastHiddenShadow%"
+        },
+        {
+          "Property": "Cast Shadow as Two Sided",
+          "Description": "%doxygen:UPrimitiveComponent::bCastShadowAsTwoSided%"
+        },
+        {
+          "Property": "Light as if Static",
+          "Description": "%doxygen:UPrimitiveComponent::bLightAsIfStatic%"
+        },
+        {
+          "Property": "Light Attachments as Group",
+          "Description": "%doxygen:UPrimitiveComponent::bLightAttachmentsAsGroup%"
+        },
+        {
+          "Property": "Indirect Lighting Cache Quality",
+          "Description": "%doxygen:UPrimitiveComponent::IndirectLightingCacheQuality%"
+        },
+        {
+          "Property": "Single Sample Shadow From Stationary Lights",
+          "Description": "%doxygen:UPrimitiveComponent::bSingleSampleShadowFromStationaryLights%"
+        },
+        {
+          "Property": "Lighting Channels",
+          "Description": "%doxygen:UPrimitiveComponent::LightingChannels%"
+        }
+      ],
+      "Rendering": [
+        {
+          "Property": "Visible",
+          "Description": "%doxygen:USceneComponent::bVisible%"
+        },
+        {
+          "Property": "Hidden in Game",
+          "Description": "%doxygen:USceneComponent::bHiddenInGame%"
+        },
+        {
+          "Property": "Force Mip Streaming",
+          "Description": "%doxygen:UPrimitiveComponent::bForceMipStreaming%"
+        },
+        {
+          "Property": "Min Draw Distance",
+          "Description": "%doxygen:UPrimitiveComponent::MinDrawDistance%"
+        },
+        {
+          "Property": "Desired Max Draw Distance",
+          "Description": "%doxygen:UPrimitiveComponent::LDMaxDrawDistance%"
+        },
+        {
+          "Property": "Current Max Draw Distance",
+          "Description": "%doxygen:UPrimitiveComponent::CachedMaxDrawDistance%"
+        },
+        {
+          "Property": "Allow Cull Distance Volume",
+          "Description": "%doxygen:UPrimitiveComponent::bAllowCullDistanceVolume%"
+        },
+        {
+          "Property": "Detail Mode",
+          "Description": "%doxygen:USceneComponent::DetailMode%"
+        },
+        {
+          "Property": "Render In Main Pass",
+          "Description": "%doxygen:UPrimitiveComponent::bRenderInMainPass%"
+        },
+        {
+          "Property": "Receives Decals",
+          "Description": "%doxygen:UPrimitiveComponent::bReceivesDecals%"
+        },
+        {
+          "Property": "Owner No See",
+          "Description": "%doxygen:UPrimitiveComponent::bOwnerNoSee%"
+        },
+        {
+          "Property": "Only Owner See",
+          "Description": "%doxygen:UPrimitiveComponent::bOnlyOwnerSee%"
+        },
+        {
+          "Property": "Treat As Background for Occlusion",
+          "Description": "%doxygen:UPrimitiveComponent::bTreatAsBackgroundForOcclusion%"
+        },
+        {
+          "Property": "Use As Occluder",
+          "Description": "%doxygen:UPrimitiveComponent::bUseAsOccluder%"
+        },
+        {
+          "Property": "Render CustomDepth Pass",
+          "Description": "%doxygen:UPrimitiveComponent::bRenderCustomDepth%"
+        },
+        {
+          "Property": "CustomDepth Stencil Value",
+          "Description": "%doxygen:UPrimitiveComponent::CustomDepthStencilValue%"
+        },
+        {
+          "Property": "Translucency Sort Priority",
+          "Description": "Translucent objects with a lower sort priority draw behind objects with a higher priority."
+        },
+        {
+          "Property": "Lpv Bias Multiplier",
+          "Description": "%doxygen:UPrimitiveComponent::LpvBiasMultiplier%"
+        },
+        {
+          "Property": "Bounds Scale",
+          "Description": "%doxygen:UPrimitiveComponent::BoundsScale%"
+        },
+        {
+          "Property": "Use Attach Parent Bound",
+          "Description": "%doxygen:USceneComponent::bUseAttachParentBound%"
+        }
+      ],
+      "Tags": [
+        {
+          "Property": "Component Tags",
+          "Description": "%doxygen:UActorComponent::ComponentTags%"
+        }
+      ],
+      "Activation": [
+        {
+          "Property": "Auto Activate",
+          "Description": "%doxygen:UActorComponent::bAutoActivate%"
+        }
+      ],
+      "Events": [
+        {
+          "Property": "On Component Hit",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentHit%"
+        },
+        {
+          "Property": "On Component Begin Overlap",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentBeginOverlap%"
+        },
+        {
+          "Property": "On Component End Overlap",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentEndOverlap%"
+        },
+        {
+          "Property": "On Component Wake",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentWake%"
+        },
+        {
+          "Property": "On Component Sleep",
+          "Description": "%doxygen:UPrimitiveComponent::OnComponentSleep%"
+        },
+        {
+          "Property": "On Begin Cursor Over",
+          "Description": "%doxygen:UPrimitiveComponent::OnBeginCursorOver%"
+        },
+        {
+          "Property": "On End Cursor Over",
+          "Description": "%doxygen:UPrimitiveComponent::OnEndCursorOver%"
+        },
+        {
+          "Property": "On Clicked",
+          "Description": "%doxygen:UPrimitiveComponent::OnClicked%"
+        },
+        {
+          "Property": "On Released",
+          "Description": "%doxygen:UPrimitiveComponent::OnReleased%"
+        },
+        {
+          "Property": "On Input Touch Begin",
+          "Description": "%doxygen:UPrimitiveComponent::OnInputTouchBegin%"
+        },
+        {
+          "Property": "On Input Touch End",
+          "Description": "%doxygen:UPrimitiveComponent::OnInputTouchEnd%"
+        },
+        {
+          "Property": "On Input Touch Enter",
+          "Description": "%doxygen:UPrimitiveComponent::OnInputTouchEnter%"
+        },
+        {
+          "Property": "On Input Touch Leave",
+          "Description": "%doxygen:UPrimitiveComponent::OnInputTouchLeave%"
+        },
+        {
+          "Property": "Physics Volume Changed",
+          "Description": "Delegate called when PhysicsVolume has been changed."
+        }
+      ],
+      "Mobile": [
+        {
+          "Property": "Receive Combined Static and CSM Shadows from Stationary Lights",
+          "Description": "%doxygen:UPrimitiveComponent::bReceiveCombinedCSMAndStaticShadowsFromStationaryLights%"
+        }
+      ]
+    },
+    "Tags": [
+      "splines",
+      "blueprints",
+      "components"
+    ],
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}

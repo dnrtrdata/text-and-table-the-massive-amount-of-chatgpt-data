@@ -1,0 +1,500 @@
+{
+  "LevelStreaming": {
+    "Description": "Asynchronously loading and unloading levels during play to decrease memory usage and create seamless worlds.",
+    "Feature": {
+      "Purpose": "Load and unload map files into memory and toggle visibility during play.",
+      "Benefits": "Creates large, seamless games by breaking worlds into smaller chunks, optimizing resource usage."
+    },
+    "Sections": [
+      {
+        "Title": "Overview",
+        "Description": "General overview of Level Streaming."
+      },
+      {
+        "Title": "LevelStreamingVolumesReference",
+        "Description": "Reference for Level Streaming Volumes."
+      },
+      {
+        "Title": "LoadingAndUnloadingLevelsUsingBlueprints",
+        "Description": "Instructions for loading and unloading levels using Blueprints."
+      },
+      {
+        "Title": "LoadingAndUnloadingLevelsUsingC++",
+        "Description": "Instructions for loading and unloading levels using C++."
+      },
+      {
+        "Title": "WorldComposition",
+        "Description": "Specific form of level streaming for creating large worlds.",
+        "Details": {
+          "Purpose": "Arrange levels in a planar grid and stream them in as the player approaches.",
+          "Note": "Legacy system; use World Partition for Unreal Engine 5.0 or later."
+        }
+      },
+      {
+        "Title": "LevelStreamingUsingVolumes",
+        "Description": "Instructions for using volumes for level streaming."
+      }
+    ]
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "LevelStreamingOverview": {
+    "Description": "Streaming Levels can be loaded with Level Streaming Volumes or programmatically with Blueprints or C++.",
+    "Feature": {
+      "Purpose": "Load and unload map files into memory and toggle visibility during play.",
+      "Benefits": "Creates large, seamless games by breaking worlds into smaller chunks, optimizing resource usage."
+    },
+    "PersistentLevel": {
+      "Description": "Master Level used to govern which Levels will be streamed in and out.",
+      "Steps": [
+        "Create the persistent Level.",
+        "Manage streaming Levels through the Levels window."
+      ]
+    },
+    "StreamingLevels": {
+      "Management": "Managed through the Levels window, can overlap or be offset from the persistent Level.",
+      "Types": [
+        {
+          "Type": "Always Loaded",
+          "Description": "Loaded with the persistent Level, ignores streaming volumes and dynamic requests.",
+          "UseCase": "Splitting content into multiple layers for collaboration."
+        },
+        {
+          "Type": "Blueprint",
+          "Description": "Controlled with Level Streaming Volumes, Blueprints, or C++.",
+          "DynamicControl": "Can be loaded or unloaded dynamically."
+        }
+      ]
+    },
+    "DynamicStreamingMethods": {
+      "LevelStreamingVolumes": {
+        "Description": "Load/unload requests based on viewpoint inside Level Streaming Volumes.",
+        "Usage": [
+          "In game: Loads when viewpoint inside, unloads when viewpoint outside.",
+          "In editor: Previews Level streaming by hiding/unhiding Levels based on camera location."
+        ],
+        "Advantages": "Easy to use, no scripting required, easier to maintain."
+      },
+      "ScriptedLevelStreaming": {
+        "Description": "More complex behavior using Blueprint or C++ logic.",
+        "Functions": [
+          "Load Stream Level",
+          "Unload Stream Level",
+          "Get Streaming Level"
+        ],
+        "DynamicBehavior": "Modify and query level streaming state, create and stream in copies of sublevels for procedural worlds."
+      }
+    },
+    "Sections": [
+      {
+        "Title": "LevelStreamingVolumesReference",
+        "Description": "Reference for Level Streaming Volumes."
+      },
+      {
+        "Title": "LoadingAndUnloadingLevelsUsingBlueprints",
+        "Description": "Instructions for loading and unloading levels using Blueprints."
+      },
+      {
+        "Title": "LoadingAndUnloadingLevelsUsingC++",
+        "Description": "Instructions for loading and unloading levels using C++."
+      }
+    ]
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "LevelStreamingVolumesReference": {
+    "Description": "Guide to using volumes to control the streaming of Levels based on the player's viewpoint.",
+    "Purpose": "Aid in the Level Streaming process by controlling when levels stream in and out of memory based on player's location.",
+    "DetailsPanelProperties": [
+      {
+        "Property": "Streaming Levels",
+        "Description": "Displays the levels affected by the volume."
+      },
+      {
+        "Property": "Editor Pre Vis Only",
+        "Description": "Determines if the streaming volume is used only for editor streaming level previs."
+      },
+      {
+        "Property": "Disabled",
+        "Description": "If true, the streaming volume is ignored by the streaming volume code."
+      },
+      {
+        "Property": "Streaming Usage",
+        "Description": "Determines the purpose of the volume (e.g., loading, visibility)."
+      }
+    ],
+    "AssociatingStreamingVolumesWithLevels": {
+      "Description": "How volume-based level streaming works.",
+      "Mechanism": "Each frame, the engine checks if the player's viewpoint is inside any Level Streaming Volumes associated with a Level to decide loading or unloading."
+    },
+    "ImportantDetails": [
+      "All Level Streaming Volumes must exist in the persistent Level.",
+      "A Level with streaming volumes will not behave correctly with other streaming methods.",
+      "A single Level Streaming Volume can affect multiple Levels.",
+      "Volume-based streaming works for split screen considering all local players' viewpoints."
+    ],
+    "TestingSetup": {
+      "Description": "Testing volume-based level streaming on the target platform is critical.",
+      "Reason": "Streaming in Play in Editor mode is not representative of real in-game loading."
+    },
+    "Previs": {
+      "Description": "A Level Streaming Volume can be marked for editor previsualization only by setting the Editor Pre Vis Only flag."
+    },
+    "Cost": {
+      "Description": "Each frame, UWorld::ProcessLevelStreamingVolumes iterates over each streaming Level.",
+      "Optimization": "Cached volume is checked first for quick acceptance."
+    },
+    "Hysteresis": {
+      "Description": "Unloading requests have hysteresis to prevent unneeded load/unload cycles.",
+      "Property": "Min Time Between Volume Unload Requests",
+      "Default": "2.0 seconds"
+    },
+    "DisablingVolumes": {
+      "Description": "The bDisabled property can disable a Level Streaming Volume without dissociating it from the Level.",
+      "UseCase": "Useful for scenarios where level streaming depends on gameplay events (e.g., unlocking a door)."
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "LoadingAndUnloadingLevelsUsingBlueprints": {
+    "Description": "How to stream levels with a custom streaming Actor created with Blueprints.",
+    "Setup": {
+      "Objective": "Stream in the patio level so it is loaded and visible as the player approaches.",
+      "Levels": [
+        "SunTemple_Persistent",
+        "SunTemple_Streaming"
+      ],
+      "PlayerStart": "In SunTemple_Persistent",
+      "Steps": [
+        "Open SunTemple_Persistent in the Content Browser.",
+        "Move the Player Start to the beginning of the temple.",
+        "Click on Windows, then select Levels.",
+        "Click Levels dropdown, select Add Existing..., add SunTemple_Streaming.",
+        "Right-click on Persistent Level, select Make Current."
+      ]
+    },
+    "StreamingInLevelsWithBlueprints": {
+      "Steps": [
+        "Open Content Browser, create new Blueprint Class based on Actor.",
+        "Name it 'LevelStreamer' and save it.",
+        "Open LevelStreamer in Blueprint Editor.",
+        "Add Box Collision Component using Add Component button.",
+        "Open Blueprint's Event Graph.",
+        "Select Box Component, right-click in graph, add On Component Begin Overlap event.",
+        "Drag off Other Actor pin, add Equal (Object) node.",
+        "Drag off second Object pin on == node, add Get Player Character node.",
+        "Add Branch node, connect boolean pin of == node to Branch node input.",
+        "Connect execution output pin of OnComponentBeginOverlap to Branch node input.",
+        "Right-click in graph, add Load Stream Level node.",
+        "Promote Level Name pin to variable, name it 'LevelToStream', make it Editable.",
+        "Toggle Make Visible After Load and Should Block on Load to true on Load Stream Level node.",
+        "Connect True execution output pin of Branch node to Load Stream Level node input.",
+        "Place LevelStreamer Blueprint into level, adjust placement and scale.",
+        "Enter SunTemple_Streaming as the Level to Stream.",
+        "Use Play In Editor to test streaming level."
+      ]
+    },
+    "UnloadingLevelsWithBlueprints": {
+      "Description": "Unload the level as Character exits the Box component.",
+      "Steps": "Similar logic to loading, ends with Unload Stream Level node."
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "LoadingAndUnloadingLevelsUsingC++": {
+    "Description": "How to stream levels with a custom streaming Actor created in C++.",
+    "Scenario": {
+      "Purpose": "Stream in the patio level so it's loaded and visible when the player approaches.",
+      "Setup": [
+        "Two levels: SunTemple_Persistent and SunTemple_Streaming.",
+        "Player Start in SunTemple_Persistent.",
+        "Player represented by a Character."
+      ],
+      "Steps": [
+        "Open SunTemple_Persistent in the Content Browser.",
+        "Move Player Start to the beginning of the temple.",
+        "Click Windows, select Levels.",
+        "Click Levels dropdown, select Add Existing..., add SunTemple_Streaming.",
+        "Right-click Persistent Level, select Make Current."
+      ]
+    },
+    "StreamingInLevelsWithC++": {
+      "Steps": [
+        "Open Content Browser, create a new C++ Class based on Actor.",
+        "Name it 'LevelStreamerActor' and create it.",
+        "In Visual Studio or XCode, declare an OverlapVolume in LevelStreamerActor.h.",
+        {
+          "Code": [
+            "private:",
+            "UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = \"true\"))",
+            "UBoxComponent* OverlapVolume;"
+          ]
+        },
+        "In LevelStreamerActor.cpp, create the OverlapVolume and make it the RootComponent.",
+        {
+          "Code": [
+            "OverlapVolume = CreateDefaultSubobject<UBoxComponent>(TEXT(\"OverlapVolume\"));",
+            "RootComponent = OverlapVolume;"
+          ]
+        },
+        "Declare a protected OverlapBegins function in LevelStreamerActor.h.",
+        {
+          "Code": [
+            "protected:",
+            "UFUNCTION()",
+            "void OverlapBegins(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);"
+          ]
+        },
+        "Create a protected FName variable in LevelStreamerActor.h.",
+        {
+          "Code": [
+            "UPROPERTY(EditAnywhere)",
+            "FName LevelToLoad;"
+          ]
+        },
+        "Include GameplayStatics library in LevelStreamerActor.cpp.",
+        {
+          "Code": "#include \"Kismet/GameplayStatics.h\""
+        },
+        "Define OverlapBegins functionality in LevelStreamerActor.cpp.",
+        {
+          "Code": [
+            "void ALevelStreamerActor::OverlapBegins(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)",
+            "{",
+            "ACharacter* MyCharacter = UGameplayStatics::GetPlayerCharacter(this, 0);",
+            "if (OtherActor == MyCharacter && LevelToLoad != \"\")",
+            "{",
+            "FLatentActionInfo LatentInfo;",
+            "UGameplayStatics::LoadStreamLevel(this, LevelToLoad, true, true, LatentInfo);",
+            "}",
+            "}"
+          ]
+        },
+        "Bind OverlapBegins to BoxComponent's OnComponentBeginOverlap in the constructor.",
+        {
+          "Code": "OverlapVolume->OnComponentBeginOverlap.AddUniqueDynamic(this, &ALevelStreamerActor::OverlapBegins);"
+        },
+        "Final LevelStreamerActor.h",
+        {
+          "Code": [
+            "#pragma once",
+            "#include \"GameFramework/Actor.h\"",
+            "#include \"LevelStreamerActor.generated.h\"",
+            "UCLASS()",
+            "class LEVELS_API ALevelStreamerActor : public AActor",
+            "{",
+            "GENERATED_BODY()",
+            "public:",
+            "ALevelStreamerActor();",
+            "virtual void Tick( float DeltaSeconds ) override;",
+            "protected:",
+            "virtual void BeginPlay() override;",
+            "UFUNCTION()",
+            "void OverlapBegins(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);",
+            "UPROPERTY(EditAnywhere)",
+            "FName LevelToLoad;",
+            "private:",
+            "UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = \"true\"))",
+            "UBoxComponent* OverlapVolume;",
+            "};"
+          ]
+        },
+        "Final LevelStreamerActor.cpp",
+        {
+          "Code": [
+            "#include \"Levels.h\"",
+            "#include \"Kismet/GameplayStatics.h\"",
+            "#include \"LevelStreamerActor.h\"",
+            "ALevelStreamerActor::ALevelStreamerActor()",
+            "{",
+            "PrimaryActorTick.bCanEverTick = true;",
+            "OverlapVolume = CreateDefaultSubobject<UBoxComponent>(TEXT(\"OverlapVolume\"));",
+            "RootComponent = OverlapVolume;",
+            "OverlapVolume->OnComponentBeginOverlap.AddUniqueDynamic(this, &ALevelStreamerActor::OverlapBegins);",
+            "}",
+            "void ALevelStreamerActor::BeginPlay()",
+            "{",
+            "Super::BeginPlay();",
+            "}",
+            "void ALevelStreamerActor::Tick( float DeltaTime )",
+            "{",
+            "Super::Tick( DeltaTime );",
+            "}",
+            "void ALevelStreamerActor::OverlapBegins(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)",
+            "{",
+            "ACharacter* MyCharacter = UGameplayStatics::GetPlayerCharacter(this, 0);",
+            "if (OtherActor == MyCharacter && LevelToLoad != \"\")",
+            "{",
+            "FLatentActionInfo LatentInfo;",
+            "UGameplayStatics::LoadStreamLevel(this, LevelToLoad, true, true, LatentInfo);",
+            "}",
+            "}"
+          ]
+        },
+        "Compile the code, place LevelStreamer Actor in the level, and adjust placement and scale.",
+        "Enter SunTemple_Streaming as the Level to Stream.",
+        "Use Play In Editor to test the streaming level."
+      ]
+    },
+    "UnloadingLevelsWithC++": {
+      "Description": "To unload the level when Character exits the BoxComponent, create an OverlapEnds function that calls UGameplayStatics::UnloadStreamLevel.",
+      "Steps": [
+        "Declare OverlapEnds function in LevelStreamerActor.h.",
+        {
+          "Code": [
+            "UFUNCTION()",
+            "void OverlapEnds(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);"
+          ]
+        },
+        "Define OverlapEnds functionality in LevelStreamerActor.cpp.",
+        {
+          "Code": [
+            "void ALevelStreamerActor::OverlapEnds(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)",
+            "{",
+            "ACharacter* MyCharacter = UGameplayStatics::GetPlayerCharacter(this, 0);",
+            "if (OtherActor == MyCharacter && LevelToLoad != \"\")",
+            "{",
+            "FLatentActionInfo LatentInfo;",
+            "UGameplayStatics::UnloadStreamLevel(this, LevelToLoad, LatentInfo);",
+            "}",
+            "}"
+          ]
+        },
+        "Bind OverlapEnds to OnComponentEndOverlap in the constructor.",
+        {
+          "Code": "OverlapVolume->OnComponentEndOverlap.AddUniqueDynamic(this, &ALevelStreamerActor::OverlapEnds);"
+        }
+      ]
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}
+{
+  "WorldComposition": {
+    "Description": "System for managing large worlds including origin shifting technology.",
+    "Purpose": "Simplify managing large worlds without using a persistent level for streaming information.",
+    "Functionality": [
+      "Scans a folder and treats all found levels as streaming levels.",
+      "Reads level information from package headers without loading levels into memory.",
+      "Relies on world origin shifting for creating worlds beyond the WORLD_MAX constant."
+    ],
+    "LegacyStatus": "Recommended to use World Partition for Unreal Engine 5.0 or later.",
+    "Activation": {
+      "Steps": [
+        "Enable World Composition flag in World Settings.",
+        "Optionally disable world origin shifting by switching off Enable World Origin Rebasing flag."
+      ]
+    },
+    "LevelsHierarchy": {
+      "Visibility": "All project levels visible in the Levels window.",
+      "LevelStatus": [
+        "Current level in blue text.",
+        "Loaded levels in white text.",
+        "Unloaded levels in grayed-out text."
+      ],
+      "Actions": [
+        "Double-click to load a level.",
+        "Drag-and-drop to establish parent-child relationships.",
+        "Lock, save, and open Level Blueprint from the Levels window."
+      ]
+    },
+    "LevelsComposition": {
+      "Description": "View and manage the layout of your world.",
+      "Button": "Open World Composition from the top of the Levels window."
+    },
+    "Layers": {
+      "Default": "All levels assigned to an Uncategorized layer.",
+      "Information": "Layers hold streaming distance information.",
+      "Creation": "Create new layers by clicking the Add (+) button.",
+      "Restrictions": "Layers cannot be deleted or edited.",
+      "Filtering": "Filter levels by layer using Control+Mouse Click."
+    },
+    "Minimap": {
+      "Description": "Displays levels' images and positions.",
+      "Usage": [
+        "Preview world from the top.",
+        "Arrange levels by dragging.",
+        "Levels snap to edges of other levels."
+      ],
+      "Landscape": "Snapping based on base landscape component size.",
+      "LevelBoundsActor": [
+        "Automatically created the first time a level is loaded.",
+        "Calculates the size of the level."
+      ],
+      "SafeEditArea": "Yellow square indicating the safe edit area.",
+      "Focusing": "Keeps levels close to the Editor world origin."
+    },
+    "UIKey": [
+      {"Number": 1, "Description": "Layers"},
+      {"Number": 2, "Description": "WORLD_MAX bar"},
+      {"Number": 3, "Description": "World Origin"},
+      {"Number": 4, "Description": "Current Level"},
+      {"Number": 5, "Description": "Mouse Cursor Position"},
+      {"Number": 6, "Description": "Marquee Selection"},
+      {"Number": 7, "Description": "World Size"}
+    ],
+    "LevelDetails": {
+      "Description": "View details for any level in the Level window.",
+      "Steps": "Select level and click magnifying glass icon to summon Level Details window."
+    },
+    "TileSettings": [
+      {"Setting": "Package Name", "Description": "Read-only package name of the selected level."},
+      {"Setting": "Parent Package Name", "Description": "Package name of the parent level."},
+      {"Setting": "Position", "Description": "Level offset from the zero world origin."},
+      {"Setting": "Absolute Position", "Description": "Absolute position of the level."},
+      {"Setting": "Z Order", "Description": "Defines Z sorting order of the level tile in the minimap."}
+    ],
+    "LODSettings": [
+      "Each level can have up to 4 LOD streaming levels.",
+      "Levels automatically discovered using pattern [Package name]_LOD#."
+    ],
+    "WorldOriginShifting": {
+      "Description": "Supports shifting of the world origin by adding an offset vector to all registered Actors.",
+      "Function": "ApplyWorldOffset can be overridden in child classes."
+    },
+    "BigWorldsAndMultiplayer": {
+      "Description": "World origin shifting not supported in multiplayer games.",
+      "Solutions": [
+        "Implement your own server solution.",
+        "Implement a layer between clients and unreal dedicated servers."
+      ]
+    },
+    "CreatingLandscapeLevels": {
+      "Description": "Right-click on a level tile to add adjacent levels with landscape proxy Actors."
+    },
+    "TiledLandscapeImport": {
+      "Description": "Import tiled landscapes from a tiled heightmap.",
+      "Options": [
+        {"Setting": "Select Heightmap Tiles", "Description": "Select multiple heightmap tiles to import."},
+        {"Setting": "Flip Tile Y Coordinate", "Description": "Flip Y coordinate for tiles from World Machine."},
+        {"Setting": "Tile Coordinates Offset", "Description": "Offset in tiles from origin."},
+        {"Setting": "Import Configuration", "Description": "Generate landscape configurations based on tile resolution."},
+        {"Setting": "Landscape Scale", "Description": "Scale for the tiled landscape."},
+        {"Setting": "Material", "Description": "Material to use for the landscape."}
+      ]
+    }
+  },
+  "AdditionalResources": {
+    "DeveloperForums": "Ask questions and help peers.",
+    "LearningLibrary": "Write or read tutorials."
+  }
+}

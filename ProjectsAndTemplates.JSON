@@ -1,0 +1,153 @@
+{
+  "ProjectsAndTemplates": {
+    "Overview": "Manage projects and use templates in Unreal Engine.",
+    "ProjectStructure": {
+      "Description": "Projects hold all game contents, mirroring disk structure in Content Browser.",
+      "File": ".uproject file used to create, open, or save a project."
+    },
+    "WorkingWithProjects": {
+      "CreatingNewProject": "Guide on creating and configuring new projects.",
+      "OpeningExistingProject": "Guide on accessing and opening existing projects.",
+      "CreatingCustomTemplates": "Steps for converting projects to templates."
+    },
+    "UpdatingProjects": {
+      "Description": "Upgrade projects from Unreal Engine 4.2x to Unreal Engine 5.",
+      "Guide": "Unreal Engine 5 Migration Guide"
+    },
+    "ProjectTemplates": {
+      "Description": "Starting points with premade assets for various project types.",
+      "CustomTemplates": "Convert projects to templates for reuse.",
+      "AvailableTemplates": [
+        {
+          "Name": "First Person Template",
+          "Description": "Introduction and use of First Person template."
+        },
+        {
+          "Name": "Third Person Template",
+          "Description": "Introduction and use of Third Person template."
+        },
+        {
+          "Name": "Simulation Blank Template",
+          "Description": "Introduction and use of Simulation Blank template."
+        }
+      ]
+    },
+    "Resources": {
+      "Forums": "Ask questions and assist peers.",
+      "Library": "Read and write tutorials."
+    }
+  }
+}
+{
+  "CreatingNewProject": {
+    "Overview": "Steps to create and configure a new project in Unreal Engine.",
+    "Steps": [
+      {
+        "Step": 1,
+        "Description": "Select the development category that matches your project goals.",
+        "Categories": [
+          "Games",
+          "Film, Television, and Live Events",
+          "Architecture, Engineering, and Construction (AEC)",
+          "Automotive, Product Design, and Manufacturing (APM)"
+        ]
+      },
+      {
+        "Step": 2,
+        "Description": "Select a template for your project based on the chosen category."
+      },
+      {
+        "Step": 3,
+        "Description": "Configure Project Defaults, including platform, quality, and ray tracing settings.",
+        "Settings": [
+          {
+            "Name": "Implementation",
+            "Options": ["Blueprint", "C++"]
+          },
+          {
+            "Name": "Target Platform",
+            "Options": ["Desktop", "Mobile"]
+          },
+          {
+            "Name": "Quality Preset",
+            "Options": ["Maximum", "Scalable"]
+          },
+          {
+            "Name": "Starter Content",
+            "Description": "Include basic assets for quick experimentation."
+          },
+          {
+            "Name": "Ray Tracing",
+            "Description": "Enable or disable ray tracing."
+          }
+        ]
+      },
+      {
+        "Step": 4,
+        "Description": "Select storage location and name the project."
+      },
+      {
+        "Step": 5,
+        "Description": "Click Create to finish."
+      }
+    ],
+    "Result": "Unreal Engine creates and opens the new project with the configured settings.",
+    "Resources": {
+      "Forums": "Ask questions and assist peers.",
+      "Library": "Read and write tutorials."
+    }
+  }
+}
+{
+  "OpeningExistingProject": {
+    "Overview": "Methods to access and open existing Unreal Engine projects.",
+    "Methods": [
+      {
+        "Method": "Epic Games Launcher",
+        "Steps": [
+          "Click Unreal Engine on the left navigation.",
+          "Click Library at the top.",
+          "Double-click project thumbnail to open."
+        ],
+        "Details": {
+          "InfoDisplayed": ["Project name", "Project thumbnail", "Compatible UE version"],
+          "ContextMenuOptions": ["Open", "Show in folder", "Create shortcut", "Clone", "Delete"]
+        }
+      },
+      {
+        "Method": "Project Browser",
+        "Steps": [
+          "Launch Unreal Engine, Project Browser opens.",
+          "Double-click project thumbnail or select and click Open."
+        ],
+        "Details": {
+          "InfoDisplayed": ["Project name", "Project thumbnail", "Compatible UE version"],
+          "Options": ["Always load last project on startup"]
+        }
+      },
+      {
+        "Method": "Unreal Engine Menu",
+        "Steps": [
+          "Go to File > Open Project.",
+          "Select project from list and click Open or double-click thumbnail."
+        ],
+        "Details": {
+          "Browse": "Click Browse to locate .uproject file if not in list."
+        }
+      },
+      {
+        "Method": "From Disk",
+        "Steps": [
+          "Ensure correct Unreal Engine version is installed.",
+          "Navigate to project's folder on disk.",
+          "Double-click the .uproject file."
+        ],
+        "Warning": "Opening with a different UE version can cause data corruption; open a copy to preserve original."
+      }
+    ],
+    "Resources": {
+      "Forums": "Ask questions and assist peers.",
+      "Library": "Read and write tutorials."
+    }
+  }
+}

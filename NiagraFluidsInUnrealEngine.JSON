@@ -1,0 +1,4393 @@
+{
+  "guideTitle": "Niagara Fluids in Unreal Engine",
+  "description": "Learn how to create real-time fluid effects like fire, smoke, gas, and more.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Niagara Fluids enables real-time fluid effects in Unreal Engine with standard templates for fire, smoke, gas, and more. Offers 2D templates for games and 3D templates for cinematics."
+    },
+    {
+      "title": "Advantages",
+      "content": "Fluid simulation methods provide natural, realistic results compared to simple particle-based setups. Advanced users can modify without writing code or plugins."
+    },
+    {
+      "title": "Getting Started",
+      "steps": [
+        "Read the Fluid Simulation Overview document.",
+        "Follow the Niagara Fluids Quick-Start Guide to add templates to your project."
+      ]
+    },
+    {
+      "title": "Overview Documents",
+      "items": [
+        {
+          "title": "Fluid Simulation Overview",
+          "description": "Overview of Fluid Simulation in Unreal Engine."
+        },
+        {
+          "title": "Niagara Fluids Quick Start Guide",
+          "description": "Quick start guide for using the Niagara Fluids plugin to create real-time fluid simulation."
+        }
+      ]
+    },
+    {
+      "title": "Further Reading",
+      "content": "Learn about creating Fluids emitters and baking results to flipbooks. Also includes guidance on dealing with GPU crashes."
+    },
+    {
+      "title": "Reference Guides",
+      "items": [
+        {
+          "title": "Niagara Fluids Reference Guide",
+          "description": "Reference guide for the Niagara Fluids plugin."
+        }
+      ]
+    },
+    {
+      "title": "Related Guides",
+      "items": [
+        {
+          "title": "Niagara Flipbook Baker Quick Start Guide",
+          "description": "Guide for creating Niagara flipbooks in Unreal Engine."
+        },
+        {
+          "title": "Dealing with a GPU Crash",
+          "description": "Overview of investigating, resolving, and reporting GPU crashes in Unreal Engine."
+        }
+      ]
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Niagara Fluids Quick Start Guide",
+  "description": "A quick start guide for using the Niagara Fluids plugin to create real-time fluid simulation.",
+  "sections": [
+    {
+      "title": "Pre-Requisite Tasks",
+      "items": [
+        "Create a New Project",
+        "Enable the Niagara Plugin"
+      ]
+    },
+    {
+      "title": "Goals",
+      "content": "Learn how to enable the Niagara Fluids plugin and create your first project."
+    },
+    {
+      "title": "Objectives",
+      "items": [
+        "Enable the Niagara Fluids plugin",
+        "Create a new Niagara System from a Fluids template",
+        "Modify the parameters to achieve a new look"
+      ]
+    },
+    {
+      "title": "Enable the Niagara Fluids Plugin",
+      "steps": [
+        "Click on Edit > Plugins.",
+        "Search for Niagara in the search bar and enable Niagara Fluids.",
+        "Confirm the warning message and restart Unreal Engine."
+      ]
+    },
+    {
+      "title": "Create the Niagara System",
+      "steps": [
+        "Right-click in the Content Drawer and select Create Basic Asset > Niagara System.",
+        "Select Niagara Fluids > 3D Gas, choose Grid3D_Gas_Explosion, and click Create.",
+        "Rename the system and drag it into your level."
+      ]
+    },
+    {
+      "title": "Add an Actor to Collide With",
+      "steps": [
+        "Select the Niagara system in the level.",
+        "Adjust exposed parameters in the Details panel.",
+        "Add a sphere to the scene and tag it as 'collider'."
+      ],
+      "parameters": {
+        "Collide_GeometryCollection": "Add actors to affect simulation.",
+        "DirectionalLight1": "Link up to two directional lights.",
+        "ResolutionMaxAxis": "Set simulation resolution.",
+        "ShowOverlays": "Toggle system bounds on/off.",
+        "SourceOffset": "Position explosion inside bounding box.",
+        "WorldSpaceSize": "Set size of bounding box."
+      }
+    },
+    {
+      "title": "Adjust the Look of the Explosion",
+      "steps": [
+        "Open the Niagara system in the Niagara Editor.",
+        "Adjust dissipation values for density, temperature, and velocity.",
+        "Adjust buoyancy values and render density settings.",
+        "Change Render Temperature to Curve and customize colors."
+      ],
+      "parameters": {
+        "Density Dissipation": "3.0",
+        "Temperature Dissipation": "1.5",
+        "Velocity Dissipation": "0.8",
+        "Temperature Buoyancy": "3.5",
+        "Render Density Gain": "0.5"
+      }
+    },
+    {
+      "title": "End Result",
+      "content": "Your final result should display the explosion with the adjustments made."
+    },
+    {
+      "title": "Further Reading",
+      "content": "Read the Niagara Fluids Reference Guide for more information on adjustable parameters."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Niagara Fluids Reference Guide",
+  "description": "Reference guide for the Niagara Fluids plugin.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Niagara Fluids provides templates for real-time simulations in projects. Includes 2D and 3D templates for gas, liquid, and shallow water."
+    },
+    {
+      "title": "Template Types",
+      "items": [
+        "2D Gas",
+        "2D Liquid",
+        "3D Gas",
+        "3D Liquid",
+        "Shallow Water"
+      ]
+    },
+    {
+      "title": "Creating a Simulation",
+      "steps": [
+        "Right-click in the Content Drawer and select Niagara System.",
+        "Select Niagara Fluids > 3D Gas and choose a template."
+      ]
+    },
+    {
+      "title": "Inheritance",
+      "description": "Fluid emitters use inheritance to progressively add functionality.",
+      "emitters": {
+        "Grid3D_Gas_Emitter": "Core simulation.",
+        "Grid3D_Gas_Controls_Base_Emitter": "Adds controls and debug functionality.",
+        "Grid3D_Gas_CONTROLS_Emitter": "Adds particle source support.",
+        "Grid3D_Gas_CONTROLS_CINE_Emitter": "Alternative for cinematic use with advanced features."
+      }
+    },
+    {
+      "title": "Emitter Summary",
+      "content": "Parameters to adjust simulation look and behavior are organized into sections: Grid, Simulation, Render, Debug, Scalability, Source."
+    },
+    {
+      "title": "Grid",
+      "parameters": {
+        "Grid Bounds Overlay": "Toggle visibility of the red box around the simulation.",
+        "Cell Size Guides": "Toggle visibility of guide cells on each major axis.",
+        "World Space Size": "Change the size of the container box for the simulation.",
+        "Local Pivot": "Change the offset for the simulation origin.",
+        "Resolution Max Axis": "Set the resolution of the simulation based on its longest side.",
+        "Open Boundary +/- X/Y/Z": "Adjust edge treatment for particles."
+      }
+    },
+    {
+      "title": "Simulation",
+      "subsections": [
+        {
+          "title": "Simulation",
+          "parameters": {
+            "Override Delta Time": "Override engine's delta time with a fixed delta time.",
+            "Delta Time Scale": "Modify engine delta time.",
+            "Vorticity Confinement": "Amplify the vorticity in the simulation.",
+            "Pressure Relaxation": "Define pressure solver convergence.",
+            "Pressure Solve Iterations": "Set the number of iterations for accuracy.",
+            "Density Dissipation": "Define how quickly density dissipates.",
+            "Temperature Dissipation": "Define how quickly temperature dissipates.",
+            "Velocity Dissipation": "Define how quickly velocity dissipates.",
+            "Density Buoyancy": "Define downward velocity based on density.",
+            "Temperature Buoyancy": "Define upward velocity based on temperature.",
+            "Gravity": "Set the direction and magnitude of gravity."
+          }
+        },
+        {
+          "title": "Collide Against",
+          "description": "React to actors in your level with collision data interfaces."
+        },
+        {
+          "title": "Turbulence",
+          "parameters": {
+            "Seed Turbulence Gain": "Set the strength of turbulence at initialization.",
+            "Seed Turbulence Frequency": "Set the size of turbulence features at initialization.",
+            "Seed Turbulence Speed": "Set turbulence speed at initialization.",
+            "Seed Turbulence Local Space": "Set turbulence to follow local space at initialization.",
+            "Turbulence Density Gain": "Set the strength of turbulence for density.",
+            "Turbulence Density Band": "Limit turbulence within density range.",
+            "Turbulence Temperature Gain": "Set the strength of turbulence for temperature.",
+            "Turbulence Temperature Band": "Limit turbulence within temperature range.",
+            "Turbulence Frequency": "Set the size of turbulence features.",
+            "Turbulence Speed": "Set turbulence speed.",
+            "Turbulence Bias": "Bias turbulence direction.",
+            "Turbulence Local Space": "Set turbulence to follow local space."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Render",
+      "subsections": [
+        {
+          "title": "Render",
+          "parameters": {
+            "Render Step Size Mult": "Sample the simulation multiple times per cell.",
+            "Render Density": "Control density rendering with options: None, Linear, Curve.",
+            "Render Density Range": "Set density range for rendering.",
+            "Render Density Curve": "Set curve for density rendering.",
+            "Render Density Gain": "Add multiplier to rendered density.",
+            "Render Density Albedo": "Color smoke from black to white.",
+            "Shadow Quality": "Sample simulation multiple times per cell for shadows.",
+            "Shadow Max Steps": "Limit steps for shadow sampling.",
+            "Render Temperature": "Options: None, Black Body, Curve for rendering temperature.",
+            "Render Temperature Range": "Set temperature range for rendering.",
+            "Render Temperature Curve": "Set curve for temperature rendering.",
+            "Render Temp Color Gain": "Add multiplier to gas color.",
+            "Render Temp Opacity Gain": "Add multiplier to gas opacity."
+          }
+        },
+        {
+          "title": "Lights",
+          "parameters": {
+            "Light1/2": "Read attributes from connected lights.",
+            "Lgt1/2 Shadow Density": "Set shadow density for light.",
+            "Lgt1/2 Default Intensity": "Set intensity of default light.",
+            "Lgt1/2 Default Color": "Set color of default light.",
+            "Lgt1/2 Default Direction": "Set direction of default light."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Debug",
+      "parameters": {
+        "Debug Sources": "Overwrite grid data with source data for debugging.",
+        "Render Debug Slice": "Render 2D slice inside grid for debugging.",
+        "Render Debug Slice Axis": "Choose axis for slice orientation.",
+        "Render Debug Slice Offset": "Set slice offset along axis.",
+        "Render Debug Slice Lights": "Render light intensity in slice."
+      }
+    },
+    {
+      "title": "Scalability",
+      "description": "Override parameters based on Quality setting for cinematic rendering."
+    },
+    {
+      "title": "Source",
+      "parameters": {
+        "Particle Attribute Reader": "Read from another emitter in the system.",
+        "Scale Emission by dt": "Ensure consistent source data.",
+        "Use Falloff": "Anti-alias data at particle edges.",
+        "Scatter Density": "Use density attribute from particle source.",
+        "Scatter Temperature": "Use temperature attribute from particle source.",
+        "Scatter Velocity": "Use velocity attribute from particle source.",
+        "Use Radius": "Overlap cells based on particle radius.",
+        "Density Mult": "Multiply incoming particle density.",
+        "Splat Size Density": "Set number of cells to stamp with density.",
+        "Temperature Mult": "Multiply incoming particle temperature.",
+        "Splat Size Temperature": "Set number of cells to stamp with temperature.",
+        "Local Space Particles": "Set particles to be local to simulation.",
+        "Velocity Mult": "Multiply incoming particle velocity.",
+        "Splat Size Velocity": "Set number of cells to stamp with velocity."
+      }
+    },
+    {
+      "title": "Texture",
+      "description": "Additional parameters for Grid 3D Gas Explosion Cine template.",
+      "parameters": {
+        "Texture Smoke Density Gain": "Modulate density with noise.",
+        "Texture Smoke Color Gain": "Modulate smoke color with noise.",
+        "Texture Fire Density Gain": "Modulate fire opacity with noise.",
+        "Texture Fire Color Gain": "Modulate fire color intensity with noise.",
+        "Texture Scale": "Adjust size of noise pattern.",
+        "Texture Remap To 0": "Remap value to 0 for contrast.",
+        "Texture Remap To 1": "Remap value to 1 for contrast.",
+        "Value Data": "Limit texture influence to Density or Temperature.",
+        "Value Band Min": "Set lower value of simulation data for texture.",
+        "Value Band Max": "Set upper value of simulation data for texture.",
+        "Value Band Sharpness": "Set transition sharpness within band.",
+        "Loop Duration": "Adjust loop duration to avoid stretching.",
+        "Debug Texture": "Override material to show texturing value."
+      }
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Niagara Fluids Reference Guide",
+  "description": "Reference guide for the Niagara Fluids plugin.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Niagara Fluids provides templates for real-time simulations in projects. Includes 2D and 3D templates for gas, liquid, and shallow water."
+    },
+    {
+      "title": "Template Types",
+      "items": [
+        "2D Gas",
+        "2D Liquid",
+        "3D Gas",
+        "3D Liquid",
+        "Shallow Water"
+      ]
+    },
+    {
+      "title": "Creating a Simulation",
+      "steps": [
+        "Right-click in the Content Drawer and select Niagara System.",
+        "Select Niagara Fluids > 3D Gas and choose a template."
+      ]
+    },
+    {
+      "title": "Inheritance",
+      "description": "Fluid emitters use inheritance to progressively add functionality.",
+      "emitters": {
+        "Grid3D_Gas_Emitter": "Core simulation.",
+        "Grid3D_Gas_Controls_Base_Emitter": "Adds controls and debug functionality.",
+        "Grid3D_Gas_CONTROLS_Emitter": "Adds particle source support.",
+        "Grid3D_Gas_CONTROLS_CINE_Emitter": "Alternative for cinematic use with advanced features."
+      }
+    },
+    {
+      "title": "Emitter Summary",
+      "content": "Parameters to adjust simulation look and behavior are organized into sections: Grid, Simulation, Render, Debug, Scalability, Source."
+    },
+    {
+      "title": "Grid",
+      "parameters": {
+        "Grid Bounds Overlay": "Toggle visibility of the red box around the simulation.",
+        "Cell Size Guides": "Toggle visibility of guide cells on each major axis.",
+        "World Space Size": "Change the size of the container box for the simulation.",
+        "Local Pivot": "Change the offset for the simulation origin.",
+        "Resolution Max Axis": "Set the resolution of the simulation based on its longest side.",
+        "Open Boundary +/- X/Y/Z": "Adjust edge treatment for particles."
+      }
+    },
+    {
+      "title": "Simulation",
+      "subsections": [
+        {
+          "title": "Simulation",
+          "parameters": {
+            "Override Delta Time": "Override engine's delta time with a fixed delta time.",
+            "Delta Time Scale": "Modify engine delta time.",
+            "Vorticity Confinement": "Amplify the vorticity in the simulation.",
+            "Pressure Relaxation": "Define pressure solver convergence.",
+            "Pressure Solve Iterations": "Set the number of iterations for accuracy.",
+            "Density Dissipation": "Define how quickly density dissipates.",
+            "Temperature Dissipation": "Define how quickly temperature dissipates.",
+            "Velocity Dissipation": "Define how quickly velocity dissipates.",
+            "Density Buoyancy": "Define downward velocity based on density.",
+            "Temperature Buoyancy": "Define upward velocity based on temperature.",
+            "Gravity": "Set the direction and magnitude of gravity."
+          }
+        },
+        {
+          "title": "Collide Against",
+          "description": "React to actors in your level with collision data interfaces."
+        },
+        {
+          "title": "Turbulence",
+          "parameters": {
+            "Seed Turbulence Gain": "Set the strength of turbulence at initialization.",
+            "Seed Turbulence Frequency": "Set the size of turbulence features at initialization.",
+            "Seed Turbulence Speed": "Set turbulence speed at initialization.",
+            "Seed Turbulence Local Space": "Set turbulence to follow local space at initialization.",
+            "Turbulence Density Gain": "Set the strength of turbulence for density.",
+            "Turbulence Density Band": "Limit turbulence within density range.",
+            "Turbulence Temperature Gain": "Set the strength of turbulence for temperature.",
+            "Turbulence Temperature Band": "Limit turbulence within temperature range.",
+            "Turbulence Frequency": "Set the size of turbulence features.",
+            "Turbulence Speed": "Set turbulence speed.",
+            "Turbulence Bias": "Bias turbulence direction.",
+            "Turbulence Local Space": "Set turbulence to follow local space."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Render",
+      "subsections": [
+        {
+          "title": "Render",
+          "parameters": {
+            "Render Step Size Mult": "Sample the simulation multiple times per cell.",
+            "Render Density": "Control density rendering with options: None, Linear, Curve.",
+            "Render Density Range": "Set density range for rendering.",
+            "Render Density Curve": "Set curve for density rendering.",
+            "Render Density Gain": "Add multiplier to rendered density.",
+            "Render Density Albedo": "Color smoke from black to white.",
+            "Shadow Quality": "Sample simulation multiple times per cell for shadows.",
+            "Shadow Max Steps": "Limit steps for shadow sampling.",
+            "Render Temperature": "Options: None, Black Body, Curve for rendering temperature.",
+            "Render Temperature Range": "Set temperature range for rendering.",
+            "Render Temperature Curve": "Set curve for temperature rendering.",
+            "Render Temp Color Gain": "Add multiplier to gas color.",
+            "Render Temp Opacity Gain": "Add multiplier to gas opacity."
+          }
+        },
+        {
+          "title": "Lights",
+          "parameters": {
+            "Light1/2": "Read attributes from connected lights.",
+            "Lgt1/2 Shadow Density": "Set shadow density for light.",
+            "Lgt1/2 Default Intensity": "Set intensity of default light.",
+            "Lgt1/2 Default Color": "Set color of default light.",
+            "Lgt1/2 Default Direction": "Set direction of default light."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Debug",
+      "parameters": {
+        "Debug Sources": "Overwrite grid data with source data for debugging.",
+        "Render Debug Slice": "Render 2D slice inside grid for debugging.",
+        "Render Debug Slice Axis": "Choose axis for slice orientation.",
+        "Render Debug Slice Offset": "Set slice offset along axis.",
+        "Render Debug Slice Lights": "Render light intensity in slice."
+      }
+    },
+    {
+      "title": "Scalability",
+      "description": "Override parameters based on Quality setting for cinematic rendering."
+    },
+    {
+      "title": "Source",
+      "parameters": {
+        "Particle Attribute Reader": "Read from another emitter in the system.",
+        "Scale Emission by dt": "Ensure consistent source data.",
+        "Use Falloff": "Anti-alias data at particle edges.",
+        "Scatter Density": "Use density attribute from particle source.",
+        "Scatter Temperature": "Use temperature attribute from particle source.",
+        "Scatter Velocity": "Use velocity attribute from particle source.",
+        "Use Radius": "Overlap cells based on particle radius.",
+        "Density Mult": "Multiply incoming particle density.",
+        "Splat Size Density": "Set number of cells to stamp with density.",
+        "Temperature Mult": "Multiply incoming particle temperature.",
+        "Splat Size Temperature": "Set number of cells to stamp with temperature.",
+        "Local Space Particles": "Set particles to be local to simulation.",
+        "Velocity Mult": "Multiply incoming particle velocity.",
+        "Splat Size Velocity": "Set number of cells to stamp with velocity."
+      }
+    },
+    {
+      "title": "Texture",
+      "description": "Additional parameters for Grid 3D Gas Explosion Cine template.",
+      "parameters": {
+        "Texture Smoke Density Gain": "Modulate density with noise.",
+        "Texture Smoke Color Gain": "Modulate smoke color with noise.",
+        "Texture Fire Density Gain": "Modulate fire opacity with noise.",
+        "Texture Fire Color Gain": "Modulate fire color intensity with noise.",
+        "Texture Scale": "Adjust size of noise pattern.",
+        "Texture Remap To 0": "Remap value to 0 for contrast.",
+        "Texture Remap To 1": "Remap value to 1 for contrast.",
+        "Value Data": "Limit texture influence to Density or Temperature.",
+        "Value Band Min": "Set lower value of simulation data for texture.",
+        "Value Band Max": "Set upper value of simulation data for texture.",
+        "Value Band Sharpness": "Set transition sharpness within band.",
+        "Loop Duration": "Adjust loop duration to avoid stretching.",
+        "Debug Texture": "Override material to show texturing value."
+      }
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Collisions in Niagara",
+  "description": "Learn all about collisions in Niagara.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Collisions in Niagara can be achieved using the Collision module. More documentation will be available soon."
+    },
+    {
+      "title": "GPU Ray Tracing Collisions (Experimental)",
+      "content": "Use hardware ray tracing for more accurate collisions in GPU simulations.",
+      "link": {
+        "title": "GPU Raytracing Collisions",
+        "url": "Learn how to enable GPU Raytracing Collisions in Niagara."
+      }
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "GPU Raytracing Collisions",
+  "description": "Learn how to enable GPU Raytracing Collisions in Niagara.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Set up a particle system to collide with objects using the Collision module. GPU Raytracing Collisions is an experimental feature for accurate collisions."
+    },
+    {
+      "title": "Traditional Methods",
+      "content": "Previous versions used Depth Buffer for low-cost but low-accuracy collisions. Particles disappear if off-screen."
+    },
+    {
+      "title": "GPU Raytracing Collisions",
+      "content": "Uses hardware ray tracing for accurate results, whether on-screen, off-screen, or hidden. Calculation is asynchronous, one frame behind."
+    },
+    {
+      "title": "Adjust Your Project Settings",
+      "steps": [
+        "Open Edit > Project Settings.",
+        "Search for 'rhi' and set Default RHI to DirectX 12.",
+        "Search for 'ray tracing' and enable Support Hardware Ray Tracing and Ray Traced Shadows."
+      ]
+    },
+    {
+      "title": "Set Up the Collision Module",
+      "steps": [
+        "In the Collision module, set GPU Collision Type to GPU Ray Traces (Experimental).",
+        "Set Trace Provider to Project Settings or manually to HW Ray Tracing."
+      ]
+    },
+    {
+      "title": "Set Up A Fallback (Optional)",
+      "steps": [
+        "Open Edit > Project Settings.",
+        "In Plugins > Niagara, adjust Async Gpu Trace DI to include HW Ray Tracing and Global Signed Distance Fields.",
+        "Add or rearrange elements as needed, default settings are usually sufficient."
+      ]
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Debugging and Optimization in Niagara",
+  "description": "Learn how to debug and optimize your Niagara simulations.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Unreal Engine provides several tools to debug and optimize Niagara simulations."
+    },
+    {
+      "title": "Niagara Debugger",
+      "content": "Use the Niagara Debugger to turn on a HUD that outputs detailed simulation information like particle count and memory usage. Capture and analyze snapshots.",
+      "link": {
+        "title": "Niagara Debugger",
+        "url": "Use the Niagara Debugger to analyze your Niagara systems in a level."
+      }
+    },
+    {
+      "title": "Performance Budgeting Using Effect Types",
+      "content": "Create a Niagara Effect Type asset to configure settings for managing budgeting in your level. Systems using this Effect Type inherit the rules you set, improving performance by culling distant systems.",
+      "link": {
+        "title": "Performance Budgeting Using Effect Types",
+        "url": "Use Effect Types to set up ways to improve the performance of your Niagara systems."
+      }
+    },
+    {
+      "title": "How to Fix a GPU Crash",
+      "content": "Niagara simulations can be graphically intensive, causing GPU crashes in Windows. Learn how to investigate, resolve, and report GPU crashes.",
+      "link": {
+        "title": "Dealing with a GPU Crash",
+        "url": "An overview of investigating, resolving, and reporting GPU Crashes in Unreal Engine."
+      }
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Niagara Debugger",
+  "description": "Use the Niagara Debugger to analyze your Niagara systems in a level.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "The Niagara Debugger provides tools to review detailed data about simulations in your level. There are several ways to open the debugger: from the Top Menu, by watching an emitter, or by watching a parameter."
+    },
+    {
+      "title": "Opening the Debugger",
+      "subsections": [
+        {
+          "title": "From the Top Menu",
+          "steps": [
+            "From the Level Editor, select Tools > Debug > Niagara Debugger to open the panel."
+          ]
+        },
+        {
+          "title": "By Watching an Emitter",
+          "steps": [
+            "Open the system containing the emitter in the Niagara Editor.",
+            "Right-click the emitter and select Watch Emitter in Niagara Debugger."
+          ]
+        },
+        {
+          "title": "By Watching a Parameter",
+          "steps": [
+            "Locate the parameter in the Parameters panel of the Niagara Editor.",
+            "Right-click the parameter and select Watch Parameter in Niagara Debugger."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Niagara Debugger Layout",
+      "description": "The debugger is organized into sections: Niagara Debugger Panel, Playback Options, Debugger Tabs, and Debugger Options."
+    },
+    {
+      "title": "Playback Options",
+      "parameters": {
+        "Refresh": "Refresh settings on the selected device.",
+        "Play": "Play all Niagara simulations in the level.",
+        "Pause": "Pause all Niagara simulations in the level.",
+        "Loop": "Loop all Niagara simulations in the level.",
+        "Step": "Step forward all Niagara simulations by one frame per click.",
+        "Speed": "Adjust the playback speed of Niagara simulations."
+      }
+    },
+    {
+      "title": "Debugger Tabs",
+      "parameters": {
+        "Debug HUD": "Turn on a heads-up display to view detailed simulation information.",
+        "FX Outliner": "Get debugging and profiling data on Niagara as it runs.",
+        "Performance": "Use performance testing tools to analyze simulations.",
+        "Session Browser": "Set debugging options to a different session, like a console or PIE."
+      }
+    },
+    {
+      "title": "Debug HUD",
+      "subsections": [
+        {
+          "title": "Overview",
+          "content": "Turn on the Debug HUD to show detailed information in the Viewport. Settings are saved between sessions and can display various data groups."
+        },
+        {
+          "title": "Parameters",
+          "parameters": {
+            "Debug Overview": "Display total systems, scalability, active emitters, particles, and memory.",
+            "Debug Filters": "Set filters to display specific actors, components, systems, or emitters.",
+            "Debug System": "Display detailed information for each system in the Viewport.",
+            "Debug Particles": "Show detailed information on individual particles in the Viewport."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Debug System",
+      "subsections": [
+        {
+          "title": "Parameters",
+          "parameters": {
+            "System Debug Verbosity": "Display system bounds, location, orientation, name, and memory usage.",
+            "System Emitter Verbosity": "Show emitter state and particle count.",
+            "System Show Bounds": "Display system bounds.",
+            "System Show Active Only in World": "Show information for visible systems only.",
+            "Show System Attributes": "Display additional information in the Debug HUD.",
+            "System Text Options": "Adjust text display options for system information."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Debug Particles",
+      "subsections": [
+        {
+          "title": "Parameters",
+          "parameters": {
+            "Show Particle Attributes": "Display attributes per particle.",
+            "Enable GPU Readback": "Display particle attributes for GPU emitters.",
+            "Particle Attributes": "Enter attributes to print in the Viewport.",
+            "Particle Text Options": "Adjust text display options for particles.",
+            "Use Max Particles to Display": "Set the number of particles to display information about.",
+            "Show Global Budget Info": "Show global budget information widget."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Wildcard Searching",
+      "description": "Guidelines for using the asterisk (*) for wildcard searching.",
+      "syntax": {
+        "mystring": "Return the exact string 'mystring'.",
+        "*mystring": "Return any item that ends with 'mystring'.",
+        "mystring*": "Return any item that starts with 'mystring'.",
+        "*mystring*": "Return any item that contains 'mystring'.",
+        "my*string": "Return any item that starts with 'my' and ends with 'string'."
+      }
+    },
+    {
+      "title": "Console Commands",
+      "description": "All Debug HUD options can be run manually with console commands.",
+      "commands": {
+        "fx.Niagara.Debug.Hud": "Display the list of available commands.",
+        "Enabled=1": "Enable the HUD (0 to disable).",
+        "ValidateSystemSimulationDataBuffers=1": "Enable or disable system data buffer validation.",
+        "bValidateParticleDataBuffers=1": "Enable or disable particle data buffer validation.",
+        "OverviewEnabled=1": "Enable or disable the main overview display.",
+        "OverviewLocation=30,50": "Set HUD location in the Editor Viewport.",
+        "ShowGlobalBudgetInfo=1": "Enable or disable the global budget information widget.",
+        "EnableGpuParticleReadback=1": "Allow GPU data readback for particle display.",
+        "SystemDebugVerbosity=0": "Set system verbosity level (0 for None, 1 for Basic, 2 for Verbose).",
+        "SystemEmitterVerbosity=0": "Set system emitter debug verbosity (0 for None, 1 for Basic, 2 for Verbose).",
+        "SystemShowBounds=1": "Show all filtered systems bounds (0 to disable).",
+        "SystemShowActiveOnlyInWorld=1": "Show in world display for active components only (0 to disable).",
+        "SystemFilter=*Flop*": "Set wildcard system filter for in world display.",
+        "ComponentFilter=MyComp": "Filter in world display to components that match 'MyComp'.",
+        "ShowSystemVariables=1": "Enable system variables visibility (0 to disable).",
+        "SystemVariables=Position,*Color": "Display any variable matching 'Position' and all variables containing 'Color'.",
+        "ShowParticlesVariablesWithSystem=1": "Show particle variables with the system display (0 to disable).",
+        "MaxParticlesToDisplay=32": "Limit display to 32 particles.",
+        "ShowParticleVariables=1": "Enable particle variables visibility (0 to disable).",
+        "ParticlesVariables=*Pos,Color": "Display any variable containing 'Pos' and any variable matching 'Color'."
+      }
+    },
+    {
+      "title": "FX Outliner",
+      "description": "Capture data from Niagara simulations for analysis. Click the FX Outliner tab in the Niagara Debugger and start capturing.",
+      "layout": {
+        "Toolbar": "Select capture options.",
+        "World Row": "Show data source and net mode.",
+        "System Row": "Show number of system instances.",
+        "System Instance Row": "Show pooling method, execution state, number of emitters.",
+        "Emitter Row": "Show execution state, sim target, number of particles.",
+        "Inline Data": "Display state or performance data.",
+        "Details of selected row": "Show detailed information."
+      }
+    },
+    {
+      "title": "Performance",
+      "description": "Experimental tools for performance testing. Run performance tests and analyze results in the Output Log.",
+      "parameters": {
+        "Toggle ParticlePerf": "Turn on CPU cost for performance tests.",
+        "Run Performance Test": "Run a performance test for a specified duration.",
+        "Toggle Baseline": "Measure system cost against baseline cost of Effect Type.",
+        "Enable Async Simulation": "Enable for all Niagara simulations in the level.",
+        "Disable Async Simulation": "Disable for all Niagara simulations in the level."
+      }
+    },
+    {
+      "title": "Session Browser",
+      "description": "Drive tests on other tabs of the Niagara Debugger. Select sessions running on different devices."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Performance Budgeting Using Effect Types",
+  "description": "Use Effect Types to set up ways to improve the performance of your Niagara systems.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Effect Type assets allow you to configure settings once and apply them across multiple Niagara systems to manage performance."
+    },
+    {
+      "title": "When to Use Performance Budgeting",
+      "content": "Manage the FX workload by culling instances outside a certain range or those exceeding a specified budget usage."
+    },
+    {
+      "title": "Creating an Effect Type Asset",
+      "steps": [
+        "Right-click in the Content Browser and select FX > Niagara Effect Type."
+      ]
+    },
+    {
+      "title": "Effect Type Budgeting Options",
+      "content": "Set various methods to cull systems exceeding budget usage under the Budget Scaling section.",
+      "options": [
+        {
+          "name": "Max Global Budget Usage",
+          "description": "Set a budget percentage above which any system is culled, typically between 0 and 1."
+        },
+        {
+          "name": "Max Distance Scale by Global Budget Use",
+          "description": "Set a curve to define how culling distance decreases as budget use increases."
+        },
+        {
+          "name": "Max Instance Count Scale by Global Budget Use",
+          "description": "Set a curve to scale down the number of instances in the level as budget use increases."
+        },
+        {
+          "name": "Max System Instance Count Scale by Global Budget Use",
+          "description": "Set a curve to scale down the number of instances per system as budget use increases."
+        }
+      ]
+    },
+    {
+      "title": "Curve Diagram",
+      "content": "Values for Start X, Start Y, End X, and End Y define a linearly interpolated curve for culling."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Creating Custom Modules",
+  "description": "Learn how to create custom modules in Niagara.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Niagara allows you to create custom modules using the Niagara Script Editor. Define logic flow, save modules, and apply them in a Niagara stack."
+    },
+    {
+      "title": "Niagara Script Editor Reference",
+      "content": "Refer to the Niagara Script Editor Reference page to understand the UI of the Niagara Script Editor.",
+      "link": {
+        "title": "Niagara Script Editor Reference",
+        "url": "Niagara Script Editor Reference"
+      }
+    },
+    {
+      "title": "Versioning Modules in Niagara",
+      "content": "Enable versioning when creating new module versions to avoid breaking scenes using outdated versions.",
+      "link": {
+        "title": "Versioning Modules and Emitters in Niagara",
+        "url": "Versioning Modules and Emitters in Niagara"
+      }
+    },
+    {
+      "title": "Further Documentation",
+      "content": "More documentation on creating custom modules will be added soon. In the meantime, check out the Content Samples to understand existing modules."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects",
+        "custom modules"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Versioning Modules and Emitters in Niagara",
+  "description": "Niagara has a built-in versioning system for people that are creating their own custom modules and emitters.",
+  "sections": [
+    {
+      "title": "Overview",
+      "content": "Create custom modules using Niagara Scripts. Enable versioning to ensure changes do not break existing assets. This internal versioning system is built into Niagara and complements version control systems like Git or Perforce."
+    },
+    {
+      "title": "Module Versioning",
+      "steps": [
+        "Open the module in the Script Editor by double-clicking it in the System Overview or Content Browser.",
+        "Click the Versioning button in the toolbar."
+      ]
+    },
+    {
+      "title": "Emitter Versioning",
+      "steps": [
+        "Create a new emitter by right-clicking in the Content Browser and selecting FX > Niagara Emitter, or convert an existing emitter by right-clicking it in the Niagara system and selecting Create Asset From This.",
+        "Click the Versioning button in the toolbar of the emitter asset."
+      ]
+    },
+    {
+      "title": "How to Enable Versioning",
+      "steps": [
+        "Open the module in the Script Editor.",
+        "Click the Versioning button.",
+        "In the popup dialog, click Enable Versioning to accept."
+      ]
+    },
+    {
+      "title": "Version Details",
+      "parameters": {
+        "Is Exposed Version": "Enable to make this the default version for the module.",
+        "Change Description": "Describe what is new in this version.",
+        "Is Visible in Version Select": "Enable to make this version available in the version selector."
+      }
+    },
+    {
+      "title": "Creating New Versions",
+      "steps": [
+        "Click the Versioning button to open the panel.",
+        "Click Add version and choose New major version or New minor version.",
+        "Set the Version Details.",
+        "Ensure Is Exposed Version is unchecked while setting up the new version.",
+        "Once satisfied, enable Is Exposed Version and Is Visible in Version Selector."
+      ]
+    },
+    {
+      "title": "Using Different Versions",
+      "steps": [
+        "Select a module in the stack with versioning enabled.",
+        "Use the version selector icon in the Selection panel to change versions.",
+        "Save your project before switching to a new version.",
+        "Select the custom module in the System Overview, click the version switcher, and choose the new version.",
+        "For major versions, upgrade directly from the Selection panel by clicking Fix Issue."
+      ]
+    },
+    {
+      "title": "Python Integration",
+      "content": "Write upgrade scripts to map properties from old to new versions.",
+      "steps": [
+        "Click the Versioning button in the Niagara Script toolbar.",
+        "Select Upgrade Script Execution and choose Direct Text Entry or Script Asset.",
+        "Enter or link your script."
+      ]
+    },
+    {
+      "title": "Writing Python Scripts",
+      "example": {
+        "description": "Example script to map a bool input to an enum.",
+        "code": "flying = upgrade_context.get_old_input(\"Is Flying\")\nif not flying.is_local_value():\n    print(\"Is Flying input used a dynamic input that could not be transferred to the new Movement Mode input\")\nelif flying.as_bool():\n    upgrade_context.set_enum_input(\"Movement Mode\", \"Flying\")\nelse:\n    upgrade_context.set_enum_input(\"Movement Mode\", \"Walking\")"
+      }
+    },
+    {
+      "title": "Python API Listing",
+      "api": {
+        "upgrade_context": {
+          "get_old_input": "Returns a UNiagaraPythonScriptModuleInput. If the input does not exist, returns a blank default object.",
+          "set_float_input": "Set a new float input.",
+          "set_int_input": "Set a new int input.",
+          "set_bool_input": "Set a new bool input.",
+          "set_vec2_input": "Set a new Vector2D input.",
+          "set_vec3_input": "Set a new Vector input.",
+          "set_vec4_input": "Set a new Vector4 input.",
+          "set_color_input": "Set a new LinearColor input.",
+          "set_quat_input": "Set a new Quat input.",
+          "set_enum_input": "Set a new enum input."
+        },
+        "UNiagaraPythonScriptModuleInput": {
+          "is_set": "Returns true when the user sets a value.",
+          "is_local_value": "Returns true when the input is set to a local value.",
+          "as_float": "Convert input to float.",
+          "as_int": "Convert input to int.",
+          "as_bool": "Convert input to bool.",
+          "as_vec2": "Convert input to Vector2D.",
+          "as_vec3": "Convert input to Vector.",
+          "as_vec4": "Convert input to Vector4.",
+          "as_color": "Convert input to LinearColor.",
+          "as_quat": "Convert input to Quat.",
+          "as_enum": "Convert input to enum."
+        }
+      }
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Niagara Tutorials",
+  "description": "A collection of tutorials for creating projects with the Niagara visual effects system.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "The Niagara Tutorials pages provide step-by-step examples on how to work with the Niagara Editor to create visual effects in Unreal Engine 5. Includes tutorials from simple ambient effects to complex particle interactions."
+    },
+    {
+      "title": "Foundation",
+      "content": "Niagara is installed and enabled by default in Unreal Engine 5. If not visible, learn how to manually enable the Niagara plugin.",
+      "link": {
+        "title": "Enable the Niagara Plugin",
+        "url": "Enable the Niagara Plugin"
+      }
+    },
+    {
+      "title": "Level 1 Tutorials - Beginner",
+      "content": "Start with basics of Niagara to create simple environment effects.",
+      "tutorials": [
+        {
+          "title": "Sprite Smoke",
+          "description": "Create a smoke effect using sprite particles in Niagara.",
+          "url": "Sprite Smoke"
+        },
+        {
+          "title": "GPU Sprite Effect",
+          "description": "Use your GPU to spawn millions of sprite particles.",
+          "url": "GPU Sprite Effect"
+        },
+        {
+          "title": "Mesh Balloons",
+          "description": "Use a static mesh to create a balloon effect using Niagara.",
+          "url": "Mesh Balloons"
+        },
+        {
+          "title": "Particle Lights",
+          "description": "Create particles that emit light in your Niagara system.",
+          "url": "Particle Lights"
+        },
+        {
+          "title": "Ribbon Effect",
+          "description": "Create a ribbon visual effect using Niagara.",
+          "url": "Ribbon Effect"
+        },
+        {
+          "title": "Dark Smoke",
+          "description": "Modify the sprite smoke effect to create a dark smoke effect.",
+          "url": "Dark Smoke"
+        },
+        {
+          "title": "Steam Effect",
+          "description": "Create a steam effect using Niagara.",
+          "url": "Steam Effect"
+        },
+        {
+          "title": "Beam Effect",
+          "description": "Create a beam effect that simulates lightning.",
+          "url": "Beam Effect"
+        },
+        {
+          "title": "Audio Effects",
+          "description": "Play audio effects within a Niagara simulation.",
+          "url": "Audio Effects"
+        }
+      ]
+    },
+    {
+      "title": "Level 2 Tutorials - Intermediate",
+      "content": "Learn how to use more than one emitter in a Niagara System.",
+      "tutorials": [
+        {
+          "title": "Sparks Effect",
+          "description": "Create a sparks effect using Niagara with multiple emitters.",
+          "url": "Sparks Effect"
+        }
+      ]
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Enable the Niagara Plugin",
+  "description": "Describes how you can enable the Niagara Plugin.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "In Unreal Engine 5, the Niagara plugin is installed and enabled by default. If you cannot see the Niagara options, ensure the plugin is enabled."
+    },
+    {
+      "title": "How to Enable the Niagara Plugin",
+      "steps": [
+        "Open the Plugins menu by going to Edit > Plugins.",
+        "In the Plugins menu, locate the FX section and find Niagara.",
+        "If the checkbox is unchecked, click on it to enable Niagara.",
+        "If prompted, click Restart Now to relaunch the Unreal Editor with the Niagara plugin enabled."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "After the UE4 Editor restarts, you will see a new FX section with all Niagara options when you right-click in the Content Browser."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Sprite Smoke",
+  "description": "This document describes how you can create a smoke effect using sprite particles in Niagara.",
+  "sections": [
+    {
+      "title": "Prerequisite Topics",
+      "content": "Ensure familiarity with enabling the Niagara Plugin and basic VFX techniques using sprites."
+    },
+    {
+      "title": "Project Setup",
+      "steps": [
+        "Create a new folder in the Content Browser named SpriteEffect.",
+        "Locate or make a copy of the M_smoke_subUV material from the Starter Content."
+      ]
+    },
+    {
+      "title": "Create the System and Emitter",
+      "steps": [
+        "Right-click in the Content Browser and select FX > Niagara System.",
+        "Select New system from selected emitters and click Next.",
+        "Under Template, select Simple Sprite Burst and add the emitter.",
+        "Name the new system SmokeSystem and open it in the Niagara Editor.",
+        "Rename the emitter instance to FX_Smoke."
+      ]
+    },
+    {
+      "title": "Change Renderer Settings",
+      "steps": [
+        "In the System Overview, select the Sprite Renderer.",
+        "Set the Material to M_smoke_subUV.",
+        "Set Sub Image Size to X: 8.0, Y: 8.0.",
+        "Enable Sub UV Blending."
+      ]
+    },
+    {
+      "title": "Drag the SmokeSystem into your Level",
+      "content": "This allows you to see changes and edits in context."
+    },
+    {
+      "title": "Edit the Emitter Update Group Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Delete the Spawn Burst Instantaneous module.",
+        "Add the Spawn Rate module and set Spawn Rate to 50.",
+        "Set the simulation to run on an infinite loop in the Emitter State module."
+      ]
+    },
+    {
+      "title": "Edit the Particle Spawn Group Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Set Lifetime Mode to Random, Lifetime Min to 2, and Lifetime Max to 3.",
+        "Set Sprite Size Mode to Random Uniform, Uniform Sprite Size Min to 75, and Uniform Sprite Size Max to 200.",
+        "Set Sprite Rotation Mode to Direct Normalized Angle (0-1) with Random Range Float for the angle.",
+        "Add the Add Velocity module with random range vector for Velocity.",
+        "Add the Shape Location module with Sphere Primitive and Sphere Radius 64.",
+        "Add the SubUV Animation module and set SubUV Animation Mode to Linear, Start Frame to 0, and End Frame to 63."
+      ]
+    },
+    {
+      "title": "Edit the Particle Update Group Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Add the Acceleration Force module and set Z value to 500."
+      ]
+    },
+    {
+      "title": "Save the Emitter as an Asset",
+      "steps": [
+        "Click the Gear icon in the Emitter Settings menu and select Create Asset From This.",
+        "Click the Save button to apply and save changes."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "You have created a simple smoke effect using sprites."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "GPU Sprite Effect",
+  "description": "This document describes how you can use your GPU to spawn millions of sprite particles.",
+  "sections": [
+    {
+      "title": "Prerequisite Topics",
+      "content": "Ensure familiarity with enabling the Niagara Plugin."
+    },
+    {
+      "title": "Introduction",
+      "content": "Learn to create a sprite particle effect using the GPU to avoid performance issues when spawning tens of thousands of particles."
+    },
+    {
+      "title": "Create the System and Emitter",
+      "steps": [
+        "Right-click in the Content Browser and select FX > Niagara System.",
+        "Select New system from selected emitters and click Next.",
+        "Under Templates, select Simple Sprite Burst and add the emitter.",
+        "Name the new system GPUSprite and open it in the Niagara Editor.",
+        "Rename the emitter instance to FX_GPUSprite."
+      ]
+    },
+    {
+      "title": "Drag the GPUSprite system into your Level",
+      "content": "See every change and edit in context as changes propagate to the instance in your Level."
+    },
+    {
+      "title": "Emitter Settings - Emitter Properties",
+      "steps": [
+        "Open the Emitter Settings in the System Overview.",
+        "Expand Emitter Properties and set Sim Target to GPUComputeSim.",
+        "Click the box for Fixed Bounds to resolve any warnings."
+      ]
+    },
+    {
+      "title": "Emitter Update Group Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Set Life Cycle Mode in the Emitter State module to System.",
+        "Set Spawn Count in the Spawn Burst Instantaneous module to 2500.",
+        "Add the Spawn Rate module and set Spawn Rate to 500."
+      ]
+    },
+    {
+      "title": "Particle Spawn Group Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Set Lifetime to 5 in the Initialize Particle module.",
+        "Set Sprite Size to X: 5, Y: 5.",
+        "Add the Sphere Location module and set Shape Primitive to Sphere."
+      ]
+    },
+    {
+      "title": "Particle Update Group Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Add the Scale Sprite Size module and set Scale Sprite to Non-Uniform.",
+        "Set Scale Factor to Dynamic Inputs > Vector2D from Float.",
+        "Set Value to Dynamic Inputs > Float from Curve and apply the Ramp Up Down curve template.",
+        "Add the Curl Noise Force module with Noise Strength: 72 and Noise Frequency: .02.",
+        "Add the Point Attraction Force module with Attraction Strength: 5.5, Attraction Radius: 300.0, Falloff Exponent: 0.6, and Kill Radius: 4.0.",
+        "Add the Color module and set Color to General > Dynamic Inputs > Color from Curve.",
+        "Set color and opacity stops."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "Congratulations! You've created a cool sprite effect that uses the GPU instead of the CPU."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Mesh Balloons",
+  "description": "This document describes how you can use a static mesh to create a balloon effect using Niagara.",
+  "sections": [
+    {
+      "title": "Prerequisite Topics",
+      "content": "Ensure familiarity with enabling the Niagara Plugin and have an imported balloon mesh or use the Shape_Sphere mesh from Starter Content."
+    },
+    {
+      "title": "Create a Material",
+      "steps": [
+        "Right-click in the Content Browser and select Create Basic Asset > Material.",
+        "Name the new Material Balloon_Material and open it in the Material Editor.",
+        "In the Palette panel, type Particle and add a Particle Color node to the Graph.",
+        "Connect the RGB output to the Base Color input on the Material node.",
+        "Create three Constant nodes and connect them to Metallic, Specular, and Roughness inputs.",
+        "Set the Specular Value to 0.7 and the Roughness Value to 0.2."
+      ],
+      "finalResult": "Material should look like the image provided in the guide."
+    },
+    {
+      "title": "Create the System and Emitter",
+      "steps": [
+        "Right-click in the Content Drawer and select FX > Niagara System.",
+        "Select New system from selected emitters and click Next.",
+        "Under Templates, select Fountain and add the emitter.",
+        "Name the new system Balloon_System and open it in the Niagara Editor.",
+        "Rename the emitter instance to Balloons.",
+        "Drag your MeshSystem into your Level."
+      ]
+    },
+    {
+      "title": "Change the Renderer",
+      "steps": [
+        "In the System Overview, open Render in the Selection panel.",
+        "Delete the Sprite Renderer module.",
+        "Add a Mesh Renderer module.",
+        "Select your mesh in the Particle Mesh dropdown (Shape_Sphere or your balloon model).",
+        "Enable Override Materials and select Balloon_Material."
+      ]
+    },
+    {
+      "title": "Edit Emitter Update Group Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Set the Life Cycle Mode in the Emitter State module to System.",
+        "Set the Spawn Rate module to 100."
+      ]
+    },
+    {
+      "title": "Edit Particle Spawn Group Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Set Lifetime Mode to Random with Minimum 2.0 and Maximum 4.0.",
+        "Set Color Mode to Random Range with RGB values for Color Minimum (1.0, 0.0, 0.0) and Color Maximum (0.0, 0.0, 1.0).",
+        "Set Sprite Attributes to Unset.",
+        "Set Mesh Scale Mode to Random Uniform with Mesh Uniform Scale Min 0.7 and Mesh Uniform Scale Max 1.0.",
+        "Remove the Add Velocity in Cone module.",
+        "Add the Add Velocity module with Random Range Vector for Velocity.",
+        "Set Velocity Minimum (X: 15, Y: 25, Z: 50) and Maximum (X: 30, Y: 30, Z: 100).",
+        "Set the Sphere Location module with Sphere Radius 200."
+      ]
+    },
+    {
+      "title": "Edit Particle Update Group Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Set Gravity Force (X: 10, Y: 10, Z: 40).",
+        "Set Drag to 1.0.",
+        "Remove the Scale Color module."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "Congratulations! You've made a mesh particle effect in Niagara. You learned how to create a material, apply the particle color to that material, and use a static mesh as your particles."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Particle Lights",
+  "description": "How to create particles that emit light in your Niagara system.",
+  "sections": [
+    {
+      "title": "Prerequisite Topics",
+      "content": "Ensure familiarity with enabling the Niagara Plugin and include the M_Radial_Gradient Material from Starter Content."
+    },
+    {
+      "title": "Introduction",
+      "content": "Learn to set up a Niagara emitter so that particles and lights are spawned simultaneously, adding realism to visual effects."
+    },
+    {
+      "title": "Create the System and Emitter",
+      "steps": [
+        "Right-click in the Content Browser and select FX > Niagara System.",
+        "Select New system from selected emitters and click Next.",
+        "Under Templates, select Fountain and add the emitter.",
+        "Name the new system ParticleLights and open it in the Niagara Editor.",
+        "Rename the emitter instance to FX_ParticleLight.",
+        "Drag your ParticleLight system into your Level."
+      ]
+    },
+    {
+      "title": "Edit the Emitter Update Group Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Set the Life Cycle Mode in the Emitter State module to System.",
+        "Set the Spawn Rate module to 500."
+      ]
+    },
+    {
+      "title": "Edit the Particle Spawn Group Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Set Lifetime Mode to Random with Minimum 1.75 and Maximum 2.5.",
+        "Set the initial Color values to Red: 0.1, Green: 0.3, Blue: 50.",
+        "Set Sprite Size Mode to Random Uniform with Minimum 2.5 and Maximum 8.0.",
+        "Set the Sphere Radius to 15 in the Sphere Location module.",
+        "Set Velocity Strength Minimum to 300 and Maximum to 600 in the Add Velocity in Cone module."
+      ]
+    },
+    {
+      "title": "Edit the Particle Update Group Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Add the Collision module to the Particle Update group.",
+        "Click Fix Issue to resolve any errors with the Collision module."
+      ]
+    },
+    {
+      "title": "Add the Light Renderer",
+      "steps": [
+        "Open the Render group in the System Overview.",
+        "Add a Light Renderer.",
+        "Set the Radius Scale to 5.0.",
+        "Set Color Add values to Red: 0, Green: 0, Blue: 15."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "Congratulations! You have created an effect that includes a particle light, and that emits light in your scene."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Ribbon Effect",
+  "description": "This document describes how you can create a ribbon visual effect using Niagara.",
+  "sections": [
+    {
+      "title": "Prerequisite Topics",
+      "content": "Ensure familiarity with enabling the Niagara Plugin. Uses DefaultRibbonMaterial or M_Balloon material."
+    },
+    {
+      "title": "Introduction",
+      "content": "Ribbon Emitters simulate natural phenomena like smoke or vapor trails using ribbon-style particle effects."
+    },
+    {
+      "title": "Create System and Emitter",
+      "steps": [
+        "Right-click in the Content Drawer and select FX > Niagara System.",
+        "Select New system from selected emitters and click Next.",
+        "Under Templates, select Simple Sprite Burst.",
+        "Add the selected emitter to the list and click Finish.",
+        "Name the new system RibbonSystem and drag it into your Level.",
+        "Open RibbonSystem in the Niagara Editor and rename the emitter instance to FX_Ribbon."
+      ]
+    },
+    {
+      "title": "Change Renderer",
+      "steps": [
+        "Open the Render group in the System Overview.",
+        "Delete the Sprite Renderer module.",
+        "Add a Ribbon Renderer module.",
+        "Enable Show Engine Content and Show Plugin Content to see the material.",
+        "Select DefaultRibbonMaterial or M_Balloon material."
+      ]
+    },
+    {
+      "title": "Edit the Emitter Update Group Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Set Life Cycle Mode in the Emitter State module to System.",
+        "Add the Spawn Rate module and set the Spawn Rate to 100."
+      ]
+    },
+    {
+      "title": "Edit the Particle Spawn Group Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Set the Lifetime parameter to 5.",
+        "Set the Color parameter to a color of your choosing.",
+        "Set the Mass parameter to 10.",
+        "Set the Ribbon Width to 10 under Ribbon Attributes.",
+        "Add a Shape Location module and set Shape Primitive to Ring/Disk.",
+        "Set the Ring Radius to 50.",
+        "Set Ring Distribution Mode to Direct.",
+        "Add the Add Velocity module and set Velocity Mode to From Point.",
+        "Set the Velocity Speed to 50."
+      ]
+    },
+    {
+      "title": "Edit the Particle Update Group Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Delete the Scale Color module.",
+        "Add the Acceleration Force module.",
+        "Set the Z value of Acceleration to -200."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "Congratulations! You have created a Niagara ribbon effect."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Dark Smoke",
+  "description": "This tutorial shows how to modify the sprite smoke effect to create a dark smoke effect.",
+  "prerequisiteTopics": [
+    "Enable the Niagara Plugin",
+    "Create a Sprite Smoke Effect in Niagara"
+  ],
+  "prerequisiteSteps": [
+    "Ensure your project includes the Starter Content.",
+    "Have the FX_Smoke emitter created in the Create a Sprite Smoke Effect in Niagara tutorial."
+  ],
+  "sections": [
+    {
+      "title": "Create System and Emitter",
+      "steps": [
+        "Create a new folder for this tutorial in the Content folder for your project.",
+        "Make a copy of the FX_Smoke emitter.",
+        "Drag this duplicate emitter to the new folder and select Move.",
+        "Rename the copied emitter to FX_DarkSmoke.",
+        "Right-click on the new emitter and select Create Niagara System.",
+        "Name the system DarkSmoke.",
+        "Drag the DarkSmoke system into your Level.",
+        "Double-click the FX_DarkSmoke emitter to open it in the Niagara Editor."
+      ]
+    },
+    {
+      "title": "Edit the Emitter Update Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Set the Life Cycle Mode in the Emitter State module to System.",
+        "Set the Spawn Rate in the Spawn Rate module to 25."
+      ]
+    },
+    {
+      "title": "Edit the Particle Spawn Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "In the Initialize Particle module, expand Lifetime and set Lifetime Mode to Random, Minimum to 3.0, and Maximum to 5.0.",
+        "Expand Color and change the RGB values for Minimum and Maximum to 0.5 and 0.205 respectively.",
+        "Expand Sprite Size under Sprite Attributes, set Sprite Size Mode to Random Uniform, Minimum to 50, and Maximum to 90.",
+        "Open the Add Velocity module and set Velocity Minimum and Maximum values to X: 12-32, Y: 0-0, Z: 5-7.",
+        "Open the Sphere Location module and set Sphere Radius to 30."
+      ]
+    },
+    {
+      "title": "Edit the Particle Update Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Open the Acceleration Force module and set the Acceleration Z value to 20.",
+        "Open the Scale Color module, set Scale Mode to RGB and Alpha Separately, and set Scale Alpha to Float from Curve using the Pulse template."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "After following these steps, the Smoke system in your level will produce a dark smoke effect."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Steam Effect",
+  "description": "This how-to describes how to create a steam effect using Niagara.",
+  "prerequisiteSteps": [
+    "Ensure your project includes the Starter Content.",
+    "Use the FX_Smoke emitter created in Create a Sprite Particle Effect in Niagara."
+  ],
+  "sections": [
+    {
+      "title": "Create the Steam Emitter and System",
+      "steps": [
+        "Create a new folder for this How-To in the Content folder for your project.",
+        "Locate the FX_Smoke emitter you saved when working through Create a Sprite Particle Effect in Niagara. Right-click on the emitter, and select Duplicate Emitter.",
+        "Drag this duplicate emitter to the folder you created in step 1. In the popup context menu, select Move.",
+        "Rename the copied emitter FX_Steam.",
+        "Right-click on your new steam emitter, and select Create Niagara System.",
+        "Name the system Steam.",
+        "Open your Level in the Level Editor, if it isn't open already. Drag the Steam system into your level."
+      ]
+    },
+    {
+      "title": "Edit the Emitter Update Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Expand the Emitter State module. Set the Life Cycle Mode to System.",
+        "Expand the Spawn Rate module. Change the Spawn Rate setting to 30."
+      ]
+    },
+    {
+      "title": "Edit the Particle Spawn Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Open the Initialize Particle module. Under Point Attributes, expand Lifetime. Change the Minimum to 3.0 and Maximum to 7.0.",
+        "Expand Color. Change the RGB values to Red: 1.0, Green: 1.0, Blue: 1.0.",
+        "Under Sprite Attributes, expand Sprite Size. Change the Minimum to 100 and Maximum to 200.",
+        "Open the Add Velocity module. Change the Velocity Minimum to X: 16, Y: -5.0, Z: 35 and Maximum to X: 32, Y: 5.0, Z: 50.",
+        "Open the Sphere Location module. Change the Sphere Radius value to 20."
+      ]
+    },
+    {
+      "title": "Edit the Particle Update Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Open the Acceleration Force module. Set the Acceleration Minimum to X: 25, Y: -10.0, Z: 15 and Maximum to X: 55, Y: 10.0, Z: 25.",
+        "Open the Scale Color module. Click on the Pulse Out curve template to apply that shape to the curve.",
+        "Click the Plus sign icon (+) in the Particle Update group, and select Forces > Drag to add the Drag module.",
+        "Click the Fix Issue button to move the module and resolve the error.",
+        "Set the Drag to 0.8."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "After following these steps, the Steam system in your level will produce a steam effect."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Sparks Effect",
+  "description": "This tutorial shows how to create a sparks effect using Niagara. It shows how to use more than one emitter in a Niagara system.",
+  "prerequisiteSteps": [
+    "Ensure your project includes the Starter Content.",
+    "Use the FX_Smoke emitter created in Create a Sprite Particle Effect in Niagara."
+  ],
+  "materials": [
+    "M_smoke_subUV",
+    "M_Spark",
+    "M_Radial_Gradient"
+  ],
+  "sections": [
+    {
+      "title": "Create the Smoke Emitter and the Sparks System",
+      "steps": [
+        "Create a new folder for this tutorial in the Content folder for your project.",
+        "Make a copy of the FX_Smoke emitter you created in Create a Sprite Particle Effect in Niagara.",
+        "Drag this duplicate emitter to the folder you created in step 1. In the popup context menu, select Move.",
+        "Rename the copied emitter FX_Sparks_Smoke.",
+        "Right-click on your new smoke emitter, and select Create Niagara System.",
+        "Name the system SparksSystem.",
+        "Open your Level in the Level Editor, if it isn't open already. Drag the SparksSystem tile from the Content Drawer into your Level."
+      ]
+    },
+    {
+      "title": "Smoke Emitter - Edit the Emitter Update Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Open the Emitter State module. Set the Life Cycle Mode to System.",
+        "Open the Spawn Rate module. Change the Spawn Rate setting to 20."
+      ]
+    },
+    {
+      "title": "Smoke Emitter - Edit the Particle Spawn Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Open the Initialize Particle module. Under Point Attributes, expand Lifetime. Set Lifetime Mode to Random, Minimum to 2.0, and Maximum to 3.0.",
+        "Locate the Color parameter. Change the RGB values to Red: 0.3, Green: 0.3, Blue: 0.3.",
+        "Under Sprite Attributes, expand Sprite Size. Set the Sprite Size Mode to Non-Uniform. Set the Minimum to 20.0 and Maximum to 40.0.",
+        "Open the Add Velocity module. Change the Velocity Minimum to X: 0.0, Y: 0.0, Z: 25.0 and Maximum to X: 1.0, Y: 1.0, Z: 35.0.",
+        "Open the Shape Location module. Change the Sphere Radius value to 5."
+      ]
+    },
+    {
+      "title": "Smoke Emitter - Edit the Particle Update Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Open the Scale Color module. Deselect the box next to Scale RGB. Above the curve for Scale Alpha, click the Smooth Ramp Down template to apply that shape to the curve.",
+        "Open the Acceleration Force module. Set the Acceleration values to X: 0, Y: 0, Z: 20."
+      ]
+    },
+    {
+      "title": "Add the Spark Burst Emitter to the System",
+      "steps": [
+        "Right-click in the System Overview of your SparkFountain system. Click Add Emitter, and select the Simple Sprite Burst template.",
+        "Rename the new emitter FX_SparkBurst."
+      ]
+    },
+    {
+      "title": "Spark Burst Emitter - Edit Render Settings",
+      "steps": [
+        "Open the Render group in the System Overview.",
+        "Under Sprite Renderer, click the dropdown for Material, and select the M_Spark material from the Starter Content."
+      ]
+    },
+    {
+      "title": "Spark Burst Emitter - Edit the Emitter Update Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Remove the Sprite Burst Instantaneous module by clicking the Trashcan icon.",
+        "Open the Emitter State module. Set the Life Cycle Mode to System.",
+        "Click the Plus sign (+) for Emitter Update, and select Spawning > Spawn Rate.",
+        "Open the Spawn Rate module. Set the Spawn Rate to 50."
+      ]
+    },
+    {
+      "title": "Spark Burst Emitter - Edit the Particle Spawn Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Under Point Attributes, set the Lifetime to 0.2.",
+        "Set the Mass Mode to Random. Set Minimum to 0.6 and Maximum to 1.0.",
+        "Under Sprite Attributes, expand Sprite Size. Set the Sprite Size Mode to Random Non-Uniform. Set the Sprite Size Minimum to X: 10.0, Y: 10.0 and Maximum to X: 30.0, Y: 25.0.",
+        "Enable Sprite Rotation. Set the Sprite Rotation Mode to Direct Angle (Degrees). Set the Minimum to -10.0 and Maximum to 30.0.",
+        "Add the Add Velocity module. Set the Velocity Minimum to X: 0.0, Y: 0.0, Z: 0.0 and Maximum to X: 5.0, Y: 5.0, Z: 5.0.",
+        "Add the Shape Location module. Set the Sphere Radius to 5."
+      ]
+    },
+    {
+      "title": "Spark Burst Emitter - Edit the Particle Update Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Open the Scale Color module. Set Scale RGB to R: 2.0, G: 6.0, B: 25.0. Under Scale Alpha, select the Smooth Ramp Down template.",
+        "Add the Scale Sprite Size module. Set the Scale Factor Minimum to X: 1.0, Y: 2.5 and Maximum to X: 3.5, Y: 5.0."
+      ]
+    },
+    {
+      "title": "Add the Radial Sparks Emitter to the System",
+      "steps": [
+        "Right-click in the System Overview of your SparkFountain system. Click Add Emitter, and select the Simple Sprite Burst template.",
+        "Rename the new emitter FX_Sparks_Radial."
+      ]
+    },
+    {
+      "title": "Radial Sparks Emitter - Edit Render Settings",
+      "steps": [
+        "Open the Render group in the System Overview.",
+        "Click the dropdown for Material, and select the M_Radial_Gradient material from the Starter Content. Set the Alignment to Velocity Aligned."
+      ]
+    },
+    {
+      "title": "Radial Sparks Emitter - Edit the Emitter Update Settings",
+      "steps": [
+        "Open the Emitter Update group in the System Overview.",
+        "Remove the Sprite Burst Instantaneous module by clicking the Trashcan icon.",
+        "Open the Emitter State module. Set the Life Cycle Mode to System.",
+        "Click the Plus sign (+) for Emitter Update, and select Spawning > Spawn Rate.",
+        "Open the Spawn Rate module. Set the Spawn Rate to 500."
+      ]
+    },
+    {
+      "title": "Radial Sparks Emitter - Edit Particle Spawn Settings",
+      "steps": [
+        "Open the Particle Spawn group in the System Overview.",
+        "Open the Initialize Particle module. Set the Lifetime Mode to Random. Set the Minimum to 0.2 and Maximum to 0.7.",
+        "Set the Color Mode to Direct Set. Set the RGB values to R: 2.0, G: 8.0, B: 20.0, and Alpha to 1.0.",
+        "Set the Mass Mode to Random. Set the Minimum to 0.3 and Maximum to 0.6.",
+        "Under Sprite Attributes, set the Sprite Size Mode to Non-Uniform. Set the following values: X: 0.25, Y: 0.5.",
+        "Add the Calculate Size and Rotational Inertia by Mass module. Under Density, set Density by Material Type to Water. Under Proportions, set Height to 0.5 and Depth to 0.0.",
+        "Add the Add Velocity module. Set the Velocity Minimum to X: -100.0, Y: -100.0, Z: 300.0 and Maximum to X: 90.0, Y: 90.0, Z: 500.0.",
+        "Add the Shape Location module. Set the Sphere Radius to 2.0."
+      ]
+    },
+    {
+      "title": "Radial Sparks Emitter - Edit the Particle Update Settings",
+      "steps": [
+        "Open the Particle Update group in the System Overview.",
+        "Add the Scale Velocity module. Set the Scale Velocity to X: 3.0, Y: 4.0, Z: 1.0.",
+        "Add the Gravity Force module. Set the Z value to -4500.",
+        "Add the Drag module. Set the Drag value to 1.7.",
+        "Add the Collision module. Set Restitution to 0.4 and Friction to 0.2.",
+        "Remove the Scale Color module by clicking the Trashcan icon.",
+        "Add the Scale Sprite Size by Speed module. Set the Scale Factor Minimum to X: 0, Y: 3 and Maximum to X: 0.5, Y: 6. Set the Velocity Threshold value to 2000."
+      ]
+    },
+    {
+      "title": "End Result",
+      "content": "After following these steps, the Sparks effect is complete. Check the final results back in your level and make any adjustments to fine-tune it."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Audio Effects",
+  "description": "How to play audio effects within a Niagara simulation.",
+  "sections": [
+    {
+      "title": "Overview",
+      "content": "An audio effect is when you want to play some sound within a Niagara simulation. For example, when a particle simulation collides with something, then a sound plays. There are several ways to accomplish this within the Niagara system."
+    },
+    {
+      "title": "Sample Methods",
+      "content": "You can find samples of these methods in the Content Examples project on the Epic Games Launcher: Unreal Engine > Learn > Engine Feature Samples > Content Examples."
+    },
+    {
+      "title": "Using the Play Audio Module",
+      "steps": [
+        "Add the Play Audio module to your emitter. You can add this to the Particle Update group so that this module is evaluated as the particles age.",
+        "From Sound to Play, select a sound from the dropdown. If you have the Content Examples project open, there are already some sounds added to the project.",
+        "Set up the Play Audio condition."
+      ],
+      "prosCons": {
+        "pros": [
+          "Most performant solution (for both memory and CPU usage)",
+          "Easiest to set up"
+        ],
+        "cons": [
+          "Sound properties like volume or pitch are fixed once the sound starts playing",
+          "Sounds cannot update their positions over time as a particle moves"
+        ]
+      },
+      "example": {
+        "steps": [
+          "Download the Content Examples project, then open it.",
+          "In the Content Drawer, search for Play Audio.",
+          "Double-click PlayAudio Example to open the Niagara System example.",
+          "Locate the emitter called Play_Sound_On_Collision that uses the Play Audio module.",
+          "Locate the emitter called Mesh_Rotational_Velocity that uses the Play Persistent Audio module."
+        ]
+      }
+    },
+    {
+      "title": "Using the Play Persistent Audio Module",
+      "steps": [
+        "Add the Play Persistent Audio module.",
+        "Add the Update Persistent Audio module.",
+        "Use the same audio player reference in both modules."
+      ],
+      "details": "This module keeps a reference to each spawned sound effect so it can be updated over time. It allows for advanced features like fading or setting sound cue parameters.",
+      "prosCons": {
+        "pros": [
+          "Change volume, pitch, location, and rotation at runtime",
+          "Set sound cue parameters and end sound when simulation stops",
+          "Filter sounds based on camera distance"
+        ],
+        "cons": [
+          "More complex to set up",
+          "Less performant than Play Audio"
+        ]
+      },
+      "example": {
+        "steps": [
+          "In the Content Samples file, from the Content Drawer search for Play Audio, then double-click PlayAudio Example to open.",
+          "Locate the emitter called Mesh_Rotational_Velocity. You will find on this emitter a module called Play Persistent Audio.",
+          "Double-click Play Persistent Audio to open the Node Graph."
+        ]
+      }
+    },
+    {
+      "title": "Using the Audio Component Renderer",
+      "steps": [
+        "Add the Audio Component Renderer.",
+        "From the Selection panel, click the Component Type dropdown menu, then select AudioComponent."
+      ],
+      "details": "The Audio Component Renderer is experimental. It can be used to spawn audio components and provides more control over the audio.",
+      "prosCons": {
+        "pros": [
+          "Very flexible",
+          "Provides more control over audio"
+        ],
+        "cons": [
+          "Missing many features",
+          "Less performant",
+          "Cannot set sound cue parameters"
+        ]
+      }
+    },
+    {
+      "title": "Exporting Particle Data to Blueprint",
+      "steps": [
+        "Use the Export Particle Data interface.",
+        "In the Content Examples project, search for export particle in the Content Drawer.",
+        "Double-click ExportParticleDataExample blueprint for a detailed explanation on how to export data from your particle simulation."
+      ],
+      "details": "This is the most flexible way to play audio but also the slowest and most complex to set up. It works on GPU emitters with some added latency.",
+      "prosCons": {
+        "pros": [
+          "Most flexible approach",
+          "Works on GPU"
+        ],
+        "cons": [
+          "Slowest performance",
+          "Any module features need to be reimplemented in BP logic",
+          "Setup is complex"
+        ]
+      }
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "vfx",
+        "audio",
+        "niagara",
+        "unreal audio engine"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help peers in Developer Forums. Write or read tutorials in Learning Library."
+    }
+  ]
+}
+{
+  "guideTitle": "Niagara Editor UI Reference",
+  "description": "This page describes the user interface (UI) of the Niagara Emitter and System Editor.",
+  "sections": [
+    {
+      "title": "Overview",
+      "content": "The Niagara Editor can be opened by double-clicking on any Niagara emitter or system, or through the context menu by right-clicking on a Niagara emitter or system and selecting Edit. This document identifies and describes the parts of the Niagara Editor. Because the user interface (UI) of the editor is mostly the same for both emitters and systems, descriptions for both have been included."
+    },
+    {
+      "title": "Editor Panels",
+      "content": [
+        "Menu Bar",
+        "Tool Bar",
+        "Preview Panel",
+        "Parameters Panel",
+        "System Overview",
+        "Scratch Pad Panel",
+        "Selection Panel (the Stack)",
+        "Curves Panel",
+        "Niagara Log Panel",
+        "Timeline Panel"
+      ]
+    },
+    {
+      "title": "Menu",
+      "sections": [
+        {
+          "title": "File",
+          "commands": [
+            { "command": "Save", "description": "Saves the current emitter." },
+            { "command": "Save As", "description": "Saves the current emitter under a different name." },
+            { "command": "Open Asset", "description": "Displays a window to select other assets." },
+            { "command": "Save All", "description": "Saves all assets and levels in this project." },
+            { "command": "Choose Files to Save", "description": "Displays a dialog with options for saving assets and levels." }
+          ]
+        },
+        {
+          "title": "Edit",
+          "commands": [
+            { "command": "Undo", "description": "Undoes the last action." },
+            { "command": "Redo", "description": "Redoes an action that was undone." },
+            { "command": "Undo History", "description": "Displays a dialog listing all undone actions." },
+            { "command": "Editor Preferences", "description": "Opens the Editor Preferences window to enable you to adjust the preferences of the editors." },
+            { "command": "Project Settings", "description": "Opens the Project Settings window to enable you to adjust the setting of the Project." },
+            { "command": "Plugins", "description": "Opens the Plugins windows for you to enable or disable plugins." }
+          ]
+        },
+        {
+          "title": "Asset",
+          "commands": [
+            { "command": "Find in Content Browser", "description": "Switches to most recently used Content Browser, and selects the current Asset in that Content Browser." },
+            { "command": "Reference Viewer", "description": "Displays a dialog that shows all of the current Asset's references." },
+            { "command": "Size Map", "description": "Displays an interactive map showing the approximate size of the Asset and everything it references." },
+            { "command": "Audit Assets", "description": "Opens the Asset Audit UI and displays information about the selected assets." },
+            { "command": "Shader Cook Statistics", "description": "Displays shader cook statistics." }
+          ]
+        },
+        {
+          "title": "Window",
+          "commands": [
+            { "command": "Preview", "description": "Shows or hides the Preview panel." },
+            { "command": "Curves", "description": "Shows or hides the Curves panel." },
+            { "command": "Timeline", "description": "Shows or hides the Timeline panel." },
+            { "command": "Parameters", "description": "Shows or hides the Parameters panel." },
+            { "command": "Legacy Parameters", "description": "Open the Legacy Parameters window." },
+            { "command": "Selection", "description": "Shows or hides the Selection panel." },
+            { "command": "Attribute Spreadsheet", "description": "Shows or hides the Attribute Spreadsheet." },
+            { "command": "Preview Scene Settings", "description": "Shows or hides the Preview Scene Settings." },
+            { "command": "Generated Code", "description": "Shows or hides the Generated Code panel." },
+            { "command": "Niagara Log", "description": "Shows or hides the Niagara Log panel." },
+            { "command": "System Overview", "description": "Shows or hides the System Overview panel." },
+            { "command": "Scratch Pad", "description": "Shows or hides the Scratch Pad panel." },
+            { "command": "Script Stats", "description": "Shows or hides the Script Stats panel." },
+            { "command": "Baker", "description": "Opens the Baker window." },
+            { "command": "Cinematics", "description": "Opens the Sequence Recorder panel as a new window." },
+            { "command": "Content Browser", "description": "Opens the selected Content Browser as a new window." },
+            { "command": "Device Output Log", "description": "Open the Device Output Log window." },
+            { "command": "Interchage Results Browser", "description": "Open the Interchage Results Browser window." },
+            { "command": "Message Log", "description": "Open the Message Log window." },
+            { "command": "Output Log", "description": "Open the Output Log window." },
+            { "command": "Open Marketplace", "description": "Opens the Open Marketplace." },
+            { "command": "Quixel Bridge", "description": "Opens the Quixel Bridge." },
+            { "command": "Load Layout", "description": "Click on a layout to load a previously saved layout." },
+            { "command": "Save Layout", "description": "Save a new layout." },
+            { "command": "Remove Layout", "description": "Click on a layout to remove a previously saved layout." },
+            { "command": "Enable Fullscreen", "description": "Click to toggle on Fullscreen Mode." }
+          ]
+        },
+        {
+          "title": "Tools",
+          "commands": [
+            { "command": "New C++ Class", "description": "Adds C++ code to the project. The code can only be compiled if you have Visual Studio installed." },
+            { "command": "Generate Visual Studio Project", "description": "Generates your C++ code project in Visual Studio." },
+            { "command": "Find in Blueprints", "description": "Opens the selected Find In Blueprints panel as a new window." },
+            { "command": "Cache Statistics", "description": "Shows the Derived Data Cache Statistics window." },
+            { "command": "Class Viewer", "description": "Displays all classes that exist within this project." },
+            { "command": "CSV to SVG", "description": "Tool for generating vector line graphs from comma-separated value files generated from CSV profiles." },
+            { "command": "Localization Dashboard", "description": "Opens the experimental Localization Dashboard window." },
+            { "command": "Merge Actors", "description": "Open the Merge Actors window." },
+            { "command": "Nanite Tools", "description": "Shows the Tools for auditing and optimizing Nanite assets window." },
+            { "command": "Project Launcher", "description": "Opens the Project Launcher window." },
+            { "command": "Resource Usage", "description": "Shows the Derived Data Resource Usage window." },
+            { "command": "Session Frontend", "description": "Open the Session Frontend window." },
+            { "command": "Struct Viewer", "description": "Displays all structs that exist within this project." },
+            { "command": "Virtual Assets", "description": "Open the Virtual Assets Statistics." },
+            { "command": "Debug", "description": "Enables you to open up various different Debug Tools." },
+            { "command": "Profile", "description": "Enables you to open up various different Profile Tools." },
+            { "command": "Audit", "description": "Enables you to open up various different Audit Tools." },
+            { "command": "Platforms", "description": "View and manage connected devices." },
+            { "command": "View Changelists", "description": "Opens a dialog displaying current changelists." },
+            { "command": "Submit Content", "description": "Opens a dialog with check in options for content and levels." },
+            { "command": "Connect to Source Control", "description": "Displays a dialog where you can connect to source control, allowing source control functions to be performed on content." },
+            { "command": "Run Unreal Insights", "description": "Run the Unreal Insights standalone application." }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Toolbar",
+      "tools": [
+        { "toolName": "Save", "description": "Saves the current emitter." },
+        { "toolName": "Browse", "description": "Switches to the most recent Content Browser and selects the current emitter." },
+        { "toolName": "Compile", "description": "Compiles all the modules in the emitter. You can also change the Auto-Compile settings by clicking the dropdown arrow. Click the dropdown to select the following options: Full Build, Auto-Compile." },
+        { "toolName": "Thumbnail", "description": "Generates a thumbnail image of the Asset." },
+        { "toolName": "Bounds", "description": "Shows the bounds of the scene in the Preview panel. Click the dropdown to Set Fixed Bounds." },
+        { "toolName": "Performance", "description": "Click the dropdown to see the following Performance Options: Clear Stats, GPU Profiling, Display Average, Display Maximum, Display Relative Values, Display Absolute Values." },
+        { "toolName": "Debug", "description": "Click the dropdown to see the following Debug Options: Debug HUD, FX Outliner, Attribute Spreadsheet." },
+        { "toolName": "Simulation", "description": "Click the dropdown to see the following Simulation Options: Auto-Play, Reset on Change, Resimulate When Paused." },
+        { "toolName": "Baker", "description": "Click the dropdown to see the following Baker Options: Open Baker Tab, Bake." }
+      ]
+    },
+    {
+      "title": "Preview Panel",
+      "menuItems": [
+        { "menuItem": "Viewport Options", "description": [
+            "Realtime: Toggles real-time rendering in the viewport. Changes you make in the emitter stack will immediately be shown in the viewport, even if the emitter is not compiled.",
+            "Show Stats: Toggles showing stats in the viewport. If Realtime is not enabled, Show Stats automatically enables it.",
+            "Show FPS: Toggles showing the frames per second in the viewport. If Show Stats is not enabled, Show FPS automatically enables it.",
+            "Field of View: Changes the FOV of the viewport camera. This effectively zooms the lens of the camera in and out.",
+            "Far View Plane: Choose the distance to use as your far view plane. Setting this to zero acts as an infinite far view plane.",
+            "Screen Percentage: Sets the percentage of the screen your Preview panel uses."
+          ]
+        },
+        { "menuItem": "Viewpoint Type", "description": [
+            "Perspective: The default viewpoint used in the viewport.",
+            "Orthographic: Choose Top, Bottom, Left, Right, Front or Back. Selecting one of these changes the View Mode to Wireframe."
+          ]
+        },
+        { "menuItem": "View Mode", "description": [
+            "Lit: The default setting; it renders the scene with normal lighting.",
+            "Unlit: Renders the scene with no lights. No light maps, dynamic lights, static lights, or emissive materials affect the scene.",
+            "Wireframe: Renders the scene in brushed wireframe. This displays the raw triangles of everything in the viewport, and turns off the back faces to make the scene more readable.",
+            "Detail Lighting: Renders the scene with detail lighting only. This means only lighting with normal data pulled from materials will be used. Color emitted from lights will affect the scene.",
+            "Lighting Only: Renders the scene with lighting only, and no textures. Only the vertex normals of the scene will be taken into account.",
+            "Reflections: Renders the scene with reflections only. This includes both reflection captures and Screen Space Reflections.",
+            "Player Collision: Renders a color-coded view of what a Player or Pawn can collide with. Static Mesh collision displays as green, Volumes as pink, and Brushes as a grayish-violet.",
+            "Visibility Collision: This setting will render a color-coded view of what Actors in the scene will block visibility traces. Static mesh collision displays as green, volumes as pink, and brushes as a grayish-violet."
+          ]
+        },
+        { "menuItem": "Optimization Viewmodes", "description": [
+            "Light Complexity: Renders a view showing where raw light overlaps.",
+            "Lightmap Density: Renders a view of lightmap density in the scene, with blue being the least dense and red being the most dense.",
+            "Stationary Light Overlap: Renders a view of where stationary lights overlap.",
+            "Shader Complexity: Renders a view of the shader complexity in a scene. Light green is the least complex, moving to darker greens as complexity increases, and the most complex areas are in red.",
+            "Shader Complexity and Quads: Renders a view with both shader complexity and quad overdraw displayed.",
+            "Quad Overdraw: Renders a view with just quad overdraw complexity displayed.",
+            "Material Texture Scales: Visualize the accuracy of the material texture scales used for texture streaming.",
+            "Virtual Texture Pending Mips: Visualize the ratio between the currently streamed virtual texture level and the level wanted by the GPU."
+          ]
+        },
+        { "menuItem": "Level of Detail Coloration", "description": [
+            "Mesh LOD Coloration: Renders the scene using LOD color visualization.",
+            "Hierarchical LOD Coloration: Renders the scene using HLOD color visualization."
+          ]
+        },
+        { "menuItem": "Show", "description": [
+            "Grid: Toggles the viewport's grid.",
+            "Instruction Counts: Toggles the display of instruction counts in the upper left corner of the viewport.",
+            "Particle Counts: Toggles the display of particle counts in the viewport.",
+            "Emitter Execution Order: Toggles the display of the order that emitters are executed in the viewport."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Parameters Panel",
+      "description": "This panel lists all the user-exposed, system, emitter, particle, and engine-provided parameters (also called attributes) that are used by the active emitter or system. From the Parameters panel, you can drag and drop parameters to any appropriate node in the System Overview, or to any appropriate module parameter in the Selection panel. The number of times a parameter is referenced is shown on the right, enabling you to spot errors and make decisions on how to change your variables. If you have other emitters open, this panel pulls in data from those open emitters. This enables the user to share data between emitters. The Namespace for a parameter is displayed with a prominent icon, and you can see a tooltip that explains that Namespace when you mouse over the icon. To see more advanced Namespaces, such as parameter collections, click the Eye icon next to the Search bar."
+    },
+    {
+      "title": "System Overview Panel",
+      "description": "The System Overview panel gives a high-level overview of the system or emitter being edited, combining a pan-and-zoom Graph view with compact versions of the system or emitter stack. This panel makes it easier to navigate between different parts of the data, and it gives you a high-level view when you open an emitter or system for the first time. In a system, select an emitter in the Timeline panel and it will display the full stack for that emitter in the Selection panel. In this full stack view, the system information is on top, followed by the emitter module groups below. You can also get a full stack view of an emitter node or the system node by clicking on that node in the System Overview panel. However, if you want a less cluttered or more focused view, you can select an individual group or module within the emitter node in the System Overview to see just that group or module in the Selection panel."
+    },
+    {
+      "title": "System Node",
+      "description": "The System Node has icons that identify each group of modules, as well as having colored dots next to modules that identify what that module or parameter affects."
+    },
+    {
+      "title": "Emitter Nodes",
+      "description": "Emitter Properties has an icon that identifies whether the simulation is run on the CPU or the GPU. Other icons and colored dots on the emitter node help you identify the group, module, or parameter quickly."
+    },
+    {
+      "title": "Scratch Pad Panel",
+      "description": "With the Scratch Pad, you can create reusable modules or dynamic inputs that are contained locally in the active emitter or system Asset. This makes it easier to design and implement new custom modules or dynamic inputs, because you can see the results immediately within the emitter or system. You can keep or discard these at will. Once you have the result you are looking for, you can copy-paste the script to an existing Asset. You can also save it as a new Asset by right-clicking Scratch Script Selector and selecting Create Asset. The Scratch Pad also allows you to make something that is very specific to the active emitter or system, and does not need to be made into its own Asset.",
+      "methods": [
+        "Open it from the Windows menu, the way you would show or hide any other panel. The disadvantage to this method is that when you use the Scratch Pad to build a custom module, you need to manually add that module to your overall emitter or system script in the System Overview. You also have to add the module or dynamic input starting shell yourself, by clicking the Plus sign icon (+) next to Modules or Dynamic Inputs.",
+        "Use the Plus sign icon (+) and select New Scratch Pad Module. This places a Scratch Pad module in your stack (wherever the new module will belong), which is automatically added to your script. You will also see that a shell for the new module or dynamic input is automatically added to your Scratch Pad Graph."
+      ]
+    },
+    {
+      "title": "Selection Panel (the Stack)",
+      "description": "In the Emitter Nodes and the Selection panel, the various groups are color-coded. Orange is for Emitter-level modules: Emitter Settings, Emitter Spawn, Emitter Update. Green is for Particle-level modules: Particle Spawn, Particle Update. Red is for Renderer items. Niagara decouples simulation from rendering. This means you can create simulation behavior once, then assign multiple renderers to that simulation. If you select the System node in the System Overview, you will see system-related groups that are colored Blue: System Settings, System Spawn, System Update."
+    },
+    {
+      "title": "Groups in the Selection Panel",
+      "description": "When you click on a group in an emitter or system node, that entire group is displayed in the Selection panel. To the right of the group name, you will see a Plus sign icon (+), colored to match the group. When you click that icon, a list of available module categories displays. Click the dropdown next to the category name to expand it and see the modules in that category. Selecting the name of a module adds that module to the group. You can also click the Plus sign icon in the emitter or system node, directly in the System Overview. The same list will display."
+    },
+    {
+      "title": "Modules in the Selection Panel",
+      "description": "Depending on the module, you may want to modify a parameter value to achieve a specific outcome. To add a dynamic input, expression, or link to another attribute you can click on the dropdown arrow to the right of the value field you want to modify. A list of available categories displays. When you expand the category, you can select from a list of available options and the selected option will be applied to that value field. For example, to randomize a value you can click the dropdown and select Dynamic Inputs > Random Ranged Float. If you don't see a module or dynamic input you have created in the list, try unchecking Library Only."
+    },
+    {
+      "title": "Timeline Panel",
+      "description": "With the Timeline panel, you can manage looping, loop count, bursts, random starts and stops, and spawn rate. All of these elements can interact right in the Timeline. In a system, the Timeline panel lists all emitters active in that System, with metadata about what kind of renderers they use and the ability to toggle which emitters are active. You can control looping behavior using the Timeline, and you can set spawn burst keys in it as well. This is driven by module metadata, which can be extended by users if needed."
+    },
+    {
+      "title": "Curves Panel",
+      "description": "This panel provides a Curve Editor that enables the user to adjust any values that need to change during the life of a particle, or across the life of an emitter. In order for any property to be editable within the Curve Editor, that property will need to have a Distribution type that utilizes a curve, such as FloatfromCurve."
+    },
+    {
+      "title": "Niagara Log Panel",
+      "description": "If there are any warnings or errors when compiling a script, emitter or system, they appear here. For many errors and warnings, you can click it in the Niagara Log panel and jump to the error's location in the Niagara Editor."
+    },
+    {
+      "title": "Other Optional Panels",
+      "description": "There are some additional panels that are not displayed by default, but that can be opened using the Window menu. By default, these panels will display as tabs in the area where the Selection panel displays, but you can drag and drop them to dock them somewhere else.",
+      "panels": [
+        {
+          "title": "Attribute Spreadsheet Panel",
+          "description": "With the Attribute Spreadsheet, you can filter and debug information coming from the CPU or GPU simulation. For all CPU VM-based effects, you can take advantage of the attribute debugger. It allows you to see the inputs to the simulation as well as the per-particle computed values. The Attribute Spreadsheet targets the emitter or system previewed in the Preview panel. You can also target systems in a level by setting the in-level system to Force Solo, then selecting that system as a target in the Attribute Spreadsheet while you are in PIE (Play In Editor) mode."
+        },
+        {
+          "title": "Preview Scene Settings Panel",
+          "description": "This panel contains settings for modifying the Preview panel."
+        },
+        {
+          "title": "Generated Code Panel",
+          "description": "This panel displays the generated HLSL and Assembly code for the selected emitter and owning system. This enables you to view and search that code. This tool is for advanced users who need to debug problems that may be difficult to spot with other methods. You can select the HLSL or Assembly code being displayed using the Scripts dropdown menu. To view a specific emitter's generated HLSL or Assembly code, follow these steps: Select the emitter in the System Overview or Timeline panel. Select the desired script under the Scripts dropdown menu in the Generated Code panel."
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "effects",
+    "vfx",
+    "niagara",
+    "visual effects",
+    "particle effects",
+    "emitter editor"
+  ],
+  "links": [
+    {
+      "label": "Ask questions and help your peers Developer Forums",
+      "url": "developer-forums"
+    },
+    {
+      "label": "Write your own tutorials or read those from others Learning Library",
+      "url": "learning-library"
+    }
+  ]
+}
+{
+  "title": "Niagara System and Emitter Module Reference",
+  "description": "This page contains some basic reference information about how modules work in Niagara. Below this reference information, there are links to pages describing each group of items and modules that are included with the Niagara plugin.",
+  "sections": [
+    {
+      "title": "Niagara Selection Stack Model",
+      "description": "Particle simulation in Niagara operates as a stack simulation flows from the top of the stack to the bottom, executing programmable code blocks called modules in order. Crucially, every module is assigned to a group that describes when the module is executed.",
+      "content": [
+        "Modules that are part of the System groups execute first, handling behavior that is shared with every emitter. Then, modules and items in the Emitter groups execute for each unique emitter. Following this, parameters in the Particle groups execute for each unique particle in an individual emitter. Finally, Render group items describe how to render each emitter's simulated particle data to the screen.",
+        "For more information on the Stack, see the Niagara Selection Stack and Stack Groups section in Niagara Key Concepts.",
+        "A module is an item, but an item is not a module. Modules are editable assets a user can create. Items refer to parts of a system or emitter that the user cannot create. Examples of items are system properties, emitter properties, and renderers."
+      ]
+    },
+    {
+      "title": "Execution State Management",
+      "description": "Niagara systems and emitters have a distinct Execution State that defines how their simulation is run. Emitters that are part of a system each have a unique Execution State independent of the owning system, so they can change how they are being executed independent of that owning System.",
+      "executionStates": [
+        { "state": "Active", "description": "The System or Emitter simulates and allows spawning." },
+        { "state": "Inactive", "description": "The System or Emitter simulates but does not allow any new spawning." },
+        { "state": "InactiveClear", "description": "The System or Emitter destroys all Particles it owns, and then moves to the Inactive Execution State." },
+        { "state": "Complete", "description": "The System or Emitter does not simulate and does not render." }
+      ]
+    }
+  ],
+  "tags": [
+    "effects",
+    "module",
+    "reference",
+    "vfx",
+    "niagara",
+    "visual effects",
+    "particle effects",
+    "emitter",
+    "system"
+  ],
+  "links": [
+    {
+      "label": "Ask questions and help your peers Developer Forums",
+      "url": "developer-forums"
+    },
+    {
+      "label": "Write your own tutorials or read those from others Learning Library",
+      "url": "learning-library"
+    }
+  ]
+}
+{
+  "title": "Emitter Settings",
+  "description": "This page contains reference information for the Emitter Settings group in a Niagara emitter.",
+  "sections": [
+    {
+      "title": "Emitter Properties Item",
+      "description": "By default, the Emitter Properties item is included in every created emitter, even if you create an empty one. The Emitter Properties item contains the following base parameters.",
+      "parameters": [
+        {
+          "name": "Local Space",
+          "description": "This setting toggles whether the particles within this emitter are relative to this emitter or to the global space."
+        },
+        {
+          "name": "Determinism",
+          "description": "This setting toggles whether the random number generator (RNG) will be deterministic or non-deterministic globally. Any random calculation that is set to the emitter defaults will inherit this setting. You can still set individual random numbers to be deterministic or non-deterministic. In this case, deterministic means that the RNG will return results for the same configuration of the emitter, as long as the delta time is not variable. Any changes to the emitter's individual scripts will adjust the results."
+        },
+        {
+          "name": "Random Seed",
+          "description": "If the Determinism setting is enabled, this is an emitter-based seed for the deterministic random number generator."
+        },
+        {
+          "name": "Sim Target",
+          "description": "This determines whether the simulation is performed on the CPU or the GPU."
+        },
+        {
+          "name": "Fixed Bounds",
+          "description": "This setting determines whether the fixed bounds can be edited. If it is enabled, there are Minimum and Maximum X, Y, and Z settings that can be adjusted."
+        },
+        {
+          "name": "Interpolated Spawning",
+          "description": "When this setting is enabled, this emitter will spawn using interpolated parameter values, and it will perform a partial update at spawn time. This has a significant additional cost for spawning, but it will produce much smoother spawning for high spawn rates, erratic frame rates, and fast moving emitters."
+        },
+        {
+          "name": "Requires Persistent ID",
+          "description": "When this is enabled, all particles emitted will be assigned a persistent ID."
+        },
+        {
+          "name": "Combine Event Spawn",
+          "description": "This setting allows event-based spawning to be combined into a single spawn."
+        }
+      ]
+    },
+    {
+      "title": "Scalability Settings",
+      "description": "For Scalability, there are five general settings: Low, Medium, High, Epic, and Cinematic. You can click to enable or disable a category for a particular emitter. Each category also has a dropdown menu listing various platforms that can display graphics at a particular level. You can include or exclude specific platforms in a category, instead of just enabling or disabling that category.",
+      "settings": [
+        {
+          "level": "Low",
+          "platforms": ["Windows", "Mac", "Linux", "Android"]
+        },
+        {
+          "level": "Medium",
+          "platforms": ["Windows", "iOS", "Mac", "Linux", "Android"]
+        },
+        {
+          "level": "High",
+          "platforms": ["Windows", "Mac", "Linux"]
+        },
+        {
+          "level": "Epic",
+          "platforms": ["Windows", "TVOS", "Mac", "Linux"]
+        },
+        {
+          "level": "Cinematic",
+          "platforms": ["Windows", "Mac", "Linux"]
+        }
+      ],
+      "note": "Consoles and some mobile platforms will not be displayed unless you set up the appropriate configuration and device profiles."
+    },
+    {
+      "title": "Asset Options",
+      "parameters": [
+        {
+          "name": "Library Visibility",
+          "description": "This setting allows you to change if this emitter is exposed to the library, or should be explicitly hidden."
+        },
+        {
+          "name": "Template Specification",
+          "description": "This setting toggles whether this emitter is a standard parent emitter, a template or a behavior example."
+        },
+        {
+          "name": "Template Asset Description",
+          "description": "If you identify this emitter as a Template Asset, you can click the icon on the right to find additional settings for Inline Text and Referenced Text."
+        },
+        {
+          "name": "Category",
+          "description": "You can add the category to collate this emitter into for 'add new emitter dialogs'."
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "effects",
+    "module",
+    "reference",
+    "vfx",
+    "niagara",
+    "visual effects",
+    "particle effects",
+    "emitter",
+    "system"
+  ],
+  "links": [
+    {
+      "label": "Ask questions and help your peers Developer Forums",
+      "url": "developer-forums"
+    },
+    {
+      "label": "Write your own tutorials or read those from others Learning Library",
+      "url": "learning-library"
+    }
+  ]
+}
+{
+  "title": "Emitter Spawn Group",
+  "description": "This document provides reference information for modules in the Emitter Spawn group.",
+  "sections": [
+    {
+      "title": "Emitter Spawn Group",
+      "description": "Emitter Spawn modules occur once, when the emitter is created on the CPU. Modules in this section should initialize defaults or perform initial setup. Modules are executed in order from the top to the bottom of the stack.",
+      "subsections": [
+        {
+          "title": "Location Module",
+          "modules": [
+            {
+              "name": "Spawn Particles in Grid",
+              "description": "This spawns particles based on user-defined grid resolution settings."
+            }
+          ]
+        },
+        {
+          "title": "MAX Scripts Module",
+          "modules": [
+            {
+              "name": "Spawn MS Vertex Animation Tools Morph Target",
+              "description": "This spawns and samples Morph Target textures that were created with the Vertex Animation Tool. The Vertex Animation Tool generates textures that represent Morph Target blend shapes. This module spawns one particle for every vertex that was captured by the tool. This module is meant to be used with the Update MS Vertex Animation Tools Morph Target module."
+            },
+            {
+              "name": "Update MS Vertex Animation Tools Morph Target",
+              "description": "This takes the particles spawned by the Spawn MS Vertex Animation Tools Morph Target module and places them at a location you choose."
+            }
+          ]
+        },
+        {
+          "title": "Spawning Modules",
+          "modules": [
+            {
+              "name": "Spawn Per Unit",
+              "description": "This module spawns particles based on distance traveled in Unreal units."
+            },
+            {
+              "name": "Spawn Rate",
+              "description": "This module spawns particles continuously at a particular rate."
+            }
+          ]
+        },
+        {
+          "title": "New Scratch Pad Module",
+          "description": "Selecting this item in the Add (Plus sign) menu opens the Scratch Pad panel (by default this docks next to the System Overview) and places a Scratch Pad module in the Selection panel. You can also open the Scratch Pad panel by using Windows > Scratch Pad. However, by placing a Scratch Pad module in the stack, any modules or dynamic inputs you create in the Scratch Pad are automatically connected to your script. If you open the Scratch Pad panel using the Windows menu, any items you create there will have to be added to your script manually."
+        },
+        {
+          "title": "Set New or Existing Value Directly",
+          "description": "Selecting this item from the Add menu places a Set Parameter module in the Selection panel. Click the Plus sign (+) icon to select Add Parameter or Create New Parameter."
+        },
+        {
+          "title": "Add Parameter",
+          "description": "When you select Add Parameter, you select from the parameters listed. This adds that parameter to the Set Parameter module in the Emitter Spawn group. Some of these parameters can be set or modified in other modules. Some are only set using a Set Parameter module.",
+          "parameters": [
+            {
+              "name": "Emitter.Age",
+              "description": "This parameter defines the age of this emitter."
+            },
+            {
+              "name": "Emitter.CurrentLoopDelay",
+              "description": "This parameter defines the current amount of delay before the emitter's current loop repeats."
+            },
+            {
+              "name": "Emitter.CurrentLoopDuration",
+              "description": "This parameter defines the duration of the current emitter loop."
+            },
+            {
+              "name": "Emitter.ExecutionState",
+              "description": "This affects the state of the emitter. Valid value choices are: Active, Inactive, InactiveClear, Complete."
+            },
+            {
+              "name": "Emitter.ExecutionStateSource",
+              "description": "This indicates the source of an execution state setting. It is used to allow scalability to change the state, but only if the state has not been defined by something with higher precedence."
+            },
+            {
+              "name": "Emitter.LocalSpace",
+              "description": "This parameter defines whether the position of particles is respective to the world origin or the owning Niagara Component's location. False: Particle position is in WorldSpace and will be relative to the World origin. A particle with position 0,0,0 will render at the World origin. True: Particle position is in LocalSpace and will be relative to the owning Niagara Component's location. A particle with position 0,0,0 will render at the owning Niagara Component's location."
+            },
+            {
+              "name": "Emitter.LoopCount",
+              "description": "This parameter defines how many times the emitter's loop repeats."
+            },
+            {
+              "name": "Emitter.LoopedAge",
+              "description": "This parameter calculates the age of the emitter relative to its current loop. For example, if an emitter has been active for 8 seconds and it loops every 5 seconds, the emitter's LoopedAge will be 3 seconds. LoopedAge returns to 0 every time an emitter loops."
+            },
+            {
+              "name": "Emitter.NormalizedLoopAge",
+              "description": "This parameter calculates the age of the emitter relative to its current loop, normalized from 0 to 1. NormalizedLoopAge is expressed as LoopedAge divided by CurrentLoopDuration. If an emitter has been active for 8 seconds and it loops every 5 seconds, the emitter's LoopedAge will be 3. The emitter's NormalizedLoopAge will be 0.6."
+            },
+            {
+              "name": "System.ExecutionState",
+              "description": "This affects the state of the system. Valid value choices are Active, Inactive, InactiveClear, Complete, Disabled, and Num."
+            },
+            {
+              "name": "System.ExecutionStateSource",
+              "description": "This indicates the source of a system execution state setting. It is used to allow scalability to change the state, but only if the state has not been defined by something with higher precedence."
+            }
+          ]
+        },
+        {
+          "title": "Create New Parameter",
+          "description": "When you select Create New Parameter, you select from the parameters listed. This adds that parameter to the Set Parameter module in the Emitter Spawn group.",
+          "parameters": [
+            {
+              "name": "Audio Oscilloscope",
+              "type": "Data interface",
+              "description": "This adds a new Audio Oscilloscope data interface module to the emitter. The Audio Oscilloscope module can directly access the waveform data of the audio signal."
+            },
+            {
+              "name": "Audio Spectrum",
+              "type": "Data interface",
+              "description": "This adds a new Audio Spectrum data interface module to the emitter. The Audio Spectrum module can drive a visualization based on how loud the audio is at specific frequencies."
+            },
+            {
+              "name": "Bool",
+              "type": "Primitive",
+              "description": "This adds a Set Variable module that has a true/false checkbox."
+            },
+            {
+              "name": "Camera Query",
+              "type": "Data Interface",
+              "description": "This adds a new Camera Query data interface module to the emitter. This data interface can be used to retrieve camera information (camera position, rotation, FOV, etc) for the specified controller index."
+            },
+            {
+              "name": "Collision Query",
+              "type": "Data Interface",
+              "description": "This adds a collision data interface to the emitter stack. This is usually used in conjunction with Collision modules."
+            },
+            {
+              "name": "Curl Noise",
+              "type": "Data Interface",
+              "description": "This adds a curl noise data interface to the emitter stack. If you use this in conjunction with Curl Noise Force modules, this data interface injects different types of noise into your simulation."
+            },
+            {
+              "name": "Curve for Colors",
+              "type": "Data Interface",
+              "description": "This adds a four-channel color curve data interface for the simulation. This curve can be sampled by dynamic inputs or other modules to create a time-varying color."
+            },
+            {
+              "name": "Curve for Floats",
+              "type": "Data Interface",
+              "description": "This adds a single-channel curve data interface for the simulation. This curve can be sampled by dynamic inputs or other modules to create a time-varying float value."
+            },
+            {
+              "name": "Curve for Vector 2Ds",
+              "type": "Data Interface",
+              "description": "This adds a two-channel curve data interface for the simulation. This curve can be sampled by dynamic inputs or other modules to create a time-varying pair of floats."
+            },
+            {
+              "name": "Curve for Vector 3s",
+              "type": "Data Interface",
+              "description": "This adds a three-channel curve data interface for the simulation. This curve can be sampled by dynamic inputs or other modules to create a time-varying set of floats."
+            },
+            {
+              "name": "Curve for Vector 4s",
+              "type": "Data Interface",
+              "description": "This adds a four-channel curve data interface for the simulation. This curve can be sampled by dynamic inputs or other modules to create a time-varying set of floats."
+            },
+            {
+              "name": "ENiagaraBooleanLogicOps",
+              "type": "Enum",
+              "description": "This is an enumeration used by various modules and dynamic inputs that want to test using boolean logic: Greater Than, Greater Than Or Equal To, Equal To, Not Equal To."
+            },
+            {
+              "name": "ENiagaraCoordinateSpace",
+              "type": "Enum",
+              "description": "This is an enumeration used by various modules and dynamic inputs to distinguish between coordinate spaces: Simulation: If the emitter is set to local, use local. Otherwise, use World. World: In the world space of the game. Local: In the coordinate space of the owning component."
+            },
+            {
+              "name": "ENiagaraExecutionState",
+              "type": "Enum",
+              "description": "This enumeration type is used by parameters that manage system or emitter execution states, such as Emitter.ExecutionState or System.ExecutionState."
+            },
+            {
+              "name": "ENiagaraExecutionStateSource",
+              "type": "Enum",
+              "description": "This indicates the source of an execution state setting. It is used to allow scalability to change the state, but only if the state has not been defined by something with higher precedence."
+            },
+            {
+              "name": "ENiagara ExpansionMode",
+              "type": "Enum",
+              "description": "This enumeration is used by location modules to determine where the origin point of expansion is: Inside, Centered, Outside."
+            },
+            {
+              "name": "ENiagaraOrientationAxis",
+              "type": "Enum",
+              "description": "This is an enumeration used by several modules to determine which axis to do calculations with: X Axis, Y Axis, Z Axis."
+            },
+            {
+              "name": "ENiagaraRandomnessMode",
+              "type": "Enum",
+              "description": "This sets the type of random number generation used by this emitter. Valid choices are: Simulation Defaults, Deterministic, Non-Deterministic."
+            },
+            {
+              "name": "Float",
+              "type": "Primitive",
+              "description": "This creates a float value variable."
+            },
+            {
+              "name": "Grid2D Collection",
+              "type": "Data Interface",
+              "description": "This is used with simulation stages. It enables the user to read or write to a 2D array of data, and then iterate over each pixel in the grid during a simulation stage."
+            },
+            {
+              "name": "Int32",
+              "type": "Primitive",
+              "description": "This creates an integer variable."
+            },
+            {
+              "name": "Linear Color",
+              "type": "Primitive",
+              "description": "This creates an RGBA color variable, represented as a color picker."
+            },
+            {
+              "name": "Matrix",
+              "type": "Primitive",
+              "description": "This creates a 4x4 matrix variable."
+            },
+            {
+              "name": "Mesh Tri Coordinate",
+              "type": "Struct",
+              "description": "This is a simple struct containing a triangle index along with a barycentric coordinate on the face of that triangle."
+            },
+            {
+              "name": "Neighbor Grid 3D",
+              "type": "Data Interface",
+              "description": "This is used with simulation stages. It enables the user to read or write to a 3D array of data, and then iterate over each pixel in the volume during a simulation stage."
+            },
+            {
+              "name": "Niagara ID",
+              "type": "Struct",
+              "description": "This is a two-part struct used to track particles. It allows fast access to this particle's data. It is always unique among currently living particles, but will be reused after the particle dies. AcquireTag is a unique tag for when this ID was acquired. It allows us to differentiate between particles when one dies and another particle reuses the dead particle's index."
+            },
+            {
+              "name": "Occlusion Query",
+              "type": "Data Interface",
+              "description": "This adds a new Occlusion Query data interface module to the emitter. The data interface is used to read depth buffer occlusion information. This can only be used with GPU emitters."
+            },
+            {
+              "name": "Particle Attribute Reader",
+              "type": "Data Interface",
+              "description": "This adds a new Particle Attribute Reader data interface to the emitter. The data interface can be used to query particle payload values from other emitters, and can sometimes be easier to use than Events."
+            },
+            {
+              "name": "Quat",
+              "type": "Primitive",
+              "description": "This creates a quaternion variable, used to represent rotations."
+            },
+            {
+              "name": "Simple Counter",
+              "type": "Data Interface",
+              "description": "This adds a new Simple Counter data interface module to the emitter. This data interface enables you to increment a thread-safe counter. This can only be used with CPU emitters."
+            },
+            {
+              "name": "Skeletal Mesh",
+              "type": "Data Interface",
+              "description": "This is a data interface with functions to interact with a skeletal mesh's bones or sockets and skinned geometry."
+            },
+            {
+              "name": "Spawn Info",
+              "type": "Struct",
+              "description": "This is a structure used in spawning to specify the Count of particles to create, InterpStartDt or offset from the current frame begin time to start spawning, IntervalDt defining the time gap between particles being spawned, and SpawnGroup allowing spawned particles to belong to different categories."
+            },
+            {
+              "name": "Spline",
+              "type": "Data Interface",
+              "description": "This is a data interface that interacts with a Spline Asset."
+            },
+            {
+              "name": "Static Mesh",
+              "type": "Data Interface",
+              "description": "This is a data interface with functions to interact with a static mesh's surface."
+            },
+            {
+              "name": "Texture Sample",
+              "type": "Data Interface",
+              "description": "This is a data interface with functions to interact with a texture on the GPU."
+            },
+            {
+              "name": "Vector",
+              "type": "Primitive",
+              "description": "This creates a three-channel set of floats."
+            },
+            {
+              "name": "Vector 2D",
+              "type": "Primitive",
+              "description": "This creates a two-channel set of floats."
+            },
+            {
+              "name": "Vector 4",
+              "type": "Primitive",
+              "description": "This creates a four-channel set of floats."
+            },
+            {
+              "name": "Vector Field",
+              "type": "Data Interface",
+              "description": "This is a Data Interface with functions to query a vector field."
+            },
+            {
+              "name": "Volume Texture Sample",
+              "type": "Data Interface",
+              "description": "This adds a new Volume Texture data interface module to the emitter. You can use this to sample a volume texture."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "effects",
+    "module",
+    "reference",
+    "vfx",
+    "niagara",
+    "visual effects",
+    "particle effects",
+    "emitter",
+    "system"
+  ],
+  "links": [
+    {
+      "label": "Ask questions and help your peers Developer Forums",
+      "url": "developer-forums"
+    },
+    {
+      "label": "Write your own tutorials or read those from others Learning Library",
+      "url": "learning-library"
+    }
+  ]
+}
+{
+  "EmitterUpdateGroup": {
+    "description": "Reference for Emitter Update modules in a Niagara emitter.",
+    "details": "Modules execute per tick on CPU, computing values for Particle Spawn or Update parameters. Executed in stack order.",
+    "sections": [
+      {
+        "name": "Beam Modules",
+        "modules": [
+          {
+            "name": "Beam Emitter Setup",
+            "description": "Sets up and manages start points, endpoints, and tangents for a beam emitter."
+          }
+        ]
+      },
+      {
+        "name": "Chaos Modules",
+        "modules": [
+          {
+            "name": "Spawn from Chaos",
+            "description": "Spawns particles in response to a Chaos event."
+          }
+        ]
+      },
+      {
+        "name": "Emitter State",
+        "parameters": [
+          {
+            "name": "Life Cycle Mode",
+            "description": "Manages life cycle by system or emitter."
+          },
+          {
+            "name": "Inactive Response",
+            "description": "Determines action when emitter enters Inactive state."
+          },
+          {
+            "name": "Loop Behavior",
+            "description": "Controls emitter animation playback."
+          },
+          {
+            "name": "Loop Duration",
+            "description": "Defines loop length."
+          },
+          {
+            "name": "Loop Duration Mode",
+            "description": "Defines if loop is finite or infinite."
+          },
+          {
+            "name": "Loop Delay",
+            "description": "Delays next loop."
+          }
+        ],
+        "scalability": [
+          {
+            "name": "Scalability Mode",
+            "description": "Determines if emitter follows system or unique settings."
+          },
+          {
+            "name": "Enable Distance Culling",
+            "description": "Enables culling based on emitter's distance from the camera."
+          },
+          {
+            "name": "Enable Visibility Culling",
+            "description": "Enables culling based on emitter's visibility."
+          },
+          {
+            "name": "Reset Age on Awaken",
+            "description": "Resets emitter's age when reawakened."
+          }
+        ]
+      },
+      {
+        "name": "Location Module",
+        "modules": [
+          {
+            "name": "Spawn Particles in Grid",
+            "description": "Spawns particles based on grid resolution."
+          }
+        ]
+      },
+      {
+        "name": "MAX Scripts Module",
+        "modules": [
+          {
+            "name": "Spawn MS Vertex Animation Tools Morph Target",
+            "description": "Spawns particles using Morph Target textures."
+          }
+        ]
+      },
+      {
+        "name": "Spawning Modules",
+        "modules": [
+          {
+            "name": "Spawn Burst Instantaneous",
+            "description": "Spawns a burst of particles instantly."
+          },
+          {
+            "name": "Spawn Per Frame",
+            "description": "Spawns particles each frame."
+          },
+          {
+            "name": "Spawn Per Unit",
+            "description": "Spawns particles based on distance traveled."
+          },
+          {
+            "name": "Spawn Rate",
+            "description": "Continuously spawns particles at a rate."
+          }
+        ]
+      },
+      {
+        "name": "Utility Module",
+        "modules": [
+          {
+            "name": "Emitter Frame Counter",
+            "description": "Increments a counter each frame."
+          },
+          {
+            "name": "New Scratch Pad Module",
+            "description": "Opens Scratch Pad panel and adds module to stack."
+          },
+          {
+            "name": "Set New or Existing Value Directly",
+            "description": "Places a Set Parameter module in Selection panel."
+          },
+          {
+            "name": "Add Parameter",
+            "description": "Adds a parameter to the Set Parameter module."
+          },
+          {
+            "name": "Create New Parameter",
+            "description": "Creates a new parameter in the Set Parameter module."
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "ParticleSpawnGroup": {
+    "description": "Reference for modules in the Particle Spawn group.",
+    "details": "Modules execute per created particle, setting up initial values. If Interpolated Spawning is set, some modules update in the Spawn stage.",
+    "sections": [
+      {
+        "name": "Beam Modules",
+        "modules": [
+          {
+            "name": "Beam Width",
+            "description": "Controls the beam width and writes to Particles.RibbonWidth."
+          },
+          {
+            "name": "Spawn Beam",
+            "description": "Places particles along a spline or line, useful for sprite facing along a beam path."
+          }
+        ]
+      },
+      {
+        "name": "Camera Modules",
+        "modules": [
+          {
+            "name": "Camera Offset",
+            "description": "Offsets the particle along the vector between particle and camera."
+          },
+          {
+            "name": "Maintain in Camera Particle Scale",
+            "description": "Retains in-camera particle size considering FOV, depth, and render target size."
+          }
+        ]
+      },
+      {
+        "name": "Chaos Modules",
+        "modules": [
+          {
+            "name": "Apply Chaos Data",
+            "description": "Sets particle position, velocity, and color from a Chaos solver."
+          }
+        ]
+      },
+      {
+        "name": "Color Modules",
+        "modules": [
+          {
+            "name": "Color",
+            "description": "Sets Particles.Color with scale factors for Float3 Color and Scalar Alpha."
+          }
+        ]
+      },
+      {
+        "name": "Event Modules",
+        "modules": [
+          {
+            "name": "Generate Location Event",
+            "description": "Generates an event containing particle position, velocity, ID, age, and a random number."
+          }
+        ]
+      },
+      {
+        "name": "Forces Modules",
+        "modules": [
+          {
+            "name": "Acceleration Force",
+            "description": "Adds to Physics.Force, translating into acceleration within the solver."
+          },
+          {
+            "name": "Apply Initial Forces",
+            "description": "Converts rotational and linear forces into velocity."
+          },
+          {
+            "name": "Curl Noise Force",
+            "description": "Adds to Physics.Force using a curl noise field."
+          },
+          {
+            "name": "Drag",
+            "description": "Applies drag to particle velocity and rotational velocity."
+          },
+          {
+            "name": "Gravity Force",
+            "description": "Applies gravitational force to Physics.Force."
+          },
+          {
+            "name": "Limit Force",
+            "description": "Scales Physics.Force down if it exceeds the specified limit."
+          },
+          {
+            "name": "Line Attraction Force",
+            "description": "Accumulates pull towards the nearest line segment position."
+          },
+          {
+            "name": "Linear Force",
+            "description": "Adds a force vector to Physics.Force in a specific coordinate space."
+          },
+          {
+            "name": "Mesh Rotation Force",
+            "description": "Adds rotational force to Physics.RotationalForce."
+          },
+          {
+            "name": "Point Attraction Force",
+            "description": "Accumulates pull towards AttractorPosition into Physics.Force."
+          },
+          {
+            "name": "Point Force",
+            "description": "Adds force from a point in space with optional falloff."
+          },
+          {
+            "name": "Vector Noise Force",
+            "description": "Introduces random noise into Physics.Force."
+          },
+          {
+            "name": "Vortex Force",
+            "description": "Injects velocity around a vortex axis into Physics.Force."
+          },
+          {
+            "name": "Wind Force",
+            "description": "Applies wind force with optional air resistance."
+          }
+        ]
+      },
+      {
+        "name": "Initialization Modules",
+        "modules": [
+          {
+            "name": "Initialize Particle",
+            "description": "Contains common particle parameters, enabling/disabling as needed."
+          },
+          {
+            "name": "Initialize Ribbon",
+            "description": "Contains common parameters for ribbons, including Point and Ribbon Attributes."
+          }
+        ]
+      },
+      {
+        "name": "Kill Modules",
+        "modules": [
+          {
+            "name": "Kill Particles",
+            "description": "Kills all particles if set to True."
+          },
+          {
+            "name": "Kill Particles in Volume",
+            "description": "Kills particles inside specified analytical shapes."
+          }
+        ]
+      },
+      {
+        "name": "Location Modules",
+        "modules": [
+          {
+            "name": "Box Location",
+            "description": "Spawns particles in a rectangular box shape."
+          },
+          {
+            "name": "Cone Location",
+            "description": "Spawns particles in a cone shape."
+          },
+          {
+            "name": "Cylinder Location",
+            "description": "Spawns particles in a cylinder shape."
+          },
+          {
+            "name": "Grid Location",
+            "description": "Spawns particles in an even distribution on a grid."
+          },
+          {
+            "name": "Jitter Position",
+            "description": "Jitters particle position randomly on a delay timer."
+          },
+          {
+            "name": "Rotate Around Point",
+            "description": "Finds position on a forward vector-aligned circle around a center point."
+          },
+          {
+            "name": "Skeletal Mesh Location",
+            "description": "Places particles on a skeletal mesh."
+          },
+          {
+            "name": "Sphere Location",
+            "description": "Spawns particles in a spherical shape."
+          },
+          {
+            "name": "Static Mesh Location",
+            "description": "Spawns particles from a static mesh surface."
+          },
+          {
+            "name": "System Location",
+            "description": "Spawns particles from the system's location."
+          },
+          {
+            "name": "Torus Location",
+            "description": "Spawns particles in a torus shape."
+          }
+        ]
+      },
+      {
+        "name": "Mass Modules",
+        "modules": [
+          {
+            "name": "Calculate Mass and Rotational Inertia by Volume",
+            "description": "Calculates mass and rotational inertia based on bounds and density."
+          },
+          {
+            "name": "Calculate Size and Rotational Inertia by Mass",
+            "description": "Calculates particle scale and rotational inertia based on mass and density."
+          }
+        ]
+      },
+      {
+        "name": "Materials Modules",
+        "modules": [
+          {
+            "name": "Dynamic Material Parameters",
+            "description": "Writes to Dynamic Parameter Vertex Interpolator node in the Material Editor."
+          }
+        ]
+      },
+      {
+        "name": "Math/Blend Modules",
+        "modules": [
+          {
+            "name": "Cone Mask",
+            "description": "Defines a cone in 3D space and checks if position input lies inside."
+          },
+          {
+            "name": "Lerp Particle Attributes",
+            "description": "Enables linear interpolation of default particle parameters."
+          },
+          {
+            "name": "Recreate Camera Projection",
+            "description": "Recreates camera-relative world position of a 2D scene capture's pixel."
+          },
+          {
+            "name": "Temporal Lerp Float",
+            "description": "Performs a slow linear interpolation of Current Value over time."
+          },
+          {
+            "name": "Temporal Lerp Vector",
+            "description": "Performs a slow linear interpolation of Current Value over time."
+          }
+        ]
+      },
+      {
+        "name": "Mesh Modules",
+        "modules": [
+          {
+            "name": "Initialize Mesh Reproduction Sprite",
+            "description": "Chooses a random location on a skeletal mesh and calculates particle parameters."
+          },
+          {
+            "name": "Sample Skeletal Mesh Skeleton",
+            "description": "Samples bone or socket positions of a skeletal mesh and writes values to particle parameters."
+          },
+          {
+            "name": "Sample Skeletal Mesh Surface",
+            "description": "Samples skeletal mesh surface and writes values to particle parameters."
+          },
+          {
+            "name": "Sample Static Mesh",
+            "description": "Samples static mesh and writes values to particle parameters."
+          },
+          {
+            "name": "Update Mesh Reproduction Sprite",
+            "description": "Used with Initialize Mesh Reproduction Sprite to update particle attributes."
+          }
+        ]
+      },
+      {
+        "name": "Orientation Modules",
+        "modules": [
+          {
+            "name": "Align Sprite to Mesh Orientation",
+            "description": "Aligns sprites to mesh particle's orientation."
+          },
+          {
+            "name": "Initial Mesh Orientation",
+            "description": "Aligns mesh to a vector or rotates it using a rotational vector."
+          },
+          {
+            "name": "Orient Mesh to Vector",
+            "description": "Aligns mesh to an input vector."
+          }
+        ]
+      },
+      {
+        "name": "Physics Modules",
+        "modules": [
+          {
+            "name": "Add Rotational Velocity",
+            "description": "Adds to Rotational Velocity value in a user-defined space."
+          },
+          {
+            "name": "Find Kinetic and Potential Energy",
+            "description": "Returns kinetic and potential energy of a particle, and their sum."
+          }
+        ]
+      },
+      {
+        "name": "SubUV Modules",
+        "modules": [
+          {
+            "name": "SubUVAnimation",
+            "description": "Animates sprites in a grid, plotting along a curve."
+          }
+        ]
+      },
+      {
+        "name": "Texture Modules",
+        "modules": [
+          {
+            "name": "Sample Pseudo Volume Texture",
+            "description": "Samples color of a pseudo volume texture based on UVW coordinates."
+          },
+          {
+            "name": "Sample Texture",
+            "description": "Samples texture at a UV location, returning color."
+          },
+          {
+            "name": "Sub UV Texture Sample",
+            "description": "Samples a single texture pixel in a row-by-column fashion."
+          },
+          {
+            "name": "World Aligned Texture Sample",
+            "description": "Samples texture's color based on particle position."
+          }
+        ]
+      },
+      {
+        "name": "Utility Modules",
+        "modules": [
+          {
+            "name": "Do Once",
+            "description": "Tracks if trigger condition has ever been true in a previous frame."
+          },
+          {
+            "name": "Increment Over Time",
+            "description": "Increases a value each frame using tick delta value."
+          },
+          {
+            "name": "Update MS Vertex Animation Tools Morph Targets",
+            "description": "Reads morph target texture data, outputs positions and normal vectors."
+          }
+        ]
+      },
+      {
+        "name": "Vector Field Modules",
+        "modules": [
+          {
+            "name": "Apply Vector Field",
+            "description": "Applies vector field samples as force or velocity."
+          },
+          {
+            "name": "Sample Vector Field",
+            "description": "Samples vector field, applying intensity and optional falloff factors."
+          }
+        ]
+      },
+      {
+        "name": "Velocity Modules",
+        "modules": [
+          {
+            "name": "Add Velocity",
+            "description": "Assigns velocity to spawned particles, modifiable by dynamic inputs."
+          },
+          {
+            "name": "Add Velocity from Point",
+            "description": "Adds velocity from a point in space with optional falloff."
+          },
+          {
+            "name": "Add Velocity in Cone",
+            "description": "Adds velocity in a cone shape."
+          },
+          {
+            "name": "Inherit Velocity",
+            "description": "Adds inherited velocity from another source."
+          },
+          {
+            "name": "Scale Velocity",
+            "description": "Multiplies Particles.Velocity by a vector in a specific space."
+          },
+          {
+            "name": "Static Mesh Velocity",
+            "description": "Adds velocity based on static mesh normals."
+          },
+          {
+            "name": "Vortex Velocity",
+            "description": "Calculates angular velocity around a vortex axis."
+          }
+        ]
+      },
+      {
+        "name": "Scratch Pad",
+        "description": "Opens Scratch Pad panel and adds module to stack."
+      },
+      {
+        "name": "Set New or Existing Value Directly",
+        "description": "Places a Set Parameter module in Selection panel."
+      },
+      {
+        "name": "Add Parameter",
+        "description": "Adds a parameter to Set Parameter module."
+      },
+      {
+        "name": "Create New Parameter",
+        "description": "Creates a new parameter in Set Parameter module.",
+        "parameters": [
+          {
+            "name": "Audio Oscilloscope",
+            "type": "Data Interface",
+            "description": "Accesses waveform data of audio signal."
+          },
+          {
+            "name": "Audio Spectrum",
+            "type": "Data Interface",
+            "description": "Drives visualization based on audio frequencies."
+          },
+          {
+            "name": "Bool",
+            "type": "Primitive",
+            "description": "Adds a true/false checkbox."
+          },
+          {
+            "name": "Camera Query",
+            "type": "Data Interface",
+            "description": "Retrieves camera information."
+          },
+          {
+            "name": "Collision Query",
+            "type": "Data Interface",
+            "description": "Adds collision data interface."
+          },
+          {
+            "name": "Curl Noise",
+            "type": "Data Interface",
+            "description": "Injects noise into simulation."
+          },
+          {
+            "name": "Curve for Colors",
+            "type": "Data Interface",
+            "description": "Adds a four-channel color curve."
+          },
+          {
+            "name": "Curve for Floats",
+            "type": "Data Interface",
+            "description": "Adds a single-channel float curve."
+          },
+          {
+            "name": "Curve for Vector 2Ds",
+            "type": "Data Interface",
+            "description": "Adds a two-channel curve."
+          },
+          {
+            "name": "Curve for Vector 3s",
+            "type": "Data Interface",
+            "description": "Adds a three-channel curve."
+          },
+          {
+            "name": "Curve for Vector 4s",
+            "type": "Data Interface",
+            "description": "Adds a four-channel curve."
+          },
+          {
+            "name": "ENiagaraBooleanLogicOps",
+            "type": "Enum",
+            "description": "Enumeration for boolean logic tests."
+          },
+          {
+            "name": "ENiagaraCoordinateSpace",
+            "type": "Enum",
+            "description": "Enumeration for coordinate spaces."
+          },
+          {
+            "name": "ENiagaraExecutionState",
+            "type": "Enum",
+            "description": "Manages execution states."
+          },
+          {
+            "name": "ENiagaraExecutionStateSource",
+            "type": "Enum",
+            "description": "Indicates source of execution state setting."
+          },
+          {
+            "name": "ENiagaraExpansionMode",
+            "type": "Enum",
+            "description": "Determines origin point of expansion."
+          },
+          {
+            "name": "ENiagaraOrientationAxis",
+            "type": "Enum",
+            "description": "Determines axis for calculations."
+          },
+          {
+            "name": "ENiagaraRandomnessMode",
+            "type": "Enum",
+            "description": "Sets type of random number generation."
+          },
+          {
+            "name": "Float",
+            "type": "Primitive",
+            "description": "Creates a float value variable."
+          },
+          {
+            "name": "Grid 2D Collection",
+            "type": "Data Interface",
+            "description": "Reads/writes to 2D array of data."
+          },
+          {
+            "name": "Int32",
+            "type": "Primitive",
+            "description": "Creates an integer variable."
+          },
+          {
+            "name": "Linear Color",
+            "type": "Primitive",
+            "description": "Creates an RGBA color variable."
+          },
+          {
+            "name": "Matrix",
+            "type": "Primitive",
+            "description": "Creates a 4x4 matrix variable."
+          },
+          {
+            "name": "Mesh Tri Coordinate",
+            "type": "Struct",
+            "description": "Contains triangle index and barycentric coordinate."
+          },
+          {
+            "name": "Neighbor Grid 3D",
+            "type": "Data Interface",
+            "description": "Reads/writes to 3D array of data."
+          },
+          {
+            "name": "Niagara ID",
+            "type": "Struct",
+            "description": "Tracks particles with unique tags."
+          },
+          {
+            "name": "Occlusion Query",
+            "type": "Data Interface",
+            "description": "Reads depth buffer occlusion info."
+          },
+          {
+            "name": "Particle Attribute Reader",
+            "type": "Data Interface",
+            "description": "Queries particle payload values from other emitters."
+          },
+          {
+            "name": "Quat",
+            "type": "Primitive",
+            "description": "Creates a quaternion variable."
+          },
+          {
+            "name": "Simple Counter",
+            "type": "Data Interface",
+            "description": "Enables incrementing a thread-safe counter."
+          },
+          {
+            "name": "Skeletal Mesh",
+            "type": "Data Interface",
+            "description": "Interacts with skeletal mesh's bones or sockets."
+          },
+          {
+            "name": "Spawn Info",
+            "type": "Struct",
+            "description": "Specifies particle spawn details."
+          },
+          {
+            "name": "Spline",
+            "type": "Data Interface",
+            "description": "Interacts with a Spline Asset."
+          },
+          {
+            "name": "Static Mesh",
+            "type": "Data Interface",
+            "description": "Interacts with static mesh's surface."
+          },
+          {
+            "name": "Texture Sample",
+            "type": "Data Interface",
+            "description": "Interacts with a texture on the GPU."
+          },
+          {
+            "name": "Vector",
+            "type": "Primitive",
+            "description": "Creates a three-channel set of floats."
+          },
+          {
+            "name": "Vector 2D",
+            "type": "Primitive",
+            "description": "Creates a two-channel set of floats."
+          },
+          {
+            "name": "Vector 4",
+            "type": "Primitive",
+            "description": "Creates a four-channel set of floats."
+          },
+          {
+            "name": "Vector Field",
+            "type": "Data Interface",
+            "description": "Queries a vector field."
+          },
+          {
+            "name": "Volume Texture Sample",
+            "type": "Data Interface",
+            "description": "Samples a volume texture."
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "NiagaraRenderers": {
+    "description": "Reference for the Renderer group in a Niagara Emitter.",
+    "details": "Describes how Unreal Engine should display each spawned particle. Renderer placement in the stack is not relevant to draw order.",
+    "rendererTypes": [
+      "Component Renderer",
+      "Light Renderer",
+      "Mesh Renderer",
+      "Ribbon Renderer",
+      "Sprite Renderer",
+      "Decal Renderer"
+    ],
+    "sections": [
+      {
+        "name": "Component Renderer",
+        "details": "Spawns any type of component and updates its properties with particle simulation data.",
+        "parameters": [
+          {
+            "name": "Component Type",
+            "description": "The scene component class to spawn with this renderer."
+          },
+          {
+            "name": "Component Count Limit",
+            "description": "Maximum number of components spawned or updated each frame."
+          },
+          {
+            "name": "Enabled Binding",
+            "description": "Determines which attribute is used to check if component rendering should be enabled."
+          },
+          {
+            "name": "Assign Components on Particle ID",
+            "description": "If true, component sticks to one particle over its lifetime."
+          },
+          {
+            "name": "Only Create Components on Particle Spawn",
+            "description": "If true, new components can only be created on newly spawned particles."
+          },
+          {
+            "name": "Visualize Components",
+            "description": "Enables editor visualization for the component."
+          }
+        ]
+      },
+      {
+        "name": "Light Renderer",
+        "parameters": [
+          {
+            "name": "Use Inverse Squared",
+            "description": "Determines whether to use physically-based inverse squared falloff."
+          },
+          {
+            "name": "Affects Translucence",
+            "description": "Determines whether lights affect translucency."
+          },
+          {
+            "name": "Radius Scale",
+            "description": "Scales each particle light radius."
+          },
+          {
+            "name": "Color Add",
+            "description": "Static color shift applied to each rendered light."
+          },
+          {
+            "name": "Sort Order Hint",
+            "description": "Controls the draw order of materials of the same type."
+          },
+          {
+            "name": "Light Rendering Enabled Binding",
+            "description": "Defines the attribute used to check if light rendering should be enabled."
+          },
+          {
+            "name": "Light Exponent Binding",
+            "description": "Defines the attribute for the light's exponent when Inverse Squared Falloff is disabled."
+          },
+          {
+            "name": "Position Binding",
+            "description": "Defines the attribute used for positioning when generating lights."
+          },
+          {
+            "name": "Color Binding",
+            "description": "Defines the attribute used for color when generating lights."
+          },
+          {
+            "name": "Radius Binding",
+            "description": "Defines the attribute used for light radius when generating light."
+          },
+          {
+            "name": "Volumetric Scattering Binding",
+            "description": "Defines the attribute used for volumetric scattering intensity."
+          }
+        ]
+      },
+      {
+        "name": "Mesh Renderer",
+        "parameters": [
+          {
+            "name": "Particle Mesh",
+            "description": "Determines which Static Mesh will be instanced when rendering mesh particles."
+          },
+          {
+            "name": "Override Materials",
+            "description": "Defines an array of Materials to use instead of the Static Mesh's Material."
+          },
+          {
+            "name": "Facing Mode",
+            "description": "Determines how the instanced Mesh orients relative to the camera."
+          },
+          {
+            "name": "Sort Mode",
+            "description": "Determines how particles are sorted prior to rendering."
+          },
+          {
+            "name": "Sort Only When Translucent",
+            "description": "If checked, particles are only sorted when using a translucent material."
+          },
+          {
+            "name": "Position Binding",
+            "description": "Defines the attribute used for positioning when generating instanced meshes."
+          },
+          {
+            "name": "Color Binding",
+            "description": "Defines the attribute used for color when generating instanced meshes."
+          },
+          {
+            "name": "Velocity Binding",
+            "description": "Defines the attribute used for velocity when generating instanced meshes."
+          },
+          {
+            "name": "Mesh Orientation Binding",
+            "description": "Defines the attribute used for orienting meshes when generating instanced meshes."
+          },
+          {
+            "name": "Scale Binding",
+            "description": "Defines the attribute used for scale when generating instanced meshes."
+          },
+          {
+            "name": "Dynamic Material Binding",
+            "description": "Defines the attribute used for dynamic material parameters when generating instanced meshes."
+          }
+        ]
+      },
+      {
+        "name": "Ribbon Renderer",
+        "parameters": [
+          {
+            "name": "Material",
+            "description": "Select the material used to render the ribbon."
+          },
+          {
+            "name": "Facing Mode",
+            "description": "Determines how the ribbon orients relative to the camera."
+          },
+          {
+            "name": "UV0 Tiling Distance",
+            "description": "Tiles UV channel 0 based on the distance traversed by the ribbon."
+          },
+          {
+            "name": "UV0 Scale",
+            "description": "Defines the scale of UV channel 0 when using Tiling Distance."
+          },
+          {
+            "name": "Draw Direction",
+            "description": "Determines whether the ribbon is rendered Front to Back or Back to Front."
+          },
+          {
+            "name": "Curve Tension",
+            "description": "Defines the curve tension, with values ranging from 0 to 1."
+          },
+          {
+            "name": "Max Tessellation Factor",
+            "description": "Defines the custom tessellation factor when Mode is set to Custom."
+          },
+          {
+            "name": "Sort Order Hint",
+            "description": "Controls the draw order of materials of the same type."
+          },
+          {
+            "name": "Position Binding",
+            "description": "Defines the attribute used for positioning when generating ribbons."
+          },
+          {
+            "name": "Color Binding",
+            "description": "Defines the attribute used for color when generating ribbons."
+          }
+        ]
+      },
+      {
+        "name": "Sprite Renderer",
+        "parameters": [
+          {
+            "name": "Material",
+            "description": "Select the material used to render the particle."
+          },
+          {
+            "name": "Alignment",
+            "description": "Defines how the particle alignment is affected by other parameters."
+          },
+          {
+            "name": "Facing Mode",
+            "description": "Defines how the sprite particle orients relative to the camera."
+          },
+          {
+            "name": "Pivot in UVSpace",
+            "description": "Determines the location of the pivot point for this particle."
+          },
+          {
+            "name": "Sort Mode",
+            "description": "Determines how particles are sorted prior to rendering."
+          },
+          {
+            "name": "Position Binding",
+            "description": "Defines the attribute used for positioning when generating sprites."
+          },
+          {
+            "name": "Color Binding",
+            "description": "Defines the attribute used for color when generating sprites."
+          },
+          {
+            "name": "Velocity Binding",
+            "description": "Defines the attribute used for velocity when generating sprites."
+          }
+        ]
+      },
+      {
+        "name": "Decal Renderer",
+        "details": "Spawns and projects decals onto surfaces.",
+        "parameters": [
+          {
+            "name": "Material",
+            "description": "Choose the material to bind to that contains your decal."
+          },
+          {
+            "name": "Source Mode",
+            "description": "When set to Particles, decals are rendered for each particle; when set to Emitter, only one decal is rendered."
+          },
+          {
+            "name": "Renderer Visibility",
+            "description": "Use a renderer visibility tag to show particles with that tag."
+          },
+          {
+            "name": "Position Binding",
+            "description": "Defines the center of the decal."
+          },
+          {
+            "name": "Decal Orientation Binding",
+            "description": "Sets the orientation of the decal."
+          },
+          {
+            "name": "Decal Size Binding",
+            "description": "Defines the size of the decal."
+          },
+          {
+            "name": "Decal Color Binding",
+            "description": "Defines the color for the decals."
+          },
+          {
+            "name": "Decal Visible Binding",
+            "description": "Defines whether the decal should be visible."
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "SystemSpawnGroup": {
+    "description": "Reference information for modules in the System Spawn group.",
+    "details": "System Spawn modules set up initial values for each system and execute once per created system, in order from top to bottom of the stack.",
+    "sections": [
+      {
+        "name": "Spawning Modules",
+        "modules": [
+          {
+            "name": "Spawn Burst Instantaneous",
+            "description": "Causes all emitters to spawn a burst of particles spontaneously."
+          }
+        ]
+      },
+      {
+        "name": "Scratch Pad Module",
+        "details": "Opens the Scratch Pad panel and places a Scratch Pad module in the Selection panel.",
+        "notes": "Modules or dynamic inputs created in the Scratch Pad are automatically connected to the script."
+      },
+      {
+        "name": "Set New or Existing Value Directly",
+        "details": "Places a Set Parameter module in the Selection panel.",
+        "actions": [
+          {
+            "name": "Add Parameter",
+            "description": "Selects from listed parameters to add to the Set Parameter module."
+          },
+          {
+            "name": "Create New Parameter",
+            "description": "Creates a new parameter in the Set Parameter module."
+          }
+        ],
+        "parameters": [
+          {
+            "name": "System.Age",
+            "description": "Defines the age of the named system."
+          },
+          {
+            "name": "System.LoopedAge",
+            "description": "Calculates the age of the system relative to its current loop."
+          },
+          {
+            "name": "System.NormalizedLoopAge",
+            "description": "Calculates the normalized age of the system relative to its current loop."
+          },
+          {
+            "name": "System.CurrentLoopDelay",
+            "description": "Defines the current delay before the system's current loop repeats."
+          },
+          {
+            "name": "System.CurrentLoopDuration",
+            "description": "Defines the duration of the system's loop."
+          },
+          {
+            "name": "System.ExecutionState",
+            "description": "Affects the state of the system with valid values: Active, Inactive, InactiveClear, Complete."
+          },
+          {
+            "name": "System.ExecutionStateSource",
+            "description": "Indicates the source of an execution state setting, allowing scalability to change the state."
+          },
+          {
+            "name": "System.LocalSpace",
+            "description": "Defines whether the particle position is relative to the world origin or the owning Niagara Component's location."
+          },
+          {
+            "name": "System.LoopCount",
+            "description": "Defines how many times the system's loop repeats."
+          }
+        ]
+      },
+      {
+        "name": "Create New Parameter",
+        "details": "Adds a new parameter to the Set Parameter module in the System Spawn group.",
+        "parameters": [
+          {
+            "name": "Audio Oscilloscope",
+            "type": "Data Interface",
+            "description": "Accesses waveform data of the audio signal."
+          },
+          {
+            "name": "Audio Spectrum",
+            "type": "Data Interface",
+            "description": "Drives visualization based on audio frequencies."
+          },
+          {
+            "name": "Bool",
+            "type": "Primitive",
+            "description": "Adds a true/false checkbox."
+          },
+          {
+            "name": "Camera Query",
+            "type": "Data Interface",
+            "description": "Retrieves camera information."
+          },
+          {
+            "name": "ENiagaraBooleanLogicOps",
+            "type": "Enum",
+            "description": "Enumeration for boolean logic tests."
+          },
+          {
+            "name": "ENiagaraCoordinateSpace",
+            "type": "Enum",
+            "description": "Enumeration for coordinate spaces."
+          },
+          {
+            "name": "ENiagaraExecutionState",
+            "type": "Enum",
+            "description": "Manages system or emitter execution states."
+          },
+          {
+            "name": "ENiagaraExecutionStateSource",
+            "type": "Enum",
+            "description": "Indicates the source of an execution state setting."
+          },
+          {
+            "name": "ENiagaraExpansionMode",
+            "type": "Enum",
+            "description": "Determines the origin point of expansion."
+          },
+          {
+            "name": "ENiagaraLegacyTrailMode",
+            "type": "Enum",
+            "description": "Controls the width scale property for legacy animation trails."
+          },
+          {
+            "name": "ENiagaraOrientationAxis",
+            "type": "Enum",
+            "description": "Enumeration for axis calculations."
+          },
+          {
+            "name": "ENiagaraRandomnessMode",
+            "type": "Enum",
+            "description": "Sets the type of random number generation."
+          },
+          {
+            "name": "Float",
+            "type": "Primitive",
+            "description": "Creates a float value variable."
+          },
+          {
+            "name": "Grid2D Collection",
+            "type": "Data Interface",
+            "description": "Reads/writes to a 2D array of data for simulation stages."
+          },
+          {
+            "name": "Int32",
+            "type": "Primitive",
+            "description": "Creates an integer variable."
+          },
+          {
+            "name": "Linear Color",
+            "type": "Primitive",
+            "description": "Creates an RGBA color variable."
+          },
+          {
+            "name": "Matrix",
+            "type": "Primitive",
+            "description": "Creates a 4x4 matrix variable."
+          },
+          {
+            "name": "Mesh Tri Coordinate",
+            "type": "Struct",
+            "description": "Contains a triangle index and barycentric coordinate."
+          },
+          {
+            "name": "Neighbor Grid 3D",
+            "type": "Data Interface",
+            "description": "Reads/writes to a 3D array of data for simulation stages."
+          },
+          {
+            "name": "Niagara ID",
+            "type": "Struct",
+            "description": "Tracks particles with unique tags."
+          },
+          {
+            "name": "Occlusion Query",
+            "type": "Data Interface",
+            "description": "Reads depth buffer occlusion information."
+          },
+          {
+            "name": "Quat",
+            "type": "Primitive",
+            "description": "Creates a quaternion variable for rotations."
+          },
+          {
+            "name": "Simple Counter",
+            "type": "Data Interface",
+            "description": "Enables incrementing a thread-safe counter."
+          },
+          {
+            "name": "Particle Attribute Reader",
+            "type": "Data Interface",
+            "description": "Queries particle payload values from other emitters."
+          },
+          {
+            "name": "Spawn Info",
+            "type": "Struct",
+            "description": "Specifies particle spawn details."
+          },
+          {
+            "name": "Vector",
+            "type": "Primitive",
+            "description": "Creates a three-channel set of floats."
+          },
+          {
+            "name": "Vector 2D",
+            "type": "Primitive",
+            "description": "Creates a two-channel set of floats."
+          },
+          {
+            "name": "Vector 4",
+            "type": "Primitive",
+            "description": "Creates a four-channel set of floats."
+          },
+          {
+            "name": "Vector Field",
+            "type": "Data Interface",
+            "description": "Queries a vector field."
+          },
+          {
+            "name": "Volume Texture Sample",
+            "type": "Data Interface",
+            "description": "Samples a volume texture."
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "SystemUpdateGroup": {
+    "description": "Reference information for modules in the System Update group.",
+    "details": "System Update modules are called every frame, per system. They update new values for each frame, executing from top to bottom of the stack.",
+    "sections": [
+      {
+        "name": "System State Module",
+        "parameters": [
+          {
+            "name": "Inactive Response",
+            "description": "Determines action when the emitter enters Inactive state."
+          },
+          {
+            "name": "Loop Behavior",
+            "description": "Indicates how many times the loop repeats."
+          },
+          {
+            "name": "Loop Duration",
+            "description": "Establishes the life cycle duration."
+          },
+          {
+            "name": "Recalculate Duration Each Loop",
+            "description": "Calculates a new duration for each loop iteration."
+          },
+          {
+            "name": "Loop Delay",
+            "description": "Delays the loop by a specified value."
+          }
+        ]
+      },
+      {
+        "name": "Scratch Pad Module",
+        "details": "Opens the Scratch Pad panel and places a Scratch Pad module in the Selection panel."
+      },
+      {
+        "name": "Set New or Existing Value Directly",
+        "details": "Places a Set Parameter module in the Selection panel.",
+        "actions": [
+          {
+            "name": "Add Parameter",
+            "description": "Selects from listed parameters to add to the Set Parameter module."
+          },
+          {
+            "name": "Create New Parameter",
+            "description": "Creates a new parameter in the Set Parameter module."
+          }
+        ],
+        "parameters": [
+          {
+            "name": "System.Age",
+            "description": "Defines the age of the named system."
+          },
+          {
+            "name": "System.CurrentLoopDelay",
+            "description": "Defines the current delay before the system's loop repeats."
+          },
+          {
+            "name": "System.CurrentLoopDuration",
+            "description": "Defines the duration of the system's loop."
+          },
+          {
+            "name": "System.ExecutionState",
+            "description": "Affects the state of the system with valid values: Active, Inactive, InactiveClear, Complete."
+          },
+          {
+            "name": "System.ExecutionStateSource",
+            "description": "Indicates the source of an execution state setting, allowing scalability to change the state."
+          },
+          {
+            "name": "System.LocalSpace",
+            "description": "Defines whether the particle position is relative to the world origin or the owning Niagara Component's location."
+          },
+          {
+            "name": "System.LoopCount",
+            "description": "Defines how many times the system's loop repeats."
+          },
+          {
+            "name": "System.LoopedAge",
+            "description": "Calculates the age of the system relative to its current loop."
+          },
+          {
+            "name": "System.NormalizedLoopAge",
+            "description": "Calculates the normalized age of the system relative to its current loop."
+          }
+        ]
+      },
+      {
+        "name": "Create New Parameter",
+        "details": "Adds a new parameter to the Set Parameter module in the System Update section.",
+        "parameters": [
+          {
+            "name": "Audio Oscilloscope",
+            "type": "Data Interface",
+            "description": "Accesses waveform data of the audio signal."
+          },
+          {
+            "name": "Audio Spectrum",
+            "type": "Data Interface",
+            "description": "Drives visualization based on audio frequencies."
+          },
+          {
+            "name": "Bool",
+            "type": "Primitive",
+            "description": "Adds a true/false checkbox."
+          },
+          {
+            "name": "Camera Query",
+            "type": "Data Interface",
+            "description": "Retrieves camera information."
+          },
+          {
+            "name": "ENiagaraBooleanLogicOps",
+            "type": "Enum",
+            "description": "Enumeration for boolean logic tests."
+          },
+          {
+            "name": "ENiagaraCoordinateSpace",
+            "type": "Enum",
+            "description": "Enumeration for coordinate spaces."
+          },
+          {
+            "name": "ENiagaraExecutionState",
+            "type": "Enum",
+            "description": "Manages system or emitter execution states."
+          },
+          {
+            "name": "ENiagaraExecutionStateSource",
+            "type": "Enum",
+            "description": "Indicates the source of an execution state setting."
+          },
+          {
+            "name": "ENiagaraExpansionMode",
+            "type": "Enum",
+            "description": "Determines the origin point of expansion."
+          },
+          {
+            "name": "ENiagaraOrientationAxis",
+            "type": "Enum",
+            "description": "Enumeration for axis calculations."
+          },
+          {
+            "name": "ENiagaraRandomnessMode",
+            "type": "Enum",
+            "description": "Sets the type of random number generation."
+          },
+          {
+            "name": "Float",
+            "type": "Primitive",
+            "description": "Creates a float value variable."
+          },
+          {
+            "name": "Grid2D Collection",
+            "type": "Data Interface",
+            "description": "Reads/writes to a 2D array of data for simulation stages."
+          },
+          {
+            "name": "Int32",
+            "type": "Primitive",
+            "description": "Creates an integer variable."
+          },
+          {
+            "name": "Linear Color",
+            "type": "Primitive",
+            "description": "Creates an RGBA color variable."
+          },
+          {
+            "name": "Matrix",
+            "type": "Primitive",
+            "description": "Creates a 4x4 matrix variable."
+          },
+          {
+            "name": "Mesh Tri Coordinate",
+            "type": "Struct",
+            "description": "Contains a triangle index and barycentric coordinate."
+          },
+          {
+            "name": "Neighbor Grid 3D",
+            "type": "Data Interface",
+            "description": "Reads/writes to a 3D array of data for simulation stages."
+          },
+          {
+            "name": "Niagara ID",
+            "type": "Struct",
+            "description": "Tracks particles with unique tags."
+          },
+          {
+            "name": "Occlusion Query",
+            "type": "Data Interface",
+            "description": "Reads depth buffer occlusion information."
+          },
+          {
+            "name": "Quat",
+            "type": "Primitive",
+            "description": "Creates a quaternion variable for rotations."
+          },
+          {
+            "name": "Simple Counter",
+            "type": "Data Interface",
+            "description": "Enables incrementing a thread-safe counter."
+          },
+          {
+            "name": "Particle Attribute Reader",
+            "type": "Data Interface",
+            "description": "Queries particle payload values from other emitters."
+          },
+          {
+            "name": "Spawn Info",
+            "type": "Struct",
+            "description": "Specifies particle spawn details."
+          },
+          {
+            "name": "Vector",
+            "type": "Primitive",
+            "description": "Creates a three-channel set of floats."
+          },
+          {
+            "name": "Vector 2D",
+            "type": "Primitive",
+            "description": "Creates a two-channel set of floats."
+          },
+          {
+            "name": "Vector 4",
+            "type": "Primitive",
+            "description": "Creates a four-channel set of floats."
+          },
+          {
+            "name": "Vector Field",
+            "type": "Data Interface",
+            "description": "Queries a vector field."
+          },
+          {
+            "name": "Volume Texture Sample",
+            "type": "Data Interface",
+            "description": "Samples a volume texture."
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "AddEventHandlerGroup": {
+    "description": "Reference information for modules in the Add Event Handler group.",
+    "details": "Event Handlers determine how an emitter responds to incoming events. Multiple events can be managed within each emitter, and they currently work only with CPU simulations.",
+    "usage": "Place an Event Module in the Particle Update group of the emitter generating the event. Enable Requires Persistent IDs in the Emitter Properties of any emitter generating events.",
+    "sections": [
+      {
+        "name": "Event Handler Properties",
+        "parameters": [
+          {
+            "name": "Source",
+            "description": "Select the source emitter and event."
+          },
+          {
+            "name": "Execution Mode",
+            "description": "Controls which particles have the event script run on them. Options: Spawned Particles, Every Particle."
+          },
+          {
+            "name": "Max Events Per Frame",
+            "description": "Sets the number of events consumed by this event handler."
+          },
+          {
+            "name": "Spawn Number",
+            "description": "Controls whether particles are spawned as a result of handling this event."
+          },
+          {
+            "name": "Min Spawn Number",
+            "description": "Indicates the minimum number of particles spawned if Random Spawn Number is checked."
+          },
+          {
+            "name": "Random Spawn Number",
+            "description": "Randomly generates the number of particles that spawn as a result of handling this event."
+          }
+        ]
+      },
+      {
+        "name": "Receive Event Modules",
+        "modules": [
+          {
+            "name": "Receive Collision Event",
+            "description": "Listens for a generated collision event. Optionally, enable Inherited Collision Velocity Scale to determine how much of the parent velocity particles will inherit."
+          },
+          {
+            "name": "Receive Death Event",
+            "description": "Listens for a generated death event. Optionally, enable Inherited Velocity Scale to determine how much of the parent velocity particles will inherit."
+          },
+          {
+            "name": "Receive Location Event",
+            "description": "Listens for a generated location event. Settings include Inherited Velocity, Use Acceleration, Inherit Parent Normalized Age, and Spawn Count."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2237 @@
+{
+  "Sections": [
+    {
+      "Title": "Designing Visuals, Rendering, and Graphics",
+      "Description": "Rendering subsystem includes lighting, shadowing, materials, textures, visual effects, post processing."
+    },
+    {
+      "Title": "Unreal Engine Rendering System",
+      "Description": "Core of Unreal Engine's industry-leading visuals, supporting cinematic film, television quality, next-gen console, and mobile platforms.",
+      "Topics": [
+        {
+          "Title": "Texture and Material Management",
+          "Description": "Setup and manage textures and materials, conceptual lighting techniques, visual effects, performance optimization."
+        },
+        {
+          "Title": "Rendering Features",
+          "Subtopics": [
+            "Lumen Global Illumination and Reflections",
+            "Nanite Virtualized Geometry",
+            "Virtual Shadow Maps",
+            "Substrate Materials",
+            "Path Tracer",
+            "GPUDump Viewer Tool",
+            "Render Dependency Graph"
+          ]
+        },
+        {
+          "Title": "Art Setup and Tools",
+          "Subtopics": [
+            "Textures",
+            "Materials",
+            "Physically Based Materials",
+            "UV Editor"
+          ]
+        },
+        {
+          "Title": "Lighting Concepts and Features",
+          "Subtopics": [
+            "Lighting the Environment",
+            "Global Illumination",
+            "Virtual Shadow Maps",
+            "Heterogeneous Volumes",
+            "Sparse Volume Textures",
+            "Ray Tracing and Path Tracing Features",
+            "Light Properties",
+            "Environmental Light",
+            "Mesh Distance Fields",
+            "Reflections Environment",
+            "Shadowing"
+          ]
+        },
+        {
+          "Title": "General Rendering Features",
+          "Subtopics": [
+            "Rendering Components",
+            "Skeletal Mesh Rendering",
+            "Movie Render Queue",
+            "Landscape Material Layer Blending",
+            "Creating and Using LODs",
+            "Lightmapping",
+            "Generating Lightmap UVs"
+          ]
+        },
+        {
+          "Title": "Visuals and System Tools",
+          "Subtopics": [
+            "Post Process Effects",
+            "Creating Visual Effects",
+            "Forward Shading Renderer",
+            "Orthographic Camera"
+          ]
+        },
+        {
+          "Title": "Performance and Debugging",
+          "Subtopics": [
+            "Optimizing and Debugging",
+            "Nanite Virtualized Geometry",
+            "Anti-Aliasing and Upscaling",
+            "Virtual Texturing",
+            "Visibility and Occlusion Culling",
+            "RenderDoc",
+            "GPUDump Viewer Tool",
+            "Texture Streaming",
+            "Render Resource Viewer"
+          ]
+        },
+        {
+          "Title": "Mobile Rendering and Visualization",
+          "Subtopics": [
+            "Mobile Rendering Features",
+            "Mobile Previewer"
+          ]
+        },
+        {
+          "Title": "Visualization Tools",
+          "Subtopics": [
+            "Path Tracer",
+            "HDRI Backdrop Tool",
+            "Sun and Sky Actor",
+            "Sun Positioning Tool"
+          ]
+        },
+        {
+          "Title": "Third-Party Tools",
+          "Description": "Listing of third-party tools and plugins available."
+        },
+        {
+          "Title": "Graphics Programming",
+          "Subtopics": [
+            "FShaderCache",
+            "Mesh Drawing Pipeline",
+            "Graphics Programming Overview",
+            "Parallel Rendering",
+            "Render Dependency Graph",
+            "Shader Development",
+            "AsyncCompute",
+            "Shaders in Plugins",
+            "Threaded Rendering",
+            "Large World Coordinates Rendering"
+          ]
+        },
+        {
+          "Title": "Artificial Intelligence / Machine Learning",
+          "Description": "Using AI through Unreal Engine's neural network engine."
+        }
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    },
+    {
+      "Title": "Niagara Lightweight Emitters",
+      "Description": "Overview of Niagara's Lightweight Emitters.",
+      "Content": [
+        {
+          "Title": "Niagara Lightweight Emitters Overview",
+          "Description": "Introduced in Unreal Engine 5.4, optimized for minimal tick use and faster workflow.",
+          "Details": {
+            "Performance": "Stateless emitters reduce memory and CPU cost, remove tick cost, and improve development speed.",
+            "Features": [
+              "No need for compilation",
+              "Reduced game thread tick cost",
+              "Reduced render thread cost",
+              "Reduced memory usage",
+              "Less impact from emitter count"
+            ],
+            "Modules": [
+              "Acceleration Force",
+              "Add Velocity",
+              "Curl Noise / Noise Vector Field",
+              "Drag",
+              "Gravity Force",
+              "Initialize Particle",
+              "Initial Mesh Orientation",
+              "Rotate Around Point",
+              "Scale Color",
+              "Scale Mesh Size",
+              "Scale Mesh Size By Speed",
+              "Scale Sprite Size",
+              "Scale Sprite Size By Speed",
+              "Shape Location",
+              "Solve Velocities And Forces",
+              "Sprite Rotation Rate",
+              "Sub UV Animation"
+            ],
+            "Limitations": "Cannot create custom modules, scratchpads, or use dynamic inputs. Can convert between stateless and stateful emitters."
+          },
+          "Links": [
+            "Niagara Lightweight Emitters Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "lightweight emitters",
+        "performance",
+        "optimization",
+        "stateless emitters"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    },
+    {
+      "Title": "Niagara Lightweight Emitters",
+      "Description": "Overview of Niagara's Lightweight Emitters.",
+      "Content": [
+        {
+          "Title": "Niagara Lightweight Emitters Overview",
+          "Description": "Introduced in Unreal Engine 5.4, optimized for minimal tick use and faster workflow.",
+          "Details": {
+            "Performance": "Stateless emitters reduce memory and CPU cost, remove tick cost, and improve development speed.",
+            "Features": [
+              "No need for compilation",
+              "Reduced game thread tick cost",
+              "Reduced render thread cost",
+              "Reduced memory usage",
+              "Less impact from emitter count"
+            ],
+            "Modules": [
+              "Acceleration Force",
+              "Add Velocity",
+              "Curl Noise / Noise Vector Field",
+              "Drag",
+              "Gravity Force",
+              "Initialize Particle",
+              "Initial Mesh Orientation",
+              "Rotate Around Point",
+              "Scale Color",
+              "Scale Mesh Size",
+              "Scale Mesh Size By Speed",
+              "Scale Sprite Size",
+              "Scale Sprite Size By Speed",
+              "Shape Location",
+              "Solve Velocities And Forces",
+              "Sprite Rotation Rate",
+              "Sub UV Animation"
+            ],
+            "Limitations": "Cannot create custom modules, scratchpads, or use dynamic inputs. Can convert between stateless and stateful emitters."
+          },
+          "Links": [
+            "Niagara Lightweight Emitters Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "lightweight emitters",
+        "performance",
+        "optimization",
+        "stateless emitters"
+      ]
+    },
+    {
+      "Title": "Getting Started in Niagara",
+      "Description": "This page collects all the getting started learning materials for Niagara.",
+      "Content": [
+        {
+          "Title": "Niagara Overview Pages",
+          "Description": "Basics of Niagara systems, emitters, and modules. Design philosophy.",
+          "Links": [
+            "Niagara Overview",
+            "Niagara Key Concepts",
+            "Events and Event Handlers Overview"
+          ]
+        },
+        {
+          "Title": "Niagara Quick-Start Tutorials",
+          "Description": "Step-by-step tutorials to create initial projects and effects.",
+          "Links": [
+            "Niagara Quick Start",
+            "Niagara Flipbook Baker Quick Start Guide",
+            "Summary View Quick Start Guide"
+          ]
+        },
+        {
+          "Title": "Additional Information",
+          "Description": "Guidance for specific project types and migrations.",
+          "Links": [
+            "Cascade to Niagara Converter Plugin",
+            "Large World Coordinates in Niagara"
+          ]
+        }
+      ],
+      "Tags": [
+        "getting started",
+        "niagara",
+        "tutorials",
+        "vfx",
+        "effects"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    },
+    {
+      "Title": "Niagara Lightweight Emitters",
+      "Description": "Overview of Niagara's Lightweight Emitters.",
+      "Content": [
+        {
+          "Title": "Niagara Lightweight Emitters Overview",
+          "Description": "Introduced in Unreal Engine 5.4, optimized for minimal tick use and faster workflow.",
+          "Details": {
+            "Performance": "Stateless emitters reduce memory and CPU cost, remove tick cost, and improve development speed.",
+            "Features": [
+              "No need for compilation",
+              "Reduced game thread tick cost",
+              "Reduced render thread cost",
+              "Reduced memory usage",
+              "Less impact from emitter count"
+            ],
+            "Modules": [
+              "Acceleration Force",
+              "Add Velocity",
+              "Curl Noise / Noise Vector Field",
+              "Drag",
+              "Gravity Force",
+              "Initialize Particle",
+              "Initial Mesh Orientation",
+              "Rotate Around Point",
+              "Scale Color",
+              "Scale Mesh Size",
+              "Scale Mesh Size By Speed",
+              "Scale Sprite Size",
+              "Scale Sprite Size By Speed",
+              "Shape Location",
+              "Solve Velocities And Forces",
+              "Sprite Rotation Rate",
+              "Sub UV Animation"
+            ],
+            "Limitations": "Cannot create custom modules, scratchpads, or use dynamic inputs. Can convert between stateless and stateful emitters."
+          },
+          "Links": [
+            "Niagara Lightweight Emitters Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "lightweight emitters",
+        "performance",
+        "optimization",
+        "stateless emitters"
+      ]
+    },
+    {
+      "Title": "Getting Started in Niagara",
+      "Description": "This page collects all the getting started learning materials for Niagara.",
+      "Content": [
+        {
+          "Title": "Niagara Overview Pages",
+          "Description": "Basics of Niagara systems, emitters, and modules. Design philosophy.",
+          "Links": [
+            "Niagara Overview",
+            "Niagara Key Concepts",
+            "Events and Event Handlers Overview"
+          ]
+        },
+        {
+          "Title": "Niagara Quick-Start Tutorials",
+          "Description": "Step-by-step tutorials to create initial projects and effects.",
+          "Links": [
+            "Niagara Quick Start",
+            "Niagara Flipbook Baker Quick Start Guide",
+            "Summary View Quick Start Guide"
+          ]
+        },
+        {
+          "Title": "Additional Information",
+          "Description": "Guidance for specific project types and migrations.",
+          "Links": [
+            "Cascade to Niagara Converter Plugin",
+            "Large World Coordinates in Niagara"
+          ]
+        }
+      ],
+      "Tags": [
+        "getting started",
+        "niagara",
+        "tutorials",
+        "vfx",
+        "effects"
+      ]
+    },
+    {
+      "Title": "Summary View Quick Start Guide",
+      "Description": "Overview of Niagara's Summary View in Unreal Engine.",
+      "Content": [
+        {
+          "Title": "Overview",
+          "Description": "Customizable view for key parameters, simplifying complex systems for beginners and non-VFX users.",
+          "Steps": [
+            {
+              "Title": "Create a Niagara System",
+              "Description": "Create a new Niagara system and see its default Summary View.",
+              "Instructions": [
+                "Enable NiagaraFluids plugin",
+                "Create new Niagara System from template",
+                "Open NS_ColoredSmoke and select Emitter Summary",
+                "View Summary in Details panel"
+              ]
+            },
+            {
+              "Title": "Create Your First Summary View",
+              "Description": "Create a Summary View, search and add parameters.",
+              "Instructions": [
+                "Select ParticleSourceEmitter and open Emitter Summary",
+                "Edit Summary View: Search 'Spawn Count' and drag to add",
+                "Add parameters: Color, Noise Strength, Noise Frequency"
+              ]
+            },
+            {
+              "Title": "Organize Your Summary View",
+              "Description": "Create categories and sections for better organization.",
+              "Instructions": [
+                "Add categories: Particle Spawn, Particle Color, Particle Noise",
+                "Add sections: Color, Forces",
+                "Assign categories to sections",
+                "Override display name for parameters"
+              ]
+            },
+            {
+              "Title": "Add Parameters from the Emitter",
+              "Description": "Add parameters directly from the emitter for ease of use.",
+              "Instructions": [
+                "Exit Edit Summary View window",
+                "Add Noise Quality / Cost parameter from Curl Noise Force module",
+                "Add Spin Position module to Summary"
+              ]
+            }
+          ],
+          "Guide": "Follow the detailed instructions to set up and customize your Summary View."
+        }
+      ],
+      "Tags": [
+        "summary view",
+        "niagara",
+        "quick start",
+        "tutorials",
+        "visual effects"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    },
+    {
+      "Title": "Niagara Lightweight Emitters",
+      "Description": "Overview of Niagara's Lightweight Emitters.",
+      "Content": [
+        {
+          "Title": "Niagara Lightweight Emitters Overview",
+          "Description": "Introduced in Unreal Engine 5.4, optimized for minimal tick use and faster workflow.",
+          "Details": {
+            "Performance": "Stateless emitters reduce memory and CPU cost, remove tick cost, and improve development speed.",
+            "Features": [
+              "No need for compilation",
+              "Reduced game thread tick cost",
+              "Reduced render thread cost",
+              "Reduced memory usage",
+              "Less impact from emitter count"
+            ],
+            "Modules": [
+              "Acceleration Force",
+              "Add Velocity",
+              "Curl Noise / Noise Vector Field",
+              "Drag",
+              "Gravity Force",
+              "Initialize Particle",
+              "Initial Mesh Orientation",
+              "Rotate Around Point",
+              "Scale Color",
+              "Scale Mesh Size",
+              "Scale Mesh Size By Speed",
+              "Scale Sprite Size",
+              "Scale Sprite Size By Speed",
+              "Shape Location",
+              "Solve Velocities And Forces",
+              "Sprite Rotation Rate",
+              "Sub UV Animation"
+            ],
+            "Limitations": "Cannot create custom modules, scratchpads, or use dynamic inputs. Can convert between stateless and stateful emitters."
+          },
+          "Links": [
+            "Niagara Lightweight Emitters Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "lightweight emitters",
+        "performance",
+        "optimization",
+        "stateless emitters"
+      ]
+    },
+    {
+      "Title": "Getting Started in Niagara",
+      "Description": "This page collects all the getting started learning materials for Niagara.",
+      "Content": [
+        {
+          "Title": "Niagara Overview Pages",
+          "Description": "Basics of Niagara systems, emitters, and modules. Design philosophy.",
+          "Links": [
+            "Niagara Overview",
+            "Niagara Key Concepts",
+            "Events and Event Handlers Overview"
+          ]
+        },
+        {
+          "Title": "Niagara Quick-Start Tutorials",
+          "Description": "Step-by-step tutorials to create initial projects and effects.",
+          "Links": [
+            "Niagara Quick Start",
+            "Niagara Flipbook Baker Quick Start Guide",
+            "Summary View Quick Start Guide"
+          ]
+        },
+        {
+          "Title": "Additional Information",
+          "Description": "Guidance for specific project types and migrations.",
+          "Links": [
+            "Cascade to Niagara Converter Plugin",
+            "Large World Coordinates in Niagara"
+          ]
+        }
+      ],
+      "Tags": [
+        "getting started",
+        "niagara",
+        "tutorials",
+        "vfx",
+        "effects"
+      ]
+    },
+    {
+      "Title": "Summary View Quick Start Guide",
+      "Description": "Overview of Niagara's Summary View in Unreal Engine.",
+      "Content": [
+        {
+          "Title": "Overview",
+          "Description": "Customizable view for key parameters, simplifying complex systems for beginners and non-VFX users.",
+          "Steps": [
+            {
+              "Title": "Create a Niagara System",
+              "Description": "Create a new Niagara system and see its default Summary View.",
+              "Instructions": [
+                "Enable NiagaraFluids plugin",
+                "Create new Niagara System from template",
+                "Open NS_ColoredSmoke and select Emitter Summary",
+                "View Summary in Details panel"
+              ]
+            },
+            {
+              "Title": "Create Your First Summary View",
+              "Description": "Create a Summary View, search and add parameters.",
+              "Instructions": [
+                "Select ParticleSourceEmitter and open Emitter Summary",
+                "Edit Summary View: Search 'Spawn Count' and drag to add",
+                "Add parameters: Color, Noise Strength, Noise Frequency"
+              ]
+            },
+            {
+              "Title": "Organize Your Summary View",
+              "Description": "Create categories and sections for better organization.",
+              "Instructions": [
+                "Add categories: Particle Spawn, Particle Color, Particle Noise",
+                "Add sections: Color, Forces",
+                "Assign categories to sections",
+                "Override display name for parameters"
+              ]
+            },
+            {
+              "Title": "Add Parameters from the Emitter",
+              "Description": "Add parameters directly from the emitter for ease of use.",
+              "Instructions": [
+                "Exit Edit Summary View window",
+                "Add Noise Quality / Cost parameter from Curl Noise Force module",
+                "Add Spin Position module to Summary"
+              ]
+            }
+          ],
+          "Guide": "Follow the detailed instructions to set up and customize your Summary View."
+        }
+      ],
+      "Tags": [
+        "summary view",
+        "niagara",
+        "quick start",
+        "tutorials",
+        "visual effects"
+      ]
+    },
+    {
+      "Title": "Niagara Overview",
+      "Description": "This page gives an overview of the Niagara VFX system in Unreal Engine 5.",
+      "Content": [
+        {
+          "Title": "Overview",
+          "Description": "Niagara is a flexible, next-generation VFX system enabling technical artists to create functionality without a programmer. Suitable for both beginners and advanced users."
+        },
+        {
+          "Title": "Core Niagara Components",
+          "Description": "Four main components: Systems, Emitters, Modules, Parameters.",
+          "Details": [
+            {
+              "Title": "Systems",
+              "Description": "Container for building effects, managing emitters and behaviors."
+            },
+            {
+              "Title": "Emitters",
+              "Description": "Generate particles, control lifecycle and behavior through organized groups: Emitter Spawn, Emitter Update, Particle Spawn, Particle Update, Event Handler, Render."
+            },
+            {
+              "Title": "Modules",
+              "Description": "Building blocks of effects, processed sequentially, built using HLSL or visually in a Graph."
+            },
+            {
+              "Title": "Parameters",
+              "Description": "Abstract data in a simulation, including Primitive, Enum, Struct, and Data Interfaces types."
+            }
+          ]
+        },
+        {
+          "Title": "Templates and Behavior Examples",
+          "Description": "Asset browser window for creating systems and emitters, filtering and categorizing assets."
+        },
+        {
+          "Title": "Niagara VFX Workflow",
+          "Description": "Create systems, add emitters, and create modules. Utilize Dynamic Inputs, Inheritance, Micro Expressions, Events, Data Interfaces, and integration with Houdini."
+        }
+      ],
+      "Tags": [
+        "overview",
+        "niagara",
+        "vfx",
+        "visual effects",
+        "unreal engine"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    },
+    {
+      "Title": "Niagara Lightweight Emitters",
+      "Description": "Overview of Niagara's Lightweight Emitters.",
+      "Content": [
+        {
+          "Title": "Niagara Lightweight Emitters Overview",
+          "Description": "Introduced in Unreal Engine 5.4, optimized for minimal tick use and faster workflow.",
+          "Details": {
+            "Performance": "Stateless emitters reduce memory and CPU cost, remove tick cost, and improve development speed.",
+            "Features": [
+              "No need for compilation",
+              "Reduced game thread tick cost",
+              "Reduced render thread cost",
+              "Reduced memory usage",
+              "Less impact from emitter count"
+            ],
+            "Modules": [
+              "Acceleration Force",
+              "Add Velocity",
+              "Curl Noise / Noise Vector Field",
+              "Drag",
+              "Gravity Force",
+              "Initialize Particle",
+              "Initial Mesh Orientation",
+              "Rotate Around Point",
+              "Scale Color",
+              "Scale Mesh Size",
+              "Scale Mesh Size By Speed",
+              "Scale Sprite Size",
+              "Scale Sprite Size By Speed",
+              "Shape Location",
+              "Solve Velocities And Forces",
+              "Sprite Rotation Rate",
+              "Sub UV Animation"
+            ],
+            "Limitations": "Cannot create custom modules, scratchpads, or use dynamic inputs. Can convert between stateless and stateful emitters."
+          },
+          "Links": [
+            "Niagara Lightweight Emitters Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "lightweight emitters",
+        "performance",
+        "optimization",
+        "stateless emitters"
+      ]
+    },
+    {
+      "Title": "Getting Started in Niagara",
+      "Description": "This page collects all the getting started learning materials for Niagara.",
+      "Content": [
+        {
+          "Title": "Niagara Overview Pages",
+          "Description": "Basics of Niagara systems, emitters, and modules. Design philosophy.",
+          "Links": [
+            "Niagara Overview",
+            "Niagara Key Concepts",
+            "Events and Event Handlers Overview"
+          ]
+        },
+        {
+          "Title": "Niagara Quick-Start Tutorials",
+          "Description": "Step-by-step tutorials to create initial projects and effects.",
+          "Links": [
+            "Niagara Quick Start",
+            "Niagara Flipbook Baker Quick Start Guide",
+            "Summary View Quick Start Guide"
+          ]
+        },
+        {
+          "Title": "Additional Information",
+          "Description": "Guidance for specific project types and migrations.",
+          "Links": [
+            "Cascade to Niagara Converter Plugin",
+            "Large World Coordinates in Niagara"
+          ]
+        }
+      ],
+      "Tags": [
+        "getting started",
+        "niagara",
+        "tutorials",
+        "vfx",
+        "effects"
+      ]
+    },
+    {
+      "Title": "Summary View Quick Start Guide",
+      "Description": "Overview of Niagara's Summary View in Unreal Engine.",
+      "Content": [
+        {
+          "Title": "Overview",
+          "Description": "Customizable view for key parameters, simplifying complex systems for beginners and non-VFX users.",
+          "Steps": [
+            {
+              "Title": "Create a Niagara System",
+              "Description": "Create a new Niagara system and see its default Summary View.",
+              "Instructions": [
+                "Enable NiagaraFluids plugin",
+                "Create new Niagara System from template",
+                "Open NS_ColoredSmoke and select Emitter Summary",
+                "View Summary in Details panel"
+              ]
+            },
+            {
+              "Title": "Create Your First Summary View",
+              "Description": "Create a Summary View, search and add parameters.",
+              "Instructions": [
+                "Select ParticleSourceEmitter and open Emitter Summary",
+                "Edit Summary View: Search 'Spawn Count' and drag to add",
+                "Add parameters: Color, Noise Strength, Noise Frequency"
+              ]
+            },
+            {
+              "Title": "Organize Your Summary View",
+              "Description": "Create categories and sections for better organization.",
+              "Instructions": [
+                "Add categories: Particle Spawn, Particle Color, Particle Noise",
+                "Add sections: Color, Forces",
+                "Assign categories to sections",
+                "Override display name for parameters"
+              ]
+            },
+            {
+              "Title": "Add Parameters from the Emitter",
+              "Description": "Add parameters directly from the emitter for ease of use.",
+              "Instructions": [
+                "Exit Edit Summary View window",
+                "Add Noise Quality / Cost parameter from Curl Noise Force module",
+                "Add Spin Position module to Summary"
+              ]
+            }
+          ],
+          "Guide": "Follow the detailed instructions to set up and customize your Summary View."
+        }
+      ],
+      "Tags": [
+        "summary view",
+        "niagara",
+        "quick start",
+        "tutorials",
+        "visual effects"
+      ]
+    },
+    {
+      "Title": "Niagara Overview",
+      "Description": "This page gives an overview of the Niagara VFX system in Unreal Engine 5.",
+      "Content": [
+        {
+          "Title": "Overview",
+          "Description": "Niagara is a flexible, next-generation VFX system enabling technical artists to create functionality without a programmer. Suitable for both beginners and advanced users."
+        },
+        {
+          "Title": "Core Niagara Components",
+          "Description": "Four main components: Systems, Emitters, Modules, Parameters.",
+          "Details": [
+            {
+              "Title": "Systems",
+              "Description": "Container for building effects, managing emitters and behaviors."
+            },
+            {
+              "Title": "Emitters",
+              "Description": "Generate particles, control lifecycle and behavior through organized groups: Emitter Spawn, Emitter Update, Particle Spawn, Particle Update, Event Handler, Render."
+            },
+            {
+              "Title": "Modules",
+              "Description": "Building blocks of effects, processed sequentially, built using HLSL or visually in a Graph."
+            },
+            {
+              "Title": "Parameters",
+              "Description": "Abstract data in a simulation, including Primitive, Enum, Struct, and Data Interfaces types."
+            }
+          ]
+        },
+        {
+          "Title": "Templates and Behavior Examples",
+          "Description": "Asset browser window for creating systems and emitters, filtering and categorizing assets."
+        },
+        {
+          "Title": "Niagara VFX Workflow",
+          "Description": "Create systems, add emitters, and create modules. Utilize Dynamic Inputs, Inheritance, Micro Expressions, Events, Data Interfaces, and integration with Houdini."
+        }
+      ],
+      "Tags": [
+        "overview",
+        "niagara",
+        "vfx",
+        "visual effects",
+        "unreal engine"
+      ]
+    },
+    {
+      "Title": "Niagara Quick Start",
+      "Description": "A guide to help you quickly start using the Niagara visual effects system.",
+      "Content": [
+        {
+          "Title": "Prerequisite Topics",
+          "Description": "Ensure familiarity with Installing Unreal Engine, Creating a New Project, Enabling the Niagara Plugin."
+        },
+        {
+          "Title": "Goals",
+          "Description": "Get acquainted with creating VFX in Unreal Engine using Niagara. Create a smoke effect and attach it to a character's footsteps."
+        },
+        {
+          "Title": "Objectives",
+          "Description": "Set up project with meshes and materials, create a basic smoke effect, attach effect to character's run animation."
+        },
+        {
+          "Title": "Steps",
+          "Description": "Detailed steps for setting up the project, creating the effect, editing module settings, and attaching the effect to a character.",
+          "Details": [
+            {
+              "Title": "1 - Setting Up Your Project",
+              "Instructions": [
+                "Launch Unreal Engine, create a new project with Third Person Template and Starter Content.",
+                "Create or import a cloud mesh shape.",
+                "Create and configure a material for the cloud."
+              ]
+            },
+            {
+              "Title": "2 - Creating Your Effect",
+              "Instructions": [
+                "Create a new Niagara system and rename the emitter.",
+                "Configure the Render group for the mesh.",
+                "Preview the system in the Level."
+              ]
+            },
+            {
+              "Title": "3 - Editing the Module Settings",
+              "Instructions": [
+                "Edit modules in the Emitter Update group.",
+                "Edit modules in the Particle Spawn group.",
+                "Edit modules in the Particle Update group."
+              ]
+            },
+            {
+              "Title": "4 - Attaching the Niagara Effect to a Character",
+              "Instructions": [
+                "Open the run animation in Animation Editor.",
+                "Add Niagara notify tracks and select the FX_DustCloud system."
+              ]
+            },
+            {
+              "Title": "5 - Reviewing the End Result",
+              "Description": "Preview the final effect in the level and make adjustments as needed."
+            },
+            {
+              "Title": "6 - On Your Own",
+              "Description": "Explore further tutorials and refine the effect with additional features."
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "quick start",
+        "niagara",
+        "tutorial",
+        "visual effects",
+        "unreal engine"
+      ]
+    }
+  ]
+}
+{
+  "Sections": [
+    {
+      "Title": "Creating Visual Effects",
+      "Description": "Use Unreal Engine's Niagara visual effects system to create and preview particle effects in real time.",
+      "Subsections": [
+        {
+          "Title": "Niagara VFX System",
+          "Description": "Primary tool for visual effects in Unreal Engine 5.",
+          "Content": [
+            {
+              "Title": "Getting Started and Tutorials",
+              "Description": "Overview, Quick Start guide, Key Concepts, and step-by-step project guides.",
+              "Links": [
+                "Niagara Overview",
+                "Niagara Key Concepts",
+                "Quick Start Guide",
+                "Project Tutorials"
+              ]
+            },
+            {
+              "Title": "Niagara Features",
+              "Description": "Explore features like Fluids and GPU Raytracing Collisions, use the Niagara Script Editor for custom modules.",
+              "Links": [
+                "Niagara Fluids",
+                "Collisions in Niagara",
+                "Creating Custom Modules",
+                "Niagara Data Channels",
+                "Niagara Lightweight Emitters"
+              ]
+            },
+            {
+              "Title": "Debugging and Optimization",
+              "Description": "Tools for refining simulations, including Debug Drawing and Niagara Debugger.",
+              "Links": [
+                "Debug Drawing Tool",
+                "Niagara Debugger"
+              ]
+            },
+            {
+              "Title": "Reference",
+              "Description": "Detailed information on user interface, buttons, and modules.",
+              "Links": [
+                "Niagara Reference"
+              ]
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "Title": "Niagara Data Channels",
+      "Description": "Documentation on Niagara's Data Channels feature.",
+      "Content": [
+        {
+          "Title": "Niagara Data Channels Overview",
+          "Description": "Facilitate communication between game code and Niagara Systems, or between different Niagara Systems.",
+          "Details": {
+            "Overview": "Streams of data with defined payloads that systems read/write to, optimizing shared simulations.",
+            "Key Use": "Optimize burst Niagara Systems by combining them into a large shared simulation, improving performance.",
+            "Components": [
+              {
+                "Title": "Data Channel Asset",
+                "Description": "Holds variables and settings, including data types like Float, Vector 4, and specific events."
+              },
+              {
+                "Title": "Niagara System",
+                "Description": "Configured to listen to data channels, spawn particles, and handle events with infinite loop and cleanup behaviors."
+              },
+              {
+                "Title": "Blueprint",
+                "Description": "Writes directly into the data channel, setting relevant variables."
+              }
+            ],
+            "Guide": "Refer to Niagara Data Channels Intro in the EDC for a step-by-step guide."
+          },
+          "Links": [
+            "Niagara Data Channels Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "data channels",
+        "optimization",
+        "shared simulation"
+      ]
+    },
+    {
+      "Title": "Niagara Lightweight Emitters",
+      "Description": "Overview of Niagara's Lightweight Emitters.",
+      "Content": [
+        {
+          "Title": "Niagara Lightweight Emitters Overview",
+          "Description": "Introduced in Unreal Engine 5.4, optimized for minimal tick use and faster workflow.",
+          "Details": {
+            "Performance": "Stateless emitters reduce memory and CPU cost, remove tick cost, and improve development speed.",
+            "Features": [
+              "No need for compilation",
+              "Reduced game thread tick cost",
+              "Reduced render thread cost",
+              "Reduced memory usage",
+              "Less impact from emitter count"
+            ],
+            "Modules": [
+              "Acceleration Force",
+              "Add Velocity",
+              "Curl Noise / Noise Vector Field",
+              "Drag",
+              "Gravity Force",
+              "Initialize Particle",
+              "Initial Mesh Orientation",
+              "Rotate Around Point",
+              "Scale Color",
+              "Scale Mesh Size",
+              "Scale Mesh Size By Speed",
+              "Scale Sprite Size",
+              "Scale Sprite Size By Speed",
+              "Shape Location",
+              "Solve Velocities And Forces",
+              "Sprite Rotation Rate",
+              "Sub UV Animation"
+            ],
+            "Limitations": "Cannot create custom modules, scratchpads, or use dynamic inputs. Can convert between stateless and stateful emitters."
+          },
+          "Links": [
+            "Niagara Lightweight Emitters Overview"
+          ]
+        }
+      ],
+      "Tags": [
+        "lightweight emitters",
+        "performance",
+        "optimization",
+        "stateless emitters"
+      ]
+    },
+    {
+      "Title": "Getting Started in Niagara",
+      "Description": "This page collects all the getting started learning materials for Niagara.",
+      "Content": [
+        {
+          "Title": "Niagara Overview Pages",
+          "Description": "Basics of Niagara systems, emitters, and modules. Design philosophy.",
+          "Links": [
+            "Niagara Overview",
+            "Niagara Key Concepts",
+            "Events and Event Handlers Overview"
+          ]
+        },
+        {
+          "Title": "Niagara Quick-Start Tutorials",
+          "Description": "Step-by-step tutorials to create initial projects and effects.",
+          "Links": [
+            "Niagara Quick Start",
+            "Niagara Flipbook Baker Quick Start Guide",
+            "Summary View Quick Start Guide"
+          ]
+        },
+        {
+          "Title": "Additional Information",
+          "Description": "Guidance for specific project types and migrations.",
+          "Links": [
+            "Cascade to Niagara Converter Plugin",
+            "Large World Coordinates in Niagara"
+          ]
+        }
+      ],
+      "Tags": [
+        "getting started",
+        "niagara",
+        "tutorials",
+        "vfx",
+        "effects"
+      ]
+    },
+    {
+      "Title": "Summary View Quick Start Guide",
+      "Description": "Overview of Niagara's Summary View in Unreal Engine.",
+      "Content": [
+        {
+          "Title": "Overview",
+          "Description": "Customizable view for key parameters, simplifying complex systems for beginners and non-VFX users.",
+          "Steps": [
+            {
+              "Title": "Create a Niagara System",
+              "Description": "Create a new Niagara system and see its default Summary View.",
+              "Instructions": [
+                "Enable NiagaraFluids plugin",
+                "Create new Niagara System from template",
+                "Open NS_ColoredSmoke and select Emitter Summary",
+                "View Summary in Details panel"
+              ]
+            },
+            {
+              "Title": "Create Your First Summary View",
+              "Description": "Create a Summary View, search and add parameters.",
+              "Instructions": [
+                "Select ParticleSourceEmitter and open Emitter Summary",
+                "Edit Summary View: Search 'Spawn Count' and drag to add",
+                "Add parameters: Color, Noise Strength, Noise Frequency"
+              ]
+            },
+            {
+              "Title": "Organize Your Summary View",
+              "Description": "Create categories and sections for better organization.",
+              "Instructions": [
+                "Add categories: Particle Spawn, Particle Color, Particle Noise",
+                "Add sections: Color, Forces",
+                "Assign categories to sections",
+                "Override display name for parameters"
+              ]
+            },
+            {
+              "Title": "Add Parameters from the Emitter",
+              "Description": "Add parameters directly from the emitter for ease of use.",
+              "Instructions": [
+                "Exit Edit Summary View window",
+                "Add Noise Quality / Cost parameter from Curl Noise Force module",
+                "Add Spin Position module to Summary"
+              ]
+            }
+          ],
+          "Guide": "Follow the detailed instructions to set up and customize your Summary View."
+        }
+      ],
+      "Tags": [
+        "summary view",
+        "niagara",
+        "quick start",
+        "tutorials",
+        "visual effects"
+      ]
+    },
+    {
+      "Title": "Niagara Overview",
+      "Description": "This page gives an overview of the Niagara VFX system in Unreal Engine 5.",
+      "Content": [
+        {
+          "Title": "Overview",
+          "Description": "Niagara is a flexible, next-generation VFX system enabling technical artists to create functionality without a programmer. Suitable for both beginners and advanced users."
+        },
+        {
+          "Title": "Core Niagara Components",
+          "Description": "Four main components: Systems, Emitters, Modules, Parameters.",
+          "Details": [
+            {
+              "Title": "Systems",
+              "Description": "Container for building effects, managing emitters and behaviors."
+            },
+            {
+              "Title": "Emitters",
+              "Description": "Generate particles, control lifecycle and behavior through organized groups: Emitter Spawn, Emitter Update, Particle Spawn, Particle Update, Event Handler, Render."
+            },
+            {
+              "Title": "Modules",
+              "Description": "Building blocks of effects, processed sequentially, built using HLSL or visually in a Graph."
+            },
+            {
+              "Title": "Parameters",
+              "Description": "Abstract data in a simulation, including Primitive, Enum, Struct, and Data Interfaces types."
+            }
+          ]
+        },
+        {
+          "Title": "Templates and Behavior Examples",
+          "Description": "Asset browser window for creating systems and emitters, filtering and categorizing assets."
+        },
+        {
+          "Title": "Niagara VFX Workflow",
+          "Description": "Create systems, add emitters, and create modules. Utilize Dynamic Inputs, Inheritance, Micro Expressions, Events, Data Interfaces, and integration with Houdini."
+        }
+      ],
+      "Tags": [
+        "overview",
+        "niagara",
+        "vfx",
+        "visual effects",
+        "unreal engine"
+      ]
+    },
+    {
+      "Title": "Niagara Quick Start",
+      "Description": "A guide to help you quickly start using the Niagara visual effects system.",
+      "Content": [
+        {
+          "Title": "Prerequisite Topics",
+          "Description": "Ensure familiarity with Installing Unreal Engine, Creating a New Project, Enabling the Niagara Plugin."
+        },
+        {
+          "Title": "Goals",
+          "Description": "Get acquainted with creating VFX in Unreal Engine using Niagara. Create a smoke effect and attach it to a character's footsteps."
+        },
+        {
+          "Title": "Objectives",
+          "Description": "Set up project with meshes and materials, create a basic smoke effect, attach effect to character's run animation."
+        },
+        {
+          "Title": "Steps",
+          "Description": "Detailed steps for setting up the project, creating the effect, editing module settings, and attaching the effect to a character.",
+          "Details": [
+            {
+              "Title": "1 - Setting Up Your Project",
+              "Instructions": [
+                "Launch Unreal Engine, create a new project with Third Person Template and Starter Content.",
+                "Create or import a cloud mesh shape.",
+                "Create and configure a material for the cloud."
+              ]
+            },
+            {
+              "Title": "2 - Creating Your Effect",
+              "Instructions": [
+                "Create a new Niagara system and rename the emitter.",
+                "Configure the Render group for the mesh.",
+                "Preview the system in the Level."
+              ]
+            },
+            {
+              "Title": "3 - Editing the Module Settings",
+              "Instructions": [
+                "Edit modules in the Emitter Update group.",
+                "Edit modules in the Particle Spawn group.",
+                "Edit modules in the Particle Update group."
+              ]
+            },
+            {
+              "Title": "4 - Attaching the Niagara Effect to a Character",
+              "Instructions": [
+                "Open the run animation in Animation Editor.",
+                "Add Niagara notify tracks and select the FX_DustCloud system."
+              ]
+            },
+            {
+              "Title": "5 - Reviewing the End Result",
+              "Description": "Preview the final effect in the level and make adjustments as needed."
+            },
+            {
+              "Title": "6 - On Your Own",
+              "Description": "Explore further tutorials and refine the effect with additional features."
+            }
+          ]
+        }
+      ],
+      "Tags": [
+        "quick start",
+        "niagara",
+        "tutorial",
+        "visual effects",
+        "unreal engine"
+      ]
+    },
+    {
+      "Title": "Large World Coordinates in Niagara",
+      "Description": "An overview of how to use the Large World Coordinate System with Niagara.",
+      "Content": [
+        {
+          "Title": "Overview",
+          "Description": "Learn to use this Beta feature, but use caution when shipping with it."
+        },
+        {
+          "Title": "Position Data in UE4 and UE5",
+          "Description": "Comparison of position data storage between UE4 and UE5.",
+          "Details": [
+            {
+              "Title": "UE4",
+              "Description": "Particles.Position type: Vector. Local space emitter: relative to system's origin. World space emitter: relative to game's origin."
+            },
+            {
+              "Title": "UE5",
+              "Description": "Particles.Position type: Position. Local space emitter: unchanged. World space emitter: relative to system's position when activated."
+            }
+          ]
+        },
+        {
+          "Title": "Enabling/Disabling Large World Coordinates",
+          "Description": "Toggle large world coordinates in project settings or system properties."
+        },
+        {
+          "Title": "Testing Large World Coordinates",
+          "Description": "Move the effect far away or change tile size to test behavior.",
+          "Methods": [
+            "Move the Effect Very Far Away",
+            "Change the Constant for Tile Size"
+          ]
+        },
+        {
+          "Title": "Updating Existing Projects",
+          "Description": "Update custom HLSL scripts and modules for large world coordinates."
+        },
+        {
+          "Title": "Converting Between Vector and Position",
+          "Description": "Steps to change vector inputs/outputs to position type and convert between types in a node graph."
+        },
+        {
+          "Title": "Custom Data Interfaces and Renderers",
+          "Description": "Update custom data interfaces and renderers to support large world coordinates."
+        }
+      ],
+      "Tags": [
+        "large world coordinates",
+        "niagara",
+        "beta",
+        "vfx",
+        "visual effects",
+        "particle effects"
+      ]
+    }
+  ]
+}
+{
+  "guideTitle": "Niagara Flipbook Baker Quick Start Guide",
+  "description": "A quick start guide for creating Niagara flipbooks in Unreal Engine.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "content": "Niagara systems create visually stunning effects, but can be memory-intensive. Baking simulations to flipbooks improves performance."
+    },
+    {
+      "title": "Goals",
+      "content": "Use the Niagara Baker to export a flipbook from a simulation."
+    },
+    {
+      "title": "Objectives",
+      "items": [
+        "Set up the capture for the flipbook",
+        "Perform the capture",
+        "Connect the flipbook to a new emitter"
+      ]
+    },
+    {
+      "title": "Set Up the Capture",
+      "steps": [
+        "Open an existing Niagara system in the Niagara Editor.",
+        "Create a flipbook from a Niagara Fluids template.",
+        "Select Open Baker Tab to display the Baker panel."
+      ]
+    },
+    {
+      "title": "Navigating the User Interface",
+      "items": [
+        "Bake button",
+        "Niagara Preview",
+        "Flipbook Preview",
+        "Playback Toolbar",
+        "Flipbook Options"
+      ]
+    },
+    {
+      "title": "Frame the Niagara Preview",
+      "steps": [
+        "Frame the simulation within the Niagara Preview window.",
+        "Adjust the angle and size."
+      ]
+    },
+    {
+      "title": "Adjust the Timing",
+      "steps": [
+        "Use the Playback Toolbar to control the simulation preview.",
+        "Adjust Start Seconds and Duration Seconds.",
+        "Set Frames Per Second to match content."
+      ]
+    },
+    {
+      "title": "Adjust the Texture Size",
+      "steps": [
+        "Set the number of tiles and texture size.",
+        "Ensure tiles divide evenly into the overall texture size."
+      ]
+    },
+    {
+      "title": "Set Additional Texture Properties",
+      "steps": [
+        "Set Source Binding to desired value.",
+        "Perform first capture to set Generated Texture."
+      ]
+    },
+    {
+      "title": "Perform a Capture",
+      "steps": [
+        "Click Bake in the Niagara Preview window.",
+        "Name the texture file after rendering."
+      ]
+    },
+    {
+      "title": "Use the Flipbook Texture in an Emitter",
+      "steps": [
+        "Right-click in the Content Drawer to create a new Niagara System.",
+        "Add the Sub UV Animation Module.",
+        "Adjust the settings on the Sprite Renderer."
+      ]
+    },
+    {
+      "title": "Add the Sub UV Animation Module",
+      "steps": [
+        "Click plus (+) next to Particle Update and select Sub UVAnimation.",
+        "Adjust the start and end frame."
+      ]
+    },
+    {
+      "title": "Adjust the Settings on the Sprite Renderer",
+      "steps": [
+        "Specify the number of tiles in the grid in the Sub Image Size field.",
+        "Create and link a new Material."
+      ]
+    },
+    {
+      "title": "Final Result",
+      "content": "Open the Niagara System in the Niagara Editor to see the flipbook playing in the Preview window."
+    },
+    {
+      "title": "Tags",
+      "items": [
+        "effects",
+        "getting started",
+        "vfx",
+        "niagara",
+        "visual effects",
+        "particle effects"
+      ]
+    },
+    {
+      "title": "Community",
+      "content": "Ask questions and help your peers in the Developer Forums. Write or read tutorials in the Learning Library."
+    }
+  ]
+}

@@ -1,0 +1,534 @@
+{
+  "Actors_and_Geometry": {
+    "Description": "Defines Actors and their use in level design, including common Actor types.",
+    "Actor_Definition": {
+      "Description": "An Actor is an object in a Level (camera, Mesh, player start). Supports 3D transformations. Created and destroyed via gameplay code.",
+      "Base_Class": "AActor in C++."
+    },
+    "Level_Creation": {
+      "Description": "Place, move, and scale Actors to create environments. Add scripts for behavior. Covers basic Actor techniques.",
+      "Techniques": [
+        "Placing",
+        "Selecting",
+        "Transforming"
+      ]
+    },
+    "Common_Actor_Types": {
+      "Description": "Not comprehensive. Some plugins/templates add Actors. Availability varies.",
+      "Types": [
+        "Physics Volume Actor",
+        "Static Mesh Actors",
+        "Skeletal Mesh Actors",
+        "Geometry Brush Actors",
+        "Camera Actors",
+        "Audio Volume Actor",
+        "Player Start Actor",
+        "Trigger Volume Actors",
+        "Volume Actors",
+        "Pain-Causing Volume Actor",
+        "Decal Actors",
+        "3D Text Actor",
+        "Target Point Actors"
+      ]
+    },
+    "Working_with_Actors": {
+      "Placing_Actors": "Place props, lights, cameras in Level.",
+      "Selecting_Actors": "Methods for selecting Actors in Level Editor.",
+      "Transforming_Actors": "Modify location, rotation, scale of Actors.",
+      "Actor_Snapping": "Overview of Actor snapping in Unreal Engine.",
+      "Actor_Mobility": "Controls if Actor can move/change during gameplay.",
+      "Grouping_Actors": "Create and work with Actor groups.",
+      "Merging_Actors": "Merge multiple Static Mesh Actors into one."
+    },
+    "Resources": [
+      "Developer Forums for peer questions and help.",
+      "Learning Library for tutorials."
+    ]
+  }
+}
+{
+  "Placing_Actors": {
+    "Description": "How to place Actors like props, lights, cameras into your Level.",
+    "Actor_Definition": {
+      "Description": "Actors are objects placed in a Level (Static Meshes, sounds, cameras, etc.). Creating an instance of an Actor adds it to the World Outliner."
+    },
+    "Required_Setup": {
+      "Description": "Create a new project in Unreal Editor. Examples use the Third Person Template."
+    },
+    "Using_Place_Actors_Panel": {
+      "Description": "Place Actors from the Place Actors panel. Open via Window > Place Actor. Consists of Search, Filters, Asset View.",
+      "Search": "Find Actors by name.",
+      "Filters": [
+        "Recently Placed",
+        "Basic",
+        "Lights",
+        "Shapes",
+        "Cinematic",
+        "Visual Effects",
+        "Geometry",
+        "Volumes",
+        "All Classes"
+      ],
+      "Asset_View": "Shows Assets matching search or filters."
+    },
+    "Placing_Actors_Context_Menu": {
+      "Description": "Place Actors using the context menu by right-clicking in the Level Viewport."
+    },
+    "Steps_Context_Menu": [
+      "Find Asset in Content Browser.",
+      "Select Asset.",
+      "Right-click in Level Viewport.",
+      "Select Asset under Place Actor."
+    ],
+    "Replacing_Actors": {
+      "Description": "Replace Actors using the context menu."
+    },
+    "Steps_Replacing_Actors": [
+      "Select Actor in Content Browser.",
+      "Right-click Actor in Level Viewport.",
+      "Select Replace Selected Actors with."
+    ],
+    "Placing_Actors_Drag_Drop": {
+      "Description": "Add Actors via drag and drop from Content Browser."
+    },
+    "Steps_Drag_Drop": [
+      "Find Asset in Content Browser.",
+      "Drag and drop Asset into Level Viewport."
+    ],
+    "Actor_Types": [
+      "Blueprint: Instance of Blueprint",
+      "Skeletal Mesh: SkeletalMeshActor",
+      "Static Mesh: StaticMeshActor",
+      "Sound Cue: AmbientSound",
+      "Sound Wave: AmbientSound"
+    ],
+    "Placing_Actors_Class_Viewer": {
+      "Description": "Place Actors using Class Viewer.",
+      "Steps_Class_Viewer": [
+        "Open Class Viewer via Tools > Class Viewer.",
+        "Select Asset and drag into Level Viewport."
+      ]
+    },
+    "Resources": [
+      "Developer Forums for peer questions.",
+      "Learning Library for tutorials."
+    ]
+  }
+}
+{
+  "Selecting_Actors": {
+    "Description": "Methods for selecting Actors in the Level Editor viewport.",
+    "Importance": "Enhances productivity and speeds up the design process.",
+    "Methods": {
+      "Simple_Selection": {
+        "Description": "Left-click to select, Ctrl+click to add/remove Actors.",
+        "Usage": "Good for small numbers of Actors or isolated Actors.",
+        "Highlight": "Selected Actors highlighted in yellow, Transform widget visible."
+      },
+      "Group_Transformation": "Transform multiple selected Actors as a group and modify their properties in the Details panel.",
+      "Grouping_Actors": "Add multiple selected Actors to a group for easier re-selection or property changes."
+    },
+    "World_Outliner": {
+      "Description": "Hierarchical tree view of all Actors in the level. Located at the right-hand side of the Unreal Editor window.",
+      "Selection_Methods": [
+        "Click an Actor, then Shift+click another Actor to select all between them.",
+        "Ctrl+click multiple Actors to select all, even if not in sequence."
+      ],
+      "Note": "Selecting in World Outliner selects in Viewport and vice versa."
+    },
+    "Marquee_Selection": {
+      "Description": "Select/deselect group of Actors by click-and-dragging the mouse.",
+      "Viewport": "Orthographic top-down view recommended.",
+      "Shortcuts": [
+        {"Action": "Replace selection", "Keys": "Left-click and drag"},
+        {"Action": "Add to selection", "Keys": "Left-click and drag + Shift"},
+        {"Action": "Remove from selection", "Keys": "Left-click and drag + Ctrl + Alt"}
+      ]
+    },
+    "Select_Menu": {
+      "Description": "Advanced selection techniques from Unreal Editor's menu bar.",
+      "Options": [
+        {"Option": "Select All", "Description": "Selects all Actors in the Level."},
+        {"Option": "Unselect All", "Description": "Clears the current selection."},
+        {"Option": "Invert Selection", "Description": "Inverts the current selection."},
+        {"Option": "Focus Selected", "Description": "Centers selected Actor in Level Viewport."},
+        {"Option": "Select Immediate Children", "Description": "Selects immediate children of selected Actor."},
+        {"Option": "Select All Descendants", "Description": "Selects all children of selected Actor."},
+        {"Option": "Select Relevant Lights", "Description": "Selects all Light Actors affecting selected Actor."},
+        {"Option": "Select Matching (Selected Classes)", "Description": "Selects all Actors with same Static Mesh and class."},
+        {"Option": "Select Matching (All Classes)", "Description": "Selects all Actors with same Static Mesh."},
+        {"Option": "Select All Additive Brushes", "Description": "Selects all additive brush Actors."},
+        {"Option": "Select All Subtractive Brushes", "Description": "Selects all subtractive brush Actors."},
+        {"Option": "Select All Surfaces", "Description": "Selects all surface brush Actors."},
+        {"Option": "Select All With Same Material", "Description": "Selects all Actors with same Material."},
+        {"Option": "Select All Geometry in Hierarchy", "Description": "Selects all geometry in Level."},
+        {"Option": "Deselect All Geometry in Hierarchy", "Description": "Deselects all geometry in Level."},
+        {"Option": "Select Inverse Geometry in Hierarchy", "Description": "Inverts geometry selection in Level."}
+      ]
+    },
+    "Resources": [
+      "Developer Forums for peer questions.",
+      "Learning Library for tutorials."
+    ]
+  }
+}
+{
+  "Transforming_Actors": {
+    "Description": "Modify location, rotation, and scale of Actors in a Level.",
+    "Overview": "Transforming involves moving, rotating, or scaling Actors. Methods: Manual and Interactive.",
+    "Axes": "Vertical axis is Z axis.",
+    "Manual_Transformation": {
+      "Description": "Use the Transform section in the Details panel to edit Location, Rotation, Scale.",
+      "Fields": "X, Y, Z axes for numeric entry or mouse drag.",
+      "Multiple_Actors": "Shows Multiple Values for varied properties. Reset with Reset to Default button.",
+      "Lock_Scale": "Lock Scale button for uniform scaling.",
+      "Coordinate_Space": "Default to relative; toggle to world with dropdown."
+    },
+    "Interactive_Transformation": {
+      "Description": "Use gizmos in the Level Viewport for visual transformation.",
+      "Gizmo_Colors": {"X": "Red", "Y": "Green", "Z": "Blue"},
+      "Gizmo_Types": ["Translation", "Rotation", "Scale"],
+      "Gizmo_Forms": "Toggle between types with Space Bar.",
+      "Show_Hide_Gizmo": "Settings menu > Show Transform Widget."
+    },
+    "Translation_Gizmo": {
+      "Description": "Color-coded arrows for axis movement. Use grid snapping for precision.",
+      "Move_Types": [
+        "Single axis",
+        "Two axes (plane)",
+        "Three axes (sphere)"
+      ],
+      "Duplicate": "Alt + drag arrow to duplicate."
+    },
+    "Rotation_Gizmo": {
+      "Description": "Color-coded arcs for axis rotation.",
+      "Highlight": "Hover turns arc yellow, shows rotation amount."
+    },
+    "Scale_Gizmo": {
+      "Description": "Handles with cubes for axis scaling. Scale uniformly by dragging center cube.",
+      "Scaling_Types": [
+        "Single axis",
+        "Two axes (plane)",
+        "Three axes (proportional)"
+      ]
+    },
+    "Transformation_Modes": {
+      "Description": "World vs. Local space. Toggle with Globe/Cube icon.",
+      "Default": "World transformation mode."
+    },
+    "Pivot_Point": {
+      "Description": "Adjust pivot temporarily by middle-clicking gizmo center.",
+      "Permanent_Adjust": "Right-click > Pivot > Set as Pivot Offset.",
+      "Reset_Pivot": "Right-click > Pivot > Reset Pivot Offset."
+    },
+    "Keyboard_Shortcuts": [
+      {"Key": "W", "Action": "Select Move tool"},
+      {"Key": "E", "Action": "Select Rotate tool"},
+      {"Key": "R", "Action": "Select Scale tool"},
+      {"Key": "V", "Action": "Toggle vertex snapping"},
+      {"Key": "Ctrl + W", "Action": "Duplicate Actor"},
+      {"Key": "Alt + drag", "Action": "Duplicate with translation gizmo"},
+      {"Key": "H", "Action": "Hide Actor"},
+      {"Key": "Ctrl + H", "Action": "Show all hidden Actors"},
+      {"Key": "Shift + E", "Action": "Select Actors with same Static Mesh"},
+      {"Key": "Ctrl + click", "Action": "Add Actor to selection"}
+    ],
+    "Resources": [
+      "Developer Forums for peer questions.",
+      "Learning Library for tutorials."
+    ]
+  }
+}
+{
+  "Actor_Snapping": {
+    "Description": "Overview of Actor snapping in Unreal Engine, aligning Actors with grids or objects.",
+    "Snapping_Types": [
+      "Surface snapping",
+      "Grid snapping",
+      "Vertex snapping"
+    ],
+    "Surface_Snapping": {
+      "Description": "Aligns Actors to surfaces. Enable via Surface Snapping button in Level Viewport toolbar.",
+      "Options": [
+        {"Rotate_to_Surface_Normal": "Actors rotate to match surface alignment."},
+        {"Surface_Offset": "Distance between Actor and surface."}
+      ],
+      "Shortcut": "Press End key to snap Actor to nearest surface."
+    },
+    "Grid_Snapping": {
+      "Description": "Moves, rotates, or scales Actors in specific increments.",
+      "Grids": [
+        {"Drag_Grid": "Snaps to 3D grid in Level."},
+        {"Rotation_Grid": "Provides incremental rotation snaps."},
+        {"Scale_Grid": "Snaps to additive increments, configurable to percentages."}
+      ],
+      "Activation": "Click grid icon in Level Viewport toolbar, change increments via dropdown."
+    },
+    "Snapping_Preferences": {
+      "Description": "Configure snapping settings in Editor Preferences > Viewports > Snap.",
+      "Options": [
+        {"User_Power_of_Two_Snap_Size": "Use power of 2 grid settings (1, 2, 4, 8, 16…)."},
+        {"Enable_Grid_Snapping": "Snaps Actor location to grid."},
+        {"Enable_Rotation_Snapping": "Snaps Actor rotation to grid."},
+        {"Enable_Scale_Snapping": "Snaps Actor scale to grid."},
+        {"Use_Percentage_Based_Scaling": "Uses legacy multiplicative scaling."},
+        {"Enable_2D_Layer_Snapping": "Snaps objects to 2D layers."}
+      ],
+      "Custom_Grids": [
+        {"Decimal_Grid_Sizes": "Customize decimal grid sizes."},
+        {"Decimal_Grid_Intervals": "Decimal interval between grid lines in orthographic viewports."},
+        {"Pow_2_Grid_Sizes": "Customize power-of-2 grid sizes."},
+        {"Pow_2_Grid_Intervals": "Power-of-2 interval between grid lines in orthographic viewports."},
+        {"Common_Rot_Grid_Sizes": "Customize common rotation grid intervals."},
+        {"Divisions_Of_360_Rot_Grid_Sizes": "Customize divisions of 360 rotation grid intervals."},
+        {"Scaling_Grid_Sizes": "Customize scaling grid intervals."}
+      ]
+    },
+    "Vertex_Snapping": {
+      "Description": "Snap objects by their polygonal vertices.",
+      "Usage": "Hold V key while using translation gizmo. Useful with pivot adjustment for precise placement."
+    },
+    "Resources": [
+      "Developer Forums for peer questions.",
+      "Learning Library for tutorials."
+    ]
+  }
+}
+{
+  "Actor_Mobility": {
+    "Description": "Controls whether an Actor can move or change during gameplay. Applies to Static Mesh and Light Actors.",
+    "Location": "Actor's Details panel under Transform coordinates.",
+    "Mobility_States": [
+      "Static",
+      "Stationary",
+      "Movable"
+    ],
+    "Static_Actors": {
+      "Description": "Do not move or update during gameplay.",
+      "Static_Mesh_Actors": {
+        "Shadows": "Contribute to pre-calculated lightmaps using Lightmass.",
+        "Ideal_Use": "Structural or decorative meshes that do not relocate.",
+        "Materials": "Can still be animated."
+      },
+      "Light_Actors": {
+        "Shadows": "Contribute to pre-calculated lightmaps using Lightmass.",
+        "Lighting": "Illuminate Static and Stationary Actors; use indirect lighting for Movable Actors."
+      }
+    },
+    "Stationary_Actors": {
+      "Description": "Can change but not move during gameplay.",
+      "Static_Mesh_Actors": {
+        "Lighting": "Lit like Movable Actors with Static/Stationary Lights; use Cached Shadow Map for Movable Lights."
+      },
+      "Light_Actors": {
+        "Description": "Can change color or intensity during gameplay.",
+        "Shadows": "Contribute to pre-calculated lightmaps and cast dynamic shadows for moving objects."
+      },
+      "Performance": "Too many Stationary Lights affecting the same Actor can impact performance."
+    },
+    "Movable_Actors": {
+      "Description": "Can be added, removed, or changed during gameplay.",
+      "Static_Mesh_Actors": {
+        "Shadows": "Cast fully dynamic shadows, do not contribute to precomputed lighting.",
+        "Light_Interaction": [
+          {"Movable_Light": "Casts only dynamic shadow."},
+          {"Stationary_Light": "Combination of dynamic shadowing and precomputed lighting (Volumetric Lightmaps)."},
+          {"Static_Light": "Lit by precomputed lighting, no dynamic shadows."}
+        ]
+      },
+      "Light_Actors": {
+        "Description": "Cast dynamic shadows, can move and change color/intensity at runtime.",
+        "Performance": "Dynamic shadows are performance intensive, but non-shadow-casting lights add no rendering cost."
+      }
+    },
+    "Resources": [
+      "Developer Forums for peer questions.",
+      "Learning Library for tutorials."
+    ]
+  }
+}
+{
+  "Grouping_Actors": {
+    "Description": "Create and manage groups of Actors in Unreal Engine.",
+    "Prerequisite_Topics": ["Selecting Actors"],
+    "Benefits": [
+      "Transform grouped Actors as a single unit.",
+      "Temporarily unlock to transform individual Actors.",
+      "Add and remove Actors from a group."
+    ],
+    "Group_Rules": "An Actor can only belong to one group at a time.",
+    "Allow_Group_Selection": {
+      "Description": "Enable from Settings menu or toggle with Ctrl + Shift + G.",
+      "Location": "Main Toolbar > Settings"
+    },
+    "Grouping_Methods": {
+      "Methods": [
+        "Select Actors, right-click, and choose Group.",
+        "Use Ctrl + G keyboard shortcut."
+      ],
+      "Indication": "Grouped Actors delineated with green brackets."
+    },
+    "Group_Limits": "Cannot group Actors from different Levels; moving an Actor to another Level removes it from the group.",
+    "Group_Actor": {
+      "Description": "Created in World Outliner when Actors are grouped.",
+      "Selection": "Select the Group Actor or any member to select all in the group."
+    },
+    "Working_with_Groups": {
+      "Context_Menu": "Group section in context menu for Actor or group selection.",
+      "Options": [
+        {
+          "Regrouping": {
+            "Description": "Regroups selected Actors into a new group.",
+            "Shortcut": "Ctrl + G",
+            "Behaviors": [
+              "No Actor groups: Creates new group with selected Actors.",
+              "At least one Actor group: Regroups selected Actors."
+            ]
+          }
+        },
+        {
+          "Ungrouping": {
+            "Description": "Removes Actors from groups and deletes groups.",
+            "Shortcut": "Shift + G",
+            "Behavior": "Unlocked groups ungroup without hierarchy."
+          }
+        },
+        {
+          "Lock_and_Unlock_Group": {
+            "Description": "Locks or unlocks group for transformations.",
+            "Indication": "Green brackets for locked, red for unlocked.",
+            "Locked_State": [
+              "Selecting any Actor selects entire group.",
+              "Transformations affect all group members."
+            ],
+            "Unlocked_State": [
+              "Select and transform individual Actors.",
+              "Remove Actors from the group."
+            ]
+          }
+        },
+        {
+          "Add_Remove_Actors": {
+            "Add_to_Group": {
+              "Description": "Adds ungrouped Actors to selected group.",
+              "Availability": "Select one group and other ungrouped Actors."
+            },
+            "Remove_from_Group": {
+              "Description": "Removes selected Actors from unlocked group.",
+              "Behavior": "Nested group removed remains a group."
+            },
+            "Empty_Group": "Automatically deleted if no Actors remain."
+          }
+        },
+        {
+          "Transforming_Groups": {
+            "Pivot_Point": {
+              "Description": "Set to group's center point by default.",
+              "Group_Transform": "Locked group transforms around group pivot.",
+              "Individual_Transform": "Unlock group to transform individual Actors.",
+              "Setting_Pivot": [
+                "Select group, hold Alt, middle-click to set pivot.",
+                "Middle-click and drag sphere at gizmo center to move pivot."
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "Resources": [
+      "Developer Forums for peer questions.",
+      "Learning Library for tutorials."
+    ]
+  }
+}
+{
+  "Merging_Actors": {
+    "Description": "Combine Static Mesh Actors into a single Actor to reduce draw calls and optimize performance.",
+    "Prerequisite_Topics": ["Selecting Actors"],
+    "Workflow": [
+      "Select Static Mesh Actors in Level Viewport or World Outliner.",
+      "Go to Actor > Merge Actors from the top menu.",
+      "Choose merge type: Merge, Simplify, Batch, or Approximate.",
+      "Name the new Actor, select folder, and click Save."
+    ],
+    "Merge_Types": [
+      {
+        "Type": "Merge",
+        "Description": "Creates one mesh section per Material. Option to merge all Materials into one."
+      },
+      {
+        "Type": "Simplify",
+        "Description": "Merges into a single Proxy Mesh using lowest-detail LOD. Reduces vertex count."
+      },
+      {
+        "Type": "Batch",
+        "Description": "Creates instanced Static Mesh components from identical components."
+      },
+      {
+        "Type": "Approximate",
+        "Description": "Handles complex source meshes, similar to Simplify."
+      }
+    ],
+    "Merge_Settings": {
+      "Access": "Actor > Merge Actors > Merge Actor Settings.",
+      "Mesh_Settings": [
+        {"Option": "Pivot Point at Zero", "Description": "Sets pivot to Level's origin or first selected Actor's pivot."},
+        {"Option": "Merge Physics Data", "Description": "Combines collision primitives into a single object."},
+        {"Option": "Bake Vertex Data to Mesh", "Description": "Bakes vertex data into merged mesh."},
+        {"Option": "Output UVs", "Description": "Specify UV channels to output."},
+        {"Option": "LOD Selection Type", "Description": "Control which LODs are added to merged object."},
+        {"Option": "Include Imposters", "Description": "Include imposter LODs from source meshes."},
+        {"Option": "Allow Distance Field", "Description": "Compute distance field for mesh."},
+        {"Option": "Generate Lightmap UVs", "Description": "Creates new lightmap UV layout."},
+        {"Option": "Generate Nanite Enabled Mesh", "Description": "Generates a Nanite-enabled mesh."}
+      ],
+      "Material_Settings": [
+        {"Option": "Merge Materials", "Description": "Combines all Materials into one."},
+        {"Option": "Texture Size", "Description": "Sets pixel dimensions for merged Material's textures."},
+        {"Option": "Normal Map", "Description": "Generates a Normal map for merged Actor."},
+        {"Option": "Metallic Map", "Description": "Generates a Metallic map for merged Actor."},
+        {"Option": "Roughness Map", "Description": "Generates a Roughness map for merged Actor."},
+        {"Option": "Specular Map", "Description": "Generates a Specular map for merged Actor."},
+        {"Option": "Emissive Map", "Description": "Generates an Emissive map for merged Actor."},
+        {"Option": "Opacity Map", "Description": "Generates an Opacity map for merged Actor."},
+        {"Option": "Ambient Occlusion Map", "Description": "Generates an Ambient Occlusion map for merged Actor."},
+        {"Option": "Allow Two Sided Material", "Description": "Generated Material will be two-sided."},
+        {"Option": "Gutter Size", "Description": "Sets space between UV islands."}
+      ]
+    },
+    "Simplify_Settings": {
+      "Proxy_Settings": [
+        {"Option": "Screen Size", "Description": "Screen size of merged Static Mesh."},
+        {"Option": "Calculate Correct LODModel", "Description": "Calculates correct LOD models."},
+        {"Option": "Override Spatial Sampling Distance", "Description": "Overrides sampling distance for proxy LOD merging."},
+        {"Option": "Merge Distance", "Description": "Sets distance at which meshes are merged."},
+        {"Option": "Unresolved Geometry Color", "Description": "Color for unresolved LOD geometry."},
+        {"Option": "Hard Edge Angle", "Description": "Angle for hard edges between mesh faces."}
+      ]
+    },
+    "Batch_Settings": {
+      "Options": [
+        {"Option": "Actor Class to Use", "Description": "Select class for instanced Static Meshes."},
+        {"Option": "Instance Replacement Threshold", "Description": "Minimum number of instances for instancing."},
+        {"Option": "Skip Meshes with Vertex Colors", "Description": "Do not instance meshes with vertex colors."}
+      ]
+    },
+    "Approximate_Settings": {
+      "Mesh_Generation_Settings": [
+        {"Option": "Output Type", "Description": "Type of output from mesh approximation."},
+        {"Option": "Approximation Accuracy", "Description": "Accuracy in meters for approximation."},
+        {"Option": "Fill Gaps", "Description": "Expands topology to fill small gaps."},
+        {"Option": "Clamp Voxel Dimension", "Description": "Max allowable voxel count."}
+      ],
+      "Mesh_Filtering_Settings": [
+        {"Option": "Occlusion Method", "Description": "Type of hidden geometry removal."},
+        {"Option": "Simplify Method", "Description": "Criteria for mesh simplification."},
+        {"Option": "Ground Clipping", "Description": "Configures mesh clipping with ground plane."}
+      ]
+    },
+    "Resources": [
+      "Developer Forums for peer questions.",
+      "Learning Library for tutorials."
+    ]
+  }
+}

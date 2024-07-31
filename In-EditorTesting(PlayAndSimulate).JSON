@@ -1,0 +1,270 @@
+{
+  "guide": "In-Editor Testing (Play & Simulate)",
+  "description": "Guide to testing levels and gameplay directly in the Editor",
+  "sections": {
+    "overview": {
+      "title": "In-Editor Testing (Play & Simulate)",
+      "description": "Unreal Editor allows instant game preview with Play In Editor (PIE) and Simulate In Editor (SIE).",
+      "preview_system": "Supports toggling between PIE and SIE, enabling quick gameplay and asset tweaks.",
+      "level_duplication": "Creates a duplicate of your level for safe testing.",
+      "level_streaming": "Outliner updates to reflect level streaming during gameplay."
+    },
+    "toolbar": {
+      "title": "Toolbar",
+      "description": "Start PIE or SIE sessions from Level or Blueprint Editor using Toolbar buttons or dropdown menus.",
+      "play_button": "Starts a PIE session.",
+      "dropdown_menu": "Allows mode selection, network options, and full settings access.",
+      "simulate_button": "Begins SIE mode, with options to pause, stop, or switch to PIE."
+    },
+    "play_in_editor": {
+      "title": "Play In Editor",
+      "description": "Launch PIE sessions using the Play button or context menu.",
+      "modes": "Different modes available, changing the default Play mode.",
+      "display_types": {
+        "viewport": "Gameplay in Level Editor viewport, toggle between PIE and SIE using Possess/Eject buttons.",
+        "new_window": "Gameplay in a new window, cannot switch to SIE, mouse control defaults to game.",
+        "standalone_game": "Gameplay in a standalone process, cannot pause or switch to SIE."
+      },
+      "start_locations": {
+        "camera_location": "Gameplay starts at current camera location.",
+        "default_player_start": "Gameplay starts at Player Start location."
+      },
+      "play_from_here": "Right-click in the Viewport to begin gameplay at the clicked location."
+    },
+    "simulate_in_editor": {
+      "title": "Simulate In Editor",
+      "description": "Begins SIE session in the active viewport, with access to Editor tools.",
+      "switch_to_pie": "Click Possess or press F10 to switch from SIE to PIE."
+    },
+    "testing_gameplay": {
+      "title": "Testing Gameplay",
+      "blueprints": {
+        "title": "Blueprints",
+        "description": "Blueprints compile upon entering PIE or SIE, but are read-only. Defaults can be changed during preview."
+      },
+      "c++": {
+        "title": "C++",
+        "description": "Compile button recompiles and reloads game code on the fly, even during PIE or SIE."
+      }
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Play In Editor Settings",
+  "description": "Set up window sizes and other options for the Play In feature.",
+  "sections": {
+    "overview": {
+      "title": "Play In Editor Settings",
+      "description": "Open the Play settings panel from Edit > Editor Preferences or the Play dropdown menu."
+    },
+    "play_in_editor_settings": {
+      "title": "Play In Editor Settings",
+      "description": "Change behaviors during a Play In Editor session in the Level Viewport.",
+      "settings": {
+        "game_gets_mouse_control": "Enables game mouse control when PIE starts.",
+        "use_mouse_for_touch": "Sends mouse movement and clicks as touch events during PIE.",
+        "show_mouse_control_label": "Displays mouse control messages during PIE.",
+        "mouse_control_label_position": "Determines Mouse Control label position during PIE.",
+        "viewport_gets_hmd_control": "Uses HMD orientation while playing in viewport.",
+        "minimize_editor_on_vr_pie": "Minimizes editor on VR PIE.",
+        "auto_recompile_blueprints": "Automatically recompiles Blueprints during PIE.",
+        "enable_game_sounds": "Enables sound during PIE.",
+        "sound_quality_level": "Determines sound quality level during PIE.",
+        "stream_sub_levels": "Streams sub-levels from disk during PIE.",
+        "pie_enter_exit_sounds": "Plays a sound when entering or exiting PIE."
+      }
+    },
+    "game_viewport_settings": {
+      "title": "Game Viewport Settings",
+      "description": "Set window size and position for Play In Editor sessions.",
+      "settings": {
+        "new_viewport_resolution": {
+          "description": "Sets width and height of floating PIE windows.",
+          "width": "New Window Width",
+          "height": "New Window Height"
+        },
+        "new_window_position": {
+          "description": "Sets screen coordinates for the top-left corner of PIE windows.",
+          "left_position": "Left Position",
+          "top_position": "Top Position",
+          "center_viewport_position": "Always center the position of the first viewport."
+        },
+        "safe_zone_preview": "Enables visual preview of device safe zone for UI testing."
+      }
+    },
+    "play_in_new_window": {
+      "title": "Play in New Window",
+      "description": "Settings for new window size and position during PIE.",
+      "settings": {
+        "always_on_top": "Always have the PIE window on top of parent windows."
+      }
+    },
+    "play_in_standalone_game": {
+      "title": "Play in Standalone Game",
+      "description": "Settings for standalone game window size and position during PIE.",
+      "settings": {
+        "client_command_line_options": {
+          "description": "Command line settings for game clients.",
+          "disable_sound": "Disables sound in standalone games.",
+          "additional_launch_parameters": "Extra parameters for command line.",
+          "additional_mobile_parameters": "Extra parameters for mobile-on-PC standalone games."
+        }
+      }
+    },
+    "multiplayer_options": {
+      "title": "Multiplayer Options",
+      "description": "Basic and advanced settings for PIE multiplayer options.",
+      "settings": {
+        "launch_separate_server": "Launches a separate server even if not required by net mode.",
+        "play_net_mode": {
+          "description": "Sets net mode for PIE session.",
+          "play_standalone": "Starts a standalone game without a dedicated server.",
+          "play_as_listen_server": "Editor acts as both server and client.",
+          "play_as_client": "Editor acts as a client, connects to dedicated server."
+        },
+        "run_under_one_process": "Spawns multiplayer windows under a single instance of UE5.",
+        "enable_network_emulation": {
+          "description": "Applies network emulation settings for testing.",
+          "emulation_target": "Applies to Server Only, Clients Only, or Everyone.",
+          "network_emulation_profile": "Preset for incoming and outgoing traffic.",
+          "incoming_traffic": "Settings for latency and packet loss on incoming packets.",
+          "outgoing_traffic": "Settings for latency and packet loss on outgoing packets."
+        },
+        "client_settings": {
+          "description": "Client settings for PIE session.",
+          "number_of_clients": "Opens a number of client windows.",
+          "route_gamepad_to_second_window": "Routes gamepad input during multiplayer session.",
+          "create_audio_device_for_every_player": "Creates separate audio device for every player.",
+          "client_fixed_fps": "Sets client's framerate."
+        },
+        "server_settings": {
+          "description": "Server settings for PIE session.",
+          "server_port": "Opens chosen port for simple server networking.",
+          "server_map_name_override": "Overrides map launched by the server.",
+          "additional_server_game_options": "Additional parameters for server as URL parameters.",
+          "additional_server_launch_parameters": "Additional parameters for server as arguments.",
+          "server_fixed_fps": "Sets server framerate.",
+          "multiplayer_viewport_size": "Spawns additional clients at specified width and height."
+        }
+      }
+    },
+    "play_on_device": {
+      "title": "Play On Device",
+      "description": "Settings for building and launching the game on a device.",
+      "settings": {
+        "build_game_before_launch": {
+          "description": "Builds the game before launching on device.",
+          "options": ["Always", "Never", "If project has code, or running locally build editor", "If running a locally built editor"]
+        },
+        "launch_configuration": {
+          "description": "Uses selected build configuration when launching on device.",
+          "options": ["Same as Editor", "Debug", "Development", "Test", "Shipping"]
+        },
+        "auto_compile_blueprints_on_launch": "Recompiles dirty Blueprints before launching."
+      }
+    },
+    "server_debug_settings": {
+      "title": "Multiplayer Options (Server Debug Settings)",
+      "description": "Debug settings for server during multiplayer.",
+      "settings": {
+        "show_server_debug_drawing": "Controls default value of the show flag ServerDrawDebug.",
+        "show_server_debug_drawing_color_tint_strength": "Controls strength of debug drawing color tint.",
+        "show_server_debug_drawing_color_tint": "Biases debug drawing color tint."
+      }
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}
+{
+  "guide": "Play In Editor Multiplayer Options",
+  "description": "Testing gameplay with clients and servers.",
+  "sections": {
+    "overview": {
+      "title": "Play In Editor Multiplayer Options",
+      "description": "Supports testing with multiple worlds for networked play, allowing fast iteration and Blueprint debugging."
+    },
+    "setting_up_networked_testing": {
+      "title": "Setting up Networked Testing",
+      "description": "Set the number of client worlds and whether to run a dedicated server in the Play In dropdown menu.",
+      "steps": [
+        "Set Number of Players in the Play In dropdown menu.",
+        "Select the NetMode (Standalone, Listen Server, Client).",
+        "If Number of Players is 1 and NetMode is Standalone, tests non-networked gameplay.",
+        "If NetMode is Client, a dedicated server world is launched."
+      ],
+      "advanced_settings": {
+        "title": "Advanced Settings",
+        "description": "Configure client worlds, dedicated server, and command line options in Level Editor - Play In Settings window.",
+        "settings": {
+          "launch_separate_server": "Launches a separate server even if not required by net mode.",
+          "play_net_mode": {
+            "options": {
+              "play_standalone": "Starts a standalone game without a dedicated server.",
+              "play_as_listen_server": "Editor acts as both server and client.",
+              "play_as_client": "Editor acts as a client with a dedicated server in the background."
+            }
+          },
+          "run_under_one_process": "Spawns multiplayer windows under a single instance of Unreal Engine.",
+          "show_server_debug_drawing": "Draws debug rendering from the Dedicated Server.",
+          "server_debug_drawing_tint": {
+            "strength": "Bias of debug draw color towards the selected tint color.",
+            "color": "Tint color of server debug drawing."
+          },
+          "enable_network_emulation": {
+            "description": "Applies network emulation settings to test handling of network issues.",
+            "targets": ["Server Only", "Clients Only", "Everyone"],
+            "profiles": ["Average", "Bad", "Custom"],
+            "traffic": {
+              "incoming": "Settings for latency and packet loss on incoming packets.",
+              "outgoing": "Settings for latency and packet loss on outgoing packets."
+            }
+          }
+        }
+      }
+    },
+    "client_settings": {
+      "title": "Client Settings",
+      "description": "Settings for clients during a PIE session.",
+      "settings": {
+        "number_of_clients": "Opens specified number of client windows.",
+        "route_gamepad": "Routes gamepad input during multiplayer session.",
+        "create_audio_device": "Controls how many audio devices are created for players.",
+        "client_fixed_fps": "Sets client's framerate."
+      }
+    },
+    "server_settings": {
+      "title": "Server Settings",
+      "description": "Settings for server during a PIE session.",
+      "settings": {
+        "server_port": "UDP port number used for game networking.",
+        "server_map_override": "Overrides map launched by the server.",
+        "additional_server_options": {
+          "game": "Additional parameters passed to the server as URL parameters.",
+          "launch": "Additional parameters passed to the server as arguments."
+        },
+        "server_fixed_fps": "Sets server framerate.",
+        "multiplayer_viewport_size": "Spawns additional clients at specified width and height."
+      }
+    },
+    "debugging_blueprints": {
+      "title": "Debugging Blueprints",
+      "description": "Select the world to debug in Blueprint Editor during multiple world scenarios.",
+      "steps": [
+        "Select a world in the world list to filter Actors.",
+        "Set breakpoints to trigger on Actors in the selected world.",
+        "Client number is shown in preview window title."
+      ]
+    }
+  },
+  "resources": {
+    "developer_forums": "Ask questions and help peers.",
+    "learning_library": "Write and read tutorials."
+  }
+}

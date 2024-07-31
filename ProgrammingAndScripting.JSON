@@ -1,0 +1,620 @@
+{
+  "ProgrammingWithC++": {
+    "description": "Information for programmers developing with Unreal Engine.",
+    "details": "Unreal Engine provides a robust framework for C++ programmers. This section assumes some experience with C++. It covers several features to accelerate development workflows.",
+    "topics": [
+      {
+        "name": "Creating Gameplay Classes",
+        "description": "Create new Gameplay classes in C++, reflected in Unreal Editor after compiling with Visual Studio or XCode. Classes, functions, and variables are defined using standard C++ syntax."
+      },
+      {
+        "name": "Unreal Reflection System",
+        "description": "Encapsulate classes with Metadata Property Specifier macros for Editor functionality. Each class defines a template for a new Object or Actor."
+      },
+      {
+        "name": "Containers in Unreal Engine",
+        "description": "Information on Class and Data Structure collections."
+      },
+      {
+        "name": "Gameplay Architecture",
+        "description": "Build projects using the Gameplay Framework, providing a hierarchy of Objects and Actors with boilerplate variables and functions."
+      },
+      {
+        "name": "Creating Delegates",
+        "description": "Call member functions on C++ objects in a generic, type-safe way. Dynamically bind a delegate to a member function of an arbitrary object, calling the function at a future time."
+      }
+    ],
+    "sections": [
+      {
+        "name": "Section Directory",
+        "subsections": [
+          {
+            "name": "Unreal Engine Reflection System",
+            "description": "Information for developing Objects to be used with Unreal Engine."
+          },
+          {
+            "name": "Coding Standard",
+            "description": "Write maintainable code by adhering to established standards and best practices."
+          },
+          {
+            "name": "Containers in Unreal Engine",
+            "description": "Information on Class and Data Structure collections in Unreal Engine."
+          },
+          {
+            "name": "Gameplay Architecture",
+            "description": "Reference for creating and implementing gameplay classes."
+          },
+          {
+            "name": "Delegates",
+            "description": "Data types that reference and execute member functions on C++ Objects."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "text": "Ask questions and help your peers",
+        "url": "Developer Forums"
+      },
+      {
+        "text": "Write your own tutorials or read those from others",
+        "url": "Learning Library"
+      }
+    ]
+  }
+}
+{
+  "UnrealEngineReflectionSystem": {
+    "description": "Information for programmers developing Objects to be used with Unreal Engine.",
+    "details": "The Unreal Engine Reflection System encapsulates your classes with macros providing engine and editor functionality. Standard C++ classes, functions, and variables can be used in UE.",
+    "topics": [
+      {
+        "name": "UObject",
+        "description": "Base class for objects in Unreal. Each class defines a template for a new Actor or Object."
+      },
+      {
+        "name": "UCLASS Macro",
+        "description": "Tags classes derived from UObject so that the UObject handling system is aware of them."
+      },
+      {
+        "name": "TSubclassOf",
+        "description": "A template class that provides UClass type safety. Useful for assigning classes that derive from a specific type, and can be exposed to Blueprint."
+      },
+      {
+        "name": "Structs",
+        "description": "Data structures that help organize and manipulate related member properties. Defined using the USTRUCT() macro."
+      },
+      {
+        "name": "Unreal Smart Pointer Library",
+        "description": "Custom implementation of C++11 smart pointers for memory allocation and tracking. Includes Shared Pointers, Weak Pointers, Unique Pointers, and Shared References."
+      },
+      {
+        "name": "Interfaces",
+        "description": "Provide functions and additional gameplay behavior to implement in multiple or different classes."
+      },
+      {
+        "name": "Metadata Specifiers",
+        "description": "Control how classes, interfaces, structs, enums, functions, or properties interact with various aspects of the engine and editor."
+      },
+      {
+        "name": "UFUNCTION and UPROPERTY Macros",
+        "description": "Make UE aware of new classes, functions, and variables. These macros are garbage collected by the engine and can be edited and displayed within the Unreal Editor."
+      }
+    ],
+    "sections": [
+      {
+        "name": "Section Directory",
+        "subsections": [
+          {
+            "name": "Objects",
+            "description": "Explanations of the basic gameplay elements, Actors, and Objects."
+          },
+          {
+            "name": "Properties",
+            "description": "Reference for creating and implementing properties for gameplay classes."
+          },
+          {
+            "name": "Structs",
+            "description": "Reference to creating and implementing structs for gameplay classes."
+          },
+          {
+            "name": "TSubclassOf",
+            "description": "Template class providing UClass type safety."
+          },
+          {
+            "name": "Unreal Interfaces",
+            "description": "Create and implement Unreal Interfaces in C++ and Blueprints."
+          },
+          {
+            "name": "Metadata Specifiers",
+            "description": "Metadata keywords used when declaring UClasses, UFunctions, UProperties, UEnums, and UInterfaces."
+          },
+          {
+            "name": "UFunctions",
+            "description": "Overview for creating and implementing functions for gameplay classes."
+          },
+          {
+            "name": "Unreal Smart Pointer Library",
+            "description": "Custom implementation of shared pointers, including weak pointers and non-nullable shared references."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "text": "Ask questions and help your peers",
+        "url": "Developer Forums"
+      },
+      {
+        "text": "Write your own tutorials or read those from others",
+        "url": "Learning Library"
+      }
+    ]
+  }
+}
+{
+  "Objects": {
+    "description": "Explanations of the basic gameplay elements, Actors and Objects.",
+    "details": "Unreal has a robust system for handling game objects. The base class for objects in Unreal is UObject.",
+    "topics": [
+      {
+        "name": "UObject",
+        "description": "Base class for objects in Unreal. Use the UCLASS macro to tag classes derived from UObject."
+      },
+      {
+        "name": "UCLASS Macro",
+        "description": "Gives the UObject a reference to a UCLASS that describes its Unreal-based type. Each UCLASS maintains one Object called the Class Default Object (CDO)."
+      },
+      {
+        "name": "Properties And Function Types",
+        "description": "UObjects can have properties and functions of any type, marked with special macros for Unreal Engine to recognize and manipulate them."
+      },
+      {
+        "name": "UObject Creation",
+        "description": "UObjects do not support constructor arguments. They should be constructed using NewObject at runtime, or CreateDefaultSubobject for constructors."
+      },
+      {
+        "name": "Functionality Provided by UObjects",
+        "description": "Benefits include garbage collection, reference updating, reflection, serialization, automatic updating of default property changes, and more."
+      },
+      {
+        "name": "Unreal Header Tool",
+        "description": "A preprocessing step performed on the header files for UObject-derived types to collate the information needed by the engine."
+      },
+      {
+        "name": "Header File Format",
+        "description": "The structure required for a UObject's definition in a header (.h) file to work properly with Unreal Engine."
+      },
+      {
+        "name": "Updating Objects",
+        "description": "Ticking refers to how Objects are updated in Unreal Engine. UObjects can be updated by inheriting from the FTickableGameObject class."
+      },
+      {
+        "name": "Destroying Objects",
+        "description": "Object destruction is handled automatically by the garbage collection system when an Object is no longer referenced."
+      }
+    ],
+    "sections": [
+      {
+        "name": "Section Directory",
+        "subsections": [
+          {
+            "name": "Objects",
+            "description": "Explanations of the basic gameplay elements, Actors and Objects."
+          },
+          {
+            "name": "Properties",
+            "description": "Reference for creating and implementing properties for gameplay classes."
+          },
+          {
+            "name": "Structs",
+            "description": "Reference to creating and implementing structs for gameplay classes."
+          },
+          {
+            "name": "TSubclassOf",
+            "description": "Template class providing UClass type safety."
+          },
+          {
+            "name": "Unreal Interfaces",
+            "description": "Create and implement Unreal Interfaces in C++ and Blueprints."
+          },
+          {
+            "name": "Metadata Specifiers",
+            "description": "Metadata keywords used when declaring UClasses, UFunctions, UProperties, UEnums, and UInterfaces."
+          },
+          {
+            "name": "UFunctions",
+            "description": "Overview for creating and implementing functions for gameplay classes."
+          },
+          {
+            "name": "Unreal Smart Pointer Library",
+            "description": "Custom implementation of shared pointers, including weak pointers and non-nullable shared references."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "text": "Ask questions and help your peers",
+        "url": "Developer Forums"
+      },
+      {
+        "text": "Write your own tutorials or read those from others",
+        "url": "Learning Library"
+      }
+    ]
+  }
+}
+{
+  "UObjectInstanceCreation": {
+    "description": "Methods of creating new instances of Objects in gameplay code.",
+    "details": "NewObject() is the simplest UObject factory method. It takes an optional outer object and class and creates a new instance with an automatically generated name.",
+    "methods": [
+      {
+        "name": "NewObject",
+        "description": "Simplest UObject factory method. It takes an optional outer object and class and creates a new instance with an automatically generated name.",
+        "template": "template< class T > T* NewObject ( UObject* Outer=(UObject*)GetTransientPackage(), UClass* Class=T::StaticClass() )",
+        "parameters": [
+          {
+            "name": "Outer",
+            "description": "(Optional) A UObject to set as the Outer for the Object being created."
+          },
+          {
+            "name": "Class",
+            "description": "(Optional) A UClass specifying the class of the Object to be created."
+          }
+        ],
+        "return": "A pointer to the spawned instance of the specified class."
+      },
+      {
+        "name": "NewNamedObject",
+        "description": "Expands on NewObject() by allowing a name for the new instance as well as Object Flags and a template object to be specified as an argument.",
+        "template": "template< class TClass > TClass* NewNamedObject ( UObject* Outer, FName Name, EObjectFlags Flags = RF_NoFlags, UObject const* Template=NULL )",
+        "parameters": [
+          {
+            "name": "Outer",
+            "description": "A UObject to set as the Outer for the Object being created."
+          },
+          {
+            "name": "Name",
+            "description": "An FName to set as the Name for the new Object."
+          },
+          {
+            "name": "Flags",
+            "description": "(Optional) An FObjectFlags enum value describing the new Object."
+          },
+          {
+            "name": "Template",
+            "description": "(Optional) A UObject to use as a template when creating the new Object."
+          }
+        ],
+        "return": "A pointer to the spawned instance of the specified class."
+      },
+      {
+        "name": "ConstructObject",
+        "description": "For complete flexibility, new instances of UObjects can be created using the ConstructObject() function. This function calls StaticConstructObject(), which allocates the Object, executes the ClassConstructor, and performs any initialization such as loading config properties, loading localized properties, and instancing components.",
+        "template": "template< class T > T* ConstructObject ( UClass* Class, UObject* Outer = (UObject*)GetTransientPackage(), FName Name=NAME_None, EObjectFlags SetFlags=RF_NoFlags, UObject const* Template=NULL, bool bCopyTransientsFromClassDefaults=false, struct FObjectInstancingGraph* InstanceGraph=NULL )",
+        "parameters": [
+          {
+            "name": "Class",
+            "description": "A UClass specifying the class of the Object to be created."
+          },
+          {
+            "name": "Outer",
+            "description": "(Optional) A UObject to set as the Outer for the Object being created."
+          },
+          {
+            "name": "Name",
+            "description": "(Optional) An FName to set as the Name for the new Object."
+          },
+          {
+            "name": "SetFlags",
+            "description": "(Optional) An EObjectFlags enum value describing the new Object."
+          },
+          {
+            "name": "Template",
+            "description": "(Optional) A UObject to use as a template when creating the new Object."
+          },
+          {
+            "name": "bCopyTransientsFromClassDefaults",
+            "description": "(Optional) A bool that determines whether to copy transient properties from the class default object instead of the passed-in archetype pointer. If true, the class default object's transients are used."
+          },
+          {
+            "name": "FObjectInstancingGraph",
+            "description": "(Optional) An FObjectInstancingGraph struct that contains the mappings of instanced objects and components to their templates. Used when for instancing components owned by the new Object."
+          }
+        ],
+        "return": "A pointer to the spawned instance of the specified class."
+      }
+    ],
+    "ObjectFlags": {
+      "description": "The EObjectFlags enumeration is used to describe an Object. Flags describe the type of Object, how it is handled by garbage collection, the stage the Object is at in its lifetime, etc.",
+      "flags": [
+        {
+          "name": "RF_Public",
+          "value": "0x00000001",
+          "description": "The Object is visible outside of the package it is contained within."
+        },
+        {
+          "name": "RF_Standalone",
+          "value": "0x00000002",
+          "description": "The Object is kept around for editing even if it is not referenced by anything."
+        },
+        {
+          "name": "RF_Native",
+          "value": "0x00000004",
+          "description": "The Object is native. This is only used for UClass objects."
+        },
+        {
+          "name": "RF_Transactional",
+          "value": "0x00000008",
+          "description": "The Object is transactional."
+        },
+        {
+          "name": "RF_ClassDefaultObject",
+          "value": "0x00000010",
+          "description": "The Object is the default object for its class, i.e. the default template that new instances of that class use when being created."
+        },
+        {
+          "name": "RF_ArchetypeObject",
+          "value": "0x00000020",
+          "description": "The Object is a template for another object. It is treated like a class default object."
+        },
+        {
+          "name": "RF_Transient",
+          "value": "0x00000040",
+          "description": "The Object is not saved to disk."
+        },
+        {
+          "name": "RF_RootSet",
+          "value": "0x00000080",
+          "description": "The Object is not garbage collected even if it is not referenced by anything."
+        },
+        {
+          "name": "RF_IsLazyReferenced",
+          "value": "0x00000100",
+          "description": "The Object is referenced by a lazy pointer and requires additional cleanup upon deletion."
+        },
+        {
+          "name": "RF_Unreachable",
+          "value": "0x00000200",
+          "description": "The Object is not reachable on the object graph."
+        },
+        {
+          "name": "RF_TagGarbageTemp",
+          "value": "0x00000400",
+          "description": "The Object is marked for use by various utilities that use garbage collection. This flag is not interpreted by the garbage collector itself."
+        },
+        {
+          "name": "RF_NeedLoad",
+          "value": "0x00000800",
+          "description": "The Object needs loading."
+        },
+        {
+          "name": "RF_AsyncLoading",
+          "value": "0x00001000",
+          "description": "The Object is being loaded asynchronously."
+        },
+        {
+          "name": "RF_NeedPostLoad",
+          "value": "0x00002000",
+          "description": "The Object needs to be post-loaded."
+        },
+        {
+          "name": "RF_NeedPostLoadSubobjects",
+          "value": "0x00004000",
+          "description": "The Object still needs to instance sub-objects and fix up serialized component references."
+        },
+        {
+          "name": "RF_PendingKill",
+          "value": "0x00008000",
+          "description": "The Object is pending destruction. Marks the Object as being invalid for gameplay purposes, but still a valid Object."
+        },
+        {
+          "name": "RF_BeginDestroyed",
+          "value": "0x00010000",
+          "description": "The Object has had BeginDestroy() called on it."
+        },
+        {
+          "name": "RF_FinishDestroyed",
+          "value": "0x00020000",
+          "description": "The Object has had FinishDestroy() called on it."
+        },
+        {
+          "name": "RF_AllFlags",
+          "value": "0x0003ffff",
+          "description": "The Object has all flags. Used mainly for error checking."
+        },
+        {
+          "name": "RF_NoFlags",
+          "value": "0x00000000",
+          "description": "The Object has no flags. Used to avoid a cast."
+        },
+        {
+          "name": "RF_Load",
+          "value": "RF_Public | RF_Standalone | RF_Native | RF_Transactional | RF_ClassDefaultObject | RF_ArchetypeObject",
+          "description": "Flags loaded from Unreal files."
+        },
+        {
+          "name": "RF_PropagateToSubobjects",
+          "value": "RF_Public | RF_ArchetypeObject | RF_Transactional",
+          "description": "Flags inherited by sub-objects from their super-objects."
+        }
+      ]
+    },
+    "links": [
+      {
+        "text": "Ask questions and help your peers",
+        "url": "Developer Forums"
+      },
+      {
+        "text": "Write your own tutorials or read those from others",
+        "url": "Learning Library"
+      }
+    ]
+  }
+}
+{
+  "UnrealObjectHandling": {
+    "description": "Overview of the features of the UObject system.",
+    "sections": [
+      {
+        "title": "Automatic Property Initialization",
+        "content": "UObjects are automatically zeroed on initialization, before the constructor is called. This happens for the whole class, UProperties and native members alike. Members can subsequently be initialized with custom values in the class constructor."
+      },
+      {
+        "title": "Automatic Updating of References",
+        "content": "When an AActor or UActorComponent is destroyed or otherwise removed from play, all references to it that are visible to the reflection system (UProperty pointers and pointers stored in Unreal Engine container classes such as TArray) are automatically nulled. This prevents dangling pointers and ensures null-checking is more reliable."
+      },
+      {
+        "title": "Serialization",
+        "content": "When a UObject is serialized, all UProperty values are automatically written or read unless explicitly marked as 'transient' or unchanged from the post-constructor default value. This includes handling added or removed UProperties seamlessly."
+      },
+      {
+        "title": "Updating of Property Values",
+        "content": "When the Class Default Object (or CDO) of a UClass has changed, the engine updates all instances of the class upon loading, ensuring default values are applied correctly while preserving intentional changes."
+      },
+      {
+        "title": "Editor Integration",
+        "content": "UObjects and UProperties are understood by the Editor, allowing automatic exposure of these values for editing without special code. This includes integration into the Blueprint visual scripting system."
+      },
+      {
+        "title": "Run-Time Type Information and Casting",
+        "content": "Because UObjects are part of the Unreal Engine's reflection system, they always know what UClass they are, allowing type-related decisions and casts to be made at runtime using functions like Cast and IsA."
+      },
+      {
+        "title": "Garbage Collection",
+        "content": "Unreal implements a garbage collection scheme where unreferenced or explicitly flagged UObjects are cleaned up at regular intervals. The engine builds a reference graph to determine which UObjects are still in use and removes unreferenced ones."
+      },
+      {
+        "title": "Garbage Collection Settings",
+        "settings": [
+          {
+            "name": "Create Garbage Collector UObject Clusters",
+            "description": "Groups related Objects together in a garbage collection cluster to improve performance by treating the cluster as one object during reachability analysis."
+          },
+          {
+            "name": "Merge GC Clusters",
+            "description": "Causes clusters to join together when an object from one cluster references an object in another, reducing the frequency of garbage collection but potentially causing larger hitches."
+          },
+          {
+            "name": "Actor Clustering Enabled",
+            "description": "Allows Actors to be put into clusters for more efficient garbage collection, useful for static meshes placed in a level."
+          },
+          {
+            "name": "Blueprint Clustering Enabled",
+            "description": "Clusters a Blueprint's UBlueprintGeneratedClass and related data, improving garbage collection performance for Blueprints."
+          },
+          {
+            "name": "Time Between Purging Pending Kill Objects",
+            "description": "Adjusts the frequency of garbage collection activity to prevent hitches by controlling the amount of unreachable objects processed at once."
+          }
+        ]
+      },
+      {
+        "title": "Network Replication",
+        "content": "The UObject system includes robust functionality for network communication and multiplayer games. UProperties can be tagged for replication, ensuring data is sent reliably during network play, and UFunctions can execute on remote machines."
+      }
+    ],
+    "links": [
+      {
+        "text": "Ask questions and help your peers",
+        "url": "Developer Forums"
+      },
+      {
+        "text": "Write your own tutorials or read those from others",
+        "url": "Learning Library"
+      }
+    ]
+  }
+}
+{
+  "IncrementalGarbageCollection": {
+    "description": "Improved garbage collection system for UObjects.",
+    "overview": {
+      "description": "Learn to use this Experimental feature, but use caution when shipping with it.",
+      "details": [
+        "Unreal Engine (UE) uses a mark-and-sweep garbage collector to manage UObject memory.",
+        "Garbage collectors have historically had one major drawback: the potential to generate gameplay hitches while determining which objects’ memory can be reclaimed.",
+        "In UE, this process is called reachability analysis, which temporarily stops all UObject processing, including gameplay.",
+        "There are several ways to circumvent this, such as keeping tight UObject budgets, using UObject pools, and disabling garbage collection during normal gameplay, but these workarounds increase code complexity and project costs."
+      ]
+    },
+    "incrementalReachabilityAnalysis": {
+      "description": "UE improves upon this using incremental reachability analysis. Users can split the garbage collector’s reachability analysis phase across multiple frames with a configurable per-frame, soft time limit.",
+      "details": [
+        "The engine tracks UObject references between reachability iterations through TObjectPtr properties.",
+        "Any assignment to a TObjectPtr-exposed UPROPERTY immediately marks the object as reachable while garbage collection is in progress.",
+        "The engine has been converted to use TObjectPtr instead of raw C++ pointers where UObjects are exposed to the garbage collector.",
+        "To use incremental reachability analysis, convert all UPROPERTY instances to use TObjectPtr instead of raw C++."
+      ]
+    },
+    "enableIncrementalReachabilityAnalysis": {
+      "description": "Incremental reachability analysis can be enabled with the following console variables added to your project’s DefaultEngine.ini:",
+      "variables": {
+        "gc.AllowIncrementalReachability": {
+          "value": 1,
+          "description": "Enables Incremental Reachability Analysis"
+        },
+        "gc.AllowIncrementalGather": {
+          "value": 1,
+          "description": "Enables Incremental Gather Unreachable Objects"
+        },
+        "gc.IncrementalReachabilityTimeLimit": {
+          "value": 0.002,
+          "description": "Sets the soft time limit to 2ms"
+        }
+      }
+    },
+    "additionalConsoleVariables": {
+      "description": "Additional console variables for stress-testing and debugging purposes:",
+      "variables": [
+        {
+          "name": "gc.DelayReachabilityIteration",
+          "description": "Delay reachability analysis by the specified number of frames. Used for stress-testing the GC barrier.",
+          "type": "INTEGER",
+          "default": 10
+        },
+        {
+          "name": "gc.VerifyNoUnreachableObjects",
+          "description": "Run a test after reachability analysis is complete to make sure no reachable (valid) object is referencing an unreachable (soon to be destroyed) object.",
+          "values": {
+            "0": "disabled",
+            "1": "enabled"
+          }
+        },
+        {
+          "name": "gc.ContinuousIncrementalGC",
+          "description": "Keep restarting incremental garbage collection after the previous one has completed.",
+          "values": {
+            "0": "disabled",
+            "1": "enabled"
+          }
+        }
+      ]
+    },
+    "performanceComparison": {
+      "description": "Performance comparison between having incremental reachability turned off and on.",
+      "graphs": [
+        {
+          "title": "Without Incremental Reachability",
+          "description": "Visualization of a sample project's performance graph with incremental reachability turned off, showing spikes each time garbage collection runs."
+        },
+        {
+          "title": "With Incremental Reachability",
+          "description": "Visualization of a sample project's performance graph with incremental reachability turned on, showing that GC lag spikes are gone and incremental reachability is split across multiple frames."
+        }
+      ]
+    },
+    "links": [
+      {
+        "text": "Ask questions and help your peers",
+        "url": "Developer Forums"
+      },
+      {
+        "text": "Write your own tutorials or read those from others",
+        "url": "Learning Library"
+      }
+    ]
+  }
+}

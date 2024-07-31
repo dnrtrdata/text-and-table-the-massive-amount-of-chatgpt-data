@@ -1,0 +1,948 @@
+{
+  "Plugins": {
+    "Description": "Reference for the Plugins section of the Unreal Engine Project Settings.",
+    "Details": "This is not an exhaustive list of all plugins whose settings can be configured from the Project Settings window. Enabling and disabling plugins can add plugin-specific sections to the Project Settings window. If a plugin's settings don't appear in this section, refer to that plugin's documentation to learn more about the settings it supports.",
+    "Categories": [
+      {
+        "Name": "AndroidFileServer",
+        "Description": "Reference for the AndroidFileServer section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "AVF Media",
+        "Description": "Reference for the AVF Media section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Geometry Cache",
+        "Description": "Reference for the Geometry Cache section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "GooglePAD",
+        "Description": "Reference for the GooglePAD section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Groom",
+        "Description": "Reference for the Groom section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "IMG Media",
+        "Description": "Reference for the IMG Media section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Level Sequencer",
+        "Description": "Reference for the Level Sequencer section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Modeling Mode",
+        "Description": "Reference for the Modeling Mode section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Modeling Mode Tools",
+        "Description": "Reference for the Modeling Mode Tools section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Niagara",
+        "Description": "Reference for the Niagara section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Niagara Editor",
+        "Description": "Reference for the Niagara Editor section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Paper 2D",
+        "Description": "Reference for the Paper 2D section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Python",
+        "Description": "Reference for the Python section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "Resonance Audio",
+        "Description": "Reference for the Resonance Audio section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "TCP Messaging",
+        "Description": "Reference for the TCP Messaging section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "UDP Messaging",
+        "Description": "Reference for the UDP Messaging section of the Unreal Engine Project Settings."
+      },
+      {
+        "Name": "WMF Media",
+        "Description": "Reference for the WMF Media section of the Unreal Engine Project Settings."
+      }
+    ],
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "AndroidFileServer": {
+    "Description": "Reference for the AndroidFileServer section of the Unreal Engine Project Settings.",
+    "Packaging": {
+      "Settings": [
+        {
+          "Name": "Use AndroidFileServer",
+          "Description": "Enable the AndroidFileServer plugin."
+        },
+        {
+          "Name": "Allow Network Connection",
+          "Description": "Allow FileServer connection using the network."
+        },
+        {
+          "Name": "Security Token",
+          "Description": "Optional security token required to start FileServer (leave empty to disable)."
+        },
+        {
+          "Name": "Include in Shipping",
+          "Description": "Embed FileServer in Shipping builds."
+        },
+        {
+          "Name": "Allow External Start in Shipping",
+          "Description": "Allow FileServer to be started in Shipping builds with UnrealAndroidFileTool."
+        },
+        {
+          "Name": "Compile AFSProject",
+          "Description": "Compile standalone AFS project."
+        }
+      ]
+    },
+    "Deployment": {
+      "Settings": [
+        {
+          "Name": "Use Compression",
+          "Description": "Enable compression during data transfer."
+        },
+        {
+          "Name": "Log Files",
+          "Description": "Log transferred files."
+        },
+        {
+          "Name": "Report Stats",
+          "Description": "Report transfer rate statistics."
+        }
+      ]
+    },
+    "Connection": {
+      "Settings": [
+        {
+          "Name": "Connection Type",
+          "Description": "Defines how to connect to the file server.",
+          "Options": [
+            "USB Only",
+            "Network Only",
+            "USB and Network Combined"
+          ]
+        },
+        {
+          "Name": "Use Manual IP Address?",
+          "Description": "Defines whether to use manual IP address instead of automatic query from device. Use only for single-device deploys."
+        },
+        {
+          "Name": "Manual IP Address",
+          "Description": "IP address of the device to use."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "AVFMedia": {
+    "Description": "Reference for the AVF Media section of the Unreal Engine Project Settings.",
+    "Debug": {
+      "Settings": [
+        {
+          "Name": "Native Audio Out",
+          "Description": "Play audio tracks using the operating system's native sound mixer."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "GeometryCache": {
+    "Description": "Reference for the Geometry Cache section of the Unreal Engine Project Settings.",
+    "GeometryCacheStreamer": {
+      "Settings": [
+        {
+          "Name": "Look-Ahead Buffer (in seconds)",
+          "Description": "The amount of animation (in seconds) to stream ahead of time (per stream)."
+        },
+        {
+          "Name": "Maximum Memory Allowed (in MB)",
+          "Description": "The maximum total amount of streamed data allowed in memory (for all streams)."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "GooglePAD": {
+    "Description": "Reference for the GooglePAD section of the Unreal Engine Project Settings.",
+    "Packaging": {
+      "Settings": [
+        {
+          "Name": "Enable Plugin",
+          "Description": "Enable GooglePAD plugin."
+        },
+        {
+          "Name": "Only Distribution",
+          "Description": "Only for distribution builds."
+        },
+        {
+          "Name": "Only Shipping",
+          "Description": "Only for shipping build."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "Groom": {
+    "Description": "Reference for the Groom section of the Unreal Engine Project Settings.",
+    "GroomCache": {
+      "Settings": [
+        {
+          "Name": "Look-Ahead Buffer (in seconds)",
+          "Description": "The amount of groom cache animation (in seconds) to pre-load ahead of time by the streaming manager."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "IMGMedia": {
+    "Description": "Reference for the IMG Media section of the Unreal Engine Project Settings.",
+    "General": {
+      "Settings": [
+        {
+          "Name": "Default Frame Rate",
+          "Description": "Default frame rate to use if none was specified in image sequence or media source (default = 1/24).",
+          "Options": [
+            "12 fps (animation)",
+            "15 fps",
+            "24 fps (film)",
+            "25 fps (PAL/25)",
+            "30 fps",
+            "48 fps",
+            "50 fps (PAL/50)",
+            "60 fps",
+            "100 fps",
+            "120 fps",
+            "23.976 fps (NTSC/24)",
+            "29.97 fps (NTSC/30)",
+            "59.94 fps (NTSC/60)",
+            "Custom"
+          ]
+        }
+      ]
+    },
+    "Caching": {
+      "Settings": [
+        {
+          "Name": "Cache Behind Percentage",
+          "Description": "Percentage of cache to use for frames behind the play head (default = 25%)."
+        },
+        {
+          "Name": "Cache Size GB",
+          "Description": "Maximum size of the look-ahead cache (in GB; default = 1 GB)."
+        },
+        {
+          "Name": "Cache Threads",
+          "Description": "Maximum number of image caching threads to use (0 = number of cores, default = 8)."
+        },
+        {
+          "Name": "Global Cache Size GB",
+          "Description": "Maximum size of the global look-ahead cache (in GB; default = 1 GB). Must be greater or equal to CacheSizeGB."
+        },
+        {
+          "Name": "Use Global Cache",
+          "Description": "If enabled, uses the global cache."
+        },
+        {
+          "Name": "Cache Thread Stack Size KB",
+          "Description": "Size of the stack for each caching thread (in kB; default = 128)."
+        }
+      ]
+    },
+    "EXR": {
+      "Settings": [
+        {
+          "Name": "Exr Decoder Threads",
+          "Description": "Number of worker threads to use when decoding EXR images (0 = auto)."
+        }
+      ]
+    },
+    "Proxies": {
+      "Settings": [
+        {
+          "Name": "Default Proxy",
+          "Description": "Name of default media source proxy URLs (default = proxy). Proxies are used for lower-resolution media content during development."
+        },
+        {
+          "Name": "Use Default Proxy",
+          "Description": "Defines whether to enable image sequence proxies (default = false)."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "LevelSequencer": {
+    "Description": "Reference for the Level Sequencer section of the Unreal Engine Project Settings.",
+    "Tracks": {
+      "Settings": [
+        {
+          "Name": "Tracks Settings",
+          "Description": "Specifies class properties for which movie scene tracks will be created automatically."
+        }
+      ]
+    },
+    "Playback": {
+      "Settings": [
+        {
+          "Name": "Auto Bind to PIE",
+          "Description": "Specifies whether to automatically bind an active sequencer UI to PIE worlds."
+        },
+        {
+          "Name": "Auto Bind to Simulate",
+          "Description": "Specifies whether to automatically bind an active sequencer UI to Simulate worlds."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "ModelingMode": {
+    "Description": "Reference for the Modeling Mode section of the Unreal Engine Project Settings.",
+    "ModelingMode": {
+      "Settings": [
+        {
+          "Name": "Enable Dynamic Mesh Actors",
+          "Description": "Enables or disables the options to emit Dynamic Mesh Actors in Modeling Mode Tools."
+        },
+        {
+          "Name": "Default Mesh Object Type",
+          "Description": "Defines the default Mesh Object type for Output Type Setting in Modeling Mode Tools.",
+          "Options": [
+            "Static Mesh Asset: Generates a new Static Mesh Asset and AStaticMeshActor.",
+            "Volume Actor: Generates a new AVolume Actor.",
+            "Dynamic Mesh Actor: Generates a new ADynamicMeshActor stored locally in the Level."
+          ]
+        }
+      ]
+    },
+    "GeneratedAssets": {
+      "Settings": [
+        {
+          "Name": "Asset Generation Mode",
+          "Description": "Defines how auto-generated Assets by Modeling Tools are handled.",
+          "Options": [
+            "Auto-Generate and Autosave: Automatically saves new Assets on creation.",
+            "Auto-Generate But Do Not Autosave: Marks new Assets as modified but doesn't save automatically.",
+            "Interactive Prompt to Save: Prompts to save each new Asset when created."
+          ]
+        },
+        {
+          "Name": "Asset Generation Location",
+          "Description": "Defines the folder where auto-generated Assets by Modeling Tools are stored.",
+          "Options": [
+            "Auto-Generated World Relative Asset Path: Stored in a folder relative to the World.",
+            "Auto-Generated Global Asset Path: Stored in a root-level folder.",
+            "Current Asset Browser Path if Available: Stored in the current Content Browser folder or default path."
+          ]
+        },
+        {
+          "Name": "Auto-Generated Asset Path",
+          "Description": "Path where auto-generated Assets are stored, relative to the parent path. Set to an empty string to disable."
+        },
+        {
+          "Name": "Store Unsaved Level Assets in Top Level Game Folder",
+          "Description": "If enabled, stores auto-generated Assets in an unsaved Level relative to the top-level /Game folder."
+        },
+        {
+          "Name": "Use Per-User Autogen Subfolder",
+          "Description": "If enabled, stores auto-generated Assets in per-user folders below the auto-generated path."
+        },
+        {
+          "Name": "Autogen Subfolder User Name Override",
+          "Description": "Overrides the user name used for per-user folders below the auto-generated path."
+        },
+        {
+          "Name": "Append Random String to Name",
+          "Description": "If enabled, appends a short random string to auto-generated Asset names."
+        }
+      ]
+    },
+    "Selection": {
+      "Settings": [
+        {
+          "Name": "Enable Persistent Selections",
+          "Description": "Tracks selections between tools and visualizes with outlines. Experimental and disabled by default."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "Niagara": {
+    "Description": "Reference for the Niagara section of the Unreal Engine Project Settings.",
+    "Settings": [
+      {
+        "Name": "Additional Parameter Types",
+        "Description": "Save a struct of parameters into the project for reuse in different Niagara scripts."
+      },
+      {
+        "Name": "Additional Payload Types",
+        "Description": "Save a payload struct in your project to perform read and write events on it."
+      },
+      {
+        "Name": "Additional Parameter Enums",
+        "Description": "Save an enum into your project for reuse in different Niagara scripts."
+      },
+      {
+        "Name": "Show Convertible Inputs in Stack",
+        "Description": "Show variables of different types in the 'link input' menu if there is a conversion script."
+      },
+      {
+        "Name": "Systems Support Large World Coordinates",
+        "Description": "Active effects rebase the simulation positions to not lose precision."
+      },
+      {
+        "Name": "Enforce strict type checks in the graph",
+        "Description": "Types like positions and vectors can't be assigned to each other without an explicit conversion."
+      },
+      {
+        "Name": "Default Effect Type",
+        "Description": "Default effect type to use for effects that don't define their own. Can be null."
+      },
+      {
+        "Name": "Position Pin Type Color",
+        "Description": "Position pin type color. Other pin colors are defined in the general editor settings."
+      }
+    ],
+    "Viewport": {
+      "Settings": [
+        {
+          "Name": "System Viewport in Orbit Mode",
+          "Description": "Sets the default navigation behavior for the system preview viewport."
+        }
+      ]
+    },
+    "Scalability": {
+      "Settings": [
+        {
+          "Name": "Quality Levels",
+          "Description": "The quality levels Niagara uses."
+        }
+      ]
+    },
+    "Renderer": {
+      "Settings": [
+        {
+          "Name": "Component Renderer Warnings Per Class",
+          "Description": "Info texts that the component renderer displays based on the selected component class."
+        },
+        {
+          "Name": "Default Render Target Format",
+          "Description": "The default render target format used by all Niagara Render Target Data Interfaces unless overridden.",
+          "Options": [
+            "RTF R8",
+            "RTF RG8",
+            "RTF RGBA8",
+            "RTF RGBA8 SRGB",
+            "RTF R16f",
+            "RTF RG16f",
+            "RTF RGBA16f",
+            "RTF R32f",
+            "RTF RG32f",
+            "RTF RGBA32f",
+            "RTF RGB10A2"
+          ]
+        },
+        {
+          "Name": "Default Grid Format",
+          "Description": "The default buffer format used by all Niagara Grid Data Interfaces unless overridden.",
+          "Options": [
+            "Float",
+            "Half Float",
+            "Unsigned Normalized Byte"
+          ]
+        },
+        {
+          "Name": "Default Renderer Motion Vector Setting",
+          "Description": "The default setting for motion vectors in Niagara renderers.",
+          "Options": [
+            "Precise",
+            "Approximate"
+          ]
+        },
+        {
+          "Name": "Default Pixel Coverage Mode",
+          "Description": "The default setting for pixel coverage mode when automatic is set on the Niagara Renderer.",
+          "Options": [
+            "Enabled",
+            "Disabled"
+          ]
+        }
+      ]
+    },
+    "SkeletalMeshDataInterface": {
+      "Settings": [
+        {
+          "Name": "Gpu Max Bone Influences",
+          "Description": "Controls the maximum number of influences that the Skeletal Mesh Data Interface can use on the GPU.",
+          "Options": [
+            "Allow Max 4",
+            "Allow max 8",
+            "Unlimited"
+          ]
+        },
+        {
+          "Name": "Gpu Uniform Sampling Format",
+          "Description": "Controls the format used for uniform sampling on the GPU.",
+          "Options": [
+            "Full",
+            "Limited 24.8",
+            "Limited 23.9"
+          ]
+        },
+        {
+          "Name": "Adjacency Triangle Index Format",
+          "Description": "Controls the format used for specifying triangle indexes in adjacency buffers.",
+          "Options": [
+            "Full",
+            "Half"
+          ]
+        }
+      ]
+    },
+    "StaticMeshDI": {
+      "Settings": [
+        {
+          "Name": "Allow Distance Fields (Experimental)",
+          "Description": "Enables the Static Mesh data interface to sample from the distance field data on the GPU."
+        }
+      ]
+    },
+    "AsyncGPUTraceDI": {
+      "Settings": [
+        {
+          "Name": "Trace Provider Priorities (Experimental)",
+          "Description": "Defines how traces tagged as Project Default are interpreted when using the AsyncGpuTrace data interface."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "NiagaraEditor": {
+    "Description": "Reference for the Niagara Editor section of the Unreal Engine Project Settings.",
+    "Niagara": {
+      "Settings": [
+        {
+          "Name": "Default Script",
+          "Description": "Niagara script to duplicate as the base of all new script assets created."
+        },
+        {
+          "Name": "Default Dynamic Input Script",
+          "Description": "Niagara script to duplicate as the base of all new dynamic input script assets created."
+        },
+        {
+          "Name": "Default Function Script",
+          "Description": "Niagara script to duplicate as the base of all new function script assets created."
+        },
+        {
+          "Name": "Default Module Script",
+          "Description": "Niagara script to duplicate as the base of all new module script assets created."
+        },
+        {
+          "Name": "Required System Update Script",
+          "Description": "Niagara script required in the system update script to control system state."
+        },
+        {
+          "Name": "Graph Creation Shortcuts",
+          "Description": "Shortcut key bindings that spawn the specified type of Niagara node when held down while clicking."
+        },
+        {
+          "Name": "Auto-Compile",
+          "Description": "Defines whether auto-compile is enabled in the editor."
+        },
+        {
+          "Name": "Display Advanced Parameter Panel Categories",
+          "Description": "Defines whether the Niagara Editor should display advanced categories for the parameter panel."
+        },
+        {
+          "Name": "Playback Speeds",
+          "Description": "Speeds used for slowing down and speeding up the playback speeds."
+        },
+        {
+          "Name": "Curve Templates",
+          "Description": "Default templates to quickly apply to curves in the Niagara curve editor."
+        }
+      ]
+    },
+    "Experimental": {
+      "Settings": [
+        {
+          "Name": "Enable Baker",
+          "Description": "Enables the Niagara Baker to be used within the system editor."
+        }
+      ]
+    },
+    "SimulationOptions": {
+      "Settings": [
+        {
+          "Name": "Auto-Play",
+          "Description": "Defines whether the simulations should start playing automatically when the editor is opened or data is changed."
+        },
+        {
+          "Name": "Reset Simulation on Change",
+          "Description": "Defines whether the simulation should reset when a value on the emitter or system is changed."
+        },
+        {
+          "Name": "Resimulate on Change While Paused",
+          "Description": "Defines whether the Niagara Editor should rerun the simulation to the current time when making modifications while paused."
+        },
+        {
+          "Name": "Reset Dependent Systems when Editing Emitters",
+          "Description": "Defines whether the Niagara Editor should reset all components that include the system currently being reset."
+        }
+      ]
+    },
+    "NiagaraColors": {
+      "Settings": [
+        {
+          "Name": "Action Colors",
+          "Description": "Define the colors for the source filtering options in the Niagara Create System wizard."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "Paper2D": {
+    "Description": "Reference for the Paper 2D section of the Unreal Engine Project Settings.",
+    "Experimental": {
+      "Settings": [
+        {
+          "Name": "Enable Sprite Atlas Groups",
+          "Description": "Enables experimental texture atlas groups that sprites can be assigned to."
+        },
+        {
+          "Name": "Enable Terrain Spline Editing",
+          "Description": "Enables experimental 2D terrain spline. Restart the Editor after enabling this setting."
+        }
+      ]
+    },
+    "Settings": {
+      "Settings": [
+        {
+          "Name": "Resize Sprite Data to Match Textures",
+          "Description": "Enables automatic resizing of various sprite data if the source texture gets resized."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "Python": {
+    "Description": "Reference for the Python section of the Unreal Engine Project Settings.",
+    "Python": {
+      "Settings": [
+        {
+          "Name": "Startup Scripts",
+          "Description": "Array of Python scripts to run at startup. These run before the first Tick after the Engine initializes."
+        },
+        {
+          "Name": "Additional Paths",
+          "Description": "Array of additional paths to add to the Python system paths."
+        },
+        {
+          "Name": "Isolate Interpreter Environment",
+          "Description": "Defines whether the embedded interpreter should run in isolation mode. Prevents crashes due to incompatible software."
+        }
+      ]
+    },
+    "Advanced": {
+      "Settings": [
+        {
+          "Name": "Developer Mode (all users)",
+          "Description": "Defines whether Developer Mode should be enabled on the Python interpreter for all users of the project. Enables extra warnings and stub code generation."
+        }
+      ]
+    },
+    "PythonRemoteExecution": {
+      "Settings": [
+        {
+          "Name": "Enable Remote Execution",
+          "Description": "Defines whether remote Python execution should be enabled."
+        }
+      ]
+    },
+    "AdvancedRemoteExecution": {
+      "Settings": [
+        {
+          "Name": "Multicast Group Endpoint",
+          "Description": "The multicast group endpoint (IP_ADDRESS:PORT_NUMBER) that the UDP multicast socket should join."
+        },
+        {
+          "Name": "Multicast Bind Address",
+          "Description": "The adapter address that the UDP multicast socket should bind to, or 0.0.0.0 to bind to all adapters."
+        },
+        {
+          "Name": "Send Buffer Size",
+          "Description": "Size of the send buffer for the remote endpoint connection."
+        },
+        {
+          "Name": "Receive Buffer Size",
+          "Description": "Size of the receive buffer for the remote endpoint connection."
+        },
+        {
+          "Name": "Multicast Time-To-Live",
+          "Description": "The TTL that the UDP multicast socket should use (0 is limited to the local host, 1 is limited to the local subnet)."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "ResonanceAudio": {
+    "Description": "Reference for the Resonance Audio section of the Unreal Engine Project Settings.",
+    "Reverb": {
+      "Settings": [
+        {
+          "Name": "Output Submix",
+          "Description": "Reference to submix where reverb plugin audio is routed."
+        }
+      ]
+    },
+    "General": {
+      "Settings": [
+        {
+          "Name": "Quality Mode",
+          "Description": "Global Quality mode to use for directional sound sources.",
+          "Options": [
+            "Stereo Panning",
+            "Binaural Low Quality: First Order Ambisonics",
+            "Binaural Medium Quality: Second Order Ambisonics",
+            "Binaural High Quality: Third Order Ambisonics (default)"
+          ]
+        },
+        {
+          "Name": "Global Reverb Preset",
+          "Description": "Default settings for global reverb. Overridden when a player enters Audio Volumes."
+        },
+        {
+          "Name": "Global Source Preset",
+          "Description": "Default settings for global source settings."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "TCPMessaging": {
+    "Description": "Reference for the TCP Messaging section of the Unreal Engine Project Settings.",
+    "Transport": {
+      "Settings": [
+        {
+          "Name": "Enable Transport",
+          "Description": "Defines whether the TCP transport channel is enabled."
+        },
+        {
+          "Name": "Listen Endpoint",
+          "Description": "The IP endpoint to listen for incoming connections. Format: IP_ADDRESS:PORT_NUMBER. Leave blank to disable listening."
+        },
+        {
+          "Name": "Connect to Endpoints",
+          "Description": "The IP endpoints to try to establish outgoing connection to. Use to connect to a remote peer. Format: IP_ADDRESS:PORT_NUMBER."
+        },
+        {
+          "Name": "Connection Retry Delay",
+          "Description": "Delay time between attempts to re-establish outgoing connections. 0 disables reconnection."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "UDPMessaging": {
+    "Description": "Reference for the UDP Messaging section of the Unreal Engine Project Settings.",
+    "Availability": {
+      "Settings": [
+        {
+          "Name": "Enabled by Default",
+          "Description": "Defines whether UDP messaging is enabled by default. In shipping builds, ALLOW_UDP_MESSAGING_SHIPPING=1 must be defined in TargetRules."
+        }
+      ]
+    },
+    "Transport": {
+      "Settings": [
+        {
+          "Name": "Enable Transport",
+          "Description": "Defines whether the UDP transport channel should be enabled. Can be specified on the command line."
+        },
+        {
+          "Name": "Unicast Endpoint",
+          "Description": "The IP endpoint to listen to and send packets from. Format: IP_ADDRESS:PORT_NUMBER."
+        },
+        {
+          "Name": "Multicast Endpoint",
+          "Description": "The IP endpoint to send multicast packets to. Format: IP_ADDRESS:PORT_NUMBER. Multicast IP range: 224.0.0.0 to 239.255.255.255."
+        },
+        {
+          "Name": "Message Format",
+          "Description": "The format used to serialize the UDP message payload.",
+          "Options": [
+            "CBOR (Platform Endianness)",
+            "CBOR (Standard Endianness)"
+          ]
+        }
+      ]
+    },
+    "AdvancedTransport": {
+      "Settings": [
+        {
+          "Name": "Auto-Repair",
+          "Description": "Defines whether the UDP transport channel should try to auto-repair when in error."
+        },
+        {
+          "Name": "Max Send Rate",
+          "Description": "Maximum sustained transmission rate in Gbit/s. Default is 1 Gbit/s."
+        },
+        {
+          "Name": "Auto-Repair Attempt Limit",
+          "Description": "The number of consecutive attempts the auto-repair routine will try to repair."
+        },
+        {
+          "Name": "Multicast Time to Live",
+          "Description": "The time-to-live (TTL) for sent multicast packets."
+        },
+        {
+          "Name": "Static Endpoints",
+          "Description": "The IP endpoints of static devices. Format: IP_ADDRESS:PORT_NUMBER."
+        }
+      ]
+    },
+    "Tunnel": {
+      "Settings": [
+        {
+          "Name": "Enable Tunnel",
+          "Description": "Defines whether the UDP tunnel is enabled."
+        },
+        {
+          "Name": "Tunnel Unicast Endpoint",
+          "Description": "The local IP endpoint to listen to and send packets from. Format: IP_ADDRESS:PORT_NUMBER."
+        },
+        {
+          "Name": "Tunnel Multicast Endpoint",
+          "Description": "The IP endpoint to send multicast packets to. Format: IP_ADDRESS:PORT_NUMBER."
+        }
+      ]
+    },
+    "AdvancedTunnel": {
+      "Settings": [
+        {
+          "Name": "Remote Tunnel Endpoints",
+          "Description": "The IP endpoints of remote tunnel nodes. Use to connect to remote tunnel services. Format: IP_ADDRESS:PORT_NUMBER."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}
+{
+  "WMFMedia": {
+    "Description": "Reference for the WMF Media section of the Unreal Engine Project Settings.",
+    "Media": {
+      "Settings": [
+        {
+          "Name": "Allow Non Standard Codecs",
+          "Description": "Defines whether to allow the loading of media that uses non-standard codecs (default = off)."
+        },
+        {
+          "Name": "Low Latency",
+          "Description": "Enable low latency processing in the Windows media pipeline (default = off)."
+        },
+        {
+          "Name": "Hardware Accelerated Video Decoding (Experimental)",
+          "Description": "Use hardware accelerated video acceleration (GPU) when possible, otherwise fall back to software implementation (CPU). Windows and DX11 only."
+        }
+      ]
+    },
+    "Debug": {
+      "Settings": [
+        {
+          "Name": "Native Audio Out",
+          "Description": "Play audio tracks via the operating system's native sound mixer (default = off)."
+        }
+      ]
+    },
+    "AdditionalResources": {
+      "DeveloperForums": "Ask questions and help your peers in the Developer Forums",
+      "LearningLibrary": "Write your own tutorials or read those from others in the Learning Library"
+    }
+  }
+}

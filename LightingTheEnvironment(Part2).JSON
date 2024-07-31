@@ -1,0 +1,1939 @@
+{
+  "IndirectLightingCache": {
+    "Description": "Cached indirect lighting samples for dynamic objects and unbuilt scene preview.",
+    "Purpose": "Provide indirect lighting for dynamic objects like characters.",
+    "Functionality": {
+      "Process": [
+        "Lightmass places lighting samples during build-time.",
+        "Indirect Lighting Cache uses available lighting for dynamic objects.",
+        "Interpolates lighting if no precomputed lighting is available."
+      ],
+      "SamplePlacement": {
+        "HighDensity": "On upward facing surfaces.",
+        "LowDensity": "Everywhere else.",
+        "Volume": "Within Lightmass Importance Volume, on static surfaces."
+      },
+      "Visualization": "Show > Visualize > Volume Lighting Samples."
+    },
+    "RuntimeBehavior": {
+      "Interpolation": {
+        "Description": "Interpolates lighting samples for movable objects.",
+        "Details": "Positions around each movable object, providing stable lighting as objects move."
+      },
+      "MovableObjects": "Any component with Mobility set to Movable."
+    },
+    "PreviewingUnbuiltLighting": {
+      "Description": "Allows previewing of objects with unbuilt lighting.",
+      "Performance": "Works well for smaller objects, less effective for large meshes."
+    },
+    "Resources": {
+      "Forums": "Developer Forums",
+      "Tutorials": "Learning Library"
+    }
+  }
+}
+{
+  "LightmassBasics": {
+    "Description": "High-level introduction to Lightmass for creating lightmaps.",
+    "Functionality": {
+      "Lightmaps": "Creates complex light interactions like area shadowing and diffuse interreflection.",
+      "Mobility": "Precomputes lighting for stationary and static lights."
+    },
+    "LightmassImportanceVolume": {
+      "Purpose": "Controls photon emission area to optimize high-quality lighting.",
+      "Details": [
+        "Concentrates detailed lighting within the importance volume.",
+        "Outside the volume, only one bounce of indirect lighting at lower quality."
+      ],
+      "Setup": [
+        "Add from Volumes tab and scale to needed size.",
+        "Convert a Brush via Convert Actor drop-down in Details panel."
+      ],
+      "MultipleVolumes": "Bounding box contains all, but samples placed only inside smaller volumes."
+    },
+    "BuildingProcess": [
+      {
+        "Step": "Initiate Build",
+        "Description": "Click Build in the Main menu and select Build Lighting Only or Build All Levels."
+      },
+      {
+        "Step": "Dialog",
+        "Description": "Dialog appears at bottom right; click Keep when finished."
+      }
+    ],
+    "QualityModes": [
+      {
+        "Mode": "Production",
+        "Description": "High quality, long render time."
+      },
+      {
+        "Mode": "High",
+        "Description": "Good quality, moderate render time."
+      },
+      {
+        "Mode": "Medium",
+        "Description": "Better quality, longer render time."
+      },
+      {
+        "Mode": "Preview",
+        "Description": "Fastest, basic quality."
+      }
+    ],
+    "Resources": {
+      "Forums": "Developer Forums",
+      "Tutorials": "Learning Library",
+      "Documentation": "Lightmass documentation"
+    }
+  }
+}
+{
+  "LightmassPortals": {
+    "Description": "Increase the quality of baked interior lighting.",
+    "Functionality": {
+      "Overview": [
+        "Lightmass Portals guide light rays for better quality light and shadows.",
+        "Useful for scenes lit by Skylights, HDR images, or Emissive meshes."
+      ],
+      "Placement": [
+        "Place and scale Portals to fit open areas critical to lighting.",
+        "Portals direct more light rays to these areas during Lightmass build."
+      ],
+      "Comparison": {
+        "WithPortals": "Higher quality lighting with reduced noise.",
+        "WithoutPortals": "Increased noise, especially in darker areas."
+      }
+    },
+    "Steps": [
+      {
+        "Step": "Place Portal",
+        "Description": "Drag Lightmass Portal Actor from Place Actors panel to the level."
+      },
+      {
+        "Step": "Position and Scale",
+        "Description": "Use Move, Rotate, and Scale tools to fit the Portal to the opening."
+      },
+      {
+        "Step": "Build Lighting",
+        "Description": "Click Build in Main menu, select Build, and set Lighting Quality to Production."
+      },
+      {
+        "Step": "Build All Levels",
+        "Description": "Select Build All Levels to start the Lightmass lighting build."
+      }
+    ],
+    "Limitations": [
+      "Use only in small levels for critical lighting.",
+      "Excessive Portals increase Lightmass build times.",
+      "Not effective for large, open-world levels."
+    ],
+    "Resources": {
+      "Forums": "Developer Forums",
+      "Tutorials": "Learning Library"
+    }
+  }
+}
+{
+  "LumenGlobalIlluminationAndReflections": {
+    "Description": "Overview of Lumen's dynamic global illumination and reflections features.",
+    "Details": {
+      "System": "Fully dynamic GI and reflections system for next-gen consoles, default in Unreal Engine 5.",
+      "Features": [
+        "Diffuse interreflection with infinite bounces",
+        "Indirect specular reflections",
+        "Scales from millimeters to kilometers"
+      ]
+    },
+    "GettingStarted": {
+      "NewProjects": "Lumen enabled by default, dependencies like Generate Mesh Distance Fields also enabled.",
+      "ExistingProjects": "Converted projects from UE4 need manual enabling to prevent breaking lighting paths.",
+      "Settings": [
+        {
+          "Category": "Dynamic Global Illumination",
+          "Option": "Lumen"
+        },
+        {
+          "Category": "Reflection Method",
+          "Option": "Lumen"
+        }
+      ],
+      "Note": "Requires engine restart."
+    },
+    "LightingFeatures": {
+      "Integration": "Works well with Nanite, World Partition, and Virtual Shadow Maps.",
+      "Replaces": [
+        "Screen Space Global Illumination (SSGI)",
+        "Distance Field Ambient Occlusion (DFAO)"
+      ],
+      "Effects": "Disables precomputed static lighting and hides lightmaps."
+    },
+    "GlobalIllumination": {
+      "Description": "Solves diffuse indirect lighting with infinite bounces.",
+      "Effects": [
+        "Color bleed",
+        "Indirect shadowing"
+      ],
+      "NaniteIntegration": "Achieves full-resolution shading with low-resolution indirect lighting for performance.",
+      "SkyLighting": "Includes sky shadowing, darker indoor spaces.",
+      "EmissiveMaterials": "Propagate light with no extra performance cost, limited by size and brightness."
+    },
+    "Reflections": {
+      "Description": "Solves indirect specular reflections for full material roughness range.",
+      "Features": [
+        "Diffuse GI and shadowed skylight in reflections",
+        "Supports Clear Coat materials and glossy reflections on translucency",
+        "Supports Single Layer Water materials"
+      ]
+    },
+    "SupportedLightTypes": [
+      "Directional",
+      "Sky",
+      "Point",
+      "Spot",
+      "Rect Lights"
+    ],
+    "Settings": {
+      "ProjectSettings": [
+        {
+          "Category": "Dynamic Global Illumination Method",
+          "Description": "Choose type of dynamic GI for the project."
+        },
+        {
+          "Category": "Reflection Method",
+          "Description": "Choose type of dynamic reflections."
+        },
+        {
+          "Category": "Lumen",
+          "Options": [
+            "Use Hardware Ray Tracing when available",
+            "Ray Lighting Mode",
+            "High Quality Translucency Reflections",
+            "Software Ray Tracing Mode"
+          ]
+        },
+        {
+          "Category": "Hardware Ray Tracing",
+          "Option": "Support Hardware Ray Tracing"
+        },
+        {
+          "Category": "Software Ray Tracing",
+          "Options": [
+            "Generate Mesh Distance Fields",
+            "Distance Field Voxel Density"
+          ]
+        }
+      ],
+      "PostProcessSettings": [
+        {
+          "Category": "Global Illumination: Lumen Global Illumination",
+          "Options": [
+            "Lumen Scene Lighting Quality",
+            "Lumen Scene Detail",
+            "Lumen Scene View Distance",
+            "Final Gather Quality",
+            "Screen Traces",
+            "Max Trace Distance",
+            "Scene Capture Cache Resolution"
+          ]
+        },
+        {
+          "Category": "Reflections: Lumen Reflections",
+          "Options": [
+            "Quality",
+            "Ray Lighting Mode",
+            "Screen Traces",
+            "High Quality Translucency Reflections",
+            "Max Roughness To Trace",
+            "Max Reflection Bounces",
+            "Max Refraction Bounces"
+          ]
+        }
+      ]
+    },
+    "AdditionalNotes": {
+      "LightingUpdateSpeed": "Lumen uses caches for performance, global changes can take seconds to propagate.",
+      "DisablingStaticLighting": "Precomputed lighting removed with Lumen, disable in Project Settings to save overhead.",
+      "UsingLumenReflectionsWithStaticLighting": "Standalone Lumen Reflections can be used without Lumen GI for higher reflection quality."
+    },
+    "Resources": {
+      "Forums": "Developer Forums",
+      "Tutorials": "Learning Library"
+    }
+  }
+}
+{
+  "LumenPerformanceGuide": {
+    "Overview": {
+      "TargetFPS": [
+        {
+          "FPS": 30,
+          "FrameBudget": "8ms",
+          "Resolution": "1080p"
+        },
+        {
+          "FPS": 60,
+          "FrameBudget": "4ms",
+          "Resolution": "1080p"
+        }
+      ],
+      "ScalabilityLevels": [
+        {
+          "Level": "Epic",
+          "TargetFPS": 30
+        },
+        {
+          "Level": "High",
+          "TargetFPS": 60
+        }
+      ],
+      "TemporalUpsampling": "Uses Temporal Super Resolution (TSR) for 4K output."
+    },
+    "ScalabilitySettings": {
+      "Location": "Level Editor > Viewport Settings > Engine Scalability Settings",
+      "GameControl": "Controlled by GameUserSettings and graphics settings menus.",
+      "Levels": [
+        "Cinematic",
+        "Epic",
+        "High",
+        "Low",
+        "Medium"
+      ]
+    },
+    "DeviceProfiles": {
+      "DefaultTarget": 30,
+      "Setting60FPS": {
+        "Example": "PS5DeviceProfiles.ini",
+        "Profile": {
+          "PS5DeviceProfile": [
+            "+CVars=sg.GlobalIlluminationQuality=2",
+            "+CVars=sg.ReflectionQuality=2"
+          ]
+        }
+      }
+    },
+    "QualityLevels": {
+      "Medium": [
+        "Distance Field Ambient Occlusion for large-scale ambient occlusion",
+        "Screen Space Ambient Occlusion for small-scale ambient occlusion"
+      ],
+      "Low": [
+        "Unshadowed skylight",
+        "Reduced skylight intensity (r.SkylightIntensityMultiplier=0.7)"
+      ]
+    },
+    "SoftwareRayTracing": {
+      "Description": "Fastest tracing method in Lumen, recommended for games without Hardware Ray Tracing.",
+      "EpicLevel": "Enables Detail Traces, high performance overhead",
+      "HighLevel": "Disables Detail Traces, uses single merged Global Distance Field",
+      "Tip": "Disable Affects Distance Field Lighting to improve performance."
+    },
+    "HardwareRayTracing": {
+      "Description": "Improved quality, recommended default for consoles, requires optimization.",
+      "TLAS": "Rebuilt every frame, sensitive to instance count.",
+      "Optimization": [
+        "Keep instances below 100,000",
+        "Use Stat SceneRendering to check instance count"
+      ],
+      "Settings": {
+        "Example": "DefaultEngine.ini",
+        "Profile": {
+          "SystemSettings": [
+            "r.RayTracing.Culling=3",
+            "r.RayTracing.Culling.Radius=15000",
+            "r.RayTracing.Culling.Angle=0.5"
+          ]
+        }
+      },
+      "FarField": "Use for aggressive culling without compromising distance.",
+      "PerformanceTips": [
+        "Disable Visible In Ray Tracing for large overlapping meshes.",
+        "Limit number of overlapping meshes."
+      ]
+    },
+    "ReflectionPerformance": {
+      "DependsOn": "Screen area with smooth, low-roughness materials.",
+      "DefaultThreshold": "Roughness below 0.4 traces reflection rays.",
+      "Settings": {
+        "PostProcessVolume": "Max Roughness To Trace",
+        "Scalability": "r.Lumen.Reflections.MaxRoughnessToTraceClamp"
+      },
+      "Foliage": "Independent roughness threshold (r.Lumen.Reflections.MaxRoughnessToTraceForFoliage).",
+      "Tip": "Set foliage max roughness threshold to 0 for performance."
+    },
+    "ScreenSpaceReflections": {
+      "Description": "Replace Lumen Reflections with SSR for performance.",
+      "Example": "XSXDeviceProfiles.ini",
+      "Profile": {
+        "XSX_Lockhart DeviceProfile": [
+          "+CVars=r.Lumen.Reflections.Allow=0"
+        ]
+      }
+    },
+    "ProfilingLumen": {
+      "Passes": [
+        "Lumen Scene Lighting",
+        "Lumen Screen Probe Gather",
+        "Lumen Reflections"
+      ],
+      "Tools": [
+        "Stat GPU",
+        "ProfileGPU",
+        "RenderDoc"
+      ],
+      "AsyncCompute": [
+        "Enabled by default",
+        "Can overlap with other rendering passes",
+        "Disable for accurate profiling"
+      ],
+      "Commands": [
+        "r.LumenScene.Lighting.AsyncCompute=1",
+        "r.Lumen.DiffuseIndirect.AsyncCompute=1",
+        "r.Lumen.Reflections.AsyncCompute=1"
+      ]
+    },
+    "ScalabilityReference": {
+      "Files": [
+        "BaseScalability.ini",
+        "Base[ConsoleName]DeviceProfile.ini"
+      ],
+      "SettingsTable": {
+        "General": [
+          {
+            "Setting": "r.Lumen.TraceMeshSDFs.Allow",
+            "High": 0,
+            "Epic": 1,
+            "Cinematic": 1,
+            "Description": "Enables Detail Traces for Software Ray Tracing."
+          }
+        ],
+        "LumenSceneLighting": [
+          {
+            "Setting": "r.LumenScene.DirectLighting.UpdateFactor",
+            "High": 32,
+            "Epic": 32,
+            "Cinematic": 32,
+            "Description": "Surface cache direct lighting update fraction per frame."
+          },
+          {
+            "Setting": "r.LumenScene.Radiosity.UpdateFactor",
+            "High": 64,
+            "Epic": 64,
+            "Cinematic": 64,
+            "Description": "Surface cache indirect lighting update fraction per frame."
+          },
+          {
+            "Setting": "r.LumenScene.Radiosity.ProbeSpacing",
+            "High": 8,
+            "Epic": 4,
+            "Cinematic": 4,
+            "Description": "Spacing between surface cache indirect lighting probes."
+          },
+          {
+            "Setting": "r.LumenScene.Radiosity.HemisphereProbeResolution",
+            "High": 3,
+            "Epic": 4,
+            "Cinematic": 4,
+            "Description": "Resolution of surface cache indirect lighting probe."
+          },
+          {
+            "Setting": "r.Lumen.TranslucencyVolume.GridPixelSize",
+            "High": 64,
+            "Epic": 32,
+            "Cinematic": 32,
+            "Description": "Resolution of translucency global illumination volume."
+          }
+        ],
+        "ScreenProbeGather": [
+          {
+            "Setting": "r.Lumen.ScreenProbeGather.RadianceCache.ProbeResolution",
+            "High": 16,
+            "Epic": 32,
+            "Cinematic": 32,
+            "Description": "Number of traces per radiance cache probe."
+          },
+          {
+            "Setting": "r.Lumen.ScreenProbeGather.RadianceCache.NumProbesToTraceBudget",
+            "High": 300,
+            "Epic": 300,
+            "Cinematic": 1000,
+            "Description": "Number of radiance cache probes updated per frame."
+          },
+          {
+            "Setting": "r.Lumen.ScreenProbeGather.DownsampleFactor",
+            "High": 32,
+            "Epic": 16,
+            "Cinematic": 8,
+            "Description": "Downsampling factor for global illumination."
+          },
+          {
+            "Setting": "r.Lumen.ScreenProbeGather.TracingOctahedronResolution",
+            "High": 8,
+            "Epic": 8,
+            "Cinematic": 16,
+            "Description": "Number of traces per probe."
+          },
+          {
+            "Setting": "r.Lumen.ScreenProbeGather.TwoSidedFoliageBackfaceDiffuse",
+            "High": 0,
+            "Epic": 1,
+            "Cinematic": 1,
+            "Description": "Gather lighting for Two Sided Foliage and Subsurface models."
+          },
+          {
+            "Setting": "r.Lumen.ScreenProbeGather.ScreenTraces.HZBTraversal.FullResDepth",
+            "High": 0,
+            "Epic": 1,
+            "Cinematic": 1,
+            "Description": "Sample full resolution depth for screen space traces."
+          },
+          {
+            "Setting": "r.Lumen.ScreenProbeGather.ShortRangeAO",
+            "High": 1,
+            "Epic": 1,
+            "Cinematic": 1,
+            "Description": "Small-scale ambient occlusion."
+          }
+        ],
+        "Reflections": [
+          {
+            "Setting": "r.Lumen.Reflections.DownsampleFactor",
+            "High": 2,
+            "Epic": 1,
+            "Cinematic": 1,
+            "Description": "Downsample reflections independently from internal render resolution."
+          },
+          {
+            "Setting": "r.Lumen.Reflections.MaxRoughnessToTraceClamp",
+            "High": 1.0,
+            "Epic": 1.0,
+            "Cinematic": 1.0,
+            "Description": "Clamp for max roughness to trace."
+          },
+          {
+            "Setting": "r.Lumen.Reflections.MaxRoughnessToTraceForFoliage",
+            "High": 0.2,
+            "Epic": 0.4,
+            "Cinematic": 0.4,
+            "Description": "Max roughness value for foliage reflection rays."
+          },
+          {
+            "Setting": "r.Lumen.TranslucencyReflections.FrontLayer.Allow",
+            "High": 0,
+            "Epic": 1,
+            "Cinematic": 1,
+            "Description": "Allow high quality reflections on translucency."      },
+      {
+        "Setting": "r.Lumen.TranslucencyReflections.FrontLayer.Enable",
+        "High": 0,
+        "Epic": 0,
+        "Cinematic": 1,
+        "Description": "Enable high quality reflections on translucency."
+      }
+    ]
+  }
+},
+"Resources": {
+  "Forums": "Developer Forums",
+  "Tutorials": "Learning Library"
+  }
+ }
+}
+{
+  "LumenTechnicalDetails": {
+    "Overview": {
+      "Description": "Lumen uses multiple ray-tracing methods to solve Global Illumination and Reflections.",
+      "PrimaryTarget": "Supports large, open worlds at 60 FPS on next-gen consoles.",
+      "SecondaryFocus": "Clean indoor lighting at 30 FPS on next-gen consoles.",
+      "Resolution": "1080p internal resolution, upscaled to near 4K."
+    },
+    "SurfaceCache": {
+      "Description": "Automatic parameterization of the scene's surface to quickly look up lighting at ray hit points.",
+      "Cards": "Captures material properties from multiple angles.",
+      "VisualizationCommand": "r.Lumen.Visualize.CardPlacement 1",
+      "MaxLumenMeshCards": "Adjustable in Static Mesh Editor Build Settings."
+    },
+    "ScreenTracing": {
+      "Description": "Traces rays against the screen first before using a more reliable method.",
+      "Usage": "Covers up mismatches between Lumen Scene and triangle scene.",
+      "Setting": "Disable in Level Viewport's Show > Lumen menu or Post Process Volume."
+    },
+    "RayTracingMethods": {
+      "SoftwareRayTracing": {
+        "Description": "Uses Mesh Distance Fields, supported on Shader Model 5 hardware.",
+        "Modes": [
+          {
+            "Type": "Detail Tracing",
+            "Description": "Traces individual mesh's distance field for highest quality."
+          },
+          {
+            "Type": "Global Tracing",
+            "Description": "Traces against the Global Distance Field for faster performance."
+          }
+        ],
+        "VisualizationModes": "Found under Viewport's Show > Visualize menu.",
+        "Improvement": "Increase Distance Field Resolution Scale in Static Mesh Editor Build Settings."
+      },
+      "HardwareRayTracing": {
+        "Description": "Supports a larger range of geometry types and higher quality by tracing against triangles.",
+        "Requirements": [
+          "Support Hardware Ray Tracing enabled",
+          "Use Hardware Ray Tracing when available enabled",
+          "Ray Lighting Mode set to Hit Lighting for Reflections"
+        ],
+        "Performance": "Sensitive to instance overlaps, requires optimization."
+      }
+    },
+    "LargeWorlds": {
+      "Description": "Lumen Scene operates around the camera, enabling large worlds and streaming.",
+      "ViewDistance": "Default is 200m, can be increased up to 800m.",
+      "FarField": "Extends GI and Reflections to 1km using World Partition's HLOD."
+    },
+    "GeneralLimitations": [
+      "Cannot be used with Static Lighting in lightmaps.",
+      "Not compatible with Forward Shading."
+    ],
+    "PlatformSupport": {
+      "Unsupported": [
+        "Previous-gen consoles (PS4, Xbox One)",
+        "Virtual Reality (VR)"
+      ],
+      "Requirements": {
+        "SoftwareRayTracing": "DirectX 11, NVIDIA GTX-1070 or higher",
+        "HardwareRayTracing": "DirectX 12, NVIDIA RTX-2000 series or higher"
+      }
+    },
+    "VisualizationOptions": {
+      "ViewModes": [
+        "Overview",
+        "Lumen Scene",
+        "Geometry Normals",
+        "Reflection View",
+        "Surface Cache"
+      ],
+      "ConsoleCommands": [
+        "r.Lumen.Visualize.CardPlacement 1"
+      ]
+    },
+    "Troubleshooting": [
+      {
+        "Problem": "Splotchy artifacts in mirror reflections indoors",
+        "Solution": "Increase Lumen Scene Quality in Post Process settings."
+      },
+      {
+        "Problem": "Small meshes black in mirror reflections",
+        "Solution": "Increase Lumen Scene Detail in Post Process settings."
+      },
+      {
+        "Problem": "Sky occlusion and GI disappear at 200 meters",
+        "Solution": "Increase Lumen Scene View Distance in Post Process settings."
+      },
+      {
+        "Problem": "Light leaking in large cave-like areas",
+        "Solution": "Raise Lumen Scene Detail and Max Trace Distance."
+      },
+      {
+        "Problem": "Lighting changes propagate too slowly",
+        "Solution": "Increase Final Gather Lighting Update Speed in Post Process settings."
+      },
+      {
+        "Problem": "Small emissive meshes not lighting scene consistently",
+        "Solution": "Enable Emissive Light Source for level instances."
+      },
+      {
+        "Problem": "Wanting highest quality mirror reflections",
+        "Solution": "Set Ray Lighting Mode to Hit Lighting for Reflections."
+      }
+    ],
+    "Resources": {
+      "Forums": "Developer Forums",
+      "Tutorials": "Learning Library"
+    }
+  }
+}
+{
+  "UnrealSwarm": {
+    "Overview": {
+      "Description": "Unreal Swarm is a task distribution system for computationally expensive applications, including Unreal Lightmass.",
+      "Purpose": "Reduces the time required for high-quality static global illumination computations by distributing tasks across multiple machines."
+    },
+    "Requirements": [
+      "Install Unreal Engine 4 (UE4) on at least one Windows machine.",
+      "Install prerequisites required to run Unreal Engine and editor on each Windows machine.",
+      "Unreal Swarm runs only under Windows."
+    ],
+    "Setup": {
+      "SwarmCoordinator": {
+        "Steps": [
+          "Navigate to [UE4ROOT]/Engine/Binaries/DotNET.",
+          "Create a new directory, e.g., Swarm Coordinator.",
+          "Move the necessary files to the new directory.",
+          "Double click Swarm Coordinator executable to verify."
+        ],
+        "Files": [
+          "AgentInterface.dll",
+          "SwarmCommonUtils.dll",
+          "SwarmCoordinator.exe",
+          "SwarmCoordinator.exe.config",
+          "SwarmCoordinatorInterface.dll",
+          "SwarmInterface.dll",
+          "UnrealControls.dll"
+        ]
+      },
+      "SwarmAgents": {
+        "Steps": [
+          "Create a new directory, e.g., Swarm Agent.",
+          "Move the necessary files to the new directory.",
+          "Double click Swarm Agent executable.",
+          "Configure Swarm Agent settings."
+        ],
+        "Files": [
+          "SwarmAgent.exe",
+          "AgentInterface.dll",
+          "SwarmCommonUtils.dll",
+          "SwarmCoordinatorInterface.dll",
+          "SwarmInterface.dll",
+          "UnrealControls.dll"
+        ],
+        "Configuration": [
+          "Set ShowDeveloperMenu to True.",
+          "Enter the CoordinatorRemotingHost's IPv4 Address or DNS Name.",
+          "Open Swarm Coordinator to see details about deployed agents."
+        ]
+      },
+      "AgentGroups": {
+        "Steps": [
+          "Open Settings > Distribution Settings menu.",
+          "Specify group jobs for AllowedRemoteAgentGroup setting.",
+          "Ensure AgentGroupName matches AllowedRemoteAgentGroup."
+        ],
+        "Settings": {
+          "AgentGroupName": "Default",
+          "AllowedRemoteAgentGroup": "DefaultDeployed",
+          "AllowedRemoteAgentNames": "RENDER*",
+          "AvoidLocalExecution": false
+        }
+      }
+    },
+    "CacheManagement": {
+      "Settings": {
+        "CacheFolder": "[Folder on Disk]/SwarmCache",
+        "MaximumCacheSize": "10GB",
+        "MaximumJobsToKeep": 5
+      },
+      "Commands": ["Clean", "Validate"]
+    },
+    "Logs": {
+      "Settings": {
+        "MaximumJobApplicationLogLines": "Developer Settings > Log Settings",
+        "Verbosity": "Settings > Log Settings"
+      },
+      "Path": "[Folder on Disk]/SwarmCache/Logs"
+    },
+    "ProgressMonitoring": {
+      "Steps": [
+        "Open Swarm Status window.",
+        "Hover over progress bars for details."
+      ],
+      "ProgressBars": [
+        "Initializing",
+        "Preparing",
+        "Performing distributed work"
+      ],
+      "DistributedProgress": {
+        "Completed": 4,
+        "InProgress": 5
+      }
+    },
+    "StoppingAgents": {
+      "Steps": [
+        "Click File > Exit to close the application.",
+        "Right click Swarm icon in the Windows Notification Area and select Exit command."
+      ]
+    },
+    "PerformanceTips": {
+      "Steps": [
+        "Add Lightmass Importance Volumes.",
+        "Adjust Lightmap Resolutions.",
+        "Enable Foliage Tool Lightmap Resolutions.",
+        "Reduce number of scene Actors and Lights.",
+        "Use higher than recommended system specifications."
+      ]
+    },
+    "FAQs": {
+      "ImproveBuildTimes": [
+        "Add Lightmass Importance Volumes in player-accessible areas.",
+        "Adjust Lightmap Resolutions.",
+        "Enable Foliage Tool Lightmap Resolutions.",
+        "Reduce number of scene Actors and Lights.",
+        "Use higher than recommended system specifications."
+      ],
+      "AgentDistribution": "Remote agents might be busy or decline jobs if resources are limited.",
+      "LimitCPUUsage": "From the Swarm > DeveloperSettings tab, limit CPU cores used during a lighting build.",
+      "WindowsApplicationError": "Ensure latest Visual Studio dependencies are installed. Use Dependency Walker to troubleshoot DLL issues.",
+      "PlatformSupport": "Swarm Agent and Coordinator are only supported for Windows.",
+      "GPUSupport": "Swarm does not currently support GPU computations for lighting data.",
+      "CommonErrors": [
+        {
+          "Error": "Lightmass Crashed with 'Ran out of memory allocating [some value]'",
+          "Solution": "Increase RAM, add agents, lower Lightmap resolution, or add Lightmass Importance Volume."
+        },
+        {
+          "Error": "Lightmass Crashed with 'Assertion Failed: (Index >=0)&(Index<ArrayNum))'",
+          "Solution": "Clean and validate your Swarm Cache."
+        },
+        {
+          "Error": "Editor toast pop-up 'Light Build Failed. Swarm failed to kick off.'",
+          "Solution": [
+            "Ensure no multiple instances of Swarm Agent are running.",
+            "Check for corrupt levels or Actors.",
+            "Verify correct firewall and anti-virus exceptions for SwarmAgent.exe.",
+            "Rebuild UnrealLightmass solution."
+          ]
+        }
+      ]
+    }
+  }
+}
+{
+  "VolumetricLightmaps": {
+    "Overview": {
+      "Description": "Volumetric Lightmaps are used for global illumination of dynamic objects and unbuilt scene previews, replacing the Indirect Lighting Cache and Volume Lighting Samples.",
+      "Fallback": "The Indirect Lighting Cache can be re-enabled by setting the Volume Lighting Method to Sparse Volume Lighting Samples in World Settings > Lightmass Settings."
+    },
+    "HowItWorks": [
+      "Lightmass places lighting samples throughout the level and computes indirect lighting during the lighting build.",
+      "For dynamic objects, the Volumetric Lightmap is interpolated to each pixel being shaded, providing precomputed indirect lighting.",
+      "If no built lighting is available, lighting is interpolated from the Volumetric Lightmap for static objects until lighting is rebuilt."
+    ],
+    "LightmassImportanceVolume": {
+      "Description": "Volumetric Lightmap builds bricks made up of 4x4x4 cells around static geometry in the Lightmass Importance Volume for better indirect lighting results."
+    },
+    "Visualization": {
+      "Enable": "Use the view mode for Volumetric Lightmap in the level viewport by clicking Show > Visualize > Volumetric Lightmap.",
+      "Description": "Visualizes lighting samples density around static geometry based on cells within the Lightmass Importance Volume."
+    },
+    "Benefits": {
+      "Comparison": [
+        {
+          "Method": "Sparse Volume Lighting Samples",
+          "Description": "Old method with lower accuracy and more light leaking."
+        },
+        {
+          "Method": "Volumetric Lightmaps",
+          "Description": "New method with improved accuracy and reduced light leaking."
+        }
+      ],
+      "Details": [
+        "Interpolates to each pixel instead of once per component.",
+        "Provides better detail and reduced light leaking for dynamic objects.",
+        "Supports static lighting for Volumetric fog."
+      ]
+    },
+    "Settings": {
+      "Location": "World Settings > Lightmass Settings",
+      "Options": [
+        {
+          "Setting": "Volumetric Lighting Method",
+          "Description": "Technique used for precomputed lighting at all positions inside the Lightmass Importance Volume."
+        },
+        {
+          "Setting": "Volumetric Lightmap Detail Cell Size",
+          "Description": "Size of a Volumetric Lightmap voxel at the highest density in world space units. Affects build times and memory usage."
+        },
+        {
+          "Setting": "Volumetric Lightmap Maximum Brick Memory Mb",
+          "Description": "Maximum memory for Volumetric Lightmap Brick data. High-density bricks discarded until this limit is met."
+        },
+        {
+          "Setting": "Volumetric Lightmap Spherical Harmonic Smoothing",
+          "Description": "Controls smoothing of Volumetric Lightmap samples to reduce ringing artifacts."
+        },
+        {
+          "Setting": "Volume Light Sample Placement Scale",
+          "Description": "Scales distances at which volume lighting samples are placed, affecting memory usage and update times."
+        }
+      ]
+    },
+    "Performance": {
+      "Considerations": [
+        "On a third person character, Volumetric Lightmaps cost 0.02ms of GPU time on PlayStation 4.",
+        "Memory usage increased from 5Mb with Indirect Lighting Cache to 30Mb with Volumetric Lightmaps at default Detail Cell Size settings."
+      ]
+    },
+    "Comparisons": {
+      "OldMethod": "Indirect Lighting Cache",
+      "NewMethod": "Volumetric Lightmaps",
+      "Details": [
+        "CPU interpolation vs. GPU interpolation",
+        "Per-object vs. per-pixel interpolation",
+        "Cannot affect Volumetric Fog vs. works with Volumetric Fog",
+        "Placed with high-density only on top of static surfaces vs. high-density all around static surfaces",
+        "Black samples outside of the Lightmass Importance Volume vs. border voxels stretched to cover areas outside the volume",
+        "Supports Level Streaming (with limitations)"
+      ]
+    },
+    "AdditionalNotes": [
+      "If you reduce the Volumetric Lightmap Detail Cell Size, increase the Volumetric Lightmap Maximum Brick Memory Mb as well.",
+      "Level Streaming requires all levels to be built at the same time for correct registration.",
+      "Use Volumetric Lightmap Density Volumes for local control over sample density."
+    ],
+    "Troubleshooting": [
+      {
+        "Issue": "Lower sample density near static geometry despite lowered Detail Cell Size.",
+        "Solution": "Increase Maximum Brick Memory or ensure lighting in the area is not too uniform."
+      },
+      {
+        "Issue": "Light leaking through walls on characters but not on Static Meshes.",
+        "Solution": "Decrease Detail Cell Size or increase wall thickness."
+      }
+    ]
+  }
+}
+{
+  "LightTypesAndMobility": {
+    "Introduction": "Unreal Engine provides several types of lights to create various lighting scenarios, each with its own mobility options affecting interactions and lighting utilization.",
+    "TypesOfLights": {
+      "Description": "The Editor offers multiple light types to light worlds in various styles and configurations, suitable for different scene sizes.",
+      "Lights": {
+        "DirectionalLight": "Primary outdoor light casting light from extreme distances.",
+        "SkyLight": "Captures the scene's background and applies it to the Level's geometry.",
+        "PointLight": "Acts as a light bulb, casting light in all directions from a point.",
+        "SpotLight": "Emits light from a point in a direction limited by cones.",
+        "RectLight": "Emits light from a rectangular surface in a direction."
+      },
+      "Usage": {
+        "LargeExteriors": {
+          "DirectionalLight": "Effective for dense foliage and geometry.",
+          "SkyLight": "Useful for large exteriors and interior openings."
+        },
+        "LocalizedAreas": {
+          "PointLight": "Defines shape and look within a scene.",
+          "SpotLight": "Defines shape and look within a scene.",
+          "RectLight": "Defines shape and look within a scene."
+        }
+      },
+      "Overview": [
+        "Basics of directional lights.",
+        "Basics of sky lighting.",
+        "Basics of point lights.",
+        "Basics of spot lights.",
+        "Basics of rectangular area lights."
+      ]
+    },
+    "LightMobility": {
+      "Description": "Each Actor's Mobilitysetting controls its movement or changes during gameplay, impacting performance and design choices.",
+      "MobilityStates": {
+        "Static": {
+          "Description": "For Light Actors that do not move or update during gameplay.",
+          "Features": "Contribute to pre-calculated lightmaps, illuminate Static and Stationary Actors, Movable ones lit by Indirect Lighting Cache."
+        },
+        "Stationary": {
+          "Description": "For Actors that can change but not move during gameplay.",
+          "Features": "Can change color or intensity, cast dynamic shadows for movable objects, limited by number of lights affecting a single object."
+        },
+        "Movable": {
+          "Description": "For Light Actors that move during gameplay.",
+          "Features": "Cast dynamic shadows, can change properties, shadowing cost is high but non-shadowing lights are inexpensive."
+        }
+      },
+      "Overview": [
+        "Fully dynamic lights changing all properties during runtime.",
+        "Partially dynamic and precomputed lighting changing some properties during runtime.",
+        "Precomputed lighting baked into textures, no runtime cost."
+      ]
+    },
+    "Resources": {
+      "RenderingLights": "Information on rendering lights.",
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "DirectionalLights": {
+    "Introduction": "Directional Light simulates light from an infinitely far source, ideal for sunlight with parallel shadows.",
+    "MobilitySettings": {
+      "Static": {
+        "Description": "Light cannot change in game, fastest rendering with baked lighting."
+      },
+      "Stationary": {
+        "Description": "Shadowing and bounced lighting from static geometry are baked, dynamic lighting changes allowed."
+      },
+      "Moveable": {
+        "Description": "Fully dynamic with dynamic shadows, slowest rendering but most flexible."
+      }
+    },
+    "Properties": {
+      "Light": {
+        "Intensity": "Total energy emitted by the light.",
+        "LightColor": "Color emitted by the light.",
+        "SourceAngle": "Angle subtended by the light source in degrees.",
+        "SourceSoftAngle": "Angle subtended by a soft light source in degrees.",
+        "UseTemperature": "Uses white as an illuminant when disabled.",
+        "Temperature": "Color temperature in Kelvin of the illuminant.",
+        "AffectsWorld": "Disables the light completely.",
+        "CastShadows": "Whether the light casts shadows.",
+        "IndirectLightingIntensity": "Scales indirect lighting contribution.",
+        "VolumetricScatteringIntensity": "Intensity of volumetric scattering.",
+        "ShadowCascadeBiasDistribution": "Controls depth bias across cascades.",
+        "ForwardShadingPriority": "Priority for forward shading.",
+        "CastModulatedShadows": "Whether to cast modulated shadows (mobile only).",
+        "ModulatedShadowColor": "Color for modulated shadows (mobile only).",
+        "ShadowAmount": "Amount of shadow occlusion.",
+        "SpecularScale": "Multiplier on specular highlights.",
+        "ShadowResolutionScale": "Scales shadow map resolution.",
+        "ShadowBias": "Controls shadow accuracy.",
+        "ShadowSlopeBias": "Controls self-shadowing accuracy.",
+        "ShadowFilterSharpen": "Sharpens shadow filtering.",
+        "ContactShadowLength": "Length of screen space ray trace for contact shadows.",
+        "ContactShadowLengthInWorldSpaceUnits": "Uses world space units for Contact Shadow Length.",
+        "CastTranslucentShadows": "Casts shadows through translucent objects.",
+        "CastShadowsFromCinematicObjectsOnly": "Casts shadows only from cinematic objects.",
+        "DynamicIndirectLighting": "Injects light into Light Propagation Volume.",
+        "ForceCachedShadowsForMovablePrimitives": "Enables cached shadows for movable primitives.",
+        "LightingChannels": "Channels affected by this light.",
+        "CastStaticShadows": "Casts static shadows.",
+        "CastDynamicShadows": "Casts dynamic shadows.",
+        "AffectTranslucentLighting": "Affects translucency.",
+        "Transmission": "Transmits through surfaces with subsurface scattering.",
+        "CastVolumetricShadow": "Shadows volumetric fog.",
+        "CastDeepShadow": "Casts high-quality hair strand shadows.",
+        "CastRayTracedShadows": {
+          "Options": ["Disabled", "Use Project Setting", "Enabled"]
+        },
+        "AffectRayTracingReflections": "Affects reflections with ray tracing.",
+        "AffectRayTracingGlobalIllumination": "Affects global illumination with ray tracing.",
+        "DeepShadowLayerDistribution": "Changes deep shadow layers distribution."
+      },
+      "LightShafts": {
+        "LightShaftOcclusion": "Occludes fog and atmosphere inter scattering.",
+        "OcclusionMaskDarkness": "Darkness of occlusion masking.",
+        "OcclusionDepthRange": "Distance for occluding light shafts.",
+        "LightShaftBloom": "Renders light shaft bloom.",
+        "BloomScale": "Scales bloom color.",
+        "BloomThreshold": "Threshold for creating bloom.",
+        "BloomMaxBrightness": "Constrains scene color brightness.",
+        "BloomTint": "Tints bloom color.",
+        "LightShaftOverrideDirection": "Overrides light shaft direction."
+      },
+      "Lightmass": {
+        "LightSourceAngle": "Angle of the light's emissive surface.",
+        "IndirectLightingSaturation": "Desaturates light in Lightmass.",
+        "ShadowExponent": "Controls shadow penumbra falloff.",
+        "UseAreaShadowsForStationaryLight": "Uses area shadows for stationary light."
+      },
+      "LightFunction": {
+        "LightFunctionMaterial": "Material applied to the light.",
+        "LightFunctionScale": "Scales light function projection.",
+        "FadeDistance": "Distance to fade light function.",
+        "DisabledBrightness": "Brightness when light function is disabled."
+      },
+      "CascadedShadowMaps": {
+        "DynamicShadowDistanceMovableLight": "Covers dynamic shadows for movable light.",
+        "DynamicShadowDistanceStationaryLight": "Covers dynamic shadows for stationary light.",
+        "NumDynamicShadowCascades": "Number of view frustum cascades.",
+        "DistributionExponent": "Distribution of cascades.",
+        "TransitionFraction": "Fade region proportion.",
+        "DistanceFadeoutFraction": "Fade out region size.",
+        "InsetShadowsForMovableObjects": "Uses per-object inset shadows.",
+        "FarShadowCascadeCount": "Number of distant shadow cascades.",
+        "FarShadowDistance": "Distance for far shadow cascade end."
+      },
+      "AtmosphereAndCloud": {
+        "AtmosphereSunLight": "Interacts with atmosphere and clouds.",
+        "CastShadowsOnClouds": "Casts shadows on clouds.",
+        "CastShadowsOnAtmosphere": "Casts shadows on atmosphere.",
+        "CastCloudShadows": "Casts shadows from clouds.",
+        "CloudScatteringLuminanceScale": "Scales light contribution in clouds.",
+        "AdvancedProperties": {
+          "AtmosphereSunLightIndex": "Index for sun and moon light sources.",
+          "AtmosphereSunDiskColorScale": "Multiplies sun disk luminance.",
+          "PerPixelAtmosphereTransmittance": "Applies atmosphere transmittance per pixel.",
+          "CloudShadowStrength": "Strength of cloud shadow.",
+          "CloudShadowOnAtmosphereStrength": "Strength of shadows on atmosphere.",
+          "CloudShadowOnSurfaceStrength": "Strength of shadows on surfaces.",
+          "CloudShadowDepthBias": "Bias for cloud shadow depth.",
+          "CloudShadowExtent": "Radius of cloud shadow map.",
+          "CloudShadowMapResolutionScale": "Scales cloud shadow map resolution.",
+          "CloudShadowRaySampleCountScale": "Scales sample count for shadow tracing."
+        }
+      }
+    },
+    "Resources": {
+      "RenderingLighting": "Information on rendering lights.",
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write or read tutorials."
+    }
+  }
+}
+{
+  "MovableLightMobility": {
+    "Overview": {
+      "Description": "Fully dynamic lights capable of changing all their properties during runtime. They have higher performance costs compared to Static or Stationary lights and are suitable for dynamic indirect lighting with Lumen Global Illumination and Reflections."
+    },
+    "SupportedShadowTypes": [
+      {
+        "Type": "Shadow Maps",
+        "Description": "Provides whole scene dynamic shadows. Standard shadowing method for all dynamic shadowing across most platforms for all light types. Does not provide soft area shadowing."
+      },
+      {
+        "Type": "Virtual Shadow Maps",
+        "Description": "Provides consistent, high resolution shadow maps with soft area shadowing. Works well with film-quality assets, large dynamically lit open worlds, Nanite, Lumen Global Illumination and Reflections, and World Partition. Supported on latest console and PC platforms with DirectX 11 or DirectX 12."
+      },
+      {
+        "Type": "Ray Tracing Shadows",
+        "Description": "Simulates soft area lighting effects for high-quality shadowing at reasonable performance. Uses ray tracing architecture supported by NVIDIA GPU hardware on Windows 10 (or later) with DirectX 12."
+      },
+      {
+        "Type": "Mesh Distance Field Shadows",
+        "Description": "Provides lighting effects and soft area shadowing from meshes based on a distance field representation. Requires distance field meshes for the project, which are needed for software ray tracing in Lumen Global Illumination and Reflections, and Distance Field Ambient Occlusion."
+      }
+    ],
+    "ShadowBiasing": {
+      "Description": "Shadow biasing helps reduce artifacts such as faceted shadows and shadow contact hardening. Adjusting biasing settings finds a trade-off between accuracy and reduction of self-shadowing artifacts.",
+      "Properties": [
+        {
+          "Property": "Shadow Cascade Bias Distribution",
+          "Description": "(Directional Lights Only) Controls the depth bias scaling across Cascaded Shadow Maps to mitigate differences in shadow artifacts between cascade transitions. Values of 1 scale shadow bias based on each cascade's size; 0 scales shadow bias uniformly across all cascades."
+        },
+        {
+          "Property": "Shadow Bias",
+          "Description": "Controls accuracy of self-shadowing for whole scene shadows from the light source. At 0, shadows start at the shadow caster surface with many artifacts; larger values reduce artifacts but may cause floating effect."
+        },
+        {
+          "Property": "Shadow Slope Bias",
+          "Description": "Works with Shadow Bias to control accuracy of self-shadowing. Increases bias based on surface slope. At 0, shadows start at caster surface with many artifacts; larger values reduce artifacts but may cause floating effect."
+        },
+        {
+          "Property": "Shadow Filter Sharpen",
+          "Description": "Adjusts sharpness of direct shadowing from Stationary or Movable lights, reducing soft shadowing effect of shadow mapping."
+        }
+      ],
+      "Examples": [
+        {
+          "Default": "Shadow Bias (Constant and Slope): Default",
+          "Adjusted": "Shadow Bias (Constant and Slope): Adjusted"
+        },
+        {
+          "Default": "Shadow Bias (Constant and Slope): Default",
+          "Adjusted": "Shadow Bias (Constant and Slope): Adjusted"
+        }
+      ]
+    },
+    "ShadowMapCaching": {
+      "Description": "Makes shadow casting from Point and Spot Lights more affordable by caching shadows of assets with Static or Stationary Mobility, reducing performance cost each frame unless something changes.",
+      "Benefits": "Significantly improves performance in levels with many assets affected by lights, e.g., reducing render time from 14 milliseconds to 1 millisecond for three shadow-casting Movable Point lights.",
+      "Requirements": [
+        "Primitives must have Mobility set to Static or Stationary.",
+        "Materials using World Position Offset will not be cached.",
+        "Point Lights and Spot Lights must have Mobility set to Movable and cast shadows.",
+        "Moving lights will not have their shadows cached.",
+        "Materials using animated Tessellation or Pixel Depth Offset may cause artifacts."
+      ],
+      "ConsoleCommands": [
+        "r.Shadow.WholeSceneShadowCacheMb",
+        "r.Shadow.WholeSceneShadows",
+        "Stat ShadowRendering"
+      ],
+      "Limitations": [
+        "Shadow map caching has limitations with unsupported features and can only happen under certain criteria."
+      ],
+      "Examples": [
+        {
+          "Enabled": "Shadow Map Caching: Enabled",
+          "Disabled": "Shadow Map Caching: Disabled"
+        }
+      ]
+    }
+  }
+}
+{
+  "PointLights": {
+    "Overview": {
+      "Description": "Point Lights function like real-world light bulbs, emitting light in all directions from a single point in space. They can be set to Static, Stationary, or Movable mobility settings, each with different performance and flexibility characteristics."
+    },
+    "MobilitySettings": [
+      {
+        "Type": "Static",
+        "Description": "The light cannot be changed in-game. This is the fastest rendering method and allows for baked lighting."
+      },
+      {
+        "Type": "Stationary",
+        "Description": "The light will have its shadowing and bounced lighting from static geometry baked by Lightmass, with other lighting being dynamic. Allows changes to color and intensity in-game, but the light does not move. Allows partial baked lighting."
+      },
+      {
+        "Type": "Movable",
+        "Description": "The light is fully dynamic and allows for dynamic shadowing. This is the slowest rendering method but offers the most flexibility during gameplay."
+      }
+    ],
+    "Examples": [
+      {
+        "Description": "Point Light Without Radius Showing",
+        "Image": "Point_Light_Without_Radius_Showing.jpg"
+      },
+      {
+        "Description": "Point Light With Radius Showing",
+        "Image": "Point_Light_With_Radius_Showing.jpg"
+      }
+    ],
+    "Properties": {
+      "Light": [
+        {
+          "Property": "Intensity",
+          "Description": "Total energy that the light emits."
+        },
+        {
+          "Property": "Light Color",
+          "Description": "The color that the light emits."
+        },
+        {
+          "Property": "Attenuation Radius",
+          "Description": "Bounds the light's visible influence."
+        },
+        {
+          "Property": "Source Radius",
+          "Description": "Radius of light source shape."
+        },
+        {
+          "Property": "Source Length",
+          "Description": "Length of light source shape."
+        },
+        {
+          "Property": "Affects World",
+          "Description": "Disables the light completely. Cannot be set at run time. To disable a light's effect during runtime, change its Visibility property."
+        },
+        {
+          "Property": "Casts Shadows",
+          "Description": "If the light casts shadows."
+        },
+        {
+          "Property": "Indirect Lighting Intensity",
+          "Description": "Scales the indirect lighting contribution from the light."
+        },
+        {
+          "Property": "Use Inverse Squared Falloff",
+          "Description": "Whether to use physically based inverse squared distance falloff, where Attenuation Radius only clamps the light's contribution."
+        },
+        {
+          "Property": "Light Falloff Exponent",
+          "Description": "Controls the radial falloff of light when UseInverseSquaredFalloff is disabled."
+        },
+        {
+          "Property": "Specular Scale",
+          "Description": "Multiplier on Specular Highlights. Use with care; any value besides 1 is not physical and can be used to artistically remove highlights mimicking polarizing filters or photo touch up."
+        },
+        {
+          "Property": "Shadow Bias",
+          "Description": "Controls how accurate the shadows from this light are."
+        },
+        {
+          "Property": "Shadow Filter Sharpen",
+          "Description": "How much to sharpen shadow filtering for this light."
+        },
+        {
+          "Property": "Contact Shadow Length",
+          "Description": "The length of screen space to ray trace for sharp contact shadows. A value of zero disables this option."
+        },
+        {
+          "Property": "Cast Translucent Shadows",
+          "Description": "Whether this light is allowed to cast dynamic shadows through translucent objects."
+        },
+        {
+          "Property": "Affect Dynamic Indirect Lighting",
+          "Description": "Whether the light should be injected into the Light Propagation Volume."
+        },
+        {
+          "Property": "Cast Static Shadows",
+          "Description": "Whether this light casts static shadows."
+        },
+        {
+          "Property": "Cast Dynamic Shadows",
+          "Description": "Whether this light casts dynamic shadows."
+        },
+        {
+          "Property": "Affect Translucent Lighting",
+          "Description": "Whether the light affects translucency or not."
+        }
+      ],
+      "LightProfiles": [
+        {
+          "Property": "IES Texture",
+          "Description": "The IES 'Texture' used for the light profile. IES files are ASCII, though Unreal represents them as textures; they are not image files."
+        },
+        {
+          "Property": "Use IES Brightness",
+          "Description": "If false, uses the Brightness of the light to determine how much light to produce. If true, uses the IES file's brightness in Lumens, which is usually much larger than default values on lights in Unreal."
+        },
+        {
+          "Property": "IES Brightness Scale",
+          "Description": "Scale for IES brightness contribution, as they can seriously blow out a scene."
+        }
+      ],
+      "Lightmass": [
+        {
+          "Property": "Indirect Lighting Saturation",
+          "Description": "A value of 0 will completely desaturate this light in Lightmass, while a value of 1 will be unchanged."
+        },
+        {
+          "Property": "Shadow Exponent",
+          "Description": "Controls the falloff of shadow penumbras."
+        }
+      ],
+      "LightFunction": [
+        {
+          "Property": "Light Function Material",
+          "Description": "The light function material to be applied to this light."
+        },
+        {
+          "Property": "Light Function Scale",
+          "Description": "Scales the light function projection."
+        },
+        {
+          "Property": "Light Function Fade Distance",
+          "Description": "The distance at which the light function should be completely faded to the value in Disabled Brightness."
+        },
+        {
+          "Property": "Disabled Brightness",
+          "Description": "Brightness factor applied to the light when the light function is specified but disabled, e.g., from the property above: Light Function Fade Distance."
+        }
+      ]
+    }
+  }
+}
+{
+  "RectangularAreaLights": {
+    "Overview": {
+      "Description": "Rectangular Area Lights emit light from a rectangular plane and can simulate light sources like televisions, overhead lighting fixtures, or wall sconces."
+    },
+    "MobilitySettings": [
+      {
+        "Type": "Static",
+        "Description": "The light's direct and indirect illumination are baked into lightmaps during build time, and the light cannot be changed during runtime. This is the fastest rendering method."
+      },
+      {
+        "Type": "Stationary",
+        "Description": "Only the indirect illumination is baked into lightmaps. Direct lighting is calculated dynamically, allowing changes to color and intensity during runtime. Preserves high-quality precomputed shadowing and global illumination."
+      },
+      {
+        "Type": "Movable",
+        "Description": "The light is fully dynamic, with no baked illumination, allowing it to cast shadows from moving objects at runtime. This setting is the slowest to render."
+      }
+    ],
+    "LightEmission": {
+      "Description": "Rect Lights emit light within a spherical attenuation radius only in the positive direction of their local X axis. Specular highlights reflect the width and height of the light's rectangular area."
+    },
+    "RectLightBehavior": {
+      "StaticOrStationary": "Lightmass considers the width and height of the light during illumination computation, using multiple sampled points across the rectangular surface.",
+      "Movable": "Width and height are used only for specular reflections; light is emitted from the center of the rectangle."
+    },
+    "PerformanceConsiderations": {
+      "Description": "Stationary or Movable Rect Lights are more expensive to render compared to Point or Spot Lights with the same mobility, especially when shadow casting is enabled."
+    },
+    "ForwardRendererSupport": {
+      "Description": "The forward renderer does not currently support Rect Lights. Use Spot or Point Lights if forward rendering is required."
+    },
+    "Properties": {
+      "Light": [
+        { "Property": "Intensity", "Description": "The total energy that the light emits, averaged over the surface area of the light." },
+        { "Property": "Light Color", "Description": "The color that the light emits." },
+        { "Property": "Attenuation Radius", "Description": "Bounds the light's visible influence, similar to Point or Spot Lights." },
+        { "Property": "Source Width", "Description": "The extent of the Rect Light along its local Y axis." },
+        { "Property": "Source Height", "Description": "The extent of the Rect Light along its local Z axis." },
+        { "Property": "Barn Door Angle", "Description": "The angle of the barn door attached to the Rect Light." },
+        { "Property": "Barn Door Length", "Description": "The length of the barn door attached to the Rect Light." },
+        { "Property": "Source Texture", "Description": "Specifies a texture applied to the emitting rectangle, affecting the color of the emitted light and visible in specular reflections." },
+        { "Property": "Temperature", "Description": "The color temperature of the light, measured in Kelvin." },
+        { "Property": "Use Temperature", "Description": "Determines whether the Temperature setting should apply to this light." },
+        { "Property": "Affects World", "Description": "Enables or disables the light completely. Cannot be set at runtime." },
+        { "Property": "Cast Shadows", "Description": "Determines if the light casts shadows from objects in the level." },
+        { "Property": "Indirect Lighting Intensity", "Description": "Scales the indirect lighting contribution from the light." },
+        { "Property": "Volumetric Scattering Intensity", "Description": "Scales the intensity and color of the volumetric scattering from this light." }
+      ],
+      "AdvancedSettings": [
+        { "Property": "Intensity Units", "Description": "Determines how the light's Intensity setting should be interpreted." },
+        { "Property": "Specular Scale", "Description": "Multiplier on specular highlights. Use only with great care; values other than 1 are not physical." },
+        { "Property": "Shadow Resolution Scale", "Description": "Scales the resolution of shadowmaps used to calculate dynamic shadows." },
+        { "Property": "Shadow Bias", "Description": "Controls the accuracy of the shadows from this light." },
+        { "Property": "Shadow Filter Sharpen", "Description": "Adjusts the sharpness of shadow filtering for this light." },
+        { "Property": "Contact Shadow Length", "Description": "The length of screen space to ray trace for sharp contact shadows." },
+        { "Property": "Contact Shadow Length in World Space Units", "Description": "Determines whether the Contact Shadow Length setting is interpreted in world space units or screen space units." },
+        { "Property": "Cast Translucent Shadows", "Description": "Determines if the light casts dynamic shadows through translucent objects." },
+        { "Property": "Cast Shadows from Cinematic Objects Only", "Description": "Determines if the light casts shadows only from components with the Cast Cinematic Shadows option enabled." },
+        { "Property": "Dynamic Indirect Lighting", "Description": "Determines if the light should be included in Light Propagation Volumes." },
+        { "Property": "Force Cached Shadows for Movable Primitives", "Description": "Generates cached shadows for movable primitives even when the global cached shadows setting is disabled." },
+        { "Property": "Lighting Channels", "Description": "Determines the lighting channels that this light should affect." },
+        { "Property": "Cast Static Shadows", "Description": "Determines if the light casts shadows from static objects." },
+        { "Property": "Cast Dynamic Shadows", "Description": "Determines if the light casts shadows from movable objects." },
+        { "Property": "Affect Translucent Lighting", "Description": "Determines if the light affects translucency." },
+        { "Property": "Transmission", "Description": "Determines if the light cast transmits through surfaces with subsurface scattering profiles." },
+        { "Property": "Cast Volumetric Shadow", "Description": "Determines if the light source casts shadows from volumetric fog." }
+      ],
+      "Lightmass": [
+        { "Property": "Indirect Lighting Saturation", "Description": "Determines the saturation of this light in baked lightmaps." },
+        { "Property": "Shadow Exponent", "Description": "Controls the falloff of shadow penumbras." },
+        { "Property": "Use Area Shadows for Stationary Light", "Description": "Determines if area shadows should be used for stationary lights." }
+      ],
+      "LightFunctions": [
+        { "Property": "Light Function Material", "Description": "The light function material applied to this light." },
+        { "Property": "Light Function Scale", "Description": "Scales the light function projection." },
+        { "Property": "Fade Distance", "Description": "The distance at which the light function should completely fade to the value in Disabled Brightness." },
+        { "Property": "Disabled Brightness", "Description": "Brightness factor applied to the light when the light function is specified but disabled." }
+      ],
+      "LightProfiles": [
+        { "Property": "IES Texture", "Description": "The IES texture asset assigned to the light's profile." },
+        { "Property": "Use IES Brightness", "Description": "Determines the source of the light's brightness." },
+        { "Property": "IES Brightness Scale", "Description": "Scales the brightness contribution when Use IES Brightness is enabled." }
+      ]
+    }
+  }
+}
+{
+  "SkyLights": {
+    "Overview": {
+      "Description": "The Sky Light captures the distant parts of your level and applies that to the scene as a light. It matches the sky's appearance and its lighting/reflections, and can use a specified cubemap."
+    },
+    "SceneCapture": {
+      "Description": "Sky Lights capture the scene under certain circumstances based on their mobility settings.",
+      "Conditions": [
+        {
+          "Type": "Static",
+          "Description": "Updates automatically when building lighting."
+        },
+        {
+          "Type": "Stationary or Movable",
+          "Description": "Updates once on load and further updates happen only when Recapture is called or Real Time Capture is enabled."
+        }
+      ]
+    },
+    "UsageRecommendation": "Sky Lights should be used instead of the Ambient Cubemap because they support local shadowing, preventing indoor areas from being lit by the sky.",
+    "MobilitySettings": [
+      {
+        "Type": "Static",
+        "Description": "Lighting cannot be changed during the game. This is the fastest rendering method and allows for baked lighting."
+      },
+      {
+        "Type": "Stationary",
+        "Description": "Captures shadowing and light bounces from static geometry at build time, while other lighting is dynamic. Allows changes to color, intensity, and cubemap in-game."
+      },
+      {
+        "Type": "Movable",
+        "Description": "Lighting can be moved and changed in-game as needed."
+      }
+    ],
+    "StaticSkyLight": {
+      "Description": "Completely baked into the lightmap for static objects, costing nothing during runtime. Requires rebuilding lighting to reflect changes."
+    },
+    "StationarySkyLight": {
+      "Description": "Bakes shadowing using Lightmass and stores directional occlusion information (Bent Normal). Allows color changes at runtime, but indirect lighting is baked and unchangeable."
+    },
+    "MovableSkyLight": {
+      "Description": "Does not use any precomputation. Uses Distance Field Ambient Occlusion for shadowing and supports dynamic scene changes."
+    },
+    "DistanceFieldAmbientOcclusion": {
+      "Description": "Requires Mesh Distance Fields enabled in project settings. Provides dynamic shadowing using Signed Distance Field Volumes around rigid objects."
+    },
+    "PrecomputedSkyLight": {
+      "Description": "Stores lighting and shadowing data in lightmaps using features like improved directionality and Bent Normal for higher quality lighting."
+    },
+    "RealTimeCapture": {
+      "Description": "Provides dynamic and specular environment lighting, allowing dynamic time-of-day simulations with real-time reflections. Requires Sky Atmosphere component and supports various sky elements.",
+      "Requirements": [
+        "Sky Atmosphere",
+        "Volumetric Clouds",
+        "Exponential Height Fog",
+        "Sky Dome Meshes with an unlit material tagged as IsSky"
+      ],
+      "Limitations": [
+        "Volumetric Fog is not supported.",
+        "Requires a Sky Atmosphere component to function."
+      ]
+    },
+    "ReflectionQuality": {
+      "Description": "Controlled by the Cubemap Resolution property. Uses power of two values to specify texture resolution, balancing quality and performance."
+    },
+    "TimeSlicingOptimization": {
+      "Description": "Distributes captured scene processing over multiple frames, reducing per frame cost. Enabled by default and can be controlled via console command."
+    },
+    "ShadowingFromMovableObjects": {
+      "Description": "Achieved using Capsule Shadows for Skeletal Meshes or Distance Field Indirect Shadowing for rigid meshes."
+    },
+    "Properties": [
+      {
+        "Category": "Sky Light",
+        "Properties": [
+          {
+            "Property": "Real Time Capture",
+            "Description": "Enables dynamic diffuse and specular lighting."
+          },
+          {
+            "Property": "Source Type",
+            "Description": "Specifies whether to capture the distant scene or use a specified cubemap."
+          },
+          {
+            "Property": "Cubemap",
+            "Description": "Specifies the Cubemap to use for sky lighting if Source Type is set to SLS_SpecifiedCubemap."
+          },
+          {
+            "Property": "Cubemap Resolution",
+            "Description": "Maximum resolution for the top processed cubemap MIP. Must be a power of 2 texture."
+          },
+          {
+            "Property": "Sky Distance Threshold",
+            "Description": "Distance from the Sky Light at which geometry is treated as part of the sky."
+          },
+          {
+            "Property": "Capture Emissive Only",
+            "Description": "Only captures emissive Materials, making the capture cheaper."
+          },
+          {
+            "Property": "Lower Hemisphere is Solid Color",
+            "Description": "Sets all lighting from the lower hemisphere to zero to prevent leaking."
+          },
+          {
+            "Property": "Lower Hemisphere Color",
+            "Description": "Color for the lower hemisphere."
+          }
+        ]
+      },
+      {
+        "Category": "Light",
+        "Properties": [
+          {
+            "Property": "Intensity Scale",
+            "Description": "The total energy that the light emits."
+          },
+          {
+            "Property": "Affects World",
+            "Description": "Determines if the light can affect the world."
+          },
+          {
+            "Property": "Cast Shadows",
+            "Description": "Determines if the light casts shadows."
+          },
+          {
+            "Property": "Indirect Lighting Intensity",
+            "Description": "Scales the indirect lighting contribution from this light."
+          },
+          {
+            "Property": "Volumetric Scattering Intensity",
+            "Description": "Scales the intensity and color of the volumetric scattering from this light."
+          },
+          {
+            "Property": "Casts Static Shadows",
+            "Description": "Determines if the light casts shadows from static objects."
+          },
+          {
+            "Property": "Casts Dynamic Shadows",
+            "Description": "Determines if the light casts shadows from dynamic objects."
+          },
+          {
+            "Property": "Affect Translucent Lighting",
+            "Description": "Determines if the light affects translucency."
+          },
+          {
+            "Property": "Transmission",
+            "Description": "Determines if the light transmits through surfaces with subsurface scattering profiles."
+          },
+          {
+            "Property": "Cast Volumetric Shadow",
+            "Description": "Determines if the light shadows Volumetric Fog."
+          },
+          {
+            "Property": "Cast Deep Shadow",
+            "Description": "Determines if the light should cast high quality hair-strands self shadowing."
+          },
+          {
+            "Property": "Cast Ray Traced Shadows",
+            "Description": "Determines if the light shadows are computed with shadow mapping or ray tracing."
+          },
+          {
+            "Property": "Affect Ray Tracing Reflections",
+            "Description": "Determines if the light affects objects in reflections when ray traced reflection is enabled."
+          },
+          {
+            "Property": "Affect Ray Traced Global Illumination",
+            "Description": "Determines if the light affects global illumination when ray traced global illumination is enabled."
+          },
+          {
+            "Property": "Deep Shadow Layer Distribution",
+            "Description": "Changes the deep shadows layer distribution."
+          }
+        ]
+      },
+      {
+        "Category": "Atmosphere and Cloud",
+        "Properties": [
+          {
+            "Property": "Cloud Ambient Occlusion",
+            "Description": "Determines if the cloud should occlude sky contribution within the atmosphere."
+          },
+          {
+            "Property": "Cloud Ambient Occlusion Strength",
+            "Description": "Strength of the ambient occlusion."
+          },
+          {
+            "Property": "Cloud Ambient Occlusion Extent",
+            "Description": "World space radius of the cloud ambient occlusion map around the camera in kilometers."
+          },
+          {
+            "Property": "Cloud Ambient Occlusion Map Resolution Scale",
+            "Description": "Scales the cloud ambient occlusion map resolution."
+          },
+          {
+            "Property": "Cloud Ambient Occlusion Aperture Scale",
+            "Description": "Controls the cone aperture angle over which the sky occlusion is evaluated."
+          }
+        ]
+      }
+    ],
+    "Limitations": [
+      "Soft shadowing from movable objects onto the environment is not integrated with Sky Light.",
+      "RecaptureSky() function has a high processing cost and requires at least 120 ms, causing pauses or slowdowns in gameplay."
+    ]
+  }
+}
+{
+  "SpotLights": {
+    "Overview": {
+      "Description": "A Spot Light emits light from a single point in a cone shape. Users can shape the light using the Inner Cone Angle and Outer Cone Angle, defining the light's brightness and falloff. The Radius defines the length of the cones, similar to a flashlight or stage light."
+    },
+    "MobilitySettings": [
+      {
+        "Type": "Static",
+        "Description": "The light cannot be changed in game. This is the fastest rendering method and allows for baked lighting."
+      },
+      {
+        "Type": "Stationary",
+        "Description": "Shadowing and bounced lighting from static geometry are baked by Lightmass, while other lighting is dynamic. Allows changes to color and intensity in-game."
+      },
+      {
+        "Type": "Moveable",
+        "Description": "The light is completely dynamic and allows for dynamic shadowing. This is the slowest rendering method but offers the most flexibility during gameplay."
+      }
+    ],
+    "Examples": [
+      {
+        "Description": "Spot Light without its Cone showing",
+        "Image": "Spot Light without its Cone showing"
+      },
+      {
+        "Description": "Spot Light with Cone showing",
+        "Image": "Spot Light with Cone showing"
+      }
+    ],
+    "Properties": [
+      {
+        "Category": "Light",
+        "Properties": [
+          {
+            "Property": "Intensity",
+            "Description": "Total energy that the light emits."
+          },
+          {
+            "Property": "Light Color",
+            "Description": "The color that the light emits."
+          },
+          {
+            "Property": "Inner Cone Angle",
+            "Description": "Sets the inner cone angle of the Spot Light, in degrees."
+          },
+          {
+            "Property": "Outer Cone Angle",
+            "Description": "Sets the outer cone angle of the Spot Light, in degrees."
+          },
+          {
+            "Property": "Attenuation Radius",
+            "Description": "Bounds the light's visible influence."
+          },
+          {
+            "Property": "Source Radius",
+            "Description": "Radius of the light source shape."
+          },
+          {
+            "Property": "Source Length",
+            "Description": "Length of the light source shape."
+          },
+          {
+            "Property": "Affects World",
+            "Description": "Disables the light completely. Cannot be set at runtime. To disable the light's effect during runtime, change its Visibility property."
+          },
+          {
+            "Property": "Casts Shadows",
+            "Description": "Determines if the light casts shadows."
+          },
+          {
+            "Property": "Indirect Lighting Intensity",
+            "Description": "Scales the indirect lighting contribution from the light."
+          },
+          {
+            "Property": "Use Inverse Squared Falloff",
+            "Description": "Determines whether to use physically based inverse squared distance falloff, where Attenuation Radius only clamps the light's contribution."
+          },
+          {
+            "Property": "Light Falloff Exponent",
+            "Description": "Controls the radial falloff of light when Use Inverse Squared Falloff is disabled."
+          },
+          {
+            "Property": "Min Roughness",
+            "Description": "Minimum roughness effective for this light, used for softening specular highlights."
+          },
+          {
+            "Property": "Shadow Bias",
+            "Description": "Controls how accurate the shadows from this light are."
+          },
+          {
+            "Property": "Shadow Filter Sharpen",
+            "Description": "Determines how much to sharpen shadow filtering for this light."
+          },
+          {
+            "Property": "Cast Translucent Shadows",
+            "Description": "Determines whether this light is allowed to cast dynamic shadows through translucent objects."
+          },
+          {
+            "Property": "Affect Dynamic Indirect Lighting",
+            "Description": "Determines whether the light should be injected into the Light Propagation Volume."
+          },
+          {
+            "Property": "Cast Static Shadows",
+            "Description": "Determines whether this light casts static shadows."
+          },
+          {
+            "Property": "Cast Dynamic Shadows",
+            "Description": "Determines whether this light casts dynamic shadows."
+          },
+          {
+            "Property": "Affect Translucent Lighting",
+            "Description": "Determines whether the light affects translucency or not."
+          }
+        ]
+      },
+      {
+        "Category": "Light Profiles",
+        "Properties": [
+          {
+            "Property": "IES Texture",
+            "Description": "The IES Texture used for the light profile. IES files are ASCII files represented as textures."
+          },
+          {
+            "Property": "Use IES Brightness",
+            "Description": "Determines the source of brightness. When true, uses the IES file's brightness in Lumens."
+          },
+          {
+            "Property": "IES Brightness Scale",
+            "Description": "Scale for IES brightness contribution, preventing scenes from being blown out."
+          }
+        ]
+      },
+      {
+        "Category": "Lightmass",
+        "Properties": [
+          {
+            "Property": "Indirect Lighting Saturation",
+            "Description": "Determines the saturation of this light in Lightmass. A value of 0 will completely desaturate the light, 1 will leave it unchanged."
+          },
+          {
+            "Property": "Shadow Exponent",
+            "Description": "Controls the falloff of shadow penumbras."
+          }
+        ]
+      },
+      {
+        "Category": "Light Function",
+        "Properties": [
+          {
+            "Property": "Light Function Material",
+            "Description": "The light function material to be applied to this light."
+          },
+          {
+            "Property": "Light Function Scale",
+            "Description": "Scales the light function projection."
+          },
+          {
+            "Property": "Light Function Fade Distance",
+            "Description": "The distance at which the light function should be completely faded to the value in Disabled Brightness."
+          },
+          {
+            "Property": "Disabled Brightness",
+            "Description": "Brightness factor applied to the light when the light function is specified but disabled."
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  "StaticLightMobility": {
+    "Overview": {
+      "Description": "Lights that have their Mobility set to Static are precomputed using Lightmass when a lighting build is performed. Static Lights store their data in textures called Lightmaps that are applied to geometry in the Level. Once the lighting build is complete, these lights have no further impact on performance."
+    },
+    "Characteristics": [
+      {
+        "Description": "Static Lights cannot be changed or moved in any way during runtime."
+      },
+      {
+        "Description": "They store their data in textures called Lightmaps."
+      },
+      {
+        "Description": "Once the lighting build is complete, Static Lights have no further impact on performance."
+      },
+      {
+        "Description": "Static Meshes with their Mobility set to Movable and Skeletal Meshes do not integrate fully with Static Lighting."
+      }
+    ],
+    "Performance": {
+      "Quality": "Medium",
+      "Mutability": "Lowest",
+      "PerformanceCost": "Lowest"
+    },
+    "LightmapResolution": {
+      "Description": "Static Lights generate their lighting data with Lightmass and store it in lightmaps that are applied to the geometry within the Level after a lighting build takes place.",
+      "Methods": [
+        {
+          "Method": "Open the Static Mesh Asset in the Static Mesh Editor and use its Details panel to set the default Light Map Resolution."
+        },
+        {
+          "Method": "In the Level Editor, select a Static Mesh Actor and use its Details panel to enable Overridden Light Map Res and enter a new lightmap resolution for the individual Actor."
+        }
+      ],
+      "Examples": [
+        {
+          "LightmapResolution": "64",
+          "Description": "Low lightmap resolution does not capture detail accurately."
+        },
+        {
+          "LightmapResolution": "128",
+          "Description": "Higher resolution captures more detail."
+        },
+        {
+          "LightmapResolution": "512",
+          "Description": "Even higher resolution captures the most detail but requires more disk space and longer processing time."
+        }
+      ],
+      "ViewModes": [
+        {
+          "Mode": "Lighting Only View Mode",
+          "Description": "Shows built shadows."
+        },
+        {
+          "Mode": "Lightmap Density View Mode",
+          "Description": "Shows texel density for Static Mesh Assets with Static Mobility, representing the current lightmap resolution."
+        }
+      ]
+    },
+    "LightmassSettings": {
+      "PerLight": [
+        {
+          "Property": "Light Source Angle",
+          "Description": "Controls the angle of the emissive surface on a Directional Light and affects shadow penumbra sizes."
+        },
+        {
+          "Property": "Indirect Lighting Saturation",
+          "Description": "Controls the amount of desaturation applied to the baked bounce lighting."
+        },
+        {
+          "Property": "Shadow Exponent",
+          "Description": "Controls the falloff of the shadow penumbras."
+        }
+      ],
+      "WorldSettings": [
+        {
+          "Property": "Static Lighting Level Scale",
+          "Description": "Scale of the level relative to real world scale, affecting Lightmass settings."
+        },
+        {
+          "Property": "Num Indirect Lighting Bounces",
+          "Description": "Number of light bounces to simulate for point, spot, and directional lights, starting from the light source."
+        },
+        {
+          "Property": "Num Sky Light Bounces",
+          "Description": "Number of skylight and emissive bounces to simulate."
+        },
+        {
+          "Property": "Indirect Lighting Quality",
+          "Description": "Increases global illumination solver sample counts for higher quality."
+        },
+        {
+          "Property": "Indirect Lighting Smoothness",
+          "Description": "Smooths out indirect lighting but can reduce shadow detail."
+        },
+        {
+          "Property": "Environment Color",
+          "Description": "Represents a constant color light surrounding the upper hemisphere of the Level."
+        },
+        {
+          "Property": "Diffuse Boost",
+          "Description": "Scales the diffuse contribution of all materials in the scene."
+        },
+        {
+          "Property": "Volume Lighting Method",
+          "Description": "Technique for providing precomputed lighting inside the Lightmass Importance Volume."
+        },
+        {
+          "Property": "Use Ambient Occlusion",
+          "Description": "Enables Ambient Occlusion to be baked into the lightmaps."
+        },
+        {
+          "Property": "Generate Ambient Occlusion Material Mask",
+          "Description": "Generates textures storing ambient occlusion computed by Lightmass."
+        },
+        {
+          "Property": "Visualize Material Diffuse",
+          "Description": "Overrides normal direct and indirect lighting with just the exported diffuse term."
+        },
+        {
+          "Property": "Visualize Ambient Occlusion",
+          "Description": "Overrides normal direct and indirect lighting with just the ambient occlusion term."
+        },
+        {
+          "Property": "Compress Lightmaps",
+          "Description": "Determines whether to compress lightmap textures."
+        },
+        {
+          "Property": "Volumetric Lightmap Detail Cell Size",
+          "Description": "Size of a Volumetric Lightmap voxel at the highest density, used around geometry."
+        },
+        {
+          "Property": "Volumetric Lightmap Maximum Brick Memory Mb",
+          "Description": "Maximum memory for Volumetric Lightmap Brick data."
+        },
+        {
+          "Property": "Volumetric Lightmap Lightmap Spherical Harmonic Smoothing",
+          "Description": "Controls smoothing of Volumetric Lightmap samples during Spherical Harmonic de-ringing."
+        },
+        {
+          "Property": "Volume Light Sample Placement Scale",
+          "Description": "Scales distances for placing volume lighting samples."
+        },
+        {
+          "Property": "Direct Illumination Occlusion Fraction",
+          "Description": "Amount of ambient occlusion applied to direct lighting."
+        },
+        {
+          "Property": "Indirect Illumination Occlusion Fraction",
+          "Description": "Amount of ambient occlusion applied to indirect lighting."
+        },
+        {
+          "Property": "Occlusion Exponent",
+          "Description": "Increases contrast of ambient occlusion."
+        },
+        {
+          "Property": "Fully Occluded Samples Fraction",
+          "Description": "Fraction of samples needed for full occlusion."
+        },
+        {
+          "Property": "Max Occlusion Distance",
+          "Description": "Maximum distance for occlusion to occur."
+        }
+      ],
+      "AdvancedProperties": [
+        {
+          "Property": "Force No Precomputed Lighting",
+          "Description": "Forces lightmaps and other precomputed lighting to not be created."
+        },
+        {
+          "Property": "Packed Light and Shadow Map Texture Size",
+          "Description": "Maximum size of textures for packed light and shadow maps."
+        }
+      ]
+    }
+  }
+}

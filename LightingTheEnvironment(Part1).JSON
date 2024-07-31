@@ -1,0 +1,1763 @@
+{
+  "LightingEnvironment": {
+    "Description": "Topics demonstrating features and tools for lighting scenes.",
+    "Overview": "Efficiently light small enclosed scenes to large worlds with the engine's tools and options. Guides on lighting in Unreal Engine.",
+    "Sections": {
+      "NewUE5LightingFeatures": {
+        "LumenGlobalIlluminationAndReflections": "Overview of Lumen's dynamic global illumination and reflections.",
+        "LumenTechnicalDetails": "Technical details of using Lumen with ray tracing.",
+        "VirtualShadowMaps": "High-resolution shadow techniques for film-quality assets and large dynamically lit worlds."
+      },
+      "LightingEssentials": {
+        "LightTypesAndMobility": "Types of lights and how mobility settings affect scene lighting.",
+        "FeaturesAndPropertiesOfLights": "Overview of properties and features supported by lights.",
+        "DesigningVisualsRenderingAndGraphics": "Rendering subsystem including lighting, shadowing, materials, textures, visual effects, and post-processing."
+      },
+      "LightingFeaturesAndTools": {
+        "EnvironmentalLightWithFogCloudsSkyAndAtmosphere": "Tools for building immersive worlds with fog, clouds, sky, and atmosphere lighting.",
+        "GlobalIllumination": "Topics on global illumination options.",
+        "LumenGlobalIlluminationAndReflections": "Overview of Lumen's dynamic global illumination and reflections.",
+        "MeshDistanceFields": "Overview of Mesh Distance Fields features for game development.",
+        "HardwareRayTracingAndPathTracingFeatures": "Topics on supported ray tracing and path tracing features.",
+        "Shadowing": "Overview of shadowing methods and their properties.",
+        "VirtualShadowMaps": "High-resolution shadow techniques for film-quality assets and large dynamically lit worlds.",
+        "ReflectionsEnvironment": "Systems for capturing and displaying reflections on surfaces."
+      },
+      "LightingToolsAndPlugins": {
+        "LightingToolsAndPlugins": "Collection of tools and plugins for lighting scenes.",
+        "ContactShadows": "Using screen space shadowing for shadow contact points.",
+        "CapsuleShadows": "Using physics capsules for dynamic soft shadowing of Skeletal Meshes."
+      },
+      "General": {
+        "PostProcessEffects": "Effects applied to the whole rendered scene before rendering.",
+        "VolumetricFog": "Overview of volumetric fog and lighting options with Exponential Height Fog Component.",
+        "LightShafts": "Using Directional Light to simulate light scattering through the atmosphere.",
+        "UsingTransparencyInMaterials": "Guide to using transparency in materials.",
+        "UsingBumpOffset": "Guide for using the Bump Offset node in materials.",
+        "IESLightProfiles": "Setting up and using IES textures with lights.",
+        "HDRIBackdropVisualizationTool": "Blueprint tool for product visualization with HDR image projection and real-time lighting and shadowing."
+      }
+    },
+    "Tags": ["rendering", "lighting", "shadowing", "global illumination", "reflections"],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "EnvironmentalLight": {
+    "Description": "Components and tools for immersive world lighting with fog, clouds, sky, and atmosphere.",
+    "Overview": "Unreal Engine provides components for designers to create immersive worlds with physically based lighting. These tools support fully dynamically lit worlds.",
+    "Sections": {
+      "LightMixer": {
+        "Description": "Dockable editor window to add, edit, and reference Directional, Point, Spot, and Rect Lights in your Level.",
+        "Benefits": "Simplifies and speeds up workflow by having lights available in one location, including components of scene Actors or Blueprints. Use Collections to organize lights."
+      },
+      "EnvironmentLightMixer": {
+        "Description": "Dockable editor window to add, edit, and reference environment lighting components for sky, clouds, atmosphere lights, and a sky light.",
+        "Benefits": "Simplifies and speeds up workflow by having environment lights available in one location."
+      },
+      "FogEffects": {
+        "Description": "Useful for ambiance and setting mood with multi-layered and volumetric fog effects.",
+        "SkyAtmosphereIntegration": "Sky Atmosphere includes scattering and height fog simulation, compatible with Exponential Height Fog."
+      },
+      "FogEffectsTopics": {
+        "ExponentialHeightFog": "Overview of the height-based, distant fog system.",
+        "VolumetricFog": "Overview of volumetric fog and lighting options with Exponential Height Fog Component."
+      },
+      "AtmosphereCloudsAndWorldLightingEffects": {
+        "Description": "Components for Sky Atmosphere, Volumetric Clouds, Directional Lights, and Sky Light work together for dynamically lit large worlds.",
+        "Components": [
+          "Up to two Directional Lights",
+          "Single Sky Light with optional real-time capturing",
+          "Sky Atmosphere with its own height fog",
+          "Volumetric Clouds with or without a sky dome mesh"
+        ],
+        "RealTimeCapture": "Use keyboard shortcuts with mouse movement to change lighting dynamically."
+      },
+      "AtmosphereCloudsAndWorldLightingTopics": {
+        "SkyAtmosphereComponent": "Physically-based sky and atmosphere rendering with time-of-day features and ground-to-space transitions.",
+        "VolumetricCloudComponent": "Real-time cloud rendering using volumetric materials.",
+        "DirectionalLights": "Basics of understanding directional lights.",
+        "SkyLights": "Basics of understanding sky lighting.",
+        "HeterogeneousVolumes": "Render volume-domain materials that sample from Sparse Volume Textures."
+      },
+      "PropertiesReference": {
+        "SkyAtmosphereComponentProperties": "Settings and property reference for Sky Atmosphere Component.",
+        "VolumetricCloudComponentProperties": "Settings and property reference for Volumetric Clouds Component."
+      },
+      "MaterialAndSparseVolumeTextureAssets": {
+        "SparseVolumeTextures": "Stores baked simulation data for volumetric media like smoke, fire, and water."
+      }
+    },
+    "Tags": ["environment", "rendering", "lighting", "fog", "clouds", "atmosphere", "sky"],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "EnvironmentLightMixer": {
+    "Description": "An editor window combining atmospheric lighting components for quick creation and editing.",
+    "Overview": "Create and edit environment lighting components for sky, clouds, atmosphere lights, and sky lighting in one place. Adjust the level of properties detail.",
+    "Opening": "Open from Main Menu: Window > Env. Light Mixer.",
+    "Interface": {
+      "Elements": [
+        "Toolbar",
+        "Components Panels"
+      ],
+      "Toolbar": "Add and configure properties detail in Components Panels.",
+      "ComponentsPanels": {
+        "Description": "Lists components available to add to the scene: Sky Light, Atmosphere Lights, Sky Atmosphere, Volumetric Cloud.",
+        "PropertiesDetail": "Adjust properties shown using Property Details dropdown: Minimal, Normal, Normal+Advanced."
+      }
+    },
+    "Components": [
+      "Sky Light",
+      "2x Directional Lights (sun and moon or two suns)",
+      "Sky Atmosphere",
+      "Volumetric Cloud"
+    ],
+    "PropertiesDetailLevels": [
+      {
+        "Level": "Minimal",
+        "Description": "Bare essentials for components."
+      },
+      {
+        "Level": "Normal",
+        "Description": "Common properties for components."
+      },
+      {
+        "Level": "Normal+Advanced",
+        "Description": "Common and advanced properties for components."
+      }
+    ],
+    "Tags": ["rendering", "lighting", "environment lighting"],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "ExponentialHeightFog": {
+    "Description": "Overview of the height-based, distant fog system.",
+    "Overview": "Creates more density in low places and less in high places with smooth transitions. Provides two fog colors for hemispheres.",
+    "Usage": {
+      "AddActor": "Select Exponential Height Fog Actor in Place Actors panel under Visual Effects and place in world.",
+      "Positioning": "Determines height of fog. Adjust with Fog Height Falloff."
+    },
+    "Properties": {
+      "FogDensity": "Global density factor, thickness of fog layer.",
+      "FogHeightFalloff": "Controls how density increases as height decreases. Smaller values make transition larger.",
+      "SecondFogData": {
+        "FogDensity": "Secondary fog layer's density.",
+        "FogHeightFalloff": "Height density factor for secondary fog layer.",
+        "FogHeightOffset": "Height offset relative to Actor's Z height."
+      },
+      "FogInscatteringColor": "Primary color of fog.",
+      "SkyAtmosphereAmbientContributionColorScale": "Modulates Sky Atmosphere component contribution to fog.",
+      "FogMaxOpacity": "Maximum opacity of fog, 1 is fully opaque, 0 is invisible.",
+      "StartDistance": "Distance from camera where fog starts.",
+      "FogCutoffDistance": "Scene elements past this distance will not have fog applied."
+    },
+    "InscatteringTexturing": {
+      "InscatteringColorCubemap": "Cubemap for fog color. Overrides Fog Inscattering Color and disables directional inscattering.",
+      "InscatteringColorCubemapAngle": "Angle to rotate Inscattering Color Cubemap.",
+      "InscatteringTextureTint": "Tint color for quick edits without reimporting cubemap.",
+      "FullyDirectionalInscatteringColorDistance": "Distance at which cubemap should be used directly for Inscattering Color.",
+      "NonDirectionalInscatteringColorDistance": "Distance at which average cubemap color is used as Inscattering Color."
+    },
+    "DirectionalInscattering": {
+      "DirectionalInscatteringExponent": "Size of directional inscattering cone.",
+      "DirectionalInscatteringStartDistance": "Start distance from viewer for directional inscattering.",
+      "DirectionalInscatteringColor": "Color for directional inscattering."
+    },
+    "VolumetricFog": {
+      "Enable": "Enable Volumetric Fog. Scalability settings control resolution.",
+      "Properties": {
+        "ScatteringDistribution": "Controls scattering phase function.",
+        "Albedo": "Reflectiveness of height fog particles.",
+        "Emissive": "Light emitted by fog. Sky Light is better for most cases.",
+        "ExtinctionScale": "Scales particle extinction amount.",
+        "ViewDistance": "Distance for computing Volumetric Fog.",
+        "StartDistance": "Distance from camera where Volumetric Fog starts.",
+        "NearFadeInDistance": "Distance over which Volumetric Fog fades in.",
+        "StaticLightingScattering": "Intensity of scattered static lighting.",
+        "OverrideLightColor": "Use Fog Inscattering Color for Sky Light's Volumetric Scattering Color and Directional Inscattering Color."
+      }
+    },
+    "FeaturesUsage": {
+      "SecondaryFogLayer": "Add a second fog layer with Second Fog Data properties for better control."
+    },
+    "Performance": {
+      "RenderingCost": "Similar to two layers of constant density height fog with optimization using Start Distance. Can reduce rendering cost by 50% or more."
+    },
+    "Tags": ["rendering", "lighting", "fog", "environment lighting"],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "HeterogeneousVolumes": {
+    "Description": "Render volume-domain materials that sample from Sparse Volume Textures.",
+    "Overview": "Supports real-time and Path Tracer rendering of static or animated sparse volume texture materials.",
+    "UsageWorkflow": [
+      "Import a VDB to create a Sparse Volume Texture asset.",
+      "Set up a Volume-domain material sampling an SVT asset.",
+      "Add a Heterogeneous Volume Actor to the scene and assign an SVT material."
+    ],
+    "ImportingVDBFiles": {
+      "Steps": [
+        "Drag and drop the VDB into the Content Browser.",
+        "Use the Import button in the Content Browser."
+      ],
+      "Details": "Option to import static or animated VDB files. Animated VDBs require only one file from the sequence."
+    },
+    "SVTMaterialSetup": {
+      "Details": "Set up a material using the Sparse Volume Texture Sample node. Use with Heterogeneous Volumes, Volumetric Fog, Volumetric Clouds, or any volume-based material. Use the sample SVT material in Engine > Engine Materials."
+    },
+    "HeterogeneousVolumeSetup": {
+      "Steps": [
+        "Search and add a Heterogeneous Volume actor in the Place Actors panel.",
+        "Assign an SVT material to the actor in the Details panel.",
+        "For animated VDBs, enable Playing and Looping in the Animation section."
+      ]
+    },
+    "Properties": {
+      "Materials": {
+        "Element[N]": "Material assignment slot for a volume-based material sampling an SVT."
+      },
+      "Volume": {
+        "VolumeResolution": "Automatically determined resolution.",
+        "PivotAtCentroid": "Moves pivot to center of volume."
+      },
+      "Animation": {
+        "Frame": "Current frame of the SVT.",
+        "FrameRate": "Speed of frame playback.",
+        "StartFrame": "Starting frame of animated SVT.",
+        "EndFrame": "Ending frame of animated SVT.",
+        "Playing": "Plays through animated SVT once.",
+        "Looping": "Repeats animated SVT from start to end frame."
+      },
+      "SparseVolumeTextureStreaming": {
+        "IssueBlockingRequests": "Blocks streaming system for real-time playback.",
+        "MipLevel": "Texture level of SVT."
+      },
+      "Lighting": {
+        "StepFactor": "Adjusts step-size of ray marching integrator.",
+        "ShadowStepFactor": "Adjusts step-size of shadow calculations.",
+        "ShadowBiasFactor": "Adjusts initial voxel bias for shadows.",
+        "LightingDownsampleFactor": "Adjusts volume resolution of lighting cache."
+      }
+    },
+    "UsingPathTracer": {
+      "Steps": [
+        "Set Default RHI to DirectX 12.",
+        "Enable Support Hardware Ray Tracing.",
+        "Enable Path Tracing.",
+        "Optional: Enable Niagara Fluids plugin."
+      ]
+    },
+    "UsingNiagaraFluids": {
+      "Steps": [
+        "Create a new Niagara Fluid in the Content Browser.",
+        "Select New system from a template or behavior example.",
+        "Choose an example from the 3D Gas list.",
+        "Set Loop Behavior to Infinite and Loop Duration to under 5 seconds.",
+        "Compile and save the Niagara Fluid asset.",
+        "Place the Niagara Fluid in the scene.",
+        "Enable path tracer support with r.PathTracing.HeterogeneousVolumes 1."
+      ]
+    },
+    "ConsoleVariables": {
+      "r.PathTracing.HeterogeneousVolumes": "Enables path tracing of heterogeneous volumes.",
+      "r.HeterogeneousVolumes.OrthoGrid": "Enables world-space voxel grid.",
+      "r.HeterogeneousVolumes.OrthoGrid.MaxBottomLevelMemoryInMegabytes": "Sets memory limit for bottom-level voxel grid.",
+      "r.HeterogeneousVolumes.OrthoGridShadingRate": "Sets shading rate of voxel grid.",
+      "r.HeterogeneousVolumes.FrustumGrid": "Enables frustum-aligned voxel grid.",
+      "r.HeterogeneousVolumes.FrustumGrid.MaxBottomLevelMemoryInMegabytes": "Sets memory limit for bottom-level voxel grid.",
+      "r.HeterogeneousVolumes.FrustumGrid.ShadingRate": "Sets shading rate of frustum-aligned voxel grid.",
+      "r.HeterogeneousVolumes.FrustumGrid.DepthSliceCount": "Sets depth slices of frustum-aligned voxel grid.",
+      "r.HeterogeneousVolumes.Tessellation.FarPlaneAutoTransition": "Truncates far-plane of frustum-aligned grid."
+    },
+    "ProjectSettings": {
+      "HeterogeneousVolumes": "Enable rendering with heterogeneous volumes subsystem.",
+      "ShadowCasting": "Enable shadow casting onto the environment.",
+      "CompositeWithTranslucency": "Enable compositing with heterogeneous volumes when rendering translucency."
+    },
+    "Limitations": {
+      "RealTimeRendering": [
+        "More complete support in Path Tracer.",
+        "Shadow casting is experimental."
+      ],
+      "PathTracer": [
+        "Blocky or blurry volumes due to shading rate.",
+        "Missing voxels if memory limit exceeded.",
+        "Overlapping volumes may appear blocky."
+      ]
+    },
+    "Tags": ["volumes", "experimental", "clouds", "height fog"],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "LightMixer": {
+    "Description": "Editor window displaying all lights in a scene for rapid inspection and editing.",
+    "Overview": "Dedicated interface for lighting, allowing artists to isolate lights, change visibility, and group lights. Complements the Environment Light Mixer.",
+    "Interface": {
+      "Open": "Open from Editor main menu: Window > Light Mixer.",
+      "Elements": [
+        "Toolbar",
+        "Light Mixer Panel"
+      ]
+    },
+    "Toolbar": {
+      "Functions": [
+        "Add Lights to the scene.",
+        "Filter Lights with Search bar.",
+        "Sync Lights in Level with Light Mixer.",
+        "Toggle Light Mixer options.",
+        "Manage Light Collections."
+      ],
+      "SyncSelection": "Synchronizes Light selection in Light Mixer with Outliner selection."
+    },
+    "SettingsMenu": {
+      "Options": [
+        "Toggle folder visibility in Light Mixer panel.",
+        "Open Generic Object Mixer Instance.",
+        "Rebuild List to refresh Light Mixer."
+      ]
+    },
+    "ManagingLights": {
+      "FilterLights": "Use Search Filter to filter lights by name.",
+      "SelectMultipleLights": [
+        "Hold Ctrl to individually select Lights.",
+        "Click one Light, hold Shift, and select another to select a group."
+      ],
+      "EditMultipleLights": "Change shared attributes of multiple Lights at once.",
+      "LightVisibility": "Toggle visibility of Lights using the Eye icon.",
+      "IsolateLights": "Isolate selected Lights using the Solo option."
+    },
+    "AddingLights": {
+      "Methods": [
+        "Use Add button to add directional, spot, point, or rectangular area lights.",
+        "Drag light types from the menu into the scene."
+      ]
+    },
+    "LightContextMenu": {
+      "Functions": [
+        "Select or Add Collection.",
+        "Cut, Copy, Paste, Duplicate, Delete, Rename Lights.",
+        "Replace Selected Actors With another Light or Actor.",
+        "Reparent Lights using Drag and Drop or Attach To."
+      ]
+    },
+    "LightCollections": {
+      "Description": "Organize lights into non-destructive user-defined sets.",
+      "DefaultCollection": "All",
+      "CreatingCollection": [
+        "Select lights, right-click, and click Select or Add Collection.",
+        "Name the collection and press Enter."
+      ],
+      "ViewingCollection": "Click collection name under Search to view.",
+      "AddingToCollection": "Select lights, right-click, and choose from existing collections.",
+      "RemovingFromCollection": "Select lights, right-click, and uncheck collections to remove.",
+      "ManagingCollections": [
+        "Right-click collection tab to Delete, Duplicate, or Rename.",
+        "Reorder collections by dragging."
+      ]
+    },
+    "CustomizingLightMixer": {
+      "AddRemoveAttributes": [
+        "Hover over Column header and click Overflow Menu icon.",
+        "Enable/disable checkboxes next to Light attributes."
+      ],
+      "LightsAsComponents": "Lists and displays Lights that are components of other Actors and Blueprints."
+    },
+    "Tags": ["rendering", "lighting"],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "SkyAtmosphereComponent": {
+    "Description": "Physically-based sky and atmosphere rendering with time-of-day features and ground-to-space view transitions.",
+    "Overview": "Flexible enough to create Earth-like or exotic extraterrestrial atmospheres. Provides light scattering through participating media, realistic sunrise and sunset, and aerial perspective.",
+    "Features": [
+      "Two atmospheric Directional Lights for sun disk representation.",
+      "Sky color varies with sun altitude.",
+      "Control over scattering and fuzzy settings.",
+      "Simulates curvature of the world for transitions from ground to sky to space."
+    ],
+    "Enabling": {
+      "Steps": [
+        "Place a Sky Atmosphere component in the scene.",
+        "Place a Directional Light and enable Atmosphere Sun Light.",
+        "Set Atmosphere Sun Light Index for multiple Directional Lights.",
+        "Place a Sky Light to capture Sky Atmosphere."
+      ]
+    },
+    "AdjustingLights": {
+      "Shortcuts": [
+        "Right Ctrl + L for Directional Light index 0.",
+        "Right Ctrl + L + Shift for Directional Light index 1."
+      ]
+    },
+    "SkyAtmosphereModel": {
+      "Description": "Simulates light scattering with Mie and Rayleigh scattering for realistic sky colors during time-of-day transitions.",
+      "RayleighScattering": "Interaction of light with smaller particles, giving the sky its blue color during the day and red at sunset.",
+      "MieScattering": "Interaction with larger particles, causing haze and forward scattering."
+    },
+    "ScatteringAdjustments": {
+      "RayleighScale": [
+        "Decreased scattering (10x less dense than Earth).",
+        "Earth-like atmospheric density.",
+        "Increased scattering (10x more dense than Earth)."
+      ],
+      "MieScale": [
+        "Decreased particle density, clearer sky.",
+        "Default Mie scattering scale.",
+        "Increased particle density, hazier sky."
+      ],
+      "MieAnisotropy": [
+        "Uniform scattering (value 0).",
+        "Earth-like atmosphere (value 0.8).",
+        "Directional scattering (value 0.9)."
+      ],
+      "AbsorptionScale": [
+        "No atmospheric absorption.",
+        "Default Earth Ozone absorption scale.",
+        "Increased Ozone absorption scale."
+      ]
+    },
+    "AltitudeDistribution": {
+      "Properties": [
+        "Ground Radius",
+        "Atmospheric Height",
+        "Rayleigh Exponential Distribution",
+        "Mie Exponential Distribution"
+      ]
+    },
+    "ArtisticDirection": {
+      "AerialPerspectiveScale": "Scales distances from view to surfaces for thicker appearance from high altitude.",
+      "HeightFog": "Sky Atmosphere component can create height fog without Exponential Height Fog component."
+    },
+    "SkyRenderingOptions": {
+      "Description": "Sky and aerial perspective rendered using ray marching with various lookup tables (LUTs).",
+      "LUTs": [
+        "FastSkyViewLUT",
+        "AerialPerspectiveLUT",
+        "MultipleScatteringLUT",
+        "TransmittanceLUT",
+        "DistanceSkyLightLUT"
+      ]
+    },
+    "SkydomeMesh": {
+      "Setup": [
+        "Blend Mode: Opaque",
+        "Shading Model: Unlit"
+      ]
+    },
+    "PlanetaryAtmospheres": {
+      "Description": "Create planetary atmospheres viewed from space.",
+      "Properties": [
+        "Ground Radius",
+        "Atmosphere Height",
+        "Rayleigh Exponential Distribution"
+      ]
+    },
+    "MovingAtmosphere": {
+      "Options": [
+        "Planet Top at Absolute World Position",
+        "Planet Top at Component Transform",
+        "Planet Center at Component Transform"
+      ]
+    },
+    "Transmittance": {
+      "Description": "Light transmittance optimized for ground-level views. Enable per pixel transmittance for correct appearance in space."
+    },
+    "GroundToSpace": {
+      "Description": "Optimized for ground-level scenes but supports transitions from ground to space. Disable optimizations with console commands if needed."
+    },
+    "SunlightShafts": {
+      "Properties": [
+        "Enable Cast Shadow on Atmosphere",
+        "Enable Cast Cloud Shadows",
+        "Set high Dynamic Shadow Distance",
+        "Enable Per Pixel Atmosphere Transmittance for accurate shadowing in space."
+      ]
+    },
+    "VisualizationDebugging": {
+      "Description": "Real-time visualization of atmosphere settings with Hemisphere View, Time-of-Day Preview, and Graph View.",
+      "Command": "ShowFlag.VisualizeSkyAtmosphere 1"
+    },
+    "SupportedPlatforms": {
+      "SkyAtmosphere": ["Mobile", "XB1 / PS4", "XBX / PS5", "Low-end / High-end PC"]
+    },
+    "AdditionalNotes": {
+      "PhysicallyBasedSkyLighting": "Set sun and moon values for realistic lighting.",
+      "DarkLowerHemisphere": "Use terrain or Exponential Height Fog to address dark lower hemisphere.",
+      "MultiScattering": "Not evaluated for second light source.",
+      "TexelsVisible": "Increase FastSkyViewLUT resolution if texels are visible.",
+      "CameraPosition": "Sunlight effect optimized for camera at +Z North Pole. Improvement planned.",
+      "MultiplePlanetaryAtmospheres": "Not supported currently.",
+      "HighFrequencyNoise": [
+        "Increase Sky Atmosphere sample count.",
+        "Use FastSky LUT for high-frequency elements."
+      ]
+    },
+    "Tags": ["rendering", "lighting", "environment lighting"],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "SkyAtmosphereComponentProperties": {
+    "Description": "Settings and property reference for the Sky Atmosphere Component.",
+    "Overview": "Includes reference information for Project Settings, component properties, console commands, and SkyAtmosphere Material Expressions.",
+    "ProjectSettings": [
+      {
+        "Property": "Support Sky Atmosphere",
+        "Description": "Requires extra samplers/textures to apply aerial perspective on transparent surfaces."
+      },
+      {
+        "Property": "Support Sky Atmosphere Affecting Height Fog",
+        "Description": "Allows the Sky Atmosphere component to light up the height fog, requires Support Sky Atmosphere to be enabled."
+      }
+    ],
+    "ComponentProperties": {
+      "Planet": [
+        {
+          "Property": "Transform Mode",
+          "Description": "Controls transform placement and movement in the level.",
+          "Options": [
+            "Planet Top at Absolute World Origin",
+            "Planet Top at Component Transform",
+            "Planet Center at Component Transform"
+          ]
+        },
+        {
+          "Property": "Ground Radius",
+          "Description": "Planet radius in kilometers from center to ground level."
+        },
+        {
+          "Property": "Ground Albedo",
+          "Description": "Tinting of the atmosphere when sunlight bounces on it."
+        }
+      ],
+      "Atmosphere": [
+        {
+          "Property": "Atmosphere Height",
+          "Description": "Height of the atmosphere above the ground surface in kilometers."
+        },
+        {
+          "Property": "MultiScattering",
+          "Description": "Renders multi-scattering using a dual scattering approach."
+        },
+        {
+          "Property": "Trace Sample Count Scale",
+          "Description": "Scale of the Atmosphere tracing sample count."
+        }
+      ],
+      "Rayleigh": [
+        {
+          "Property": "Rayleigh Scattering Scale",
+          "Description": "Rayleigh scattering coefficient angle."
+        },
+        {
+          "Property": "Rayleigh Scattering",
+          "Description": "Rayleigh scattering coefficients at an altitude of 0 kilometers."
+        },
+        {
+          "Property": "Rayleigh Exponential Distribution",
+          "Description": "Altitude in kilometers at which Rayleigh scattering is reduced to 40%."
+        }
+      ],
+      "Mie": [
+        {
+          "Property": "Mie Scattering Scale",
+          "Description": "Mie scattering coefficient scale."
+        },
+        {
+          "Property": "Mie Scattering",
+          "Description": "Mie scattering coefficients at an altitude of 0 kilometers."
+        },
+        {
+          "Property": "Mie Scattering Absorption",
+          "Description": "Mie absorption coefficient scale."
+        },
+        {
+          "Property": "Mie Absorption",
+          "Description": "Mie absorption coefficients at an altitude of 0 kilometers."
+        },
+        {
+          "Property": "Mie Anisotropy",
+          "Description": "Value of 0 means uniform scattering, closer to 1 means more forward scattering."
+        },
+        {
+          "Property": "Mie Exponential Distribution",
+          "Description": "Altitude in kilometers at which Mie effects are reduced to 40%."
+        }
+      ],
+      "Absorption": [
+        {
+          "Property": "Absorption Scale",
+          "Description": "Absorption coefficients for another atmosphere layer, approximates ozone distribution."
+        },
+        {
+          "Property": "Absorption",
+          "Description": "Absorption coefficients for another atmosphere layer."
+        },
+        {
+          "Property": "Tent",
+          "Description": "Altitude-based tent distribution of absorption particles.",
+          "Attributes": [
+            "Tip Altitude",
+            "Tip Value",
+            "Width"
+          ]
+        }
+      ],
+      "ArtDirection": [
+        {
+          "Property": "Sky Luminance Factor",
+          "Description": "Scales luminance of sky pixels."
+        },
+        {
+          "Property": "Aerial Perspective Distance Scale",
+          "Description": "Scales distances from view to surfaces for thicker aerial perspective."
+        },
+        {
+          "Property": "Height Fog Contribution",
+          "Description": "Scales sky and atmosphere lights' contribution to height fog."
+        },
+        {
+          "Property": "Transmittance Min Light Elevation Angle",
+          "Description": "Minimum elevation angle for sun transmittance to ground."
+        },
+        {
+          "Property": "Aerial Perspective Start Depth",
+          "Description": "Distance in kilometers to start evaluating aerial perspective."
+        }
+      ]
+    },
+    "MaterialExpressions": [
+      {
+        "Expression": "SkyAtmosphereViewLuminance",
+        "Description": "Outputs sky luminance from interaction with atmospheric lights."
+      },
+      {
+        "Expression": "SkyAtmosphereAerialPerspective",
+        "Description": "Outputs RGBA-colored in-scattered luminance and transmittance."
+      },
+      {
+        "Expression": "SkyAtmosphereLightDirection",
+        "Description": "Outputs light direction from a Directional Light."
+      },
+      {
+        "Expression": "SkyAtmosphereLightIlluminance",
+        "Description": "Outputs illuminance reaching skydome world position."
+      },
+      {
+        "Expression": "SkyAtmosphereDistantLightScatteredLuminance",
+        "Description": "Outputs sky scattered luminance over unit sphere."
+      },
+      {
+        "Expression": "SkyAtmosphereLightDiskLuminance",
+        "Description": "Outputs light sun disk luminance with atmosphere transmittance."
+      }
+    ],
+    "ConsoleCommands": [
+      {
+        "Command": "r.SkyAtmosphere",
+        "Description": "Enables rendering of Sky Atmosphere components."
+      },
+      {
+        "Command": "r.SupportSkyAtmosphere",
+        "Description": "Enables Sky Atmosphere rendering and shader code."
+      },
+      {
+        "Command": "r.SupportSkyAtmosphereAffectsHeightFog",
+        "Description": "Enables Sky Atmosphere affecting height fog."
+      },
+      {
+        "Command": "r.SkyAtmosphere.LUT32",
+        "Description": "Uses full 32-bit per-channel precision for sky look-up tables."
+      },
+      {
+        "Command": "r.SkyAtmosphere.EditorNotifications",
+        "Description": "Enables in-editor notification for missing sky dome pixels."
+      },
+      {
+        "Command": "r.SkyAtmosphereASyncCompute",
+        "Description": "Enables Sky Atmosphere on async compute."
+      },
+      {
+        "Command": "r.SkyAtmosphere.FastSkyLUT",
+        "Description": "Enables fast sky lookup texture rendering."
+      },
+      {
+        "Command": "r.SkyAtmosphere.FastSkyLUT.SampleCountMin",
+        "Description": "Minimum sample count for sky/atmosphere scattering and transmittance."
+      },
+      {
+        "Command": "r.SkyAtmosphere.FastSkyLUT.SampleCountMax",
+        "Description": "Maximum sample count for sky/atmosphere scattering and transmittance."
+      },
+      {
+        "Command": "r.SkyAtmosphere.FastSkyLUT.DistanceToSampleCountMax",
+        "Description": "Distance in kilometers for maximum sample count for sky/atmosphere ray marching."
+      },
+      {
+        "Command": "r.SkyAtmosphere.FastSkyLUT.Width",
+        "Description": "Width of the FastSky LUT."
+      },
+      {
+        "Command": "r.SkyAtmosphere.FastSkyLUT.Height",
+        "Description": "Height of the FastSky LUT."
+      },
+      {
+        "Command": "r.SkyAtmosphere.AerialPerspective.StartDepth",
+        "Description": "Distance to start evaluating aerial perspective."
+      },
+      {
+        "Command": "r.SkyAtmosphere.AerialPerspective.DepthTest",
+        "Description": "Enables depth test to improve performance by not writing pixels closer to the camera than StartDepth."
+      },
+      {
+        "Command": "r.SkyAtmosphere.AerialPerspectiveLUT.DepthResolution",
+        "Description": "Number of depth slices for aerial perspective volume texture."
+      },
+      {
+        "Command": "r.SkyAtmosphere.AerialPerspectiveLUT.Depth",
+        "Description": "Length of the LUT in kilometers."
+      },
+      {
+        "Command": "r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountPerSlice",
+        "Description": "Sample count per slice for evaluating aerial perspective scattering and transmittance."
+      },
+      {
+        "Command": "r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountMaxPerSlice",
+        "Description": "Maximum sample count per slice for evaluating aerial perspective."
+      },
+      {
+        "Command": "r.SkyAtmosphere.AerialPerspectiveLUT.Width",
+        "Description": "Width of the AerialPerspective LUT."
+      },
+      {
+        "Command": "r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque",
+        "Description": "Uses low-resolution camera frustum volume for fog on opaque surfaces."
+      },
+      {
+        "Command": "r.SkyAtmosphere.SampleCountMin",
+        "Description": "Minimum sample count for sky/atmosphere scattering and transmittance."
+      },
+      {
+        "Command": "r.SkyAtmosphere.SampleCountMax",
+        "Description": "Maximum sample count for sky/atmosphere scattering and transmittance."
+      },
+      {
+        "Command": "r.SkyAtmosphere.SampleLightShadowmap",
+        "Description": "Enables sampling of atmospheric lights shadow map for volumetric shadows."
+      },
+      {
+        "Command": "r.SkyAtmosphere.DistanceToSampleCountMax",
+        "Description": "Distance in kilometers for maximum sample count for ray marching the atmosphere."
+      },
+      {
+        "Command": "r.SkyAtmosphere.TransmittanceLUT",
+        "Description": "Enables generation of the sky transmittance LUT."
+      },
+      {
+        "Command": "r.SkyAtmosphere.TransmittanceLUT.SampleCount",
+        "Description": "Sample count for evaluating transmittance."
+      },
+      {
+        "Command": "r.SkyAtmosphere.TransmittanceLUT.UseSmallFormat",
+        "Description": "Uses a small R8BG8B8A8 format for lower quality data."
+      },
+      {
+        "Command": "r.SkyAtmosphere.TransmittanceLUT.LightPerPixelTransmittance",
+        "Description": "Enables light per pixel transmittance for opaque objects."
+      },
+      {
+        "Command": "r.SkyAtmosphere.TransmittanceLUT.Width",
+        "Description": "Width of the Transmittance LUT."
+      },
+      {
+        "Command": "r.SkyAtmosphere.TransmittanceLUT.Height",
+        "Description": "Height of the Transmittance LUT."
+      },
+      {
+        "Command": "r.SkyAtmosphere.MultiScatteringLUT.SampleCount",
+        "Description": "Sample count for evaluating multi-scattering."
+      },
+      {
+        "Command": "r.SkyAtmosphere.MultiScatteringLUT.HighQuality",
+        "Description": "Uses 64 samples for more accurate multi-scattering approximation."
+      },
+      {
+        "Command": "r.SkyAtmosphere.MultiScatteringLUT.Width",
+        "Description": "Width of the MultiScattering LUT."
+      },
+      {
+        "Command": "r.SkyAtmosphere.MultiScatteringLUT.Height",
+        "Description": "Height of the MultiScattering LUT."
+      },
+      {
+        "Command": "r.SkyAtmosphere.DistantSkyLightLUT",
+        "Description": "Enables generation of the sky ambient lighting value."
+      },
+      {
+        "Command": "r.SkyAtmosphere.DistantSkyLightLUT.Altitude",
+        "Description": "Altitude for sky samples to integrate sky lighting."
+      }
+    ],
+    "Tags": ["rendering", "lighting", "environment lighting"],
+    "CommunityResources": {
+      "DeveloperForums": "Ask questions and help peers.",
+      "LearningLibrary": "Write and read tutorials."
+    }
+  }
+}
+{
+  "SparseVolumeTextures": {
+    "Description": "An asset storing baked simulation data for volumetric media like smoke, fire, and water.",
+    "Note": "Experimental feature, caution when shipping.",
+    "SVTDefinition": {
+      "Definition": "A texture storing texels (voxels) in 3D. Indexed by 3D UV coordinates, saving memory on 'interesting' data regions.",
+      "Types": {
+        "Static": "Single volume SVT.",
+        "Animated": "Sequence of volumes (frames) like flipbook animation."
+      }
+    },
+    "Rendering": {
+      "Method": "Rendered using Heterogeneous Volume Actors."
+    },
+    "Composition": {
+      "Textures": "Multiple textures including Page Table and Physical Tile Data textures.",
+      "Attributes": "Attributes A and B use RGBA channels for data, up to 8 channels total.",
+      "Formats": "Different pixel formats - 16bit, 32bit, 8bit unorm."
+    },
+    "Usage": {
+      "VolumeDomainMaterials": ["Heterogeneous Volume actor", "Volumetric Fog", "Volumetric Clouds"],
+      "SVTViewer": "Preview and debug SVT assets without setup."
+    },
+    "Properties": {
+      "AssetPreview": {
+        "SVTAsset": "Assign an SVT Asset.",
+        "BlockingRequests": "Block all streaming requests immediately.",
+        "PerFrameTransforms": "Apply frame transforms relative to the viewer component.",
+        "PivotAtCentroid": "Move pivot to volume center.",
+        "VoxelSize": "Uniform scale for all voxels.",
+        "PreviewAttribute": "Select Attribute to preview."
+      },
+      "Animation": {
+        "Frame": "Scrub frames of the animated SVT.",
+        "FrameRate": "Specify frame rate for animation.",
+        "Playing": "Loop through playback of SVT frames.",
+        "Looping": "Loop the animation.",
+        "ReversePlayback": "Play frames backward."
+      }
+    },
+    "Importing": {
+      "VDBFiles": {
+        "SupportedGrids": ["Float", "Double", "Half"],
+        "TransformSupport": "Scaling, rotation, translation."
+      },
+      "Methods": ["Drag and drop into Content Browser", "Use Import button in Content Browser"]
+    },
+    "MaterialUsage": {
+      "Nodes": ["SVT Object", "SVT Sample"],
+      "Domains": ["Volume", "Blend Mode Additive"],
+      "UVCoordinates": "Sampled with 3D UV coordinates."
+    },
+    "BlueprintSetup": {
+      "MaterialInstanceDynamic": {
+        "BeginPlay": "Construct Animated SVT Controller, bind to SVT material parameter.",
+        "Tick": "Update controller, apply current frame to SVT parameter."
+      },
+      "Example": "Setup for volumetric fog, similar for clouds or other actors."
+    },
+    "SequencerControl": {
+      "ExposeVariable": "AnimationAlpha variable exposed to Cinematics.",
+      "Track": "Add and key AnimationAlpha in Sequencer."
+    },
+    "Performance": {
+      "Streaming": {
+        "Notes": "Performance depends on resolution and sparseness. Adjust frame rate, mip level, or pixel format.",
+        "Variables": ["NumPrefetchFrames", "PrefetchMipLevelBias", "PrintMemoryStats"]
+      },
+      "BlockingPlayback": "Guarantee all mips are streamed for current frame, useful for offline productions."
+    },
+    "Limitations": {
+      "PageTableSize": "Limited to 2GB, max resolution 32k x 32k x 16k.",
+      "Playback": "Depends on data resolution and sparseness, use lower frame rate or resolution.",
+      "Platforms": {
+        "Supported": ["Windows DX11, DX12 with SM5, SM6"],
+        "Import": "VDB import on Windows editor builds only.",
+        "Unsupported": "Mobile Renderer"
+      }
+    },
+    "Resources": ["JangaFX free VDB set", "Developer Forums", "Learning Library"]
+  }
+}
+{
+  "VolumetricCloudComponentProperties": {
+    "Description": "Settings and property reference for the Volumetric Clouds Component.",
+    "Properties": {
+      "Layer": {
+        "LayerBottom": "Start altitude in km above ground.",
+        "LayerHeight": "End altitude in km above ground.",
+        "TracingStartMaxDistance": "Max distance before starting tracing in km.",
+        "TracingMaxDistanceMode": ["Distance from Point of View", "Distance from Cloud Layer Entry Point"],
+        "TracingMaxDistance": "Max distance traced inside cloud layer in km."
+      },
+      "Planet": {
+        "PlanetRadius": "Radius used without Sky Atmosphere component.",
+        "GroundAlbedo": "Color for cloud lighting from below with sun and Sky Atmosphere."
+      },
+      "CloudMaterial": {
+        "Material": "Material describing cloud volume, must use Volume Material Domain."
+      },
+      "CloudTracing": {
+        "UsePerSampleAtmosphericLightTransmittance": "Apply atmosphere transmittance per sample.",
+        "SkyLightCloudBottomOcclusion": "Occlusion amount for Sky Light at cloud layer bottom.",
+        "ViewSampleCountScale": "Scale of view tracing sample count, clamped by scalability setting.",
+        "ReflectionSampleCountScale": "Scale of reflection tracing sample count, clamped by scalability setting.",
+        "ShadowViewSampleCountScale": "Scale of shadow view tracing sample count, clamped by scalability setting.",
+        "ShadowReflectionSampleCountScale": "Scale of shadow reflection tracing sample count, clamped by scalability setting.",
+        "ShadowTracingDistance": "Shadow tracing distance in km.",
+        "StopTracingTransmittanceThreshold": "Stop tracing below this transmittance threshold."
+      }
+    },
+    "MaterialExpressions": {
+      "VolumetricAdvancedMaterialOutputExpression": {
+        "Phase": {
+          "PhaseG": "G input for phase function, range -1.0 to 1.0.",
+          "PhaseG2": "G2 input for second phase function, range -1.0 to 1.0.",
+          "PhaseBlend": "Lerp factor for blending phase functions, range 0.0 to 1.0."
+        },
+        "MultiScattering": {
+          "MultiScatteringContribution": "Contribution of each successive octave, range 0.0 to 1.0.",
+          "MultiScatteringOcclusion": "Occlusion reduction for each octave, range 0.0 to 1.0.",
+          "MultiScatteringEccentricity": "Phase isotropy for each octave, range 0.0 to 1.0."
+        },
+        "ConservativeDensity": "Three component float vector for medium conservative density and extra data."
+      },
+      "AdditionalProperties": {
+        "Phase": {
+          "PerSamplePhaseEvaluation": "Evaluate phase function per sample."
+        },
+        "MultiScattering": {
+          "MultiScatteringApproximationOctaveCount": "Number of octaves for multi-scattering approximation."
+        },
+        "Options": {
+          "GroundContribution": "Sample ground lighting contribution.",
+          "GrayScaleMaterial": "Use only R channel for gray scale, optimize lighting."
+        }
+      }
+    },
+    "AtmosphereAndCloudLighting": {
+      "DirectionalLight": {
+        "AtmosphereSunLight": "Directional Light interacts with atmosphere, clouds, sun disk.",
+        "CastShadowsOnClouds": "Light casts shadows on clouds.",
+        "CastShadowsOnAtmosphere": "Light casts shadows into atmosphere.",
+        "CastCloudShadows": "Light casts shadows from clouds onto other elements.",
+        "CloudScatteringLuminanceScale": "Scales light contribution in cloud media."
+      },
+      "SkyLight": {
+        "CloudAmbientOcclusion": "Cloud occludes sky contribution within atmosphere.",
+        "CloudAmbientOcclusionStrength": "Strength of ambient occlusion.",
+        "CloudAmbientOcclusionExtent": "Radius of cloud ambient occlusion map in km.",
+        "CloudAmbientOcclusionMapResolutionScale": "Scale of cloud ambient occlusion map resolution.",
+        "CloudAmbientOcclusionApertureScale": "Cone aperture angle for sky occlusion evaluation."
+      }
+    }
+  }
+}
+{
+  "VolumetricCloudComponent": {
+    "Description": "Real-time cloud rendering using volumetric materials.",
+    "Features": {
+      "PhysicallyBased": "Material-driven cloud rendering for any type of cloud, adaptable to time-of-day.",
+      "Scalable": "Supports ground views, flying, and ground to outer space transitions."
+    },
+    "Rendering": {
+      "RayMarching": {
+        "Definition": "3D volume texture ray-marched for real-time cloud layers.",
+        "Benefits": "Supports dynamic lighting, multiple scattering, and cloud shadows."
+      },
+      "LightMultipleScattering": {
+        "Definition": "Light rays scatter on particles within the cloud volume.",
+        "Recommendation": "Use single octave for games for performance."
+      },
+      "CloudOcclusionAndShadowing": {
+        "Methods": ["Ray Marched", "Beer Shadow Maps"],
+        "RayMarched": "Sharp, colored shadows, good for ground to space transitions.",
+        "BeerShadowMaps": "Support far shadow distances, faster, less accurate."
+      },
+      "DirectionalLightInteractions": {
+        "Properties": ["Cast Cloud Shadows", "Cloud Shadow Map Resolution Scale", "Cloud Shadow Extent"],
+        "Benefits": "Control strength, distance, and cloud shadowing."
+      },
+      "SkyLightCapture": {
+        "Mode": "Real Time Capture",
+        "Benefits": "Natural-looking, dynamic time-of-day simulations."
+      }
+    },
+    "SetupAndUsage": {
+      "InitialLevelSetup": {
+        "Components": ["Directional Light", "Sky Atmosphere", "Sky Light", "Volumetric Cloud"],
+        "Tool": "Environment Light Mixer"
+      },
+      "SkyLightCloudReflections": {
+        "Properties": ["Reflection Sample Count Scale", "Shadow Reflection Sample Count Scale"],
+        "Commands": ["r.VolumetricCloud.ReflectionRaySampleMaxCount", "r.VolumetricCloud.Shadow.ReflectionRaySampleMaxCount"]
+      },
+      "RayMarchingQualityModes": {
+        "Modes": {
+          "Mode0": "Fast-paced gameplay, ground-to-space transitions.",
+          "Mode1": "Balanced quality and performance.",
+          "Mode2": "High quality, no cloud-opaque mesh intersection."
+        },
+        "Commands": ["r.VolumetricRenderTarget.Mode", "r.SkyAtmosphere.FastSkyLUT", "r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque"]
+      }
+    },
+    "Optimizations": {
+      "VolumetricMaterial": {
+        "Suggestions": ["Gray Scale Material", "Ground Contribution", "Limit Multi Scattering Approximation Octaves", "Use Ray March Volume Shadow"],
+        "Benefits": "Improve performance, enhance visuals."
+      },
+      "SkyLightCapture": {
+        "Mode": "Real Time Capture",
+        "Benefits": "Distributes capture over multiple frames, optimizing performance."
+      },
+      "ConservativeDensityEvaluation": {
+        "Definition": "Optimizes ray marching by evaluating conservative density.",
+        "Steps": ["Evaluate Conservative Density", "Decision to Evaluate Main Material"]
+      }
+    },
+    "PerformanceAndScalability": {
+      "SupportedPlatforms": {
+        "SkyAtmosphere": ["Mobile", "XB1/PS4", "XBX/PS5", "Low-end/High-end PC"],
+        "VolumetricClouds": ["XB1/PS4", "XBX/PS5", "Low-end/High-end PC"]
+      },
+      "QualityScaling": {
+        "Commands": ["r.VolumetricCloud.ReflectionRaySampleMaxCount", "r.VolumetricCloud.Shadow.ReflectionRaySampleMaxCount", "r.VolumetricCloud.ViewRaySampleMaxCount"]
+      }
+    },
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "VolumetricFog": {
+    "Description": "Overview of the volumetric fog and lighting options with the Exponential Height Fog Component.",
+    "Controls": {
+      "Global": {
+        "Component": "Exponential Height Fog",
+        "Properties": {
+          "ScatteringDistribution": "Determines directional volumetric scattering (0: equal, 1: light direction).",
+          "Albedo": "Reflectiveness of media, close to 1 for water-based particles.",
+          "Emissive": "Density of light emitted by fog.",
+          "ExtinctionScale": "Controls light blocking by media.",
+          "ViewDistance": "Distance over which fog is computed.",
+          "StartDistance": "Distance from camera to start fog.",
+          "NearFadeInDistance": "Distance over which fog fades in from start.",
+          "StaticLightingScatteringIntensity": "Scales fog static lighting scattering.",
+          "OverrideLightColorsWithFogInscatteringColors": "Uses Fog Inscattering Colors to override light color."
+        }
+      },
+      "Lights": {
+        "Properties": {
+          "VolumetricScatteringIntensity": "Light's contribution to fog (0: none).",
+          "CastVolumetricShadow": "Toggle volumetric shadow casting for lights."
+        }
+      },
+      "Local": {
+        "Materials": "Describe Albedo, Emissive, Extinction for points in space.",
+        "ParticleSystem": "Creates fog density sphere, fully 3D, no billboards."
+      }
+    },
+    "Features": {
+      "TemporalReprojection": "Smooths aliasing with sub-voxel jitter per frame.",
+      "PrecomputedLighting": "Volumetric Lightmaps support static lighting for fog.",
+      "SupportedFeatures": [
+        "Single Directional Light with shadowing",
+        "Multiple Point and Spot Lights",
+        "Shadowing of Stationary Sky Lights",
+        "Precomputed Lighting with Volumetric Lightmaps",
+        "Single Skylight with shadowing",
+        "Particle Lights"
+      ],
+      "Performance": {
+        "Factors": "Volume texture resolution, GPU cost of particles, shadow casting lights."
+      },
+      "SupportedPlatforms": ["Single Directional Light", "Point and Spot Lights", "Shadowing of Sky Lights"]
+    },
+    "KnownIssues": [
+      "No support for IES profiles and Light Functions on Point and Spot Lights",
+      "No shadowing from Ray Traced Distance Field Shadows",
+      "No shadowing from Volumetric Fog itself",
+      "No Source Radius on Point and Spot Lights",
+      "Some Exponential Height Fog settings have no effect"
+    ],
+    "CommonQuestions": {
+      "StrongerLightShaftsWithoutHeavyFog": [
+        "Keep global fog density low, increase Volumetric Scattering Intensity for Directional Light",
+        "Increase density in areas with Volume particles"
+      ],
+      "UseWithExponentialHeightFog": "Volumetric Fog replaces Fog Inscattering Color within View Distance.",
+      "DecoupledCenterForTopDownGames": "Not currently possible."
+    },
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "FeaturesAndPropertiesOfLights": {
+    "Description": "Overview of properties and features supported by lights in Unreal Engine.",
+    "Considerations": [
+      "Types of lights needed for the scene.",
+      "Mobility of lights (Static, Stationary, Movable).",
+      "Mixing lights with different mobilities.",
+      "Impact of mobility on lighting, shadows, and assets.",
+      "Complementary features for environmental lighting."
+    ],
+    "SettingProperties": {
+      "DetailsPanel": "Properties and features of lights found in Details panel.",
+      "MobilitySettings": "Static, Stationary, or Movable mobility affects supported properties.",
+      "LightmassSettings": "Affects Static or Stationary mobility."
+    },
+    "GeneralLightFeatures": [
+      {
+        "Title": "Physical Lighting Units",
+        "Description": "Overview of using physically based lighting units."
+      },
+      {
+        "Title": "Global Illumination",
+        "Description": "Collection of topics on global illumination options."
+      },
+      {
+        "Title": "Shadowing",
+        "Description": "Overview of available shadowing methods and supported properties."
+      },
+      {
+        "Title": "Reflections Environment",
+        "Description": "Systems for capturing and displaying reflections."
+      },
+      {
+        "Title": "Light Types and Their Mobility",
+        "Description": "Available types of lights and how mobility settings affect lighting."
+      },
+      {
+        "Title": "Mesh Distance Fields",
+        "Description": "Overview of Mesh Distance Fields and their features."
+      },
+      {
+        "Title": "Lighting Channels",
+        "Description": "Using light source channels to light specific surfaces."
+      },
+      {
+        "Title": "IES Light Profiles",
+        "Description": "Setting up and using IES textures with lights."
+      },
+      {
+        "Title": "Light Functions",
+        "Description": "Using materials to mask a light's projected area."
+      },
+      {
+        "Title": "Precomputed Lighting Scenarios",
+        "Description": "Using multiple lighting setups for a single scene."
+      }
+    ],
+    "DirectionalLightFeatures": [
+      {
+        "Title": "Light Shafts",
+        "Description": "Simulating light scattering through the atmosphere."
+      },
+      {
+        "Title": "Sky Atmosphere Component",
+        "Description": "Physically-based sky and atmosphere rendering system."
+      },
+      {
+        "Title": "Volumetric Cloud Component",
+        "Description": "Real-time cloud rendering using volumetric materials."
+      }
+    ],
+    "SkyLightFeatures": [
+      {
+        "Title": "Environmental Light with Fog, Clouds, Sky and Atmosphere",
+        "Description": "Components and tools for immersive environment lighting."
+      }
+    ],
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "IESLightProfiles": {
+    "Description": "Overview of setting up and using IES textures with lights.",
+    "Definition": "IES Profiles describe light distribution using real-world measured data. Used in Enterprise fields and games for realistic lighting.",
+    "Characteristics": {
+      "Type": "1D texture (gradient), not actual texture files.",
+      "Function": "Defines light intensity in an arc for Point, Spot, and Rect Lights."
+    },
+    "Example": {
+      "Profile": "ASCII file with metadata about the light distribution."
+    },
+    "Usage": {
+      "Steps": [
+        "Import an IES Profile using available methods.",
+        "Select a light and assign the profile to the IES Texture slot in the Details panel."
+      ],
+      "ProfileLightIntensity": {
+        "Options": [
+          "Use IES Intensity: Uses profile's light brightness.",
+          "IES Intensity Scale: Scales profile's brightness contribution."
+        ]
+      }
+    },
+    "TextureProperties": {
+      "Properties": [
+        {
+          "Brightness": "Light brightness in candelas from IES Profile. Used for masking if less than or equal to 0."
+        },
+        {
+          "TextureMultiplier": "Multiplier mapping texture value to a result integrated over a sphere to 1.0f."
+        }
+      ]
+    },
+    "Visualization": {
+      "Note": "Visualization shown when a light with an IES Texture is selected."
+    },
+    "Performance": {
+      "Note": "IES Profiles render fast with minimal performance impact."
+    },
+    "SpotLights": {
+      "Note": "Using IES Profiles on Point or Rect Lights turns them into Spot Lights. Spot Light's cones mask the IES effect."
+    },
+    "AcquiringProfiles": {
+      "Sources": [
+        "Manufacturer's websites (e.g., Lithonia Lighting, Philips)",
+        "Photometric viewers like IESviewer for visualization before import."
+      ]
+    },
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "LightingChannels": {
+    "Description": "Overview of using channels of a light source to light specific surfaces.",
+    "Purpose": "Allow dynamic lights to affect objects when their lighting channels overlap, primarily for cinematic use.",
+    "Support": "Unreal Engine supports up to 3 lighting channels.",
+    "Usage": {
+      "Default": "Directional, Spot, Point Lights, and all Actors have Lighting Channel 0 enabled by default.",
+      "EnablingChannels": "Enable the desired channel on both the Actor and the light to affect the Actor."
+    },
+    "Example": {
+      "Description": "White Directional Light affects Channel 0 (left mannequin and background), purple Point Light affects Channel 1 (right mannequin).",
+      "Properties": "Set in the Advanced pulldown menu of the Light category in the Details panel for lights, and in the Lighting category for Actors."
+    },
+    "Limitations": [
+      "Dynamic application only, not for Static Lights or Static Mesh Actors with Static Mobility.",
+      "Affects direct lighting on opaque materials only, not translucent or masked materials."
+    ],
+    "Performance": {
+      "Impact": "Minimal, but non-zero. Example: 0.42ms standard lighting off, 0.53ms with lighting channels on."
+    },
+    "MobileSupport": {
+      "Version": "Supported from Unreal Engine 4.13.",
+      "Features": [
+        "Multiple directional lights in different channels.",
+        "Each primitive affected by one directional light from the first channel set.",
+        "CSM shadows from stationary or movable directional lights cast on matching channels.",
+        "Dynamic point lights fully support lighting channels."
+      ]
+    },
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "LightFunctions": {
+    "Description": "Overview of using materials to mask a light's projected area.",
+    "Definition": "Materials applied to filter a light's intensity.",
+    "Limitations": [
+      "Cannot change light color, only Light Color setting can.",
+      "Static Lights cannot use Light Functions, only Stationary and Movable lights."
+    ],
+    "Example": {
+      "Description": "Material uses Panner and ScalarParameter nodes for a flickering effect."
+    },
+    "Creation": {
+      "Steps": [
+        "Set Material Domain to use Light Function attribute."
+      ]
+    },
+    "Application": {
+      "Steps": [
+        "Apply Light Function to a light in the Details panel under Light Function Material setting."
+      ]
+    },
+    "IssuesAndQuestions": [
+      {
+        "Issue": "Light Function only works if cast shadows are enabled.",
+        "Cause": "FScene::AssignAvailableShadowMapChannelForLight only assigns Shadow Map channel to shadow casting lights."
+      },
+      {
+        "Issue": "Light Function only works if there's one shadow casting object.",
+        "Cause": "FDeferredShadingSceneRenderer::RenderForwardShadowProjections skips light unless VisibleLightInfo.ShadowsToProject.Num() > 0."
+      }
+    ],
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "LightShafts": {
+    "Description": "Overview of using Directional Light to simulate light scattering through the atmosphere.",
+    "Definition": "Light Shafts simulate crepuscular rays and atmospheric shadowing, adding depth and realism.",
+    "Properties": {
+      "DirectionalLight": {
+        "EnableLightShaftOcclusion": "Occlude fog and atmosphere in-scattering with screen-space blurred occlusion.",
+        "OcclusionMaskDarkness": "Controls darkness of occlusion masking. 1 results in no darkening.",
+        "OcclusionDepthRange": "Distance from camera within which objects occlude light shafts.",
+        "EnableLightShaftBloom": "Render light shaft bloom from this light.",
+        "BloomScale": "Scales the additive color of the bloom.",
+        "BloomThreshold": "Scene color must exceed this to create bloom in light shafts.",
+        "BloomMaxBrightness": "Rescales brightness larger than this value after exposure.",
+        "BloomTint": "Multiplies against scene color to create bloom color.",
+        "LightShaftOverrideDirection": "Overrides light shaft direction from the light's actual direction."
+      }
+    },
+    "Methods": {
+      "OcclusionMethod": "Creates a mask from object depths, blurs it away from the light, and uses it to mask fog and atmosphere. Mimics real-life light shafts.",
+      "BloomMethod": "Captures scene color around the light source, blurs it radially. Not realistic but controllable and visually impressive."
+    },
+    "GPUPerformance": {
+      "Costs": "Occlusion: 0.5ms, Bloom: 0.68ms on a single light at 1080p on a 680GTX. Enable only one to optimize performance."
+    },
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "PhysicalLightingUnits": {
+    "Description": "Overview of using physically based lighting units with light sources in Unreal Engine.",
+    "Benefits": "Allows for realistic lighting using known, measurable values without 'magic' numbers.",
+    "SupportedUnits": {
+      "DirectionalLight": "Direct Normal Illuminance, expressed as Lux (lx).",
+      "SkyLightAndEmissiveMaterials": "Luminance, expressed as Candela per meter squared (cd/m2).",
+      "PointSpotRectLights": [
+        {
+          "Unit": "Candela (cd)",
+          "Description": "Luminous intensity emitted uniformly across a solid angle of one steradian."
+        },
+        {
+          "Unit": "Lumen (lm)",
+          "Description": "Luminous flux emitted into the angle of one steradian."
+        },
+        {
+          "Unit": "Unitless",
+          "Description": "Engine-specific light intensity value for compatibility with pre-UE 4.19 releases."
+        }
+      ]
+    },
+    "Components": {
+      "DirectionalLight": "Simulates Direct Normal Illuminance in Lux (lx).",
+      "EmissiveSurfaces": "Expressed in Candela Per Meter Squared (cd/m2).",
+      "SkyLight": "Uses pixel intensity multiplied by light intensity, expressed in cd/m2 in HDR.",
+      "EmissiveMaterialsAsStaticLights": "Uses surface luminance to bake lighting into the scene."
+    },
+    "PointSpotRectLights": {
+      "Settings": {
+        "DetailsPanel": "Set Intensity Units to Candela, Lumen, or Unitless in the Details panel."
+      },
+      "InverseSquaredFalloff": {
+        "Description": "Physically based distance falloff supported by all three light unit types."
+      },
+      "DefaultSettings": "Default unit type can be set in Project Settings > Rendering > Default Settings."
+    },
+    "Relationships": {
+      "1cd": "625 unitless",
+      "1cd": "1 lm/sr",
+      "PointLightSolidAngle": "4π sr",
+      "SpotLightSolidAngle": "2π * (1 - cos(θ))",
+      "RectLightSolidAngle": "2π sr"
+    },
+    "Tips": [
+      "Increase Auto Exposure Max EV100 if image goes white.",
+      "Enable Apply Pre-Exposure or reduce light brightness if reflective surfaces have artifacts.",
+      "Use a Post Process Volume to adjust default Post Process settings.",
+      "Reconfigure settings when changing to the extended default luminance range.",
+      "Reduce Histogram Min and Max range to stabilize auto exposure histogram."
+    ],
+    "GeneralConsiderations": {
+      "DefaultValuePropagation": "Maintain same light unit for instanced lights to ensure correct propagation of default values.",
+      "ProjectSettings": "Specify default Light Units for Point, Spot, and Rect Lights in Project Settings > Rendering > Default Settings."
+    },
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "PrecomputedLightingScenarios": {
+    "Description": "Overview of using multiple lighting setups for a single scene in Unreal Engine.",
+    "Benefits": "Allows dynamic lighting with the fixed cost of pre-computed lighting, useful for VR or Architectural Visualization projects.",
+    "Example": {
+      "DayScenario": "Directional Light, Sky Light, and Skybox in Day Scenario level.",
+      "NightScenario": "Spotlights for streetlights in Night Scenario level."
+    },
+    "FeatureLimitations": [
+      "Only one Lighting Scenario level should be visible at a time.",
+      "Lightmap data from all Sublevels placed inside the Lighting Scenario level, preventing streaming by Sublevels.",
+      "Sublevel Lightmap data stored in Lighting Scenarios BuiltData package.",
+      "Error when loading a sublevel twice without reloading its lighting scenario's BuiltData."
+    ],
+    "Usage": {
+      "Steps": [
+        "Open Levels Manager (Window > Levels).",
+        "Right-click on a Sublevel in Levels menu, go to Lighting Scenario, and select Change to Lighting Scenario.",
+        "Set Level Streaming method to Blueprint by right-clicking on Sublevel, selecting Change Streaming Method, and then Blueprint.",
+        "Place lights or Static Meshes into the lighting levels and build each level's lighting.",
+        "Open Persistent Level Blueprint, add Load Stream Level (by name) node, and connect to Event Begin Play node.",
+        "Input the level name in Load Stream Level node, check Make Visible After Load and Should Block on Load.",
+        "Press Play button to launch project with Day level lighting. Change level name for Night level lighting."
+      ]
+    },
+    "Advantages": [
+      "Improved performance",
+      "Ability to change to baked lighting based on project needs"
+    ],
+    "Resources": ["Developer Forums", "Learning Library"]
+  }
+}
+{
+  "GlobalIllumination": {
+    "Description": "Collection of global illumination options.",
+    "Details": {
+      "Definition": "Simulates lighting interactions with geometry and material surfaces, including absorption and reflectiveness.",
+      "Methods": [
+        "Dynamic lighting",
+        "Precomputed lighting"
+      ],
+      "Benefits": [
+        "Mix dynamic and baked lighting in scenes.",
+        "Precomputed lighting: ideal for static scenes, lower performance cost, high quality based on texture resolution.",
+        "Dynamic lighting: ideal for changing scenes, high performance cost, supports all geometry types."
+      ]
+    }
+  },
+  "PrecomputedGlobalIllumination": {
+    "Description": "Uses Lightmass system to precompute lighting data.",
+    "Methods": [
+      {
+        "Type": "CPU Lightmass",
+        "Details": "Uses CPU with Unreal Swarm for computing lighting data, can distribute tasks to build farms."
+      },
+      {
+        "Type": "GPU Lightmass",
+        "Details": "Uses NVIDIA GPU with DirectX 12 and ray tracing."
+      }
+    ],
+    "SupportingTopics": [
+      "Indirect Lighting Cache",
+      "Volumetric Lightmaps",
+      "Lightmass Portals",
+      "Unreal Swarm",
+      "Lightmass Basics"
+    ]
+  },
+  "DynamicGlobalIllumination": {
+    "Description": "Real-time solutions for dynamic indirect lighting.",
+    "Methods": [
+      {
+        "Type": "Lumen",
+        "Details": "Fully dynamic system using ray tracing for next-gen consoles."
+      },
+      {
+        "Type": "Screen Space Global Illumination (SSGI)",
+        "Details": "Post-processing effect, best used with other methods."
+      },
+      {
+        "Type": "Ray Tracing Global Illumination (RTGI)",
+        "Details": "Hardware ray-tracing for dynamic GI, with Brute Force and Final Gather methods."
+      }
+    ],
+    "SupportingTopics": [
+      "Lumen Global Illumination and Reflections",
+      "Lumen Technical Details",
+      "Screen Space Global Illumination",
+      "Hardware Ray Tracing"
+    ]
+  },
+  "Resources": {
+    "Forums": "Developer Forums",
+    "Tutorials": "Learning Library"
+  }
+}
+{
+  "CPULightmassGlobalIllumination": {
+    "Description": "Features and settings of Lightmass for precomputed lighting.",
+    "Details": {
+      "Lightmaps": {
+        "Description": "Creates lightmaps with complex light interactions.",
+        "Components": [
+          "Static lights",
+          "Stationary lights"
+        ]
+      },
+      "Communication": {
+        "Editor": "Handled by Swarm Agent.",
+        "SwarmAgent": "Manages and distributes lighting builds, tracks progress."
+      },
+      "DiffuseInterreflection": {
+        "Description": "Key global illumination effect, controls light bounces based on material BaseColor.",
+        "Examples": [
+          "First diffuse bounce",
+          "Second diffuse bounce"
+        ]
+      },
+      "CharacterLighting": {
+        "Description": "Uses Lightmass Importance Volume, affects movable objects via Indirect Lighting Cache."
+      },
+      "AmbientOcclusion": {
+        "Description": "Exaggerates indirect shadows for artistic purposes.",
+        "Settings": [
+          "Visualize AO",
+          "Max Occlusion Distance",
+          "Fully Occluded Samples Fraction",
+          "Occlusion Exponent"
+        ]
+      },
+      "MaskedShadows": {
+        "Description": "Considers opacity masks for detailed shadowing."
+      },
+      "StationaryLights": {
+        "BentNormalSkyOcclusion": "Directional occlusion for Sky Light with Stationary Mobility.",
+        "DistanceFieldShadowMaps": "Maintains shadow shape under lower resolutions."
+      },
+      "StaticLights": {
+        "AreaLightsAndShadows": "All Static Mobility lights are area lights by default, control shadow softness."
+      },
+      "TranslucentShadows": {
+        "Description": "Light passing through translucent materials creates shadows.",
+        "Factors": [
+          "Light Source Angle",
+          "Lightmap Resolution"
+        ]
+      }
+    },
+    "QualityAndPerformance": {
+      "DiffuseTextures": {
+        "Description": "High contrast or dark textures reduce lighting visibility."
+      },
+      "LightingSetup": {
+        "Tips": [
+          "Avoid ambient lighting",
+          "High contrast between direct and indirect areas",
+          "Check dark areas on target display"
+        ]
+      },
+      "LightmapResolution": {
+        "Description": "Higher resolution improves quality but increases memory and build times."
+      },
+      "LightmassSolverQuality": {
+        "Description": "Set based on build quality, higher quality reduces artifacts."
+      }
+    },
+    "OptimizationTips": {
+      "LightmapResolution": {
+        "Tips": [
+          "High resolution for high visual impact areas",
+          "Lower resolution for less visible surfaces"
+        ]
+      },
+      "LightmassImportanceVolume": {
+        "Description": "Contains high-quality lighting to critical areas."
+      },
+      "BuildTimes": {
+        "Tips": [
+          "Optimize lightmap resolutions",
+          "Avoid large continuous meshes"
+        ]
+      }
+    },
+    "LightmassSettings": {
+      "WorldSettings": {
+        "Properties": [
+          "Static Lighting Level Scale",
+          "Num Indirect Lighting Bounces",
+          "Indirect Lighting Quality",
+          "Indirect Lighting Smoothness",
+          "Environment Color",
+          "Diffuse Boost"
+        ]
+      },
+      "LightSettings": {
+        "Properties": [
+          "Light Source Angle",
+          "Indirect Lighting Saturation",
+          "Shadow Exponent"
+        ]
+      },
+      "PrimitiveComponentSettings": {
+        "Properties": [
+          "Use Two Sided Lighting",
+          "Use Emissive for Static Lighting",
+          "Diffuse Boost"
+        ]
+      },
+      "BaseMaterialSettings": {
+        "Properties": [
+          "Diffuse Boost",
+          "Export Resolution Scale",
+          "Cast Shadow as Masked"
+        ]
+      }
+    },
+    "Resources": {
+      "Forums": "Developer Forums",
+      "Tutorials": "Learning Library"
+    }
+  }
+}
+{
+  "GPULightmassGlobalIllumination": {
+    "Description": "GPU-based system for generating precomputed lighting data.",
+    "Notes": "Beta feature, use caution when shipping.",
+    "Details": {
+      "Overview": {
+        "Description": "Precomputes light interactions for Stationary or Static lights, storing data in lightmap textures.",
+        "Technology": "Uses DirectX 12 and DXR framework for ray tracing."
+      },
+      "Advantages": [
+        "Significantly reduces lighting calculation time.",
+        "Allows real-time editing and recalculating lighting."
+      ],
+      "EnablingSteps": [
+        "Enable GPU Lightmass in Plugins under Built-In > Editor.",
+        "Modify Project Settings for Rendering and Windows categories.",
+        "Restart the editor."
+      ],
+      "Requirements": [
+        "DirectX 12",
+        "Ray Tracing-capable NVIDIA GPU"
+      ]
+    },
+    "SetupRecommendations": {
+      "ReducingTDRCrashes": "Adjust timeout delay and recovery settings in Windows 10.",
+      "DisablingRayTracingFeatures": "Use console command or project config file to disable unnecessary ray tracing features.",
+      "GPUAndCPUMemory": [
+        "Ensure enough GPU memory for the entire scene.",
+        "Virtual Texture system may require significant memory.",
+        "CPU memory needed to store all generated lightmaps."
+      ]
+    },
+    "VirtualTextureLightmaps": {
+      "Description": "Allows for real-time lightmap updates in the viewport.",
+      "Usage": "Enable for interactive editing during light builds."
+    },
+    "MultiGPUSupport": {
+      "Requirements": [
+        "Windows 10 version 2004 or newer",
+        "NVIDIA SLI-based GPU with NVLink"
+      ],
+      "Steps": [
+        "Enable SLI in NVIDIA Control Panel.",
+        "Modify DefaultEngine.ini to allow multi-GPU.",
+        "Use command line argument -MaxGPUCount=[n]."
+      ],
+      "Performance": "Improves build times, ideal for architectural and virtual production environments."
+    },
+    "Modes": {
+      "FullBake": {
+        "Description": "Renders full lightmap resolution for entire scene.",
+        "Workflow": "Prioritizes objects in view."
+      },
+      "BakeWhatYouSee": {
+        "Description": "Renders only visible objects, allows real-time editing.",
+        "Workflow": "Updates lighting as changes are made."
+      }
+    },
+    "SpeedModes": {
+      "Description": "Leverages virtual texturing for real-time updates.",
+      "RealtimeMode": {
+        "On": "Slower build due to rendering overhead.",
+        "Off": "Faster build with no rendering overhead."
+      }
+    },
+    "Settings": {
+      "General": [
+        "Show Progress Bars",
+        "Mode: Full Bake or Bake What You See"
+      ],
+      "Denoising": [
+        "None",
+        "On Completion",
+        "During Interactive Preview"
+      ],
+      "GlobalIllumination": [
+        "GI Samples",
+        "Stationary Light Shadow Samples",
+        "Use Irradiance Caching"
+      ],
+      "VolumetricLightmap": [
+        "Quality Multiplier",
+        "Detail Cell Size"
+      ],
+      "IrradianceCaching": [
+        "Quality",
+        "Agressive Leak Prevention"
+      ],
+      "FirstBounceRayGuiding": [
+        "Trial Samples"
+      ],
+      "System": [
+        "Realtime Workload Factor",
+        "Non-Realtime Workload Factor"
+      ]
+    },
+    "Limitations": [
+      {
+        "Feature": "Distributed Baking",
+        "Support": "No"
+      },
+      {
+        "Feature": "Multiple GPU",
+        "Support": "Yes"
+      },
+      {
+        "Feature": "Translucent Shadows",
+        "Support": "Yes"
+      },
+      {
+        "Feature": "Stationary Sky Light",
+        "Support": "Planned"
+      },
+      {
+        "Feature": "Lighting Channels",
+        "Support": "No"
+      },
+      {
+        "Feature": "Lightmass Portals",
+        "Support": "Partially"
+      },
+      {
+        "Feature": "Volumetric Lightmaps",
+        "Support": "Yes"
+      }
+    ],
+    "Resources": {
+      "Forums": "Developer Forums",
+      "Tutorials": "Learning Library"
+    }
+  }
+}
